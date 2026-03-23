@@ -1,0 +1,14 @@
+{
+  "name": "pdf2md",
+  "private": true,
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp", "unrs-resolver"]
+  },
+  "scripts": {
+    "dev": "pnpm --filter @pdf2md/web dev",
+    "build": "pnpm --filter @pdf2md/web build",
+    "test": "pnpm --filter @pdf2md/web test",
+    "lint": "pnpm --filter @pdf2md/web lint",
+    "typecheck": "pnpm --filter @pdf2md/web typecheck"
+  }
+}

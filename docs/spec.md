@@ -7,9 +7,9 @@
 
 ## Overview
 
-A free, fast web tool that converts PDF files to clean Markdown. Entirely client-side — files never leave the browser. Deployed as a single-purpose SEO-optimized website. No signup required.
+A free, fast web tool that converts PDF files to clean Markdown. Processing is entirely client-side in the MVP, so **file contents never leave the browser**. Deployed as a single-purpose SEO-optimized website. No signup required.
 
-**Also useful for us:** Quick PDF-to-Markdown for feeding docs into Claude/LLM workflows. The tool we'd actually use daily.
+**Also useful for us:** Quick PDF-to-Markdown for feeding docs into Claude/LLM workflows. MVP is intentionally the fast single-file 80% solution; batch and structured-output features come after core quality is proven.
 
 **Working name:** pdf2md.dev (alternatives: pdftomarkdown.com, pdf-to-md.com — check availability)
 
@@ -94,13 +94,80 @@ pdf2md.dev            ← The website (demo/wrapper)
 - The website benefits from the repo's authority, not the other way around
 - Other projects depend on us → moat
 
+**Implementation defaults before launch branding is finalized:**
+- Monorepo name: `pdf2md`
+- Web app path: `apps/web`
+- Core library path: `packages/core`
+- Default package name in code/docs: `@pdf2md/core` (change only if npm availability forces it)
+
+**Core library contract:** the conversion engine should return structured results, not a bare Markdown string.
+
+```ts
+type ConversionStatus = 'success' | 'partial' | 'failed'
+
+type ConversionCode =
+  | 'oversized'
+  | 'password_protected'
+  | 'no_extractable_text'
+  | 'parse_failed'
+  | 'worker_failed'
+  | 'unsupported_layout'
+  | 'table_fallback'
+  | 'timeout'
+  | 'cancelled'
+
+interface ConversionMessage {
+  code: ConversionCode
+  severity: 'error' | 'warning'
+  message: string
+}
+
+interface ConversionStats {
+  pageCount: number
+  wordCount: number
+  processingMs: number
+}
+
+interface ConversionMetadata {
+  title?: string
+  author?: string
+  subject?: string
+  keywords?: string[]
+  creationDate?: string
+}
+
+interface ConversionResult {
+  status: ConversionStatus
+  markdown: string
+  messages: ConversionMessage[]
+  stats: ConversionStats
+  metadata?: ConversionMetadata
+}
+
+interface ConvertOptions {
+  maxPages?: number
+  includeMetadata?: boolean
+  signal?: AbortSignal
+  onProgress?: (progress: {
+    stage: 'loading' | 'parsing' | 'structuring' | 'assembling'
+    currentPage: number
+    totalPages: number
+  }) => void
+}
+
+declare function convert(
+  pdfBuffer: ArrayBuffer,
+  options?: ConvertOptions,
+): Promise<ConversionResult>
+```
+
 **Phase 1.5** (between MVP and Polish): extract the conversion pipeline into `@pdf2md/core` with a CLI. Maybe a day of extra work since the pipeline code already exists.
 
 ---
 
 ## Core Features
 
-### MVP (Phase 1) — Ship in a Weekend
+### MVP (Phase 1) — Ship Fast (3-5 days)
 
 Scope is deliberately tight. Match pdf2md.morethan.io's functionality with better UX, then iterate.
 
@@ -109,22 +176,30 @@ Scope is deliberately tight. Match pdf2md.morethan.io's functionality with bette
    - Max file size: **15MB** (realistic for client-side; larger files cause browser memory issues)
    - Processing entirely client-side (files never leave the browser)
    - Progress indicator for multi-page PDFs
+   - Desktop-first, with basic mobile support via a single-pane flow and smaller-file expectation
+   - Keyboard-accessible file picker fallback and labeled controls for non-pointer users
 
 2. **Text Extraction + Basic Structure**
    - Clean text extraction with proper paragraph grouping
    - **Heading detection** (H1-H6) from font size histogram analysis
    - **List detection** (bullets and numbered) from text patterns + indentation
-   - **Bold/italic** detection from font name heuristics (covers ~80% of cases)
+   - **Bold/italic** detection from font name heuristics (best-effort; covers ~80% of cases)
    - **Link extraction** via `getAnnotations()` API matched to text positions
-   - Page number / header / footer stripping via repeated-text detection
+   - Page number / header / footer stripping via repeated-text detection (best-effort)
 
-3. **Output**
+3. **Failure Handling** (required for MVP)
+   - Clear error states for oversized, password-protected, corrupt, and worker/parsing-failed PDFs
+   - Explicit "no extractable text / likely scanned PDF" state instead of blank output
+   - Never silently fail; keep the UI responsive and allow reset/retry
+
+4. **Output**
    - Copy Markdown to clipboard (one-click)
+   - **Copy for AI** button with a short context prefix
    - Download as `.md` file
-   - Side-by-side view: Markdown source | rendered preview
+   - Raw Markdown view with optional rendered preview toggle
    - Stats: page count, word count
 
-4. **NOT in MVP** (deferred to Phase 2+)
+5. **NOT in MVP** (deferred to Phase 2+)
    - ~~Table detection~~ (multi-week problem, not weekend-scoped)
    - ~~Image extraction~~ (complex client-side, memory-heavy)
    - ~~Code block detection~~ (monospace font detection is unreliable)
@@ -132,28 +207,28 @@ Scope is deliberately tight. Match pdf2md.morethan.io's functionality with bette
 
 ### Phase 2 — Polish + Differentiation (Week 2-3)
 
-5. **Table detection** — Position-based clustering for borderless tables + `getOperatorList()` line detection for bordered tables. Accept ~50% quality; still better than competitors.
-6. **Code block detection** — Best-effort monospace font detection
-7. **Tagged PDF fast path** — If PDF has structure tree (`getStructTree()`), use it for semantic-accurate conversion. Covers ~10-15% of PDFs with much higher quality.
-8. **"Copy for AI" button** — Copies markdown with a context prefix ("The following was extracted from a PDF:"). Small but valuable for our target audience.
+6. **Table detection (limited)** — Detect simple bordered tables and obvious grid-aligned tables. Emit Markdown tables only when structure is unambiguous; otherwise fall back to plain text with warning. Explicitly out of scope: merged cells, nested tables, multi-page tables.
+7. **Code block detection** — Best-effort monospace font detection
+8. **Tagged PDF fast path** — If PDF has structure tree (`getStructTree()`), use it for semantic-accurate conversion. Covers ~10-15% of PDFs with much higher quality.
 9. **Multi-file drop** — Drop up to 5 PDFs, get a zip of `.md` files
 10. **Metadata extraction** — Title, author, date from PDF metadata → YAML front matter
+11. **Comparison view** — Original PDF rendering alongside Markdown output for spot-checking
 
 ### Phase 3 — SEO & Launch
 
-11. SEO implementation (meta tags, schema markup, below-fold content)
-12. "How to Convert PDF to Markdown" guide (500-1000 words)
-13. Privacy messaging: "Files never leave your browser"
-14. OG image for social sharing
-15. Open-source the repo with good README
-16. Product Hunt, Hacker News, Reddit launches
+12. SEO implementation (meta tags, schema markup, below-fold content)
+13. "How to Convert PDF to Markdown" guide (500-1000 words)
+14. Privacy messaging: "File contents never leave your browser"
+15. OG image for social sharing
+16. Open-source the repo with good README
+17. Product Hunt, Hacker News, Reddit launches
 
 ### Phase 4 — Enhanced Backend (only if demand warrants)
 
-17. FastAPI + Docling (Apache 2.0) on Railway (~$5/mo)
-18. "Enhanced mode" button for complex PDFs
-19. API endpoint for programmatic access
-20. OCR mode for scanned PDFs
+18. FastAPI + Docling (Apache 2.0) on Railway (~$5/mo)
+19. "Enhanced mode" button for complex PDFs
+20. API endpoint for programmatic access
+21. OCR mode for scanned PDFs
 
 ---
 
@@ -196,8 +271,8 @@ Scope is deliberately tight. Match pdf2md.morethan.io's functionality with bette
 │  │  10. Assemble Markdown               │   │
 │  └──────────────────────────────────────┘   │
 │                                              │
-│  Files never leave the browser               │
-│  No server, no upload, no tracking           │
+│  File contents never leave the browser       │
+│  Optional anonymous telemetry only           │
 └──────────────────────────────────────────────┘
 ```
 
@@ -233,14 +308,30 @@ Covers ~80% of cases. Fails on font subsets with opaque names (`g_d0_f1`).
 
 **Memory budget:** PDF.js uses 5-10x file size in RAM during parsing. For our 15MB limit, peak memory is ~150MB. Acceptable on desktop, tight on mobile.
 
+**Progress + cancellation contract:** conversion should support `AbortSignal` and stage/page progress from day 1. The UI promise of progress/cancel is backed by the core library API, not bolted on in React state later.
+
+**Error/warning taxonomy:** use stable machine-readable codes for UI states, telemetry, and CI assertions.
+- **Hard failures:** `oversized`, `password_protected`, `no_extractable_text`, `parse_failed`, `worker_failed`, `timeout`, `cancelled`
+- **Soft warnings / partial output:** `unsupported_layout`, `table_fallback`
+- UI copy can change over time; codes should not
+
+### Accessibility Baseline
+
+Accessibility is not polish. The MVP should be usable without drag-and-drop or a mouse.
+
+- Upload must work via keyboard-triggered file picker, not drag-and-drop only
+- Primary controls need visible labels, keyboard focus states, and screen-reader names
+- Progress, success, and error states should be announced in a screen-reader-friendly way
+- Markdown output area and preview toggle should be reachable and usable by keyboard
+
 ### Starting Point
 
-**Primary:** Fork/study [namtroi/pdf-to-markdown](https://github.com/namtroi/pdf-to-markdown)
+**Primary reference candidate:** Study [namtroi/pdf-to-markdown](https://github.com/namtroi/pdf-to-markdown)
 - Modern stack: React 19, TypeScript strict, Vite, PDF.js v5.4
 - 12-stage pipeline with debug visualization
 - 77% test coverage
 - Built for RAG use cases
-- **Note:** 1 star, solo dev — validate algorithm quality independently
+- **Note:** 1 star, solo dev — use as a reference, not a blind dependency decision. Final approach (fork vs selective port vs reimplementation) depends on launch-corpus results.
 
 **Secondary reference:** [@opendocsg/pdf2md](https://github.com/opengovsg/pdf2md) (474 stars, npm package)
 - Simpler approach, good for understanding minimum viable algorithm
@@ -252,9 +343,15 @@ Covers ~80% of cases. Fails on font subsets with opaque names (`g_d0_f1`).
 
 ---
 
-## Client-Side Quality: Honest Assessment
+## Quality Expectations
 
-What we can realistically deliver and what we can't. Important to set expectations.
+This is the honest quality bar for a client-side MVP. Product copy, QA, and launch decisions should all use the same expectations.
+
+### Support Boundaries
+
+- **Best support:** text-based PDFs with extractable text, mostly single-column reports/articles/docs, Latin-script LTR layouts
+- **Best-effort support:** non-English extractable text, simple lists, links, basic emphasis, basic mobile usage
+- **Explicitly unsupported in MVP:** scanned PDFs/OCR, reliable table extraction, image extraction, high-fidelity multi-column reading order, math/LaTeX recovery, forms, guaranteed RTL/CJK structure preservation, batch processing
 
 ### Handles Well (MVP)
 
@@ -299,7 +396,7 @@ For **complex documents**: quality drops to 40-60%. Server-side ML tools (marker
 - **Framework:** Next.js SSG — Google sees fully rendered HTML
 - **Title:** "PDF to Markdown Converter — Free Online Tool | pdf2md.dev"
 - **H1:** "Convert PDF to Markdown"
-- **Meta description:** "Free online PDF to Markdown converter. Handles headings, lists, links, and formatting. No signup. Files never leave your browser."
+- **Meta description:** "Free online PDF to Markdown converter. Handles headings, lists, links, and formatting. No signup. File contents never leave your browser."
 - **Schema markup:** SoftwareApplication, WebApplication
 - **Below-fold content:** "How to Convert PDF to Markdown" guide (500-1000 words)
 - **Page speed:** Target <1s LCP. Lazy-load PDF.js worker. Inline critical CSS.
@@ -325,22 +422,60 @@ For **complex documents**: quality drops to 40-60%. Server-side ML tools (marker
 
 ## Analytics & Observability (Day 1)
 
-This is an SEO play — flying blind is not an option.
+This is an SEO play, but the privacy promise must stay precise.
 
 - **Analytics:** Plausible or Fathom (privacy-friendly, no cookie banner needed)
 - **Search Console:** Google Search Console from day 1 — track keyword rankings
 - **Error tracking:** Sentry (free tier) — client-side PDF parsing WILL throw errors on malformed PDFs
-- **Conversion metrics:** Track (client-side, anonymized):
+- **Telemetry rule:** Never send file contents, extracted text, filenames, or raw PDF metadata off-device
+- **Conversion metrics:** Track anonymous aggregate events only:
   - Number of conversions
-  - PDF page count distribution
+  - PDF page count bucket
+  - File size bucket
   - Success/failure rate
   - Which output action used (copy vs download)
 
 ---
 
+## MVP Acceptance Criteria
+
+The MVP is not done when the UI exists. It is done when it passes a fixed test corpus and fails clearly when unsupported.
+
+- Maintain a fixed launch corpus of at least 12 PDFs: simple report, whitepaper, academic paper, resume, invoice, code docs, two-column layout, 50+ page text PDF, non-English LTR sample, image-heavy PDF, scanned PDF, password-protected/corrupt sample
+- Use a simple launch scorecard for text-based samples:
+  - Paragraph flow: 0-2
+  - Heading detection/hierarchy: 0-2
+  - List preservation: 0-2
+  - Link preservation: 0-2
+  - Cleanup effort required before use: 0-2
+  - Total per sample: 10 points
+- Ship only if all of the following are true:
+  - Zero silent failures on the corpus: every run ends in usable output or an explicit error/warning state
+  - Zero browser crashes or frozen UI on the corpus during normal desktop use
+  - On at least 8 of 10 text-based samples, our score is equal or better than `pdf2md.morethan.io`
+  - On at least 8 of 10 text-based samples, total score is at least 7/10
+  - Multi-page PDFs show visible progress and remain cancellable/resettable
+  - Mobile Safari/Chrome can complete upload -> convert -> copy on a small text-based PDF (about 5MB)
+  - Keyboard-only users can complete upload -> convert -> copy without relying on drag-and-drop
+
+---
+
+## Regression & CI
+
+Conversion quality will regress unless the launch corpus becomes part of the development loop.
+
+- Keep the launch corpus and expected outcomes under version control where licensing allows; otherwise keep reproducible private fixtures with stable IDs
+- Add CI on every PR for linting, typechecking, unit tests, and conversion smoke tests against the corpus
+- Track at least: crash/no-crash, explicit failure classification, and simple output heuristics for headings/lists/links on golden samples
+- If we later add table/code detection, extend the corpus before shipping the feature, not after
+
+---
+
 ## Development Phases
 
-### Phase 1: Client-Side MVP (1 weekend, realistically 2-3 days)
+These are implementation checklists for the scope above, not a second source of product requirements.
+
+### Phase 1: Client-Side MVP (3-5 days)
 
 - [ ] Initialize Next.js + TypeScript + Tailwind project
 - [ ] Set up PDF.js with Web Worker (non-trivial — test worker file serving)
@@ -353,34 +488,38 @@ This is an SEO play — flying blind is not an option.
   - [ ] Link extraction via `getAnnotations()`
   - [ ] Page header/footer stripping (repeated text detection)
   - [ ] Markdown assembly + whitespace normalization
-- [ ] Build UI: drag-and-drop upload, progress bar, split-view output
-- [ ] Copy to clipboard + download .md buttons
+- [ ] Add required failure states: oversized, password-protected, corrupt, no-text/scanned, worker/parsing failure
+- [ ] Build UI: drag-and-drop upload, progress bar, single-pane output with preview toggle
+- [ ] Add copy to clipboard, "Copy for AI", and download `.md`
+- [ ] Basic mobile support: single-pane layout, file picker fallback, smaller-file expectation
+- [ ] Accessibility baseline: keyboard flow, visible focus, screen-reader labels/status updates
 - [ ] Deploy to Vercel (free tier)
 - [ ] Basic Plausible analytics + Sentry error tracking
-- [ ] Test with 10 diverse PDFs: simple report, academic paper, resume, invoice, code docs, two-column, large (50+ pages), non-English, PDF with images, scanned (expect failure)
+- [ ] Build fixed 12-PDF launch corpus and evaluate against acceptance criteria + `pdf2md.morethan.io`
 
 ### Phase 1.5: Extract npm Package (1 day after MVP)
 
 - [ ] Extract conversion pipeline into `packages/core/` (monorepo structure)
-- [ ] Clean public API: `convert(pdfBuffer: ArrayBuffer): Promise<string>`
-- [ ] Add options: `{ includeMetadata?: boolean, maxPages?: number }`
-- [ ] CLI wrapper: `npx @pdf2md/core file.pdf` → outputs markdown to stdout
+- [ ] Clean public API: `convert(pdfBuffer, options) => Promise<ConversionResult>`
+- [ ] Add options: `{ includeMetadata?: boolean, maxPages?: number, signal?: AbortSignal, onProgress?: fn }`
+- [ ] Standardize result/message types and stable error codes
+- [ ] CLI wrapper: `npx @pdf2md/core file.pdf` → outputs markdown to stdout, warnings to stderr, non-zero exit on hard failure
 - [ ] Write README with usage examples (library + CLI + browser)
 - [ ] Publish to npm as `@pdf2md/core` (or `pdf2md` if available)
 - [ ] Add GitHub topics: `pdf`, `markdown`, `pdf-to-markdown`, `converter`, `typescript`
 - [ ] Ensure the website imports from the local package (not a copy of the code)
+- [ ] Add CI pipeline for lint, typecheck, tests, and corpus smoke tests
 
 ### Phase 2: Quality + Differentiation (week 2-3)
 
-- [ ] Table detection (position clustering + line detection)
+- [ ] Limited table detection (only emit Markdown when grid is unambiguous)
 - [ ] Tagged PDF fast path (`getStructTree()`)
 - [ ] Code block detection (best-effort monospace)
-- [ ] "Copy for AI" button
 - [ ] Multi-file drop (up to 5 PDFs → zip)
 - [ ] Metadata extraction → YAML front matter
-- [ ] Error handling: corrupt PDFs, password-protected, oversized
-- [ ] Mobile responsive (stack panels, file picker instead of drag-drop)
-- [ ] PWA: service worker to cache app shell + PDF.js bundle (offline capable)
+- [ ] Comparison view: original PDF vs Markdown
+- [ ] Mobile polish/performance improvements
+- [ ] Explore PWA/offline caching of app shell + PDF.js bundle if service-worker complexity stays reasonable
 
 ### Phase 3: SEO & Launch (week 3-4)
 
@@ -402,7 +541,7 @@ This is an SEO play — flying blind is not an option.
 
 ### Phase 5: Growth
 
-- [ ] npm CLI package (`npx pdf2md file.pdf`)
+- [ ] CLI polish: recursive folder mode, config file, Homebrew formula
 - [ ] OCR for scanned PDFs (Tesseract or Docling built-in)
 - [ ] Batch processing (folder upload)
 - [ ] JSON structured output option (sections + hierarchy, for RAG)
@@ -415,38 +554,22 @@ This is an SEO play — flying blind is not an option.
 
 Features that make this a daily-driver tool for our own AI/LLM workflows, not just an SEO play:
 
-1. **"Copy for AI" button** — Markdown with context prefix for pasting into Claude/ChatGPT
-2. **Metadata extraction** — Title, author, date as YAML front matter for RAG indexing
-3. **Multi-file drop** — Convert a batch without clicking 5 times
-4. **JSON output mode** (Phase 5) — Structured output with sections, hierarchy, page numbers per chunk
-5. **Configurable chunking** (Phase 5) — Split by page, heading, or token count for embeddings
-6. **Keyboard shortcuts** — Ctrl+V to paste PDF from clipboard, Ctrl+C to copy output
-7. **Comparison view** — Original PDF rendering alongside markdown output (uses PDF.js canvas render)
+1. **Metadata extraction** — Title, author, date as YAML front matter for RAG indexing
+2. **Multi-file drop** — Convert a batch without clicking 5 times
+3. **JSON output mode** (Phase 5) — Structured output with sections, hierarchy, page numbers per chunk
+4. **Configurable chunking** (Phase 5) — Split by page, heading, or token count for embeddings
+5. **Keyboard shortcuts** — Ctrl+V to paste PDF from clipboard, Ctrl+C to copy output
+6. **Comparison view** — Original PDF rendering alongside markdown output (uses PDF.js canvas render)
 
-**Honest note:** For heavy-duty RAG workflows (hundreds of PDFs, complex layouts), a CLI wrapper around marker or Docling will always be better than a browser tool. This web tool is the 80% solution for quick conversions + the SEO play. The CLI is Phase 5.
+**Honest note:** For heavy-duty RAG workflows (hundreds of PDFs, complex layouts), a CLI wrapper around marker or Docling will always be better than a browser tool. This web tool is the fast single-file layer plus the SEO play; richer batch and structured workflows come later.
 
 ---
 
 ## Cost Estimate
 
-### Phase 1-3 (client-side only)
-
-| Service | Cost |
-|---------|------|
-| Vercel (free tier) | $0 |
-| Domain (.dev) | ~$12/year |
-| Plausible analytics | $9/mo (or self-host free) |
-| Sentry (free tier) | $0 |
-| **Total** | **~$12-120/year** |
-
-### Phase 4+ (with backend)
-
-| Service | Cost |
-|---------|------|
-| Railway (FastAPI + Docling, 1GB RAM) | ~$5/mo |
-| Vercel (frontend) | $0 |
-| Domain | ~$12/year |
-| **Total** | **~$72-180/year** |
+- **Phases 1-3 (client-side only):** roughly **$12-120/year** total, depending on whether analytics is self-hosted or paid. Core stack is effectively free beyond the domain.
+- **Phase 4+ (with backend):** roughly **$72-180/year** total with a small Railway deployment for Docling/FastAPI.
+- **Takeaway:** cost is not the constraint; quality and distribution are.
 
 ---
 
@@ -466,9 +589,9 @@ Features that make this a daily-driver tool for our own AI/LLM workflows, not ju
 
 1. **Domain:** Check availability and pricing for pdf2md.dev, pdftomarkdown.com, pdf-to-md.com. Note: pdf2md.net already exists as a competitor.
 2. **License:** MIT (maximum adoption) vs Apache 2.0 (patent protection). Recommendation: MIT.
-3. **npm package name:** Is `pdf2md` available on npm? (`@opendocsg/pdf2md` exists.) May need scoped: `@pdf2md/core`.
+3. **npm publish availability:** Is `@pdf2md/core` available, or do we need a fallback scope/name while keeping internal paths the same?
 4. **Plausible vs self-hosted analytics:** $9/mo is cheap but adds up. Could self-host on the Phase 4 Railway instance.
-5. **namtroi/pdf-to-markdown quality:** Need to actually run it on our test corpus before committing to fork vs reimplement.
+5. **namtroi/pdf-to-markdown adoption path:** After running the launch corpus, do we fork it, selectively port heuristics, or reimplement cleanly?
 
 ---
 
