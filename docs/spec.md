@@ -70,6 +70,34 @@ It's **not** because morethan.io has high domain authority. It's a solo develope
 
 ---
 
+## Strategic Approach: Library-First
+
+The incumbent got 1,561 GitHub stars because developers found the **repo**, not the website. The website was just a demo. We do the same thing — intentionally.
+
+**The conversion engine is a standalone npm package.** The website is a wrapper around it.
+
+```
+@pdf2md/core          ← The library (npm package, MIT licensed)
+  ├── convert()       ← Programmatic API
+  ├── CLI             ← npx pdf2md file.pdf
+  └── types           ← Full TypeScript types
+
+pdf2md.dev            ← The website (demo/wrapper)
+  ├── Next.js SSG     ← SEO shell
+  └── imports @pdf2md/core for client-side conversion
+```
+
+**Why this matters:**
+- The npm package gets stars, downloads, mentions in other repos → backlinks
+- npm registry listing = free backlink from a high-DA domain
+- Developers `npm install` and star the repo → organic growth
+- The website benefits from the repo's authority, not the other way around
+- Other projects depend on us → moat
+
+**Phase 1.5** (between MVP and Polish): extract the conversion pipeline into `@pdf2md/core` with a CLI. Maybe a day of extra work since the pipeline code already exists.
+
+---
+
 ## Core Features
 
 ### MVP (Phase 1) — Ship in a Weekend
@@ -331,6 +359,17 @@ This is an SEO play — flying blind is not an option.
 - [ ] Basic Plausible analytics + Sentry error tracking
 - [ ] Test with 10 diverse PDFs: simple report, academic paper, resume, invoice, code docs, two-column, large (50+ pages), non-English, PDF with images, scanned (expect failure)
 
+### Phase 1.5: Extract npm Package (1 day after MVP)
+
+- [ ] Extract conversion pipeline into `packages/core/` (monorepo structure)
+- [ ] Clean public API: `convert(pdfBuffer: ArrayBuffer): Promise<string>`
+- [ ] Add options: `{ includeMetadata?: boolean, maxPages?: number }`
+- [ ] CLI wrapper: `npx @pdf2md/core file.pdf` → outputs markdown to stdout
+- [ ] Write README with usage examples (library + CLI + browser)
+- [ ] Publish to npm as `@pdf2md/core` (or `pdf2md` if available)
+- [ ] Add GitHub topics: `pdf`, `markdown`, `pdf-to-markdown`, `converter`, `typescript`
+- [ ] Ensure the website imports from the local package (not a copy of the code)
+
 ### Phase 2: Quality + Differentiation (week 2-3)
 
 - [ ] Table detection (position clustering + line detection)
@@ -433,10 +472,9 @@ Features that make this a daily-driver tool for our own AI/LLM workflows, not ju
 
 ---
 
-## Research Files
+## Related Docs
 
-Detailed research that informed this spec:
-
+- [Launch & Growth Plan](launch-plan.md) — Marketing, GitHub stars strategy, content calendar, launch week playbook
 - [Competitor Analysis: pdf2md.morethan.io](../research/competitor-analysis.md)
 - [Spec Stress Test](../research/spec-stress-test.md)
 - [Client-Side PDF.js Technical Research](../research/tech-research.md)
