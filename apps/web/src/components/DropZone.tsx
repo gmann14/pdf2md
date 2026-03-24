@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import { MAX_FILE_SIZE } from "@/lib/types";
+import { MAX_FILE_SIZE } from "@pdf2md/core/types";
 
 interface DropZoneProps {
   onFile: (file: File) => void;

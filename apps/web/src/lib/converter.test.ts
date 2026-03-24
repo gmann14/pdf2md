@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { convert } from "./converter";
-import { MAX_FILE_SIZE } from "./types";
+import { convert, MAX_FILE_SIZE } from "@pdf2md/core";
 
 // We can't easily test full PDF conversion in unit tests without a real PDF,
 // but we can test the error handling paths and the API contract.

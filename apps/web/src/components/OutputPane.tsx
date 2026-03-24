@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import type { ConversionResult } from "@/lib/types";
+import type { ConversionResult } from "@pdf2md/core/types";
 
 interface OutputPaneProps {
   result: ConversionResult;

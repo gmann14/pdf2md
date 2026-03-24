@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { ConversionProgress, ConversionResult } from "@/lib/types";
+import type { ConversionProgress, ConversionResult } from "@pdf2md/core/types";
 import { DropZone } from "./DropZone";
 import { ProgressBar } from "./ProgressBar";
 import { OutputPane } from "./OutputPane";
@@ -37,7 +37,7 @@ export function Converter() {
       const buffer = await file.arrayBuffer();
 
       // Dynamic import to avoid pulling pdfjs-dist into the SSG bundle
-      const { convert } = await import("@/lib/converter");
+      const { convert } = await import("@pdf2md/core");
 
       const result = await convert(buffer, {
         signal: controller.signal,

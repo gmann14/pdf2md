@@ -1,6 +1,6 @@
 "use client";
 
-import type { ConversionResult } from "@/lib/types";
+import type { ConversionResult } from "@pdf2md/core/types";
 
 interface ErrorDisplayProps {
   result: ConversionResult;

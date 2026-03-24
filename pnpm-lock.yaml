@@ -10,12 +10,12 @@ importers:
 
   apps/web:
     dependencies:
+      '@pdf2md/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       next:
         specifier: ^15.3.3
         version: 15.5.14(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      pdfjs-dist:
-        specifier: ^5.2.133
-        version: 5.5.207
       react:
         specifier: ^19.1.0
         version: 19.2.4
@@ -65,6 +65,19 @@ importers:
       vitest:
         specifier: ^3.2.1
         version: 3.2.4(@types/node@22.19.15)(jiti@2.6.1)(jsdom@29.0.1)(lightningcss@1.32.0)
+
+  packages/core:
+    dependencies:
+      pdfjs-dist:
+        specifier: ^5.2.133
+        version: 5.5.207
+    devDependencies:
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.15
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
 
 packages:
 

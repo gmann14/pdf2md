@@ -11,6 +11,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@pdf2md/core/types": path.resolve(__dirname, "../../packages/core/src/types.ts"),
+      "@pdf2md/core": path.resolve(__dirname, "../../packages/core/src/index.ts"),
       "@": path.resolve(__dirname, "./src"),
     },
   },

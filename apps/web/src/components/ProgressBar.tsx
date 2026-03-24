@@ -1,6 +1,6 @@
 "use client";
 
-import type { ConversionProgress } from "@/lib/types";
+import type { ConversionProgress } from "@pdf2md/core/types";
 
 const stageLabels: Record<string, string> = {
   loading: "Loading PDF...",
