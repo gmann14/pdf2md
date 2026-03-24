@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { ConversionProgress, ConversionResult } from "@/lib/types";
 import { DropZone } from "./DropZone";
 import { ProgressBar } from "./ProgressBar";
@@ -15,6 +15,13 @@ type State =
 export function Converter() {
   const [state, setState] = useState<State>({ phase: "idle" });
   const abortRef = useRef<AbortController | null>(null);
+  const outputRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (state.phase === "done") {
+      outputRef.current?.focus();
+    }
+  }, [state.phase]);
 
   const handleFile = useCallback(async (file: File) => {
     const controller = new AbortController();
@@ -80,25 +87,29 @@ export function Converter() {
 
   return (
     <div>
-      {state.phase === "idle" && (
-        <DropZone onFile={handleFile} />
-      )}
+      <div aria-live="polite">
+        {state.phase === "idle" && (
+          <DropZone onFile={handleFile} />
+        )}
 
-      {state.phase === "converting" && (
-        <ProgressBar progress={state.progress} onCancel={handleCancel} />
-      )}
+        {state.phase === "converting" && (
+          <ProgressBar progress={state.progress} onCancel={handleCancel} />
+        )}
 
-      {state.phase === "done" && state.result.status === "failed" && (
-        <ErrorDisplay result={state.result} onReset={handleReset} />
-      )}
+        {state.phase === "done" && state.result.status === "failed" && (
+          <ErrorDisplay result={state.result} onReset={handleReset} />
+        )}
 
-      {state.phase === "done" && state.result.status !== "failed" && (
-        <OutputPane
-          result={state.result}
-          fileName={state.fileName}
-          onReset={handleReset}
-        />
-      )}
+        {state.phase === "done" && state.result.status !== "failed" && (
+          <div ref={outputRef} tabIndex={-1} className="outline-none">
+            <OutputPane
+              result={state.result}
+              fileName={state.fileName}
+              onReset={handleReset}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -104,30 +104,47 @@ export function OutputPane({ result, fileName, onReset }: OutputPaneProps) {
       )}
 
       {/* Action buttons */}
-      <div className="flex flex-wrap gap-2">
+      <div className="grid grid-cols-1 sm:flex sm:flex-wrap gap-2">
         <button
           onClick={handleCopy}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          aria-label="Copy Markdown to clipboard"
+          className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          {copied === "copy" ? "Copied!" : "Copy Markdown"}
+          {copied === "copy" ? (
+            <>
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              Copied!
+            </>
+          ) : "Copy Markdown"}
         </button>
         <button
           onClick={handleCopyForAI}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          aria-label="Copy with AI context prefix"
+          className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          {copied === "ai" ? "Copied!" : "Copy for AI"}
+          {copied === "ai" ? (
+            <>
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              Copied!
+            </>
+          ) : "Copy for AI"}
         </button>
         <button
           onClick={handleDownload}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          aria-label="Download as Markdown file"
+          className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           Download .md
         </button>
 
-        <div className="ml-auto">
+        <div className="sm:ml-auto">
           <button
             onClick={() => setShowPreview(!showPreview)}
-            className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full sm:w-auto rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             aria-pressed={showPreview}
           >
             {showPreview ? "Raw" : "Preview"}
@@ -145,7 +162,7 @@ export function OutputPane({ result, fileName, onReset }: OutputPaneProps) {
             }}
           />
         ) : (
-          <pre className="max-h-[60vh] overflow-auto p-6 text-sm leading-relaxed text-gray-800">
+          <pre className="max-h-[60vh] overflow-auto overflow-x-auto p-6 text-sm leading-relaxed text-gray-800">
             <code>{result.markdown}</code>
           </pre>
         )}

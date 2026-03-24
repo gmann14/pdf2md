@@ -24,7 +24,7 @@ export function ErrorDisplay({ result, onReset }: ErrorDisplayProps) {
   const title = errorTitles[error.code] ?? "Conversion Failed";
 
   return (
-    <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-center">
+    <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-center" role="alert">
       <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
         <svg
           className="h-6 w-6 text-red-600"

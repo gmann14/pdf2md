@@ -85,7 +85,7 @@ export function DropZone({ onFile, disabled }: DropZoneProps) {
       aria-disabled={disabled}
       className={`
         flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed
-        px-6 py-16 text-center transition-colors
+        px-6 py-10 sm:py-16 text-center transition-colors
         ${
           disabled
             ? "cursor-not-allowed border-gray-200 bg-gray-50 opacity-60"
@@ -96,7 +96,7 @@ export function DropZone({ onFile, disabled }: DropZoneProps) {
       `}
     >
       <svg
-        className="mb-4 h-10 w-10 text-gray-400"
+        className="mb-4 h-8 w-8 sm:h-10 sm:w-10 text-gray-400"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -106,7 +106,13 @@ export function DropZone({ onFile, disabled }: DropZoneProps) {
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={1.5}
-          d="M12 16V4m0 0l-4 4m4-4l4 4M4 20h16"
+          d="M7 21h10a2 2 0 002-2V9l-5-5H7a2 2 0 00-2 2v13a2 2 0 002 2z"
+        />
+        <polyline
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          points="14 4 14 9 19 9"
         />
       </svg>
       <p className="text-sm font-medium text-gray-700">

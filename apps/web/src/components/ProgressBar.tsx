@@ -21,7 +21,7 @@ export function ProgressBar({ progress, onCancel }: ProgressBarProps) {
       : 0;
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-6">
+    <div className="rounded-xl border border-gray-200 bg-white p-6" aria-live="polite" role="status">
       <div className="mb-2 flex items-center justify-between text-sm">
         <span
           className="font-medium text-gray-700"
