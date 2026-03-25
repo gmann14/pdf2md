@@ -1,7 +1,7 @@
 # PDF2MD — Tasks
 
 > Source of truth for project status. Updated after every work session.
-> Last updated: 2026-03-24
+> Last updated: 2026-03-25
 
 ## Phase 1: Client-Side MVP ✅ COMPLETE
 - [x] Initialize Next.js + TypeScript + Tailwind project (monorepo with pnpm)
@@ -34,7 +34,7 @@
 - [x] CLI wrapper: `npx @pdf2md/core file.pdf` (bin entry needs fix — npm stripped invalid script name)
 - [x] Website imports from `@pdf2md/core` via workspace protocol
 - [x] Subpath export `@pdf2md/core/types` for SSG-safe imports
-- [ ] Publish to npm — **needs OTP, package validated and ready**
+- [x] Publish to npm — **PUBLISHED** `@pdf2md/core@0.1.0` (Mar 25, 2026)
 
 ## Phase 2: Quality + Differentiation — not started
 - [ ] Limited table detection
@@ -54,11 +54,12 @@
 ## Infra / Config
 - GitHub: `gmann14/pdf2md`
 - Stack: Next.js 15, TypeScript, Tailwind, PDF.js v5, pnpm monorepo
-- 5 git commits (latest: 34f83c7 feat: extract PDF conversion engine into @pdf2md/core package)
+- 6 git commits (latest: 95394fa docs: update tasks.md)
+- **npm package:** `@pdf2md/core@0.1.0` published (npmjs.com/package/@pdf2md/core)
 - Build works (static export)
 - **Production URL:** https://pdf2md-five.vercel.app
 - Vercel project: `prj_78nJRUrC3YGVgBbkjhLoqgeX6LUi` (root: `apps/web`)
 - Test corpus: `test-corpus/` directory with sample PDFs + screenshot
 
 ## Blockers
-- None — Phase 1 completion is just frontend polish work
+- None — Phases 1 + 1.5 fully complete. npm published. Ready for Phase 2 or 3.
