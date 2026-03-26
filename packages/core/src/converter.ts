@@ -14,6 +14,8 @@ import {
   isCodeBlock,
   metadataToYaml,
   tableToMarkdown,
+  detectColumnLayout,
+  reorderColumnarItems,
 } from "./detection";
 
 // ---------------------------------------------------------------------------
@@ -30,6 +32,8 @@ interface ExtractedItem {
   fontName: string;
   hasEOL: boolean;
   page: number;
+  /** Set by column reordering; used as sort key in groupIntoBlocks. */
+  columnOrder?: number;
 }
 
 interface AnnotationLink {
@@ -164,6 +168,56 @@ function getHeadingLevel(
 }
 
 // ---------------------------------------------------------------------------
+// Multi-column reordering
+// ---------------------------------------------------------------------------
+
+/**
+ * Detect and fix multi-column reading order per page.
+ *
+ * For two-column pages (academic papers, IEEE format, etc.) PDF.js returns
+ * items in left-to-right, top-to-bottom order across the full page width,
+ * interleaving left and right column text at the same Y coordinates.
+ *
+ * This function:
+ * 1. Groups items by page.
+ * 2. For each page, runs detectColumnLayout() to find the column gutter.
+ * 3. If two-column, reorders items: [pre-column header] → [left col] → [right col].
+ * 4. Assigns sequential `columnOrder` indices so groupIntoBlocks() preserves
+ *    the corrected reading order instead of re-sorting by Y.
+ */
+function applyColumnReordering(items: ExtractedItem[]): ExtractedItem[] {
+  // Group items by page number (preserving insertion order is fine)
+  const pageMap = new Map<number, ExtractedItem[]>();
+  for (const item of items) {
+    const arr = pageMap.get(item.page);
+    if (arr) arr.push(item);
+    else pageMap.set(item.page, [item]);
+  }
+
+  const result: ExtractedItem[] = [];
+
+  for (const [, pageItems] of [...pageMap.entries()].sort(
+    (a, b) => a[0] - b[0],
+  )) {
+    const layout = detectColumnLayout(pageItems);
+
+    if (layout.type === "two-column") {
+      const reordered = reorderColumnarItems(pageItems, layout);
+      // Stamp sequential columnOrder so groupIntoBlocks respects this ordering
+      reordered.forEach((item, idx) => {
+        item.columnOrder = idx;
+      });
+      result.push(...reordered);
+    } else {
+      // Single-column page: no reordering, no columnOrder stamp
+      result.push(...pageItems);
+    }
+  }
+
+  return result;
+}
+
+// ---------------------------------------------------------------------------
 // Paragraph grouping by vertical proximity
 // ---------------------------------------------------------------------------
 
@@ -173,9 +227,13 @@ function groupIntoBlocks(
 ): Block[] {
   if (items.length === 0) return [];
 
-  // Sort by page, then Y (top to bottom), then X (left to right)
+  // Sort by page first; within a page use columnOrder (set for multi-column
+  // pages by applyColumnReordering) or fall back to Y then X.
   const sorted = [...items].sort((a, b) => {
     if (a.page !== b.page) return a.page - b.page;
+    if (a.columnOrder !== undefined && b.columnOrder !== undefined) {
+      return a.columnOrder - b.columnOrder;
+    }
     if (Math.abs(a.y - b.y) > a.height * 0.5) return a.y - b.y;
     return a.x - b.x;
   });
@@ -740,17 +798,21 @@ export async function convert(
   const repeated = detectRepeatedText(allItems, maxPages);
   const filtered = filterHeadersFooters(allItems, repeated);
 
+  // Fix multi-column reading order (academic papers, IEEE, etc.)
+  // Must happen BEFORE groupIntoBlocks so items are pre-sorted in reading order.
+  const reordered = applyColumnReordering(filtered);
+
   // Build font profile for heading detection
-  const profile = buildFontProfile(filtered);
+  const profile = buildFontProfile(reordered);
 
   // Group into blocks (paragraphs, headings, list items)
-  const blocks = groupIntoBlocks(filtered, profile);
+  const blocks = groupIntoBlocks(reordered, profile);
 
   // Post-process: detect tables and code blocks
   const enrichedBlocks = detectTablesAndCode(blocks);
 
   // Match links to text items
-  const linkMap = matchLinksToText(filtered, allLinks);
+  const linkMap = matchLinksToText(reordered, allLinks);
 
   options?.onProgress?.({
     stage: "assembling",

@@ -6,6 +6,8 @@ import {
   metadataToYaml,
   parsePdfDate,
   tableToMarkdown,
+  detectColumnLayout,
+  reorderColumnarItems,
 } from "./detection";
 
 // Helper to create ExtractedItem-like objects for testing
@@ -337,5 +339,130 @@ describe("tableToMarkdown", () => {
 
   it("returns empty string for empty rows", () => {
     expect(tableToMarkdown([])).toBe("");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// detectColumnLayout
+// ---------------------------------------------------------------------------
+
+/** Build a minimal DetectionItem at (x, y) with a given width. */
+function makeColItem(
+  x: number,
+  y: number,
+  width = 60,
+  page = 1,
+) {
+  return {
+    str: "text",
+    x,
+    y,
+    width,
+    height: 12,
+    fontSize: 10,
+    fontName: "Helvetica",
+    hasEOL: false,
+    page,
+  };
+}
+
+describe("detectColumnLayout", () => {
+  it("returns single for too few items", () => {
+    const items = [makeColItem(50, 100)];
+    expect(detectColumnLayout(items).type).toBe("single");
+  });
+
+  it("detects single column when all items start at similar X", () => {
+    // 20 items all starting at x=72 — typical single-column doc
+    const items = Array.from({ length: 20 }, (_, i) =>
+      makeColItem(72, 100 + i * 14),
+    );
+    expect(detectColumnLayout(items).type).toBe("single");
+  });
+
+  it("detects two-column layout with clear gap", () => {
+    // Simulate a letter-size 2-col paper (612pt wide, columns ~72-260 and 310-540)
+    // Use realistic item widths so maxRight ≈ 510 and the gap (260–310) falls
+    // in the 35–65% search range.
+    const items: ReturnType<typeof makeColItem>[] = [];
+    for (let i = 0; i < 15; i++) {
+      items.push(makeColItem(72, 100 + i * 14, 188)); // left col (72..260)
+      items.push(makeColItem(310, 100 + i * 14, 200)); // right col (310..510)
+    }
+    const layout = detectColumnLayout(items);
+    expect(layout.type).toBe("two-column");
+    expect(layout.gapCenter).toBeDefined();
+    // Gap center should be in the gutter between the two columns (~260–310 range)
+    expect(layout.gapCenter!).toBeGreaterThan(240);
+    expect(layout.gapCenter!).toBeLessThan(330);
+  });
+
+  it("detects splitY for mixed layout (full-width header + 2-col body)", () => {
+    const items: ReturnType<typeof makeColItem>[] = [];
+    // Full-width title / abstract at y=50-120 (all start at x=72, wide content)
+    for (let i = 0; i < 6; i++) {
+      items.push(makeColItem(72, 50 + i * 14, 400)); // full-width, only left-side X
+    }
+    // Two-column body starts at y=200
+    for (let i = 0; i < 12; i++) {
+      items.push(makeColItem(72, 200 + i * 14)); // left col
+      items.push(makeColItem(310, 200 + i * 14)); // right col
+    }
+    const layout = detectColumnLayout(items);
+    expect(layout.type).toBe("two-column");
+    expect(layout.splitY).toBeDefined();
+    // splitY should be near where two-column content starts
+    expect(layout.splitY!).toBeGreaterThanOrEqual(195);
+    expect(layout.splitY!).toBeLessThanOrEqual(215);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// reorderColumnarItems
+// ---------------------------------------------------------------------------
+describe("reorderColumnarItems", () => {
+  it("returns items unchanged for single-column layout", () => {
+    const items = [makeColItem(72, 100), makeColItem(72, 114)];
+    const result = reorderColumnarItems(items, { type: "single" });
+    expect(result).toEqual(items);
+  });
+
+  it("puts left column before right column", () => {
+    // Items alternating left/right (as PDF.js would return them)
+    const items = [
+      makeColItem(310, 100), // right col — PDF.js row-order
+      makeColItem(72, 100),  // left col — same Y
+      makeColItem(310, 114), // right col
+      makeColItem(72, 114),  // left col
+    ];
+    const layout = {
+      type: "two-column" as const,
+      gapCenter: 200,
+      gapStart: 180,
+      gapEnd: 220,
+    };
+    const result = reorderColumnarItems(items, layout);
+    // All left-col items (x=72) should come before all right-col items (x=310)
+    const firstRightIdx = result.findIndex((it) => it.x === 310);
+    const lastLeftIdx = result.map((it) => it.x).lastIndexOf(72);
+    expect(lastLeftIdx).toBeLessThan(firstRightIdx);
+  });
+
+  it("keeps pre-column items at the top when splitY is set", () => {
+    const items = [
+      makeColItem(72, 300),  // left col (below splitY)
+      makeColItem(310, 300), // right col (below splitY)
+      makeColItem(72, 50),   // pre-column header (above splitY)
+    ];
+    const layout = {
+      type: "two-column" as const,
+      gapCenter: 200,
+      gapStart: 180,
+      gapEnd: 220,
+      splitY: 150,
+    };
+    const result = reorderColumnarItems(items, layout);
+    // Pre-column item (y=50) should be first
+    expect(result[0].y).toBe(50);
   });
 });

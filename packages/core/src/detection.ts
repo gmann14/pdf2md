@@ -170,6 +170,231 @@ export function metadataToYaml(metadata: ConversionMetadata): string | null {
 }
 
 // ---------------------------------------------------------------------------
+// Column layout detection
+// ---------------------------------------------------------------------------
+
+export interface ColumnLayout {
+  type: "single" | "two-column";
+  gapCenter?: number; // X midpoint of the gap between columns
+  gapStart?: number; // X where the gap begins
+  gapEnd?: number; // X where the gap ends
+  splitY?: number; // Y where two-column layout begins (undefined = from top)
+}
+
+const COL_BIN_WIDTH = 8; // histogram bin width in PDF points
+const COL_MIN_GAP_PTS = 20; // minimum column gap in PDF points
+
+/** Group items into text lines by vertical proximity. */
+function groupIntoLines(items: DetectionItem[]): DetectionItem[][] {
+  if (items.length === 0) return [];
+  const sorted = [...items].sort((a, b) => a.y - b.y);
+  const lines: DetectionItem[][] = [];
+  let currentLine: DetectionItem[] = [sorted[0]];
+
+  for (let i = 1; i < sorted.length; i++) {
+    const prev = sorted[i - 1];
+    const curr = sorted[i];
+    const lineH = Math.max(prev.height, prev.fontSize, 8);
+    if (Math.abs(curr.y - prev.y) <= lineH * 0.6) {
+      currentLine.push(curr);
+    } else {
+      lines.push(currentLine);
+      currentLine = [curr];
+    }
+  }
+  lines.push(currentLine);
+  return lines;
+}
+
+/** Merge a sorted list of [start, end] intervals (with small tolerance). */
+function mergeIntervals(
+  intervals: [number, number][],
+  tol = 2,
+): [number, number][] {
+  const merged: [number, number][] = [];
+  for (const [s, e] of intervals) {
+    if (merged.length === 0 || s > merged[merged.length - 1][1] + tol) {
+      merged.push([s, e]);
+    } else {
+      merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1], e);
+    }
+  }
+  return merged;
+}
+
+/**
+ * Detect multi-column layout for a single page's text items.
+ *
+ * Algorithm (per-line gap analysis):
+ * 1. Group items into text lines.
+ * 2. For each line, compute merged X-coverage intervals and find any gap
+ *    in the central 35–65% of the page that is ≥ 20pt wide.
+ * 3. Collect detected gap centers across lines.
+ * 4. If a consistent gap center appears in ≥ 30% of lines → two-column.
+ *
+ * This correctly handles mixed layouts (full-width title/abstract at top
+ * followed by a two-column body) because the header lines produce no gap,
+ * while the column lines consistently show the same gap.
+ */
+export function detectColumnLayout(items: DetectionItem[]): ColumnLayout {
+  if (items.length < 8) return { type: "single" };
+
+  // Estimate rightmost edge of content (proxy for page content width)
+  let maxRight = 0;
+  for (const item of items) {
+    if (item.width > 0) maxRight = Math.max(maxRight, item.x + item.width);
+  }
+  if (maxRight < 200) return { type: "single" };
+
+  const searchMin = maxRight * 0.35;
+  const searchMax = maxRight * 0.65;
+  const lines = groupIntoLines(items);
+  if (lines.length < 3) return { type: "single" };
+
+  // Per-line gap detection: find gaps within each line's merged X-coverage
+  const lineCenters: number[] = []; // gap centers detected per line
+
+  for (const line of lines) {
+    const sorted = line
+      .map((it): [number, number] => [it.x, it.x + Math.max(it.width, 1)])
+      .sort((a, b) => a[0] - b[0]);
+    const merged = mergeIntervals(sorted);
+
+    for (let i = 0; i + 1 < merged.length; i++) {
+      const gS = merged[i][1]; // gap start (right edge of left interval)
+      const gE = merged[i + 1][0]; // gap end (left edge of right interval)
+      const gW = gE - gS;
+      const gC = (gS + gE) / 2;
+
+      if (gW >= COL_MIN_GAP_PTS && gC >= searchMin && gC <= searchMax) {
+        lineCenters.push(gC);
+        break; // only count one gap per line
+      }
+    }
+  }
+
+  // Require gap in at least 30% of lines
+  if (lineCenters.length < lines.length * 0.3) return { type: "single" };
+
+  // Find the consensus gap center (median, then filter within ±30pt)
+  lineCenters.sort((a, b) => a - b);
+  const medianCenter = lineCenters[Math.floor(lineCenters.length / 2)];
+  const consistent = lineCenters.filter((c) => Math.abs(c - medianCenter) < 30);
+
+  if (consistent.length < lines.length * 0.2) return { type: "single" };
+
+  const gapCenter =
+    consistent.reduce((s, c) => s + c, 0) / consistent.length;
+
+  // Average the actual gap bounds from consistent lines
+  let sumGapStart = 0;
+  let sumGapEnd = 0;
+  let boundCount = 0;
+
+  for (const line of lines) {
+    const sorted = line
+      .map((it): [number, number] => [it.x, it.x + Math.max(it.width, 1)])
+      .sort((a, b) => a[0] - b[0]);
+    const merged = mergeIntervals(sorted);
+
+    for (let i = 0; i + 1 < merged.length; i++) {
+      const gS = merged[i][1];
+      const gE = merged[i + 1][0];
+      const gC = (gS + gE) / 2;
+      if (Math.abs(gC - gapCenter) < 30) {
+        sumGapStart += gS;
+        sumGapEnd += gE;
+        boundCount++;
+        break;
+      }
+    }
+  }
+
+  const gapStart =
+    boundCount > 0 ? sumGapStart / boundCount : gapCenter - 15;
+  const gapEnd = boundCount > 0 ? sumGapEnd / boundCount : gapCenter + 15;
+
+  // Require meaningful content on both sides
+  let leftCount = 0;
+  let rightCount = 0;
+  for (const item of items) {
+    if (item.x < gapCenter) leftCount++;
+    else rightCount++;
+  }
+  const ratio = leftCount / (leftCount + rightCount);
+  if (ratio < 0.15 || ratio > 0.85) return { type: "single" };
+
+  const splitY = findColumnSplitY(lines, gapCenter);
+  return { type: "two-column", gapStart, gapEnd, gapCenter, splitY };
+}
+
+/**
+ * Find the Y coordinate where two-column layout begins.
+ * Scans lines from the top; returns the Y of the first line that has items
+ * in BOTH the left and right column zones.
+ */
+function findColumnSplitY(
+  lines: DetectionItem[][],
+  gapCenter: number,
+): number | undefined {
+  for (const line of lines) {
+    const hasLeft = line.some((it) => it.x < gapCenter - 10);
+    const hasRight = line.some((it) => it.x > gapCenter + 10);
+    if (hasLeft && hasRight) {
+      return Math.min(...line.map((it) => it.y));
+    }
+  }
+  return undefined;
+}
+
+/**
+ * Reorder items to fix multi-column reading order.
+ *
+ * Output order:
+ *   [pre-column items, sorted by Y]   ← full-width title/abstract at top
+ *   [left column items, sorted by Y]  ← left column top to bottom
+ *   [right column items, sorted by Y] ← right column top to bottom
+ *
+ * Uses a generic parameter so it works with both DetectionItem and
+ * any superset (e.g. ExtractedItem in converter.ts).
+ */
+export function reorderColumnarItems<T extends DetectionItem>(
+  items: T[],
+  layout: ColumnLayout,
+): T[] {
+  if (layout.type === "single" || layout.gapCenter === undefined) return items;
+
+  const { gapCenter, splitY } = layout;
+
+  const preColumn: T[] = [];
+  const leftCol: T[] = [];
+  const rightCol: T[] = [];
+
+  for (const item of items) {
+    // Items above the split point belong to the full-width header section
+    if (splitY !== undefined && item.y < splitY - 2) {
+      preColumn.push(item);
+    } else if (item.x < gapCenter) {
+      leftCol.push(item);
+    } else {
+      rightCol.push(item);
+    }
+  }
+
+  const sortByY = (a: T, b: T): number => {
+    const dy = a.y - b.y;
+    if (Math.abs(dy) > 3) return dy;
+    return a.x - b.x;
+  };
+
+  preColumn.sort(sortByY);
+  leftCol.sort(sortByY);
+  rightCol.sort(sortByY);
+
+  return [...preColumn, ...leftCol, ...rightCol];
+}
+
+// ---------------------------------------------------------------------------
 // Markdown table formatting
 // ---------------------------------------------------------------------------
 
