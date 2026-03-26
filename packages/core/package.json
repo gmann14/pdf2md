@@ -25,14 +25,18 @@
   ],
   "scripts": {
     "build": "tsc",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "pdfjs-dist": "^5.2.133"
   },
   "devDependencies": {
     "@types/node": "^22.15.21",
-    "typescript": "^5.8.3"
+    "jsdom": "^29.0.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.1"
   },
   "engines": {
     "node": ">=18"

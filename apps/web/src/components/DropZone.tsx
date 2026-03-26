@@ -3,30 +3,46 @@
 import { useCallback, useRef, useState } from "react";
 import { MAX_FILE_SIZE } from "@pdf2md/core/types";
 
+const MAX_FILES = 5;
+
 interface DropZoneProps {
-  onFile: (file: File) => void;
+  onFiles: (files: File[]) => void;
   disabled?: boolean;
 }
 
-export function DropZone({ onFile, disabled }: DropZoneProps) {
+export function DropZone({ onFiles, disabled }: DropZoneProps) {
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleFile = useCallback(
-    (file: File) => {
-      if (file.type !== "application/pdf") {
-        alert("Please select a PDF file.");
-        return;
+  const handleFiles = useCallback(
+    (fileList: FileList | File[]) => {
+      const files = Array.from(fileList);
+      const valid: File[] = [];
+
+      for (const file of files) {
+        if (file.type !== "application/pdf") {
+          alert(`"${file.name}" is not a PDF file.`);
+          continue;
+        }
+        if (file.size > MAX_FILE_SIZE) {
+          alert(
+            `"${file.name}" is too large (${Math.round(file.size / 1024 / 1024)}MB). Maximum size is ${MAX_FILE_SIZE / 1024 / 1024}MB.`,
+          );
+          continue;
+        }
+        valid.push(file);
       }
-      if (file.size > MAX_FILE_SIZE) {
-        alert(
-          `File is too large (${Math.round(file.size / 1024 / 1024)}MB). Maximum size is ${MAX_FILE_SIZE / 1024 / 1024}MB.`,
-        );
-        return;
+
+      if (valid.length > MAX_FILES) {
+        alert(`Maximum ${MAX_FILES} files at once. Only the first ${MAX_FILES} will be converted.`);
+        valid.splice(MAX_FILES);
       }
-      onFile(file);
+
+      if (valid.length > 0) {
+        onFiles(valid);
+      }
     },
-    [onFile],
+    [onFiles],
   );
 
   const handleDrag = useCallback(
@@ -50,20 +66,20 @@ export function DropZone({ onFile, disabled }: DropZoneProps) {
       setDragActive(false);
       if (disabled) return;
 
-      const file = e.dataTransfer?.files?.[0];
-      if (file) handleFile(file);
+      const files = e.dataTransfer?.files;
+      if (files && files.length > 0) handleFiles(files);
     },
-    [disabled, handleFile],
+    [disabled, handleFiles],
   );
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      if (file) handleFile(file);
-      // Reset so the same file can be re-selected
+      const files = e.target.files;
+      if (files && files.length > 0) handleFiles(files);
+      // Reset so the same files can be re-selected
       e.target.value = "";
     },
-    [handleFile],
+    [handleFiles],
   );
 
   return (
@@ -81,7 +97,7 @@ export function DropZone({ onFile, disabled }: DropZoneProps) {
       }}
       role="button"
       tabIndex={disabled ? -1 : 0}
-      aria-label="Upload PDF file"
+      aria-label="Upload PDF files"
       aria-disabled={disabled}
       className={`
         flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed
@@ -116,15 +132,16 @@ export function DropZone({ onFile, disabled }: DropZoneProps) {
         />
       </svg>
       <p className="text-sm font-medium text-gray-700">
-        {dragActive ? "Drop your PDF here" : "Drag & drop a PDF, or click to select"}
+        {dragActive ? "Drop your PDFs here" : "Drag & drop PDFs, or click to select"}
       </p>
       <p className="mt-1 text-xs text-gray-500">
-        Max {MAX_FILE_SIZE / 1024 / 1024}MB — files never leave your browser
+        Up to {MAX_FILES} files, max {MAX_FILE_SIZE / 1024 / 1024}MB each — files never leave your browser
       </p>
       <input
         ref={inputRef}
         type="file"
         accept="application/pdf,.pdf"
+        multiple
         onChange={handleChange}
         className="hidden"
         aria-hidden="true"

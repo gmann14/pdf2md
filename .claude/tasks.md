@@ -1,7 +1,7 @@
 # PDF2MD — Tasks
 
 > Source of truth for project status. Updated after every work session.
-> Last updated: 2026-03-25
+> Last updated: 2026-03-26
 
 ## Phase 1: Client-Side MVP ✅ COMPLETE
 - [x] Initialize Next.js + TypeScript + Tailwind project (monorepo with pnpm)
@@ -36,12 +36,12 @@
 - [x] Subpath export `@pdf2md/core/types` for SSG-safe imports
 - [x] Publish to npm — **PUBLISHED** `@pdf2md/core@0.1.0` (Mar 25, 2026)
 
-## Phase 2: Quality + Differentiation — not started
-- [ ] Limited table detection
+## Phase 2: Quality + Differentiation — IN PROGRESS
+- [x] Limited table detection (column alignment analysis → markdown tables)
 - [ ] Tagged PDF fast path
-- [ ] Code block detection (monospace)
-- [ ] Multi-file drop (up to 5)
-- [ ] Metadata extraction → YAML front matter
+- [x] Code block detection (monospace font → triple backtick fences)
+- [x] Multi-file drop (up to 5 PDFs, sequential conversion, tabbed output)
+- [x] Metadata extraction → YAML front matter (`yamlFrontMatter` option)
 - [ ] Comparison view: original vs Markdown
 
 ## Phase 3: SEO & Launch — not started
@@ -54,7 +54,7 @@
 ## Infra / Config
 - GitHub: `gmann14/pdf2md`
 - Stack: Next.js 15, TypeScript, Tailwind, PDF.js v5, pnpm monorepo
-- 6 git commits (latest: 95394fa docs: update tasks.md)
+- 8 git commits (latest: Phase 2 quality improvements)
 - **npm package:** `@pdf2md/core@0.1.0` published (npmjs.com/package/@pdf2md/core)
 - Build works (static export)
 - **Production URL:** https://pdf2md-five.vercel.app
@@ -62,4 +62,4 @@
 - Test corpus: `test-corpus/` directory with sample PDFs + screenshot
 
 ## Blockers
-- None — Phases 1 + 1.5 fully complete. npm published. Ready for Phase 2 or 3.
+- None — Phase 2 quality improvements in progress. 4 of 6 items complete.

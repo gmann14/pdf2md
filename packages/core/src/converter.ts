@@ -9,6 +9,12 @@ import type {
   ConvertOptions,
 } from "./types";
 import { MAX_FILE_SIZE } from "./types";
+import {
+  detectTable,
+  isCodeBlock,
+  metadataToYaml,
+  tableToMarkdown,
+} from "./detection";
 
 // ---------------------------------------------------------------------------
 // Internal types
@@ -33,9 +39,10 @@ interface AnnotationLink {
 
 interface Block {
   items: ExtractedItem[];
-  type: "paragraph" | "heading" | "list-item";
+  type: "paragraph" | "heading" | "list-item" | "table" | "code-block";
   headingLevel?: number;
   listMarker?: string;
+  tableRows?: string[][];
 }
 
 // ---------------------------------------------------------------------------
@@ -328,6 +335,32 @@ function filterHeadersFooters(
 }
 
 // ---------------------------------------------------------------------------
+// Table & code block post-processing
+// ---------------------------------------------------------------------------
+
+/**
+ * Post-process blocks: detect tables and code blocks in paragraph blocks.
+ */
+function detectTablesAndCode(blocks: Block[]): Block[] {
+  return blocks.map((block) => {
+    if (block.type !== "paragraph") return block;
+
+    // Check for table first (tables take priority over code blocks)
+    const tableRows = detectTable(block.items);
+    if (tableRows) {
+      return { ...block, type: "table" as const, tableRows };
+    }
+
+    // Check for code block
+    if (isCodeBlock(block.items)) {
+      return { ...block, type: "code-block" as const };
+    }
+
+    return block;
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Link matching
 // ---------------------------------------------------------------------------
 
@@ -424,6 +457,37 @@ function assembleBlockText(
   return lines.join(" ").trim();
 }
 
+function codeBlockToMarkdown(
+  block: Block,
+  linkMap: Map<ExtractedItem, string>,
+): string {
+  // Assemble raw text preserving line breaks, without inline formatting
+  const lines: string[] = [];
+  let currentLine: string[] = [];
+  let prevItem: ExtractedItem | null = null;
+
+  for (const item of block.items) {
+    if (prevItem) {
+      const yGap = Math.abs(item.y - prevItem.y);
+      const isNewLine = yGap > prevItem.height * 0.5 || prevItem.hasEOL;
+      if (isNewLine) {
+        lines.push(currentLine.join(" "));
+        currentLine = [item.str];
+      } else {
+        currentLine.push(item.str);
+      }
+    } else {
+      currentLine.push(item.str);
+    }
+    prevItem = item;
+  }
+  if (currentLine.length > 0) {
+    lines.push(currentLine.join(" "));
+  }
+
+  return "```\n" + lines.join("\n") + "\n```";
+}
+
 function blocksToMarkdown(
   blocks: Block[],
   linkMap: Map<ExtractedItem, string>,
@@ -431,29 +495,42 @@ function blocksToMarkdown(
   const parts: string[] = [];
 
   for (const block of blocks) {
-    const text = assembleBlockText(block, linkMap);
-    if (text.length === 0) continue;
-
     switch (block.type) {
-      case "heading": {
-        const prefix = "#".repeat(block.headingLevel ?? 1);
-        // Strip any bold markers from headings (redundant)
-        const cleanText = text.replace(/\*\*/g, "");
-        parts.push(`${prefix} ${cleanText}`);
+      case "table": {
+        if (block.tableRows && block.tableRows.length > 0) {
+          parts.push(tableToMarkdown(block.tableRows));
+        }
         break;
       }
-      case "list-item": {
-        // Remove the original bullet/number marker from text
-        let cleaned = text;
-        cleaned = cleaned.replace(BULLET_PATTERN, "");
-        cleaned = cleaned.replace(NUMBERED_PATTERN, "");
-        cleaned = cleaned.replace(LETTER_LIST_PATTERN, "");
-        parts.push(`${block.listMarker} ${cleaned.trim()}`);
+      case "code-block": {
+        parts.push(codeBlockToMarkdown(block, linkMap));
         break;
       }
-      case "paragraph":
-        parts.push(text);
+      default: {
+        const text = assembleBlockText(block, linkMap);
+        if (text.length === 0) continue;
+
+        switch (block.type) {
+          case "heading": {
+            const prefix = "#".repeat(block.headingLevel ?? 1);
+            const cleanText = text.replace(/\*\*/g, "");
+            parts.push(`${prefix} ${cleanText}`);
+            break;
+          }
+          case "list-item": {
+            let cleaned = text;
+            cleaned = cleaned.replace(BULLET_PATTERN, "");
+            cleaned = cleaned.replace(NUMBERED_PATTERN, "");
+            cleaned = cleaned.replace(LETTER_LIST_PATTERN, "");
+            parts.push(`${block.listMarker} ${cleaned.trim()}`);
+            break;
+          }
+          case "paragraph":
+            parts.push(text);
+            break;
+        }
         break;
+      }
     }
   }
 
@@ -669,6 +746,9 @@ export async function convert(
   // Group into blocks (paragraphs, headings, list items)
   const blocks = groupIntoBlocks(filtered, profile);
 
+  // Post-process: detect tables and code blocks
+  const enrichedBlocks = detectTablesAndCode(blocks);
+
   // Match links to text items
   const linkMap = matchLinksToText(filtered, allLinks);
 
@@ -679,12 +759,20 @@ export async function convert(
   });
 
   // Assemble markdown
-  const markdown = blocksToMarkdown(blocks, linkMap);
+  let markdown = blocksToMarkdown(enrichedBlocks, linkMap);
 
-  // Extract metadata if requested
+  // Extract metadata if requested (yamlFrontMatter implies includeMetadata)
   let metadata: ConversionMetadata | undefined;
-  if (options?.includeMetadata) {
+  if (options?.includeMetadata || options?.yamlFrontMatter) {
     metadata = await extractMetadata(doc);
+  }
+
+  // Prepend YAML front matter if requested and metadata exists
+  if (options?.yamlFrontMatter && metadata) {
+    const yaml = metadataToYaml(metadata);
+    if (yaml) {
+      markdown = yaml + "\n\n" + markdown;
+    }
   }
 
   doc.destroy();

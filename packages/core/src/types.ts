@@ -54,6 +54,8 @@ export interface ConversionProgress {
 export interface ConvertOptions {
   maxPages?: number;
   includeMetadata?: boolean;
+  /** Prepend PDF metadata as YAML front matter to the markdown output */
+  yamlFrontMatter?: boolean;
   signal?: AbortSignal;
   onProgress?: (progress: ConversionProgress) => void;
 }
