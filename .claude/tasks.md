@@ -44,11 +44,13 @@
 - [x] Metadata extraction → YAML front matter (`yamlFrontMatter` option)
 - [ ] Comparison view: original vs Markdown
 
-## Phase 3: SEO & Launch — not started
-- [ ] SEO: meta tags, schema markup, OG image
-- [ ] "How to Convert PDF to Markdown" content below fold
-- [ ] Privacy policy page
-- [ ] Open-source repo with good README + MIT license
+## Phase 3: SEO & Launch — IN PROGRESS
+- [x] SEO: meta tags, schema markup, OG image (layout.tsx + og-image.png + JSON-LD)
+- [x] "How to Convert PDF to Markdown" content below fold (~700 words)
+- [x] Privacy policy page (`/privacy`)
+- [x] Open-source repo with README.md, CONTRIBUTING.md, LICENSE (MIT)
+- [x] Footer with privacy/github/npm links
+- [ ] Google Search Console setup
 - [ ] Launch: HN, Reddit, Product Hunt
 
 ## Infra / Config
@@ -62,4 +64,4 @@
 - Test corpus: `test-corpus/` directory with sample PDFs + screenshot
 
 ## Blockers
-- None — Phase 2 quality improvements in progress. 4 of 6 items complete.
+- None — Phase 3 SEO & launch prep nearly complete. Ready for launch activities.
