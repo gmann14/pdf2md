@@ -26,7 +26,7 @@
 - [x] Accessibility baseline (aria-live, role=alert/status, aria-labels, focus management)
 - [x] Deploy to Vercel — **LIVE at https://pdf2md-five.vercel.app**
 - [ ] Plausible analytics + Sentry error tracking
-- [ ] Build 12-PDF test corpus and evaluate quality
+- [x] Build 21-PDF real-world test corpus and quality evaluation framework (see `test-corpus/QUALITY-REPORT.md`)
 
 ## Phase 1.5: Extract npm Package ✅ DONE (2026-03-24)
 - [x] Extract conversion pipeline to `packages/core/`
@@ -43,6 +43,10 @@
 - [x] Multi-file drop (up to 5 PDFs, sequential conversion, tabbed output)
 - [x] Metadata extraction → YAML front matter (`yamlFrontMatter` option)
 - [ ] Comparison view: original vs Markdown
+- [ ] **P0: Multi-column detection** — #1 quality issue, affects all academic/scientific PDFs (see QUALITY-REPORT.md)
+- [ ] **P1: Code block detection enhancement** — font subset stripping + indentation heuristics
+- [ ] **P2: Link annotation matching fix** — center-point matching to prevent misattribution
+- [ ] **P3: Heading detection refinement** — bold + section numbering as heading indicators
 
 ## Phase 3: SEO & Launch — IN PROGRESS
 - [x] SEO: meta tags, schema markup, OG image (layout.tsx + og-image.png + JSON-LD)
@@ -61,7 +65,11 @@
 - Build works (static export)
 - **Production URL:** https://pdf2md-five.vercel.app
 - Vercel project: `prj_78nJRUrC3YGVgBbkjhLoqgeX6LUi` (root: `apps/web`)
-- Test corpus: `test-corpus/` directory with sample PDFs + screenshot
+- Test corpus: `test-corpus/` — 21 real-world PDFs, evaluation script, quality report
+  - Overall quality: 8.0/10 automated, ~6.5/10 manual honest assessment
+  - Top issue: multi-column text interleaving (affects 6+ PDFs)
+  - See `test-corpus/QUALITY-REPORT.md` for full analysis
 
 ## Blockers
-- None — Phase 3 SEO & launch prep nearly complete. Ready for launch activities.
+- **Multi-column layout** is the #1 quality gap vs competitors (Marker, MinerU). Should be addressed before launch if targeting academic/scientific users.
+- Otherwise ready for launch activities.
