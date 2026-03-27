@@ -454,18 +454,36 @@ function matchLinksToText(
   for (const item of items) {
     for (const link of links) {
       const [lx1, ly1, lx2, ly2] = link.rect;
-      // Check if item overlaps with link annotation rectangle
-      const itemRight = item.x + item.width;
-      const itemBottom = item.y + item.height;
+
+      // Method 1: Center-point containment — item center must be inside link rect
+      const itemCenterX = item.x + item.width / 2;
+      const itemCenterY = item.y + item.height / 2;
 
       if (
-        item.x < lx2 &&
-        itemRight > lx1 &&
-        item.y < ly2 &&
-        itemBottom > ly1
+        itemCenterX >= lx1 && itemCenterX <= lx2 &&
+        itemCenterY >= ly1 && itemCenterY <= ly2
       ) {
         linkMap.set(item, link.url);
         break;
+      }
+
+      // Method 2: High overlap (>50% in both dimensions)
+      if (item.width > 0 && item.height > 0) {
+        const overlapLeft = Math.max(item.x, lx1);
+        const overlapRight = Math.min(item.x + item.width, lx2);
+        const overlapWidth = Math.max(0, overlapRight - overlapLeft);
+
+        const overlapTop = Math.max(item.y, ly1);
+        const overlapBottom = Math.min(item.y + item.height, ly2);
+        const overlapHeight = Math.max(0, overlapBottom - overlapTop);
+
+        if (
+          overlapWidth / item.width > 0.5 &&
+          overlapHeight / item.height > 0.5
+        ) {
+          linkMap.set(item, link.url);
+          break;
+        }
       }
     }
   }
