@@ -108,23 +108,130 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
 // Code block detection
 // ---------------------------------------------------------------------------
 
+/** Group items of the same font into consecutive runs (same page, close Y). */
+function groupIntoRuns(items: DetectionItem[]): DetectionItem[][] {
+  if (items.length === 0) return [];
+  const sorted = [...items].sort((a, b) => a.page - b.page || a.y - b.y);
+  const runs: DetectionItem[][] = [];
+  let currentRun: DetectionItem[] = [sorted[0]];
+
+  for (let i = 1; i < sorted.length; i++) {
+    const prev = sorted[i - 1];
+    const curr = sorted[i];
+    if (curr.page === prev.page && Math.abs(curr.y - prev.y) < prev.fontSize * 2) {
+      currentRun.push(curr);
+    } else {
+      runs.push(currentRun);
+      currentRun = [curr];
+    }
+  }
+  runs.push(currentRun);
+  return runs;
+}
+
 /**
- * Check if items are all (or nearly all) monospace font, indicating a code block.
+ * Detect fonts that are consistently used in indented, short-line blocks (code fonts).
+ * Works even when font names are subset-encoded (e.g., g_d0_f3).
  */
-export function isCodeBlock(items: DetectionItem[]): boolean {
+export function detectCodeFont(
+  allItems: DetectionItem[],
+  bodyFontSize: number,
+): Set<string> {
+  // Group items by fontName
+  const fontGroups = new Map<string, DetectionItem[]>();
+  for (const item of allItems) {
+    const arr = fontGroups.get(item.fontName);
+    if (arr) arr.push(item);
+    else fontGroups.set(item.fontName, [item]);
+  }
+
+  // Find the dominant font (most characters)
+  let dominantFont = "";
+  let dominantChars = 0;
+  for (const [fontName, fontItems] of fontGroups) {
+    const chars = fontItems.reduce((s, it) => s + it.str.length, 0);
+    if (chars > dominantChars) {
+      dominantChars = chars;
+      dominantFont = fontName;
+    }
+  }
+
+  // Estimate body text properties from dominant font
+  const dominantItems = fontGroups.get(dominantFont) ?? [];
+  const bodyLeftMargins: number[] = [];
+  const bodyWidths: number[] = [];
+  for (const item of dominantItems) {
+    bodyLeftMargins.push(item.x);
+    if (item.width > 0) bodyWidths.push(item.width);
+  }
+  bodyLeftMargins.sort((a, b) => a - b);
+  const bodyLeftMargin = bodyLeftMargins.length > 0
+    ? bodyLeftMargins[Math.floor(bodyLeftMargins.length * 0.1)] // 10th percentile
+    : 72;
+  const bodyAvgWidth = bodyWidths.length > 0
+    ? bodyWidths.reduce((s, w) => s + w, 0) / bodyWidths.length
+    : 400;
+
+  const codeFonts = new Set<string>();
+
+  for (const [fontName, fontItems] of fontGroups) {
+    if (fontName === dominantFont) continue;
+    if (fontItems.length < 10) continue;
+
+    const runs = groupIntoRuns(fontItems);
+    let indentedRunCount = 0;
+    let totalRuns = 0;
+
+    for (const run of runs) {
+      if (run.length < 2) continue;
+      totalRuns++;
+
+      const avgX = run.reduce((s, it) => s + it.x, 0) / run.length;
+      const avgWidth = run.reduce((s, it) => s + it.width, 0) / run.length;
+
+      // Heuristic: indented (x > body margin + 20) OR short lines (width < 70% of body)
+      if (avgX > bodyLeftMargin + 20 || avgWidth < bodyAvgWidth * 0.7) {
+        indentedRunCount++;
+      }
+    }
+
+    // If >50% of multi-line runs are indented/short → code font
+    if (totalRuns >= 3 && indentedRunCount / totalRuns > 0.5) {
+      codeFonts.add(fontName);
+    }
+  }
+
+  return codeFonts;
+}
+
+/**
+ * Check if items form a code block.
+ * Uses multiple signals: known monospace fonts, detected code fonts, and syntax patterns.
+ */
+export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): boolean {
   if (items.length === 0) return false;
 
   let monoChars = 0;
   let totalChars = 0;
+  let codeFontChars = 0;
   for (const item of items) {
     const len = item.str.length;
     totalChars += len;
     if (isMonospace(item.fontName)) {
       monoChars += len;
     }
+    if (codeFonts?.has(item.fontName)) {
+      codeFontChars += len;
+    }
   }
 
-  return totalChars > 0 && monoChars / totalChars >= 0.8;
+  // Signal 1: Known monospace font names
+  if (totalChars > 0 && monoChars / totalChars >= 0.8) return true;
+
+  // Signal 2: Detected code font (subset fonts like g_d0_f3)
+  if (totalChars > 0 && codeFonts && codeFontChars / totalChars >= 0.8) return true;
+
+  return false;
 }
 
 // ---------------------------------------------------------------------------

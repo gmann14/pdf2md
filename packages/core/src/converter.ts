@@ -12,6 +12,7 @@ import { MAX_FILE_SIZE } from "./types";
 import {
   detectTable,
   isCodeBlock,
+  detectCodeFont,
   metadataToYaml,
   tableToMarkdown,
   detectColumnLayout,
@@ -446,7 +447,7 @@ function filterHeadersFooters(
 /**
  * Post-process blocks: detect tables and code blocks in paragraph blocks.
  */
-function detectTablesAndCode(blocks: Block[]): Block[] {
+function detectTablesAndCode(blocks: Block[], codeFonts: Set<string>): Block[] {
   return blocks.map((block) => {
     if (block.type !== "paragraph") return block;
 
@@ -457,7 +458,7 @@ function detectTablesAndCode(blocks: Block[]): Block[] {
     }
 
     // Check for code block
-    if (isCodeBlock(block.items)) {
+    if (isCodeBlock(block.items, codeFonts)) {
       return { ...block, type: "code-block" as const };
     }
 
@@ -870,11 +871,14 @@ export async function convert(
   // Build font profile for heading detection
   const profile = buildFontProfile(reordered);
 
+  // Detect code fonts (subset fonts used in indented blocks)
+  const codeFonts = detectCodeFont(reordered, profile.bodySize);
+
   // Group into blocks (paragraphs, headings, list items)
   const blocks = groupIntoBlocks(reordered, profile);
 
   // Post-process: detect tables and code blocks
-  const enrichedBlocks = detectTablesAndCode(blocks);
+  const enrichedBlocks = detectTablesAndCode(blocks, codeFonts);
 
   // Match links to text items
   const linkMap = matchLinksToText(reordered, allLinks);
