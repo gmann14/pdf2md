@@ -382,10 +382,9 @@ describe("detectColumnLayout", () => {
 
   it("detects two-column layout with clear gap", () => {
     // Simulate a letter-size 2-col paper (612pt wide, columns ~72-260 and 310-540)
-    // Use realistic item widths so maxRight ≈ 510 and the gap (260–310) falls
-    // in the 35–65% search range.
+    // Need 20+ lines for the 40% threshold and realistic widths (>100pt) for min column width check
     const items: ReturnType<typeof makeColItem>[] = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 20; i++) {
       items.push(makeColItem(72, 100 + i * 14, 188)); // left col (72..260)
       items.push(makeColItem(310, 100 + i * 14, 200)); // right col (310..510)
     }
@@ -403,10 +402,10 @@ describe("detectColumnLayout", () => {
     for (let i = 0; i < 6; i++) {
       items.push(makeColItem(72, 50 + i * 14, 400)); // full-width, only left-side X
     }
-    // Two-column body starts at y=200
-    for (let i = 0; i < 12; i++) {
-      items.push(makeColItem(72, 200 + i * 14)); // left col
-      items.push(makeColItem(310, 200 + i * 14)); // right col
+    // Two-column body starts at y=200 — need enough lines for 40% threshold
+    for (let i = 0; i < 20; i++) {
+      items.push(makeColItem(72, 200 + i * 14, 188)); // left col (72..260)
+      items.push(makeColItem(310, 200 + i * 14, 200)); // right col (310..510)
     }
     const layout = detectColumnLayout(items);
     expect(layout.type).toBe("two-column");

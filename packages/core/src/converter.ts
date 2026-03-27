@@ -194,12 +194,34 @@ function applyColumnReordering(items: ExtractedItem[]): ExtractedItem[] {
     else pageMap.set(item.page, [item]);
   }
 
+  // Phase 1: Detect layout for each page independently
+  const pageLayouts = new Map<number, ReturnType<typeof detectColumnLayout>>();
+  for (const [pageNum, pageItems] of pageMap) {
+    pageLayouts.set(pageNum, detectColumnLayout(pageItems));
+  }
+
+  // Phase 2: Cross-page consistency check
+  // If fewer than 30% of pages are two-column in a long document, likely false positives
+  const totalPages = pageMap.size;
+  if (totalPages >= 5) {
+    let twoColPages = 0;
+    for (const layout of pageLayouts.values()) {
+      if (layout.type === "two-column") twoColPages++;
+    }
+    if (twoColPages / totalPages < 0.3) {
+      for (const pageNum of pageLayouts.keys()) {
+        pageLayouts.set(pageNum, { type: "single" });
+      }
+    }
+  }
+
+  // Phase 3: Apply reordering using final layouts
   const result: ExtractedItem[] = [];
 
-  for (const [, pageItems] of [...pageMap.entries()].sort(
+  for (const [pageNum, pageItems] of [...pageMap.entries()].sort(
     (a, b) => a[0] - b[0],
   )) {
-    const layout = detectColumnLayout(pageItems);
+    const layout = pageLayouts.get(pageNum)!;
 
     if (layout.type === "two-column") {
       const reordered = reorderColumnarItems(pageItems, layout);

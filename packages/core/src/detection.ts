@@ -239,16 +239,35 @@ function mergeIntervals(
 export function detectColumnLayout(items: DetectionItem[]): ColumnLayout {
   if (items.length < 8) return { type: "single" };
 
+  // Filter out small-font items (diagram labels, footnotes, superscripts)
+  // that can create false column gaps
+  const sizeCharCount = new Map<number, number>();
+  for (const item of items) {
+    const rounded = Math.round(item.fontSize * 10) / 10;
+    sizeCharCount.set(rounded, (sizeCharCount.get(rounded) ?? 0) + item.str.length);
+  }
+  let bodySize = 10;
+  let maxCharCount = 0;
+  for (const [size, count] of sizeCharCount) {
+    if (count > maxCharCount) {
+      maxCharCount = count;
+      bodySize = size;
+    }
+  }
+  const minFontSize = bodySize * 0.7;
+  const filteredItems = items.filter((item) => item.fontSize >= minFontSize);
+  if (filteredItems.length < 8) return { type: "single" };
+
   // Estimate rightmost edge of content (proxy for page content width)
   let maxRight = 0;
-  for (const item of items) {
+  for (const item of filteredItems) {
     if (item.width > 0) maxRight = Math.max(maxRight, item.x + item.width);
   }
   if (maxRight < 200) return { type: "single" };
 
   const searchMin = maxRight * 0.35;
   const searchMax = maxRight * 0.65;
-  const lines = groupIntoLines(items);
+  const lines = groupIntoLines(filteredItems);
   if (lines.length < 3) return { type: "single" };
 
   // Per-line gap detection: find gaps within each line's merged X-coverage
@@ -273,15 +292,16 @@ export function detectColumnLayout(items: DetectionItem[]): ColumnLayout {
     }
   }
 
-  // Require gap in at least 30% of lines
-  if (lineCenters.length < lines.length * 0.3) return { type: "single" };
+  // Require gap in at least 40% of lines (raised from 30% to reduce false positives)
+  if (lineCenters.length < lines.length * 0.4) return { type: "single" };
 
   // Find the consensus gap center (median, then filter within ±30pt)
   lineCenters.sort((a, b) => a - b);
   const medianCenter = lineCenters[Math.floor(lineCenters.length / 2)];
   const consistent = lineCenters.filter((c) => Math.abs(c - medianCenter) < 30);
 
-  if (consistent.length < lines.length * 0.2) return { type: "single" };
+  // Require consistent gap in at least 30% of lines (raised from 20%)
+  if (consistent.length < lines.length * 0.3) return { type: "single" };
 
   const gapCenter =
     consistent.reduce((s, c) => s + c, 0) / consistent.length;
@@ -314,10 +334,31 @@ export function detectColumnLayout(items: DetectionItem[]): ColumnLayout {
     boundCount > 0 ? sumGapStart / boundCount : gapCenter - 15;
   const gapEnd = boundCount > 0 ? sumGapEnd / boundCount : gapCenter + 15;
 
+  // Require each column to have substantial text width (not just short labels)
+  const MIN_COLUMN_TEXT_WIDTH = 100;
+  const leftWidths: number[] = [];
+  const rightWidths: number[] = [];
+  for (const item of filteredItems) {
+    if (item.x + item.width <= gapStart) {
+      leftWidths.push(item.width);
+    } else if (item.x >= gapEnd) {
+      rightWidths.push(item.width);
+    }
+  }
+  const median = (arr: number[]): number => {
+    if (arr.length === 0) return 0;
+    const s = [...arr].sort((a, b) => a - b);
+    const mid = Math.floor(s.length / 2);
+    return s.length % 2 === 0 ? (s[mid - 1] + s[mid]) / 2 : s[mid];
+  };
+  if (median(leftWidths) < MIN_COLUMN_TEXT_WIDTH || median(rightWidths) < MIN_COLUMN_TEXT_WIDTH) {
+    return { type: "single" };
+  }
+
   // Require meaningful content on both sides
   let leftCount = 0;
   let rightCount = 0;
-  for (const item of items) {
+  for (const item of filteredItems) {
     if (item.x < gapCenter) leftCount++;
     else rightCount++;
   }
