@@ -306,14 +306,39 @@ function classifyBlock(
 ): Block {
   const firstItem = items[0];
 
-  // Check for heading
+  // Check 1: Font size heading (existing — largest font sizes are headings)
   const headingLevel = getHeadingLevel(firstItem.fontSize, profile);
   if (headingLevel !== undefined) {
     return { items, type: "heading", headingLevel };
   }
 
-  // Check for list item
+  const allText = items.map((i) => i.str).join(" ").trim();
+  const isShortLine = allText.length < 120;
+  const hasNoTrailingPunctuation = !/[.,:;]$/.test(allText);
+
+  // Check 2: Section numbering pattern (e.g., "1.1 Background") → heading
+  // Must come before list detection so "1. Introduction" isn't classified as a list item
+  const sectionMatch = allText.match(/^(\d+\.(?:\d+\.?)*)\s+[A-Z]/);
+  if (sectionMatch && isShortLine && hasNoTrailingPunctuation) {
+    const dots = (sectionMatch[1].match(/\./g) ?? []).length;
+    const level = Math.min(dots + 1, 6); // "1." → H2, "1.1" → H3, etc.
+    return { items, type: "heading", headingLevel: level };
+  }
+
+  // Check 3: Bold text on a short standalone line → heading
+  const allBold = items.every((i) => isBold(i.fontName));
   const text = firstItem.str.trimStart();
+  const looksLikeListItem = BULLET_PATTERN.test(text) || NUMBERED_PATTERN.test(text);
+
+  if (
+    allBold && isShortLine && hasNoTrailingPunctuation &&
+    !looksLikeListItem && allText.length >= 2 && items.length <= 5
+  ) {
+    const isAllCaps = allText === allText.toUpperCase() && allText !== allText.toLowerCase();
+    return { items, type: "heading", headingLevel: isAllCaps ? 2 : 3 };
+  }
+
+  // Check for list item
   const bulletMatch = text.match(BULLET_PATTERN);
   if (bulletMatch) {
     return { items, type: "list-item", listMarker: "-" };
