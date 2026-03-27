@@ -319,11 +319,16 @@ function classifyBlock(
 
   // Check 2: Section numbering pattern (e.g., "1.1 Background") → heading
   // Must come before list detection so "1. Introduction" isn't classified as a list item
-  const sectionMatch = allText.match(/^(\d+\.(?:\d+\.?)*)\s+[A-Z]/);
-  if (sectionMatch && isShortLine && hasNoTrailingPunctuation) {
-    const dots = (sectionMatch[1].match(/\./g) ?? []).length;
+  const sectionDotMatch = allText.match(/^(\d+\.(?:\d+\.?)*)\s+[A-Z]/);
+  if (sectionDotMatch && isShortLine && hasNoTrailingPunctuation) {
+    const dots = (sectionDotMatch[1].match(/\./g) ?? []).length;
     const level = Math.min(dots + 1, 6); // "1." → H2, "1.1" → H3, etc.
     return { items, type: "heading", headingLevel: level };
+  }
+  // Also match bare "1 Introduction" style (no dot) — require bold or very short
+  const sectionBareMatch = allText.match(/^(\d+)\s+[A-Z]/);
+  if (sectionBareMatch && isShortLine && hasNoTrailingPunctuation && allText.length < 60) {
+    return { items, type: "heading", headingLevel: 2 };
   }
 
   // Check 3: Bold text on a short standalone line → heading
