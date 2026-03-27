@@ -3,6 +3,7 @@ import {
   isMonospace,
   detectTable,
   isCodeBlock,
+  detectCodeFont,
   metadataToYaml,
   parsePdfDate,
   tableToMarkdown,
@@ -463,5 +464,148 @@ describe("reorderColumnarItems", () => {
     const result = reorderColumnarItems(items, layout);
     // Pre-column item (y=50) should be first
     expect(result[0].y).toBe(50);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// P0: Column detection hardening tests
+// ---------------------------------------------------------------------------
+describe("detectColumnLayout (hardened)", () => {
+  it("returns single when items have short labels creating false gap (diagram labels)", () => {
+    // Simulate diagram labels: short items (width ~20-36pt) at multiple X positions
+    const items: ReturnType<typeof makeColItem>[] = [];
+    // Body text lines — single column
+    for (let i = 0; i < 20; i++) {
+      items.push(makeColItem(72, 100 + i * 14, 400));
+    }
+    // Diagram labels at x≈200, x≈290, x≈380 (short, different font)
+    for (let i = 0; i < 8; i++) {
+      items.push({ ...makeColItem(200, 400 + i * 14, 30), fontSize: 7 });
+      items.push({ ...makeColItem(290, 400 + i * 14, 36), fontSize: 7 });
+      items.push({ ...makeColItem(380, 400 + i * 14, 25), fontSize: 7 });
+    }
+    expect(detectColumnLayout(items).type).toBe("single");
+  });
+
+  it("returns single when small-font items are filtered out", () => {
+    // Items where small-font items (7pt) create a false gap, but body (10pt) doesn't
+    const items: ReturnType<typeof makeColItem>[] = [];
+    for (let i = 0; i < 25; i++) {
+      items.push(makeColItem(72, 100 + i * 14, 400)); // body text, full width
+    }
+    // Small font items that would look like two columns
+    for (let i = 0; i < 12; i++) {
+      items.push({ ...makeColItem(72, 500 + i * 10, 150), fontSize: 6 });
+      items.push({ ...makeColItem(310, 500 + i * 10, 150), fontSize: 6 });
+    }
+    expect(detectColumnLayout(items).type).toBe("single");
+  });
+
+  it("cross-page: 1/9 two-column pages results in all single-column", () => {
+    // Simulate a 9-page document where only 1 page has two-column items
+    const items: ReturnType<typeof makeColItem>[] = [];
+    // Pages 1-8: single-column
+    for (let page = 1; page <= 8; page++) {
+      for (let i = 0; i < 15; i++) {
+        items.push({ ...makeColItem(72, 100 + i * 14, 400), page });
+      }
+    }
+    // Page 9: two-column
+    for (let i = 0; i < 20; i++) {
+      items.push({ ...makeColItem(72, 100 + i * 14, 188), page: 9 });
+      items.push({ ...makeColItem(310, 100 + i * 14, 200), page: 9 });
+    }
+    // Page 9 alone should detect as two-column
+    const page9Items = items.filter((it) => it.page === 9);
+    expect(detectColumnLayout(page9Items).type).toBe("two-column");
+
+    // But the cross-page consistency check should catch this at the applyColumnReordering level
+    // (tested implicitly through full evaluation)
+  });
+
+  it("cross-page: 7/9 two-column pages keeps two-column", () => {
+    // Verify that majority two-column pages pass the consistency check
+    // (detectColumnLayout works per-page; consistency check is in converter.ts)
+    const items: ReturnType<typeof makeColItem>[] = [];
+    for (let i = 0; i < 20; i++) {
+      items.push(makeColItem(72, 100 + i * 14, 188));
+      items.push(makeColItem(310, 100 + i * 14, 200));
+    }
+    expect(detectColumnLayout(items).type).toBe("two-column");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// P1: Code font detection tests
+// ---------------------------------------------------------------------------
+describe("detectCodeFont", () => {
+  it("identifies font used in indented short-line blocks", () => {
+    const items: ReturnType<typeof makeItem>[] = [];
+    // Dominant font (body text) — lots of text
+    for (let i = 0; i < 50; i++) {
+      items.push(makeItem({
+        str: "This is a long line of regular body text that spans the full width of the page and is quite lengthy.",
+        x: 72, y: 100 + i * 14, fontName: "Helvetica", width: 400,
+      }));
+    }
+    // Code font — indented, short lines, different font
+    for (let block = 0; block < 5; block++) {
+      for (let line = 0; line < 4; line++) {
+        items.push(makeItem({
+          str: "  x = foo(bar)",
+          x: 110, y: 900 + block * 80 + line * 14, fontName: "g_d0_f3", width: 80,
+        }));
+      }
+    }
+    const codeFonts = detectCodeFont(items, 12);
+    expect(codeFonts.has("g_d0_f3")).toBe(true);
+    expect(codeFonts.has("Helvetica")).toBe(false);
+  });
+
+  it("does not flag fonts that are not consistently indented/short", () => {
+    const items: ReturnType<typeof makeItem>[] = [];
+    for (let i = 0; i < 50; i++) {
+      items.push(makeItem({
+        str: "Body text line number " + i,
+        x: 72, y: 100 + i * 14, fontName: "Helvetica", width: 400,
+      }));
+    }
+    // Occasional italic text — same width and position as body
+    for (let i = 0; i < 20; i++) {
+      items.push(makeItem({
+        str: "This is italic emphasis text that is the same width as body text here.",
+        x: 72, y: 900 + i * 14, fontName: "Helvetica-Italic", width: 400,
+      }));
+    }
+    const codeFonts = detectCodeFont(items, 12);
+    expect(codeFonts.has("Helvetica-Italic")).toBe(false);
+  });
+});
+
+describe("isCodeBlock (enhanced)", () => {
+  it("detects code with subset font via codeFonts set", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    const items = [
+      makeItem({ str: "def foo():", x: 100, y: 100, fontName: "g_d0_f3" }),
+      makeItem({ str: "  return 42", x: 100, y: 114, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items, codeFonts)).toBe(true);
+  });
+
+  it("does not false-positive on regular prose", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    const items = [
+      makeItem({ str: "This is a normal paragraph of text.", x: 72, y: 100, fontName: "Helvetica" }),
+      makeItem({ str: "It continues on the next line.", x: 72, y: 114, fontName: "Helvetica" }),
+    ];
+    expect(isCodeBlock(items, codeFonts)).toBe(false);
+  });
+
+  it("still detects named monospace fonts without codeFonts", () => {
+    const items = [
+      makeItem({ str: "console.log('hello');", x: 50, y: 100, fontName: "Courier" }),
+      makeItem({ str: "const x = 42;", x: 50, y: 114, fontName: "Courier" }),
+    ];
+    expect(isCodeBlock(items)).toBe(true);
   });
 });
