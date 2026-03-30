@@ -12,7 +12,7 @@ Accessible version: [https://www.cdc.gov/nndss/about/index.html](https://www.cdc
 
 120 diseases under surveillance
 
-### 2.7M
+2.7M
 
 Nearly 2.7 million disease events
 

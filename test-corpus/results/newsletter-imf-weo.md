@@ -30,9 +30,7 @@ reflects an easing in labor market tightness, with a decline in job vacancies, a
 
 accelerate together –– not taking hold. Near-term inflation expectations have fallen in major economies,
 
-```
 Sources: Haver Analytics; and IMF staff calculations.
-```
 
 with long-term expectations remaining anchored. Note: The figure plots the median of a sample of 57 economies that accounts for 78 percent of World Economic Outlook world GDP (in weighted purchasing-powerparity terms) in 2023. Vertical axes are cut off at – 4 percent and 16 percent. The
 
@@ -206,7 +204,7 @@ corporate bond spreads (Figure 1.1).
 
 Global bond yields have fallen significantly on net
 
-## 2019:Q1 2020:Q3 2022:Q1 2023:Q3
+2019:Q1 2020:Q3 2022:Q1 2023:Q3
 
 since October, especially at longer maturities. Real
 

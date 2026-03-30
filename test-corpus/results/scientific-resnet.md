@@ -96,43 +96,25 @@ output 3x3 conv, 64
 
 network into its counterpart residual version. The identity
 
-```
 size: 224
-```
 
 3x3 conv, 64
 
 shortcuts (Eqn.(1)) can be directly used when the input and
 
-```
 pool, /2
-```
 
 output are of the same dimensions (solid line shortcuts in
 
-```
-output
-size: 112
-3x3 conv, 128
-```
+output size: 112 3x3 conv, 128
 
 Fig. 3). When the dimensions increase (dotted line shortcuts
 
-```
-3x3 conv, 128
-7x7 conv, 64, /2
-7x7 conv, 64, /2
-```
+3x3 conv, 128 7x7 conv, 64, /2 7x7 conv, 64, /2
 
 in Fig. 3), we consider two options: (A) The shortcut still performs identity mapping, with extra zero entries padded
 
-```
-pool, /2
-pool, /2
-pool, /2
-output
-size: 56
-```
+pool, /2 pool, /2 pool, /2 output size: 56
 
 for increasing dimensions. This option introduces no extra
 
@@ -158,21 +140,11 @@ sizes, they are performed with a stride of 2.
 
 ### 3.4. Implementation
 
-```
-pool, /2
-3x3 conv, 128, /2
-3x3 conv, 128, /2
-output
-```
+pool, /2 3x3 conv, 128, /2 3x3 conv, 128, /2 output
 
 Our implementation for ImageNet follows the practice
 
-```
-size: 28
-3x3 conv, 512
-3x3 conv, 128
-3x3 conv, 128
-```
+size: 28 3x3 conv, 512 3x3 conv, 128 3x3 conv, 128
 
 in [21, 41]. The image is resized with its shorter side ran-
 
@@ -192,18 +164,11 @@ normalization (BN) [16] right after each convolution and
 
 before activation, following [16]. We initialize the weights
 
-```
-output
-pool, /2
-3x3 conv, 256, /2
-3x3 conv, 256, /2
-```
+[output](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) pool, /2 3x3 conv, 256, /2 3x3 conv, 256, /2
 
 as in [13] and train all plain/residual nets from scratch. We
 
-```
 size: 14
-```
 
 3x3 conv, 512 3x3 conv, 256 3x3 conv, 256
 
@@ -245,13 +210,7 @@ side is in { , , , , } ).
 
 3x3 conv, 256 3x3 conv, 256 4. Experiments
 
-```
-output
-pool, /2
-3x3 conv, 512, /2
-3x3 conv, 512, /2
-size: 7
-```
+output pool, /2 3x3 conv, 512, /2 3x3 conv, 512, /2 size: 7
 
 ### 4.1. ImageNet Classification
 
@@ -467,11 +426,11 @@ Our method has good generalization performance on other recognition tasks. Table
 
 ## References
 
-[1] Y. Bengio, P. Simard, and P. Frasconi. Learning long-term dependencies with gradient descent is difficult. IEEE Transactions on Neural Networks , 5(2):157–166, 1994. [2] C. M. Bishop. Neural networks for pattern recognition . Oxford university press, 1995. [3] W. L. Briggs, S. F. McCormick, et al. A Multigrid Tutorial . Siam, 2000. [4] K. Chatfield, V. Lempitsky, A. Vedaldi, and A. Zisserman. The devil is in the details: an evaluation of recent feature encoding methods. In BMVC , 2011. [5] M. Everingham, L. Van Gool, C. K. Williams, J. Winn, and A. Zisserman. The Pascal Visual Object Classes (VOC) Challenge. IJCV , pages 303–338, 2010. [6] S. Gidaris and N. Komodakis. Object detection via a multi-region & semantic segmentation-aware cnn model. In ICCV , 2015. [7] R. Girshick. Fast R-CNN. In ICCV , 2015. [8] R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. In CVPR , 2014. [9] X. Glorot and Y. Bengio. Understanding the difficulty of training deep feedforward neural networks. In AISTATS , 2010. [10] I. J. Goodfellow, D. Warde-Farley, M. Mirza, A. Courville, and Y. Bengio. Maxout networks. arXiv:1302.4389 , 2013. [11] K. He and J. Sun. Convolutional neural networks at constrained time cost. In CVPR , 2015. [12] K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep [convolutional networks for visual recognition. In](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) [ECCV](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) , 2014. [13] K. He, X. Zhang, S. Ren, and J. Sun. Delving deep into rectifiers: Surpassing human-level performance on imagenet classification. In ICCV , 2015. [14] G. E. Hinton, N. Srivastava, A. Krizhevsky, I. Sutskever, and R. R. Salakhutdinov. Improving neural networks by preventing coadaptation of feature detectors. arXiv:1207.0580 , 2012. [15] S. Hochreiter and J. Schmidhuber. Long short-term memory. Neural computation , 9(8):1735–1780, 1997. [16] S. Ioffe and C. Szegedy. Batch normalization: Accelerating deep network training by reducing internal covariate shift. In ICML , 2015. [17] H. Jegou, M. Douze, and C. Schmid. Product quantization for nearest neighbor search. TPAMI , 33, 2011. [18] H. Jegou, F. Perronnin, M. Douze, J. Sanchez, P. Perez, and C. Schmid. Aggregating local image descriptors into compact codes. TPAMI , 2012. [19] Y. Jia, E. Shelhamer, J. Donahue, S. Karayev, J. Long, R. Girshick, S. Guadarrama, and T. Darrell. Caffe: Convolutional architecture for fast feature embedding. arXiv:1408.5093 , 2014. [20] A. Krizhevsky. Learning multiple layers of features from tiny images. Tech Report , 2009. [21] A. Krizhevsky, I. Sutskever, and G. Hinton. Imagenet classification with deep convolutional neural networks. In NIPS , 2012. [22] Y. LeCun, B. Boser, J. S. Denker, D. Henderson, R. E. Howard, W. Hubbard, and L. D. Jackel. Backpropagation applied to handwritten zip code recognition. Neural computation , 1989. [23] Y. LeCun, L. Bottou, G. B. Orr, and K.-R. M¨ uller. Efficient backprop. In Neural Networks: Tricks of the Trade , pages 9–50. Springer, 1998. [24] C.-Y. Lee, S. Xie, P. Gallagher, Z. Zhang, and Z. Tu. Deeplysupervised nets. arXiv:1409.5185 , 2014. [25] M. Lin, Q. Chen, and S. Yan. Network in network. arXiv:1312.4400 , 2013. [26] T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Doll´ ar, and C. L. Zitnick. Microsoft COCO: Common objects in context. In ECCV . 2014. [[27]](http://mscoco.org/dataset/#detections-challenge2015) [J. Long, E. Shelhamer, and T. Darrell. Fully convolutional networks](http://mscoco.org/dataset/#detections-challenge2015) for semantic segmentation. In CVPR , 2015.
+- Y. Bengio, P. Simard, and P. Frasconi. Learning long-term dependencies with gradient descent is difficult. IEEE Transactions on Neural Networks , 5(2):157–166, 1994. [2] C. M. Bishop. Neural networks for pattern recognition . Oxford university press, 1995. [3] W. L. Briggs, S. F. McCormick, et al. A Multigrid Tutorial . Siam, 2000. [4] K. Chatfield, V. Lempitsky, A. Vedaldi, and A. Zisserman. The devil is in the details: an evaluation of recent feature encoding methods. In BMVC , 2011. [5] M. Everingham, L. Van Gool, C. K. Williams, J. Winn, and A. Zisserman. The Pascal Visual Object Classes (VOC) Challenge. IJCV , pages 303–338, 2010. [6] S. Gidaris and N. Komodakis. Object detection via a multi-region & semantic segmentation-aware cnn model. In ICCV , 2015. [7] R. Girshick. Fast R-CNN. In ICCV , 2015. [8] R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. In CVPR , 2014. [9] X. Glorot and Y. Bengio. Understanding the difficulty of training deep feedforward neural networks. In AISTATS , 2010. [10] I. J. Goodfellow, D. Warde-Farley, M. Mirza, A. Courville, and Y. Bengio. Maxout networks. arXiv:1302.4389 , 2013. [11] K. He and J. Sun. Convolutional neural networks at constrained time cost. In CVPR , 2015. [12] K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep [convolutional networks for visual recognition. In](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) [ECCV](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) , 2014. [13] K. He, X. Zhang, S. Ren, and J. Sun. Delving deep into rectifiers: Surpassing human-level performance on imagenet classification. In ICCV , 2015. [14] G. E. Hinton, N. Srivastava, A. Krizhevsky, I. Sutskever, and R. R. Salakhutdinov. Improving neural networks by preventing coadaptation of feature detectors. arXiv:1207.0580 , 2012. [15] S. Hochreiter and J. Schmidhuber. Long short-term memory. Neural computation , 9(8):1735–1780, 1997. [16] S. Ioffe and C. Szegedy. Batch normalization: Accelerating deep network training by reducing internal covariate shift. In ICML , 2015. [17] H. Jegou, M. Douze, and C. Schmid. Product quantization for nearest neighbor search. TPAMI , 33, 2011. [18] H. Jegou, F. Perronnin, M. Douze, J. Sanchez, P. Perez, and C. Schmid. Aggregating local image descriptors into compact codes. TPAMI , 2012. [19] Y. Jia, E. Shelhamer, J. Donahue, S. Karayev, J. Long, R. Girshick, S. Guadarrama, and T. Darrell. Caffe: Convolutional architecture for fast feature embedding. arXiv:1408.5093 , 2014. [20] A. Krizhevsky. Learning multiple layers of features from tiny images. Tech Report , 2009. [21] A. Krizhevsky, I. Sutskever, and G. Hinton. Imagenet classification with deep convolutional neural networks. In NIPS , 2012. [22] Y. LeCun, B. Boser, J. S. Denker, D. Henderson, R. E. Howard, W. Hubbard, and L. D. Jackel. Backpropagation applied to handwritten zip code recognition. Neural computation , 1989. [23] Y. LeCun, L. Bottou, G. B. Orr, and K.-R. M¨ uller. Efficient backprop. In Neural Networks: Tricks of the Trade , pages 9–50. Springer, 1998. [24] C.-Y. Lee, S. Xie, P. Gallagher, Z. Zhang, and Z. Tu. Deeplysupervised nets. arXiv:1409.5185 , 2014. [25] M. Lin, Q. Chen, and S. Yan. Network in network. arXiv:1312.4400 , 2013. [26] T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Doll´ ar, and C. L. Zitnick. Microsoft COCO: Common objects in context. In ECCV . 2014. [[27]](http://mscoco.org/dataset/#detections-challenge2015) [J. Long, E. Shelhamer, and T. Darrell. Fully convolutional networks](http://mscoco.org/dataset/#detections-challenge2015) for semantic segmentation. In CVPR , 2015.
 
-[28] G. Mont´ ufar, R. Pascanu, K. Cho, and Y. Bengio. On the number of linear regions of deep neural networks. In NIPS , 2014. [29] V. Nair and G. E. Hinton. Rectified linear units improve restricted boltzmann machines. In ICML , 2010. [30] F. Perronnin and C. Dance. Fisher kernels on visual vocabularies for image categorization. In CVPR , 2007. [31] T. Raiko, H. Valpola, and Y. LeCun. Deep learning made easier by linear transformations in perceptrons. In AISTATS , 2012. [32] S. Ren, K. He, R. Girshick, and J. Sun. Faster R-CNN: Towards real-time object detection with region proposal networks. In NIPS , 2015. [33] S. Ren, K. He, R. Girshick, X. Zhang, and J. Sun. Object detection networks on convolutional feature maps. arXiv:1504.06066 , 2015. [34] B. D. Ripley. Pattern recognition and neural networks . Cambridge university press, 1996. [35] A. Romero, N. Ballas, S. E. Kahou, A. Chassang, C. Gatta, and Y. Bengio. Fitnets: Hints for thin deep nets. In ICLR , 2015. [36] O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang, A. Karpathy, A. Khosla, M. Bernstein, et al. Imagenet large scale visual recognition challenge. arXiv:1409.0575 , 2014. [37] A. M. Saxe, J. L. McClelland, and S. Ganguli. Exact solutions to the nonlinear dynamics of learning in deep linear neural networks. arXiv:1312.6120 , 2013. [38] N. N. Schraudolph. Accelerated gradient descent by factor-centering decomposition. Technical report, 1998. [39] N. N. Schraudolph. Centering neural network gradient factors. In [Neural Networks:](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) [Tricks of the Trade](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) [, pages 207–226. Springer,](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) 1998. [40] P. Sermanet, D. Eigen, X. Zhang, M. Mathieu, R. Fergus, and Y. Le- Cun. Overfeat: Integrated recognition, localization and detection using convolutional networks. In ICLR , 2014. [41] K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. In ICLR , 2015. [42] R. K. Srivastava, K. Greff, and J. Schmidhuber. Highway networks. arXiv:1505.00387 , 2015. [43] R. K. Srivastava, K. Greff, and J. Schmidhuber. Training very deep networks. 1507.06228 , 2015. [44] C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D. Anguelov, D. Erhan, V. Vanhoucke, and A. Rabinovich. Going deeper with convolutions. In CVPR , 2015. [45] R. Szeliski. Fast surface interpolation using hierarchical basis functions. TPAMI , 1990. [46] R. Szeliski. Locally adapted hierarchical basis preconditioning. In SIGGRAPH , 2006. [47] T. Vatanen, T. Raiko, H. Valpola, and Y. LeCun. Pushing stochastic gradient towards second-order methods–backpropagation learning with transformations in nonlinearities. In Neural Information Processing , 2013. [48] A. Vedaldi and B. Fulkerson. VLFeat: An open and portable library of computer vision algorithms, 2008. [49] W. Venables and B. Ripley. Modern applied statistics with s-plus. 1999. [50] M. D. Zeiler and R. Fergus. Visualizing and understanding convolutional neural networks. In ECCV , 2014.
+- G. Mont´ ufar, R. Pascanu, K. Cho, and Y. Bengio. On the number of linear regions of deep neural networks. In NIPS , 2014. [29] V. Nair and G. E. Hinton. Rectified linear units improve restricted boltzmann machines. In ICML , 2010. [30] F. Perronnin and C. Dance. Fisher kernels on visual vocabularies for image categorization. In CVPR , 2007. [31] T. Raiko, H. Valpola, and Y. LeCun. Deep learning made easier by linear transformations in perceptrons. In AISTATS , 2012. [32] S. Ren, K. He, R. Girshick, and J. Sun. Faster R-CNN: Towards real-time object detection with region proposal networks. In NIPS , 2015. [33] S. Ren, K. He, R. Girshick, X. Zhang, and J. Sun. Object detection networks on convolutional feature maps. arXiv:1504.06066 , 2015. [34] B. D. Ripley. Pattern recognition and neural networks . Cambridge university press, 1996. [35] A. Romero, N. Ballas, S. E. Kahou, A. Chassang, C. Gatta, and Y. Bengio. Fitnets: Hints for thin deep nets. In ICLR , 2015. [36] O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang, A. Karpathy, A. Khosla, M. Bernstein, et al. Imagenet large scale visual recognition challenge. arXiv:1409.0575 , 2014. [37] A. M. Saxe, J. L. McClelland, and S. Ganguli. Exact solutions to the nonlinear dynamics of learning in deep linear neural networks. arXiv:1312.6120 , 2013. [38] N. N. Schraudolph. Accelerated gradient descent by factor-centering decomposition. Technical report, 1998. [39] N. N. Schraudolph. Centering neural network gradient factors. In [Neural Networks:](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) [Tricks of the Trade](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) [, pages 207–226. Springer,](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) 1998. [40] P. Sermanet, D. Eigen, X. Zhang, M. Mathieu, R. Fergus, and Y. Le- Cun. Overfeat: Integrated recognition, localization and detection using convolutional networks. In ICLR , 2014. [41] K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. In ICLR , 2015. [42] R. K. Srivastava, K. Greff, and J. Schmidhuber. Highway networks. arXiv:1505.00387 , 2015. [43] R. K. Srivastava, K. Greff, and J. Schmidhuber. Training very deep networks. 1507.06228 , 2015. [44] C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D. Anguelov, D. Erhan, V. Vanhoucke, and A. Rabinovich. Going deeper with convolutions. In CVPR , 2015. [45] R. Szeliski. Fast surface interpolation using hierarchical basis functions. TPAMI , 1990. [46] R. Szeliski. Locally adapted hierarchical basis preconditioning. In SIGGRAPH , 2006. [47] T. Vatanen, T. Raiko, H. Valpola, and Y. LeCun. Pushing stochastic gradient towards second-order methods–backpropagation learning with transformations in nonlinearities. In Neural Information Processing , 2013. [48] A. Vedaldi and B. Fulkerson. VLFeat: An open and portable library of computer vision algorithms, 2008. [49] W. Venables and B. Ripley. Modern applied statistics with s-plus. 1999. [50] M. D. Zeiler and R. Fergus. Visualizing and understanding convolutional neural networks. In ECCV , 2014.
 
-## A. Object Detection Baselines
+### A. Object Detection Baselines
 
 In this section we introduce our detection method based on the baseline Faster R-CNN [32] system. The models are initialized by the ImageNet classification models, and then fine-tuned on the object detection data. We have experimented with ResNet-50/101 at the time of the ILSVRC & COCO 2015 detection competitions. Unlike VGG-16 used in [32], our ResNet has no hidden fc layers. We adopt the idea of “Networks on Conv feature maps” (NoC) [33] to address this issue. We compute the full-image shared conv feature maps using those layers whose strides on the image are no greater than 16 pixels ( i.e ., conv1, conv2 x, conv3 x, and conv4 x, totally 91 conv layers in ResNet-101; Table 1). We consider these layers as analogous to the 13 conv layers in VGG-16, and by doing so, both ResNet and VGG-16 have conv feature maps of the same total stride (16 pixels). These layers are shared by a region proposal network (RPN, generating 300 proposals) [32] and a Fast R-CNN detection network [7]. RoI pooling [7] is performed before conv5 1. On this RoI-pooled feature, all layers of conv5 x and up are adopted for each region, playing the roles of VGG-16’s fc layers. The final [classification layer is replaced by two sibling layers (classi-](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) fication and box regression [7]). For the usage of BN layers, after pre-training, we compute the BN statistics (means and variances) for each layer on the ImageNet training set. Then the BN layers are fixed during fine-tuning for object detection. As such, the BN layers become linear activations with constant offsets and scales, and BN statistics are not updated by fine-tuning. We fix the BN layers mainly for reducing memory consumption in Faster R-CNN training.
 
@@ -481,7 +440,7 @@ MS COCO The MS COCO dataset [26] involves 80 object categories. We evaluate the 
 
 8 images ( i.e ., 1 per GPU) and the Fast R-CNN step has a mini-batch size of 16 images. The RPN step and Fast R- CNN step are both trained for 240k iterations with a learning rate of 0.001 and then for 80k iterations with 0.0001. Table 8 shows the results on the MS COCO validation set. ResNet-101 has a 6% increase of mAP@[.5, .95] over VGG-16, which is a 28% relative improvement, solely contributed by the features learned by the better network. Remarkably, the mAP@[.5, .95]’s absolute increase (6.0%) is nearly as big as mAP@.5’s (6.9%). This suggests that a deeper network can improve both recognition and localization.
 
-## B. Object Detection Improvements
+### B. Object Detection Improvements
 
 For completeness, we report the improvements made for the competitions. These improvements are based on deep features and thus should benefit from residual learning.
 
@@ -564,7 +523,7 @@ Table 13. Localization error (%) on the ImageNet validation. In the column of �
 
 58.8% mAP and our ensemble of 3 models has 62.1% mAP on the DET test set (Table 12). This result won the 1st place in the ImageNet detection task in ILSVRC 2015 , surpassing the second place by 8.5 points (absolute).
 
-## C. ImageNet Localization
+### C. ImageNet Localization
 
 The ImageNet Localization (LOC) task [36] requires to classify and localize the objects. Following [40, 41], we assume that the image-level classifiers are first adopted for [predicting the class labels of an image, and the localiza-](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) tion algorithm only accounts for predicting bounding boxes based on the predicted classes. We adopt the “per-class regression” (PCR) strategy [40, 41], learning a bounding box regressor for each class. We pre-train the networks for ImageNet classification and then fine-tune them for localization. We train networks on the provided 1000-class ImageNet training set. Our localization algorithm is based on the RPN framework of [32] with a few modifications. Unlike the way in [32] that is category-agnostic, our RPN for localization is designed in a per-class form. This RPN ends with two sibling 1 × 1 convolutional layers for binary classification ( cls ) and box regression ( reg ), as in [32]. The cls and reg layers are both in a per-class from, in contrast to [32]. Specifically, the cls layer has a 1000-d output, and each dimension is binary logistic regression for predicting being or not being an object class; the reg layer has a 1000 × 4-d output consisting of box regressors for 1000 classes. As in [32], our bounding box regression is with reference to multiple translation-invariant “anchor” boxes at each position. As in our ImageNet classification training (Sec. 3.4), we randomly sample 224 × 224 crops for data augmentation. We use a mini-batch size of 256 images for fine-tuning. To avoid negative samples being dominate, 8 anchors are randomly sampled for each image, where the sampled positive and negative anchors have a ratio of 1:1 [32]. For testing, the network is applied on the image fully-convolutionally. Table 13 compares the localization results. Following [[41], we first perform “oracle” testing using the ground truth](http://image-net.org/challenges/LSVRC/2015/) class as the classification prediction. VGG’s paper [41] re-
 

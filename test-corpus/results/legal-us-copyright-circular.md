@@ -216,6 +216,6 @@ For general information, call the Copyright Public Information Office at (202) 7
 
 Write to Library of Congress U.S. Copyright Office Outreach and Education Section 101 Independence Avenue, SE #6304 Washington, DC 20559-6304
 
-U. S. Copyright Office · Library of Congress · 101 Independence Avenue SE · Washington, DC 20559 · copyright.gov
+### U. S. Copyright Office · Library of Congress · 101 Independence Avenue SE · Washington, DC 20559 · copyright.gov
 
 ## CIRCULAR 1 REVISED: 09/2021

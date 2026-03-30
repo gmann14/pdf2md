@@ -588,9 +588,7 @@ xvi Contents
 
 8.13 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Case study: word play
-```
+[Case study: word play](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
 9.1 Reading word lists [. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](http://gutenberg.org/)
 
@@ -1272,9 +1270,7 @@ Chapter 2. Variables, expressions and statements
 
 In general, you can’t perform mathematical operations on strings, even if the strings look [like numbers, so the following are illegal:](https://thinkpython.com/code/do_four.py)
 
-```
-' chinese ' - ' food ' ' eggs ' / ' easy ' ' third ' * ' a charm '
-```
+' chinese ['](http://tinyurl.com/thinkpython2e) [-](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) [food](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) [eggs](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) [/](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) [easy](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) ' third ' * ' a charm '
 
 [But there are two exceptions,](http://en.wikipedia.org/wiki/Big_O_notation) [+](http://en.wikipedia.org/wiki/Big_O_notation) [and](http://en.wikipedia.org/wiki/Big_O_notation) * .
 
@@ -2801,18 +2797,7 @@ return result
 
 Chapter 6. Fruitful functions
 
-```
-factorial 4
-factorial 3
-factorial 2
-factorial 1
-factorial 0
-returning 1
-returning 1
-returning 2
-returning 6
-returning 24
-```
+[factorial 4](https://thinkpython.com/code/polygon.py) factorial 3 [factorial 2](http://www.cartalk.com/content/puzzlers) [factorial 1](https://thinkpython.com/code/spiral.py) factorial 0 returning 1 returning 1 [returning 2](http://creativecommons.org/licenses/by-nc/3.0/) [returning 6](https://thinkpython.com/code/emma.txt) [returning 24](https://thinkpython.com/code/rotate.py)
 
 [If you are confused about the flow of execution, this kind of output can be helpful. It takes](http://en.wikipedia.org/wiki/Ackermann_function) [some time to develop effective scaffolding, but a little bit of scaffolding can save a lot of](http://www.thinkpython.com/) debugging.
 
@@ -3109,11 +3094,7 @@ Chapter 7. Iteration
 
 ∞
 
-```
-( k ) ! ( + k )
-=
-π
-```
+( k ) ! ( + k ) [=](https://thinkpython.com/code/grid.py) π
 
 [∑](https://thinkpython.com/code/grid.py)
 
@@ -3205,7 +3186,7 @@ The reason for the [IndexError](http://en.wikipedia.org/wiki/Birthday_paradox) [
 
 [fruit](https://thinkpython.com/code/polygon.py)
 
-### [’](http://en.wikipedia.org/wiki/Spiral) [b a n](http://en.wikipedia.org/wiki/Spiral) [a](http://en.wikipedia.org/wiki/Spiral) [n](http://en.wikipedia.org/wiki/Spiral) [a ’](http://en.wikipedia.org/wiki/Spiral)
+[’](http://en.wikipedia.org/wiki/Spiral) [b a n](http://en.wikipedia.org/wiki/Spiral) [a](http://en.wikipedia.org/wiki/Spiral) [n](http://en.wikipedia.org/wiki/Spiral) [a ’](http://en.wikipedia.org/wiki/Spiral)
 
 [index](http://www.cartalk.com/content/puzzlers)
 
@@ -3551,9 +3532,7 @@ For the exercises in this chapter we need a list of English words. There are lot
 
 ### [>>> fin.readline()](http://wiki.python.org/moin/BitwiseOperators) ' aah\n '
 
-```
 Chapter 9. Case study: word play
-```
 
 [The next word is “aah”, which is a perfectly legitimate word, so stop looking at me like](https://thinkpython.com/code/polygon.py) that. [Or, if it’s the newline character that’s bothering you, we can get rid of it with the](http://en.wikipedia.org/wiki/Spiral) [string method](http://www.cartalk.com/content/puzzlers) [strip](http://www.cartalk.com/content/puzzlers) [:](http://www.cartalk.com/content/puzzlers)
 
@@ -3621,9 +3600,7 @@ Instead of traversing the letters in word [, the loop traverses the required let
 
 [This is an example of a program development plan called](https://thinkpython.com/code/metathesis.py) [reduction to a previously solved](http://en.wikipedia.org/wiki/Newline) [problem](http://wiki.python.org/moin/BitwiseOperators) [, which means that you recognize the problem you are working on as an instance](http://en.wikipedia.org/wiki/Collatz_conjecture) of a solved problem and apply an existing solution.
 
-```
 Chapter 9. Case study: word play
-```
 
 ## [9.4](https://thinkpython.com/code/polygon.py) [Looping with indices](https://thinkpython.com/code/polygon.py)
 
@@ -3699,9 +3676,7 @@ Program testing can be used to show the presence of bugs, but never to show [the
 
 [special case:](http://wiki.python.org/moin/BitwiseOperators) [A test case that is atypical or non-obvious (and less likely to be handled cor-](https://wiki.python.org/moin/HowTo/Sorting) rectly).
 
-```
 Chapter 9. Case study: word play
-```
 
 ## [9.7](https://thinkpython.com/code/polygon.py) [Exercises](https://thinkpython.com/code/polygon.py)
 
@@ -3741,10 +3716,7 @@ Like a string, a list is a sequence of values. In a string, the values are chara
 
 There are several ways to create a new list; the simplest is to enclose the elements in square [brackets (](http://www.cartalk.com/content/puzzlers) [[](http://www.cartalk.com/content/puzzlers) [and](http://www.cartalk.com/content/puzzlers) []](http://www.cartalk.com/content/puzzlers) [):](http://www.cartalk.com/content/puzzlers)
 
-```
-[10, 20, 30, 40]
-[ ' crunchy frog ' , ' ram bladder ' , ' lark vomit ' ]
-```
+[[10, 20, 30, 40]](https://thinkpython.com/code/PokerHandSoln.py) [[](https://thinkpython.com/code/list_exercises.py) ['](https://thinkpython.com/code/list_exercises.py) [crunchy frog](https://thinkpython.com/code/list_exercises.py) ' , ' ram bladder ' , ' lark vomit ' ]
 
 The first example is a list of four integers. The second is a list of three strings. The elements of a list don’t have to be the same type. The following list contains a string, a float, an integer, and (lo!) another list:
 
@@ -5083,12 +5055,7 @@ Exercise 12.1. Write a function called most_frequent [that takes a string and pr
 
 [Here is an example of what the output might look like:](https://thinkpython.com/code/markov.py)
 
-```
-[ ' deltas ' , ' desalt ' , ' lasted ' , ' salted ' , ' slated ' , ' staled ' ]
-[ ' retainers ' , ' ternaries ' ]
-[ ' generating ' , ' greatening ' ]
-[ ' resmelts ' , ' smelters ' , ' termless ' ]
-```
+[[](https://thinkpython.com/code/reducible.py) ['](https://thinkpython.com/code/reducible.py) [deltas](https://thinkpython.com/code/reducible.py) ['](https://thinkpython.com/code/reducible.py) [,](https://thinkpython.com/code/reducible.py) ['](https://thinkpython.com/code/reducible.py) [desalt](https://thinkpython.com/code/reducible.py) ['](https://thinkpython.com/code/reducible.py) [,](https://thinkpython.com/code/reducible.py) ['](https://thinkpython.com/code/reducible.py) [lasted](https://thinkpython.com/code/reducible.py) ['](https://thinkpython.com/code/reducible.py) [,](https://thinkpython.com/code/reducible.py) ['](https://thinkpython.com/code/reducible.py) [salted](https://thinkpython.com/code/reducible.py) ' , ' slated ' , ['](http://www.cartalk.com/content/puzzlers) [staled](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) []](http://www.cartalk.com/content/puzzlers) [[](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) [retainers](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) [,](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) [ternaries](https://thinkpython.com/code/PokerHandSoln.py) ['](https://thinkpython.com/code/PokerHandSoln.py) []](https://thinkpython.com/code/PokerHandSoln.py) [[](https://thinkpython.com/code/PokerHandSoln.py) ['](https://thinkpython.com/code/PokerHandSoln.py) [generating](https://thinkpython.com/code/PokerHandSoln.py) ['](https://thinkpython.com/code/PokerHandSoln.py) [,](https://thinkpython.com/code/PokerHandSoln.py) ['](https://thinkpython.com/code/PokerHandSoln.py) greatening ' ] [[](https://thinkpython.com/code/list_exercises.py) ['](https://thinkpython.com/code/list_exercises.py) resmelts ' , ' smelters ' , ' termless ' ]
 
 Hint: you might want to build a dictionary that maps from a collection of letters to a list of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?
 
@@ -5148,9 +5115,7 @@ Write a program to find all words that can be reduced in this way, and then find
 
 [Print the number of different words used in the book. Compare different books by different authors,](https://thinkpython.com/code/typewriter.py) written in different eras. Which author uses the most extensive vocabulary?
 
-```
 Chapter 13. Case study: data structure selection
-```
 
 [Exercise 13.3.](https://thinkpython.com/code/polygon.py) [Modify the program from the previous exercise to print the 20 most frequently used](http://en.wikipedia.org/wiki/Zipf's_law) words in the book. [Exercise 13.4.](http://www.cartalk.com/content/puzzlers) [Modify the previous program to read a word list (see Section 9.1) and then print all](http://www.cartalk.com/content/puzzlers) the words in the book that are not in the word list. How many of them are typos? How many of [them are common words that](https://thinkpython.com/code/grid.py) [should](https://thinkpython.com/code/grid.py) [be in the word list, and how many of them are really obscure?](https://thinkpython.com/code)
 
@@ -5223,9 +5188,7 @@ process_line uses the string method replace [to replace hyphens with spaces befo
 
 ### [def total_words(hist):](http://wiki.python.org/moin/BitwiseOperators) return sum(hist.values())
 
-```
 Chapter 13. Case study: data structure selection
-```
 
 [The number of different words is just the number of items in the dictionary:](https://thinkpython.com/code/polygon.py)
 
@@ -5299,9 +5262,7 @@ num gets the value of the argument instead. In other words, the optional argumen
 
 Here are some of the results from Emma :
 
-```
 Chapter 13. Case study: data structure selection
-```
 
 [Words in the book that aren](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [t in the word list:](https://thinkpython.com/code/polygon.py) rencontre jane ' [s blanche woodhouses disingenuousness](http://en.wikipedia.org/wiki/Spiral) [friend](https://thinkpython.com/code/Time2.py) ['](http://www.cartalk.com/content/puzzlers) [s venice apartment ...](http://www.cartalk.com/content/puzzlers)
 
@@ -5369,9 +5330,7 @@ In this example the length of the prefix is always two, but you can do Markov an
 
 What happens if you increase the prefix length? Does the random text make more sense?
 
-```
 Chapter 13. Case study: data structure selection
-```
 
 3. [3. Once your program is working, you might want to try a mash-up: if you combine text from](https://thinkpython.com/code/polygon.py) [two or more books, the random text you generate will blend the vocabulary and phrases from](http://en.wikipedia.org/wiki/Spiral) [the sources in interesting ways.](http://www.cartalk.com/content/puzzlers)
 
@@ -5433,9 +5392,7 @@ Ruminating: [Take some time to think! What kind of error is it: syntax, runtime,
 
 [Retreating:](https://thinkpython.com/code/double.py) [At some point, the best thing to do is back off, undoing recent changes, until](https://thinkpython.com/code/metathesis.py) [you get back to a program that works and that you understand. Then you can start](http://en.wikipedia.org/wiki/Collatz_conjecture) rebuilding.
 
-```
 Chapter 13. Case study: data structure selection
-```
 
 [Beginning programmers sometimes get stuck on one of these activities and forget the oth-](https://thinkpython.com/code/polygon.py) ers. Each activity comes with its own failure mode.
 
@@ -5487,9 +5444,7 @@ Write a program that reads a text from a file, counts word frequencies, and prin
 
 [Solution:](https://thinkpython.com/code/has_duplicates.py) [https: // thinkpython. com/ code/ zipf. py](https://thinkpython.com/code/has_duplicates.py) [. To run my solution, you need the plot-](https://thinkpython.com/code/Map.py) [ting module](https://thinkpython.com/code/Map.py) matplotlib . If you installed Anaconda, you already have [matplotlib](https://thinkpython.com/code/markov.py) ; otherwise you [might have to install it.](https://thinkpython.com/code/draw.py)
 
-```
 Chapter 13. Case study: data structure selection
-```
 
 ## Chapter 14
 
@@ -6753,11 +6708,7 @@ In order to print Card objects in a way that people can easily read, we need a m
 # inside class Card:
 ```
 
-```
-suit_names = [ ' Clubs ' , ' Diamonds ' , ' Hearts ' , ' Spades ' ]
-rank_names = [None, ' Ace ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' ,
-' ' , ' ' , ' ' , ' Jack ' , ' Queen ' , ' King ' ]
-```
+[suit_names = [](http://en.wikipedia.org/wiki/Radix_sort) ' Clubs ' , ' Diamonds ' , ' Hearts ' , ' Spades ' ] rank_names = [None, ' Ace ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' Jack ' , ' Queen ' , ' King ' ]
 
 ### [def __str__(self):](http://docs.python.org/3/library/stdtypes.html#string-methods) return ' [%s of %s](https://thinkpython.com/code/flower.py) ['](https://thinkpython.com/code/flower.py) [% (Card.rank_names[self.rank],](https://thinkpython.com/code/flower.py) [Card.suit_names[self.suit])](https://thinkpython.com/code/polygon.py)
 
@@ -6977,13 +6928,7 @@ There are several kinds of relationship between classes:
 
 Chapter 18. Inheritance
 
-[Deck](https://thinkpython.com/code/polygon.py)
-
-[*](https://thinkpython.com/code/polygon.py)
-
-[Card](http://en.wikipedia.org/wiki/Zipf's_law)
-
-[Hand](https://thinkpython.com/code/grid.py)
+[Deck](https://thinkpython.com/code/polygon.py) [*](https://thinkpython.com/code/polygon.py) [Card](http://en.wikipedia.org/wiki/Zipf's_law) [Hand](https://thinkpython.com/code/grid.py)
 
 [Figure 18.2: Class diagram.](http://docs.python.org/3/library/stdtypes.html#types-set)
 

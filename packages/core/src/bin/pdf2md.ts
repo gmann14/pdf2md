@@ -2,7 +2,7 @@
 
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { convert } from "../converter";
+import { convert } from "../converter.js";
 
 async function main(): Promise<void> {
   const filePath = process.argv[2];

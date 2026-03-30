@@ -500,9 +500,7 @@ This device complies with part 15 of the FCC Rules. Operation is subject to the 
 
 (2) this device must accept any interference received, including interference that may cause undesired operation.
 
-```
 FCC RF Radiation Exposure Statement:
-```
 
 1. [1. This Transmitter must not be co-located or operating in conjunction with any other antenna or transmitter.](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending)
 
@@ -534,9 +532,7 @@ licence. L’exploitation est autorisée aux deux conditions suivantes :
 
 d’en compromettre le fonctionnement.
 
-```
 IC SAR Warning:
-```
 
 English This equipment should be installed and operated with minimum distance 20 cm between the radiator and
 
@@ -620,9 +616,7 @@ AVR CPU [频](https://www.arduino.cc/reference/en/) [率](https://www.arduino.cc
 
 外 设
 
-```
 2x 8 位 定 时 器 / 计 数 器， 带 专 ⽤ 周 期 寄存 器 和 ⽐ 较 通道
-```
 
 1x 16 位 定 时 器 / 计 数 器， 带 专 ⽤ 周 期 寄存 器 、 输 ⼊ 捕 获 和 ⽐ 较 通道
 
@@ -928,9 +922,7 @@ Arduino 电 路 板 完 全 符 合 欧 盟 法 规 (EC) 1907/2006 中 关 于 �
 
 作 为 ⾦ 属 合 ⾦ 的 组 成 部 分 存 在 于 我 们 的 产 品 中 。 作 为 我 们 合 理 尽 职 调 查 的 ⼀ 部 分 ， Arduino 已 联 系 供 应 链 中 的 元 件供 应
 
-```
-商 ， 以 核 实 他 们 是 否 始 终 遵 守 法 规 的 相 关 规 定 。 根 据 迄 今 收 到 的 信 息 ， 我 们 声 明 我 们 的 产 品 中 含 有来 ⾃ ⾮ 冲 突 地 区 的 冲 突
-```
+商 ， 以 核 实 他 们 是 否 始 终 遵 守 法 规 的 相 关 规 定 。 根 据 迄 今 收 到 [的](https://www.arduino.cc/en/Main/Software) [信](https://www.arduino.cc/en/Main/Software) [息](https://www.arduino.cc/en/Main/Software) [，](https://www.arduino.cc/en/Main/Software) [我](https://www.arduino.cc/en/Main/Software) [们](https://www.arduino.cc/en/Main/Software) [声](https://www.arduino.cc/en/Main/Software) [明](https://www.arduino.cc/en/Main/Software) [我](https://www.arduino.cc/en/Main/Software) [们](https://www.arduino.cc/en/Main/Software) 的 产 品 中 含 有来 ⾃ ⾮ 冲 突 地 区 的 冲 突
 
 矿 物 。
 
@@ -974,9 +966,7 @@ licence. L’exploitation est autorisée aux deux conditions suivantes :
 
 d’en compromettre le fonctionnement.
 
-```
 IC SAR 警 告 :
-```
 
 English This equipment should be installed and operated with a minimum distance of 20 cm between the radiator
 

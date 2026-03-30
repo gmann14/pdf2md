@@ -181,10 +181,7 @@ If you have applied from 2006 return. 39
 
 a qualifying child, attach
 
-```
-40a
-Earned income credit (EIC). 40a
-```
+40a Earned income credit (EIC). 40a
 
 Schedule b Nontaxable combat pay election. 40b
 

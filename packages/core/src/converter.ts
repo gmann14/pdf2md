@@ -1,14 +1,14 @@
-import { getDocument } from "pdfjs-dist";
 import type { PDFDocumentProxy, PDFPageProxy } from "pdfjs-dist";
 import type { TextItem, TextMarkedContent } from "pdfjs-dist/types/src/display/api";
-import { initPdfWorker } from "./pdf-worker";
+import { getPdfjs } from "./pdf-compat.js";
+import { initPdfWorker } from "./pdf-worker.js";
 import type {
   ConversionResult,
   ConversionMessage,
   ConversionMetadata,
   ConvertOptions,
-} from "./types";
-import { MAX_FILE_SIZE } from "./types";
+} from "./types.js";
+import { MAX_FILE_SIZE } from "./types.js";
 import {
   cleanText,
   detectTable,
@@ -19,7 +19,7 @@ import {
   detectColumnLayout,
   reorderColumnarItems,
   rejoinHyphenatedWords,
-} from "./detection";
+} from "./detection.js";
 
 // ---------------------------------------------------------------------------
 // Internal types
@@ -393,6 +393,7 @@ function groupIntoBlocks(
 const BULLET_PATTERN = /^[\u2022\u2023\u25E6\u2043\u2219\u25AA\u25AB\u25CF\u25CB\u25B6\u25B8\u25BA\u25C6\u25C7\u25A0\u25A1\u2013\u2014\u2010•·–—►▸▶◆◇■□-]\s*/;
 const NUMBERED_PATTERN = /^(\d{1,3})[.)]\s+/;
 const LETTER_LIST_PATTERN = /^[a-zA-Z][.)]\s+/;
+const BRACKET_NUM_PATTERN = /^\[(\d{1,3})\]\s+/;
 
 function classifyBlock(
   items: ExtractedItem[],
@@ -424,10 +425,18 @@ function classifyBlock(
     return { items, type: "heading", headingLevel: 2 };
   }
 
+  // Letter-dot pattern: "A. Value Functions", "B. Sampling" — common subsection style
+  const letterDotMatch = allText.match(/^[A-Z]\.\s+[A-Z]/);
+  if (letterDotMatch && isShortLine && hasNoTrailingPunctuation) {
+    return { items, type: "heading", headingLevel: 3 };
+  }
+
   // Check 2: Font size heading (largest font sizes are headings)
   // Guard: don't classify long blocks as headings — real headings are short
+  // Guard: require at least one real word (3+ letters) or CJK char to filter diagram labels
   const headingLevel = getHeadingLevel(firstItem.fontSize, profile);
-  if (headingLevel !== undefined && allText.length <= 150) {
+  const hasRealWord = /[a-zA-Z]{3,}/.test(allText) || /[\u3000-\u9FFF\uF900-\uFAFF]/.test(allText);
+  if (headingLevel !== undefined && allText.length <= 150 && hasRealWord) {
     return { items, type: "heading", headingLevel };
   }
 
@@ -458,10 +467,12 @@ function classifyBlock(
 
   // Check 4: ALL_CAPS short line → heading (independent of bold detection)
   // Catches headings in PDFs where font name doesn't contain "Bold" (subset fonts)
+  // Guard: require at least one real word (3+ letters) to filter diagram labels like "C T"
   const isAllCaps = allText === allText.toUpperCase() && allText !== allText.toLowerCase();
   if (
     isAllCaps && allText.length >= 3 && allText.length <= 80 &&
-    hasNoTrailingPunctuation && !looksLikeListItem && items.length <= 8
+    hasNoTrailingPunctuation && !looksLikeListItem && items.length <= 8 &&
+    hasRealWord
   ) {
     return { items, type: "heading", headingLevel: 2 };
   }
@@ -482,6 +493,13 @@ function classifyBlock(
   const letterMatch = text.match(LETTER_LIST_PATTERN);
   if (letterMatch) {
     return { items, type: "list-item", listMarker: "-" };
+  }
+
+  // Bracketed-number reference: "[1] Author..." — common in bibliographies
+  // Check both first item text and full block text (bracket may be separate item)
+  const bracketNumMatch = text.match(BRACKET_NUM_PATTERN) ?? allText.match(BRACKET_NUM_PATTERN);
+  if (bracketNumMatch) {
+    return { items, type: "list-item", listMarker: `-` };
   }
 
   return { items, type: "paragraph" };
@@ -602,6 +620,58 @@ function promoteFirstHeading(blocks: Block[]): void {
   if (firstFontSize > otherMaxFontSize) {
     firstHeading.headingLevel = 1;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Merge consecutive very short blocks (diagram labels, formula fragments)
+// ---------------------------------------------------------------------------
+
+/**
+ * Merge consecutive very short blocks on the same page into a single paragraph.
+ * Diagram labels, formula fragments, and figure annotations often produce many
+ * tiny blocks (1-3 chars each) that clutter the output as separate paragraphs or
+ * false headings.
+ *
+ * Merges runs of 3+ consecutive blocks where ALL are ≤5 chars into one paragraph.
+ */
+function mergeShortBlocks(blocks: Block[]): Block[] {
+  const result: Block[] = [];
+  let i = 0;
+
+  while (i < blocks.length) {
+    const block = blocks[i];
+    const blockText = block.items.map((it) => it.str).join(" ").trim();
+
+    // Check if this starts a run of very short blocks on the same page
+    if (blockText.length <= 5) {
+      let runEnd = i + 1;
+      while (runEnd < blocks.length) {
+        const nextText = blocks[runEnd].items.map((it) => it.str).join(" ").trim();
+        const samePage = blocks[runEnd].items[0]?.page === block.items[0]?.page;
+        if (nextText.length <= 5 && samePage) {
+          runEnd++;
+        } else {
+          break;
+        }
+      }
+
+      // If 3+ consecutive short blocks, merge them into one paragraph
+      if (runEnd - i >= 3) {
+        const mergedItems: ExtractedItem[] = [];
+        for (let j = i; j < runEnd; j++) {
+          mergedItems.push(...blocks[j].items);
+        }
+        result.push({ items: mergedItems, type: "paragraph" });
+        i = runEnd;
+        continue;
+      }
+    }
+
+    result.push(block);
+    i++;
+  }
+
+  return result;
 }
 
 // ---------------------------------------------------------------------------
@@ -810,6 +880,7 @@ function blocksToMarkdown(
             cleaned = cleaned.replace(BULLET_PATTERN, "");
             cleaned = cleaned.replace(NUMBERED_PATTERN, "");
             cleaned = cleaned.replace(LETTER_LIST_PATTERN, "");
+            cleaned = cleaned.replace(BRACKET_NUM_PATTERN, "");
             parts.push(`${block.listMarker} ${cleaned.trim()}`);
             break;
           }
@@ -1002,9 +1073,10 @@ export async function convert(
   }
 
   // Initialize PDF.js worker
-  initPdfWorker();
+  await initPdfWorker();
 
   // Load document
+  const { getDocument } = await getPdfjs();
   let doc: PDFDocumentProxy;
   try {
     const loadingTask = getDocument({
@@ -1160,7 +1232,10 @@ export async function convert(
   const emphasisFonts = detectEmphasisFonts(reordered, profile.bodySize);
 
   // Group into blocks (paragraphs, headings, list items)
-  const blocks = groupIntoBlocks(reordered, profile, emphasisFonts);
+  const rawBlocks = groupIntoBlocks(reordered, profile, emphasisFonts);
+
+  // Merge consecutive very short blocks (diagram labels, formula fragments)
+  const blocks = mergeShortBlocks(rawBlocks);
 
   // Promote first heading to H1 if no H1 exists (common for document titles
   // that get ranked deep by font-size analysis)

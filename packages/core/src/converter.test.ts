@@ -10,8 +10,8 @@ import {
   tableToMarkdown,
   detectColumnLayout,
   reorderColumnarItems,
-} from "./detection";
-import { rejoinHyphenatedWords } from "./detection";
+} from "./detection.js";
+import { rejoinHyphenatedWords } from "./detection.js";
 
 // Helper to create ExtractedItem-like objects for testing
 function makeItem(overrides: {
@@ -775,6 +775,61 @@ describe("isCodeBlock (enhanced)", () => {
     expect(isCodeBlock(items3, codeFonts)).toBe(true);
   });
 
+  it("rejects cookbook/brochure captions in code font (no code syntax)", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    // Cookbook temperature table fragment
+    const items1 = [
+      makeItem({ str: "Rest", x: 100, y: 100, fontName: "g_d0_f3" }),
+      makeItem({ str: "Category Food Temperature (°F)", x: 100, y: 114, fontName: "g_d0_f3" }),
+      makeItem({ str: "Time", x: 300, y: 114, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items1, codeFonts)).toBe(false);
+
+    // Photo credit caption
+    const items2 = [
+      makeItem({ str: "ABOVE (LEFT) PHOTO NPS", x: 50, y: 100, fontName: "g_d0_f3" }),
+      makeItem({ str: "BACKGROUND PHOTO NPS", x: 50, y: 114, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items2, codeFonts)).toBe(false);
+
+    // Species count fragment
+    const items3 = [
+      makeItem({ str: "Vascular Plants: 1,750 species Exotic (non-native)", x: 50, y: 100, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items3, codeFonts)).toBe(false);
+  });
+
+  it("rejects math equations in code font (looksLikeMath guard)", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    // Math notation with Greek Unicode and operators
+    const items1 = [
+      makeItem({ str: ") + ‖ T ( x ) − x ‖ d ρ k", x: 100, y: 100, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items1, codeFonts)).toBe(false);
+
+    // Math with exp/log and single-letter variables
+    const items2 = [
+      makeItem({ str: "exp ( r ( x, y )) p ( y ≻ y | x ) = exp ( r ∗", x: 100, y: 100, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items2, codeFonts)).toBe(false);
+
+    // Monospace font with math notation
+    const items3 = [
+      makeItem({ str: "x ( t ) = −∇L ( x ( t ))", x: 100, y: 100, fontName: "Courier" }),
+    ];
+    expect(isCodeBlock(items3)).toBe(false);
+  });
+
+  it("rejects legislative names in code font (no code syntax)", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    // Legislator names with state abbreviations
+    const items = [
+      makeItem({ str: "Bennet Johnson (SD) Reid", x: 100, y: 100, fontName: "g_d0_f3" }),
+      makeItem({ str: "Brady (PA) Hurt (VA) Tonko", x: 100, y: 114, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items, codeFonts)).toBe(false);
+  });
+
   it("still detects code blocks with sufficient content", () => {
     const codeFonts = new Set(["g_d0_f3"]);
     const items = [
@@ -824,5 +879,98 @@ describe("rejoinHyphenatedWords", () => {
   it("preserves intentional compound hyphens (no space)", () => {
     const input = "a well-known state-of-the-art method";
     expect(rejoinHyphenatedWords(input)).toBe("a well-known state-of-the-art method");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Table detection guards (prose vs. real tables)
+// ---------------------------------------------------------------------------
+describe("detectTable guards for short vs prose cells", () => {
+  it("rejects 2-column table with long prose cells", () => {
+    // Simulate two-column layout text that looks like a 2-col table
+    const items = Array.from({ length: 10 }, (_, i) => {
+      const row = Math.floor(i / 2);
+      const col = i % 2;
+      return makeItem({
+        str: `This is a relatively long piece of text that should not be a table cell ${col}`,
+        x: col === 0 ? 50 : 350,
+        y: row * 20,
+        width: 200,
+      });
+    });
+    expect(detectTable(items)).toBeNull();
+  });
+
+  it("accepts 3-column table with short cells", () => {
+    const items = [
+      makeItem({ str: "Name", x: 50, y: 10, width: 60 }),
+      makeItem({ str: "Age", x: 150, y: 10, width: 30 }),
+      makeItem({ str: "City", x: 250, y: 10, width: 40 }),
+      makeItem({ str: "Alice", x: 50, y: 30, width: 60 }),
+      makeItem({ str: "30", x: 150, y: 30, width: 30 }),
+      makeItem({ str: "NYC", x: 250, y: 30, width: 40 }),
+      makeItem({ str: "Bob", x: 50, y: 50, width: 60 }),
+      makeItem({ str: "25", x: 150, y: 50, width: 30 }),
+      makeItem({ str: "LA", x: 250, y: 50, width: 40 }),
+    ];
+    const result = detectTable(items);
+    expect(result).not.toBeNull();
+    expect(result!.length).toBe(3);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Heading classification edge cases
+// ---------------------------------------------------------------------------
+describe("heading classification edge cases", () => {
+  it("very short text (1-2 chars) should not be classified as heading even if large font", () => {
+    // This tests the hasRealWord guard on font-size headings.
+    // The guard ensures items like "1", "M", "T", "C T" from diagram labels
+    // are not falsely promoted to headings.
+    const hasRealWord = (text: string) =>
+      /[a-zA-Z]{3,}/.test(text) || /[\u3000-\u9FFF\uF900-\uFAFF]/.test(text);
+
+    const shortLabels = ["1", "M", "'", "T", "C T", "E E"];
+    for (const label of shortLabels) {
+      expect(hasRealWord(label)).toBe(false);
+    }
+  });
+
+  it("real heading words pass the 3-letter guard", () => {
+    const hasRealWord = (text: string) =>
+      /[a-zA-Z]{3,}/.test(text) || /[\u3000-\u9FFF\uF900-\uFAFF]/.test(text);
+
+    const realHeadings = ["FAQ", "Summary", "BERT", "Introduction", "CONCLUSION"];
+    for (const heading of realHeadings) {
+      expect(hasRealWord(heading)).toBe(true);
+    }
+  });
+
+  it("CJK headings pass the real word guard", () => {
+    const hasRealWord = (text: string) =>
+      /[a-zA-Z]{3,}/.test(text) || /[\u3000-\u9FFF\uF900-\uFAFF]/.test(text);
+
+    expect(hasRealWord("序言")).toBe(true);
+    expect(hasRealWord("第一条")).toBe(true);
+  });
+
+  it("letter-dot pattern matches subsection headings", () => {
+    const letterDotPattern = /^[A-Z]\.\s+[A-Z]/;
+    expect(letterDotPattern.test("A. Value Functions")).toBe(true);
+    expect(letterDotPattern.test("B. Sampling")).toBe(true);
+    expect(letterDotPattern.test("C. Policy Search Methods")).toBe(true);
+    // Should not match lowercase or missing space
+    expect(letterDotPattern.test("a. lowercase item")).toBe(false);
+    expect(letterDotPattern.test("A.NoSpace")).toBe(false);
+  });
+
+  it("bracketed number pattern matches references", () => {
+    const bracketPattern = /^\[(\d{1,3})\]\s+/;
+    expect(bracketPattern.test("[1] W. Dai")).toBe(true);
+    expect(bracketPattern.test("[12] Some reference")).toBe(true);
+    expect(bracketPattern.test("[123] Another reference")).toBe(true);
+    // Should not match 4+ digit numbers or missing space
+    expect(bracketPattern.test("[1234] Too many digits")).toBe(false);
+    expect(bracketPattern.test("[1]NoSpace")).toBe(false);
   });
 });

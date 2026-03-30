@@ -1,10 +1,6 @@
 Qtr 1 2012
 
-Qtr 4
-
-Qtr 3
-
-Qtr 2
+Qtr 4 Qtr 3 Qtr 2
 
 Qtr 1 2011
 

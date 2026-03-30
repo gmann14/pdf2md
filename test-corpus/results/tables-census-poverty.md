@@ -8,7 +8,7 @@ title: "Current Population Reports"
 
 #### [Issued September 2024](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-## P60-283
+P60-283
 
 [Acknowledgments](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) Emily A. Shrider prepared this report under the direction of Brian Glassman , [chief of the Poverty Statistics Branch.](https://www.census.gov/library/working-papers/2021/demo/SEHSD-WP2021-20.html) John Creamer led the production and [analysis of the Supplemental Poverty Measure.](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Liana E. Fox](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) , assistant division chief for Economic Characteristics in the Social, Economic, and Housing Statistics Division, provided overall direction.
 
@@ -28,7 +28,7 @@ The authors also would like to thank the Census Bureau field representatives and
 
 #### [Issued September 2024](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-## P60-283
+P60-283
 
 ### Robert L. Santos [,](http://www.census.gov/programs-surveys/cps/technical-documentation/subject-definitions.html) Director
 
@@ -40,9 +40,9 @@ The authors also would like to thank the Census Bureau field representatives and
 
 #### [Current Population Reports,](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-#### P60-283,
+P60-283,
 
-#### ,
+,
 
 #### U.S. Government Publishing Office,
 
@@ -136,7 +136,7 @@ Table B-3. Number and Percentage of People in Poverty Using the Supplemental Pov
 
 [Table B-7.](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html) Effect of Individual Elements on the Number of Individuals in Poverty Using the Supplemental [Poverty Measure: 2022 and 2023](https://data.census.gov/) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-#### iv
+### iv
 
 ### [INTRODUCTION](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
@@ -381,11 +381,9 @@ From 2022 to 2023, only the White, non-Hispanic White, and [Two or More Races po
 
 [ALL PEOPLE](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)  [](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html) [Change](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
 
-### Total  [](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html)
-
-### Sex
-
-### [Male](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html)
+| Total |     |     |
+| ----- | --- | --- |
+| Male  |     |     |
 
 ### [Female](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833)  [](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
@@ -449,53 +447,34 @@ From 2022 to 2023, only the White, non-Hispanic White, and [Two or More Races po
 
 * An asterisk preceding an estimate indicates change is statistically different from zero at the 90 percent confidence level. Population limited to individuals 25 years and older. In 2023, the overall poverty rate for this group was 9.5 percent. Population limited to 18- to 64-year-olds. In 2023, the overall poverty rate for this group was 10.0 percent. [Note: Population as of March of the following year. Details may not sum to totals due to rounding. More details available in Tables A-1 and A-2.](https://stats.bls.gov/pir/spmhome.htm) [More information on confidentiality protection, sampling error, nonsampling error, and definitions is available at](https://stats.bls.gov/pir/spmhome.htm) <[https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)>. Source: U.S. Census Bureau, Current Population Survey, 2023 and 2024 Annual Social and Economic Supplements (CPS ASEC).
 
-### [*–](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html)
+```
+*–
+–
+*–
 
-- 
+*–
+–
+–
+–
+–
 
-### [*–](http://www.census.gov/programs-surveys/sipp/library/publications.html)
+*–
+*–
+*–
 
-[](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
-
-### [*–](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
-
-- [–](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
-
-- 
-
-- 
-
-- [–](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-### *–
-
-### [*–](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
-
-### [*–](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html)
-
-- 
-
+– 
 *
-
-- 
-
-- 
-
-- 
-
-### *–
-
-- 
-
-### *-
-
-- 
-
-### *–
-
-- 
-
-[](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+–
+–
+-
+*–
+–
+*-
+–
+*–
+–
+       
+```
 
 ### [Percent](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
@@ -535,11 +514,7 @@ SPM rates increased by 0.5 per - centage points for both men and women in 2023. 
 
 White, not Hispanic
 
-```
-
-Hispanic (any race)
-
-```
+[Hispanic (any race)](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
 Black
 
@@ -555,14 +530,9 @@ Black
 
 ### [Ratio](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html)
 
-```
-White, not Hispanic *
-```
+[White, not Hispanic](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [*](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
 
-```
-Hispanic (any race)
-*
-```
+Hispanic (any race) *
 
 Black [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -570,12 +540,7 @@ Asian [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/
 
 Two or More Races [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-American Indian and
-*
-Alaska Native
-‘’“
-```
+American Indian and * Alaska Native ‘’“
 
 * An asterisk denotes that the ratio is different from 1.0 at the 90 percent confidence level. Note: Population as of March of the following year. Information on confidentiality protection, sampling error, nonsampling error, and definitions is available at <[https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)>. Source: U.S. Census Bureau, Current Population Survey, 2024 Annual Social and Economic Supplement (CPS ASEC).
 
@@ -590,11 +555,9 @@ Alaska Native
 
 ### [Decrease](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html) Increase [ALL PEOPLE](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-### Total  [](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html)
-
-### Sex
-
-### [Male](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html)  [](http://www.census.gov/programs-surveys/sipp/library/publications.html)
+| Total |     |     |
+| ----- | --- | --- |
+| Male  |     |     |
 
 ### [Female](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html)  [](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
@@ -652,43 +615,29 @@ Alaska Native
 
 Z Rounds to zero. * An asterisk indicates change is statistically different from zero at the 90 percent confidence level. [Population limited to individuals 25 years and older. In 2023, the overall Supplemental Poverty Measure (SPM) rate for this group](https://stats.bls.gov/pir/spmhome.htm) [was 12.1 percent.](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [Population limited to 18- to 64-year-olds. In 2023, the overall SPM rate for this group was 12.2 percent.](https://stats.bls.gov/pir/spmhome.htm) Note: Population as of March of the following year. Details may not sum to totals due to rounding. More details are available in Table B-3. More information on confidentiality protection, sampling error, nonsampling error, and definitions is avaiable at <[https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)>. Source: U.S. Census Bureau, Current Population Survey, 2023 and 2024 Annual Social and Economic Supplements (CPS ASEC).
 
+```
 *
-
-[*](http://www.census.gov/programs-surveys/sipp/library/publications.html)
-
 *
-
 *
-
-### [0.4](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
-
+ *
+0.4
 Z
+-
+¡*
 
-- 
-
-### [¡*](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
-
-[](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html)
-
-- [–](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
+–
 
 *
-
-- [–](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
-
-[*](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
-
-### [¢*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
+–
+*
+¢*
 *
 
 *
-
-- 
-
-[*](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
-
-[](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+–
+*
+     
+```
 
 ### Percent
 
@@ -738,19 +687,7 @@ rate (11.1 percent) in 2023 (Table B-4). [This is an increase from the 0.9](http
 
 ### [Percent](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-[](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
-
-[](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html) [](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)
-
-[](mailto:demo.asec.modernization@census.gov)
-
-[](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
-
-[](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
-
-[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+[](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html) [](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html) [](mailto:demo.asec.modernization@census.gov)   [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
 ### Note: Official
 
@@ -808,9 +745,7 @@ subsequent narrowing in 2022 was [rates for most groups in the figure](https://w
 
 ### Official
 
-+
-
-[](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
++         [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
 #### [Figure 7.](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [Percentage of People in Poverty by Different Poverty Measures: 2023](https://www.census.gov/library/working-papers/2021/demo/SEHSD-WP2021-20.html)
 
@@ -818,11 +753,9 @@ subsequent narrowing in 2022 was [rates for most groups in the figure](https://w
 
 ### [ALL PEOPLE](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Official](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [SPM](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
 
-### Total
-
-### Sex
-
-### Male
+| Total |     |     |
+| ----- | --- | --- |
+| Male  |     |     |
 
 ### [Female](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) [](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html) [](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
@@ -904,57 +837,35 @@ includes unrelated individuals under age 15. Population as of March of the follo
 
 ### Official SPM
 
-[)](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
-
+```
+)
+*
+*
+*
+*–
+*
+*
+*
+*–
+*
+*
+*
+*
 *
 
 *
-
-[*](http://www.census.gov/programs-surveys/sipp/library/publications.html)
-
-### [*–](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
-
-[*](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
-
+–
+–
 *
-
-[*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-### *–
-
+* 
 *
-
 *
-
-[*](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
-
 *
-
 *
-
 *
-
-- 
-
-- 
-
 *
-
 *
-
-*
-
-*
-
-*
-
-*
-
-*
-
-*
-
-*
+```
 
 [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html) [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html) [Percent](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html)
 
@@ -974,11 +885,7 @@ includes unrelated individuals under age 15. Population as of March of the follo
 
 ### [](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html) [SPM children](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
-[](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
-
-[](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)
-
-[](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)      [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](https://data.census.gov/) [](https://data.census.gov/)
+[](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html) [](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)      [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](https://data.census.gov/) [](https://data.census.gov/)
 
 #### [18 to 64 Years](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) Percent [](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
@@ -1002,9 +909,7 @@ includes unrelated individuals under age 15. Population as of March of the follo
 
 ### Official 65+
 
-[](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html)   [](https://stats.bls.gov/pir/spmhome.htm) [](https://stats.bls.gov/pir/spmhome.htm)
-
-[+ ](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html)
+[](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html)   [](https://stats.bls.gov/pir/spmhome.htm) [](https://stats.bls.gov/pir/spmhome.htm)         [+ ](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html)
 
 [Note: Official](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html) includes unrelated individuals under age 15. Population as of March of the following year. The Supplemental Poverty Measure (SPM) estimates for 2019 and beyond reflect the implementation of revised SPM methodology. More information is available in the SPM technical documenation at <[https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)>. The data for 2017 and beyond reflect the implementation of an updated processing system. The data for 2013 and beyond reflect the implementation of the redesigned income questions. Refer to Table B-2 for historical footnotes. The data points are placed at the midpoints of the respective years. More information on recessions is available in Appendix C. More information on confidentiality protection, sampling error, nonsampling error, and definitions is available at <[https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)>. Source: U.S. Census Bureau, Current Population Survey, 2010 to 2024 Annual Social and Economic Supplements (CPS ASEC).
 
@@ -1016,41 +921,25 @@ The methodological differences between the official poverty measure and the SPM 
 
 ### (In percent) Official TOTAL POPULATION [Less than ](http://www.census.gov/library/publications/2024/demo/p60-284.html) [](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
-### to
-
-### to
-
-### to
+to   to   to
 
 ### or more
 
 ### Under Years [Less than ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### [ to ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-### [ to ](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
-
-### [ to](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
+[ to ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [ to ](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [ to](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
 ### [ or more](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
 ### [ to](mailto:demo.asec.modernization@census.gov) [Years](mailto:demo.asec.modernization@census.gov) Less than
 
-### to
-
-### to
-
-### to
+to   to   to
 
 ### or more
 
 ### [Years and Older](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Less than ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### to
-
-### to
-
-### [ to](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html)
+to   to  [ to](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html)
 
 ### [ or more](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html)
 
@@ -1084,23 +973,7 @@ measure. [for the total population and major](https://www2.census.gov/programs-s
 
 ### [Poverty Measure](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [Supplemental Poverty Measure](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions)
 
-[](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
-
-[](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
-
-[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-[](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
-
-[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-[](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
-
-[](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html)
-
-[](https://www.nber.org/research/business-cycle-dating)
-
-[](https://www.nber.org/research/business-cycle-dating) [](https://www.nber.org/research/business-cycle-dating) [](http://www.census.gov/programs-surveys/saipe.html)
+[](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)      [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)  [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)                         [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)    [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html)     [](https://www.nber.org/research/business-cycle-dating)      [](https://www.nber.org/research/business-cycle-dating) [](https://www.nber.org/research/business-cycle-dating) [](http://www.census.gov/programs-surveys/saipe.html)
 
 #### [poverty threshold using the offi](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [-](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) Considering age, the share of was the lowest of the three age
 
@@ -2479,21 +2352,11 @@ of (±) 0.5 0.5 0.4 0.4 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.9 0.6 0.5 0.5 0.6 0.6 
 
 9.5 9.6 8.4 14.2 14.1 10.7 12.8 12.8 13.6 13.6 14.1 14.5 13.7 14.4 15.6 14.6 14.8 15.1 15.8 14.9 12.6 13.1 11.5 11.5 12.2 12.2 12.6 13.2 12.0 13.0 14.2 13.4 13.8 13.8 14.5 13.3 Percent
 
-```
->) of (±)
-error
-Below poverty Margin
-```
+>) of (±) error Below poverty Margin
 
-```
-65 years and over 8,384 8,187 6,003 5,135 6,975 6,972 7,174 6,960 7,207 7,168 6,506 6,627 7,019 6,507 6,419 6,247 6,292 5,788 6,156 6,244 4,466 3,808 5,251 5,256 5,384 5,239 5,406 5,502 4,849 5,064 5,481 5,095 5,102 4,943 4,954 4,494
-Number
-```
+65 years and over 8,384 8,187 6,003 5,135 6,975 6,972 7,174 6,960 7,207 7,168 6,506 6,627 7,019 6,507 6,419 6,247 6,292 5,788 6,156 6,244 4,466 3,808 5,251 5,256 5,384 5,239 5,406 5,502 4,849 5,064 5,481 5,095 5,102 4,943 4,954 4,494 Number
 
-```
-Total
-59,240 57,880 56,190 54,280 54,640 54,640 52,790 51,070 51,080 49,270 47,550 45,990 44,960 44,510 43,290 41,510 39,780 38,950 48,790 47,770 46,550 45,330 45,760 45,760 44,310 43,000 42,990 41,620 40,250 39,050 38,470 37,910 37,040 35,730 34,270 33,680
-```
+Total 59,240 57,880 56,190 54,280 54,640 54,640 52,790 51,070 51,080 49,270 47,550 45,990 44,960 44,510 43,290 41,510 39,780 38,950 [48,790](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 47,770 46,550 45,330 45,760 45,760 44,310 43,000 42,990 41,620 40,250 39,050 38,470 37,910 37,040 35,730 34,270 33,680
 
 of (±) 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.5 0.4 0.3 0.3 0.3 0.3 [0.4](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 0.4 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.5 0.4 0.3 0.3 0.3 0.3 [error](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [Margin](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html)
 
@@ -2505,15 +2368,11 @@ of (±) 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.5 0.4 0.3 0.3 0.3 0.3 
 
 18 to 64 years
 
-```
-Number 24,500 23,730 15,750 17,710 22,070 22,070 24,150 24,580 26,240 26,300 27,720 29,980 29,470 29,990 29,950 29,970 29,260 27,510 16,810 16,570 10,450 12,040 14,820 14,910 16,250 16,500 17,660 18,000 18,740 20,840 20,520 20,690 20,530 20,770 20,370 19,250
-```
+Number 24,500 23,730 [15,750](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [17,710](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [22,070](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [22,070](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [24,150](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [24,580](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [26,240](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [26,300](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [27,720](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) 29,980 29,470 29,990 29,950 29,970 29,260 27,510 [16,810](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) [16,570](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [10,450](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [12,040](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [14,820](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [14,910](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [16,250](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [16,500](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [17,660](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [18,000](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [18,740](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [20,840](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [20,520](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [20,690](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) 20,530 20,770 20,370 19,250
 
 [Total](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833)
 
-```
-200,400 200,200 199,100 199,800 197,500 197,500 197,800 198,000 198,100 197,100 197,300 196,300 194,700 194,800 193,600 193,200 192,500 190,800 149,900 150,400 150,700 151,400 149,800 149,800 150,600 151,200 151,300 151,000 151,700 151,600 151,200 151,300 151,000 151,400 151,200 150,400
-```
+200,400 200,200 [199,100](http://www.census.gov/programs-surveys/sipp/library/publications.html) [199,800](http://www.census.gov/programs-surveys/sipp/library/publications.html) [197,500](http://www.census.gov/programs-surveys/sipp/library/publications.html) [197,500](http://www.census.gov/programs-surveys/sipp/library/publications.html) [197,800](http://www.census.gov/programs-surveys/sipp/library/publications.html) [198,000](http://www.census.gov/programs-surveys/sipp/library/publications.html) [198,100](http://www.census.gov/programs-surveys/sipp/library/publications.html) [197,100](http://www.census.gov/programs-surveys/sipp/library/publications.html) [197,300](http://www.census.gov/programs-surveys/sipp/library/publications.html) [196,300](http://www.census.gov/programs-surveys/sipp/library/publications.html) [194,700](http://www.census.gov/programs-surveys/sipp/library/publications.html) [194,800](http://www.census.gov/programs-surveys/sipp/library/publications.html) [193,600](http://www.census.gov/programs-surveys/sipp/library/publications.html) [193,200](http://www.census.gov/programs-surveys/sipp/library/publications.html) [192,500](http://www.census.gov/programs-surveys/sipp/library/publications.html) 190,800 149,900 150,400 150,700 151,400 149,800 149,800 150,600 151,200 151,300 151,000 151,700 151,600 151,200 151,300 151,000 151,400 151,200 150,400
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 0.6 0.5 0.4 0.4 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.9 [0.5](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.5](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.5](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.5](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 0.5 [0.6](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 0.5 0.4 0.5 0.5 0.5 0.5 0.6 0.5 0.5 0.6 0.5 0.9 0.5 0.5 0.5 0.5 0.5 [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2525,16 +2384,9 @@ Number 24,500 23,730 15,750 17,710 22,070 22,070 24,150 24,580 26,240 26,300 27,
 | ------------- | ------ |
 | Below poverty | Margin |
 
-```
-Under 18 years
-9,962 8,983 3,829 7,196 9,253 9,119 6,205 5,713 2,347 4,442 5,954 5,928 6,186 6,645 7,365 7,212 7,903 8,065 8,901 7,664 8,374 8,622 8,529 8,303
-Number 10,100 10,530 11,520 11,280 12,030 12,630 13,370 12,180 13,360 13,350 13,290 12,700
-```
+Under 18 years 9,962 8,983 3,829 [7,196](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [9,253](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [9,119](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [6,205](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [5,713](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,347](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,442](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [5,954](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [5,928](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [6,186](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [6,645](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [7,365](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) 7,212 7,903 8,065 8,901 7,664 8,374 8,622 8,529 8,303 [Number](http://www.census.gov/library/publications/2024/demo/p60-284.html) [10,100](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [10,530](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [11,520](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [11,280](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [12,030](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [12,630](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [13,370](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [12,180](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [13,360](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [13,350](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [13,290](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [12,700](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions)
 
-```
-Total
-72,770 72,500 73,470 74,030 73,150 73,150 73,790 74,070 73,960 74,050 74,060 73,920 73,790 74,050 74,190 74,110 74,300 74,550 51,160 51,040 52,030 52,640 52,810 52,810 53,130 53,520 53,450 53,640 53,820 53,850 53,880 54,160 54,390 54,440 54,790 54,980
-```
+Total 72,770 72,500 73,470 [74,030](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [73,150](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [73,150](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [73,790](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [74,070](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [73,960](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [74,050](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [74,060](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [73,920](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [73,790](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [74,050](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [74,190](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [74,110](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [74,300](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 74,550 51,160 [51,040](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [52,030](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [52,640](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [52,810](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [52,810](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [53,130](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [53,520](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [53,450](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [53,640](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [53,820](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [53,850](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [53,880](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [54,160](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [54,390](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [54,440](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) 54,790 54,980
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) (±) 0.3 0.3 0.2 [0.2](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.5](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 0.3 0.3 0.3 [0.3](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [0.2](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [0.2](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.5 0.3 0.3 0.3 0.3 0.3 error [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2542,15 +2394,11 @@ Total
 
 [All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-Number 42,840 40,900 25,580 30,040 38,300 38,160 41,420 42,080 44,970 44,750 46,250 49,240 49,850 48,670 49,730 49,570 48,840 45,990 29,170 28,520 17,270 20,290 26,030 26,090 27,820 28,380 30,430 30,720 31,490 33,970 34,910 33,450 34,000 34,340 33,860 32,050
-```
+[Number](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 42,840 40,900 25,580 30,040 38,300 38,160 41,420 42,080 44,970 44,750 46,250 49,240 49,850 48,670 49,730 49,570 48,840 45,990 29,170 28,520 17,270 20,290 26,030 26,090 27,820 28,380 30,430 30,720 31,490 33,970 34,910 33,450 34,000 34,340 33,860 32,050
 
 [Total](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-```
 332,400 330,600 328,700 328,100 325,300 325,300 324,400 323,100 323,200 320,400 318,900 316,200 313,400 313,400 311,100 308,800 306,600 304,300 249,900 249,200 249,300 249,400 248,400 248,400 248,000 247,700 247,700 246,300 245,800 244,500 243,600 243,400 242,500 241,600 240,300 239,000
-```
 
 [year](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) origin, and Footnotes available at end of table.
 
@@ -2560,21 +2408,11 @@ of (±) 0.6 0.6 0.5 0.5 0.5 0.5 0.5 0.6 0.6 0.6 0.6 0.5 1.0 0.7 0.6 0.6 0.6 0.6 
 
 8.5 7.4 10.9 11.8 10.0 10.1 10.7 11.1 11.3 11.9 10.8 11.6 12.8 12.1 12.5 12.7 13.3 12.3 24.2 20.2 16.5 15.2 21.3 21.0 22.0 22.5 23.5 23.0 24.2 23.2 25.6 22.5 Percent
 
-```
->) of (±)
-error
-Below poverty Margin
-```
+>) of (±) error Below poverty Margin
 
-```
-65 years and over 4,749 5,064 3,566 3,009 4,156 4,177 4,313 4,332 4,438 4,535 3,967 4,148 4,518 4,209 4,260 4,169 4,219 3,836 1,510 1,234 1,148 1,130 1,137 1,111 1,165 1,070 1,075 1,038
-Number
-```
+65 years and over 4,749 5,064 3,566 3,009 4,156 4,177 4,313 4,332 4,438 4,535 3,967 4,148 4,518 4,209 4,260 4,169 4,219 3,836 1,510 1,234 1,148 1,130 1,137 1,111 1,165 1,070 1,075 1,038 Number
 
-```
-Total 6,253 6,097 5,845 5,487 5,394 5,394 5,180 4,942 4,952 4,660 4,447 4,249 4,054 4,085
-43,690 42,970 41,850 40,860 41,440 41,440 40,220 39,130 39,130 37,950 36,680 35,730 35,320 34,780 34,130 32,900 31,620 31,160
-```
+Total 6,253 6,097 5,845 5,487 5,394 5,394 5,180 4,942 4,952 4,660 4,447 4,249 4,054 4,085 43,690 42,970 41,850 40,860 41,440 41,440 40,220 39,130 39,130 37,950 36,680 35,730 35,320 34,780 34,130 32,900 31,620 31,160
 
 of (±) 0.4 0.4 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.5 0.4 0.3 0.3 0.4 0.3 0.9 0.9 0.8 0.8 0.9 0.9 1.0 0.9 0.9 0.9 1.0 0.8 1.6 1.2 [error](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [Margin](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html)
 
@@ -2584,17 +2422,9 @@ of (±) 0.4 0.4 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.5 0.4 0.3 0.3 0.4 0.3 
 
 [Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-18 to 64 years
-9,748 6,604 7,618 9,189 9,183 4,916 4,712 3,293 3,937 5,076 4,961 5,269 5,447 5,800 5,520 6,056 6,121 6,230 6,382
-Number 10,090 10,040 10,330 11,250 11,610 12,110 13,380 12,890 13,370 12,960 13,290 13,250 12,340
-```
+18 to 64 years 9,748 [6,604](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [7,618](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [9,189](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [9,183](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [4,916](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [4,712](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [3,293](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [3,937](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [5,076](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [4,961](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [5,269](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [5,447](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [5,800](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [5,520](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [6,056](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [6,121](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) 6,230 6,382 Number [10,090](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [10,040](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [10,330](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [11,250](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [11,610](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) 12,110 13,380 12,890 13,370 12,960 13,290 13,250 12,340
 
-```
-Total
-29,990 29,460 28,940 29,200 28,840 28,840 28,420 28,230 28,250 27,830 27,650 27,440 27,060 26,920
-114,100 115,300 116,600 117,800 116,800 116,800 118,000 119,000 119,100 119,800 120,900 121,400 121,600 122,000 122,200 123,100 123,700 123,600
-```
+[Total](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) 29,990 29,460 28,940 29,200 28,840 28,840 28,420 28,230 28,250 27,830 27,650 27,440 27,060 26,920 114,100 [115,300](http://www.census.gov/programs-surveys/sipp/library/publications.html) [116,600](http://www.census.gov/programs-surveys/sipp/library/publications.html) [117,800](http://www.census.gov/programs-surveys/sipp/library/publications.html) [116,800](http://www.census.gov/programs-surveys/sipp/library/publications.html) [116,800](http://www.census.gov/programs-surveys/sipp/library/publications.html) [118,000](http://www.census.gov/programs-surveys/sipp/library/publications.html) [119,000](http://www.census.gov/programs-surveys/sipp/library/publications.html) [119,100](http://www.census.gov/programs-surveys/sipp/library/publications.html) [119,800](http://www.census.gov/programs-surveys/sipp/library/publications.html) [120,900](http://www.census.gov/programs-surveys/sipp/library/publications.html) [121,400](http://www.census.gov/programs-surveys/sipp/library/publications.html) [121,600](http://www.census.gov/programs-surveys/sipp/library/publications.html) [122,000](http://www.census.gov/programs-surveys/sipp/library/publications.html) [122,200](http://www.census.gov/programs-surveys/sipp/library/publications.html) [123,100](http://www.census.gov/programs-surveys/sipp/library/publications.html) 123,700 123,600
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 0.6 0.5 0.3 0.5 0.5 0.5 0.4 0.5 0.5 0.5 0.6 0.5 [0.9](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.6](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.5](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.5](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 0.5 0.5 1.6 1.6 1.1 1.3 1.5 1.5 1.6 1.6 1.6 1.5 1.5 1.4 2.4 1.7 [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2606,16 +2436,9 @@ Total
 | ------------- | ------ |
 | Below poverty | Margin |
 
-```
-Under 18 years
-2,534 2,524 2,071 2,577 2,554 2,582 3,023 3,558 3,302 4,001 3,790 4,331 3,364 3,730 3,949 3,948 3,908 2,669 2,372 1,025 2,143 2,613 2,494 3,010 2,918 3,129 3,068 3,090 3,371 3,449 3,473
-Number
-```
+Under 18 years 2,534 2,524 [2,071](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,577](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,554](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,582](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [3,023](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [3,558](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [3,302](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,001](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,790](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,331](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,364](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,730](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,949](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,948](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,908](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,669](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,372](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [1,025](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,143](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,613](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,494](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) 3,010 2,918 3,129 3,068 3,090 3,371 3,449 3,473 [Number](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
-```
-Total
-35,110 35,200 36,130 36,660 36,610 36,610 36,860 37,390 37,320 37,720 38,060 38,200 38,300 38,630 38,980 39,140 39,650 40,080 13,890 13,660 13,580 13,740 13,180 13,180 13,320 13,300 13,340 13,290 13,230 12,990 13,140 13,180
-```
+Total 35,110 35,200 [36,130](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [36,660](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [36,610](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [36,610](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [36,860](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [37,390](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [37,320](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [37,720](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [38,060](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [38,200](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [38,300](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [38,630](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [38,980](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [39,140](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [39,650](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 40,080 [13,890](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,660](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,580](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,740](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,180](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,180](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,320](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,300](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,340](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,290](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,230](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [12,990](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [13,140](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) 13,180
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) (±) 0.3 0.3 [0.2](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.2](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.5](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 0.3 0.3 0.3 [0.9](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [0.9](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) 0.7 0.8 0.9 0.9 1.0 0.9 0.9 0.9 1.0 0.8 1.5 1.1 error [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2623,16 +2446,9 @@ Total
 
 [All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-9,096 8,318 5,279 6,915 8,838 8,585 9,416 9,476 9,659
-Number 17,030 17,680 11,150 12,700 15,920 15,910 16,930 17,690 19,250 19,450 20,080 21,320 21,740 20,950 20,950 21,410 21,420 20,080 10,090 10,220 10,480 10,720 10,770
-```
+9,096 8,318 5,279 6,915 8,838 8,585 9,416 9,476 9,659 [Number](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 17,030 17,680 11,150 12,700 15,920 15,910 16,930 17,690 19,250 19,450 20,080 21,320 21,740 20,950 20,950 21,410 21,420 20,080 10,090 10,220 10,480 10,720 10,770
 
-```
-Total
-50,130 49,220 48,360 48,430 47,420 47,420 46,920 46,480 46,540 45,780 45,330 44,690 44,250 44,190
-192,900 193,500 194,500 195,300 194,900 194,900 195,100 195,500 195,500 195,500 195,600 195,400 195,200 195,400 195,300 195,100 195,000 194,800
-```
+[Total](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 50,130 49,220 48,360 48,430 47,420 47,420 46,920 46,480 46,540 45,780 45,330 44,690 44,250 44,190 192,900 193,500 194,500 195,300 194,900 194,900 195,100 195,500 195,500 195,500 195,600 195,400 195,200 195,400 195,300 195,100 195,000 194,800
 
 [year](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) origin, and Footnotes available at end of table. OR IN COMBINATION [Table B-2.](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) Number and Percentage of People in Poverty Using the Supplemental Poverty Measure by Age, Race, and [Hispanic Origin: 2009 to 2023](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) (Populations in thousands. Margins of error in thousands or percentage points as appropriate. Population as of March of the following year. Information on confidentiality protection, sampling error, nonsampling error, and definitions is available at < [Race, Hispanic](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) NOT HISPANIC WHITE ALONE, BLACK ALONE
 
@@ -2644,15 +2460,9 @@ of (±) 1.7 1.7 1.7 1.7 1.6 1.5 1.4 1.3 1.5 1.5 1.7 1.6 1.7 1.5 1.7 1.5 3.2 2.0 
 | ------------- | ------ | ----- |
 | Below poverty | Margin | error |
 
-```
-65 years and over
-1,479 1,203 1,130 1,113 1,118 1,092 1,147 1,052 1,046 1,000 1,390 1,134 1,078 1,068 1,061 1,013 1,076 1,005 1,021
-Number
-```
+65 years and over 1,479 1,203 1,130 1,113 1,118 1,092 1,147 1,052 1,046 1,000 1,390 1,134 1,078 1,068 1,061 1,013 1,076 1,005 1,021 Number
 
-```
-Total 3,993 3,718 3,555 3,450 6,013 5,897 5,675 5,328 5,257 5,257 5,045 4,827 4,834 4,561 4,343 4,143 3,933 3,975 3,893 3,640 3,443 3,366 5,744 5,650 5,454 5,128 5,048 5,048 4,803 4,599 4,598 4,368 4,214 4,013
-```
+Total 3,993 3,718 3,555 3,450 6,013 5,897 5,675 5,328 5,257 5,257 5,045 4,827 4,834 4,561 4,343 4,143 3,933 3,975 3,893 [3,640](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 3,443 3,366 5,744 5,650 5,454 5,128 5,048 5,048 4,803 4,599 4,598 4,368 4,214 4,013
 
 of (±) 1.0 0.9 0.9 0.9 0.9 1.0 0.8 0.8 1.0 1.0 1.0 0.9 1.0 0.9 1.0 0.8 1.6 1.3 1.0 1.0 [0.9](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 0.9 1.0 1.0 0.8 0.8 0.9 0.9 1.0 0.9 1.0 0.9 1.0 0.9 [error](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [Margin](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html)
 
@@ -2662,16 +2472,9 @@ of (±) 1.0 0.9 0.9 0.9 0.9 1.0 0.8 0.8 1.0 1.0 1.0 0.9 1.0 0.9 1.0 0.8 1.6 1.3 
 
 [Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-18 to 64 years
-6,561 6,281 6,172 5,438 4,537 4,466 3,139 3,713 4,768 4,659 4,985 5,154 5,488 5,295 5,781 5,837 5,853 6,073 6,276 6,032 5,880 5,232 4,215 4,105 2,841 3,452 4,402 4,296 4,641 4,758 5,121 4,936 5,469 5,388
-Number
-```
+18 to 64 years 6,561 6,281 6,172 [5,438](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [4,537](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [4,466](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [3,139](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [3,713](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [4,768](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [4,659](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [4,985](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [5,154](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [5,488](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [5,295](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [5,781](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) 5,837 5,853 6,073 6,276 [6,032](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) [5,880](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [5,232](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [4,215](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [4,105](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [2,841](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [3,452](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [4,402](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [4,296](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [4,641](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [4,758](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [5,121](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [4,936](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) 5,469 5,388 Number
 
-```
-Total
-26,480 25,960 25,820 25,210 27,650 27,450 27,110 27,200 26,860 26,860 26,640 26,640 26,650 26,290 26,190 25,950 25,560 25,550 25,150 24,830 24,670 24,170 25,610 25,500 25,260 25,340 25,090 25,090 24,820 24,980 24,980 24,670 24,770 24,360
-```
+[Total](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) 26,480 25,960 25,820 [25,210](http://www.census.gov/programs-surveys/sipp/library/publications.html) [27,650](http://www.census.gov/programs-surveys/sipp/library/publications.html) [27,450](http://www.census.gov/programs-surveys/sipp/library/publications.html) [27,110](http://www.census.gov/programs-surveys/sipp/library/publications.html) [27,200](http://www.census.gov/programs-surveys/sipp/library/publications.html) [26,860](http://www.census.gov/programs-surveys/sipp/library/publications.html) [26,860](http://www.census.gov/programs-surveys/sipp/library/publications.html) [26,640](http://www.census.gov/programs-surveys/sipp/library/publications.html) [26,640](http://www.census.gov/programs-surveys/sipp/library/publications.html) [26,650](http://www.census.gov/programs-surveys/sipp/library/publications.html) [26,290](http://www.census.gov/programs-surveys/sipp/library/publications.html) [26,190](http://www.census.gov/programs-surveys/sipp/library/publications.html) [25,950](http://www.census.gov/programs-surveys/sipp/library/publications.html) 25,560 25,550 25,150 [24,830](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 24,670 24,170 25,610 25,500 25,260 25,340 25,090 25,090 24,820 24,980 24,980 24,670 24,770 24,360
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 1.7 1.6 1.4 1.5 2.0 1.8 1.3 1.5 1.6 1.6 1.8 1.7 [1.8](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.8](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.6](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.4](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 2.6 1.9 1.8 1.8 [1.6](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 1.5 2.0 2.0 1.3 1.6 1.7 1.7 1.8 1.8 1.9 1.8 1.6 1.5 [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2683,16 +2486,9 @@ Total
 | ------------- | ------ |
 | Below poverty | Margin |
 
-```
-Under 18 years
-3,698 3,665 3,602 3,219 2,296 2,002 1,908 2,245 2,136 2,624 2,529 2,758 2,740 2,701 2,938 2,876 3,084 3,214 3,283 3,205 2,875 2,107 1,865 1,772 2,075 1,966 2,407 2,254 2,483 2,493 2,476 2,686
-Number
-```
+Under 18 years 3,698 3,665 3,602 [3,219](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,296](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,002](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [1,908](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,245](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,136](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,624](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,529](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,758](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,740](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,701](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,938](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,876](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,084](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,214](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,283](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,205](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,875](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [2,107](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [1,865](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [1,772](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) 2,075 1,966 2,407 2,254 2,483 2,493 2,476 2,686 [Number](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
-```
-Total
-13,220 13,070 13,100 13,150 11,310 11,270 11,300 11,310 10,980 10,980 11,150 11,090 11,080 11,190 11,170 11,130 11,100 11,140 11,160 11,220 11,240 11,410 10,180 10,200 10,250 10,300 10,060 10,060 10,160 10,140 10,130 10,220 10,270 10,240
-```
+Total 13,220 13,070 13,100 [13,150](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,310](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,270](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,300](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,310](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [10,980](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [10,980](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,150](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,090](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,080](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,190](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,170](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,130](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [11,100](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 11,140 11,160 11,220 [11,240](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [11,410](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,180](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,200](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,250](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,300](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,060](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,060](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,160](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,140](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,130](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [10,220](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) 10,270 10,240
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) (±) 1.0 1.0 0.9 0.9 [1.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.9](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.8](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.8](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.9](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.9](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.9](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.8](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 1.6 1.2 1.0 1.0 [1.0](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [0.9](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) 1.1 1.0 0.8 0.8 0.9 0.9 1.0 0.9 1.0 0.9 1.0 0.8 error [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2700,15 +2496,9 @@ Total
 
 [All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-9,540 8,312 7,671 4,998 6,435 8,144 7,907 8,727 8,775 9,394 9,086 9,527 9,746 9,729 9,939 8,979 7,711 7,104 4,596 6,017 7,555 7,330 8,109 8,025 8,680 8,433 8,966 8,994
-Number 11,160 10,830 10,660 10,060 10,360 10,180
-```
+9,540 8,312 7,671 4,998 6,435 8,144 7,907 8,727 8,775 9,394 9,086 9,527 9,746 9,729 9,939 8,979 7,711 7,104 4,596 6,017 7,555 7,330 8,109 8,025 8,680 8,433 8,966 8,994 [Number](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 11,160 10,830 10,660 10,060 10,360 10,180
 
-```
-Total
-43,690 42,750 42,470 41,800 44,970 44,620 44,090 43,830 43,090 43,090 42,840 42,560 42,560 42,040 41,700 41,230 40,590 40,670 40,210 39,700 39,350 38,950 41,530 41,360 40,960 40,770 40,210 40,210 39,780 39,720 39,710 39,260 39,260 38,600
-```
+[Total](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 43,690 42,750 42,470 41,800 44,970 44,620 44,090 43,830 43,090 43,090 42,840 42,560 42,560 42,040 41,700 41,230 40,590 40,670 40,210 39,700 39,350 38,950 41,530 41,360 40,960 40,770 40,210 40,210 39,780 39,720 39,710 39,260 39,260 38,600
 
 [year](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) origin, and Footnotes available at end of table. NOT HISPANIC [Table B-2.](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) Number and Percentage of People in Poverty Using the Supplemental Poverty Measure by Age, Race, and [Hispanic Origin: 2009 to 2023](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) (Populations in thousands. Margins of error in thousands or percentage points as appropriate. Population as of March of the following year. Information on confidentiality protection, sampling error, nonsampling error, and definitions is available at < [Race, Hispanic](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) BLACK ALONE BLACK ALONE,
 
@@ -2724,9 +2514,7 @@ of (±) 3.3 2.0 1.7 1.7 1.7 1.7 2.1 2.4 1.9 2.1 2.4 2.4 2.2 2.4 2.3 2.5 2.6 2.8 
 
 Number
 
-```
-Total 3,836 3,841 3,750 3,559 3,329 3,265 3,219 3,127 3,011 2,747 2,724 2,724 2,539 2,392 2,408 2,253 2,176 2,059 1,889 1,910 1,703 1,581 1,515 1,400 3,132 3,034 2,900 2,646 2,638 2,638 2,479
-```
+Total 3,836 3,841 3,750 3,559 3,329 3,265 3,219 3,127 3,011 2,747 2,724 2,724 2,539 2,392 2,408 2,253 2,176 [2,059](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 1,889 1,910 1,703 1,581 1,515 1,400 3,132 3,034 2,900 2,646 2,638 2,638 2,479
 
 of (±) 1.6 1.3 1.0 1.0 1.0 0.9 1.1 1.1 0.9 1.0 0.9 1.0 1.0 1.0 1.0 1.2 1.2 [1.3](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 2.0 1.4 1.2 1.4 1.3 1.2 1.1 1.2 1.0 1.0 1.0 1.0 1.1 [error](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [Margin](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html)
 
@@ -2736,16 +2524,9 @@ of (±) 1.6 1.3 1.0 1.0 1.0 0.9 1.1 1.1 0.9 1.0 0.9 1.0 1.0 1.0 1.0 1.2 1.2 [1.3
 
 [Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-18 to 64 years
-5,517 5,633 5,862 5,586 5,433 4,840 1,995 1,637 1,374 1,207 1,534 1,577 1,859 1,844 1,974 1,942 2,064 2,095 1,921 2,022 1,891 1,985 1,807 1,929 1,838 1,529 1,295 1,118 1,441 1,481 1,762
-Number
-```
+18 to 64 years 5,517 5,633 5,862 5,586 [5,433](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [4,840](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,995](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,637](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,374](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,207](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,534](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,577](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,859](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) 1,844 1,974 1,942 2,064 [2,095](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) [1,921](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [2,022](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,891](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,985](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,807](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,929](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,838](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,529](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,295](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,118](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,441](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,481](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [1,762](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) Number
 
-```
-Total
-24,080 23,830 23,670 23,350 23,130 22,820 15,690 15,510 14,830 14,610 14,480 14,480 14,350 13,990 13,970 13,580 13,130 12,830 12,390 12,370 11,910 11,660 11,410 11,020 14,410 14,290 13,580 13,420 13,370 13,370 13,290
-```
+[Total](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) [24,080](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html) 23,830 23,670 [23,350](http://www.census.gov/programs-surveys/sipp/library/publications.html) [23,130](http://www.census.gov/programs-surveys/sipp/library/publications.html) [22,820](http://www.census.gov/programs-surveys/sipp/library/publications.html) [15,690](http://www.census.gov/programs-surveys/sipp/library/publications.html) [15,510](http://www.census.gov/programs-surveys/sipp/library/publications.html) [14,830](http://www.census.gov/programs-surveys/sipp/library/publications.html) [14,610](http://www.census.gov/programs-surveys/sipp/library/publications.html) [14,480](http://www.census.gov/programs-surveys/sipp/library/publications.html) [14,480](http://www.census.gov/programs-surveys/sipp/library/publications.html) [14,350](http://www.census.gov/programs-surveys/sipp/library/publications.html) [13,990](http://www.census.gov/programs-surveys/sipp/library/publications.html) 13,970 13,580 13,130 [12,830](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 12,390 12,370 11,910 11,660 11,410 11,020 14,410 14,290 13,580 13,420 13,370 13,370 13,290
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 2.7 2.0 1.8 1.9 1.6 1.6 2.0 1.6 1.1 1.3 [1.3](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.3](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.6](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.6](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 1.7 1.7 1.7 [1.8](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 3.0 1.9 1.9 1.8 2.0 1.9 2.5 1.9 1.4 1.6 1.6 1.6 1.8 [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2757,16 +2538,9 @@ Total
 | ------------- | ------ |
 | Below poverty | Margin |
 
-```
-Under 18 years
-2,632 2,813 2,905 2,928 2,907 2,631
-Number
-```
+Under 18 years 2,632 2,813 2,905 2,928 [2,907](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,631](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Number](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
-```
-Total 5,749 5,690 5,641 5,568 5,254 5,254 5,183 5,182 5,142 4,939 4,738 4,800 4,904 4,747 4,575 4,580 4,319 4,322 4,285 4,275 4,223 4,286 3,930 3,930 4,019
-10,100 10,110 10,200 10,190 10,280 10,510
-```
+Total [5,749](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [5,690](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [5,641](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [5,568](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [5,254](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [5,254](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [5,183](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) 5,182 5,142 4,939 4,738 4,800 [4,904](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,747](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,575](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,580](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,319](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,322](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,285](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,275](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,223](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,286](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [3,930](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [3,930](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,019](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) 10,100 10,110 10,200 10,190 [10,280](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [10,510](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) (±) 1.6 1.2 1.0 1.1 [1.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.9](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.1](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.8](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.9](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.8](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.9](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 1.0 1.1 1.1 1.2 [1.9](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1.4](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1.2](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1.3](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) 1.2 1.2 1.2 1.1 0.9 1.0 0.9 1.0 1.1 error [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2774,15 +2548,9 @@ Total 5,749 5,690 5,641 5,568 5,254 5,254 5,183 5,182 5,142 4,939 4,738 4,800 4,
 
 [All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-9,130 9,306 9,601 9,356 9,172 8,292 3,254 2,700 2,098 1,952 2,410 2,489 2,938 2,930 3,127 2,976 3,108 3,249 2,974 3,022 2,928 2,948 2,772 2,973 2,979 2,502 1,956 1,788 2,257 2,327 2,749
-Number
-```
+9,130 9,306 9,601 9,356 9,172 8,292 3,254 2,700 2,098 1,952 2,410 2,489 2,938 2,930 3,127 2,976 3,108 3,249 2,974 3,022 2,928 2,948 2,772 2,973 2,979 2,502 1,956 1,788 2,257 2,327 2,749 [Number](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-```
-Total
-38,020 37,780 37,620 37,100 36,750 36,590 24,650 24,320 23,480 22,930 22,460 22,460 22,070 21,570 21,520 20,770 20,050 19,690 19,190 19,030 18,190 17,820 17,250 16,740 21,830 21,600 20,700 20,350 19,940 19,940 19,790
-```
+[Total](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 38,020 37,780 37,620 37,100 36,750 36,590 24,650 24,320 23,480 22,930 22,460 22,460 22,070 21,570 21,520 20,770 20,050 19,690 19,190 19,030 18,190 17,820 17,250 16,740 21,830 21,600 20,700 20,350 19,940 19,940 19,790
 
 [year](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) origin, and Footnotes available at end of table.
 
@@ -2794,9 +2562,7 @@ of (±) 2.4 2.3 2.5 2.6 2.8 4.6 2.7 2.5 2.9 3.2 3.2 4.1 3.9 3.0 3.2 3.5 3.5 3.1 
 
 65 years and over Number
 
-```
 Total 2,348 2,358 2,209 2,130 2,029 1,845 1,881 1,669 1,555 1,484 1,372
-```
 
 of (±) 1.1 1.0 1.2 1.2 1.4 2.0 1.5 1.2 1.4 1.3 1.3 2.1 2.7 2.1 1.6 1.9 1.9 2.0 1.9 2.0 2.1 1.8 2.1 4.3 2.7 2.7 2.5 2.9 2.3 [error](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [Margin](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html)
 
@@ -2806,16 +2572,9 @@ of (±) 1.1 1.0 1.2 1.2 1.4 2.0 1.5 1.2 1.4 1.3 1.3 2.1 2.7 2.1 1.6 1.9 1.9 2.0 
 
 [Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-18 to 64 years
-1,767 1,894 1,818 1,958 1,992 1,815 1,907 1,798 1,861 1,702 1,821
-Number
-```
+18 to 64 years 1,767 1,894 1,818 1,958 [1,992](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,815](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,907](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,798](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,861](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,702](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [1,821](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) Number
 
-```
-Total 4,231 4,224 4,111 4,079 3,926 3,926 4,072 4,193 4,210 4,090 4,281 3,937 3,518 3,841 3,831 3,808 3,617 3,786
-13,120 13,100 12,800 12,320 12,010 11,650 11,530 11,150 10,870 10,700 10,390
-```
+[Total](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) [4,231](http://www.census.gov/programs-surveys/sipp/library/publications.html) 4,224 4,111 [4,079](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 3,926 3,926 4,072 4,193 4,210 4,090 4,281 3,937 3,518 3,841 3,831 3,808 3,617 3,786 13,120 13,100 12,800 [12,320](http://www.census.gov/programs-surveys/sipp/library/publications.html) [12,010](http://www.census.gov/programs-surveys/sipp/library/publications.html) [11,650](http://www.census.gov/programs-surveys/sipp/library/publications.html) [11,530](http://www.census.gov/programs-surveys/sipp/library/publications.html) [11,150](http://www.census.gov/programs-surveys/sipp/library/publications.html) [10,870](http://www.census.gov/programs-surveys/sipp/library/publications.html) [10,700](http://www.census.gov/programs-surveys/sipp/library/publications.html) [10,390](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 1.9 1.9 1.9 2.1 2.2 3.7 2.3 2.3 2.0 2.3 2.1 3.6 3.9 2.7 3.4 2.9 2.8 3.4 3.2 3.3 3.0 3.1 3.1 5.5 4.7 4.0 3.7 3.8 3.0 [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2831,9 +2590,7 @@ Under 18 years
 
 [Number](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
-```
-Total 4,069 4,028 3,892 3,794 3,755 3,770 3,658 3,611 3,665 3,439 3,480 2,013 2,090 2,173 1,987 1,917 1,917 2,049 2,042 2,027 2,088 2,234 2,159 1,797 1,999 1,947 1,976 2,050 2,082
-```
+Total 4,069 4,028 3,892 3,794 3,755 [3,770](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [3,658](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [3,611](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [3,665](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [3,439](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [3,480](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) 2,013 2,090 2,173 1,987 [1,917](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1,917](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [2,049](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [2,042](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [2,027](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [2,088](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [2,234](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [2,159](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1,797](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1,999](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1,947](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1,976](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [2,050](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [2,082](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) (±) 1.1 1.0 1.1 1.2 [1.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.5](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.2](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 2.1 2.5 1.8 1.8 [1.8](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1.8](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [2.0](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1.9](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) 2.0 2.0 1.9 1.9 3.8 2.7 2.6 2.4 2.7 2.2 error [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2841,15 +2598,9 @@ Total 4,069 4,028 3,892 3,794 3,755 3,770 3,658 3,611 3,665 3,439 3,480 2,013 2,
 
 [All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-2,743 2,948 2,774 2,929 3,075 2,747 2,800 2,737 2,715 2,590 2,782 1,222 1,280 1,217 1,227 1,251 1,249 1,389 1,379 1,263 1,359 1,615 1,419 1,466 1,321
-Number
-```
+2,743 2,948 2,774 2,929 3,075 2,747 2,800 2,737 2,715 2,590 2,782 1,222 1,280 1,217 1,227 1,251 1,249 1,389 1,379 1,263 1,359 1,615 1,419 1,466 1,321 [Number](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-```
-Total 7,113 7,122 7,092 6,769 6,562 6,562 6,842 6,940 6,939 6,857 7,150 6,700 5,834 6,396 6,308 6,234 6,101 6,279
-19,540 19,480 18,900 18,250 17,800 17,260 17,070 16,430 16,090 15,620 15,240
-```
+[Total](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 7,113 7,122 7,092 6,769 6,562 6,562 6,842 6,940 6,939 6,857 7,150 6,700 5,834 6,396 6,308 6,234 6,101 6,279 19,540 19,480 18,900 18,250 17,800 17,260 17,070 16,430 16,090 15,620 15,240
 
 [year](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) origin, and Footnotes available at end of table.
 
@@ -2875,9 +2626,7 @@ of (±) 3.2 4.1 3.0 2.5 2.5 2.4 2.8 2.7 2.7 2.9 2.3 3.0 5.9 4.0 4.1 3.4 4.7 [4.0
 
 Number
 
-```
-Total 2,486 2,509 2,539 2,466 2,301 2,301 2,325 2,323 2,335 2,326 2,649 2,317 1,868 2,114 2,135 2,060 1,964 2,025 4,984 4,564 4,230 4,424 4,330 4,330 4,159 3,975 3,995 3,764 3,556 3,521
-```
+[Total](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) [2,486](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,509](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,539](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,466](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,301](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,301](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,325](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,323](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,335](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,326](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,649](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,317](http://www.census.gov/programs-surveys/sipp/library/publications.html) [1,868](http://www.census.gov/programs-surveys/sipp/library/publications.html) [2,114](http://www.census.gov/programs-surveys/sipp/library/publications.html) 2,135 2,060 1,964 2,025 4,984 4,564 4,230 4,424 4,330 4,330 4,159 3,975 3,995 3,764 3,556 3,521
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 5.6 6.4 2.7 5.1 3.3 3.2 4.3 4.0 4.0 4.3 [4.3](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [4.0](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [7.6](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [7.2](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 5.2 6.1 6.5 [4.5](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 2.1 2.1 1.5 1.7 2.1 2.0 2.4 2.3 2.2 1.9 2.0 2.2 [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2893,9 +2642,7 @@ Under 18 years
 
 [Number](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
-```
-Total 1,085 1,061 1,172 1,107 1,045 1,045 1,008 1,059 1,329 1,187 1,064 1,043 4,639 4,537 4,385 4,331 4,131 4,131 4,156 4,044 4,077 3,904 3,686 3,597
-```
+Total 1,085 [1,061](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [1,172](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [1,107](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [1,045](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [1,045](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [1,008](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [1,059](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [1,329](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [1,187](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) 1,064 [1,043](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,639](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,537](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,385](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,331](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,131](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,131](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,156](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,044](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [4,077](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [3,904](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [3,686](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [3,597](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) (±) [3.2](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [4.0](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.4](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.7](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.3](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.7](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.6](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.6](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.9](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.5](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [2.7](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [5.1](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 4.0 3.8 3.3 4.7 3.8 [1.4](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) 1.4 1.3 1.3 1.5 1.5 1.7 1.7 1.6 1.6 1.6 1.6 error [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2903,15 +2650,9 @@ Total 1,085 1,061 1,172 1,107 1,045 1,045 1,008 1,059 1,329 1,187 1,064 1,043 4,
 
 [All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-1,052 1,375 1,106 1,080 1,065 1,197 1,313 1,317 1,135 1,255 1,257
-Number
-```
+1,052 1,375 1,106 1,080 1,065 1,197 1,313 1,317 1,135 1,255 1,257 [Number](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-```
-Total 4,052 4,003 4,127 3,959 3,744 3,744 3,684 3,630 3,632 3,718 4,300 3,819 3,077 3,369 3,475 3,216 3,093 3,238 9,711 9,203 9,258 8,967 8,967 8,822 8,486 8,541 8,119 7,650 7,490
-10,290
-```
+[Total](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 4,052 4,003 4,127 3,959 3,744 3,744 3,684 3,630 3,632 3,718 4,300 3,819 3,077 3,369 3,475 3,216 3,093 3,238 9,711 9,203 9,258 8,967 8,967 8,822 8,486 8,541 8,119 7,650 7,490 10,290
 
 [year](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) origin, and Footnotes available at end of table.
 
@@ -2923,15 +2664,9 @@ of (±) 8.3 6.0 5.1 4.9 4.9 4.8 1.8 1.8 1.6 1.6 1.7 1.7 1.7 1.9 1.9 1.8 1.8 1.9 
 
 Below poverty error Margin
 
-```
-65 years and over
-1,566 1,321 1,200 1,171 1,161 1,044 1,112 1,061 1,015
-Number
-```
+65 years and over 1,566 1,321 1,200 1,171 1,161 1,044 1,112 1,061 1,015 Number
 
-```
-Total 5,738 5,426 5,213 4,906 4,787 4,787 4,544 4,320 4,322 4,057 3,863 3,636 3,443 3,405 3,213 3,036 2,860 2,716
-```
+Total 5,738 5,426 5,213 4,906 4,787 4,787 4,544 4,320 4,322 4,057 3,863 3,636 [3,443](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 3,405 3,213 3,036 2,860 2,716
 
 of (±) 4.0 2.1 2.1 2.1 2.4 1.8 0.8 0.8 0.6 0.7 0.8 0.8 0.8 0.9 0.8 0.7 0.8 0.8 [1.7](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 1.0 0.8 1.0 0.9 0.9 [error](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [Margin](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html)
 
@@ -2941,16 +2676,9 @@ of (±) 4.0 2.1 2.1 2.1 2.4 1.8 0.8 0.8 0.6 0.7 0.8 0.8 0.8 0.9 0.8 0.7 0.8 0.8 
 
 [Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-18 to 64 years
-7,927 7,353 4,465 5,050 6,433 6,505 6,944 6,949 7,187 7,160 7,425 8,433 8,487 8,239 8,489 8,417 8,095 7,800
-Number
-```
+18 to 64 years [7,927](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [7,353](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [4,465](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [5,050](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [6,433](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [6,505](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [6,944](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [6,949](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) 7,187 7,160 7,425 8,433 [8,487](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) [8,239](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [8,489](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [8,417](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [8,095](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [7,800](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) Number
 
-```
-Total 3,564 3,550 3,404 3,361 3,285 3,164
-40,670 39,680 38,620 38,090 37,210 37,210 36,670 36,140 36,160 35,110 34,690 33,870 32,840 32,900 32,230 31,640 30,740 29,980
-```
+[Total](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) [3,564](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html) 3,550 3,404 3,361 [3,285](http://www.census.gov/programs-surveys/sipp/library/publications.html) [3,164](http://www.census.gov/programs-surveys/sipp/library/publications.html) [40,670](http://www.census.gov/programs-surveys/sipp/library/publications.html) [39,680](http://www.census.gov/programs-surveys/sipp/library/publications.html) [38,620](http://www.census.gov/programs-surveys/sipp/library/publications.html) [38,090](http://www.census.gov/programs-surveys/sipp/library/publications.html) [37,210](http://www.census.gov/programs-surveys/sipp/library/publications.html) [37,210](http://www.census.gov/programs-surveys/sipp/library/publications.html) [36,670](http://www.census.gov/programs-surveys/sipp/library/publications.html) [36,140](http://www.census.gov/programs-surveys/sipp/library/publications.html) [36,160](http://www.census.gov/programs-surveys/sipp/library/publications.html) 35,110 34,690 33,870 [32,840](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 32,900 32,230 31,640 30,740 29,980
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 4.5 2.5 2.8 2.3 2.6 2.3 1.3 1.2 0.8 1.1 1.2 [1.1](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.2](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.3](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.3](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 1.2 1.2 1.2 [2.2](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) 1.4 1.2 1.3 1.3 1.3 [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2962,16 +2690,9 @@ Total 3,564 3,550 3,404 3,361 3,285 3,164
 | ------------- | ------ |
 | Below poverty | Margin |
 
-```
-Under 18 years
-4,212 3,681 1,575 2,768 3,804 3,788 4,111 4,152 4,355 4,449 4,485 4,998 5,147 4,882 5,379 5,341 5,270 4,984
-Number
-```
+Under 18 years [4,212](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [3,681](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [1,575](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [2,768](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,804](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [3,788](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,111](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,152](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,355](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,449](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,485](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,998](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [5,147](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,882](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [5,379](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [5,341](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [5,270](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [4,984](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [Number](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
-```
-Total 3,775 3,813 3,629 3,498 3,565 3,386
-19,150 18,850 18,820 18,880 18,730 18,730 18,880 18,770 18,750 18,500 18,320 18,110 18,050 17,950 17,790 17,680 17,470 17,100
-```
+Total 3,775 3,813 3,629 3,498 3,565 [3,386](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [19,150](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [18,850](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [18,820](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [18,880](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [18,730](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [18,730](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [18,880](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [18,770](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [18,750](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [18,500](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 18,320 18,110 18,050 [17,950](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [17,790](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [17,680](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [17,470](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx) [17,100](https://www2.census.gov/programs-surveys/cps/tables/time-series/historical-poverty-people/hstpov2.xlsx)
 
 [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) (±) 3.5 1.9 2.1 1.8 [2.1](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [1.7](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.8](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.8](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.5](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.7](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.8](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.8](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.7](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [0.9](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 0.8 0.7 0.9 0.8 1.6 [1.0](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [0.8](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [1.0](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) [0.9](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) 0.9 error [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
@@ -2979,15 +2700,9 @@ Total 3,775 3,813 3,629 3,498 3,565 3,386
 
 [All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-1,636 1,335 1,387 1,269 1,399 1,153 7,022 8,672
-Number 13,710 12,350 11,440 11,460 12,220 12,150 12,650 12,670 12,860 14,430 14,650 14,090 14,820 14,590 14,140 13,510
-```
+1,636 1,335 1,387 1,269 1,399 1,153 7,022 8,672 [Number](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 13,710 12,350 11,440 11,460 12,220 12,150 12,650 12,670 12,860 14,430 14,650 14,090 14,820 14,590 14,140 13,510
 
-```
-Total 7,739 7,755 7,380 7,182 7,203 6,866
-65,550 63,960 62,650 61,880 60,720 60,720 60,100 59,220 59,230 57,670 56,870 55,610 54,330 54,250 53,230 52,360 51,070 49,800
-```
+[Total](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [7,739](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [7,755](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) 7,380 7,182 7,203 6,866 65,550 63,960 62,650 61,880 60,720 60,720 60,100 59,220 59,230 57,670 56,870 55,610 54,330 54,250 53,230 52,360 51,070 49,800
 
 [year](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) origin, and Footnotes available on next page.
 
@@ -3065,11 +2780,7 @@ Footnotes available at end of table.
 
 >)
 
-```
-Difference
-SPM 2023
-(2023 less 2022)
-```
+[Difference](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [SPM 2023](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [(2023 less 2022)](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
 | Margin    | Margin    | Margin    |
 | --------- | --------- | --------- |
@@ -3128,14 +2839,7 @@ SPM 2023
 
 [(Numbers in thousands. Margins of error in thousands or percentage points as appropriate. People as of March of the following](https://www.census.gov/library/working-papers/2021/demo/SEHSD-WP2021-20.html) [year. Information on confidentiality protection, sampling error, nonsampling error, and definitions is available at](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html) < [https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) >)
 
-```
-Difference
-SPM 2022 SPM 2023
-(2023 less 2022)
-Characteristic Margin Margin Margin Margin
-of error¹ of error¹ of error¹ of error¹
-Number (±) Percent (±) Number (±) Percent (±) Number Percent
-```
+[Difference](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [SPM 2022](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [SPM 2023](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [(2023 less 2022)](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) Characteristic Margin Margin [Margin](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) Margin of error¹ of error¹ [of error¹](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html) of error¹ Number [(±)](http://www.census.gov/programs-surveys/sipp/library/publications.html) [Percent](http://www.census.gov/programs-surveys/sipp/library/publications.html) [(±)](http://www.census.gov/programs-surveys/sipp/library/publications.html) [Number](http://www.census.gov/programs-surveys/sipp/library/publications.html) (±) Percent (±) Number Percent
 
 Work Experience [Total, 18 to 64 years old](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 23,730 [11.9](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.3](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 24,500 12.2 0.3 0.4 [All workers](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 10,230 [6.6](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.3](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 10,940 7.0 0.3 *706 *0.4 [Worked full-time, year-round](http://www.bls.gov/cex/pumd-getting-started-guide.htm) 4,113 [3.6](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.2](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 4,725 4.1 0.2 *612 *0.5 [Less than full-time, year-round](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 6,121 [15.1](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.6](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [6,216](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [14.7](https://stats.bls.gov/pir/spmhome.htm) [0.7](https://stats.bls.gov/pir/spmhome.htm) [–0.4](https://stats.bls.gov/pir/spmhome.htm) [Did not work](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html) 13,500 29.9 0.8 13,550 31.1 [0.8](http://www.census.gov/programs-surveys/cps.html) [*1.2](http://www.census.gov/programs-surveys/cps.html)
 
@@ -3152,11 +2856,7 @@ Z Rounds to zero. * An asterisk preceding an estimate indicates change is statis
 
 Official
 
-```
-Characteristic Margin
-of error¹
-Total Number (±)
-```
+Characteristic [Margin](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) of error¹ Total Number (±)
 
 [All people](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) 332,400 [36,840](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
@@ -3212,17 +2912,9 @@ Total Number (±)
 
 Footnotes available at end of table.
 
-### —Con.
+—Con. [>)](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html) [+](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
 
-[>)](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
-
-[+](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
-
-```
-Difference
-SPM
-(SPM – Official
-```
+[Difference](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) SPM [(SPM – Official](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
 +
 
@@ -3292,17 +2984,9 @@ SPM
 
 [+](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
 
-```
-Difference
-Official SPM +
-```
+[Difference](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) Official SPM +
 
-```
-(SPM – Official )
-Characteristic Margin Margin Margin Margin
-of error¹ of error¹ of error¹ of error¹
-Total Number (±) Percent (±) Number (±) Percent (±) Number Percent
-```
+[(SPM – Official](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) ) Characteristic [Margin](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) Margin [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) of error¹ of error¹ of error¹ of error¹ Total Number (±) Percent [(±)](http://www.census.gov/programs-surveys/sipp/library/publications.html) Number (±) Percent (±) Number Percent
 
 [Health Insurance Coverage](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) [With private insurance](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html) [216,800](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [8,392](http://www.census.gov/programs-surveys/sipp/library/publications.html) [3.9](http://www.census.gov/programs-surveys/sipp/library/publications.html) [0.2](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 13,050 6.0 0.2 *4,663 *2.2 [With public, no private insurance](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 88,440 22,390 25.3 [0.7](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 22,740 25.7 0.7 0.4 [Not insured](http://www.census.gov/) 27,150 [6,059](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [22.3](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [1.1](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) 7,048 26.0 1.2 *989 *3.6
 
@@ -3722,6 +3406,6 @@ For questions and assistance [Or email <](http://www.census.gov/programs-surveys
 
 #### [gov/](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [>.](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) historical-poverty-people/hstpov2.xlsx >.
 
-## P60-283
+P60-283
 
 ### Current Population Reports

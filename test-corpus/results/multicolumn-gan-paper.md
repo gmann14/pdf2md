@@ -54,25 +54,17 @@ The adversarial modeling framework is most straightforward to apply when the mod
 
 In other words, D and G play the following two-player minimax game with value function V ( G, D ) :
 
-```
 min max V ( D, G ) = E x ∼ p data ( x ) [log D ( x )] + E z ∼ p z ( z ) [log(1 − D ( G ( z )))] . (1)
-```
 
-## G D
+G D
 
 In the next section, we present a theoretical analysis of adversarial nets, essentially showing that the training criterion allows one to recover the data generating distribution as G and D are given enough capacity, i.e., in the non-parametric limit. See Figure 1 for a less formal, more pedagogical explanation of the approach. In practice, we must implement the game using an iterative, numerical approach. Optimizing D to completion in the inner loop of training is computationally prohibitive, and on finite datasets would result in overfitting. Instead, we alternate between k steps of optimizing D and one step of optimizing G . This results in D being maintained near its optimal solution, so long as G changes slowly enough. This strategy is analogous to the way that SML/PCD [31, 29] training maintains samples from a Markov chain from one learning step to the next in order to avoid burning in a Markov chain as part of the inner loop of learning. The procedure is formally presented in Algorithm 1.
 
 In practice, equation 1 may not provide sufficient gradient for G to learn well. Early in learning, when G is poor, D can reject samples with high confidence because they are clearly different from the training data. In this case, log(1 − D ( G ( z ))) saturates. Rather than training G to minimize log(1 − D ( G ( z ))) we can train G to maximize log D ( G ( z )) . This objective function results in the same fixed point of the dynamics of G and D but provides much stronger gradients early in learning.
 
-. . .
-
-## X X
-
-### x X
-
-## Z Z
-
-### z Z
+| X   | X   | x   | X   |
+| --- | --- | --- | --- |
+| Z   | Z   | z   | Z   |
 
 (a) (b) (c) (d)
 
@@ -102,18 +94,13 @@ Algorithm 1 Minibatch stochastic gradient descent training of generative adversa
 
 - Sample minibatch of m examples { x , . . . , x } from data generating distribution p data ( x ) . • Update the discriminator by ascending its stochastic gradient:
 
-```
 ∑ m [ ( ) ( ( ( )))]
-```
 
 ( i ) ( i )
 
 ∇ θ d
 
-```
-log D x + log − D G z .
-m
-```
+log D x + log − D G z . m
 
 i =1
 
@@ -123,9 +110,7 @@ i =1
 
 - Sample minibatch of m noise samples { z , . . . , z } from noise prior p g ( z ) . • Update the generator by descending its stochastic gradient:
 
-```
 ∑ m ( ( ( )))
-```
 
 ( i )
 
@@ -145,23 +130,15 @@ We first consider the optimal discriminator D for any given generator G .
 
 ∗
 
-```
-p data ( x )
-D G
-```
+p data ( x ) D G
 
-```
-( x ) = (2)
-p data ( x ) + p g ( x )
-```
+( x ) = (2) p data ( x ) + p g ( x )
 
 Proof. The training criterion for the discriminator D, given any generator G , is to maximize the quantity V ( G, D ) ∫ ∫ V ( G, D ) = p data ( x ) log( D ( x )) dx + p z ( z ) log(1 − D ( g ( z ))) dz ∫
 
 x z
 
-```
 = p data ( x ) log( D ( x )) + p g ( x ) log(1 − D ( x )) dx (3)
-```
 
 x
 
@@ -181,19 +158,15 @@ Note that the training objective for D can be interpreted as maximizing the log-
 
 ### C ( G ) = max V ( G, D )
 
-## D ∗ ∗
+D ∗ ∗
 
 = E x ∼ p data
 
 [log D G
 
-```
 ( x )] + E z ∼ p z
-```
 
-```
 [log(1 − D G
-```
 
 ( G ( z )))] (4)
 
@@ -203,19 +176,13 @@ Note that the training objective for D can be interpreted as maximizing the log-
 
 [log D G
 
-```
 ( x )] + E x ∼ p g
-```
 
-```
 [log(1 − D G
-```
 
 ( x ))] [ ] [ ] p data ( x ) p g ( x ) = E x ∼ p data
 
-```
 log + E x ∼ p g
-```
 
 log P data ( x ) + p g ( x ) p data ( x ) + p g ( x )
 
@@ -231,9 +198,7 @@ Proof. For p g = p data , D G
 
 E x ∼ p data
 
-```
 [ − log 2] + E x ∼ p g
-```
 
 ### [ − log 2] = − log 4
 
@@ -245,10 +210,7 @@ and that by subtracting this expression from C ( G ) = V ( D G
 
 ( ∥ ) ( ∥ ) ∥ p data + p g
 
-```
-∥
-C ( G ) = − log(4) + KL p data
-```
+∥ C ( G ) = − log(4) + KL p data
 
 ∥ p data + p g
 
@@ -276,13 +238,9 @@ E x ∼ p data
 
 [log D G
 
-```
 ( x )] + E x ∼ p g
-```
 
-```
 [log(1 − D G
-```
 
 ### ( x ))]
 
@@ -349,64 +307,64 @@ We would like to acknowledge Patrice Marcotte, Olivier Delalleau, Kyunghyun Cho,
 
 ## References
 
-[1] Bastien, F., Lamblin, P., Pascanu, R., Bergstra, J., Goodfellow, I. J., Bergeron, A., Bouchard, N., and Bengio, Y. (2012). Theano: new features and speed improvements. Deep Learning and Unsupervised Feature Learning NIPS 2012 Workshop.
+- Bastien, F., Lamblin, P., Pascanu, R., Bergstra, J., Goodfellow, I. J., Bergeron, A., Bouchard, N., and Bengio, Y. (2012). Theano: new features and speed improvements. Deep Learning and Unsupervised Feature Learning NIPS 2012 Workshop.
 
-[2] Bengio, Y. (2009). Learning deep architectures for AI . Now Publishers.
+- Bengio, Y. (2009). Learning deep architectures for AI . Now Publishers.
 
-[3] Bengio, Y., Mesnil, G., Dauphin, Y., and Rifai, S. (2013a). Better mixing via deep representations. In ICML’13 .
+- Bengio, Y., Mesnil, G., Dauphin, Y., and Rifai, S. (2013a). Better mixing via deep representations. In ICML’13 .
 
-[4] Bengio, Y., Yao, L., Alain, G., and Vincent, P. (2013b). Generalized denoising auto-encoders as generative models. In NIPS26 . Nips Foundation.
+- Bengio, Y., Yao, L., Alain, G., and Vincent, P. (2013b). Generalized denoising auto-encoders as generative models. In NIPS26 . Nips Foundation.
 
-[5] Bengio, Y., Thibodeau-Laufer, E., and Yosinski, J. (2014a). Deep generative stochastic networks trainable by backprop. In ICML’14 .
+- Bengio, Y., Thibodeau-Laufer, E., and Yosinski, J. (2014a). Deep generative stochastic networks trainable by backprop. In ICML’14 .
 
-[6] Bengio, Y., Thibodeau-Laufer, E., Alain, G., and Yosinski, J. (2014b). Deep generative stochastic networks trainable by backprop. In Proceedings of the 30th International Conference on Machine Learning (ICML’14) .
+- Bengio, Y., Thibodeau-Laufer, E., Alain, G., and Yosinski, J. (2014b). Deep generative stochastic networks trainable by backprop. In Proceedings of the 30th International Conference on Machine Learning (ICML’14) .
 
-[7] Bergstra, J., Breuleux, O., Bastien, F., Lamblin, P., Pascanu, R., Desjardins, G., Turian, J., Warde-Farley, D., and Bengio, Y. (2010). Theano: a CPU and GPU math expression compiler. In Proceedings of the Python for Scientific Computing Conference (SciPy) . Oral Presentation.
+- Bergstra, J., Breuleux, O., Bastien, F., Lamblin, P., Pascanu, R., Desjardins, G., Turian, J., Warde-Farley, D., and Bengio, Y. (2010). Theano: a CPU and GPU math expression compiler. In Proceedings of the Python for Scientific Computing Conference (SciPy) . Oral Presentation.
 
-[8] Breuleux, O., Bengio, Y., and Vincent, P. (2011). Quickly generating representative samples from an RBM-derived process. Neural Computation , (8), 2053–2073.
+- Breuleux, O., Bengio, Y., and Vincent, P. (2011). Quickly generating representative samples from an RBM-derived process. Neural Computation , (8), 2053–2073.
 
-[9] Glorot, X., Bordes, A., and Bengio, Y. (2011). Deep sparse rectifier neural networks. In AISTATS’2011 .
+- Glorot, X., Bordes, A., and Bengio, Y. (2011). Deep sparse rectifier neural networks. In AISTATS’2011 .
 
-[10] Goodfellow, I. J., Warde-Farley, D., Mirza, M., Courville, A., and Bengio, Y. (2013a). Maxout networks. In ICML’2013 .
+- Goodfellow, I. J., Warde-Farley, D., Mirza, M., Courville, A., and Bengio, Y. (2013a). Maxout networks. In ICML’2013 .
 
-[11] Goodfellow, I. J., Mirza, M., Courville, A., and Bengio, Y. (2013b). Multi-prediction deep Boltzmann machines. In NIPS’2013 .
+- Goodfellow, I. J., Mirza, M., Courville, A., and Bengio, Y. (2013b). Multi-prediction deep Boltzmann machines. In NIPS’2013 .
 
-[12] Goodfellow, I. J., Warde-Farley, D., Lamblin, P., Dumoulin, V., Mirza, M., Pascanu, R., Bergstra, J., Bastien, F., and Bengio, Y. (2013c). Pylearn2: a machine learning research library. arXiv preprint arXiv:1308.4214 .
+- Goodfellow, I. J., Warde-Farley, D., Lamblin, P., Dumoulin, V., Mirza, M., Pascanu, R., Bergstra, J., Bastien, F., and Bengio, Y. (2013c). Pylearn2: a machine learning research library. arXiv preprint arXiv:1308.4214 .
 
-[13] Gutmann, M. and Hyvarinen, A. (2010). Noise-contrastive estimation: A new estimation principle for unnormalized statistical models. In AISTATS’2010 .
+- Gutmann, M. and Hyvarinen, A. (2010). Noise-contrastive estimation: A new estimation principle for unnormalized statistical models. In AISTATS’2010 .
 
-[14] Hinton, G., Deng, L., Dahl, G. E., Mohamed, A., Jaitly, N., Senior, A., Vanhoucke, V., Nguyen, P., Sainath, T., and Kingsbury, B. (2012a). Deep neural networks for acoustic modeling in speech recognition. IEEE Signal Processing Magazine , (6), 82–97.
+- Hinton, G., Deng, L., Dahl, G. E., Mohamed, A., Jaitly, N., Senior, A., Vanhoucke, V., Nguyen, P., Sainath, T., and Kingsbury, B. (2012a). Deep neural networks for acoustic modeling in speech recognition. IEEE Signal Processing Magazine , (6), 82–97.
 
-[15] Hinton, G. E., Dayan, P., Frey, B. J., and Neal, R. M. (1995). The wake-sleep algorithm for unsupervised neural networks. Science , , 1558–1161.
+- Hinton, G. E., Dayan, P., Frey, B. J., and Neal, R. M. (1995). The wake-sleep algorithm for unsupervised neural networks. Science , , 1558–1161.
 
-[16] Hinton, G. E., Osindero, S., and Teh, Y. (2006). A fast learning algorithm for deep belief nets. Neural Computation , , 1527–1554.
+- Hinton, G. E., Osindero, S., and Teh, Y. (2006). A fast learning algorithm for deep belief nets. Neural Computation , , 1527–1554.
 
-[17] Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., and Salakhutdinov, R. (2012b). Improving neural networks by preventing co-adaptation of feature detectors. Technical report, arXiv:1207.0580.
+- Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., and Salakhutdinov, R. (2012b). Improving neural networks by preventing co-adaptation of feature detectors. Technical report, arXiv:1207.0580.
 
-[18] Hyv¨ arinen, A. (2005). Estimation of non-normalized statistical models using score matching. J. Machine Learning Res. , .
+- Hyv¨ arinen, A. (2005). Estimation of non-normalized statistical models using score matching. J. Machine Learning Res. , .
 
-[19] Jarrett, K., Kavukcuoglu, K., Ranzato, M., and LeCun, Y. (2009). What is the best multi-stage architecture for object recognition? In Proc. International Conference on Computer Vision (ICCV’09) , pages 2146–2153. IEEE.
+- Jarrett, K., Kavukcuoglu, K., Ranzato, M., and LeCun, Y. (2009). What is the best multi-stage architecture for object recognition? In Proc. International Conference on Computer Vision (ICCV’09) , pages 2146–2153. IEEE.
 
-[20] Kingma, D. P. and Welling, M. (2014). Auto-encoding variational bayes. In Proceedings of the International Conference on Learning Representations (ICLR) .
+- Kingma, D. P. and Welling, M. (2014). Auto-encoding variational bayes. In Proceedings of the International Conference on Learning Representations (ICLR) .
 
-[21] Krizhevsky, A. and Hinton, G. (2009). Learning multiple layers of features from tiny images. Technical report, University of Toronto.
+- Krizhevsky, A. and Hinton, G. (2009). Learning multiple layers of features from tiny images. Technical report, University of Toronto.
 
-[22] Krizhevsky, A., Sutskever, I., and Hinton, G. (2012). ImageNet classification with deep convolutional neural networks. In NIPS’2012 .
+- Krizhevsky, A., Sutskever, I., and Hinton, G. (2012). ImageNet classification with deep convolutional neural networks. In NIPS’2012 .
 
-[23] LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE , (11), 2278–2324.
+- LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE , (11), 2278–2324.
 
-[24] Rezende, D. J., Mohamed, S., and Wierstra, D. (2014). Stochastic backpropagation and approximate inference in deep generative models. Technical report, arXiv:1401.4082.
+- Rezende, D. J., Mohamed, S., and Wierstra, D. (2014). Stochastic backpropagation and approximate inference in deep generative models. Technical report, arXiv:1401.4082.
 
-[25] Rifai, S., Bengio, Y., Dauphin, Y., and Vincent, P. (2012). A generative process for sampling contractive auto-encoders. In ICML’12 .
+- Rifai, S., Bengio, Y., Dauphin, Y., and Vincent, P. (2012). A generative process for sampling contractive auto-encoders. In ICML’12 .
 
-[26] Salakhutdinov, R. and Hinton, G. E. (2009). Deep Boltzmann machines. In AISTATS’2009 , pages 448– 455.
+- Salakhutdinov, R. and Hinton, G. E. (2009). Deep Boltzmann machines. In AISTATS’2009 , pages 448– 455.
 
-[27] Smolensky, P. (1986). Information processing in dynamical systems: Foundations of harmony theory. In D. E. Rumelhart and J. L. McClelland, editors, Parallel Distributed Processing , volume 1, chapter 6, pages 194–281. MIT Press, Cambridge.
+- Smolensky, P. (1986). Information processing in dynamical systems: Foundations of harmony theory. In D. E. Rumelhart and J. L. McClelland, editors, Parallel Distributed Processing , volume 1, chapter 6, pages 194–281. MIT Press, Cambridge.
 
-[28] Susskind, J., Anderson, A., and Hinton, G. E. (2010). The Toronto face dataset. Technical Report UTML TR 2010-001, U. Toronto.
+- Susskind, J., Anderson, A., and Hinton, G. E. (2010). The Toronto face dataset. Technical Report UTML TR 2010-001, U. Toronto.
 
-[29] Tieleman, T. (2008). Training restricted Boltzmann machines using approximations to the likelihood gradient. In W. W. Cohen, A. McCallum, and S. T. Roweis, editors, ICML 2008 , pages 1064–1071. ACM.
+- Tieleman, T. (2008). Training restricted Boltzmann machines using approximations to the likelihood gradient. In W. W. Cohen, A. McCallum, and S. T. Roweis, editors, ICML 2008 , pages 1064–1071. ACM.
 
-[30] Vincent, P., Larochelle, H., Bengio, Y., and Manzagol, P.-A. (2008). Extracting and composing robust features with denoising autoencoders. In ICML 2008 .
+- Vincent, P., Larochelle, H., Bengio, Y., and Manzagol, P.-A. (2008). Extracting and composing robust features with denoising autoencoders. In ICML 2008 .
 
-[31] Younes, L. (1999). On the convergence of Markovian stochastic algorithms with rapidly decreasing ergodicity rates. Stochastics and Stochastic Reports , (3), 177–228.
+- Younes, L. (1999). On the convergence of Markovian stochastic algorithms with rapidly decreasing ergodicity rates. Stochastics and Stochastic Reports , (3), 177–228.

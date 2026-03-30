@@ -2,7 +2,7 @@
 title: "Bitcoin: A Peer-to-Peer Electronic Cash System"
 ---
 
-#### Bitcoin: A Peer-to-Peer Electronic Cash System
+# Bitcoin: A Peer-to-Peer Electronic Cash System
 
 Satoshi Nakamoto satoshin@gmx.com www.bitcoin.org
 
@@ -116,7 +116,9 @@ Merkle Root Merkle Root Merkle Root
 
 Hash01 Hash23
 
+```
 Merkle Branch for Tx3
+```
 
 Hash2 Hash3
 
@@ -144,11 +146,7 @@ The traditional banking model achieves a level of privacy by limiting access to 
 
 Traditional Privacy Model
 
-```
-Identities Transactions Trusted
-Counterparty Public
-Third Party
-```
+Identities Transactions Trusted Counterparty Public Third Party
 
 New Privacy Model
 
@@ -164,11 +162,14 @@ We consider the scenario of an attacker trying to generate an alternate chain fa
 | --- | ------------------------------------------------- |
 | q   | = probability the attacker finds the next block   |
 
-if p ≤ q q z
+```
+if p ≤ q
+q z
+```
 
 = z
 
-# {  q / p  if p  q }
+{  q / p  if p  q }
 
 Given our assumption that p > q , the probability drops exponentially as the number of blocks the attacker has to catch up with increases. With the odds against him, if he doesn't make a lucky lunge forward early on, his chances become vanishingly small as he falls further behind. We now consider how long the recipient of a new transaction needs to wait before being sufficiently certain the sender can't change the transaction. We assume the sender is an attacker who wants to make the recipient believe he paid him for a while, then switch it to pay back to himself after some time has passed. The receiver will be alerted when that happens, but the sender hopes it will be too late. The receiver generates a new key pair and gives the public key to the sender shortly before signing. This prevents the sender from preparing a chain of blocks ahead of time by working on it continuously until he is lucky enough to get far enough ahead, then executing the transaction at that moment. Once the transaction is sent, the dishonest sender starts working in secret on a parallel chain containing an alternate version of his transaction. The recipient waits until the transaction has been added to a block and z blocks have been linked after it. He doesn't know the exact amount of progress the attacker has made, but assuming the honest blocks took the average expected time per block, the attacker's potential progress will be a Poisson distribution with expected value:
 
@@ -180,7 +181,7 @@ To get the probability the attacker could still catch up now, we multiply the Po
 
  e  q / p  if k ≤ z
 
-## ∑ ⋅
+∑ ⋅
 
 k =
 
@@ -249,18 +250,18 @@ We have proposed a system for electronic transactions without relying on trust. 
 
 ### References
 
-[1] W. Dai, "b-money," [http://www.weidai.com/bmoney.txt,](http://www.weidai.com/bmoney.txt,) 1998.
+- W. Dai, "b-money," [http://www.weidai.com/bmoney.txt,](http://www.weidai.com/bmoney.txt,) 1998.
 
-[2] H. Massias, X.S. Avila, and J.-J. Quisquater, "Design of a secure timestamping service with minimal trust requirements," In 20th Symposium on Information Theory in the Benelux , May 1999.
+- H. Massias, X.S. Avila, and J.-J. Quisquater, "Design of a secure timestamping service with minimal trust requirements," In 20th Symposium on Information Theory in the Benelux , May 1999.
 
-[3] S. Haber, W.S. Stornetta, "How to time-stamp a digital document," In Journal of Cryptology , vol 3, no 2, pages 99-111, 1991.
+- S. Haber, W.S. Stornetta, "How to time-stamp a digital document," In Journal of Cryptology , vol 3, no 2, pages 99-111, 1991.
 
-[4] D. Bayer, S. Haber, W.S. Stornetta, "Improving the efficiency and reliability of digital time-stamping," In Sequences II: Methods in Communication, Security and Computer Science , pages 329-334, 1993.
+- D. Bayer, S. Haber, W.S. Stornetta, "Improving the efficiency and reliability of digital time-stamping," In Sequences II: Methods in Communication, Security and Computer Science , pages 329-334, 1993.
 
-[5] S. Haber, W.S. Stornetta, "Secure names for bit-strings," In Proceedings of the 4th ACM Conference on Computer and Communications Security , pages 28-35, April 1997.
+- S. Haber, W.S. Stornetta, "Secure names for bit-strings," In Proceedings of the 4th ACM Conference on Computer and Communications Security , pages 28-35, April 1997.
 
-[6] A. Back, "Hashcash - a denial of service counter-measure," [http://www.hashcash.org/papers/hashcash.pdf,](http://www.hashcash.org/papers/hashcash.pdf,) 2002.
+- A. Back, "Hashcash - a denial of service counter-measure," [http://www.hashcash.org/papers/hashcash.pdf,](http://www.hashcash.org/papers/hashcash.pdf,) 2002.
 
-[7] R.C. Merkle, "Protocols for public key cryptosystems," In Proc. 1980 Symposium on Security and Privacy , IEEE Computer Society, pages 122-133, April 1980.
+- R.C. Merkle, "Protocols for public key cryptosystems," In Proc. 1980 Symposium on Security and Privacy , IEEE Computer Society, pages 122-133, April 1980.
 
-[8] W. Feller, "An introduction to probability theory and its applications," 1957.
+- W. Feller, "An introduction to probability theory and its applications," 1957.

@@ -1,6 +1,6 @@
-export { convert } from "./converter";
-export { initPdfWorker } from "./pdf-worker";
-export { MAX_FILE_SIZE } from "./types";
+export { convert } from "./converter.js";
+export { initPdfWorker } from "./pdf-worker.js";
+export { MAX_FILE_SIZE } from "./types.js";
 export {
   isMonospace,
   detectTable,
@@ -8,7 +8,7 @@ export {
   metadataToYaml,
   parsePdfDate,
   tableToMarkdown,
-} from "./detection";
+} from "./detection.js";
 export type {
   ConversionCode,
   ConversionMessage,
@@ -19,4 +19,4 @@ export type {
   ConversionStats,
   ConversionStatus,
   ConvertOptions,
-} from "./types";
+} from "./types.js";

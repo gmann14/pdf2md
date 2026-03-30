@@ -35,11 +35,11 @@ trained left-to-right and right-to-left LMs. the left-to-right and right-to-left
 
 NSP Mask LM Mask LM MNLI NER SQuAD Start/End Span
 
-## C T
+C T
 
 1
 
-## ... T T
+... T T
 
 ## N [SEP]
 
@@ -47,15 +47,11 @@ T
 
 1
 
-## ’ ... T
+’ ... T
 
-M
+M ’ C T 1
 
-## ’ C T
-
-1
-
-## ... T T
+... T T
 
 ## N [SEP]
 
@@ -63,7 +59,7 @@ T
 
 1
 
-## ’ ... T
+’ ... T
 
 M
 
@@ -71,13 +67,7 @@ M
 
 ## BERT BERT BERT
 
-## E E
-
-## [CLS]
-
-E
-
-1
+E E [CLS] E 1
 
 ## ... E E [CLS]
 
@@ -85,7 +75,7 @@ E
 
 1
 
-## ... E E
+... E E
 
 ## N [SEP]
 
@@ -93,19 +83,13 @@ E
 
 1
 
-## ’ ... E
+’ ... E
 
 ## [SEP] M
 
-’
+’ N E 1
 
-N
-
-E
-
-1
-
-## ’ ... E
+’ ... E
 
 M
 
@@ -113,9 +97,7 @@ M
 
 [CLS] Tok 1 ... Tok N [SEP] Tok 1 ... TokM [CLS] Tok 1 ... Tok N [SEP] Tok 1 ... TokM
 
-```
 Masked Sentence A Masked Sentence B Question Paragraph
-```
 
 Unlabeled Sentence A and B Pair Question Answer Pair
 
@@ -227,19 +209,11 @@ Token E
 
 E E Embeddings my
 
-## E E E
+E E E
 
 [SEP] he
 
-E
-
-likes
-
-E
-
-play
-
-E
+E likes E play E
 
 cute ## ing
 
@@ -257,33 +231,9 @@ E
 
 A
 
-## E E E E
+E E E E
 
-B
-
-E
-
-## A B
-
-E
-
-## A A
-
-E
-
-A
-
-E
-
-B
-
-E
-
-B
-
-E
-
-## A B
+B E A B E A A E A E B E B E A B
 
 Position Embeddings
 
@@ -291,25 +241,9 @@ E
 
 0
 
-## E E E E E [E](https://gluebenchmark.com/leaderboard)
+E E E E E [E](https://gluebenchmark.com/leaderboard)
 
-[6](https://gluebenchmark.com/leaderboard)
-
-[E](https://gluebenchmark.com/leaderboard)
-
-1 4 [7](https://gluebenchmark.com/leaderboard)
-
-[E](https://gluebenchmark.com/leaderboard)
-
-2 [8](https://gluebenchmark.com/leaderboard)
-
-[E](https://gluebenchmark.com/leaderboard)
-
-3 5 [9](https://gluebenchmark.com/leaderboard)
-
-[E](https://gluebenchmark.com/leaderboard)
-
-[10](https://gluebenchmark.com/leaderboard)
+[6](https://gluebenchmark.com/leaderboard) [E](https://gluebenchmark.com/leaderboard) 1 4 [7](https://gluebenchmark.com/leaderboard) [E](https://gluebenchmark.com/leaderboard) 2 [8](https://gluebenchmark.com/leaderboard) [E](https://gluebenchmark.com/leaderboard) 3 5 [9](https://gluebenchmark.com/leaderboard) [E](https://gluebenchmark.com/leaderboard) [10](https://gluebenchmark.com/leaderboard)
 
 Figure 2: BERT input representation. The input embeddings are the sum of the token embeddings, the segmentation embeddings and the position embeddings.
 
@@ -325,7 +259,7 @@ H
 
 [corresponding to the first](http://arxiv.org/abs/1801.06146) these two stages, as encoding a concatenated text input token ( [CLS] ) as the aggregate representapair with self-attention effectively includes bidition. The only new parameters introduced during rectional cross attention between two sentences. fine-tuning are classification layer weights W ∈ For each task, we simply plug in the task- R
 
-## K × H
+K × H
 
 , where K is the number of labels. We comspecific inputs and outputs into BERT and finepute a standard classification loss with C and W , [tune all the parameters end-to-end.](https://data.quora.com/First-Quora-Dataset-Release-Question-Pairs) At the ini.e., log(softmax( CW
 
@@ -575,35 +509,7 @@ We organize the appendix into three sections: Compared to standard langauge mode
 
 BERT (Ours) OpenAI GPT ELMo
 
-## T T T
-
-2
-
-... 1
-
-T
-
-1
-
-T
-
-2
-
-## ... T
-
-## N N
-
-T
-
-1
-
-T
-
-2
-
-## ... T
-
-N
+T T T 2 ... 1 T 1 T 2 ... T N N T 1 T 2 ... T N
 
 Trm Trm ... Trm Trm Trm ... Trm
 
@@ -619,33 +525,11 @@ Trm Trm ... Trm Trm Trm ... Trm Lstm Lstm
 
 ... Lstm
 
-E
+E 1 E
 
-1
+2 ... E E
 
-E
-
-## 2 ... E E
-
-1
-
-E
-
-2
-
-## ... E
-
-## N N E
-
-1
-
-E
-
-2
-
-## ... E
-
-N
+1 E 2 ... E N N E 1 E 2 ... E N
 
 Figure 3: Differences in pre-training model architectures. BERT uses a bidirectional Transformer. OpenAI GPT uses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-toleft LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly conditioned on both left and right context in all layers. [In addition to the architecture differences, BERT and](https://www.aclweb.org/anthology/D17-1070) OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach.
 
@@ -653,7 +537,9 @@ to converge. In Section C.1 we demonstrate that epochs over the 3.3 billion word
 
 likelihood.
 
+```
 he bought a gallon [MASK] milk [SEP]
+```
 
 [Training of BERT](https://gluebenchmark.com/leaderboard) BASE [was performed on 4](https://blog.openai.com/language-unsupervised) Label = IsNext [Cloud TPUs in Pod configuration (16 TPU chips](https://blog.openai.com/language-unsupervised) total).
 
@@ -705,11 +591,11 @@ size of 32,000 words; BERT was trained for Dataset (Rajpurkar et al., 2016) whic
 | ----- | ----- |
 | Label | Label |
 
-## C T
+C T
 
 1
 
-## ... T T
+... T T
 
 ## N [SEP]
 
@@ -717,17 +603,9 @@ T
 
 1
 
-## ’ ... C T
+’ ... C T
 
-## ... T
-
-M
-
-’ 1
-
-## T T
-
-## 2 N
+... T M ’ 1 T T 2 N
 
 ## BERT BERT
 
@@ -735,13 +613,9 @@ E
 
 ## [CLS]
 
-## E ... E E
+E ... E E
 
-...
-
-1
-
-E
+... 1 E
 
 ## N [SEP]
 
@@ -749,21 +623,16 @@ E
 
 1
 
-## ’ ... E
+’ ... E
 
+```
 M
-
 ’
-
-## [[CLS]](https://gluebenchmark.com/leaderboard)
-
-E
-
-[1](https://gluebenchmark.com/leaderboard)
-
-## E E
-
-## [2](https://gluebenchmark.com/leaderboard) N
+[CLS]
+E 1
+E E
+2 N
+```
 
 Tok Tok Tok Tok [CLS] ... [SEP] ... [CLS] [CLS] Tok 1 Tok 1 Tok 2 ... Tok N
 
@@ -773,11 +642,11 @@ Sentence 1 Sentence 2 Single Sentence
 
 Start/End Span O B-PER ... O
 
-## C T
+C T
 
 1
 
-## ... T T
+... T T
 
 ## N [SEP]
 
@@ -785,31 +654,19 @@ T
 
 1
 
-## ’ ... T
+’ ... T
 
 M
 
-## ’ C T T
+’ C T T
 
-1
-
-T
-
-...
-
-## 2 N
+1 T ... 2 N
 
 ## BERT BERT
 
-E
+E [CLS] E 1
 
-## [CLS]
-
-E
-
-1
-
-## ... E E
+... E E
 
 ## N [SEP]
 
@@ -817,29 +674,22 @@ E
 
 1
 
-## ’ ... E
+’ ... E
 
-M
+M ’ E [CLS] E E 1 E ... 2 N
 
-## ’ E
-
-## [CLS]
-
-## E E
-
+```
+Tok
+Tok
+Tok
+Tok
+[CLS] [SEP]
 1
-
-E
-
-...
-
-## 2 N
-
-Tok Tok Tok Tok [CLS] [SEP] 1
+```
 
 ...
 
-## N 1
+N 1
 
 ... [CLS] Tok 1 Tok 2 ... Tok N
 

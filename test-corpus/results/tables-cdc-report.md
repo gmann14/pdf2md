@@ -137,9 +137,7 @@ Antifungal drug Ketoconazole †
 
 §
 
-```
 Butenafine (41 prescriptions), luliconazole (169), miconazole (155), and sertaconazole (35).
-```
 
 Among 1,017,417 unique prescribers, 130,637 (12.8%) prescribed topical antifungals ( Table 2 ). The number of pre - scriptions per provider was highest for dermatologists (87.1), followed by podiatrists (67.2), and primary care physicians (12.3). Among 6.5 million topical antifungal prescriptions, the most were written by primary care physicians (2.6 million [40.0%], followed by nurse practitioners or physician assistants (1.4 million [21.4%]), dermatologists (1.1 million [17.6%]), and podiatrists (0.9 million [14.1%]). Among all topical anti [-](https://pubmed.ncbi.nlm.nih.gov/33354740) fungal prescriptions, 44.2% (2.9 million) were written by the top 10% (13,106) of topical antifungal prescribers. By provider type, the percentage of topical antifungal prescriptions written [by higher-volume topical antifungal prescribers ranged from](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf) [35.5% for dermatologists to 54.8% for podiatrists.](https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/medicare-monthly-enrollment)
 
@@ -182,10 +180,7 @@ All topical antifungal prescribers No. of prescriptions No. of No. of prescripti
 | Other (517,693)        | 0.9  | 15,290  | 452,198 (7.0)     |
 | Total (1,017,417)      | 6.3  | 130,637 | 6,455,140 (100.0) |
 
-```
-Abbreviations: NP = nurse practitioner; PA = physician assistant.
-* Top 10% of topical antifungal providers, by volume.
-```
+Abbreviations: NP = nurse practitioner; PA = physician assistant. * Top 10% of topical antifungal providers, by volume.
 
 †
 
@@ -207,9 +202,7 @@ Variation in Prescribing by Prescriber Type and Region The largest number of top
 
 †
 
-```
 * and lower-volume prescribers,
-```
 
 | Higher-volume prescribers | Lower-volume prescribers |
 | ------------------------- | ------------------------ |
@@ -219,15 +212,11 @@ No. of No. of prescriptions No. of No. of prescriptions prescribers (% of total)
 
 ¶
 
-```
 prescribers (% of total)
-```
 
 ¶
 
-```
 6,200 973,824 (37.8) 55,535 1,605,221 (62.2)
-```
 
 | 3,428  | 570,577 (41.3)   | 31,048  | 809,404 (58.7)   |
 | ------ | ---------------- | ------- | ---------------- |

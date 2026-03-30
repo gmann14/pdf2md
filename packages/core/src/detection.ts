@@ -3,7 +3,7 @@
  * Separated from converter.ts to avoid pdfjs-dist dependency in tests.
  */
 
-import type { ConversionMetadata } from "./types";
+import type { ConversionMetadata } from "./types.js";
 
 // ---------------------------------------------------------------------------
 // Internal types (mirrored from converter for decoupling)
@@ -243,6 +243,90 @@ function looksLikeProse(items: DetectionItem[]): boolean {
 }
 
 /**
+ * Check if text looks like mathematical notation rather than code.
+ * Math has Greek letter names/symbols, math Unicode operators, and lacks programming structure.
+ */
+function looksLikeMath(items: DetectionItem[]): boolean {
+  const allText = items.map((i) => i.str).join(" ");
+
+  // Greek letter names commonly used in math notation
+  const greekNames =
+    /\b(alpha|beta|gamma|delta|epsilon|theta|lambda|mu|sigma|rho|phi|psi|omega|nabla|partial|infty|sum|prod|lim|arg\s*min|arg\s*max|sup|inf|log|exp|sin|cos|tan|max|min)\b/i;
+  const greekCount = (allText.match(new RegExp(greekNames, "gi")) ?? []).length;
+
+  // Math-specific Unicode: Greek letters (α-ωΑ-Ω), math operators (∀∃∈∉⊂⊃∪∩),
+  // math symbols (∇∂∞≤≥≠≈∝∑∏∫), double-struck/norms (‖)
+  const mathUnicode = (allText.match(/[\u0370-\u03FF\u2016\u2032-\u2037\u2200-\u22FF\u2190-\u21FF\u27C0-\u27EF∇∂∈∉⊂⊃⊆⊇∀∃∅∞≤≥≠≈∝∑∏∫‖′″]/g) ?? []).length;
+
+  // If we see multiple Greek/math names or significant math Unicode, it's math
+  if (greekCount >= 2) return true;
+  if (mathUnicode >= 2) return true;
+  if (greekCount >= 1 && mathUnicode >= 1) return true;
+
+  // Single-letter variables with math-style operators: "f(x)", "T(x)", "x = y"
+  // Combined with high parens density suggests math notation
+  const singleLetterVars = (allText.match(/\b[a-zA-Z]\s*\(/g) ?? []).length;
+  const parensCount = (allText.match(/[()]/g) ?? []).length;
+  if (singleLetterVars >= 3 && parensCount >= 6) return true;
+
+  // Norm notation: "||x||" or "‖x‖"
+  if (/\|\|[^|]+\|\|/.test(allText)) return true;
+
+  return false;
+}
+
+/**
+ * Check if text contains positive evidence of being source code.
+ * Looks for programming syntax patterns, not just "not prose."
+ */
+function looksLikeCode(items: DetectionItem[]): boolean {
+  const allText = items.map((i) => i.str).join("\n");
+  const lines = allText.split("\n").filter((l) => l.trim().length > 0);
+
+  // If it looks like math notation, it's not code
+  if (looksLikeMath(items)) return false;
+
+  // Programming keywords at start of line or standalone
+  const codeKeywords =
+    /\b(function|def |class |import |from |const |let |var |if |else |for |while |return |public |private |static |void |int |string |bool |print|echo |require|include|module|export |interface |type |enum |struct |fn |impl |use |pub |async |await )\b/;
+  if (codeKeywords.test(allText)) return true;
+
+  // Code-specific operator patterns (not just parens which appear in prose)
+  // Require combinations that rarely appear in natural text.
+  // Curly braces are strong code signals on their own.
+  if (/[{}]/.test(allText)) return true;
+  // Multi-character operators that are unambiguously code
+  const codeOperators = /=>|->|::|&&|\|\||==|!=|<<|>>|\+=|-=|\*=|\/=|#include|#define|\/\//;
+  if (codeOperators.test(allText)) return true;
+  // Semicolons are code-like only when they appear after closing parens/brackets
+  // or in assignment-like contexts — not after prose words like "Cochairman;"
+  if (/[)}\]]\s*;/.test(allText) || /;\s*$/.test(allText.trim())) return true;
+
+  // Indentation variation: code has varying indent levels
+  // Check if multiple lines have leading whitespace of different depths
+  if (lines.length >= 3) {
+    const indents = new Set<number>();
+    for (const line of lines) {
+      const match = line.match(/^(\s+)/);
+      if (match) indents.add(Math.floor(match[1].length / 2));
+    }
+    // Multiple distinct indent levels + some indented lines → likely code
+    if (indents.size >= 2) {
+      const indentedLines = lines.filter((l) => /^\s{2,}/.test(l)).length;
+      if (indentedLines / lines.length >= 0.3) return true;
+    }
+  }
+
+  // High density of non-alphabetic syntax characters (typical of code)
+  // Exclude semicolons (common in prose lists) and colons (common in labels)
+  // Exclude lone parens — they appear in names like "Johnson (SD)" and math
+  const syntaxChars = (allText.match(/[{}[\]=&|<>!@#$%^*+~`\\\/]/g) ?? []).length;
+  if (allText.length > 20 && syntaxChars / allText.length > 0.08) return true;
+
+  return false;
+}
+
+/**
  * Check if items form a code block.
  * Uses multiple signals: known monospace fonts, detected code fonts, and syntax patterns.
  * Includes a prose guard to prevent wrapping natural language text in code fences.
@@ -268,20 +352,20 @@ export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): bo
   if (totalChars < 8) return false;
 
   // Signal 1: Known monospace font names
+  // Require positive evidence of code — monospace fonts are also used for
+  // legislative text, timetables, indices, and math notation.
   if (totalChars > 0 && monoChars / totalChars >= 0.8) {
-    // Even with monospace fonts, reject if text is clearly prose
     if (looksLikeProse(items)) return false;
+    if (!looksLikeCode(items)) return false;
     return true;
   }
 
   // Signal 2: Detected code font (subset fonts like g_d0_f3)
-  // More conservative: also reject if text looks like prose or a short label
+  // Require POSITIVE evidence of code, not just absence of prose.
+  // Subset fonts are used for captions, labels, table fragments — not just code.
   if (totalChars > 0 && codeFonts && codeFontChars / totalChars >= 0.8) {
     if (looksLikeProse(items)) return false;
-    // Reject short blocks that look like labels/titles (no code syntax)
-    if (totalChars < 50 && !/[{}()=;:<>\/\\|&!@#$%^*+~`]/.test(items.map((i) => i.str).join(""))) {
-      return false;
-    }
+    if (!looksLikeCode(items)) return false;
     return true;
   }
 

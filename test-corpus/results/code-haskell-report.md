@@ -242,9 +242,7 @@ CONTENTS v
 
 6.4.6 Coercions and Component Extraction . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Basic Input/Output
-```
 
 7.1 Standard I/O Functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -857,13 +855,7 @@ This syntax depends on properties of the Unicode characters as defined by the Un
 
 ## 2.2 Lexical Program Structure
 
-```
-program → { lexeme | whitespace }
-lexeme → qvarid | qconid | qvarsym | qconsym
-| literal | special | reservedop | reservedid
-literal → integer | float | char | string
-special → ( | ) | , | ; | [ | ] | ` | { | }
-```
+program → { lexeme | whitespace } lexeme → qvarid | qconid | qvarsym | qconsym | literal | special | reservedop | reservedid literal → integer | float | char | string special → ( | ) | , | ; | [ | ] | ` | { | }
 
 | return   | →   | a carriage return                           |
 | -------- | --- | ------------------------------------------- |
@@ -874,20 +866,9 @@ special → ( | ) | , | ; | [ | ] | ` | { | }
 | tab      | →   | a horizontal tab                            |
 | uniWhite | →   | any Unicode character defined as whitespace |
 
-```
-comment → dashes [ any 〈 symbol 〉 { any } ] newline
-dashes → -- { - }
-opencom → {-
-closecom → -}
-ncomment → opencom ANYseq { ncomment ANYseq } closecom
-ANYseq → { ANY } 〈{ ANY } ( opencom | closecom ) { ANY }〉
-```
+comment → dashes [ any 〈 symbol 〉 { any } ] newline dashes → -- { - } opencom → {- closecom → -} ncomment → opencom ANYseq { ncomment ANYseq } closecom ANYseq → { ANY } 〈{ ANY } ( opencom | closecom ) { ANY }〉
 
-```
-ANY → graphic | whitechar
-any → graphic | space | tab
-graphic → small | large | symbol | digit | special | " | ’
-```
+ANY → graphic | whitechar any → graphic | space | tab graphic → small | large | symbol | digit | special | " | ’
 
 small → ascSmall | uniSmall | _ ascSmall → a | b | . . . | z uniSmall → any Unicode lowercase letter
 
@@ -925,13 +906,7 @@ If some code is commented out using a nested comment, then any occurrence of {- 
 varid → ( small { small | large | digit | ’ } ) 〈 reservedid 〉
 ```
 
-```
-conid → large { small | large | digit | ’ }
-reservedid → case | class | data | default | deriving | do | else
-| foreign | if | import | in | infix | infixl
-| infixr | instance | let | module | newtype | of
-| then | type | where | _
-```
+conid → large { small | large | digit | ’ } reservedid → case | class | data | default | deriving | do | else | foreign | if | import | in | infix | infixl | infixr | instance | let | module | newtype | of | then | type | where | _
 
 An identifier consists of a letter followed by zero or more letters, digits, underscores, and single quotes. Identifiers are lexically distinguished into two namespaces (Section 1.4): those that begin with a lowercase letter (variable identifiers) and those that begin with an upper-case letter (constructor identifiers). Identifiers are case sensitive: name , naMe , and Name are three distinct identifiers (the first two are variable identifiers, the last is a constructor identifier).
 
@@ -995,16 +970,9 @@ The qualifier does not change the syntactic treatment of a name; for example, Pr
 | octal       | →   | octit | {   | octit | }   |
 | hexadecimal | →   | hexit | {   | hexit | }   |
 
-```
-integer → decimal
-| 0o octal | 0O octal
-| 0x hexadecimal | 0X hexadecimal
-```
+integer → decimal | 0o octal | 0O octal | 0x hexadecimal | 0X hexadecimal
 
-```
-float → decimal . decimal [ exponent ]
-| decimal exponent
-```
+float → decimal . decimal [ exponent ] | decimal exponent
 
 ```
 exponent → ( e | E ) [ + | - ] decimal
@@ -1014,9 +982,7 @@ There are two distinct kinds of numeric literals: integer and floating. Integer 
 
 ## 2.6 Character and String Literals
 
-```
 char → ’ ( graphic 〈 ’ | \ 〉
-```
 
 ```
 | space | escape 〈 \& 〉
@@ -1027,17 +993,7 @@ char → ’ ( graphic 〈 ’ | \ 〉
 string → " { graphic 〈 " | \ 〉
 ```
 
-```
-| space | escape | gap } "
-escape → \ ( charesc | ascii | decimal | o octal | x hexadecimal )
-charesc → a | b | f | n | r | t | v | \ | " | ’ | &
-ascii → ˆ cntrl | NUL | SOH | STX | ETX | EOT | ENQ | ACK
-| BEL | BS | HT | LF | VT | FF | CR | SO | SI | DLE
-| DC1 | DC2 | DC3 | DC4 | NAK | SYN | ETB | CAN
-| EM | SUB | ESC | FS | GS | RS | US | SP | DEL
-cntrl → ascLarge | @ | [ | \ | ] | ˆ | _
-gap → \ whitechar { whitechar } \
-```
+| space | escape | gap } " escape → \ ( charesc | ascii | decimal | o octal | x hexadecimal ) charesc → a | b | f | n | r | t | v | \ | " | ’ | & ascii → ˆ cntrl | NUL | SOH | STX | ETX | EOT | ENQ | ACK [|](http://haskell.org/) [BEL](http://haskell.org/) [|](http://haskell.org/) [BS](http://haskell.org/) [|](http://haskell.org/) [HT](http://haskell.org/) [|](http://haskell.org/) [LF](http://haskell.org/) | VT | FF | CR | SO | SI | DLE | DC1 | DC2 | DC3 | DC4 | NAK | SYN | ETB | CAN | EM | SUB | ESC | FS | GS | RS | US | SP | DEL cntrl → ascLarge | @ | [ | \ | ] | ˆ | _ gap → \ whitechar { whitechar } \
 
 ## CHAPTER 2. LEXICAL STRUCTURE
 
@@ -1230,10 +1186,7 @@ Prefix negation has the same precedence as the infix operator - defined in the P
 
 Translation: [The following identities hold:](http://haskell.org/)
 
-```
-e op e = ( op ) e e
-- e = negate ( e )
-```
+e op e = ( op ) e e - e = negate ( e )
 
 ### 3.5. SECTIONS
 
@@ -1271,9 +1224,7 @@ where op is a binary operator, e is an expression, and x is a variable that does
 
 ## 3.6 Conditionals
 
-```
 lexp → if exp [ ; ] then exp [ ; ] else exp
-```
 
 A conditional expression has the form if e then e else e and returns the value of e if the value of e is True , e if e is False , and ⊥ otherwise.
 
@@ -1472,11 +1423,7 @@ return (words l)
 
 to be written in a more traditional way as:
 
-```
-do putStr "x: "
-l <- getLine
-return (words l)
-```
+do putStr "x: " l <- getLine return (words l)
 
 Translation: Do expressions satisfy these identities, which may be used as a translation into the kernel, after eliminating empty stmts :
 
@@ -1532,7 +1479,7 @@ The expression F {} , where F is a data constructor, is legal whether or not F w
 
 Translation: In the binding f = v , the field f labels v .
 
-## C C
+C C
 
 C { bs } = C ( pick bs undefined ) . . . ( pick k
 
@@ -1548,7 +1495,7 @@ bs d is defined as follows:
 
 If the i th component of a constructor C has the field label f , and if f = v appears in the
 
-## C C
+C C
 
 binding list bs , then pick i
 
@@ -1576,7 +1523,7 @@ Translation: Using the prior definition of pick ,
 e { bs } = case e of
 ```
 
-## C C
+C C
 
 C v . . . v k -> C ( pick bs v ) . . . ( pick
 
@@ -1620,15 +1567,11 @@ The field f1 is common to both constructors in T. This example translates expres
 
 ## 3.16 Expression Type-Signatures
 
-```
 exp → exp :: [ context => ] type
-```
 
 Expression type-signatures have the form e :: t , where e is an expression and t is a type (Section 4.1.2); they are used to type an expression explicitly and may be used to resolve ambiguous typings due to overloading (see Section 4.3.4). The value of the expression is just that of exp . As with normal type signatures (see Section 4.4.1), the declared type may be more specific than the principal type derivable from exp , but it is an error to give a type that is more general than, or not comparable to, the principal type.
 
-```
 Translation:
-```
 
 ```
 e :: t = let { v :: t ; v = e } in v
@@ -1656,9 +1599,7 @@ All patterns must be linear —no variable may appear more than once. For exampl
 
 ### 3.17. PATTERN MATCHING
 
-```
 f (x,x) = x -- ILLEGAL; x used twice in pattern
-```
 
 Patterns of the form var @ pat are called as-patterns , and allow one to use var as a name for the value being matched by pat . For example,
 
@@ -1733,25 +1674,13 @@ Here are some examples:
 
 2. These examples demonstrate refutable vs. irrefutable matching:
 
-```
-(\ ˜(x,y) -> 0) ⊥ ⇒
-(\ (x,y) -> 0) ⊥ ⇒ ⊥
-```
+(\ ˜(x,y) -> 0) ⊥ ⇒ (\ (x,y) -> 0) ⊥ ⇒ ⊥
 
-```
-(\ ˜[x] -> 0) [] ⇒
-(\ ˜[x] -> x) [] ⇒ ⊥
-```
+(\ ˜[x] -> 0) [] ⇒ (\ ˜[x] -> x) [] ⇒ ⊥
 
-```
-(\ ˜[x,˜(a,b)] -> x) [(0,1), ⊥ ] ⇒ (0,1)
-(\ ˜[x, (a,b)] -> x) [(0,1), ⊥ ] ⇒ ⊥
-```
+(\ ˜[x,˜(a,b)] -> x) [(0,1), ⊥ ] ⇒ (0,1) (\ ˜[x, (a,b)] -> x) [(0,1), ⊥ ] ⇒ ⊥
 
-```
-(\ (x:xs) -> x:x:xs) ⊥ ⇒ ⊥
-(\ ˜(x:xs) -> x:x:xs) ⊥ ⇒ ⊥ : ⊥ : ⊥
-```
+(\ (x:xs) -> x:x:xs) ⊥ ⇒ ⊥ (\ ˜(x:xs) -> x:x:xs) ⊥ ⇒ ⊥ : ⊥ : ⊥
 
 ### 3.17. PATTERN MATCHING
 
@@ -1984,13 +1913,7 @@ Figure 3.3: Semantics of Case Expressions, Part 3
 
 In this chapter, we describe the syntax and informal semantics of Haskell declarations .
 
-```
-module → module modid [ exports ] where body
-| body
-body → { impdecls ; topdecls }
-| { impdecls }
-| { topdecls }
-```
+module → module modid [ exports ] where body | body body → { impdecls ; topdecls } | { impdecls } | { topdecls }
 
 topdecls → topdecl ; . . . ; topdecl n ( n ≥ ) topdecl → type simpletype = type | data [ context => ] simpletype [ = constrs ] [ deriving ] | newtype [ context => ] simpletype = newconstr [ deriving ] | class [ scontext => ] tycls tyvar [ where cdecls ] | instance [ scontext => ] qtycls inst [ where idecls ] | default ( type , . . . , type n ) ( n ≥ ) | foreign fdecl | decl
 
@@ -2028,17 +1951,9 @@ This declaration may be read “a type a is an instance of the class Num if ther
 
 We may then declare Int and Float to be instances of this class:
 
-```
-instance Num Int where -- simplified instance of Num Int
-x + y = addInt x y
-negate x = negateInt x
-```
+instance Num Int where -- simplified instance of Num Int x + y = addInt x y negate x = negateInt x
 
-```
-instance Num Float where -- simplified instance of Num Float
-x + y = addFloat x y
-negate x = negateFloat x
-```
+instance [Num](http://haskell.org/) [Float](http://haskell.org/) [where](http://haskell.org/) [--](http://haskell.org/) simplified instance of Num Float x + y = addFloat x y negate x = negateFloat x
 
 ### 4.1. OVERVIEW OF TYPES AND CLASSES
 
@@ -2331,9 +2246,7 @@ in cdecls . Class methods share the top level namespace with variable bindings a
 
 The type of the top-level class method v i is:
 
-```
 v i :: ∀ u, w. ( Cu, cx i ) ⇒ t i
-```
 
 The t i must mention u ; it may mention type variables w other than u , in which case the type of v i is polymorphic in both u and w . The cx i may constrain only w ; in particular, the cx i may not constrain u . For example: class Foo a where op :: Num b => a -> b -> a
 
@@ -2478,9 +2391,7 @@ which disambiguates the type.
 
 Occasionally, an otherwise ambiguous expression needs to be made the same type as some variable, rather than being given a fixed type with an expression type-signature. This is the purpose of the function asTypeOf (Chapter 9): x ‘asTypeOf‘ y has the value of x , but x and y are forced to have the same type. For example,
 
-```
 approxSqrt x = encodeFloat (exponent x ‘div‘ 2) ‘asTypeOf‘ x
-```
 
 (See Section 6.4.6 for a description of encodeFloat and exponent .)
 
@@ -2586,10 +2497,7 @@ Here, ‘Bar.op‘ is infixr , ‘Foo.op‘ is infix 3 , and the nested definiti
 
 ### | ( funlhs ) apat { apat }
 
-```
-rhs → = exp [ where decls ]
-| gdrhs [ where decls ]
-```
+rhs → = exp [ where decls ] | gdrhs [ where decls ]
 
 ### gdrhs → guards = exp [ gdrhs ]
 
@@ -2609,10 +2517,7 @@ where each p ij is a pattern, and where each match i is of the general form:
 = e i where { decls i }
 ```
 
-```
-or
-| gs i1 = e i1
-```
+or | gs i1 = e i1
 
 . . . | gs im i
 
@@ -2925,13 +2830,7 @@ There is one distinguished module, Prelude , which is imported into all modules 
 
 A module defines a mutually recursive scope containing declarations for value bindings, data types, type synonyms, classes, etc. (see Chapter 4).
 
-```
-module → module modid [ exports ] where body
-| body
-body → { impdecls ; topdecls }
-| { impdecls }
-| { topdecls }
-```
+module → module modid [ exports ] where body | body body → { impdecls ; topdecls } | { impdecls } | { topdecls }
 
 | impdecls | →   | impdecl | ;   | . . . | ;   | impdecl | n   | (   | n   | ≥   | )   |
 | -------- | --- | ------- | --- | ----- | --- | ------- | --- | --- | --- | --- | --- |
@@ -2999,12 +2898,7 @@ It makes no difference to an importing module how an entity was exported. For ex
 
 The unqualified names of the entities exported by a module must all be distinct (within their respective namespace). For example
 
-```
-module A ( C.f, C.g, g, module B ) where -- an invalid module
-import B(f)
-import qualified C(f,g)
-g = f True
-```
+module A ( C.f, C.g, g, module B ) where -- an invalid module import B(f) import qualified C(f,g) g = f True
 
 There are no name clashes within module A itself, but there are name clashes in the export list between C.g and g (assuming C.g and g are different entities – remember, modules can import each other recursively), and between module B and C.f (assuming B.f and C.f are different entities).
 
@@ -3142,10 +3036,7 @@ The name occurring in a type signature or fixity declarations is always unqualif
 
 ### module F where
 
-```
-sin :: Float -> Float
-sin x = (x::Float)
-```
+sin :: Float -> Float sin x = (x::Float)
 
 ### f x = Prelude.sin (F.sin x)
 
@@ -3265,10 +3156,7 @@ These types are defined by the Haskell Prelude. Numeric types are described in S
 
 ### 6.1.1 Booleans
 
-```
-data Bool = False | True deriving
-(Read, Show, Eq, Ord, Enum, Bounded)
-```
+data Bool = False | True deriving (Read, Show, Eq, Ord, Enum, Bounded)
 
 The boolean type Bool is an enumeration. The basic boolean functions are && (and), || (or), and not . The name otherwise is defined as True to make guarded expressions more readable.
 
@@ -3304,9 +3192,7 @@ The following functions are defined for pairs (2-tuples): fst , snd , curry , an
 
 ### 6.1.5 The Unit Datatype
 
-```
 data () = () deriving (Eq, Ord, Bounded, Enum, Read, Show)
-```
 
 The unit datatype () has one non- ⊥ member, the nullary constructor () . See also Section 3.9.
 
@@ -3324,12 +3210,7 @@ IOError is an abstract type representing errors raised by I/O operations. It is 
 
 ### 6.1.8 Other Types
 
-```
-data Maybe a = Nothing | Just a deriving (Eq, Ord, Read, Show)
-data Either a b = Left a | Right b deriving (Eq, Ord, Read, Show)
-data Ordering = LT | EQ | GT deriving
-(Eq, Ord, Bounded, Enum, Read, Show)
-```
+data Maybe a = Nothing | Just a deriving (Eq, Ord, Read, Show) data Either a b = Left a | [Right](http://unicode.org/standard/standard.html) [b](http://unicode.org/standard/standard.html) [deriving](http://unicode.org/standard/standard.html) [(Eq,](http://unicode.org/standard/standard.html) [Ord,](http://unicode.org/standard/standard.html) [Read,](http://unicode.org/standard/standard.html) [Show)](http://unicode.org/standard/standard.html) data Ordering = LT | EQ | GT deriving (Eq, Ord, Bounded, Enum, Read, Show)
 
 The Maybe type is an instance of classes Functor , Monad , and MonadPlus . The Ordering type is used by compare in the class Ord . The functions maybe and either are found in the Prelude.
 
@@ -3341,10 +3222,7 @@ Function application in Haskell is non-strict; that is, a function argument is e
 
 The function seq is defined by the equations:
 
-```
-seq ⊥ b = ⊥
-seq a b = b , if a = ⊥
-```
+seq ⊥ b = ⊥ seq a b = b , if a = ⊥
 
 seq is usually introduced to improve performance by avoiding unneeded laziness. Strict datatypes (see Section 4.2.1) are defined in terms of the $! operator. However, the provision of seq has important semantic consequences, because it is available at every type . As a consequence, ⊥ is not the same as \x -> ⊥ , since seq can be used to distinguish them. For the same reason, the existence of seq weakens Haskell’s parametricity properties.
 
@@ -3370,18 +3248,9 @@ The non-strict application operator $ may appear redundant, since ordinary appli
 
 ### Enum Real
 
-```
-(), Bool, Char, Ordering,
-Fractional
-```
+(), Bool, Char, Ordering, Fractional
 
-```
-Int, Integer,
-Int, Integer, Float,
-Float, Double
-Float, Double
-Double
-```
+[Int, Integer,](http://www.unicode.org/) Int, Integer, Float, [Float, Double](http://www.unicode.org/) Float, Double Double
 
 ### Integral RealFrac Floating
 
@@ -3393,7 +3262,9 @@ Float, Double
 
 ### Monad Functor
 
+```
 IO, [], Maybe IO, [], Maybe
+```
 
 Figure 6.1: Standard Haskell Classes
 
@@ -3539,10 +3410,7 @@ The Functor class is used for types that can be mapped over. Lists, IO , and May
 
 Instances of Functor should satisfy the following laws:
 
-```
-fmap id = id
-fmap (f . g) = fmap f . fmap g
-```
+fmap id = id fmap (f . g) = fmap f . fmap g
 
 All instances of Functor defined in the Prelude satisfy these laws.
 
@@ -3844,16 +3712,7 @@ is similar to the previous example using interact , but takes its input from "in
 
 The do notation allows programming in a more imperative syntactic style. A slightly more elaborate version of the previous example would be:
 
-```
-main = do
-putStr "Input file: "
-ifile <- getLine
-putStr "Output file: "
-ofile <- getLine
-s <- readFile ifile
-writeFile ofile (filter isAscii s)
-putStr "Filtering successful\n"
-```
+main = do putStr "Input file: " ifile <- getLine putStr "Output file: " ofile <- getLine s <- readFile ifile writeFile ofile (filter isAscii s) putStr "Filtering successful\n"
 
 The return function is used to define the result of an I/O operation. For example, getLine is defined in terms of getChar , using return to define the result:
 
@@ -3945,17 +3804,7 @@ The range of lexemes that are admissible for chname is a subset of those permitt
 
 The syntax of foreign declarations is as follows:
 
-```
-topdecl → foreign fdecl
-fdecl → import callconv [ safety ] impent var :: ftype ( define variable )
-| export callconv expent var :: ftype ( expose variable )
-callconv → ccall | stdcall | cplusplus ( calling convention )
-| jvm | dotnet
-| system-specific calling conventions
-impent → [ string ]
-expent → [ string ]
-safety → unsafe | safe
-```
+topdecl → foreign fdecl fdecl → import callconv [ safety ] impent var :: ftype ( define variable ) | export callconv expent var :: ftype ( expose variable ) callconv → ccall | stdcall | cplusplus ( calling convention ) | jvm | dotnet | system-specific calling conventions impent → [ string ] expent → [[](http://www.unicode.org/) [string](http://www.unicode.org/) []](http://www.unicode.org/) safety → unsafe | safe
 
 There are two flavours of foreign declarations: import and export declarations. An import declaration makes an external entity, i.e., a function or memory location defined in an external context, available in the Haskell context. Conversely, an export declaration defines a function of the Haskell context as an external entity in an external context. Consequently, the two types of declarations differ in that an import declaration defines a new variable, whereas an export declaration uses a variable that is already defined in the Haskell module.
 
@@ -4079,10 +3928,7 @@ cstrlen :: Ptr CChar -> IO CSize
 
 introduces the function cstrlen , which invokes the external function strlen using the standard C calling convention. Some external entities can be imported as pure functions; for example,
 
-```
-foreign import ccall "math.h sin"
-sin :: CDouble -> CDouble.
-```
+foreign import ccall "math.h sin" sin :: CDouble -> CDouble.
 
 Such a declaration asserts that the external entity is a true function; i.e., when applied to the same argument values, it always produces the same result.
 
@@ -4327,50 +4173,11 @@ Char, String, Int, Integer, Float, Double, Rational, IO,
 
 - - These built-in types are defined in the Prelude, but -- are denoted by built-in syntax, and cannot legally -- appear in an export list. -- List type: []((:), []) -- Tuple types: [(,)((,)),](http://www.unicode.org/) [(,,)((,,)),](http://www.unicode.org/) [etc.](http://www.unicode.org/) -- Trivial type: ()(()) -- Functions: (->)
 
-```
-Eq((==), (/=)),
-Ord(compare, (<), (<=), (>=), (>), max, min),
-Enum(succ, pred, toEnum, fromEnum, enumFrom, enumFromThen,
-enumFromTo, enumFromThenTo),
-Bounded(minBound, maxBound),
-Num((+), (-), (*), negate, abs, signum, fromInteger),
-Real(toRational),
-Integral(quot, rem, div, mod, quotRem, divMod, toInteger),
-Fractional((/), recip, fromRational),
-Floating(pi, exp, log, sqrt, (**), logBase, sin, cos, tan,
-asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh),
-RealFrac(properFraction, truncate, round, ceiling, floor),
-RealFloat(floatRadix, floatDigits, floatRange, decodeFloat,
-encodeFloat, exponent, significand, scaleFloat, isNaN,
-isInfinite, isDenormalized, isIEEE, isNegativeZero, atan2),
-Monad((>>=), (>>), return, fail),
-Functor(fmap),
-mapM, mapM_, sequence, sequence_, (=<<),
-maybe, either,
-(&&), (||), not, otherwise,
-subtract, even, odd, gcd, lcm, (ˆ), (ˆˆ),
-fromIntegral, realToFrac,
-fst, snd, curry, uncurry, id, const, (.), flip, ($), until,
-asTypeOf, error, undefined,
-seq, ($!)
-) where
-```
+Eq((==), (/=)), Ord(compare, (<), (<=), (>=), (>), max, min), Enum(succ, pred, toEnum, fromEnum, enumFrom, enumFromThen, enumFromTo, enumFromThenTo), Bounded(minBound, maxBound), Num((+), (-), (*), negate, abs, signum, fromInteger), Real(toRational), Integral(quot, rem, div, mod, quotRem, divMod, toInteger), Fractional((/), recip, fromRational), Floating(pi, exp, log, sqrt, (**), logBase, sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh), RealFrac(properFraction, truncate, round, ceiling, floor), RealFloat(floatRadix, floatDigits, floatRange, decodeFloat, encodeFloat, exponent, significand, scaleFloat, isNaN, isInfinite, isDenormalized, isIEEE, isNegativeZero, atan2), Monad((>>=), (>>), return, fail), Functor(fmap), mapM, mapM_, sequence, sequence_, (=<<), maybe, either, (&&), (||), not, otherwise, subtract, even, odd, gcd, lcm, (ˆ), (ˆˆ), fromIntegral, realToFrac, fst, snd, curry, uncurry, id, const, (.), flip, ($), until, asTypeOf, error, undefined, seq, ($!) ) where
 
-```
-import PreludeBuiltin -- Contains all ‘prim’ values
-import UnicodePrims( primUnicodeMaxChar ) -- Unicode primitives
-import PreludeList
-import PreludeText
-import PreludeIO
-import Data.Ratio( Rational )
-```
+import PreludeBuiltin -- Contains all ‘prim’ values import UnicodePrims( primUnicodeMaxChar ) -- Unicode primitives import PreludeList import PreludeText import PreludeIO import Data.Ratio( Rational )
 
-```
-infixr .
-infixr ˆ, ˆˆ, **
-infixl *, /, ‘quot‘, ‘rem‘, ‘div‘, ‘mod‘
-infixl +, -
-```
+infixr . infixr ˆ, ˆˆ, ** infixl *, /, ‘quot‘, ‘rem‘, ‘div‘, ‘mod‘ infixl +, -
 
 - - The (:) operator is built-in syntax, and cannot legally be given -- a fixity declaration; but its fixity is given by: -- infixr :
 
@@ -4459,15 +4266,9 @@ in case signum (abs r - 0.5) of
 -> m
 ```
 
-```
-ceiling x = if r > then n + else n
-where (n,r) = properFraction x
-```
+ceiling x = if r > then n + else n where (n,r) = properFraction x
 
-```
-floor x = if r < then n - else n
-where (n,r) = properFraction x
-```
+floor x = if r < then n - else n [where](http://haskell.org/) (n,r) = properFraction x
 
 | floatRadix  | ::  | a   | ->  | Integer |
 | ----------- | --- | --- | --- | ------- |
@@ -4479,30 +4280,11 @@ floatRange :: a -> (Int,Int) decodeFloat :: a -> (Integer,Int) encodeFloat :: In
 
 - - Minimal complete definition: -- All except exponent, significand, -- scaleFloat, atan2 exponent x [=](http://www.unicode.org/) [if](http://www.unicode.org/) [m](http://www.unicode.org/) [==](http://www.unicode.org/) [then](http://www.unicode.org/) [else](http://www.unicode.org/) [n](http://www.unicode.org/) + floatDigits x where (m,n) = decodeFloat x
 
-```
-significand x = encodeFloat m (- floatDigits x)
-where (m,_) = decodeFloat x
-```
+significand x = encodeFloat m (- [floatDigits](http://unicode.org/standard/standard.html) [x)](http://unicode.org/standard/standard.html) where (m,_) = decodeFloat x
 
-```
-scaleFloat k x = encodeFloat m (n+k)
-where (m,n) = decodeFloat x
-```
+scaleFloat k x = encodeFloat m (n+k) where (m,n) = decodeFloat x
 
-```
-atan2 y x
-| x>0 = atan (y/x)
-| x==0 && y>0 = pi/2
-| x<0 && y>0 = pi + atan (y/x)
-|(x<=0 && y<0) ||
-(x<0 && isNegativeZero y) ||
-(isNegativeZero x && isNegativeZero y)
-= -atan2 (-y) x
-| y==0 && (x<0 || isNegativeZero x)
-= pi -- must be after the previous test on zero y
-| x==0 && y==0 = y -- must be after the other double zero tests
-| otherwise = x + y -- x or y is a NaN, return a NaN (via +)
-```
+atan2 y x | x>0 = atan (y/x) | x==0 && y>0 = pi/2 | x<0 && y>0 = pi + atan (y/x) |(x<=0 && y<0) || (x<0 && isNegativeZero y) || (isNegativeZero x && isNegativeZero y) = -atan2 (-y) x | y==0 && (x<0 || isNegativeZero x) = pi -- must be after the previous test on zero y | x==0 && y==0 = y -- must be after the other double zero tests | otherwise = x + y -- x or y is a NaN, return a NaN (via +)
 
 - - Numeric functions
 
@@ -4529,16 +4311,7 @@ lcm _ =
 lcm x y = abs ((x ‘quot‘ (gcd x y)) * y)
 ```
 
-```
-(ˆ) :: (Num a, Integral b) => a -> b -> a
-x ˆ =
-x ˆ n | n > = f x (n-1) x
-where f _ y = y
-f x n y = g x n where
-g x n | even n = g (x*x) (n ‘quot‘ 2)
-| otherwise = f x (n-1) (x*y)
-_ ˆ _ = error "Prelude.ˆ: negative exponent"
-```
+(ˆ) :: (Num a, Integral b) => a -> b -> a x ˆ = x ˆ n | n > = f x (n-1) x where f _ y = y f x n y = g x n where g x n | even n = g (x*x) (n ‘quot‘ 2) | otherwise = f x (n-1) (x*y) _ ˆ _ = error "Prelude.ˆ: negative exponent"
 
 (ˆˆ) :: (Fractional a, Integral b) => a -> b -> a x ˆˆ n = if n >= 0 then xˆn else recip (xˆ(-n))
 
@@ -4602,9 +4375,7 @@ seq :: a -> b -> b seq = ... -- Primitive
 
 - - Boolean type
 
-```
 data Bool = False | True deriving (Eq, Ord, Enum, Read, Show, Bounded)
-```
 
 - - Boolean functions
 
@@ -4664,9 +4435,7 @@ fail s = Nothing
 
 - - Either type
 
-```
-data Either a b = Left a | Right b deriving (Eq, Ord, Read, Show)
-```
+data Either [a](http://haskell.org/) [b](http://haskell.org/) [=](http://haskell.org/) [Left](http://haskell.org/) [a](http://haskell.org/) [|](http://haskell.org/) Right b deriving (Eq, Ord, Read, Show)
 
 | either | f   | g   | (Left  | x)  | =   | f   | x   |
 | ------ | --- | --- | ------ | --- | --- | --- | --- |
@@ -4687,10 +4456,7 @@ instance Monad IO where (>>=) = ... return = ... fail s = ioError (userError s)
 
 - - Ordering type
 
-```
-data Ordering = LT | EQ | GT
-deriving (Eq, Ord, Enum, Read, Show, Bounded)
-```
+data Ordering = LT | EQ | GT deriving (Eq, Ord, Enum, Read, Show, Bounded)
 
 - - Standard numeric types. The data declarations for these types cannot -- be expressed directly in Haskell since the constructor lists would be -- far too large.
 
@@ -4735,29 +4501,9 @@ deriving (Eq, Ord, Enum, Read, Show, Bounded)
 
 - - The Enum instances for Floats and Doubles are slightly unusual. -- The ‘toEnum’ function truncates numbers to Int. The definitions -- of enumFrom and enumFromThen allow floats to be used in arithmetic -- series: [0,0.1 .. 0.95]. However, roundoff errors make these somewhat -- dubious. This example may have either or elements, depending on -- how 0.1 is represented.
 
-```
-instance Enum Float where
-succ x = x+1
-pred x = x-1
-toEnum = fromIntegral
-fromEnum = fromInteger . truncate -- may overflow
-enumFrom = numericEnumFrom
-enumFromThen = numericEnumFromThen
-enumFromTo = numericEnumFromTo
-enumFromThenTo = numericEnumFromThenTo
-```
+instance Enum Float where succ x = x+1 pred x = x-1 toEnum = fromIntegral fromEnum = fromInteger . truncate -- may overflow enumFrom = numericEnumFrom enumFromThen = numericEnumFromThen enumFromTo = numericEnumFromTo enumFromThenTo = numericEnumFromThenTo
 
-```
-instance Enum Double where
-succ x = x+1
-pred x = x-1
-toEnum = fromIntegral
-fromEnum = fromInteger . truncate -- may overflow
-enumFrom = numericEnumFrom
-enumFromThen = numericEnumFromThen
-enumFromTo = numericEnumFromTo
-enumFromThenTo = numericEnumFromThenTo
-```
+instance Enum Double where succ x = x+1 pred x = x-1 toEnum = fromIntegral fromEnum = fromInteger . truncate -- may overflow enumFrom = numericEnumFrom enumFromThen = numericEnumFromThen enumFromTo = numericEnumFromTo enumFromThenTo = numericEnumFromThenTo
 
 numericEnumFrom :: (Fractional a) => a -> [a] numericEnumFromThen :: (Fractional a) => a -> a -> [a] numericEnumFromTo :: (Fractional a, Ord a) => a -> a -> [a] numericEnumFromThenTo :: (Fractional a, Ord a) => a -> a -> a -> [a] numericEnumFrom = iterate (+1) numericEnumFromThen n m = iterate (+(m-n)) n numericEnumFromTo n m = takeWhile (<= m+1/2) (numericEnumFrom n) numericEnumFromThenTo n n’ m = takeWhile p (numericEnumFromThen n n’) where p | n’ >= n = (<= m + (n’-n)/2) | otherwise = (>= m + (n’-n)/2)
 
@@ -5033,10 +4779,7 @@ unwords ws = foldr1 (\w s -> w ++ ’ ’:s) ws
 
 - - maximum and minimum return the maximum or minimum value from a list, -- which must be non-empty, finite, and of an ordered type. maximum, minimum :: (Ord a) => [a] -> a maximum [] [=](http://haskell.org/) [error](http://haskell.org/) "Prelude.maximum: empty list" maximum xs = foldl1 max xs
 
-```
-minimum [] = error "Prelude.minimum: empty list"
-minimum xs = foldl1 min xs
-```
+minimum [] = error "Prelude.minimum: empty list" minimum xs = foldl1 min xs
 
 ## CHAPTER 9. STANDARD PRELUDE
 
@@ -5168,45 +4911,23 @@ lexExp (e:s) | e ‘elem‘ "eE"
 lexExp s = [("",s)]
 ```
 
-```
-instance Show Int where
-showsPrec n = showsPrec n . toInteger
--- Converting to Integer avoids
--- possible difficulty with minInt
-```
+instance Show Int where showsPrec n = showsPrec n . toInteger -- Converting to Integer avoids -- possible difficulty with minInt
 
-```
-instance Read Int where
-readsPrec p r = [(fromInteger i, t) | (i,t) <- readsPrec p r]
--- Reading at the Integer type avoids
--- possible difficulty with minInt
-```
+instance Read Int where readsPrec p r = [(fromInteger i, t) | (i,t) <- readsPrec p r] -- Reading at the Integer type avoids -- possible difficulty with minInt
 
 ### instance Show Integer where showsPrec = showSigned showInt
 
-```
-instance Read Integer where
-readsPrec p = readSigned readDec
-```
+instance Read Integer where readsPrec p = readSigned readDec
 
 ### instance Show Float where showsPrec p = showFloat
 
-```
-instance Read Float where
-readsPrec p = readSigned readFloat
-```
+instance Read Float where readsPrec p = readSigned readFloat
 
 ### instance Show Double where showsPrec p = showFloat
 
-```
-instance Read Double where
-readsPrec p = readSigned readFloat
-```
+instance [Read](http://haskell.org/) [Double](http://haskell.org/) [where](http://haskell.org/) readsPrec p = readSigned readFloat
 
-```
-instance Show () where
-showsPrec p () = showString "()"
-```
+instance Show () where showsPrec p () = showString "()"
 
 ## CHAPTER 9. STANDARD PRELUDE
 
@@ -5382,18 +5103,11 @@ In both the lexical and the context-free syntax, there are some ambiguities that
 
 ## 10.2 Lexical Syntax
 
-```
-program → { lexeme | whitespace }
-lexeme → qvarid | qconid | qvarsym | qconsym
-| literal | special | reservedop | reservedid
-```
+program → { lexeme | whitespace } lexeme → qvarid | qconid | qvarsym | qconsym | literal | special | reservedop | reservedid
 
 ## CHAPTER 10. SYNTAX REFERENCE
 
-```
-literal → integer | float | char | string
-special → ( | ) | , | ; | [ | ] | ` | { | }
-```
+literal → integer | float | char | string special → ( | ) | , | ; | [ | ] | ` | { | }
 
 | return   | →   | a carriage return                           |
 | -------- | --- | ------------------------------------------- |
@@ -5404,20 +5118,9 @@ special → ( | ) | , | ; | [ | ] | ` | { | }
 | tab      | →   | a horizontal tab                            |
 | uniWhite | →   | any Unicode character defined as whitespace |
 
-```
-comment → dashes [ any 〈 symbol 〉 { any } ] newline
-dashes → -- { - }
-opencom → {-
-closecom → -}
-ncomment → opencom ANYseq { ncomment ANYseq } closecom
-ANYseq → { ANY } 〈{ ANY } ( opencom | closecom ) { ANY }〉
-```
+comment → dashes [ any 〈 symbol 〉 { any } ] newline dashes → -- { - } opencom → {- closecom → -} ncomment → opencom ANYseq { ncomment ANYseq } closecom ANYseq → { ANY } 〈{ ANY } ( opencom | closecom ) { ANY }〉
 
-```
-ANY → graphic | whitechar
-any → graphic | space | tab
-graphic → small | large | symbol | digit | special | " | ’
-```
+ANY → graphic | whitechar any → graphic | space | tab graphic → small | large | symbol | digit | special | " | ’
 
 small → ascSmall | uniSmall | _ ascSmall → a | b | . . . | z uniSmall → any Unicode lowercase letter
 
@@ -5429,13 +5132,7 @@ ascSymbol → ! | | $ | % | & | * | + | . | / | < | = | > | ? | @ | \ | ˆ | | |
 varid → ( small { small | large | digit | ’ } ) 〈 reservedid 〉
 ```
 
-```
-conid → large { small | large | digit | ’ }
-reservedid → case | class | data | default | deriving | do | else
-| foreign | if | import | in | infix | infixl
-| infixr | instance | let | module | newtype | of
-| then | type | where | _
-```
+conid → [large](http://haskell.org/) [{](http://haskell.org/) [small](http://haskell.org/) [|](http://haskell.org/) [large](http://haskell.org/) [|](http://haskell.org/) [digit](http://haskell.org/) [|](http://haskell.org/) ’ } reservedid → case | class | data | default | deriving | do | else | foreign | if | import | in | infix | infixl | infixr | instance | let | module | newtype | of | then | type | where | _
 
 ### 10.3. LAYOUT
 
@@ -5466,18 +5163,9 @@ varid ( variables ) conid ( constructors ) tyvar → varid ( type variables ) ty
 | octal       | →   | octit | {   | octit | }   |
 | hexadecimal | →   | hexit | {   | hexit | }   |
 
-```
-integer → decimal
-| 0o octal | 0O octal
-| 0x hexadecimal | 0X hexadecimal
-float → decimal . decimal [ exponent ]
-| decimal exponent
-exponent → ( e | E ) [ + | - ] decimal
-```
+integer → decimal | 0o octal | 0O octal | 0x hexadecimal | 0X hexadecimal float → decimal . decimal [ exponent ] | decimal exponent exponent → ( e | E ) [ + | - ] decimal
 
-```
 char → ’ ( graphic 〈 ’ | \ 〉
-```
 
 ```
 | space | escape 〈 \& 〉
@@ -5488,17 +5176,7 @@ char → ’ ( graphic 〈 ’ | \ 〉
 string → " { graphic 〈 " | \ 〉
 ```
 
-```
-| space | escape | gap } "
-escape → \ ( charesc | ascii | decimal | o octal | x hexadecimal )
-charesc → a | b | f | n | r | t | v | \ | " | ’ | &
-ascii → ˆ cntrl | NUL | SOH | STX | ETX | EOT | ENQ | ACK
-| BEL | BS | HT | LF | VT | FF | CR | SO | SI | DLE
-| DC1 | DC2 | DC3 | DC4 | NAK | SYN | ETB | CAN
-| EM | SUB | ESC | FS | GS | RS | US | SP | DEL
-cntrl → ascLarge | @ | [ | \ | ] | ˆ | _
-gap → \ whitechar { whitechar } \
-```
+| space | escape | gap } " escape → \ ( charesc | ascii | decimal | o octal | x hexadecimal ) charesc → a | b | f | n | r | t | v | \ | " | ’ | & ascii → ˆ cntrl | NUL | SOH | STX | ETX | EOT | ENQ | ACK | BEL | BS | HT | LF | VT | FF | CR | SO | SI | DLE | DC1 | DC2 | DC3 | DC4 | NAK | SYN | ETB | CAN | EM | SUB | ESC | FS | GS | RS | US | SP | DEL cntrl → ascLarge | @ | [ | \ | ] | ˆ | _ gap → \ whitechar { whitechar } \
 
 ## 10.3 Layout
 
@@ -5542,17 +5220,9 @@ delivers a layout-insensitive translation of tokens , where tokens is the result
 
 ### 10.3. LAYOUT
 
-```
-L ( < n > : ts ) ( m : ms ) = ; : ( L ts ( m : ms )) if m = n
-= } : ( L ( < n > : ts ) ms ) if n < m
-L ( < n > : ts ) ms = L ts ms
-```
+L ( < n > : ts ) ( m : ms ) = ; : ( L ts ( m : ms )) if m = n = } : ( L ( < n > : ts ) ms ) if n < m L ( < n > : ts ) ms = L ts ms
 
-```
-L ( { n } : ts ) ( m : ms ) = { : ( L ts ( n : m : ms )) if n > m ( N ote 1)
-L ( { n } : ts ) [] = { : ( L ts [ n ]) if n > 0 ( N ote 1)
-L ( { n } : ts ) ms = { : } : ( L ( < n > : ts ) ms ) ( N ote 2)
-```
+L ( { n } : ts ) ( m : ms ) = { : ( L ts ( n : m : ms )) if n > m ( N ote 1) L ( { n } : ts ) [] = { : ( L ts [ n ]) if n > 0 ( N ote 1) L ( { n } : ts ) ms = { : } : ( L ( < n > : ts ) ms ) ( N ote 2)
 
 ```
 L ( } : ts ) (0 : ms ) = } : ( L ts ms ) ( N ote 3)
@@ -5665,13 +5335,7 @@ This style uses the same file extension. It is not advisable to mix these two st
 
 ## 10.5 Context-Free Syntax
 
-```
-module → module modid [ exports ] where body
-| body
-body → { impdecls ; topdecls }
-| { impdecls }
-| { topdecls }
-```
+module → module modid [ exports ] where body | body body → { impdecls ; topdecls } | { impdecls } | { topdecls }
 
 impdecls → impdecl ; . . . ; impdecl n ( n ≥ )
 
@@ -5729,10 +5393,7 @@ funlhs → var apat { apat }
 | ( funlhs ) apat { apat }
 ```
 
-```
-rhs → = exp [ where decls ]
-| gdrhs [ where decls ]
-```
+rhs → = exp [ where decls ] | gdrhs [ where decls ]
 
 ### gdrhs → guards = exp [ gdrhs ]
 
@@ -5796,49 +5457,17 @@ The following is an example implementation of fixity resolution for Haskell expr
 
 ### type Prec = Int type Var = String
 
-```
-data Op = Op String Prec Fixity
-deriving (Eq,Show)
-```
+data Op = Op String Prec Fixity deriving (Eq,Show)
 
-```
-data Fixity = Leftfix | Rightfix | Nonfix
-deriving (Eq,Show)
-```
+data Fixity = Leftfix | Rightfix | Nonfix deriving (Eq,Show)
 
-```
-data Exp = Var Var | OpApp Exp Op Exp | Neg Exp
-deriving (Eq,Show)
-```
+data Exp = Var Var | OpApp Exp Op Exp | Neg Exp deriving (Eq,Show)
 
-```
-data Tok = TExp Exp | TOp Op | TNeg
-deriving (Eq,Show)
-```
+data Tok = TExp Exp | TOp Op | TNeg deriving (Eq,Show)
 
-```
-resolve :: [Tok] -> Maybe Exp
-resolve tokens = fmap fst $ parseNeg (Op "" (-1) Nonfix) tokens
-where
-parseNeg :: Op -> [Tok] -> Maybe (Exp,[Tok])
-parseNeg op1 (TExp e1 : rest)
-= parse op1 e1 rest
-parseNeg op1 (TNeg : rest)
-= do guard (prec1 < 6)
-(r, rest’) <- parseNeg (Op "-" Leftfix) rest
-parse op1 (Neg r) rest’
-where
-Op _ prec1 fix1 = op1
-```
+resolve :: [Tok] -> Maybe Exp resolve tokens = fmap fst $ parseNeg (Op "" (-1) Nonfix) tokens where parseNeg :: Op -> [Tok] -> Maybe (Exp,[Tok]) parseNeg op1 (TExp e1 : rest) = parse op1 e1 rest parseNeg op1 (TNeg : rest) = do guard (prec1 < 6) (r, rest’) <- parseNeg (Op "-" Leftfix) rest parse op1 (Neg r) rest’ where Op _ prec1 fix1 = op1
 
-```
-parse :: Op -> Exp -> [Tok] -> Maybe (Exp, [Tok])
-parse _ e1 [] = Just (e1, [])
-parse op1 e1 (TOp op2 : rest)
--- case (1): check for illegal expressions
-| prec1 == prec2 && (fix1 /= fix2 || fix1 == Nonfix)
-= Nothing
-```
+parse :: Op -> Exp -> [Tok] -> Maybe (Exp, [Tok]) parse _ e1 [] = Just (e1, []) parse op1 e1 (TOp op2 : rest) -- case (1): check for illegal expressions | prec1 == prec2 && (fix1 /= fix2 || fix1 == Nonfix) = Nothing
 
 - - [case](http://haskell.org/) [(2):](http://haskell.org/) [op1](http://haskell.org/) [and](http://haskell.org/) [op2](http://haskell.org/) should associate to the left | prec1 > prec2 || (prec1 == prec2 && fix1 == Leftfix) = Just (e1, TOp op2 : rest)
 
@@ -5846,14 +5475,7 @@ parse op1 e1 (TOp op2 : rest)
 
 ### 10.6. FIXITY RESOLUTION
 
-```
-| otherwise
-= do (r,rest’) <- parseNeg op2 rest
-parse op1 (OpApp e1 op2 r) rest’
-where
-Op _ prec1 fix1 = op1
-Op _ prec2 fix2 = op2
-```
+| otherwise = do (r,rest’) <- parseNeg op2 rest parse op1 (OpApp e1 op2 r) rest’ where Op _ prec1 fix1 = op1 Op _ prec2 fix2 = op2
 
 The algorithm works as follows. At each stage we have a call
 
@@ -5963,9 +5585,7 @@ enumFrom x = enumFromTo x lastCon enumFromThen x y = enumFromThenTo x y bound [w
 
 where firstCon and lastCon are respectively the first and last constructors listed in the data declaration. For example, given the datatype:
 
-```
 data Color = Red | Orange | Yellow | Green deriving (Enum)
-```
 
 we would have:
 
@@ -6071,20 +5691,9 @@ u:ˆ:v <= x:ˆ:y = u<x || u==x && v<=y
 
 ### instance (Show a) => Show (Tree a) where
 
-```
-showsPrec d (Leaf m) = showParen (d > app_prec) showStr
-where
-showStr = showString "Leaf " . showsPrec (app_prec+1) m
-```
+showsPrec d (Leaf m) = showParen (d > app_prec) showStr where showStr = showString "Leaf " . showsPrec (app_prec+1) m
 
-```
-showsPrec d (u :ˆ: v) = showParen (d > up_prec) showStr
-where
-showStr = showsPrec (up_prec+1) u .
-showString " :ˆ: " .
-showsPrec (up_prec+1) v
--- Note: right-associativity of :ˆ: ignored
-```
+showsPrec d (u :ˆ: v) = showParen (d > up_prec) showStr where showStr = showsPrec (up_prec+1) u . showString " :ˆ: " . showsPrec (up_prec+1) v -- Note: right-associativity of :ˆ: ignored
 
 ### instance (Read a) => Read (Tree a) where
 
@@ -6861,11 +6470,7 @@ NotAssigned),
 
 ## CHAPTER 16. DATA.CHAR
 
-```
-generalCategory, toUpper, toLower, toTitle, digitToInt, intToDigit,
-ord, chr, showLitChar, lexLitChar, readLitChar
-) where
-```
+generalCategory, toUpper, toLower, toTitle, digitToInt, intToDigit, ord, chr, showLitChar, lexLitChar, readLitChar ) where
 
 ## 16.1 Characters and strings
 
@@ -6875,16 +6480,7 @@ The character type Char is an enumeration whose values represent Unicode (or equ
 
 To convert a Char to or from the corresponding Int value defined by Unicode, use Prelude.toEnum and Prelude.fromEnum from the Prelude.Enum class respectively (or equivalently ord and chr ).
 
-```
-instance Bounded Char
-instance Enum Char
-instance Eq Char
-instance Ord Char
-instance Read Char
-instance Show Char
-instance Ix Char
-instance Storable Char
-```
+instance Bounded Char instance Enum Char instance Eq Char instance Ord Char instance Read Char instance Show Char instance Ix Char instance Storable Char
 
 ### type String = [Char]
 
@@ -7214,13 +6810,7 @@ d = x’*x’’ + y’*y’’
 
 ### fromRational a = fromRational a :+
 
-```
-instance (RealFloat a) => Floating (Complex a) where
-pi = pi :+
-exp (x:+y) = expx * cos y :+ expx * sin y
-where expx = exp x
-log z = log (magnitude z) :+ phase z
-```
+instance (RealFloat a) => Floating (Complex a) where pi = pi :+ exp (x:+y) = expx * cos y :+ expx * sin y where expx = exp x log z = log (magnitude z) :+ phase z
 
 ```
 sqrt =
@@ -7230,38 +6820,15 @@ v’ = abs y / (u’*2)
 u’ = sqrt ((magnitude z + abs x) / 2)
 ```
 
-```
-sin (x:+y) = sin x * cosh y :+ cos x * sinh y
-cos (x:+y) = cos x * cosh y :+ (- sin x * sinh y)
-tan (x:+y) = (sinx*coshy:+cosx*sinhy)/(cosx*coshy:+(-sinx*sinhy))
-where sinx = sin x
-cosx = cos x
-sinhy = sinh y
-```
+sin (x:+y) = sin x * cosh y :+ cos x * sinh y cos (x:+y) = cos x * cosh y :+ (- sin x * sinh y) [tan](http://haskell.org/) [(x:+y)](http://haskell.org/) [=](http://haskell.org/) (sinx*coshy:+cosx*sinhy)/(cosx*coshy:+(-sinx*sinhy)) where sinx = sin x cosx = cos x sinhy = sinh y
 
 ## CHAPTER 17. DATA.COMPLEX
 
 ### coshy = cosh y
 
-```
-sinh (x:+y) = cos y * sinh x :+ sin y * cosh x
-cosh (x:+y) = cos y * cosh x :+ sin y * sinh x
-tanh (x:+y) = (cosy*sinhx:+siny*coshx)/(cosy*coshx:+siny*sinhx)
-where siny = sin y
-cosy = cos y
-sinhx = sinh x
-coshx = cosh x
-```
+sinh (x:+y) = cos y * sinh x :+ sin y * cosh x cosh (x:+y) = cos y * cosh x :+ sin y * sinh x tanh (x:+y) = (cosy*sinhx:+siny*coshx)/(cosy*coshx:+siny*sinhx) where siny = sin y cosy = cos y sinhx = sinh x coshx = cosh x
 
-```
-asin z@(x:+y) = y’:+(-x’)
-where (x’:+y’) = log (((-y):+x) + sqrt (1 - z*z))
-acos z@(x:+y) = y’’:+(-x’’)
-where (x’’:+y’’) = log (z + ((-y’):+x’))
-(x’:+y’) = sqrt (1 - z*z)
-atan z@(x:+y) = y’:+(-x’)
-where (x’:+y’) = log (((1-y):+x) / sqrt (1+z*z))
-```
+asin z@(x:+y) = y’:+(-x’) where (x’:+y’) = log (((-y):+x) + sqrt (1 - z*z)) acos z@(x:+y) = y’’:+(-x’’) [where](http://www.unicode.org/) [(x’’:+y’’)](http://www.unicode.org/) [=](http://www.unicode.org/) log (z + ((-y’):+x’)) (x’:+y’) = sqrt (1 - z*z) atan z@(x:+y) = y’:+(-x’) where (x’:+y’) [=](http://unicode.org/standard/standard.html) [log](http://unicode.org/standard/standard.html) [(((1-y):+x)](http://unicode.org/standard/standard.html) [/](http://unicode.org/standard/standard.html) [sqrt](http://unicode.org/standard/standard.html) [(1+z*z))](http://unicode.org/standard/standard.html)
 
 | asinh | z   | =   | log | (z     | +   | sqrt | (1+z*z)) |
 | ----- | --- | --- | --- | ------ | --- | ---- | -------- |
@@ -7293,58 +6860,19 @@ Right and left shifts by amounts greater than or equal to the width of the type 
 
 ## CHAPTER 18. DATA.INT
 
-```
-instance Bounded Int
-instance Enum Int
-instance Eq Int
-instance Integral Int
-instance Num Int
-instance Ord Int
-instance Read Int
-instance Real Int
-instance Show Int
-instance Ix Int
-instance Storable Int
-instance Bits Int
-```
+instance Bounded Int instance Enum Int instance Eq Int instance Integral Int instance Num Int instance Ord Int instance Read Int instance Real Int instance Show Int instance Ix Int instance Storable Int instance Bits Int
 
 ### data Int8
 
 8-bit signed integer type
 
-```
-instance Bounded Int8
-instance Enum Int8
-instance Eq Int8
-instance Integral Int8
-instance Num Int8
-instance Ord Int8
-instance Read Int8
-instance Real Int8
-instance Show Int8
-instance Ix Int8
-instance Storable Int8
-instance Bits Int8
-```
+instance Bounded Int8 instance Enum Int8 instance Eq Int8 instance Integral Int8 instance Num Int8 instance Ord Int8 instance Read Int8 instance Real Int8 instance Show Int8 instance Ix Int8 instance Storable Int8 instance Bits Int8
 
 ### data Int16
 
 16-bit signed integer type
 
-```
-instance Bounded Int16
-instance Enum Int16
-instance Eq Int16
-instance Integral Int16
-instance Num Int16
-instance Ord Int16
-instance Read Int16
-instance Real Int16
-instance Show Int16
-instance Ix Int16
-instance Storable Int16
-instance Bits Int16
-```
+instance Bounded Int16 instance Enum Int16 instance Eq Int16 instance Integral Int16 instance Num Int16 instance Ord Int16 instance Read Int16 instance Real Int16 instance Show Int16 instance Ix Int16 instance Storable Int16 instance Bits Int16
 
 ### data Int32
 
@@ -7352,39 +6880,13 @@ instance Bits Int16
 
 ### 18.1. SIGNED INTEGER TYPES
 
-```
-instance Bounded Int32
-instance Enum Int32
-instance Eq Int32
-instance Integral Int32
-instance Num Int32
-instance Ord Int32
-instance Read Int32
-instance Real Int32
-instance Show Int32
-instance Ix Int32
-instance Storable Int32
-instance Bits Int32
-```
+instance Bounded Int32 instance Enum Int32 instance Eq Int32 instance Integral Int32 instance Num Int32 instance Ord Int32 instance Read Int32 instance Real Int32 instance Show Int32 instance Ix Int32 instance Storable Int32 instance Bits Int32
 
 ### data Int64
 
 64-bit signed integer type
 
-```
-instance Bounded Int64
-instance Enum Int64
-instance Eq Int64
-instance Integral Int64
-instance Num Int64
-instance Ord Int64
-instance Read Int64
-instance Real Int64
-instance Show Int64
-instance Ix Int64
-instance Storable Int64
-instance Bits Int64
-```
+instance Bounded Int64 instance Enum Int64 instance Eq Int64 instance Integral Int64 instance Num Int64 instance Ord Int64 instance Read Int64 instance Real Int64 instance Show Int64 instance Ix Int64 instance Storable Int64 instance Bits Int64
 
 ## CHAPTER 18. DATA.INT
 
@@ -7738,10 +7240,7 @@ In some cases, unfoldr can undo a foldr operation:
 
 if the following holds:
 
-```
-f’ (f x y) = Just (x,y)
-f’ z = Nothing
-```
+f’ (f x y) = Just (x,y) f’ z = Nothing
 
 A simple use of unfoldr:
 
@@ -8400,11 +7899,7 @@ data (Integral a) => Ratio a = !a :% !a deriving (Eq) type Rational = Ratio Inte
 
 - - "reduce" is a subsidiary function used only in this module. -- It normalises a ratio by dividing both numerator -- and denominator by their greatest common divisor. -- -- E.g., ‘reduce‘ == :% -- ‘reduce‘ (-8) == :% (-2)
 
-```
-reduce _ = error "Data.Ratio.% : zero denominator"
-reduce x y = (x ‘quot‘ d) :% (y ‘quot‘ d)
-where d = gcd x y
-```
+reduce _ = error "Data.Ratio.% : zero denominator" reduce x y = (x ‘quot‘ d) :% (y ‘quot‘ d) where d = gcd x y
 
 ```
 x % y = reduce (x * signum y) (abs y)
@@ -8510,58 +8005,19 @@ A Word is an unsigned integral type, with the same size as Int .
 
 ## CHAPTER 23. DATA.WORD
 
-```
-instance Bounded Word
-instance Enum Word
-instance Eq Word
-instance Integral Word
-instance Num Word
-instance Ord Word
-instance Read Word
-instance Real Word
-instance Show Word
-instance Ix Word
-instance Storable Word
-instance Bits Word
-```
+instance Bounded Word instance Enum Word instance Eq Word instance Integral Word instance Num Word instance Ord Word instance Read Word instance Real Word instance Show Word instance Ix Word instance Storable Word instance Bits Word
 
 ### data Word8
 
 8-bit unsigned integer type
 
-```
-instance Bounded Word8
-instance Enum Word8
-instance Eq Word8
-instance Integral Word8
-instance Num Word8
-instance Ord Word8
-instance Read Word8
-instance Real Word8
-instance Show Word8
-instance Ix Word8
-instance Storable Word8
-instance Bits Word8
-```
+instance Bounded Word8 instance Enum Word8 instance Eq Word8 instance Integral Word8 instance Num Word8 instance Ord Word8 instance Read Word8 instance Real Word8 instance Show Word8 instance Ix Word8 instance Storable Word8 instance Bits Word8
 
 ### data Word16
 
 16-bit unsigned integer type
 
-```
-instance Bounded Word16
-instance Enum Word16
-instance Eq Word16
-instance Integral Word16
-instance Num Word16
-instance Ord Word16
-instance Read Word16
-instance Real Word16
-instance Show Word16
-instance Ix Word16
-instance Storable Word16
-instance Bits Word16
-```
+instance Bounded Word16 instance Enum Word16 instance Eq Word16 instance Integral Word16 instance Num Word16 instance Ord Word16 instance Read Word16 instance Real Word16 instance Show Word16 instance Ix Word16 instance Storable Word16 instance Bits Word16
 
 ### data Word32
 
@@ -8569,39 +8025,13 @@ instance Bits Word16
 
 ### 23.1. UNSIGNED INTEGRAL TYPES
 
-```
-instance Bounded Word32
-instance Enum Word32
-instance Eq Word32
-instance Integral Word32
-instance Num Word32
-instance Ord Word32
-instance Read Word32
-instance Real Word32
-instance Show Word32
-instance Ix Word32
-instance Storable Word32
-instance Bits Word32
-```
+instance Bounded Word32 instance Enum Word32 instance Eq Word32 instance Integral Word32 instance Num Word32 instance Ord Word32 instance Read Word32 instance Real Word32 instance Show Word32 instance Ix Word32 instance Storable Word32 instance Bits Word32
 
 ### data Word64
 
 64-bit unsigned integer type
 
-```
-instance Bounded Word64
-instance Enum Word64
-instance Eq Word64
-instance Integral Word64
-instance Num Word64
-instance Ord Word64
-instance Read Word64
-instance Real Word64
-instance Show Word64
-instance Ix Word64
-instance Storable Word64
-instance Bits Word64
-```
+instance Bounded Word64 instance Enum Word64 instance Eq Word64 instance Integral Word64 instance Num Word64 instance Ord Word64 instance Read Word64 instance Real Word64 instance Show Word64 instance Ix Word64 instance Storable Word64 instance Bits Word64
 
 ## CHAPTER 23. DATA.WORD
 
@@ -9279,37 +8709,13 @@ These types are are represented as newtype s of types in Data.Int and Data.Word 
 
 Haskell type representing the C char type.
 
-```
-instance Bounded CChar
-instance Enum CChar
-instance Eq CChar
-instance Integral CChar
-instance Num CChar
-instance Ord CChar
-instance Read CChar
-instance Real CChar
-instance Show CChar
-instance Storable CChar
-instance Bits CChar
-```
+instance Bounded CChar instance Enum CChar instance Eq CChar instance Integral CChar instance Num CChar instance Ord CChar instance Read CChar instance Real CChar instance Show CChar instance Storable CChar instance Bits CChar
 
 ### data CSChar
 
 Haskell type representing the C signed char type.
 
-```
-instance Bounded CSChar
-instance Enum CSChar
-instance Eq CSChar
-instance Integral CSChar
-instance Num CSChar
-instance Ord CSChar
-instance Read CSChar
-instance Real CSChar
-instance Show CSChar
-instance Storable CSChar
-instance Bits CSChar
-```
+instance Bounded CSChar instance Enum CSChar instance Eq CSChar instance Integral CSChar instance Num CSChar instance Ord CSChar instance Read CSChar instance Real CSChar instance Show CSChar instance Storable CSChar instance Bits CSChar
 
 ### data CUChar
 
@@ -9317,55 +8723,19 @@ Haskell type representing the C unsigned char type.
 
 ### 28.1. REPRESENTATIONS OF C TYPES
 
-```
-instance Bounded CUChar
-instance Enum CUChar
-instance Eq CUChar
-instance Integral CUChar
-instance Num CUChar
-instance Ord CUChar
-instance Read CUChar
-instance Real CUChar
-instance Show CUChar
-instance Storable CUChar
-instance Bits CUChar
-```
+instance Bounded CUChar instance Enum CUChar instance Eq CUChar instance Integral CUChar instance Num CUChar instance Ord CUChar instance Read CUChar instance Real CUChar instance Show CUChar instance Storable CUChar instance Bits CUChar
 
 ### data CShort
 
 Haskell type representing the C short type.
 
-```
-instance Bounded CShort
-instance Enum CShort
-instance Eq CShort
-instance Integral CShort
-instance Num CShort
-instance Ord CShort
-instance Read CShort
-instance Real CShort
-instance Show CShort
-instance Storable CShort
-instance Bits CShort
-```
+instance Bounded CShort instance Enum CShort instance Eq CShort instance Integral CShort instance Num CShort instance Ord CShort instance Read CShort instance Real CShort instance Show CShort instance Storable CShort instance Bits CShort
 
 ### data CUShort
 
 Haskell type representing the C unsigned short type.
 
-```
-instance Bounded CUShort
-instance Enum CUShort
-instance Eq CUShort
-instance Integral CUShort
-instance Num CUShort
-instance Ord CUShort
-instance Read CUShort
-instance Real CUShort
-instance Show CUShort
-instance Storable CUShort
-instance Bits CUShort
-```
+instance Bounded CUShort instance Enum CUShort instance Eq CUShort instance Integral CUShort instance Num CUShort instance Ord CUShort instance Read CUShort instance Real CUShort instance Show CUShort instance Storable CUShort instance Bits CUShort
 
 ### data CInt
 
@@ -9373,55 +8743,19 @@ Haskell type representing the C int type.
 
 ## CHAPTER 28. FOREIGN.C.TYPES
 
-```
-instance Bounded CInt
-instance Enum CInt
-instance Eq CInt
-instance Integral CInt
-instance Num CInt
-instance Ord CInt
-instance Read CInt
-instance Real CInt
-instance Show CInt
-instance Storable CInt
-instance Bits CInt
-```
+instance Bounded CInt instance Enum CInt instance Eq CInt instance Integral CInt instance Num CInt instance Ord CInt instance Read CInt instance Real CInt instance Show CInt instance Storable CInt instance Bits CInt
 
 ### data CUInt
 
 Haskell type representing the C unsigned int type.
 
-```
-instance Bounded CUInt
-instance Enum CUInt
-instance Eq CUInt
-instance Integral CUInt
-instance Num CUInt
-instance Ord CUInt
-instance Read CUInt
-instance Real CUInt
-instance Show CUInt
-instance Storable CUInt
-instance Bits CUInt
-```
+instance Bounded CUInt instance Enum CUInt instance Eq CUInt instance Integral CUInt instance Num CUInt instance Ord CUInt instance Read CUInt instance Real CUInt instance Show CUInt instance Storable CUInt instance Bits CUInt
 
 ### data CLong
 
 Haskell type representing the C long type.
 
-```
-instance Bounded CLong
-instance Enum CLong
-instance Eq CLong
-instance Integral CLong
-instance Num CLong
-instance Ord CLong
-instance Read CLong
-instance Real CLong
-instance Show CLong
-instance Storable CLong
-instance Bits CLong
-```
+instance Bounded CLong instance Enum CLong instance Eq CLong instance Integral CLong instance Num CLong instance Ord CLong instance Read CLong instance Real CLong instance Show CLong instance Storable CLong instance Bits CLong
 
 ### data CULong
 
@@ -9429,55 +8763,19 @@ Haskell type representing the C unsigned long type.
 
 ### 28.1. REPRESENTATIONS OF C TYPES
 
-```
-instance Bounded CULong
-instance Enum CULong
-instance Eq CULong
-instance Integral CULong
-instance Num CULong
-instance Ord CULong
-instance Read CULong
-instance Real CULong
-instance Show CULong
-instance Storable CULong
-instance Bits CULong
-```
+instance Bounded CULong instance Enum CULong instance Eq CULong instance Integral CULong instance Num CULong instance Ord CULong instance Read CULong instance Real CULong instance Show CULong instance Storable CULong instance Bits CULong
 
 ### data CPtrdiff
 
 Haskell type representing the C ptrdiff_t type.
 
-```
-instance Bounded CPtrdiff
-instance Enum CPtrdiff
-instance Eq CPtrdiff
-instance Integral CPtrdiff
-instance Num CPtrdiff
-instance Ord CPtrdiff
-instance Read CPtrdiff
-instance Real CPtrdiff
-instance Show CPtrdiff
-instance Storable CPtrdiff
-instance Bits CPtrdiff
-```
+instance Bounded CPtrdiff instance Enum CPtrdiff instance Eq CPtrdiff instance Integral CPtrdiff instance Num CPtrdiff instance Ord CPtrdiff instance Read CPtrdiff instance Real CPtrdiff instance Show CPtrdiff instance Storable CPtrdiff instance Bits CPtrdiff
 
 ### data CSize
 
 Haskell type representing the C size_t type.
 
-```
-instance Bounded CSize
-instance Enum CSize
-instance Eq CSize
-instance Integral CSize
-instance Num CSize
-instance Ord CSize
-instance Read CSize
-instance Real CSize
-instance Show CSize
-instance Storable CSize
-instance Bits CSize
-```
+instance Bounded CSize instance Enum CSize instance Eq CSize instance Integral CSize instance Num CSize instance Ord CSize instance Read CSize instance Real CSize instance Show CSize instance Storable CSize instance Bits CSize
 
 ### data CWchar
 
@@ -9485,55 +8783,19 @@ Haskell type representing the C wchar_t type.
 
 ## CHAPTER 28. FOREIGN.C.TYPES
 
-```
-instance Bounded CWchar
-instance Enum CWchar
-instance Eq CWchar
-instance Integral CWchar
-instance Num CWchar
-instance Ord CWchar
-instance Read CWchar
-instance Real CWchar
-instance Show CWchar
-instance Storable CWchar
-instance Bits CWchar
-```
+instance Bounded CWchar instance Enum CWchar instance Eq CWchar instance Integral CWchar instance Num CWchar instance Ord CWchar instance Read CWchar instance Real CWchar instance Show CWchar instance Storable CWchar instance Bits CWchar
 
 ### data CSigAtomic
 
 Haskell type representing the C sig_atomic_t type.
 
-```
-instance Bounded CSigAtomic
-instance Enum CSigAtomic
-instance Eq CSigAtomic
-instance Integral CSigAtomic
-instance Num CSigAtomic
-instance Ord CSigAtomic
-instance Read CSigAtomic
-instance Real CSigAtomic
-instance Show CSigAtomic
-instance Storable CSigAtomic
-instance Bits CSigAtomic
-```
+instance Bounded CSigAtomic instance Enum CSigAtomic instance Eq CSigAtomic instance Integral CSigAtomic instance Num CSigAtomic instance Ord CSigAtomic instance Read CSigAtomic instance Real CSigAtomic instance Show CSigAtomic instance Storable CSigAtomic instance Bits CSigAtomic
 
 ### data CLLong
 
 Haskell type representing the C long long type.
 
-```
-instance Bounded CLLong
-instance Enum CLLong
-instance Eq CLLong
-instance Integral CLLong
-instance Num CLLong
-instance Ord CLLong
-instance Read CLLong
-instance Real CLLong
-instance Show CLLong
-instance Storable CLLong
-instance Bits CLLong
-```
+instance Bounded CLLong instance Enum CLLong instance Eq CLLong instance Integral CLLong instance Num CLLong instance Ord CLLong instance Read CLLong instance Real CLLong instance Show CLLong instance Storable CLLong instance Bits CLLong
 
 ### data CULLong
 
@@ -9541,85 +8803,25 @@ Haskell type representing the C unsigned long long type.
 
 ### 28.1. REPRESENTATIONS OF C TYPES
 
-```
-instance Bounded CULLong
-instance Enum CULLong
-instance Eq CULLong
-instance Integral CULLong
-instance Num CULLong
-instance Ord CULLong
-instance Read CULLong
-instance Real CULLong
-instance Show CULLong
-instance Storable CULLong
-instance Bits CULLong
-```
+instance Bounded CULLong instance Enum CULLong instance Eq CULLong instance Integral CULLong instance Num CULLong instance Ord CULLong instance Read CULLong instance Real CULLong instance Show CULLong instance Storable CULLong instance Bits CULLong
 
 ### data CIntPtr
 
-```
-instance Bounded CIntPtr
-instance Enum CIntPtr
-instance Eq CIntPtr
-instance Integral CIntPtr
-instance Num CIntPtr
-instance Ord CIntPtr
-instance Read CIntPtr
-instance Real CIntPtr
-instance Show CIntPtr
-instance Storable CIntPtr
-instance Bits CIntPtr
-```
+instance Bounded CIntPtr instance Enum CIntPtr instance Eq CIntPtr instance Integral CIntPtr instance Num CIntPtr instance Ord CIntPtr instance Read CIntPtr instance Real CIntPtr instance Show CIntPtr instance Storable CIntPtr instance Bits CIntPtr
 
 ### data CUIntPtr
 
-```
-instance Bounded CUIntPtr
-instance Enum CUIntPtr
-instance Eq CUIntPtr
-instance Integral CUIntPtr
-instance Num CUIntPtr
-instance Ord CUIntPtr
-instance Read CUIntPtr
-instance Real CUIntPtr
-instance Show CUIntPtr
-instance Storable CUIntPtr
-instance Bits CUIntPtr
-```
+instance Bounded CUIntPtr instance Enum CUIntPtr instance Eq CUIntPtr instance Integral CUIntPtr instance Num CUIntPtr instance Ord CUIntPtr instance Read CUIntPtr instance Real CUIntPtr instance Show CUIntPtr instance Storable CUIntPtr instance Bits CUIntPtr
 
 ### data CIntMax
 
-```
-instance Bounded CIntMax
-instance Enum CIntMax
-instance Eq CIntMax
-instance Integral CIntMax
-instance Num CIntMax
-instance Ord CIntMax
-instance Read CIntMax
-instance Real CIntMax
-instance Show CIntMax
-instance Storable CIntMax
-instance Bits CIntMax
-```
+instance Bounded CIntMax instance Enum CIntMax instance Eq CIntMax instance Integral CIntMax instance Num CIntMax instance Ord CIntMax instance [Read](http://haskell.org/) [CIntMax](http://haskell.org/) instance Real CIntMax instance Show CIntMax instance Storable CIntMax instance Bits CIntMax
 
 ## CHAPTER 28. FOREIGN.C.TYPES
 
 ### data CUIntMax
 
-```
-instance Bounded CUIntMax
-instance Enum CUIntMax
-instance Eq CUIntMax
-instance Integral CUIntMax
-instance Num CUIntMax
-instance Ord CUIntMax
-instance Read CUIntMax
-instance Real CUIntMax
-instance Show CUIntMax
-instance Storable CUIntMax
-instance Bits CUIntMax
-```
+instance Bounded CUIntMax instance Enum CUIntMax instance Eq CUIntMax instance Integral CUIntMax instance Num CUIntMax instance Ord CUIntMax instance Read CUIntMax instance Real CUIntMax instance Show CUIntMax instance Storable CUIntMax instance Bits CUIntMax
 
 ### 28.1.2 Numeric types
 
@@ -9629,31 +8831,13 @@ These types are are represented as newtype s of basic foreign types, and are ins
 
 Haskell type representing the C clock_t type.
 
-```
-instance Enum CClock
-instance Eq CClock
-instance Num CClock
-instance Ord CClock
-instance Read CClock
-instance Real CClock
-instance Show CClock
-instance Storable CClock
-```
+instance Enum CClock instance Eq CClock instance Num CClock instance Ord CClock instance Read CClock instance Real CClock instance Show CClock instance Storable CClock
 
 ### data CTime
 
 Haskell type representing the C time_t type.
 
-```
-instance Enum CTime
-instance Eq CTime
-instance Num CTime
-instance Ord CTime
-instance Read CTime
-instance Real CTime
-instance Show CTime
-instance Storable CTime
-```
+instance Enum CTime instance Eq CTime instance Num CTime instance Ord CTime instance Read CTime instance Real CTime instance Show CTime instance Storable CTime
 
 ### 28.1.3 Floating types
 
@@ -9665,39 +8849,13 @@ These types are are represented as newtype s of Float and Double , and are insta
 
 Haskell type representing the C float type.
 
-```
-instance Enum CFloat
-instance Eq CFloat
-instance Floating CFloat
-instance Fractional CFloat
-instance Num CFloat
-instance Ord CFloat
-instance Read CFloat
-instance Real CFloat
-instance RealFloat CFloat
-instance RealFrac CFloat
-instance Show CFloat
-instance Storable CFloat
-```
+instance Enum CFloat instance Eq CFloat instance Floating CFloat instance Fractional CFloat instance Num CFloat instance Ord CFloat instance Read CFloat instance Real CFloat instance RealFloat CFloat instance RealFrac [CFloat](http://www.unicode.org/) instance Show CFloat instance Storable CFloat
 
 ### data CDouble
 
 Haskell type representing the C double type.
 
-```
-instance Enum CDouble
-instance Eq CDouble
-instance Floating CDouble
-instance Fractional CDouble
-instance Num CDouble
-instance Ord CDouble
-instance Read CDouble
-instance Real CDouble
-instance RealFloat CDouble
-instance RealFrac CDouble
-instance Show CDouble
-instance Storable CDouble
-```
+instance Enum CDouble instance Eq CDouble instance Floating CDouble instance Fractional CDouble instance Num CDouble instance Ord CDouble instance Read CDouble instance Real CDouble instance RealFloat CDouble instance RealFrac CDouble instance Show CDouble instance Storable CDouble
 
 ### 28.1.4 Other types
 
@@ -10293,19 +9451,7 @@ A signed integral type that can be losslessly converted to and from Ptr . This t
 
 ## CHAPTER 35. FOREIGN.PTR
 
-```
-instance Bounded IntPtr
-instance Enum IntPtr
-instance Eq IntPtr
-instance Integral IntPtr
-instance Num IntPtr
-instance Ord IntPtr
-instance Read IntPtr
-instance Real IntPtr
-instance Show IntPtr
-instance Storable IntPtr
-instance Bits IntPtr
-```
+instance Bounded IntPtr instance Enum IntPtr instance Eq IntPtr instance Integral IntPtr instance Num IntPtr instance Ord IntPtr instance Read IntPtr instance Real IntPtr instance Show IntPtr instance Storable IntPtr instance Bits IntPtr
 
 ### ptrToIntPtr :: Ptr a [->](http://www.unicode.org/) [IntPtr](http://www.unicode.org/)
 
@@ -10319,19 +9465,7 @@ casts an IntPtr to a Ptr
 
 An unsigned integral type that can be losslessly converted to and from Ptr . This type is also compatible with the C99 type uintptr_t , and can be marshalled to and from that type safely.
 
-```
-instance Bounded WordPtr
-instance Enum WordPtr
-instance Eq WordPtr
-instance Integral WordPtr
-instance Num WordPtr
-instance Ord WordPtr
-instance Read WordPtr
-instance Real WordPtr
-instance Show WordPtr
-instance Storable WordPtr
-instance Bits WordPtr
-```
+instance Bounded WordPtr instance Enum WordPtr instance Eq WordPtr instance Integral WordPtr instance Num WordPtr instance Ord WordPtr instance Read WordPtr instance Real WordPtr instance Show WordPtr instance Storable WordPtr instance Bits WordPtr
 
 ### ptrToWordPtr :: Ptr a -> WordPtr
 
@@ -10452,10 +9586,7 @@ pokeElemOff :: Ptr a -> Int -> a -> IO ()
 
 Write a value to a memory area regarded as an array of values of the same kind. The following equality holds:
 
-```
-pokeElemOff addr idx x =
-poke (addr ‘plusPtr‘ (idx * sizeOf x)) x
-```
+pokeElemOff addr idx x = poke (addr ‘plusPtr‘ (idx * sizeOf x)) x
 
 ```
 peekByteOff :: Ptr b -> Int -> IO a
@@ -10471,9 +9602,7 @@ pokeByteOff :: Ptr b -> Int -> a -> IO ()
 
 Write a value to a memory location given by a base address and offset. The following equality holds:
 
-```
 pokeByteOff addr off x = poke (addr ‘plusPtr‘ off) x
-```
 
 ### peek :: Ptr a -> IO a
 
@@ -10598,9 +9727,7 @@ then
 
 2. x = 0.d1d2...dn * (base**e)
 
-```
 3. <= di <= base-1
-```
 
 ## 38.2 Reading
 
@@ -11357,31 +10484,31 @@ The construct try comp exposes IO errors which occur within a computation, and w
 
 # Bibliography
 
-[1] J. Backus. Can programming be liberated from the von Neumann style? A functional style and its algebra of programs. CACM , 21(8):613–641, August 1978.
+- J. Backus. Can programming be liberated from the von Neumann style? A functional style and its algebra of programs. CACM , 21(8):613–641, August 1978.
 
-[2] Unicode Consortium. Unicode standard. [http://unicode.org/standard/standard.html](http://unicode.org/standard/standard.html) .
+- Unicode Consortium. Unicode standard. [http://unicode.org/standard/standard.html](http://unicode.org/standard/standard.html) .
 
-[3] H.K. Curry and R. Feys. Combinatory Logic . North-Holland Pub. Co., Amsterdam, 1958.
+- H.K. Curry and R. Feys. Combinatory Logic . North-Holland Pub. Co., Amsterdam, 1958.
 
-[4] Luis Damas and Robin Milner. Principal type-schemes for functional programs. In Conference Record of the 9th Annual ACM Symposium on Principles of Programming Languages , pages 207–12, New York, 1982. ACM Press.
+- Luis Damas and Robin Milner. Principal type-schemes for functional programs. In Conference Record of the 9th Annual ACM Symposium on Principles of Programming Languages , pages 207–12, New York, 1982. ACM Press.
 
-[5] James Gosling, Bill Joy, and Guy Steele. The Java Language Specification . The Java Series. Addison- Wesley, 1997.
+- James Gosling, Bill Joy, and Guy Steele. The Java Language Specification . The Java Series. Addison- Wesley, 1997.
 
-[6] R. Hindley. The principal type scheme of an object in combinatory logic. Transactions of the American Mathematical Society , 146:29–60, December 1969.
+- R. Hindley. The principal type scheme of an object in combinatory logic. Transactions of the American Mathematical Society , 146:29–60, December 1969.
 
-[7] International Standard ISO/IEC. Programming languages – C. 9899:1999 (E).
+- International Standard ISO/IEC. Programming languages – C. 9899:1999 (E).
 
-[8] MP Jones. A system of constructor classes: overloading and implicit higher-order polymorphism. Journal of Functional Programming , 5(1):1–36, January 1995.
+- MP Jones. A system of constructor classes: overloading and implicit higher-order polymorphism. Journal of Functional Programming , 5(1):1–36, January 1995.
 
-[9] Brian W. Kernighan and Dennis M. Ritchie. The C Programming Language . Prentice Hall, second edition, 1988.
+- Brian W. Kernighan and Dennis M. Ritchie. The C Programming Language . Prentice Hall, second edition, 1988.
 
-[10] Sheng Liang. The Java Native Interface: Programmer’s Guide and Specification . Addison Wesley, 1999.
+- Sheng Liang. The Java Native Interface: Programmer’s Guide and Specification . Addison Wesley, 1999.
 
-[11] Tim Lindholm and Frank Yellin. The Java Virtual Machine Specification . Addison-Wesley, 1996.
+- Tim Lindholm and Frank Yellin. The Java Virtual Machine Specification . Addison-Wesley, 1996.
 
-[12] P. Penfield, Jr. Principal values and branch cuts in complex APL. In APL ’81 Conference Proceedings , pages 248–256, San Francisco, September 1981.
+- P. Penfield, Jr. Principal values and branch cuts in complex APL. In APL ’81 Conference Proceedings , pages 248–256, San Francisco, September 1981.
 
-[13] P. Wadler and S. Blott. How to make ad hoc polymorphism less ad hoc . In Proceedings of 16th ACM Symposium on Principles of Programming Languages , pages 60–76, Austin, Texas, January 1989.
+- P. Wadler and S. Blott. How to make ad hoc polymorphism less ad hoc . In Proceedings of 16th ACM Symposium on Principles of Programming Languages , pages 60–76, Austin, Texas, January 1989.
 
 ## BIBLIOGRAPHY
 

@@ -238,9 +238,7 @@ Successful implementation of the Framework is based upon achieving the outcomes 
 
 The Tier definitions are as follows:
 
-```
 Tier 1: Partial
-```
 
  Risk Management Process – Organizational cybersecurity risk management practices are not formalized, and risk is managed in an ad hoc and sometimes reactive manner. Prioritization of cybersecurity activities may not be directly informed by organizational risk objectives, the threat environment, or business/mission requirements.
 
@@ -248,9 +246,7 @@ Tier 1: Partial
 
  External Participation [–](https://www.isa.org/templates/one-column.aspx?pageid=111294&productId=116785) [The organization does not understand its role in the larger](https://www.isa.org/templates/one-column.aspx?pageid=111294&productId=116785) [ecosystem with respect to either its dependencies or dependents. The organization does](https://www.nist.gov/sites/default/files/documents/cyberframework/roadmap-021214.pdf) not collaborate with or receive information (e.g., threat intelligence, best practices, technologies) from other entities (e.g., buyers, suppliers, dependencies, dependents, ISAOs, researchers, governments), nor does it share information. The organization is generally unaware of the cyber supply chain risks of the products and services it provides and that it uses.
 
-```
 Tier 2: Risk Informed
-```
 
  Risk Management Process [–](http://www.nist.gov/cyberframework/) [Risk management practices are approved by management](http://www.nist.gov/cyberframework/) but may not be established as organizational-wide policy. Prioritization of cybersecurity activities and protection needs is directly informed by organizational risk objectives, the threat environment, or business/mission requirements.
 
@@ -258,9 +254,7 @@ Tier 2: Risk Informed
 
  External Participation – [Generally, the organization understands its role in the larger](https://www.congress.gov/bill/113th-congress/senate-bill/1353/text) ecosystem with respect to either its own dependencies or dependents, but not both. The organization collaborates with and receives some information from other entities and [generates some of its own information, but may not share information with others.](https://www.gpo.gov/fdsys/pkg/CFR-2014-title3-vol1/pdf/CFR-2014-title3-vol1-eo13636.pdf) [Additionally, the organization is aware of the cyber supply chain risks associated with](http://www.dhs.gov/critical-infrastructure-sectors) [the products and services it provides and uses, but does not act consistently or formally](https://www.congress.gov/bill/113th-congress/senate-bill/1353/text) [upon those risks.](https://doi.org/10.6028/NIST.SP.800-160v1)
 
-```
 Tier 3: Repeatable
-```
 
  Risk Management Process – The organization’s risk management practices are formally approved and expressed as policy. Organizational cybersecurity practices are regularly updated based on the application of risk management processes to changes in business/mission requirements and a changing threat and technology landscape.
 
@@ -268,9 +262,7 @@ Tier 3: Repeatable
 
  [External Participation](https://www.nist.gov/cyberframework/rfc-cybersecurity-framework-version-11-draft-2) - The organization understands its role, dependencies, and [dependents in the larger ecosystem](https://www.nist.gov/cyberframework/rfc-cybersecurity-framework-draft-version-11) [and may contribute to the community’s broader](https://www.nist.gov/news-events/news/2017/01/nist-releases-update-cybersecurity-framework) [understanding of risks. It collaborates with and receives information from other entities](https://www.isa.org/templates/one-column.aspx?pageid=111294&productId=116731) [regularly that complements internally generated information, and shares information](https://www.nist.gov/news-events/events/2016/04/cybersecurity-framework-workshop-2016) [with other entities. The organization is aware of the cyber supply chain risks associated](https://www.isa.org/templates/one-column.aspx?pageid=111294&productId=116785) [with the products and services it provides and that it uses. Additionally, it usually acts](https://www.nist.gov/sites/default/files/documents/cyberframework/roadmap-021214.pdf) [formally upon those risks, including mechanisms such as written agreements to](https://www.iso.org/standard/54534.html) communicate baseline requirements, governance structures (e.g., risk councils), and policy implementation and monitoring.
 
-```
 Tier 4: Adaptive
-```
 
  Risk Management Process – The organization adapts its cybersecurity practices based on previous and current cybersecurity activities, including lessons learned and predictive [indicators. Through a process of continuous improvement incorporating advanced](http://www.nist.gov/cyberframework/) cybersecurity technologies and practices, the organization actively adapts to a changing threat and technology landscape and responds in a timely and effective manner to evolving, sophisticated threats.
 

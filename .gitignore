@@ -4,3 +4,12 @@ dist/
 out/
 *.tsbuildinfo
 .vercel
+
+# Test corpus: PDFs are too large for git, but results/reports are committed
+test-corpus/real-pdfs/
+test-corpus/blind-pdfs/
+test-corpus/blind-pdfs-2/
+test-corpus/blind-pdfs-3/
+
+# Internal marketing strategy (not for public repo)
+docs/marketing-ideas.md
