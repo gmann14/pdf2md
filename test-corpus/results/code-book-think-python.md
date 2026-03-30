@@ -360,7 +360,7 @@ xi
 
 - [• Andrea Zanella translated the book into Italian, and sent a number of corrections along the](http://docs.python.org/3/library/datetime.html) [way.](http://en.wikipedia.org/wiki/Radix_sort)
 
-- Many, many thanks to Melissa Lewis and Luciano Ramalho for excellent comments and sug- gestions on the second edition.
+- Many, many thanks to Melissa Lewis and Luciano Ramalho for excellent comments and suggestions on the second edition.
 
 - Thanks to Harry Percival from PythonAnywhere for his help getting people started running [Python in a browser.](https://thinkpython.com/code/flower.py)
 
@@ -1076,7 +1076,7 @@ Your job is to be a good manager: find ways to take advantage of the strengths a
 
 #### 1.8 [Glossary](http://en.wikipedia.org/wiki/Radix_sort)
 
-problem solving: The process of formulating a problem, finding a solution, and express- ing it.
+problem solving: The process of formulating a problem, finding a solution, and expressing it.
 
 [high-level language:](http://docs.python.org/3/library/stdtypes.html#string-methods) [A programming language like Python that is designed to be easy for](https://thinkpython.com/code/flower.py) [humans to read and write.](https://thinkpython.com/code/polygon.py)
 
@@ -1353,7 +1353,7 @@ concatenate: [To join two operands end-to-end.](https://thinkpython.com/code/red
 
 comment: [Information in a program that is meant for other programmers (or anyone read-](https://thinkpython.com/code/words.txt) ing the source code) and has no effect on the execution of the program.
 
-syntax error: An error in a program that makes it impossible to parse (and therefore im- possible to interpret).
+syntax error: An error in a program that makes it impossible to parse (and therefore impossible to interpret).
 
 exception: [An error that is detected while the program is running.](https://thinkpython.com/code/palindrome_soln.py)
 
@@ -1429,7 +1429,7 @@ Chapter 3. Functions
 
 [Python has a math module that provides most of the familiar mathematical functions. A](https://thinkpython.com/code/structshape.py) module [is a file that contains a collection of related functions.](https://thinkpython.com/code/cartalk1.py)
 
-Before we can use the functions in a module, we have to import it with an import state- ment :
+Before we can use the functions in a module, we have to import it with an import statement :
 
 ### [>>> import math](http://docs.python.org/3/reference/datamodel.html#specialnames)
 
@@ -1483,7 +1483,7 @@ So far, [we have looked at the elements of a program—variables,](http://en.wik
 
 [def](https://thinkpython.com/code/reducible.py) [is a keyword that indicates that this is a function definition. The name of the function](https://thinkpython.com/code/reducible.py) [is](http://www.cartalk.com/content/puzzlers) [print_lyrics](http://www.cartalk.com/content/puzzlers) [. The rules for function names are the same as for variable names: letters,](https://thinkpython.com/code/list_exercises.py) [numbers and underscore are legal, but the first character can’t be a number. You can’t use a](https://thinkpython.com/code/words.txt) keyword as the name of a function, and you should avoid having a variable and a function [with the same name.](http://en.wikipedia.org/wiki/Radix_sort)
 
-The empty parentheses after the name indicate that this function doesn’t take any argu- ments.
+The empty parentheses after the name indicate that this function doesn’t take any arguments.
 
 The first line of the function definition is called the header [; the rest is called the](http://docs.python.org/3/library/stdtypes.html#string-methods) [body](http://docs.python.org/3/library/stdtypes.html#string-methods) [. The](http://docs.python.org/3/library/stdtypes.html#string-methods) [header has to end with a colon and the body has to be indented. By convention, indentation](https://thinkpython.com/code/flower.py) [is always four spaces. The body can contain any number of statements.](https://thinkpython.com/code/polygon.py)
 
@@ -1547,7 +1547,7 @@ Pulling together the code fragments from the previous section, the whole program
 
 [A function call is like a detour in the flow of execution. Instead of going to the next state-](http://en.wikipedia.org/wiki/Sexagesimal) [ment, the flow jumps to the body of the function, runs the statements there, and then comes](http://en.wikipedia.org/wiki/Letter_frequencies) [back to pick up where it left off.](https://thinkpython.com/code/most_frequent.py)
 
-[That sounds simple enough, until you remember that one function can call another. While](http://tinyurl.com/thinkpython2e) [in the middle of one function, the program might have to run the statements in another](https://thinkpython.com/code/do_four.py) function. Then, while running that new function, the program might have to run yet an- other function!
+[That sounds simple enough, until you remember that one function can call another. While](http://tinyurl.com/thinkpython2e) [in the middle of one function, the program might have to run the statements in another](https://thinkpython.com/code/do_four.py) function. Then, while running that new function, the program might have to run yet another function!
 
 [Fortunately, Python is good at keeping track of where it is, so each time a function com-](https://thinkpython.com/code/wordlist.py) [pletes, the program picks up where it left off in the function that called it. When it gets to](http://wikipedia.org/wiki/Moby_Project) [the end of the program, it terminates.](https://thinkpython.com/code/reducible.py)
 
@@ -1739,7 +1739,7 @@ composition: [Using an expression as part of a larger expression, or a statement
 
 [stack diagram:](https://thinkpython.com/code/list_exercises.py) A graphical representation of a stack of functions, their variables, and the [values they refer to.](http://docs.python.org/3/library/datetime.html)
 
-frame: A box in a stack diagram that represents a function call. It contains the local vari- ables and parameters of the function.
+frame: A box in a stack diagram that represents a function call. It contains the local variables and parameters of the function.
 
 traceback: [A list of the functions that are executing, printed when an exception occurs.](https://thinkpython.com/code/palindrome_soln.py)
 
@@ -2083,7 +2083,7 @@ These requirements are called preconditions because they are supposed to be true
 
 [Preconditions are the responsibility of the caller.](https://thinkpython.com/code/Point1_soln.py) [If the caller violates a (properly docu-](http://tinyurl.com/thinkpython2e) [mented!) precondition and the function doesn’t work correctly, the bug is in the caller, not](https://thinkpython.com/code/do_four.py) the function.
 
-If the preconditions are satisfied and the postconditions are not, the bug is in the function. [If your pre- and postconditions are clear, they can help with debugging.](https://thinkpython.com/code/wordlist.py)
+If the preconditions are satisfied and the postconditions are not, the bug is in the function. [If your preand postconditions are clear, they can help with debugging.](https://thinkpython.com/code/wordlist.py)
 
 #### 4.11 [Glossary](https://thinkpython.com/code/PokerHandSoln.py)
 
@@ -2091,7 +2091,7 @@ If the preconditions are satisfied and the postconditions are not, the bug is in
 
 loop: A part of a program that can run repeatedly.
 
-encapsulation: The process of transforming a sequence of statements into a function defi- nition.
+encapsulation: The process of transforming a sequence of statements into a function definition.
 
 generalization: [The process of replacing something unnecessarily specific (like a number)](https://thinkpython.com/code/flower.py) [with something appropriately general (like a variable or parameter).](https://thinkpython.com/code/polygon.py)
 
@@ -2428,7 +2428,7 @@ conditional statement: A statement that controls the flow of execution depending
 
 [base case:](https://thinkpython.com/code/list_exercises.py) A conditional branch in a recursive function that does not make a recursive call.
 
-infinite recursion: A recursion that doesn’t have a base case, or never reaches it. Eventu- ally, an infinite recursion causes a runtime error.
+infinite recursion: A recursion that doesn’t have a base case, or never reaches it. Eventually, an infinite recursion causes a runtime error.
 
 #### [5.14](https://thinkpython.com/code/polygon.py) [Exercises](https://thinkpython.com/code/polygon.py)
 
@@ -2999,7 +2999,7 @@ print( ' Done! ['](http://en.wikipedia.org/wiki/Birthday_paradox) [)](http://en.
 
 #### [7.5](http://docs.python.org/3/library/datetime.html) [Square roots](http://docs.python.org/3/library/datetime.html)
 
-Loops are often used in programs that compute numerical results by starting with an ap- proximate answer and iteratively improving it.
+Loops are often used in programs that compute numerical results by starting with an approximate answer and iteratively improving it.
 
 For example, one way of computing square roots is Newton’s method. Suppose that you [want to know the square root of](http://docs.python.org/3/library/stdtypes.html#string-methods) [a](https://thinkpython.com/code/flower.py) [. If you start with almost any estimate,](https://thinkpython.com/code/flower.py) x , you can com- [pute a better estimate with the following formula:](https://thinkpython.com/code/polygon.py)
 
@@ -3051,7 +3051,7 @@ Executing algorithms is boring, but designing them is interesting, intellectuall
 
 #### 7.7 [Debugging](https://thinkpython.com/code/Point1_soln.py)
 
-As you start writing bigger programs, you might find yourself spending more time debug- ging. More code means more chances to make an error and more places for bugs to hide.
+As you start writing bigger programs, you might find yourself spending more time debugging. More code means more chances to make an error and more places for bugs to hide.
 
 [One way to cut your debugging time is “debugging by bisection”. For example, if there](http://wikipedia.org/wiki/Moby_Project) [are 100 lines in your program and you check them one at a time, it would take 100 steps.](https://thinkpython.com/code/reducible.py)
 
@@ -3350,7 +3350,7 @@ As it turns out, there is a string method named find that is remarkably similar 
 >>> index
 ```
 
-[In this example, we invoke](https://thinkpython.com/code/ackermann.py) find on word and pass the letter we are looking for as a param- eter.
+[In this example, we invoke](https://thinkpython.com/code/ackermann.py) find on word and pass the letter we are looking for as a parameter.
 
 Actually, the find method is more general than our function; it can find substrings, not just characters:
 
@@ -3650,7 +3650,7 @@ return is_abecedarian(word[1:])
 
 [The loop starts at](http://www.cartalk.com/content/puzzlers) [i=0](http://www.cartalk.com/content/puzzlers) [and ends when](http://www.cartalk.com/content/puzzlers) [i=len(word)-1](https://thinkpython.com/code/PokerHandSoln.py) [. Each time through the loop, it com-](https://thinkpython.com/code/PokerHandSoln.py) pares the [i](https://thinkpython.com/code/PokerHandSoln.py) th character (which you can think of as the current character) to the [i](https://thinkpython.com/code/words.txt) [+](https://thinkpython.com/code/words.txt) [1th](https://thinkpython.com/code/words.txt) character (which you can think of as the next).
 
-If the next character is less than (alphabetically before) the current one, then we have dis- covered a break in the abecedarian trend, and we return False .
+If the next character is less than (alphabetically before) the current one, then we have discovered a break in the abecedarian trend, and we return False .
 
 [If we get to the end of the loop without finding a fault, then the word passes the test. To](https://thinkpython.com/code/palindrome_soln.py) convince yourself that the loop ends correctly, consider an example like ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [flossy](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [.](http://docs.python.org/3/library/stdtypes.html#string-methods) [The](http://docs.python.org/3/library/stdtypes.html#string-methods) [length of the word is 6, so the last time the loop runs is when](https://thinkpython.com/code/flower.py) [i](https://thinkpython.com/code/flower.py) is 4, which is the index of [the second-to-last character. On the last iteration, it compares the second-to-last character](https://thinkpython.com/code/polygon.py) to the last, which is what we want.
 
@@ -3928,13 +3928,13 @@ As the loop runs, [total](http://tinyurl.com/thinkpython2e) accumulates the sum 
 
 ### [>>> t = [1, 2, 3]](https://thinkpython.com/code/rotate_pairs.py) [>>> sum(t)](https://thinkpython.com/code/Point2_soln.py)
 
-An operation like this that combines a sequence of elements into a single value is some- times called reduce .
+An operation like this that combines a sequence of elements into a single value is sometimes called reduce .
 
 [Sometimes you want to traverse one list while building another. For example, the following](https://thinkpython.com/code/wordlist.py) [function takes a list of strings and returns a new list that contains capitalized strings:](http://wikipedia.org/wiki/Moby_Project)
 
 ### [def capitalize_all(t):](http://www.cartalk.com/content/puzzlers) [res = []](https://thinkpython.com/code/PokerHandSoln.py) for s in t: [res.append(s.capitalize())](http://docs.python.org/3/library/datetime.html) [return res](http://en.wikipedia.org/wiki/Radix_sort)
 
-res is initialized with an empty list; each time through the loop, we append the next ele- ment. So [res](https://thinkpython.com/code/palindrome_soln.py) [is another kind of accumulator.](https://thinkpython.com/code/palindrome_soln.py)
+res is initialized with an empty list; each time through the loop, we append the next element. So [res](https://thinkpython.com/code/palindrome_soln.py) [is another kind of accumulator.](https://thinkpython.com/code/palindrome_soln.py)
 
 [An operation like](http://docs.python.org/3/library/stdtypes.html#string-methods) [capitalize_all](https://thinkpython.com/code/flower.py) [is sometimes called a](https://thinkpython.com/code/flower.py) [map](https://thinkpython.com/code/flower.py) because it “maps” a function [(in this case the method](https://thinkpython.com/code/polygon.py) [capitalize](https://thinkpython.com/code/polygon.py) ) onto each of the elements in a sequence.
 
@@ -4040,7 +4040,7 @@ a [[ 1, 2, 3 ]](http://docs.python.org/3/library/stdtypes.html#types-set) [b](ht
 
 [So the state diagram looks like Figure 10.3.](https://thinkpython.com/code/Point1_soln.py)
 
-In this case we would say that the two lists are equivalent , because they have the same el- ements, but not [identical](http://tinyurl.com/thinkpython2e) , because they are not the same object. If two objects are identical, they are also equivalent, but if they are equivalent, they are not necessarily identical.
+In this case we would say that the two lists are equivalent , because they have the same elements, but not [identical](http://tinyurl.com/thinkpython2e) , because they are not the same object. If two objects are identical, they are also equivalent, but if they are equivalent, they are not necessarily identical.
 
 [Until now, we have been using “object” and “value” interchangeably, but it is more precise](http://wikipedia.org/wiki/Moby_Project) [to say that an object has a value. If you evaluate](https://thinkpython.com/code/reducible.py) [[1, 2, 3]](https://thinkpython.com/code/reducible.py) [, you get a list object whose](http://www.cartalk.com/content/puzzlers) [value is a sequence of integers.](http://www.cartalk.com/content/puzzlers) [If another list has the same elements, we say it has the](https://thinkpython.com/code/PokerHandSoln.py) [same value, but it is not the same object.](https://thinkpython.com/code/PokerHandSoln.py)
 
@@ -4960,7 +4960,7 @@ It is common to use tuples as keys in dictionaries (primarily because you can’
 
 ### [directory[last, first] = number](http://en.wikipedia.org/wiki/Radix_sort)
 
-The expression in brackets is a tuple. We could use tuple assignment to traverse this dic- tionary.
+The expression in brackets is a tuple. We could use tuple assignment to traverse this dictionary.
 
 ### for last, first in directory: [print(first, last, directory[last,first])](https://thinkpython.com/code/flower.py)
 
@@ -5325,7 +5325,7 @@ An alternative is:
 
 1. [1. Use](http://docs.python.org/3/library/datetime.html) [keys](http://docs.python.org/3/library/datetime.html) [to get a list of the words in the book.](http://docs.python.org/3/library/datetime.html)
 
-2. Build a list that contains the cumulative sum of the word frequencies (see Exer- cise 10.2). The last item in this list is the total number of words in the book, n .
+2. Build a list that contains the cumulative sum of the word frequencies (see Exercise 10.2). The last item in this list is the total number of words in the book, n .
 
 3. [3. Choose a random number from 1 to](http://docs.python.org/3/library/stdtypes.html#string-methods) [n](http://docs.python.org/3/library/stdtypes.html#string-methods) . Use a bisection search (See Exercise 10.10) to [find the index where the random number would be inserted in the cumulative sum.](https://thinkpython.com/code/flower.py)
 
@@ -5353,7 +5353,7 @@ But can a bee be said to be [Or not to be an entire bee](https://thinkpython.com
 
 [The result of Markov analysis is a mapping from each prefix (like “half the” and “the bee”)](https://thinkpython.com/code/rotate_pairs.py) to all possible suffixes (like “has” and “is”).
 
-Given this mapping, you can generate a random text by starting with any prefix and choos- ing at random from the possible suffixes. Next, you can combine the end of the prefix and the new suffix to form the next prefix, and repeat.
+Given this mapping, you can generate a random text by starting with any prefix and choosing at random from the possible suffixes. Next, you can combine the end of the prefix and the new suffix to form the next prefix, and repeat.
 
 [For example, if you start with the prefix “Half a”, then the next word has to be “bee”,](http://wikipedia.org/wiki/Moby_Project) [because the prefix only appears once in the text.](https://thinkpython.com/code/reducible.py) [The next prefix is “a bee”, so the next](http://www.cartalk.com/content/puzzlers) [suffix might be “philosophically”, “be” or “due”.](http://www.cartalk.com/content/puzzlers)
 
@@ -5375,7 +5375,7 @@ Chapter 13. Case study: data structure selection
 
 3. [3. Once your program is working, you might want to try a mash-up: if you combine text from](https://thinkpython.com/code/polygon.py) [two or more books, the random text you generate will blend the vocabulary and phrases from](http://en.wikipedia.org/wiki/Spiral) [the sources in interesting ways.](http://www.cartalk.com/content/puzzlers)
 
-[Credit: This case study is based on an example from Kernighan and Pike,](https://thinkpython.com/code/grid.py) The Practice of Pro- gramming , Addison-Wesley, 1999.
+[Credit: This case study is based on an example from Kernighan and Pike,](https://thinkpython.com/code/grid.py) The Practice of Programming , Addison-Wesley, 1999.
 
 [You should attempt this exercise before you go on;](http://creativecommons.org/licenses/by-nc/3.0/) then you can download my so- [lution from](https://thinkpython.com/code/emma.txt) [https://thinkpython.com/code/markov.py](https://thinkpython.com/code/markov.py) [.](https://thinkpython.com/code/invert_dict.py) [You will also need](https://thinkpython.com/code/invert_dict.py) [https://](https://thinkpython.com/code/invert_dict.py) [thinkpython.com/code/emma.txt](https://thinkpython.com/code/rotate.py) [.](https://thinkpython.com/code/rotate.py)
 
@@ -5425,7 +5425,7 @@ When you are debugging a program, and especially if you are working on a hard bu
 
 [Reading:](https://thinkpython.com/code/reducible.py) [Examine your code, read it back to yourself, and check that it says what you](https://thinkpython.com/code/reducible.py) [meant to say.](https://thinkpython.com/code/PokerHandSoln.py)
 
-[Running:](http://docs.python.org/3/library/datetime.html) [Experiment by making changes and running different versions.](http://docs.python.org/3/library/datetime.html) [Often if you](http://en.wikipedia.org/wiki/Radix_sort) display the right thing at the right place in the program, the problem becomes obvi- ous, but sometimes you have to build scaffolding.
+[Running:](http://docs.python.org/3/library/datetime.html) [Experiment by making changes and running different versions.](http://docs.python.org/3/library/datetime.html) [Often if you](http://en.wikipedia.org/wiki/Radix_sort) display the right thing at the right place in the program, the problem becomes obvious, but sometimes you have to build scaffolding.
 
 Ruminating: [Take some time to think! What kind of error is it: syntax, runtime, or seman-](https://thinkpython.com/code/palindrome_soln.py) tic? What information can you get from the error messages, or from the output of the [program? What kind of error could cause the problem you’re seeing? What did you](https://thinkpython.com/code/flower.py) [change last, before the problem appeared?](https://thinkpython.com/code/polygon.py)
 
@@ -5618,7 +5618,7 @@ os.listdir [returns a list of the files (and other directories) in the given dir
 
 [os.path.join](http://docs.python.org/3/reference/datamodel.html#specialnames) [takes a directory and a file name and joins them into a complete path.](http://tinyurl.com/thinkpython2e)
 
-The os module provides a function called walk that is similar to this one but more ver- satile. [As an exercise, read the documentation and use it to print the names of the](http://en.wikipedia.org/wiki/Sexagesimal) [files in a given directory and its subdirectories.](https://thinkpython.com/code/walk.py) [You can download my solution from](https://thinkpython.com/code/Time1.py) [https://thinkpython.com/code/walk.py](https://thinkpython.com/code/walk.py) .
+The os module provides a function called walk that is similar to this one but more versatile. [As an exercise, read the documentation and use it to print the names of the](http://en.wikipedia.org/wiki/Sexagesimal) [files in a given directory and its subdirectories.](https://thinkpython.com/code/walk.py) [You can download my solution from](https://thinkpython.com/code/Time1.py) [https://thinkpython.com/code/walk.py](https://thinkpython.com/code/walk.py) .
 
 #### 14.5 [Catching exceptions](http://tinyurl.com/thinkpython2e)
 
@@ -5901,7 +5901,7 @@ Chapter 15. Classes and objects
 
 [Figure 15.1: Object diagram.](https://thinkpython.com/code)
 
-[The header indicates that the new class is called](http://docs.python.org/3/library/stdtypes.html#types-set) [Point](http://docs.python.org/3/library/stdtypes.html#types-set) . The body is a docstring that ex- plains what the class is for. You can define variables and methods inside a class definition, [but we will get back to that later.](https://thinkpython.com/code/invert_dict.py)
+[The header indicates that the new class is called](http://docs.python.org/3/library/stdtypes.html#types-set) [Point](http://docs.python.org/3/library/stdtypes.html#types-set) . The body is a docstring that explains what the class is for. You can define variables and methods inside a class definition, [but we will get back to that later.](https://thinkpython.com/code/invert_dict.py)
 
 [Defining a class named](https://thinkpython.com/code/structshape.py) [Point](https://thinkpython.com/code/structshape.py) [creates a](https://thinkpython.com/code/structshape.py) [class object](https://thinkpython.com/code/structshape.py) .
 
@@ -5997,7 +5997,7 @@ The expression box.corner.x means, “Go to the object box [refers to and select
 
 #### 15.4 Instances as return values
 
-[Functions can return instances. For example,](https://thinkpython.com/code/palindrome_soln.py) [find_center](https://thinkpython.com/code/palindrome_soln.py) [takes a](https://thinkpython.com/code/palindrome_soln.py) [Rectangle](https://thinkpython.com/code/palindrome_soln.py) as an argu- ment and returns a Point that contains the coordinates of the center of the [Rectangle](http://docs.python.org/3/library/stdtypes.html#string-methods) [:](http://docs.python.org/3/library/stdtypes.html#string-methods)
+[Functions can return instances. For example,](https://thinkpython.com/code/palindrome_soln.py) [find_center](https://thinkpython.com/code/palindrome_soln.py) [takes a](https://thinkpython.com/code/palindrome_soln.py) [Rectangle](https://thinkpython.com/code/palindrome_soln.py) as an argument and returns a Point that contains the coordinates of the center of the [Rectangle](http://docs.python.org/3/library/stdtypes.html#string-methods) [:](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
 ### [def find_center(rect):](https://thinkpython.com/code/polygon.py) p = Point() [p.x = rect.corner.x + rect.width/2](https://thinkpython.com/code/koch.py) [p.y = rect.corner.y + rect.height/2](https://thinkpython.com/code/pie.py) return p
 
@@ -6680,7 +6680,7 @@ Chapter 17. Classes and methods
 
 #### [17.13](https://thinkpython.com/code/polygon.py) [Exercises](https://thinkpython.com/code/polygon.py)
 
-[Exercise 17.1.](http://www.cartalk.com/content/puzzlers) [Download the code from this chapter from](http://www.cartalk.com/content/puzzlers) https: // thinkpython. com/ code/ Time2. py . Change the attributes of Time to be a single integer representing seconds since mid- [night. Then modify the methods (and the function](https://thinkpython.com/code/grid.py) [int_to_time](https://thinkpython.com/code/grid.py) ) to work with the new implemen- tation. You should not have to modify the test code in [main](https://thinkpython.com/code/Time2_soln.py) [. When you are done, the output should](https://thinkpython.com/code/Time2_soln.py) be the same as before. Solution: https: // thinkpython. com/ code/ Time2_ soln. py . [Exercise 17.2.](http://creativecommons.org/licenses/by-nc/3.0/) [This exercise is a cautionary tale about one of the most common, and difficult to](http://docs.python.org/3/library/stdtypes.html#types-set) [find, errors in Python. Write a definition for a class named](https://thinkpython.com/code/emma.txt) [Kangaroo](https://thinkpython.com/code/invert_dict.py) [with the following methods:](https://thinkpython.com/code/invert_dict.py)
+[Exercise 17.1.](http://www.cartalk.com/content/puzzlers) [Download the code from this chapter from](http://www.cartalk.com/content/puzzlers) https: // thinkpython. com/ code/ Time2. py . Change the attributes of Time to be a single integer representing seconds since mid- [night. Then modify the methods (and the function](https://thinkpython.com/code/grid.py) [int_to_time](https://thinkpython.com/code/grid.py) ) to work with the new implementation. You should not have to modify the test code in [main](https://thinkpython.com/code/Time2_soln.py) [. When you are done, the output should](https://thinkpython.com/code/Time2_soln.py) be the same as before. Solution: https: // thinkpython. com/ code/ Time2_ soln. py . [Exercise 17.2.](http://creativecommons.org/licenses/by-nc/3.0/) [This exercise is a cautionary tale about one of the most common, and difficult to](http://docs.python.org/3/library/stdtypes.html#types-set) [find, errors in Python. Write a definition for a class named](https://thinkpython.com/code/emma.txt) [Kangaroo](https://thinkpython.com/code/invert_dict.py) [with the following methods:](https://thinkpython.com/code/invert_dict.py)
 
 1. An [__init__](http://en.wikipedia.org/wiki/Ackermann_function) [method that initializes an attribute named](http://en.wikipedia.org/wiki/Ackermann_function) [pouch_contents](http://en.wikipedia.org/wiki/Ackermann_function) to an empty list.
 
@@ -6708,7 +6708,7 @@ If you don’t play poker, you can read about it at [http://en.wikipedia.org/wik
 
 [There are fifty-two cards in a deck, each of which belongs to one of four suits and one of](https://thinkpython.com/code/reducible.py) [thirteen ranks. The suits are Spades, Hearts, Diamonds, and Clubs (in descending order in](https://thinkpython.com/code/words.txt) bridge). The ranks are Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, and King. Depending on [the game that you are playing, an Ace may be higher than King or lower than 2.](http://docs.python.org/3/library/datetime.html)
 
-If we want to define a new object to represent a playing card, it is obvious what the at- tributes should be: rank and suit . It is not as obvious what type the attributes should be. [One possibility is to use strings containing words like](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) [Spade](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) for suits and ' Queen ' for ranks. One problem with this implementation is that it would not be easy to compare cards [to see which had a higher rank or suit.](https://thinkpython.com/code/flower.py)
+If we want to define a new object to represent a playing card, it is obvious what the attributes should be: rank and suit . It is not as obvious what type the attributes should be. [One possibility is to use strings containing words like](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) [Spade](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) for suits and ' Queen ' for ranks. One problem with this implementation is that it would not be easy to compare cards [to see which had a higher rank or suit.](https://thinkpython.com/code/flower.py)
 
 An alternative is to use integers to [encode](http://gutenberg.org/) [the ranks and suits. In this context, “encode”](https://thinkpython.com/code/sed.py) [means that we are going to define a mapping between numbers and suits, or between](https://thinkpython.com/code/koch.py) [numbers and ranks.](https://thinkpython.com/code/pie.py) This kind of encoding is not meant to be a secret (that would be [“encryption”).](http://en.wikipedia.org/wiki/Koch_snowflake)
 
@@ -6799,7 +6799,7 @@ With the methods we have so far, we can create and print cards:
 
 #### 18.3 Comparing cards
 
-[For built-in types, there are relational operators (](https://thinkpython.com/code/palindrome_soln.py) [<](https://thinkpython.com/code/palindrome_soln.py) [,](https://thinkpython.com/code/palindrome_soln.py) [>](https://thinkpython.com/code/palindrome_soln.py) [,](https://thinkpython.com/code/palindrome_soln.py) [==](https://thinkpython.com/code/palindrome_soln.py) , etc.) that compare values and de- termine when one is greater than, less than, or equal to another. For programmer-defined [types, we can override the behavior of the built-in operators by providing a method named](https://thinkpython.com/code/flower.py) [__lt__](https://thinkpython.com/code/polygon.py) [, which stands for “less than”.](https://thinkpython.com/code/polygon.py)
+[For built-in types, there are relational operators (](https://thinkpython.com/code/palindrome_soln.py) [<](https://thinkpython.com/code/palindrome_soln.py) [,](https://thinkpython.com/code/palindrome_soln.py) [>](https://thinkpython.com/code/palindrome_soln.py) [,](https://thinkpython.com/code/palindrome_soln.py) [==](https://thinkpython.com/code/palindrome_soln.py) , etc.) that compare values and determine when one is greater than, less than, or equal to another. For programmer-defined [types, we can override the behavior of the built-in operators by providing a method named](https://thinkpython.com/code/flower.py) [__lt__](https://thinkpython.com/code/polygon.py) [, which stands for “less than”.](https://thinkpython.com/code/polygon.py)
 
 __lt__ [takes two parameters,](https://thinkpython.com/code/koch.py) [self](https://thinkpython.com/code/koch.py) [and](https://thinkpython.com/code/koch.py) [other](https://thinkpython.com/code/koch.py) [, and returns](https://thinkpython.com/code/koch.py) [True](http://en.wikipedia.org/wiki/Fibonacci_number) [if](http://en.wikipedia.org/wiki/Fibonacci_number) [self](http://en.wikipedia.org/wiki/Fibonacci_number) [is strictly less than](http://en.wikipedia.org/wiki/Fibonacci_number) [other](http://en.wikipedia.org/wiki/Fibonacci_number) [.](http://en.wikipedia.org/wiki/Fibonacci_number)
 
@@ -7003,7 +7003,7 @@ Inheritance can make debugging difficult because when you invoke a method on an 
 
 [Suppose you are writing a function that works with Hand objects. You would like it to](https://thinkpython.com/code/reducible.py) [work with all kinds of Hands, like PokerHands, BridgeHands, etc. If you invoke a method](https://thinkpython.com/code/PokerHandSoln.py) like shuffle [, you might get the one defined in](https://thinkpython.com/code/PokerHandSoln.py) [Deck](https://thinkpython.com/code/words.txt) [, but if any of the subclasses override](https://thinkpython.com/code/words.txt) this method, you’ll get that version instead. This behavior is usually a good thing, but it [can be confusing.](http://docs.python.org/3/library/datetime.html)
 
-Any time you are unsure about the flow of execution through your program, the sim- plest solution is to add print statements at the beginning of the relevant methods. If Deck.shuffle [prints a message that says something like](https://thinkpython.com/code/palindrome_soln.py) [Running Deck.shuffle](https://thinkpython.com/code/palindrome_soln.py) [, then as](http://docs.python.org/3/library/stdtypes.html#string-methods) [the program runs it traces the flow of execution.](http://docs.python.org/3/library/stdtypes.html#string-methods)
+Any time you are unsure about the flow of execution through your program, the simplest solution is to add print statements at the beginning of the relevant methods. If Deck.shuffle [prints a message that says something like](https://thinkpython.com/code/palindrome_soln.py) [Running Deck.shuffle](https://thinkpython.com/code/palindrome_soln.py) [, then as](http://docs.python.org/3/library/stdtypes.html#string-methods) [the program runs it traces the flow of execution.](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
 [As an alternative, you could use this function, which takes an object and a method name](https://thinkpython.com/code/polygon.py) [(as a string) and returns the class that provides the definition of the method:](https://thinkpython.com/code/koch.py)
 
@@ -7079,7 +7079,7 @@ encode: [To represent one set of values using another set of values by construct
 
 [instance attribute:](http://docs.python.org/3/library/datetime.html) [An attribute associated with an instance of a class.](http://docs.python.org/3/library/datetime.html)
 
-veneer: A method or function that provides a different interface to another function with- out doing much computation.
+veneer: A method or function that provides a different interface to another function without doing much computation.
 
 inheritance: [The ability to define a new class that is a modified version of a previously](https://thinkpython.com/code/palindrome_soln.py) [defined class.](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
@@ -7095,7 +7095,7 @@ dependency: [A relationship between two classes where instances of one class use
 
 ### 18.12. Exercises
 
-[class diagram:](https://thinkpython.com/code/polygon.py) A diagram that shows the classes in a program and the relationships be- tween them.
+[class diagram:](https://thinkpython.com/code/polygon.py) A diagram that shows the classes in a program and the relationships between them.
 
 [multiplicity:](http://www.cartalk.com/content/puzzlers) A notation in a class diagram that shows, for a HAS-A relationship, how [many references there are to instances of another class.](https://thinkpython.com/code/grid.py)
 
@@ -7525,7 +7525,7 @@ Rewrite the body of the function using nested conditional expressions.
 
 - [• Semantic errors are problems with a program that runs without producing error mes-](https://thinkpython.com/code/PokerHandSoln.py) [sages but doesn’t do the right thing. Example: An expression may not be evaluated](https://thinkpython.com/code/words.txt) in the order you expect, yielding an incorrect result.
 
-The first step in debugging is to figure out which kind of error you are dealing with. Al- though the following sections are organized by error type, some techniques are applicable in more than one situation.
+The first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable in more than one situation.
 
 #### [A.1](https://thinkpython.com/code/polygon.py) [Syntax errors](https://thinkpython.com/code/polygon.py)
 
@@ -7725,7 +7725,7 @@ Writing complex expressions is fine as long as they are readable, but they can b
 
 ### [neighbor = self.findNeighbor(i)](https://thinkpython.com/code/most_frequent.py) pickedCard = self.hands[neighbor].popCard() [self.hands[i].addCard(pickedCard)](https://thinkpython.com/code/do_four.py)
 
-The explicit version is easier to read because the variable names provide additional docu- mentation, and it is easier to debug because you can check the types of the intermediate [variables and display their values.](https://thinkpython.com/code/markov.py)
+The explicit version is easier to read because the variable names provide additional documentation, and it is easier to debug because you can check the types of the intermediate [variables and display their values.](https://thinkpython.com/code/markov.py)
 
 [Another problem that can occur with big expressions is that the order of evaluation may](http://wikipedia.org/wiki/Moby_Project)
 

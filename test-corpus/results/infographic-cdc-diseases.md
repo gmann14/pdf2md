@@ -46,7 +46,10 @@ Doctor or lab sends information about this disease to the local or state public 
 
 Public Health Department
 
-3 The public health department receives disease data and uses them to: • identify and control disease outbreaks • ensure that the patient is effectively treated so disease is not spread NOTIFIABLE
+3 The public health department receives disease data and uses them to:
+
+- identify and control disease outbreaks
+- ensure that the patient is effectively treated so disease is not spread NOTIFIABLE
 
 - provide testing and preventive care to those exposed to the disease • control sources of exposure.
 
@@ -60,29 +63,23 @@ The NNDSS team receives, secures, processes, and provides these data to disease-
 
 CDC Disease Program
 
-5 CDC programs use disease-specifc data to: • support recognition of disease outbreaks • monitor shifts in disease patterns • evaluate and fund disease control activities.
+5 CDC programs use disease-specifc data to:
+
+- support recognition of disease outbreaks
+- monitor shifts in disease patterns
+- evaluate and fund disease control activities.
 
 CDC provides INFORMATION:
 
-| ►   | Websites                |
-| --- | ----------------------- |
-| ►   | Fact sheets             |
-| ►   | Toolkits                |
-| ►   | Brochures and pamphlets |
+- Websites ► Fact sheets ► Toolkits ► Brochures and pamphlets
 
 CDC provides GUIDANCE:
 
-► Clinical guidance ► Research ► Publications • Morbidity and Mortality Weekly Report • Vital Signs • Community Guide
+- Clinical guidance ► Research ► Publications • Morbidity and Mortality Weekly Report • Vital Signs • Community Guide
 
 CDC provides SUPPORT:
 
-| ►   | Guidance                        |
-| --- | ------------------------------- |
-| ►   | Data collection and reporting   |
-| ►   | Alerts                          |
-| ►   | Large-scale outbreak assistance |
-| ►   | Small-scale outbreak assistance |
-| ►   | Funding                         |
+- Guidance ► Data collection and reporting ► Alerts • Health Alert Network [HAN] • Epidemic Information Exchange [Epi-X] Network ► Large-scale outbreak assistance ► Small-scale outbreak assistance ► Funding
 
 For more information about notifable disease surveillance, please access the NNDSS website at
 

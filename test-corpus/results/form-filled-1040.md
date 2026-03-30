@@ -50,7 +50,10 @@ box 6a. 6a and 6b
 
 ### No. of children
 
-c Dependents: (4) if qualifying on 6c who: (3) Dependent’s (2) Dependent’s social child for child relationship to ● lived with security number tax credit (see you (1) First name Last name you If more than six page 18) ● did not live dependents, with you due see page 18. to divorce or separation (see page 19)
+c Dependents: (4) if qualifying on 6c who: (3) Dependent’s (2) Dependent’s social child for child relationship to
+
+- lived with security number tax credit (see you (1) First name Last name you If more than six page 18)
+- did not live dependents, with you due see page 18. to divorce or separation (see page 19)
 
 ### Dependents
 

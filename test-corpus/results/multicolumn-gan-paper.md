@@ -14,7 +14,7 @@ Sherjil Ozair , Aaron Courville, Yoshua Bengio D´ epartement d’informatique e
 
 ## Abstract
 
-We propose a new framework for estimating generative models via an adversar- ial process, in which we simultaneously train two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G . The train- ing procedure for G is to maximize the probability of D making a mistake. This framework corresponds to a minimax two-player game. In the space of arbitrary functions G and D , a unique solution exists, with G recovering the training data distribution and D equal to everywhere. In the case where G and D are defined by multilayer perceptrons, the entire system can be trained with backpropagation. There is no need for any Markov chains or unrolled approximate inference net- works during either training or generation of samples. Experiments demonstrate the potential of the framework through qualitative and quantitative evaluation of the generated samples.
+We propose a new framework for estimating generative models via an adversarial process, in which we simultaneously train two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G . The training procedure for G is to maximize the probability of D making a mistake. This framework corresponds to a minimax two-player game. In the space of arbitrary functions G and D , a unique solution exists, with G recovering the training data distribution and D equal to everywhere. In the case where G and D are defined by multilayer perceptrons, the entire system can be trained with backpropagation. There is no need for any Markov chains or unrolled approximate inference networks during either training or generation of samples. Experiments demonstrate the potential of the framework through qualitative and quantitative evaluation of the generated samples.
 
 ## Introduction
 
@@ -40,9 +40,9 @@ This framework can yield specific training algorithms for many kinds of model an
 
 ## Related work
 
-An alternative to directed graphical models with latent variables are undirected graphical models with latent variables, such as restricted Boltzmann machines (RBMs) [27, 16], deep Boltzmann machines (DBMs) [26] and their numerous variants. The interactions within such models are represented as the product of unnormalized potential functions, normalized by a global summa- tion/integration over all states of the random variables. This quantity (the partition function ) and its gradient are intractable for all but the most trivial instances, although they can be estimated by Markov chain Monte Carlo (MCMC) methods. Mixing poses a significant problem for learning algorithms that rely on MCMC [3, 5].
+An alternative to directed graphical models with latent variables are undirected graphical models with latent variables, such as restricted Boltzmann machines (RBMs) [27, 16], deep Boltzmann machines (DBMs) [26] and their numerous variants. The interactions within such models are represented as the product of unnormalized potential functions, normalized by a global summation/integration over all states of the random variables. This quantity (the partition function ) and its gradient are intractable for all but the most trivial instances, although they can be estimated by Markov chain Monte Carlo (MCMC) methods. Mixing poses a significant problem for learning algorithms that rely on MCMC [3, 5].
 
-Deep belief networks (DBNs) [16] are hybrid models containing a single undirected layer and sev- eral directed layers. While a fast approximate layer-wise training criterion exists, DBNs incur the computational difficulties associated with both undirected and directed models.
+Deep belief networks (DBNs) [16] are hybrid models containing a single undirected layer and several directed layers. While a fast approximate layer-wise training criterion exists, DBNs incur the computational difficulties associated with both undirected and directed models.
 
 Alternative criteria that do not approximate or bound the log-likelihood have also been proposed, such as score matching [18] and noise-contrastive estimation (NCE) [13]. Both of these require the learned probability density to be analytically specified up to a normalization constant. Note that in many interesting generative models with several layers of latent variables (such as DBNs and DBMs), it is not even possible to derive a tractable unnormalized probability density. Some models such as denoising auto-encoders [30] and contractive autoencoders have learning rules very similar to score matching applied to RBMs. In NCE, as in this work, a discriminative training criterion is employed to fit a generative model. However, rather than fitting a separate discriminative model, the generative model itself is used to discriminate generated data from samples a fixed noise distribution. Because NCE uses a fixed noise distribution, learning slows dramatically after the model has learned even an approximately correct distribution over a small subset of the observed variables.
 
@@ -88,7 +88,7 @@ p data ( x ) p data ( x )+ p g ( x )
 
 ## Theoretical Results
 
-The generator G implicitly defines a probability distribution p g as the distribution of the samples G ( z ) obtained when z ∼ p z . Therefore, we would like Algorithm 1 to converge to a good estimator of p data , if given enough capacity and training time. The results of this section are done in a non- parametric setting, e.g. we represent a model with infinite capacity by studying convergence in the space of probability density functions.
+The generator G implicitly defines a probability distribution p g as the distribution of the samples G ( z ) obtained when z ∼ p z . Therefore, we would like Algorithm 1 to converge to a good estimator of p data , if given enough capacity and training time. The results of this section are done in a nonparametric setting, e.g. we represent a model with infinite capacity by studying convergence in the space of probability density functions.
 
 We will show in section 4.1 that this minimax game has a global optimum for p g = p data . We will then show in section 4.2 that Algorithm 1 optimizes Eq 1, thus obtaining the desired result.
 
@@ -135,7 +135,7 @@ i =1
 
 i =1
 
-end for The gradient-based updates can use any standard gradient-based learning rule. We used momen- tum in our experiments.
+end for The gradient-based updates can use any standard gradient-based learning rule. We used momentum in our experiments.
 
 ## 4.1 Global Optimality of p g = p data
 
@@ -175,7 +175,7 @@ a + b
 
 . The discriminator does not need to be defined outside of Supp ( p data ) ∪ Supp ( p g ) , concluding the proof.
 
-Note that the training objective for D can be interpreted as maximizing the log-likelihood for es- timating the conditional probability P ( Y = y | x ) , where Y indicates whether x comes from p data
+Note that the training objective for D can be interpreted as maximizing the log-likelihood for estimating the conditional probability P ( Y = y | x ) , where Y indicates whether x comes from p data
 
 (with y = 1 ) or from p g (with y = 0 ). The minimax game in Eq. 1 can now be reformulated as:
 
@@ -292,11 +292,11 @@ Proof. Consider V ( G, D ) = U ( p g , D ) as a function of p g as done in the a
 
 f α ( x ) and f α ( x ) is convex in x for every α , then ∂f β ( x ) ∈ ∂f if β = arg sup α ∈A
 
-f α ( x ) . This is equivalent to computing a gradient descent update for p g at the optimal D given the cor- responding G . sup D
+f α ( x ) . This is equivalent to computing a gradient descent update for p g at the optimal D given the corresponding G . sup D
 
 U ( p g , D ) is convex in p g with a unique global optima as proven in Thm 1, therefore with sufficiently small updates of p g , p g converges to p x , concluding the proof.
 
-In practice, adversarial nets represent a limited family of p g distributions via the function G ( z ; θ g ) , and we optimize θ g rather than p g itself. Using a multilayer perceptron to define G introduces multiple critical points in parameter space. However, the excellent performance of multilayer per- ceptrons in practice suggests that they are a reasonable model to use despite their lack of theoretical guarantees.
+In practice, adversarial nets represent a limited family of p g distributions via the function G ( z ; θ g ) , and we optimize θ g rather than p g itself. Using a multilayer perceptron to define G introduces multiple critical points in parameter space. However, the excellent performance of multilayer perceptrons in practice suggests that they are a reasonable model to use despite their lack of theoretical guarantees.
 
 ## Experiments
 
@@ -309,9 +309,9 @@ We estimate probability of the test set data under p g by fitting a Gaussian Par
 | DBN [3]          | ±     | ±   |
 | Adversarial nets | ±     | ±   |
 
-Table 1: Parzen window-based log-likelihood estimates. The reported numbers on MNIST are the mean log- likelihood of samples on test set, with the standard error of the mean computed across examples. On TFD, we computed the standard error across folds of the dataset, with a different σ chosen using the validation set of each fold. On TFD, σ was cross validated on each fold and mean log-likelihood on each fold were computed. For MNIST we compare against other models of the real-valued (rather than binary) version of dataset.
+Table 1: Parzen window-based log-likelihood estimates. The reported numbers on MNIST are the mean loglikelihood of samples on test set, with the standard error of the mean computed across examples. On TFD, we computed the standard error across folds of the dataset, with a different σ chosen using the validation set of each fold. On TFD, σ was cross validated on each fold and mean log-likelihood on each fold were computed. For MNIST we compare against other models of the real-valued (rather than binary) version of dataset.
 
-of the Gaussians was obtained by cross validation on the validation set. This procedure was intro- duced in Breuleux et al. [8] and used for various generative models for which the exact likelihood is not tractable [25, 3, 5]. Results are reported in Table 1. This method of estimating the likelihood has somewhat high variance and does not perform well in high dimensional spaces but it is the best method available to our knowledge. Advances in generative models that can sample but not estimate likelihood directly motivate further research into how to evaluate such models.
+of the Gaussians was obtained by cross validation on the validation set. This procedure was introduced in Breuleux et al. [8] and used for various generative models for which the exact likelihood is not tractable [25, 3, 5]. Results are reported in Table 1. This method of estimating the likelihood has somewhat high variance and does not perform well in high dimensional spaces but it is the best method available to our knowledge. Advances in generative models that can sample but not estimate likelihood directly motivate further research into how to evaluate such models.
 
 In Figures 2 and 3 we show samples drawn from the generator net after training. While we make no claim that these samples are better than samples generated by existing methods, we believe that these samples are at least competitive with the better generative models in the literature and highlight the potential of the adversarial framework.
 
@@ -329,9 +329,9 @@ Table 2: Challenges in generative modeling: a summary of the difficulties encoun
 
 ## Advantages and disadvantages
 
-This new framework comes with advantages and disadvantages relative to previous modeling frame- works. The disadvantages are primarily that there is no explicit representation of p g ( x ) , and that D must be synchronized well with G during training (in particular, G must not be trained too much without updating D , in order to avoid “the Helvetica scenario” in which G collapses too many values of z to the same value of x to have enough diversity to model p data ), much as the negative chains of a Boltzmann machine must be kept up to date between learning steps. The advantages are that Markov chains are never needed, only backprop is used to obtain gradients, no inference is needed during learning, and a wide variety of functions can be incorporated into the model. Table 2 summarizes the comparison of generative adversarial nets with other generative modeling approaches.
+This new framework comes with advantages and disadvantages relative to previous modeling frameworks. The disadvantages are primarily that there is no explicit representation of p g ( x ) , and that D must be synchronized well with G during training (in particular, G must not be trained too much without updating D , in order to avoid “the Helvetica scenario” in which G collapses too many values of z to the same value of x to have enough diversity to model p data ), much as the negative chains of a Boltzmann machine must be kept up to date between learning steps. The advantages are that Markov chains are never needed, only backprop is used to obtain gradients, no inference is needed during learning, and a wide variety of functions can be incorporated into the model. Table 2 summarizes the comparison of generative adversarial nets with other generative modeling approaches.
 
-The aforementioned advantages are primarily computational. Adversarial models may also gain some statistical advantage from the generator network not being updated directly with data exam- ples, but only with gradients flowing through the discriminator. This means that components of the input are not copied directly into the generator’s parameters. Another advantage of adversarial net- works is that they can represent very sharp, even degenerate distributions, while methods based on Markov chains require that the distribution be somewhat blurry in order for the chains to be able to mix between modes.
+The aforementioned advantages are primarily computational. Adversarial models may also gain some statistical advantage from the generator network not being updated directly with data examples, but only with gradients flowing through the discriminator. This means that components of the input are not copied directly into the generator’s parameters. Another advantage of adversarial networks is that they can represent very sharp, even degenerate distributions, while methods based on Markov chains require that the distribution be somewhat blurry in order for the chains to be able to mix between modes.
 
 ## Conclusions and future work
 
@@ -339,13 +339,13 @@ This framework admits many straightforward extensions:
 
 1. A conditional generative model p ( x | c ) can be obtained by adding c as input to both G and D . 2. Learned approximate inference can be performed by training an auxiliary network to predict z given x . This is similar to the inference net trained by the wake-sleep algorithm [15] but with the advantage that the inference net may be trained for a fixed generator net after the generator net has finished training.
 
-3. One can approximately model all conditionals p ( x S | x S ) where S is a subset of the indices of x by training a family of conditional models that share parameters. Essentially, one can use adversarial nets to implement a stochastic extension of the deterministic MP-DBM [11]. 4. Semi-supervised learning : features from the discriminator or inference net could improve perfor- mance of classifiers when limited labeled data is available. 5. Efficiency improvements: training could be accelerated greatly by divising better methods for coordinating G and D or determining better distributions to sample z from during training.
+3. One can approximately model all conditionals p ( x S | x S ) where S is a subset of the indices of x by training a family of conditional models that share parameters. Essentially, one can use adversarial nets to implement a stochastic extension of the deterministic MP-DBM [11]. 4. Semi-supervised learning : features from the discriminator or inference net could improve performance of classifiers when limited labeled data is available. 5. Efficiency improvements: training could be accelerated greatly by divising better methods for coordinating G and D or determining better distributions to sample z from during training.
 
 This paper has demonstrated the viability of the adversarial modeling framework, suggesting that these research directions could prove useful.
 
 ### Acknowledgments
 
-We would like to acknowledge Patrice Marcotte, Olivier Delalleau, Kyunghyun Cho, Guillaume Alain and Jason Yosinski for helpful discussions. Yann Dauphin shared his Parzen window eval- uation code with us. We would like to thank the developers of Pylearn2 [12] and Theano [7, 1], particularly Fr´ ed´ eric Bastien who rushed a Theano feature specifically to benefit this project. Ar- naud Bergeron provided much-needed support with L A TEX typesetting. We would also like to thank CIFAR, and Canada Research Chairs for funding, and Compute Canada, and Calcul Qu´ ebec for providing computational resources. Ian Goodfellow is supported by the 2013 Google Fellowship in Deep Learning. Finally, we would like to thank Les Trois Brasseurs for stimulating our creativity.
+We would like to acknowledge Patrice Marcotte, Olivier Delalleau, Kyunghyun Cho, Guillaume Alain and Jason Yosinski for helpful discussions. Yann Dauphin shared his Parzen window evaluation code with us. We would like to thank the developers of Pylearn2 [12] and Theano [7, 1], particularly Fr´ ed´ eric Bastien who rushed a Theano feature specifically to benefit this project. Arnaud Bergeron provided much-needed support with L A TEX typesetting. We would also like to thank CIFAR, and Canada Research Chairs for funding, and Compute Canada, and Calcul Qu´ ebec for providing computational resources. Ian Goodfellow is supported by the 2013 Google Fellowship in Deep Learning. Finally, we would like to thank Les Trois Brasseurs for stimulating our creativity.
 
 ## References
 
@@ -359,7 +359,7 @@ We would like to acknowledge Patrice Marcotte, Olivier Delalleau, Kyunghyun Cho,
 
 [5] Bengio, Y., Thibodeau-Laufer, E., and Yosinski, J. (2014a). Deep generative stochastic networks trainable by backprop. In ICML’14 .
 
-[6] Bengio, Y., Thibodeau-Laufer, E., Alain, G., and Yosinski, J. (2014b). Deep generative stochastic net- works trainable by backprop. In Proceedings of the 30th International Conference on Machine Learning (ICML’14) .
+[6] Bengio, Y., Thibodeau-Laufer, E., Alain, G., and Yosinski, J. (2014b). Deep generative stochastic networks trainable by backprop. In Proceedings of the 30th International Conference on Machine Learning (ICML’14) .
 
 [7] Bergstra, J., Breuleux, O., Bastien, F., Lamblin, P., Pascanu, R., Desjardins, G., Turian, J., Warde-Farley, D., and Bengio, Y. (2010). Theano: a CPU and GPU math expression compiler. In Proceedings of the Python for Scientific Computing Conference (SciPy) . Oral Presentation.
 
@@ -387,7 +387,7 @@ We would like to acknowledge Patrice Marcotte, Olivier Delalleau, Kyunghyun Cho,
 
 [19] Jarrett, K., Kavukcuoglu, K., Ranzato, M., and LeCun, Y. (2009). What is the best multi-stage architecture for object recognition? In Proc. International Conference on Computer Vision (ICCV’09) , pages 2146–2153. IEEE.
 
-[20] Kingma, D. P. and Welling, M. (2014). Auto-encoding variational bayes. In Proceedings of the Interna- tional Conference on Learning Representations (ICLR) .
+[20] Kingma, D. P. and Welling, M. (2014). Auto-encoding variational bayes. In Proceedings of the International Conference on Learning Representations (ICLR) .
 
 [21] Krizhevsky, A. and Hinton, G. (2009). Learning multiple layers of features from tiny images. Technical report, University of Toronto.
 

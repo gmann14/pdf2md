@@ -18,6 +18,7 @@ import {
   tableToMarkdown,
   detectColumnLayout,
   reorderColumnarItems,
+  rejoinHyphenatedWords,
 } from "./detection";
 
 // ---------------------------------------------------------------------------
@@ -387,7 +388,7 @@ function groupIntoBlocks(
 // Block classification
 // ---------------------------------------------------------------------------
 
-const BULLET_PATTERN = /^[\u2022\u2023\u25E6\u2043\u2219\u25AA\u25AB\u25CF\u25CB\u2013\u2014\u2010•·–—-]\s*/;
+const BULLET_PATTERN = /^[\u2022\u2023\u25E6\u2043\u2219\u25AA\u25AB\u25CF\u25CB\u25B6\u25B8\u25BA\u25C6\u25C7\u25A0\u25A1\u2013\u2014\u2010•·–—►▸▶◆◇■□-]\s*/;
 const NUMBERED_PATTERN = /^(\d{1,3})[.)]\s+/;
 const LETTER_LIST_PATTERN = /^[a-zA-Z][.)]\s+/;
 
@@ -775,9 +776,16 @@ function blocksToMarkdown(
             parts.push(`${block.listMarker} ${cleaned.trim()}`);
             break;
           }
-          case "paragraph":
-            parts.push(text);
+          case "paragraph": {
+            // Split paragraphs with inline bullet characters into list items
+            const inlineBulletItems = splitInlineBullets(text);
+            if (inlineBulletItems) {
+              parts.push(inlineBulletItems);
+            } else {
+              parts.push(text);
+            }
             break;
+          }
         }
         break;
       }
@@ -786,6 +794,43 @@ function blocksToMarkdown(
 
   // Normalize whitespace: collapse 3+ newlines to 2
   return parts.join("\n\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+/**
+ * Detect and split paragraphs that contain inline bullet characters (•, ►, etc.)
+ * into markdown list items. Returns formatted list string, or null if no split.
+ *
+ * Only splits when there are 2+ bullet-separated segments to avoid false positives.
+ */
+const INLINE_BULLET_RE =
+  /[•\u2022\u2023\u25E6\u2043\u2219\u25CF\u25CB\u25B6\u25B8\u25BA►▸▶]/g;
+
+function splitInlineBullets(text: string): string | null {
+  // Count inline bullet characters (not at the very start of the text)
+  const bullets = text.match(INLINE_BULLET_RE);
+  if (!bullets || bullets.length < 2) return null;
+
+  // Split on bullet characters
+  const parts = text.split(INLINE_BULLET_RE).map((s) => s.trim()).filter(Boolean);
+  if (parts.length < 2) return null;
+
+  // Guard: if the segments are very short on average (< 10 chars), they're likely
+  // not real list items (e.g., scattered symbols)
+  const avgLen = parts.reduce((sum, p) => sum + p.length, 0) / parts.length;
+  if (avgLen < 10) return null;
+
+  // Format as markdown bullet list
+  // If there's a preamble before the first bullet, include it as a paragraph
+  const firstBulletIdx = text.search(INLINE_BULLET_RE);
+  const preamble = text.slice(0, firstBulletIdx).trim();
+
+  const listItems = parts.map((p) => `- ${p}`).join("\n");
+  if (preamble.length > 0 && firstBulletIdx > 0) {
+    // First segment is preamble text, rest are list items
+    const bulletParts = parts.slice(1).map((p) => `- ${p}`).join("\n");
+    return `${preamble}\n\n${bulletParts}`;
+  }
+  return listItems;
 }
 
 // ---------------------------------------------------------------------------
@@ -1100,6 +1145,9 @@ export async function convert(
 
   // Fix split ligatures from kerned/custom fonts
   markdown = fixSplitLigatures(markdown);
+
+  // Rejoin hyphenated line breaks (e.g., "repre-\nsentation" → "representation")
+  markdown = rejoinHyphenatedWords(markdown);
 
   // Extract metadata if requested (yamlFrontMatter implies includeMetadata)
   let metadata: ConversionMetadata | undefined;

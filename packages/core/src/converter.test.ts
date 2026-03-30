@@ -11,6 +11,7 @@ import {
   detectColumnLayout,
   reorderColumnarItems,
 } from "./detection";
+import { rejoinHyphenatedWords } from "./detection";
 
 // Helper to create ExtractedItem-like objects for testing
 function makeItem(overrides: {
@@ -783,5 +784,45 @@ describe("isCodeBlock (enhanced)", () => {
       makeItem({ str: "print(calculate(3, 4))", x: 100, y: 142, fontName: "g_d0_f3" }),
     ];
     expect(isCodeBlock(items, codeFonts)).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// rejoinHyphenatedWords
+// ---------------------------------------------------------------------------
+describe("rejoinHyphenatedWords", () => {
+  it("rejoins a word split across two lines", () => {
+    const input = "the repre-\nsentation of words";
+    expect(rejoinHyphenatedWords(input)).toBe("the representation\nof words");
+  });
+
+  it("preserves intentional hyphens mid-line", () => {
+    const input = "a well-known algorithm\nfor parsing";
+    expect(rejoinHyphenatedWords(input)).toBe("a well-known algorithm\nfor parsing");
+  });
+
+  it("does not rejoin when next line starts with uppercase", () => {
+    const input = "some text-\nAnd more text";
+    expect(rejoinHyphenatedWords(input)).toBe("some text-\nAnd more text");
+  });
+
+  it("does not modify lines inside code blocks", () => {
+    const input = "```\nsome-\ncode\n```";
+    expect(rejoinHyphenatedWords(input)).toBe("```\nsome-\ncode\n```");
+  });
+
+  it("handles multiple hyphenated words", () => {
+    const input = "the algo-\nrithm and repre-\nsentation";
+    expect(rejoinHyphenatedWords(input)).toBe("the algorithm\nand representation");
+  });
+
+  it("rejoins mid-line hyphen-space breaks from column merging", () => {
+    const input = "the repre- sentation of down- stream tasks";
+    expect(rejoinHyphenatedWords(input)).toBe("the representation of downstream tasks");
+  });
+
+  it("preserves intentional compound hyphens (no space)", () => {
+    const input = "a well-known state-of-the-art method";
+    expect(rejoinHyphenatedWords(input)).toBe("a well-known state-of-the-art method");
   });
 });

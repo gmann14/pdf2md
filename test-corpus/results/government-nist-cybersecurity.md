@@ -32,7 +32,7 @@ iii
 
 ## Acknowledgements
 
-This publication is the result of an ongoing collaborative effort involving industry, academia, and government. The National Institute of Standards and Technology (NIST) launched the project by convening private- and public-sector organizations and individuals in 2013. Published in 2014 and revised during 2017 and 2018, this Framework for Improving Critical Infrastructure Cybersecurity has relied upon eight public workshops, multiple Requests for Comment or Information, and thousands of direct interactions with stakeholders from across all sectors of the United States along with many sectors from around the world.
+This publication is the result of an ongoing collaborative effort involving industry, academia, and government. The National Institute of Standards and Technology (NIST) launched the project by convening privateand public-sector organizations and individuals in 2013. Published in 2014 and revised during 2017 and 2018, this Framework for Improving Critical Infrastructure Cybersecurity has relied upon eight public workshops, multiple Requests for Comment or Information, and thousands of direct interactions with stakeholders from across all sectors of the United States along with many sectors from around the world.
 
 The impetus to change Version 1.0 and the changes that appear in this Version 1.1 were based on:
 
@@ -380,7 +380,7 @@ As depicted in Figure 3, cyber SCRM encompasses technology suppliers and buyers,
 
 [The parties described in Figure 3 comprise an organization’s cybersecurity ecosystem.](https://www.iso.org/standard/54534.html) These [relationships highlight the crucial role of cyber SCRM in addressing cybersecurity risk in critical](https://www.iso.org/standard/54534.html) infrastructure and the broader digital economy. These relationships, the products and services they provide, and the risks they present should be identified and factored into the protective and detective capabilities of organizations, as well as their response and recovery protocols.
 
-In the figure above, “B uyer ” refers to the downstream people or organizations that consume a given product or service from an organization, including both for-profit and not-for-profit organizations. “ Supplier ” [encompasses upstream product and service providers that are used for](http://www.nist.gov/cyberframework/) an organiza tion’s internal purposes (e.g., IT infrastructure) or integrated into the products or services provided to the Buyer. These terms are applicable for both technology-based and non- technology-based products and services.
+In the figure above, “B uyer ” refers to the downstream people or organizations that consume a given product or service from an organization, including both for-profit and not-for-profit organizations. “ Supplier ” [encompasses upstream product and service providers that are used for](http://www.nist.gov/cyberframework/) an organiza tion’s internal purposes (e.g., IT infrastructure) or integrated into the products or services provided to the Buyer. These terms are applicable for both technology-based and nontechnology-based products and services.
 
 Whether considering individual Subcategories of the Core or the comprehensive considerations of a Profile, the Framework offers organizations and their partners a method to help ensure the new product or service meets critical security outcomes. By first selecting outcomes that are relevant to the context (e.g., transmission of Personally Identifiable Information (PII), mission [critical service delivery, data verification services, product or service integrity) the organization](http://www.iso.org/iso/home/standards/iso31000.htm) then can evaluate partners against those criteria. For example, if a system is being purchased that [will monitor Operational Technology (OT) for anomalous network communication, availability](https://www.congress.gov/bill/113th-congress/senate-bill/1353/text) may be a particularly important cybersecurity objective to achieve and should drive a Technology Supplier evaluation against applicable Subcategories (e.g., ID.BE-4, ID.SC-3, ID.SC-4, ID.SC-5, PR.DS-4, PR.DS-6, PR.DS-7, PR.DS-8, PR.IP-1, DE.AE-5).
 
@@ -851,7 +851,7 @@ Informative A specific section of standards, guidelines, and practices common Re
 
 [Protect (function)](https://www.iso.org/standard/54534.html) Develop and implement the appropriate safeguards to ensure delivery of critical infrastructure services.
 
-Privileged User A user that is authorized (and, therefore, trusted) to perform security- relevant functions that ordinary users are not authorized to perform.
+Privileged User A user that is authorized (and, therefore, trusted) to perform securityrelevant functions that ordinary users are not authorized to perform.
 
 Recover (function) Develop and implement the appropriate activities to maintain plans for [resilience and to restore any capabilities or services that were impaired](http://www.nist.gov/cyberframework/) due to a cybersecurity event.
 

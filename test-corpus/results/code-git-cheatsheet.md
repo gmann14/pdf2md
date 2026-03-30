@@ -152,7 +152,7 @@ system wide ignore pattern for all local repositories
 
 ## Education
 
-Teach and learn better, together. GitHub is free for students and teach- ers. Discounts available for other educational uses.
+Teach and learn better, together. GitHub is free for students and teachers. Discounts available for other educational uses.
 
 #### SHARE & UPDATE
 

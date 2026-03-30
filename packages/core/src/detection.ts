@@ -754,3 +754,62 @@ export function tableToMarkdown(rows: string[][]): string {
 
   return [header, separator, ...dataRows].join("\n");
 }
+
+/**
+ * Rejoin words that were hyphenated across line/column breaks by PDF text extraction.
+ * Handles two patterns:
+ * 1. Line-end: "repre-\nsentation" → "representation"
+ * 2. Mid-line (column merge): "repre- sentation" → "representation"
+ * Preserves intentional hyphens (e.g., "well-known") which have no space after hyphen.
+ */
+export function rejoinHyphenatedWords(markdown: string): string {
+  const lines = markdown.split("\n");
+  const result: string[] = [];
+  let inCodeBlock = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+
+    // Track code block boundaries
+    if (line.trimStart().startsWith("```")) {
+      inCodeBlock = !inCodeBlock;
+      result.push(line);
+      continue;
+    }
+
+    // Don't modify lines inside code blocks
+    if (inCodeBlock) {
+      result.push(line);
+      continue;
+    }
+
+    // Mid-line: "word- continuation" → "wordcontinuation"
+    // The space after hyphen is the key signal that this is a PDF line-break artifact
+    line = line.replace(/([a-z])- ([a-z])/g, "$1$2");
+
+    // Line-end: "word-" + next line starts lowercase → rejoin
+    const nextLine = i + 1 < lines.length ? lines[i + 1] : null;
+    if (
+      nextLine !== null &&
+      /[a-z]-$/.test(line) &&
+      /^[a-z]/.test(nextLine) &&
+      !nextLine.trimStart().startsWith("```")
+    ) {
+      const dehyphenated = line.slice(0, -1);
+      const match = nextLine.match(/^([a-z]+)(.*)/);
+      if (match) {
+        result.push(dehyphenated + match[1]);
+        lines[i + 1] = match[2].trimStart();
+        if (lines[i + 1].length === 0 && match[2].trim().length === 0) {
+          i++;
+        }
+      } else {
+        result.push(line);
+      }
+    } else {
+      result.push(line);
+    }
+  }
+
+  return result.join("\n");
+}
