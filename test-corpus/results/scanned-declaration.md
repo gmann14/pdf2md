@@ -1,3 +1,7 @@
+---
+title: "In Congress, July 4, 1776. The unanimous declaration of the thirteen United States of America."
+---
+
 # In Congress, July 4, 1776. The unanimous declaration of the thirteen United States of America.
 
 IN CONGRESS, JULY 4, 1776. THE UNANIMOUS DECLARATION OF THE THIRTEEN UNITED STATES OF AMERICA.

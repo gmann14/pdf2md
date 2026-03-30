@@ -1,3 +1,7 @@
+---
+title: "Functional Resume Sample"
+---
+
 # Functional Resume Sample
 
 ## John W. Smith 2002 Front Range Way Fort Collins, CO 80525 jwsmith@colostate.edu

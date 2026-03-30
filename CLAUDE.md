@@ -21,8 +21,15 @@ apps/web/          — Next.js web app
   src/
     app/           — Next.js App Router pages
     components/    — React components (Converter, DropZone, OutputPane, etc.)
-    lib/           — Core logic (converter.ts, types.ts, pdf-worker.ts)
-packages/core/     — (Phase 1.5) Extracted npm package
+    lib/           — Thin wrappers; core logic lives in packages/core
+packages/core/     — @pdf2md/core npm package (published v0.1.0)
+  src/
+    converter.ts   — Main conversion pipeline
+    detection.ts   — Table, code block, column layout detection
+    types.ts       — Shared types + constants
+    pdf-worker.ts  — PDF.js worker initialization
+    bin/pdf2md.ts  — CLI entry point
+test-corpus/       — 21 real-world PDFs + evaluation framework + quality report
 docs/              — Product spec, launch plan
 research/          — Competitor analysis, tech research, stress test
 ```
@@ -37,17 +44,21 @@ research/          — Competitor analysis, tech research, stress test
 
 ## Architecture
 
-The conversion pipeline (in `apps/web/src/lib/converter.ts`):
+The conversion pipeline (in `packages/core/src/converter.ts` + `detection.ts`):
 1. Parse PDF via PDF.js Web Worker
 2. Extract text items with position/font metadata per page
-3. Extract link annotations per page
-4. Detect and strip repeated headers/footers
-5. Build font size histogram → detect headings (H1-H6)
-6. Group text into blocks by vertical proximity
-7. Classify blocks: heading, list-item, or paragraph
-8. Match link annotations to text items by bounding box overlap
-9. Apply bold/italic from font name heuristics
-10. Assemble Markdown output with proper formatting
+3. Extract link annotations per page (coordinate-transformed)
+4. Detect and strip repeated headers/footers (50% threshold)
+5. Detect and fix multi-column reading order (per-page gap analysis)
+6. Build font size histogram → detect headings (H1-H6)
+7. Detect code fonts via subset font behavior analysis
+8. Group text into blocks by vertical proximity
+9. Classify blocks: heading (font size + bold + section numbers), list-item, paragraph
+10. Post-process: detect tables (column alignment) and code blocks (monospace + subset fonts)
+11. Match link annotations to text items (center-point + 50% overlap)
+12. Apply bold/italic from font name heuristics
+13. Assemble Markdown output with proper formatting
+14. Optionally prepend YAML front matter from PDF metadata
 
 Returns `ConversionResult` with status, markdown, messages (errors/warnings), stats, and optional metadata.
 
@@ -66,8 +77,11 @@ pnpm typecheck     # TypeScript type check
 - `docs/spec.md` — Full product spec (source of truth)
 - `docs/launch-plan.md` — Marketing and growth strategy
 - `research/` — Competitor analysis, tech research, stress test findings
-- `apps/web/src/lib/converter.ts` — Core conversion pipeline
-- `apps/web/src/lib/types.ts` — Shared types (ConversionResult, etc.)
+- `packages/core/src/converter.ts` — Core conversion pipeline
+- `packages/core/src/detection.ts` — Table, code block, column detection algorithms
+- `packages/core/src/types.ts` — Shared types (ConversionResult, etc.)
+- `test-corpus/QUALITY-REPORT.md` — Quality scores across 21 real-world PDFs
+- `.claude/tasks.md` — Project status tracker
 
 ## Conventions
 

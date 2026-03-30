@@ -1,6 +1,10 @@
+---
+title: "GIT CHEAT SHEET"
+---
+
 # GIT CHEAT SHEET
 
-### Git is the free and open source distributed version control system that's responsible for everything GitHub related that happens locally on your computer. This cheat sheet features the most important and commonly used Git commands for easy reference.
+Git is the free and open source distributed version control system that's responsible for everything GitHub related that happens locally on your computer. This cheat sheet features the most important and commonly used Git commands for easy reference.
 
 #### INSTALLATION & GUIS STAGE & SNAPSHOT
 
@@ -16,11 +20,15 @@ di ff of what is staged but not yet commi tt ed
 
 Configuring user information used across all local repositories commit your staged content as a new commit snapshot
 
+```
 git config --global user.name “[firstname lastname]”
+```
 
 set a name that is identifiable for credit when review version history
 
+```
 git config --global user.email “[valid-email]”
+```
 
 #### BRANCH & MERGE
 
@@ -34,11 +42,15 @@ create a new branch at the current commit
 
 Configuring user information, initializing and cloning repositories switch to another branch and check it out into your working directory
 
+```
 git init git merge [branch]
+```
 
 initialize an existing directory as a Git repository merge the specified branch’s history into the current one
 
+```
 git clone [url] git log
+```
 
 retrieve an entire repository from a hosted location via URL show all commits in the current branch’s history
 
@@ -46,15 +58,21 @@ retrieve an entire repository from a hosted location via URL show all commits in
 
 Examining logs, di ff s and object information Retrieving updates from another repository and updating local repos
 
+```
 git log git remote add [alias] [url]
+```
 
 show the commit history for the currently active branch add a git URL as an alias
 
+```
 git log branchB..branchA git fetch [alias]
+```
 
 show the commits on branchA that are not on branchB fetch down all the branches from that Git remote
 
+```
 git log --follow [file] git merge [alias]/[branch]
+```
 
 show the commits that changed file, even across renames merge a remote branch into your current branch to bring it up to date
 
@@ -62,7 +80,9 @@ git diff branchB...branchA git push [alias] [branch]
 
 show the di ff of what is in branchA that is not in branchB Transmit local branch commits to the remote repository branch
 
+```
 git show [SHA] git pull
+```
 
 show any object in Git in human-readable format fetch and merge any commits from the tracking remote branch
 
@@ -70,15 +90,21 @@ show any object in Git in human-readable format fetch and merge any commits from
 
 Versioning file removes and path changes Rewriting branches, updating commits and clearing history
 
+```
 git rm [file] git rebase [branch]
+```
 
 delete the file from project and stage the removal for commit apply any commits of current branch ahead of specified one
 
+```
 git mv [existing-path] [new-path] git reset --hard [commit]
+```
 
 change an existing file path and stage the move clear staging area, rewrite working tree from specified commit
 
+```
 git log --stat -M
+```
 
 show all commit logs with indication of any paths that moved TEMPORARY COMMITS
 
@@ -92,7 +118,9 @@ logs/ git stash list *.notes pattern*/ list stack-order of stashed file changes
 
 git stash pop Save a file with desired pa tt erns as .gitignore with either direct string matches or wildcard globs. write working from top of stash stack
 
+```
 git config --global core.excludesfile [file] git stash drop
+```
 
 system wide ignore pa tt ern for all local repositories discard the changes from top of stash stack
 

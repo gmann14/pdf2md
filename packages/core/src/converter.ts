@@ -65,6 +65,28 @@ function isItalic(fontName: string): boolean {
 }
 
 // ---------------------------------------------------------------------------
+// Text cleanup (ligatures, special spaces, encoding artifacts)
+// ---------------------------------------------------------------------------
+
+function cleanText(s: string): string {
+  return s
+    // Replace common ligatures
+    .replace(/\uFB00/g, "ff")
+    .replace(/\uFB01/g, "fi")
+    .replace(/\uFB02/g, "fl")
+    .replace(/\uFB03/g, "ffi")
+    .replace(/\uFB04/g, "ffl")
+    // Normalize special spaces to regular space
+    .replace(/[\u00A0\u2000-\u200A\u202F\u205F\u3000]/g, " ")
+    // Remove zero-width characters
+    .replace(/[\u200B\u200C\u200D\uFEFF]/g, "")
+    // Strip soft hyphens
+    .replace(/\u00AD/g, "")
+    // Collapse multiple spaces
+    .replace(/ {2,}/g, " ");
+}
+
+// ---------------------------------------------------------------------------
 // Text extraction
 // ---------------------------------------------------------------------------
 
@@ -94,7 +116,7 @@ async function extractPageItems(
     const y = viewport.height - item.transform[5];
 
     items.push({
-      str: item.str,
+      str: cleanText(item.str),
       x,
       y,
       width: item.width,
@@ -149,7 +171,7 @@ function buildFontProfile(items: ExtractedItem[]): FontProfile {
 
   // Sizes larger than body text become headings, ranked largest→smallest
   const largerSizes = [...sizeCharCount.keys()]
-    .filter((s) => s > bodySize * 1.15) // at least 15% larger than body
+    .filter((s) => s > bodySize * 1.1) // at least 10% larger than body
     .sort((a, b) => b - a);
 
   const headingSizes = new Map<number, number>();
@@ -307,9 +329,11 @@ function classifyBlock(
 ): Block {
   const firstItem = items[0];
 
-  // Check 1: Font size heading (existing — largest font sizes are headings)
+  // Check 1: Font size heading (largest font sizes are headings)
+  // Guard: don't classify long blocks as headings — real headings are short
   const headingLevel = getHeadingLevel(firstItem.fontSize, profile);
-  if (headingLevel !== undefined) {
+  const blockText = items.map((i) => i.str).join(" ").trim();
+  if (headingLevel !== undefined && blockText.length <= 150) {
     return { items, type: "heading", headingLevel };
   }
 
@@ -342,6 +366,16 @@ function classifyBlock(
   ) {
     const isAllCaps = allText === allText.toUpperCase() && allText !== allText.toLowerCase();
     return { items, type: "heading", headingLevel: isAllCaps ? 2 : 3 };
+  }
+
+  // Check 4: ALL_CAPS short line → heading (independent of bold detection)
+  // Catches headings in PDFs where font name doesn't contain "Bold" (subset fonts)
+  const isAllCaps = allText === allText.toUpperCase() && allText !== allText.toLowerCase();
+  if (
+    isAllCaps && allText.length >= 3 && allText.length <= 80 &&
+    hasNoTrailingPunctuation && !looksLikeListItem && items.length <= 8
+  ) {
+    return { items, type: "heading", headingLevel: 2 };
   }
 
   // Check for list item
@@ -901,6 +935,21 @@ export async function convert(
   let metadata: ConversionMetadata | undefined;
   if (options?.includeMetadata || options?.yamlFrontMatter) {
     metadata = await extractMetadata(doc);
+
+    // Fallback: infer title from first heading if PDF metadata is empty
+    if (!metadata?.title || metadata.title.trim().length === 0) {
+      const firstHeading = enrichedBlocks.find((b) => b.type === "heading");
+      if (firstHeading) {
+        const titleText = firstHeading.items.map((i) => i.str).join(" ").trim();
+        if (titleText.length > 0 && titleText.length <= 200) {
+          if (!metadata) {
+            metadata = { title: titleText };
+          } else {
+            metadata.title = titleText;
+          }
+        }
+      }
+    }
   }
 
   // Prepend YAML front matter if requested and metadata exists

@@ -1,3 +1,7 @@
+---
+title: "JAN JAN"
+---
+
 #### JAN JAN
 
 ## WORLD ECONOMIC OUTLOOK WORLD ECONOMIC OUTLOOK UPDATE UPDATE
@@ -6,7 +10,7 @@
 
 - Global growth is projected at 3.1 percent in 2024 and 3.2 percent in 2025, with the 2024 forecast 0.2 percentage point higher than that in the October 2023 World Economic Outlook (WEO) on account of greater-than- expected resilience in the United States and several large emerging market and developing economies, as well as fiscal support in China. The forecast for 2024 – 25 is, however, below the historical (2000 – 19) average of 3.8 percent, with elevated central bank policy rates to fight inflation, a withdrawal of fiscal support amid high debt weighing on economic activity, and low underlying productivity growth. Inflation is falling faster than expected in most regions, in the midst of unwinding supply-side issues and restrictive monetary policy. Global headline inflation is expected to fall to 5.8 percent in 2024 and to 4.4 percent in 2025, with the 2025 forecast revised down. • With disinflation and steady growth, the likelihood of a hard landing has receded, and risks to global growth are broadly balanced. On the upside, faster disinflation could lead to further easing of financial conditions. Looser fiscal policy than necessary and than assumed in the projections could imply temporarily higher growth, but at the risk of a more costly adjustment later on. Stronger structural reform momentum could bolster productivity with positive cross-border spillovers. On the downside, new commodity price spikes from geopolitical shocks –– including continued attacks in the Red Sea –– and supply disruptions or more persistent underlying inflation could prolong tight monetary conditions. Deepening property sector woes in China or, elsewhere, a disruptive turn to tax hikes and spending cuts could also cause growth disappointments. • Policymakers’ near-term challenge is to successfully manage the final descent of inflation to target, calibrating monetary policy in response to underlying inflation dynamics and — where wage and price pressures are clearly dissipating — adjusting to a less restrictive stance. At the same time, in many cases, with inflation declining and economies better able to absorb effects of fiscal tightening, a renewed focus on fiscal consolidation to rebuild budgetary capacity to deal with future shocks, raise revenue for new spending priorities, and curb the rise of public debt is needed. Targeted and carefully sequenced structural reforms would reinforce productivity growth and debt sustainability and accelerate convergence toward higher income levels. More efficient multilateral coordination is needed for, among other things, debt resolution, to avoid debt distress and create space for necessary investments, as well as to mitigate the effects of climate change.
 
-###### Forces Shaping the Outlook The global economic recovery from the COVID-19 pandemic, Russia’s invasion of Ukraine , and the cost-of-living crisis is proving surprisingly resilient. Inflation is falling faster than expected from its 2022 peak, with a smaller-than-expected toll on employment and activity, reflecting favorable supply- side developments and tightening by central banks, which has kept inflation expectations anchored. At the same time, high interest rates aimed at fighting inflation and a withdrawal of fiscal support amid high debt are expected to weigh on growth in 2024.
+Forces Shaping the Outlook The global economic recovery from the COVID-19 pandemic, Russia’s invasion of Ukraine , and the cost-of-living crisis is proving surprisingly resilient. Inflation is falling faster than expected from its 2022 peak, with a smaller-than-expected toll on employment and activity, reflecting favorable supply- side developments and tightening by central banks, which has kept inflation expectations anchored. At the same time, high interest rates aimed at fighting inflation and a withdrawal of fiscal support amid high debt are expected to weigh on growth in 2024.
 
 Growth resilient in major economies. Economic growth is estimated to have been stronger than expected in the second half of 2023 in the United States, and several major emerging market and developing economies. In several cases, government and private spending contributed to the upswing, with real disposable income gains supporting consumption amid still-tight –– though easing –– labor markets and households drawing down on their accumulated pandemic-era savings. A supply-side expansion also took hold, with a broad-based increase in labor force participation, resolution of pandemic-era supply chain problems, and declining delivery times. The rising momentum was not felt everywhere, with notably subdued growth in the euro area, reflecting weak consumer sentiment, the lingering effects of
 
@@ -26,7 +30,9 @@ reflects an easing in labor market tightness, with a decline in job vacancies, a
 
 accelerate together –– not taking hold. Near-term inflation expectations have fallen in major economies,
 
+```
 Sources: Haver Analytics; and IMF staff calculations.
+```
 
 with long-term expectations remaining anchored. Note: The figure plots the median of a sample of 57 economies that accounts for 78 percent of World Economic Outlook world GDP (in weighted purchasing-power- parity terms) in 2023. Vertical axes are cut off at – 4 percent and 16 percent. The
 
@@ -126,7 +132,7 @@ Table 1. Overview of the World Economic Outlook Projections (Percent change, unl
 
 No te: Real effective exchange rates are assumed to remain co nstant at the levels prevailing during Octo ber 30–No vember 27, 2023. Eco no mies are listed o n the basis o f eco no mic size. The aggregated quarterly data are seaso nally adjusted. WEO = Wo rld Eco no mic Outlo o k . / Difference based o n ro unded figures fo r the current and Octo ber 2023 WEO fo recasts. Co untries fo r which fo recasts have been updated relative to Octo ber 2023 WEO fo recasts acco unt fo r appro ximately 90 percent o f wo rld GDP measured at purchasing-po wer-parity weights. 2/ Fo r Wo rld Output (Emerging M arket and Develo ping Eco no mies), the quarterly estimates and pro jectio ns acco unt fo r appro ximately 90 percent (80 percent) o f annual wo rld (emerging market and develo ping eco no mies') o utput at purchasing-po wer-parity weights. 3/ Excludes the Gro up o f Seven (Canada, France, Germany, Italy, Japan, United Kingdo m, United States) and euro area co untries. 4/ Fo r India, data and pro jectio ns are presented o n a fiscal year (FY) basis, with FY 2022/23 (starting in A pril 2022) sho wn in the 2022 co lumn. India's gro wth pro jectio ns are 5.7 percent in 2024 and 6.8 percent in 2025 based o n calendar year. 5/ Indo nesia, M alaysia, P hilippines, Singapo re, Thailand. 6/ Simple average o f gro wth rates fo r expo rt and impo rt vo lumes (go o ds and services). 7/ Simple average o f prices o f UK B rent, Dubai Fateh, and West Texas Intermediate crude o il. The average assumed price o f o il in US do llars a barrel, based o n futures markets (as o f No vember 29, 2023), is $ 79.1 0 in 2024 and $ 75.31in 2025. 8/ Excludes Venezuela. 9/ The assumed inflatio n rate fo r the euro area is 2.8% in 2024 and 2.1 % in 2025, that fo r Japan is 2.7% in 2024 and 2.0% in 2025, and that fo r the United States is 2.2% in 2024 and 1 .9% in 2025.
 
-###### Risks to the Outlook With the likelihood of a hard landing receding as adverse supply shocks unwind, risks to the global outlook are broadly balanced. There is scope for further upside surprises to global growth, although other potential factors pull the distribution of risks in the opposite direction.
+Risks to the Outlook With the likelihood of a hard landing receding as adverse supply shocks unwind, risks to the global outlook are broadly balanced. There is scope for further upside surprises to global growth, although other potential factors pull the distribution of risks in the opposite direction.
 
 Upside risks. Stronger global growth than expected could arise from several sources:
 
@@ -152,7 +158,7 @@ and jeopardize the global disinflation process.
 
 - Disruptive turn to fiscal consolidation: Fiscal consolidation is necessary in many economies to deal with rising debt ratios. But an excessively sharp shift to tax hikes and spending cuts, beyond what is envisaged, could result in slower-than-expected growth in the near term. Adverse market reactions could pressure some countries that lack a credible medium-term consolidation plan or face a risk of debt distress to undertake harsh adjustments. In low-income countries and emerging market economies, the risk of debt distress remains elevated, constraining scope for necessary growth-enhancing investments.
 
-###### Policy Priorities As inflation declines toward target levels across regions, the near-term priority for central banks is to deliver a smooth landing, neither lowering rates prematurely nor delaying such lowering too much. With inflation drivers and dynamics differing across economies, policy needs for ensuring price stability are increasingly differentiated. At the same time, in many cases, amid rising debt and limited budgetary room to maneuver, and with inflation declining and economies better able to absorb effects of fiscal tightening, a renewed focus on fiscal consolidation is needed. Intensifying supply- enhancing reforms would facilitate both inflation and debt reduction and enable a durable rise in living standards.
+Policy Priorities As inflation declines toward target levels across regions, the near-term priority for central banks is to deliver a smooth landing, neither lowering rates prematurely nor delaying such lowering too much. With inflation drivers and dynamics differing across economies, policy needs for ensuring price stability are increasingly differentiated. At the same time, in many cases, amid rising debt and limited budgetary room to maneuver, and with inflation declining and economies better able to absorb effects of fiscal tightening, a renewed focus on fiscal consolidation is needed. Intensifying supply- enhancing reforms would facilitate both inflation and debt reduction and enable a durable rise in living standards.
 
 Managing the final descent of inflation. The faster-than-expected fall in inflation is allowing an increasing number of central banks to move from raising policy rates to adjusting to a less restrictive stance. In this context, ensuring that wage and price pressures are clearly dissipating and avoiding the appearance of prematurely “declaring victory” will guard against later having to backpedal in the event of upside surprises to inflation. At the same time, where measures of underlying inflation and expectations are clearly moving toward target-consistent levels, adjusting rates to more neutral levels – – while signaling continued commitment to price stability –– may be necessary (considering long transmission lags) to avoid protracted economic weakness and target undershoots. In some emerging market economies, in which the monetary tightening cycle paved the way for earlier rate reductions, continuing to calibrate the pace of monetary adjustments based on a broad array of wage and price pressure gauges is appropriate. With borrowing costs still high, careful monitoring of financing conditions and readiness to deploy financial stability tools will remain vital for avoiding financial sector strains.
 
@@ -174,15 +180,19 @@ Report, inflationary pressures have continued to (Standard deviations from the m
 
 recede, fueling expectations that monetary policy in
 
-3.0 United States
+## 3.0 United States
 
 advanced economies will ease in the coming quarters. 2.5 Euro area Oct.
 
-2.0 China
+## 2.0 China
 
 The resulting momentous decline in interest rate
 
-Other AEs GFSR 1.5
+```
+Other AEs
+GFSR
+1.5
+```
 
 expectations in December has driven a broad-based rally in EMs excl. China 1.0
 
@@ -200,11 +210,13 @@ corporate bond spreads (Figure 1.1).
 
 Global bond yields have fallen significantly on net
 
-2019:Q1 2020:Q3 2022:Q1 2023:Q3
+## 2019:Q1 2020:Q3 2022:Q1 2023:Q3
 
 since October, especially at longer maturities. Real
 
+```
 Sources: Bloomberg Finance L.P.; Haver Analytics;
+```
 
 rates have driven declines throughout the curve, reflecting national data sources; and IMF staff calculations. Note: Data for 4Q23 end uses high-frequency proxy values; AEs =
 

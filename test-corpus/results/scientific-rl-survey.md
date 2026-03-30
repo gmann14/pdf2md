@@ -1,63 +1,18 @@
+---
+title: "A Brief Survey of Deep Reinforcement Learning"
+---
+
 # A Brief Survey of Deep Reinforcement Learning
 
 Kai Arulkumaran, Marc Peter Deisenroth, Miles Brundage, Anil Anthony Bharath
 
-| tionise the field of AI and represents a step towards building   | conveying the innovative ways in which neural networks can       |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| autonomous systems with a higher level understanding of the      | be used to bring us closer towards developing autonomous         |
-| learning to scale to problems that were previously intractable,  | agents. For a more comprehensive survey of recent efforts in     |
-| such as learning to play video games directly from pixels. Deep  | DRL, including applications of DRL to areas such as natural      |
-| reinforcement learning algorithms are also applied to robotics,  | language processing [106, 5], we refer readers to the overview   |
-| allowing control policies for robots to be learned directly from | by Li [78].                                                      |
-| then progress to the main streams of value-based and policy-     | problems that were previously intractable, i.e., settings with   |
-| based methods. Our survey will cover central algorithms in       | high-dimensional state and action spaces. Amongst recent         |
-| trust region policy optimisation, and asynchronous advantage     | success stories. The first, kickstarting the revolution in DRL,  |
-| actor-critic. In parallel, we highlight the unique advantages of | was the development of an algorithm that could learn to play     |
-| reinforcement learning. To conclude, we describe several current | a range of Atari 2600 video games at a superhuman level,         |
-| areas of research within the field.                              | directly from image pixels [84]. Providing solutions for the     |
-| One of the primary goals of the field of artificial intelligence | could be trained on raw, high-dimensional observations, solely   |
-| (AI) is to produce fully autonomous agents that interact with    | based on a reward signal. The second standout success was        |
-| their environments to learn optimal behaviours, improving over   | the development of a hybrid DRL system, AlphaGo, that            |
-| time through trial and error. Crafting AI systems that are       | defeated a human world champion in Go [128], paralleling the     |
-| responsive and can effectively learn has been a long-standing    | historic achievement of IBM’s Deep Blue in chess two decades     |
-| challenge, ranging from robots, which can sense and react        | earlier [19] and IBM’s Watson DeepQA system that beat the        |
-| to the world around them, to purely software-based agents,       | best human Jeopardy! players [31]. Unlike the handcrafted        |
-| which can interact with natural language and multimedia.         | rules that have dominated chess-playing systems, AlphaGo         |
-| A principled mathematical framework for experience-driven        | was composed of neural networks that were trained using          |
-| autonomous learning is reinforcement learning (RL) [135]. Al-    | supervised and reinforcement learning, in combination with       |
-| though RL had some successes in the past [141, 129, 62, 93],     | a traditional heuristic search algorithm.                        |
-| previous approaches lacked scalablity and were inherently        | DRL algorithms have already been applied to a wide range         |
-| limited to fairly low-dimensional problems. These limitations    | of problems, such as robotics, where control policies for robots |
-| exist because RL algorithms share the same complexity is-        | can now be learned directly from camera inputs in the real       |
-| sues as other algorithms: memory complexity, computational       | world [74, 75], succeeding controllers that used to be hand-     |
-| complexity, and in the case of machine learning algorithms,      | engineered or learned from low-dimensional features of the       |
-| sample complexity [133]. What we have witnessed in recent        | robot’s state. In a step towards even more capable agents,       |
-| years—the rise of deep learning, relying on the powerful         | DRL has been used to create agents that can meta-learn (“learn   |
+Abstract —Deep reinforcement learning is poised to revolu- is to cover both seminal and recent developments in DRL, tionise the field of AI and represents a step towards building conveying the innovative ways in which neural networks can autonomous systems with a higher level understanding of the be used to bring us closer towards developing autonomous visual world. Currently, deep learning is enabling reinforcement learning to scale to problems that were previously intractable, agents. For a more comprehensive survey of recent efforts in such as learning to play video games directly from pixels. Deep DRL, including applications of DRL to areas such as natural reinforcement learning algorithms are also applied to robotics, language processing [106, 5], we refer readers to the overview allowing control policies for robots to be learned directly from by Li [78]. camera inputs in the real world. In this survey, we begin with Deep learning enables RL to scale to decision-making an introduction to the general field of reinforcement learning, then progress to the main streams of value-based and policy- problems that were previously intractable, i.e., settings with based methods. Our survey will cover central algorithms in high-dimensional state and action spaces. Amongst recent deep reinforcement learning, including the deep Q -network, work in the field of DRL, there have been two outstanding trust region policy optimisation, and asynchronous advantage success stories. The first, kickstarting the revolution in DRL, actor-critic. In parallel, we highlight the unique advantages of was the development of an algorithm that could learn to play deep neural networks, focusing on visual understanding via reinforcement learning. To conclude, we describe several current a range of Atari 2600 video games at a superhuman level, areas of research within the field. directly from image pixels [84]. Providing solutions for the instability of function approximation techniques in RL, this I. I NTRODUCTION work was the first to convincingly demonstrate that RL agents One of the primary goals of the field of artificial intelligence could be trained on raw, high-dimensional observations, solely (AI) is to produce fully autonomous agents that interact with based on a reward signal. The second standout success was their environments to learn optimal behaviours, improving over the development of a hybrid DRL system, AlphaGo, that time through trial and error. Crafting AI systems that are defeated a human world champion in Go [128], paralleling the responsive and can effectively learn has been a long-standing historic achievement of IBM’s Deep Blue in chess two decades challenge, ranging from robots, which can sense and react earlier [19] and IBM’s Watson DeepQA system that beat the to the world around them, to purely software-based agents, best human Jeopardy! players [31]. Unlike the handcrafted which can interact with natural language and multimedia. rules that have dominated chess-playing systems, AlphaGo A principled mathematical framework for experience-driven was composed of neural networks that were trained using autonomous learning is reinforcement learning (RL) [135]. Al- supervised and reinforcement learning, in combination with though RL had some successes in the past [141, 129, 62, 93], a traditional heuristic search algorithm. previous approaches lacked scalablity and were inherently DRL algorithms have already been applied to a wide range limited to fairly low-dimensional problems. These limitations of problems, such as robotics, where control policies for robots exist because RL algorithms share the same complexity is- can now be learned directly from camera inputs in the real sues as other algorithms: memory complexity, computational world [74, 75], succeeding controllers that used to be hand- complexity, and in the case of machine learning algorithms, engineered or learned from low-dimensional features of the sample complexity [133]. What we have witnessed in recent robot’s state. In a step towards even more capable agents, years—the rise of deep learning, relying on the powerful DRL has been used to create agents that can meta-learn (“learn
 
-| of deep neural networks—has provided us with new tools to         | visual environments they have never seen before [29]. In       |
-| ----------------------------------------------------------------- | -------------------------------------------------------------- |
-| overcoming these problems.                                        | Figure 1, we showcase just some of the domains that DRL        |
-| The advent of deep learning has had a significant impact          | has been applied to, ranging from playing video games [84]     |
-| on many areas in machine learning, dramatically improving         | to indoor navigation [167].                                    |
-| the state-of-the-art in tasks such as object detection, speech    | Video games may be an interesting challenge, but learning      |
-| recognition, and language translation [70]. The most important    | how to play them is not the end goal of DRL. One of the        |
-| property of deep learning is that deep neural networks can        | driving forces behind DRL is the vision of creating systems    |
-| automatically find compact low-dimensional representations        | that are capable of learning how to adapt in the real world.   |
-| (features) of high-dimensional data (e.g., images, text and       | From managing power consumption [142] to picking and           |
-| audio). Through crafting inductive biases into neural network     | stowing objects [75], DRL stands to increase the amount        |
-| architectures, particularly that of hierarchical representations, | of physical tasks that can be automated by learning. How-      |
-| machine learning practitioners have made effective progress       | ever, DRL does not stop there, as RL is a general way of       |
-| in addressing the curse of dimensionality [15]. Deep learning     | approaching optimisation problems by trial and error. From     |
-| has similarly accelerated progress in RL, with the use of         | designing state-of-the-art machine translation models [168] to |
-| “deep reinforcement learning” (DRL). The aim of this survey       | been used to approach all manner of machine learning tasks.    |
+arXiv:1708.05866v2 [cs.LG] 28 Sep 2017 function approximation and representation learning properties to learn”) [29, 156], allowing them to generalise to complex of deep neural networks—has provided us with new tools to visual environments they have never seen before [29]. In overcoming these problems. Figure 1, we showcase just some of the domains that DRL The advent of deep learning has had a significant impact has been applied to, ranging from playing video games [84] on many areas in machine learning, dramatically improving to indoor navigation [167]. the state-of-the-art in tasks such as object detection, speech Video games may be an interesting challenge, but learning recognition, and language translation [70]. The most important how to play them is not the end goal of DRL. One of the property of deep learning is that deep neural networks can driving forces behind DRL is the vision of creating systems automatically find compact low-dimensional representations that are capable of learning how to adapt in the real world. (features) of high-dimensional data (e.g., images, text and From managing power consumption [142] to picking and audio). Through crafting inductive biases into neural network stowing objects [75], DRL stands to increase the amount architectures, particularly that of hierarchical representations, of physical tasks that can be automated by learning. How- machine learning practitioners have made effective progress ever, DRL does not stop there, as RL is a general way of in addressing the curse of dimensionality [15]. Deep learning approaching optimisation problems by trial and error. From has similarly accelerated progress in RL, with the use of designing state-of-the-art machine translation models [168] to deep learning algorithms within RL defining the field of constructing new optimisation functions [76], DRL has already “deep reinforcement learning” (DRL). The aim of this survey been used to approach all manner of machine learning tasks.
 
 Fig. 1. A range of visual RL domains. (a) Two classic Atari 2600 video games, “Freeway” and “Seaquest”, from the Arcade Learning Environment (ALE) [10]. Due to the range of supported games that vary in genre, visuals and difficulty, the ALE has become a standard testbed for DRL algorithms [84, 95, 44, 122, 132, 157, 85]. As we will discuss later, the ALE is one of several benchmarks that are now being used to standardise evaluation in RL. (b) The TORCS car racing simulator, which has been used to test DRL algorithms that can output continuous actions [64, 79, 85] (as the games from the ALE only support discrete actions). (c) Utilising the potentially unlimited amount of training data that can be amassed in robotic simulators, several methods aim to transfer knowledge from the simulator to the real world [22, 115, 146]. (d) Two of the four robotic tasks designed by Levine et al. [74]: screwing on a bottle cap and placing a shaped block in the correct hole. Levine et al. [74] were able to train visuomotor policies in an end-to-end fashion, showing that visual servoing could be learned directly from raw camera inputs by using deep neural networks. (e) A real room, in which a wheeled robot trained to navigate the building is given a visual cue as input, and must find the corresponding location [167]. (f) A natural image being captioned by a neural network that uses reinforcement learning to choose where to look [166]. By processing a small portion of the image for every word generated, the network can focus its attention on the most salient points. Figures reproduced from [10, 79, 146, 74, 167, 166], respectively.
 
-| And, in the same way that deep learning has been utilised | and thereby comprises all the necessary information for the      |
-| --------------------------------------------------------- | ---------------------------------------------------------------- |
-| across many branches of machine learning, it seems likely | agent to take the best action, which can include parts of the    |
-| that in the future, DRL will be an important component in | agent, such as the position of its actuators and sensors. In the |
-| constructing general AI systems [68].                     | optimal control literature, states and actions are often denoted |
+And, in the same way that deep learning has been utilised and thereby comprises all the necessary information for the across many branches of machine learning, it seems likely agent to take the best action, which can include parts of the that in the future, DRL will be an important component in agent, such as the position of its actuators and sensors. In the constructing general AI systems [68]. optimal control literature, states and actions are often denoted by x t and u t , respectively. II. R EWARD - DRIVEN B EHAVIOUR
 
 Before examining the contributions of deep neural networks to RL, we will introduce the field of RL in general. The essence of RL is learning through interaction . An RL agent The best sequence of actions is determined by the rewards interacts with its environment and, upon observing the conse- provided by the environment. Every time the environment quences of its actions, can learn to alter its own behaviour in transitions to a new state, it also provides a scalar reward response to rewards received. This paradigm of trial-and error- r t +1 to the agent as feedback. The goal of the agent is to learning has its roots in behaviourist psychology, and is one learn a policy (control strategy) π that maximises the expected of the main foundations of RL [135]. The other key influence return (cumulative, discounted reward). Given a state, a policy on RL is optimal control, which has lent the mathematical returns an action to perform; an optimal policy is any policy formalisms (most notably dynamic programming [13]) that that maximises the expected return in the environment. In underpin the field. this respect, RL aims to solve the same problem as optimal In the RL set-up, an autonomous agent , controlled by control. However, the challenge in RL is that the agent needs a machine learning algorithm, observes a state s t from its to learn about the consequences of actions in the environment environment at timestep t . The agent interacts with the envi- by trial and error, as, unlike in optimal control, a model of the ronment by taking an action a t in state s t . When the agent state transition dynamics is not available to the agent. Every takes an action, the environment and the agent transition to interaction with the environment yields information, which the a new state s t +1 based on the current state and the chosen agent uses to update its knowledge. This perception-action- action. The state is a sufficient statistic of the environment learning loop is illustrated in Figure 2.
 
@@ -79,19 +34,27 @@ rollout of a policy accumulates rewards from the environment, •
 
 ∑ The optimal policy must be inferred by trial-and-error
 
+```
 T − t
+```
 
 resulting in the return R =
 
+```
 t =0
+```
 
 γ r t +1 . The goal of RL is interaction with the environment. The only learning signal
 
+```
 ∗
+```
 
 to find an optimal policy, π , which achieves the maximum the agent receives is the reward. expected return from all states: • The observations of the agent depend on its actions and
 
+```
 ∗
+```
 
 can contain strong temporal correlations. π = argmax E [ R | π ] . (1)
 
@@ -99,25 +62,35 @@ can contain strong temporal correlations. π = argmax E [ R | π ] . (1)
 
 Agents must deal with long-range time dependencies: Often the consequences of an action only materialise after It is also possible to consider non-episodic MDPs, where many transitions of the environment. This is known as the T = ∞ . In this situation, γ < prevents an infinite sum (temporal) credit assignment problem [135]. of rewards from being accumulated. Furthermore, methods that rely on complete trajectories are no longer applicable, We will illustrate these challenges in the context of an but those that use a finite set of transitions still are. indoor robotic visual navigation task: if the goal location is A key concept underlying RL is the Markov property— specified, we may be able to estimate the distance remaining only the current state affects the next state, or in other words, (and use it as a reward signal), but it is unlikely that we will the future is conditionally independent of the past given know exactly what series of actions the robot needs to take the present state. This means that any decisions made at s t to reach the goal. As the robot must choose where to go as it can be based solely on s t − , rather than { s , s , . . . , s t − } . navigates the building, its decisions influence which rooms it Although this assumption is held by the majority of RL sees and, hence, the statistics of the visual sequence captured. algorithms, it is somewhat unrealistic, as it requires the states Finally, after navigating several junctions, the robot may find to be fully observable . A generalisation of MDPs are partially itself in a dead end. There is a range of problems, from observable MDPs (POMDPs), in which the agent receives an learning the consequences of actions to balancing exploration
 
+```
 π π
+```
 
 against exploitation, but ultimately these can all be addressed Q ), which results in setting Y = r t + γQ ( s t +1 , a t +1 ) . Q -
 
+```
 π
+```
 
 formally within the framework of RL. learning is off-policy , as Q is instead updated by transitions III. R EINFORCEMENT L EARNING A LGORITHMS
 
 that were not necessarily generated by the derived policy.
 
+```
 π
+```
 
 So far, we have introduced the key formalism used in RL, Instead, Q -learning uses Y = r t + γ max a Q ( s t +1 , a ) , which
 
+```
 ∗
+```
 
 the MDP, and briefly noted some challenges in RL. In the directly approximates Q .
 
+```
 ∗ π
+```
 
 following, we will distinguish between different classes of To find Q from an arbitrary Q , we use generalised
 
@@ -133,39 +106,57 @@ search. We will now explain these approaches and other useful following the poli
 
 concepts for solving RL problems. naturally be improved by choosing actions greedily based on the updated value function. Instead of performing these steps A. Value Functions separately to convergence (as in policy iteration), generalised Value function methods are based on estimating the value policy iteration allows for interleaving the steps, such that (expected return) of being in a given state. The state-value progress can be made more rapidly.
 
+```
 π
+```
 
 function V ( s ) is the expected return when starting in state s B. Sampling and following π henceforth: Instead of bootstrapping value functions using dynamic
 
+```
 π
+```
 
 V ( s ) = E [ R | s , π ] (2) programming methods, Monte Carlo methods estimate the expected return (2) from a state by averaging the return from
 
+```
 ∗
+```
 
 The optimal policy, π , has a corresponding state-value multiple rollouts of a policy. Because of this, pure Monte Carlo
 
+```
 ∗
+```
 
 function V ( s ) , and vice-versa, the optimal state-value func- methods can also be applied in non-Markovian environments. tion can be defined as On the other hand, they can only be used in episodic MDPs,
 
+```
 ∗ π
+```
 
 as a rollout has to terminate for the return to be calculated. V ( s ) = max V ( s ) ∀ s ∈ S . (3)
 
+```
 π
+```
 
 It is possible to get the best of both methods by combining
 
+```
 ∗
+```
 
 TD learning and Monte Carlo policy evaluation, as in done in If we had V ( s ) available, the optimal policy could be re- the TD( λ ) algorithm [135]. Similarly to the discount factor, trieved by choosing among all actions available at s t and pick-
 
+```
 ∗
+```
 
 the λ in TD( λ ) is used to interpolate between Monte Carlo ing the action a that maximises E s t +1 ∼T ( s t +1 | s t , a ) [ V ( s t +1 )] . evaluation and bootstrapping. As demonstrated in Figure 3, In the RL setting, the transition dynamics T are unavailable. this results in an entire spectrum of RL methods based around Therefore, we construct another function, the state-action-
 
+```
 π π
+```
 
 the amount of sampling utilised. value or quality function Q ( s , a ) , which is similar to V , Another major value-function based method relies on learn- except that the initial action a is provided, and π is only π
 
@@ -175,25 +166,35 @@ absolute state-action values, as with Q , A instead represents
 
 π relative state-action values. Learning relative values is akin Q ( s , a ) = E [ R | s , a , π ] . (4) to removing a baseline or average level of a signal; more
 
+```
 π
+```
 
 The best policy, given Q ( s , a ) , can be found by choosing a intuitively, it is easier to learn that one action has better
 
+```
 π
+```
 
 greedily at every state: argmax a
 
 Q ( s , a ) . Under this policy, consequences than another, than it is to learn the actual return
 
+```
 π π π π
+```
 
 we can also define V ( s ) by maximising Q ( s , a ) : V ( s ) = from taking the action. A represents a relative advantage
 
+```
 π π π π
+```
 
 max a Q ( s , a ) . of actions through the simple relationship A = Q − V ,
 
+```
 π
+```
 
 Dynamic Programming: To actually learn Q , we exploit and is also closely related to the baseline method of variance
 
@@ -201,37 +202,54 @@ the Markov property and define the function as a Bellman reduction within gradie
 
 equation [13], which has the following recursive form: The idea of advantage updates has been utilised in many recent DRL algorithms [157, 40, 85, 123].
 
+```
 π π
+```
 
 Q ( s t , a t ) = E s t +1
 
-[ r t +1 + γQ ( s t +1 , π ( s t +1 ))] . (5) C. Policy Search
+```
+[ r t +1 + γQ ( s t +1 , π ( s t +1 ))] . (5)
+C. Policy Search
+```
 
+```
 π
+```
 
 This means that Q can be improved by bootstrapping , i.e., Policy search methods do not need to maintain a value
 
+```
 π
+```
 
 we can use the current values of our estimate of Q to improve function model, but directly search for an optimal policy
 
+```
 ∗
+```
 
 our estimate. This is the foundation of Q -learning [159] and π . Typically, a parameterised policy π θ is chosen, whose
 
 the state-action-reward-state-action (SARSA) algorithm [112]: parameters are updated to maximise the expected return E [ R | θ ] using either gradient-based or gradient-free optimisation [26].
 
+```
 π π
+```
 
 Q ( s t , a t ) ← Q ( s t , a t ) + αδ, (6) Neural networks that encode policies have been successfully trained using both gradient-free [37, 23, 64] and gradient-
 
+```
 π
+```
 
 | poral difference (TD) error; here, | Y         | is a target as in a standard | optimisation can effectively cover low-dimensional parameter |
 | ---------------------------------- | --------- | ---------------------------- | ------------------------------------------------------------ |
 | regression problem. SARSA, an      | on-policy | learning algorithm,          | spaces, but despite some successes in applying them to large |
 
+```
 π
+```
 
 is used to improve the estimate of Q by using transitions networks [64], gradient-based training remains the method of generated by the behavioural policy (the policy derived from choice for most DRL algorithms, being more sample-efficient
 
@@ -249,14 +267,7 @@ Gaussian distributions, whilst for discrete actions this could expectation over 
 
 be the individual probabilities of a multinomial distribution. respect to parameters θ :
 
-| policies requires a heuristic search across a predefined class | As this computation relies on the empirical return of a        |
-| -------------------------------------------------------------- | -------------------------------------------------------------- |
-| of models. Methods such as evolution strategies essentially    | trajectory, the resulting gradients possess a high variance.   |
-| perform hill-climbing in a subspace of policies [116], whilst  | By introducing unbiased estimates that are less noisy it is    |
-| more complex methods, such as compressed network search,       | possible to reduce the variance. The general methodology       |
-| impose additional inductive biases [64]. Perhaps the greatest  | for performing this is to subtract a baseline, which means     |
-| advantage of gradient-free policy search is that they can also | weighting updates by an advantage rather than the pure return. |
-| optimise non-differentiable policies.                          | The simplest baseline is the average return taken over several |
+The result is a stochastic policy from which we can directly ∇ θ E X [ f ( X ; θ )] = E X [ f ( X ; θ ) ∇ θ log p ( X )] . (7) sample actions. With gradient-free methods, finding better policies requires a heuristic search across a predefined class As this computation relies on the empirical return of a of models. Methods such as evolution strategies essentially trajectory, the resulting gradients possess a high variance. perform hill-climbing in a subspace of policies [116], whilst By introducing unbiased estimates that are less noisy it is more complex methods, such as compressed network search, possible to reduce the variance. The general methodology impose additional inductive biases [64]. Perhaps the greatest for performing this is to subtract a baseline, which means advantage of gradient-free policy search is that they can also weighting updates by an advantage rather than the pure return. optimise non-differentiable policies. The simplest baseline is the average return taken over several
 
 Policy Gradients: Gradients can provide a strong learning episodes [164], but many more options are available [123].
 
@@ -286,36 +297,11 @@ through these samples of a stochastic function. Therefore, we this reason, we wi
 
 turn to an estimator of the gradient, known in RL as the REIN- subset of policy gradient methods.
 
-| FORCE rule [164], elsewhere known as the score function [34]      | D. Planning and Learning                                |
-| ----------------------------------------------------------------- | ------------------------------------------------------- |
-| or likelihood-ratio estimator [36]. The latter name is telling as | Given a model of the environment, it is possible to use |
-| using the estimator is similar to the practice of optimising      | dynamic programming over all possible actions (Figure 3 |
+FORCE rule [164], elsewhere known as the score function [34] D. Planning and Learning or likelihood-ratio estimator [36]. The latter name is telling as Given a model of the environment, it is possible to use using the estimator is similar to the practice of optimising dynamic programming over all possible actions (Figure 3
 
-| (a)), sample trajectories for heuristic search (as was done by | over long time steps, and it may be be pertinent to instead use    |
-| -------------------------------------------------------------- | ------------------------------------------------------------------ |
-| AlphaGo [128]), or even perform an exhaustive search (Figure   | a value function to summarise the statistics of the rollouts [46]. |
-| which utilises a model to produce or improve a policy. This    | function approximation are key to the success of DRL, but it       |
-| be drawn.                                                      | Following our review of RL, we will now partition the              |
-| In RL, we focus on learning without access to the underly-     | next part of the survey into value function and policy search      |
-| environment could be used to learn value functions, policies,  | network (DQN) [84]. In these sections, we will focus on state-     |
-| and also a model. Model-free RL methods learn directly         | of-the-art techniques, as well as the historical works they are    |
-| from interactions with the environment, but model-based RL     | built upon. The focus of the state-of-the-art techniques will be   |
-| methods can simulate transitions using the learned model,      | on those for which the state space is conveyed through visual      |
-| resulting in increased sample efficiency. This is particularly | inputs, e.g., images and video. To conclude, we will examine       |
-| important in domains where each interaction with the environ-  | ongoing research areas and open challenges.                        |
+(a)), sample trajectories for heuristic search (as was done by over long time steps, and it may be be pertinent to instead use AlphaGo [128]), or even perform an exhaustive search (Figure a value function to summarise the statistics of the rollouts [46]. 3 (b)). Sutton and Barto [135] define planning as any method We have previously mentioned that representation learning and which utilises a model to produce or improve a policy. This function approximation are key to the success of DRL, but it includes distribution models , which include T and R , and is also true to say that the field of deep learning has inspired sample models , from which only samples of transitions can new ways of thinking about RL. be drawn. Following our review of RL, we will now partition the In RL, we focus on learning without access to the underly- next part of the survey into value function and policy search ing model of the environment. However, interactions with the methods in DRL, starting with the well-known deep Q - environment could be used to learn value functions, policies, network (DQN) [84]. In these sections, we will focus on state- and also a model. Model-free RL methods learn directly of-the-art techniques, as well as the historical works they are from interactions with the environment, but model-based RL built upon. The focus of the state-of-the-art techniques will be methods can simulate transitions using the learned model, on those for which the state space is conveyed through visual resulting in increased sample efficiency. This is particularly inputs, e.g., images and video. To conclude, we will examine important in domains where each interaction with the environ- ongoing research areas and open challenges. ment is expensive. However, learning a model introduces extra IV. V ALUE F UNCTIONS
 
-| complexities, and there is always the danger of suffering from   | The well-known function approximation properties of neural      |
-| ---------------------------------------------------------------- | --------------------------------------------------------------- |
-| model errors, which in turn affects the learned policy; a com-   | networks led naturally to the use of deep learning to regress   |
-| mon but partial solution in this latter scenario is to use model | functions for use in RL agents. Indeed, one of the earliest     |
-| predictive control, where planning is repeated after small       | success stories in RL is TD-Gammon, a neural network that       |
-| sequences of actions in the real environment [16]. Although      | reached expert-level performance in Backgammon in the early     |
-| deep neural networks can potentially produce very complex        | 90s [141]. Using TD methods, the network took in the state of   |
-| and rich models [95, 132, 32], sometimes simpler, more data-     | the board to predict the probability of black or white winning. |
-| efficient methods are preferable [40]. These considerations      | Although this simple idea has been echoed in later work         |
-| also play a role in actor-critic methods with learned value      | [128], progress in RL research has favoured the explicit use    |
-| functions [63, 123].                                             | of value functions, which can capture the structure underlying  |
-| E. The Rise of DRL                                               | the environment. From early value function methods in DRL,      |
+complexities, and there is always the danger of suffering from The well-known function approximation properties of neural model errors, which in turn affects the learned policy; a com- networks led naturally to the use of deep learning to regress mon but partial solution in this latter scenario is to use model functions for use in RL agents. Indeed, one of the earliest predictive control, where planning is repeated after small success stories in RL is TD-Gammon, a neural network that sequences of actions in the real environment [16]. Although reached expert-level performance in Backgammon in the early deep neural networks can potentially produce very complex 90s [141]. Using TD methods, the network took in the state of and rich models [95, 132, 32], sometimes simpler, more data- the board to predict the probability of black or white winning. efficient methods are preferable [40]. These considerations Although this simple idea has been echoed in later work also play a role in actor-critic methods with learned value [128], progress in RL research has favoured the explicit use functions [63, 123]. of value functions, which can capture the structure underlying E. The Rise of DRL the environment. From early value function methods in DRL,
 
 Many of the successes in DRL have been based on scaling which took simple states as input [109], current methods
 
@@ -323,49 +309,33 @@ up prior work in RL to high-dimensional problems. This is are now able to tackle
 
 due to the learning of low-dimensional feature representations environments [84, 122, 85, 96, 167].
 
-| and the powerful function approximation properties of neural     | A. Function Approximation and the DQN                           |
-| ---------------------------------------------------------------- | --------------------------------------------------------------- |
-| efficiently with the curse of dimensionality, unlike tabular and | gorithms with the DQN [84], pictured in Figure 5, which         |
-| traditional non-parametric methods [15]. For instance, convo-    | achieved scores across a wide range of classic Atari 2600 video |
-| lutional neural networks (CNNs) can be used as components        | games [10] that were comparable to that of a professional       |
-| of RL agents, allowing them to learn directly from raw, high-    | video games tester. The inputs to the DQN are four greyscale    |
-| dimensional visual inputs. In general, DRL is based on training  | frames of the game, concatenated over time, which are initially |
+and the powerful function approximation properties of neural A. Function Approximation and the DQN networks. By means of representation learning, DRL can deal We begin our survey of value-function-based DRL al- efficiently with the curse of dimensionality, unlike tabular and gorithms with the DQN [84], pictured in Figure 5, which traditional non-parametric methods [15]. For instance, convo- achieved scores across a wide range of classic Atari 2600 video lutional neural networks (CNNs) can be used as components games [10] that were comparable to that of a professional of RL agents, allowing them to learn directly from raw, high- video games tester. The inputs to the DQN are four greyscale dimensional visual inputs. In general, DRL is based on training frames of the game, concatenated over time, which are initially
 
+```
 ∗
+```
 
 deep neural networks to approximate the optimal policy π , processed by several convolutional layers in order to extract
 
+```
 ∗ ∗ ∗
+```
 
-| Although there have been DRL successes with gradient-           | in “Pong” or “Breakout.” The final feature map from the         |
-| --------------------------------------------------------------- | --------------------------------------------------------------- |
-| free methods [37, 23, 64], the vast majority of current works   | convolutional layers is processed by several fully connected    |
-| rely on gradients and hence the backpropagation algorithm       | layers, which more implicitly encode the effects of actions.    |
-| [162, 111]. The primary motivation is that when available,      | This contrasts with more traditional controllers that use fixed |
-| gradients provide a strong learning signal. In reality, these   | preprocessing steps, which are therefore unable to adapt their  |
-| The other benefit of backpropagation is to view the op-         | value given a state-action pair [109]. NFQ was later extended   |
-| timisation of the expected return as the optimisation of a      | to train a network to drive a slot car using raw visual inputs  |
-| stochastic function [121, 46]. This function can comprise of    | from a camera over the race track, by combining a deep          |
-| several parts—models, policies and value functions—which        | autoencoder to reduce the dimensionality of the inputs with     |
-| value functions, may not directly optimise the expected return, | vious network could have been trained for both reconstruction   |
-| but can instead embody useful information about the RL          | and RL tasks simultaneously, it was both more reliable and      |
-| domain. For example, using a differentiable model and policy,   | computationally efficient to train the two parts of the network |
-| it is possible to forward propagate and backpropagate through   | sequentially.                                                   |
-| entire rollouts; on the other hand, innacuracies can accumulate | The DQN [84] is closely related to the model proposed           |
+and/or the optimal value functions V , Q and A . spatiotemporal features, such as the movement of the ball Although there have been DRL successes with gradient- in “Pong” or “Breakout.” The final feature map from the free methods [37, 23, 64], the vast majority of current works convolutional layers is processed by several fully connected rely on gradients and hence the backpropagation algorithm layers, which more implicitly encode the effects of actions. [162, 111]. The primary motivation is that when available, This contrasts with more traditional controllers that use fixed gradients provide a strong learning signal. In reality, these preprocessing steps, which are therefore unable to adapt their gradients are estimated based on approximations, through processing of the state in response to the learning signal. sampling or otherwise, and as such we have to craft algorithms A forerunner of the DQN—neural fitted Q iteration with useful inductive biases in order for them to be tractable. (NFQ)—involved training a neural network to return the Q - The other benefit of backpropagation is to view the op- value given a state-action pair [109]. NFQ was later extended timisation of the expected return as the optimisation of a to train a network to drive a slot car using raw visual inputs stochastic function [121, 46]. This function can comprise of from a camera over the race track, by combining a deep several parts—models, policies and value functions—which autoencoder to reduce the dimensionality of the inputs with can be combined in various ways. The individual parts, such as a separate branch to predict Q -values [69]. Although the pre- value functions, may not directly optimise the expected return, vious network could have been trained for both reconstruction but can instead embody useful information about the RL and RL tasks simultaneously, it was both more reliable and domain. For example, using a differentiable model and policy, computationally efficient to train the two parts of the network it is possible to forward propagate and backpropagate through sequentially. entire rollouts; on the other hand, innacuracies can accumulate The DQN [84] is closely related to the model proposed
 
 Fig. 5. The deep Q -network [84]. The network takes the state—a stack of greyscale frames from the video game—and processes it with convolutional and fully connected layers, with ReLU nonlinearities in between each layer. At the final layer, the network outputs a discrete action, which corresponds to one of the possible control inputs for the game. Given the current state and chosen action, the game returns a new score. The DQN uses the reward—the difference between the new score and the previous one—to learn from its decision. More precisely, the reward is used to update its estimate of Q , and the error between its previous estimate and its new estimate is backpropagated through the network.
 
-| by Lange et al. [69], but was the first RL algorithm that   | lies in its ability to compactly represent both high-dimensional |
-| ----------------------------------------------------------- | ---------------------------------------------------------------- |
-| and on a wide variety of environments. It was designed such | Without this ability, tackling the discrete Atari domain from    |
+by Lange et al. [69], but was the first RL algorithm that lies in its ability to compactly represent both high-dimensional was demonstrated to work directly from raw visual inputs observations and the Q -function using deep neural networks. and on a wide variety of environments. It was designed such Without this ability, tackling the discrete Atari domain from
 
+```
 π
+```
 
-| action values in a discrete set of actions—in this case, the     | The DQN addressed the fundamental instability problem     |
-| ---------------------------------------------------------------- | --------------------------------------------------------- |
-| various directions of the joystick and the fire button. This not | of using function approximation in RL [145] by the use of |
+that the final fully connected layer outputs Q ( s , · ) for all raw visual inputs would be impractical. action values in a discrete set of actions—in this case, the The DQN addressed the fundamental instability problem various directions of the joystick and the fire button. This not of using function approximation in RL [145] by the use of
 
+```
 π
+```
 
 only enables the best action, argmax a
 
@@ -383,61 +353,55 @@ recently fired, and also the enemy that it anticipates hitting in a few time ste
 
 Considering that one of the key components of the DQN is a function approximator for the Q -function, it can benefit from The true underlying state of the game is contained within fundamental advances in RL. van Hasselt [148] showed that bytes of Atari RAM. However, the DQN was the single estimator used in the Q -learning update rule over- designed to directly learn from visual inputs ( × pixel estimates the expected return due to the use of the maximum 8-bit RGB images), which it takes as the state s . It is action value as an approximation of the maximum expected
 
+```
 π
+```
 
 impractical to represent Q ( s , a ) exactly as a lookup table: action value. Double- Q learning provides a better estimate When combined with 18 possible actions, we obtain a Q - through the use of a double estimator [148]. Whilst double-
 
+```
 × ×
+```
 
-| feasible to create such a table, it would be sparsely populated, | work proposed using the already available target network from |
-| ---------------------------------------------------------------- | ------------------------------------------------------------- |
-| and information gained from one state-action pair cannot be      | the DQN algorithm, resulting in significantly better results  |
-| propagated to other state-action pairs. The strength of the DQN  | with only a small change in the update step [149]. A more     |
+table of size |S| × |A| = 18 × . Even if it were Q learning requires an additional function to be learned, later feasible to create such a table, it would be sparsely populated, work proposed using the already available target network from and information gained from one state-action pair cannot be the DQN algorithm, resulting in significantly better results propagated to other state-action pairs. The strength of the DQN with only a small change in the update step [149]. A more
 
-| radical proposal by Bellemare et al. [12] was to actually learn | rely on evaluating the performance of a population of agents.  |
-| --------------------------------------------------------------- | -------------------------------------------------------------- |
-| provides additional information, such as whether the potential  | many parameters. However, as black-box optimisation meth-      |
-| rewards come from a skewed or multimodal distribution. Al-      | ods they can be used to optimise arbitrary, non-differentiable |
-| though the resulting algorithm—based on learning categorical    | models and naturally allow for more exploration in parameter   |
-| distributions—was used to construct the Categorical DQN, the    | space. In combination with a compressed representation of      |
-| benefits can potentially be applied to any RL algorithm that    | neural network weights, evolutionary algorithms can even be    |
-| utilises learned value functions.                               | used to train large networks; such a technique resulted in the |
+radical proposal by Bellemare et al. [12] was to actually learn rely on evaluating the performance of a population of agents. the full value distribution , rather than just the expectation; this Hence, they are expensive for large populations or agents with provides additional information, such as whether the potential many parameters. However, as black-box optimisation meth- rewards come from a skewed or multimodal distribution. Al- ods they can be used to optimise arbitrary, non-differentiable though the resulting algorithm—based on learning categorical models and naturally allow for more exploration in parameter distributions—was used to construct the Categorical DQN, the space. In combination with a compressed representation of benefits can potentially be applied to any RL algorithm that neural network weights, evolutionary algorithms can even be utilises learned value functions. used to train large networks; such a technique resulted in the Yet another way to adjust the DQN architecture is to first deep neural network to learn an RL task, straight from decompose the Q -function into meaningful functions, such high-dimensional visual inputs [64]. Recent work has reignited
 
+```
 π
+```
 
 as constructing Q by adding together separate layers that interest in evolutionary methods for RL as they can potentially
 
+```
 π
+```
 
 compute the state-value function V and advantage function be distributed at larger scales than techniques that rely on
 
+```
 π
+```
 
 A [157]. Rather than having to come up with accurate Q - gradients [116]. values for all actions, the duelling DQN [157] benefits from a A. Backpropagation through Stochastic Functions
 
+```
 π
+```
 
 single baseline for the state in the form of V , and easier-to-
 
+```
 π
+```
 
 The workhorse of DRL, however, remains backpropagation learn relative values in the form of A . The combination of the [162, 111]. The previously discussed REINFORCE rule [164] duelling DQN with prioritised experience replay [118] is one allows neural networks to learn stochastic policies in a task- of the state-of-the-art techniques in discrete action settings.
 
+```
 π
+```
 
-| led them to modify the DQN with a convex advantage layer         | In these cases, the stochastic variable would determine the     |
-| ---------------------------------------------------------------- | --------------------------------------------------------------- |
-| that extended the algorithm to work over sets of continuous      | coordinates of a small crop of the image, and hence reduce      |
-| actions, creating the normalised advantage function (NAF)        | the amount of computation needed. This usage of RL to make      |
-| algorithm. Benefiting from experience replay, target networks    | discrete, stochastic decisions over inputs is known in the deep |
-| techniques in continuous control problems [40].                  | compelling uses of basic policy search methods in recent years, |
-| Some RL domains, such as recommender systems, have               | having many applications outside of traditional RL domains.     |
-| very large discrete action spaces, and hence may be difficult to | More generally, the ability to backpropagate through stochastic |
-| directly deal with. Dulac-Arnold et al. [30] proposed learning   | functions, using techniques such as REINFORCE [164] or the      |
-| “action embeddings” over the large set of original actions,      | “reparameterisation trick” [61, 108], allows neural networks    |
-| which can be used with traditional RL methods. The idea of       | optimised over [121], which is a key concept in algorithms      |
-| using representation learning to create distributed embeddings   | such as stochastic value gradients (SVGs) [46].                 |
-| in RL is when many actions need to be made simultaneously,       | Searching directly for a policy represented by a neural         |
+dependent manner, such as deciding where to look in an Further insight into the properties of A by Gu et al. [40] image to track [120], classify [83] or caption objects [166]. led them to modify the DQN with a convex advantage layer In these cases, the stochastic variable would determine the that extended the algorithm to work over sets of continuous coordinates of a small crop of the image, and hence reduce actions, creating the normalised advantage function (NAF) the amount of computation needed. This usage of RL to make algorithm. Benefiting from experience replay, target networks discrete, stochastic decisions over inputs is known in the deep and advantage updates, NAF is one of several state-of-the-art learning literature as hard attention , and is one of the more techniques in continuous control problems [40]. compelling uses of basic policy search methods in recent years, Some RL domains, such as recommender systems, have having many applications outside of traditional RL domains. very large discrete action spaces, and hence may be difficult to More generally, the ability to backpropagate through stochastic directly deal with. Dulac-Arnold et al. [30] proposed learning functions, using techniques such as REINFORCE [164] or the “action embeddings” over the large set of original actions, “reparameterisation trick” [61, 108], allows neural networks and then using k -nearest neighbors to produce “proto-actions” to be treated as stochastic computation graphs that can be which can be used with traditional RL methods. The idea of optimised over [121], which is a key concept in algorithms using representation learning to create distributed embeddings such as stochastic value gradients (SVGs) [46]. is a particular strength of DRL, and has been successfully B. Compounding Errors utilised for other purposes [161, 100]. Another related scenario in RL is when many actions need to be made simultaneously, Searching directly for a policy represented by a neural
 
 such as specifying the torques in a many-jointed robot, which network with very many parameters can be difficult and can
 
@@ -469,73 +433,11 @@ choose to invoke “subpolicies” from higher-level policies continuous RL prob
 
 ing (HRL), will be discussed later. research by Levine et al. [74] showed that it was possible to train visuomotor policies for a robot “end-to-end”, straight V. P OLICY S EARCH
 
-| Policy search methods aim to directly find policies by means     | hence, is one of the seminal works in DRL.                     |
-| ---------------------------------------------------------------- | -------------------------------------------------------------- |
-| of gradient-free or gradient-based methods. Prior to the current | A more commonly used method is to use a trust region, in       |
-| surge of interest in DRL, several successful methods in DRL      | which optimisation steps are restricted to lie within a region |
-| eschewed the commonly used backpropagation algorithm in          | where the approximation of the true cost function still holds. |
-| favour of evolutionary algorithms [37, 23, 64], which are        | By preventing updated policies from deviating too wildly       |
-| gradient-free policy search algorithms. Evolutionary methods     | from previous policies, the chance of a catastrophically bad   |
+from the RGB pixels of the camera to motor torques, and, Policy search methods aim to directly find policies by means hence, is one of the seminal works in DRL. of gradient-free or gradient-based methods. Prior to the current A more commonly used method is to use a trust region, in surge of interest in DRL, several successful methods in DRL which optimisation steps are restricted to lie within a region eschewed the commonly used backpropagation algorithm in where the approximation of the true cost function still holds. favour of evolutionary algorithms [37, 23, 64], which are By preventing updated policies from deviating too wildly gradient-free policy search algorithms. Evolutionary methods from previous policies, the chance of a catastrophically bad
 
-| update is lessened, and many algorithms that use trust regions   | allowing standard gradients to be used (instead of the high-     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| guarantee or practically result in monotonic improvement in      | variance REINFORCE estimator [164]). The resulting SVG           |
-| policy performance. The idea of constraining each policy         | methods are flexible, and can be used both with (SVG(0) and      |
-| history in RL [57, 4, 59, 103]. One of the newer algorithms in   | Later work proceeded to integrate DPGs and SVGs with             |
-| this line of work, trust region policy optimisation (TRPO),      | RNNs, allowing them to solve continuous control problems         |
-| has been shown to be relatively robust and applicable to         | in POMDPs, learning directly from pixels [45].                   |
-| domains with high-dimensional inputs [122]. To achieve this,     | Value functions introduce a broadly applicable benefit in        |
-| it optimises an (importance sampled) advantage estimate, con-    | policy methods can be more stable, whilst off-policy methods     |
-| strained using a quadratic approximation of the KL divergence.   | can be more data efficient, and hence there have been several    |
-| Whilst TRPO can be used as a pure policy gradient method         | attempts to merge the two [158, 94, 41, 39, 42]. Earlier         |
-| with a simple baseline, later work by Schulman et al. [123]      | work has either utilised a mix of on-policy and off-policy       |
-| introduced generalised advantage estimation (GAE), which         | gradient updates [158, 94, 39], or used the off-policy data      |
-| proposed several, more advanced variance reduction baselines.    | to train a value function in order to reduce the variance of     |
-| The combination of TRPO and GAE remains one of the state-        | on-policy gradient updates [41]. The more recent work by         |
-| of-the-art RL techniques in continuous control. However, the     | Gu et al. [42] unified these methods under interpolated policy   |
-| constrained optimisation of TRPO requires calculating second-    | gradients (IPGs), resulting in one of the newest state-of-the-   |
-| newer proximal policy optimisation (PPO) algorithm performs      | future research in this area. Together, the ideas behind IPGs    |
-| unconstrained optimisation, requiring only first-order gradient  | and SVGs (of which DPGs can be considered a special case)        |
-| information [1, 47, 125]. The two main variants include an       | form algorithmic approaches for improving learning efficiency    |
-| adaptive penalty on the KL divergence, and a heuristic clipped   | in DRL.                                                          |
-| TRPO means that PPO (with or without GAE) is gaining             | networks through asynchronous gradient updates have been         |
-| popularity for a range of RL tasks [47, 125].                    | developed for use on both single machines [107] and dis-         |
-| Instead of utilising the average of several Monte Carlo          | by multiple copies of a single network, computation can be       |
-| returns as the baseline for policy gradient methods, actor-      | efficiently distributed over both processing cores in a single   |
-| critic approaches have grown in popularity as an effective       | CPU, and across CPUs in a cluster of machines. Using a           |
-| means of combining the benefits of policy search methods         | distributed system, Nair et al. [91] developed a framework       |
-| with learned value functions, which are able to learn from full  | for training multiple DQNs in parallel, achieving both better    |
-| returns and/or TD errors. They can benefit from improvements     | performance and a reduction in training time. However, the       |
-| in both policy gradient methods, such as GAE [123], and value    | simpler asynchronous advantage actor-critic (A3C) algorithm      |
-| function methods, such as target networks [84]. In the last few  | [85], developed for both single and distributed machine set-     |
-| years, DRL actor-critic methods have been scaled up from         | tings, has become one of the most popular DRL techniques         |
-| learning simulated physics tasks [46, 79] to real robotic visual | in recent times. A3C combines advantage updates with the         |
-| navigation tasks [167], directly from image pixels.              | actor-critic formulation, and relies on asynchronously updated   |
-| One recent development in the context of actor-critic algo-      | policy and value function networks trained in parallel over      |
-| rithms are deterministic policy gradients (DPGs) [127], which    | several processing threads. The use of multiple agents, situated |
-| extend the standard policy gradient theorems for stochastic      | in their own, independent environments, not only stabilises      |
-| policies [164] to deterministic policies. One of the major       | improvements in the parameters, but conveys an additional        |
-| advantages of DPGs is that, whilst stochastic policy gradi-      | benefit in allowing for more exploration to occur. A3C has       |
-| ents integrate over both state and action spaces, DPGs only      | been used as a standard starting point in many subsequent        |
-| integrate over the state space, requiring fewer samples in       | works, including the work of Zhu et al. [167], who applied it    |
-| problems with large action spaces. In the initial work on        | to robotic navigation in the real world through visual inputs.   |
-| DPGs, Silver et al. [127] introduced and demonstrated an         | For simplicity, the underlying algorithm may be used with        |
-| off-policy actor-critic algorithm that vastly improved upon      | just one agent, termed advantage actor-critic (A2C) [156].       |
-| a stochastic policy gradient equivalent in high-dimensional      | Alternatively, segments from the trajectories of multiple agents |
-| continuous control problems. Later work introduced deep DPG      | can be collected and processed together in a batch, with         |
-| dimensional, visual state spaces [79]. In the same vein as       | synchronous version also goes by the name of A2C [125].          |
-| DPGs, Heess et al. [46] devised a method for calculating         | There have been several major advancements on the original       |
-| gradients to optimise stochastic policies, by “reparameterising” | A3C algorithm that reflect various motivations in the field of   |
-| [61, 108] the stochasticity away from the network, thereby       | DRL. The first is actor-critic with experience replay [158, 39], |
+update is lessened, and many algorithms that use trust regions allowing standard gradients to be used (instead of the high- guarantee or practically result in monotonic improvement in variance REINFORCE estimator [164]). The resulting SVG policy performance. The idea of constraining each policy methods are flexible, and can be used both with (SVG(0) and gradient update, as measured by the Kullback-Leibler (KL) SVG(1)) and without (SVG( ∞ )) value function critics, and divergence between the current and proposed policy, has a long with (SVG( ∞ ) and SVG(1)) and without (SVG(0)) models. history in RL [57, 4, 59, 103]. One of the newer algorithms in Later work proceeded to integrate DPGs and SVGs with this line of work, trust region policy optimisation (TRPO), RNNs, allowing them to solve continuous control problems has been shown to be relatively robust and applicable to in POMDPs, learning directly from pixels [45]. domains with high-dimensional inputs [122]. To achieve this, Value functions introduce a broadly applicable benefit in TRPO optimises a surrogate objective function—specifically, actor-critic methods—the ability to use off-policy data. On- it optimises an (importance sampled) advantage estimate, con- policy methods can be more stable, whilst off-policy methods strained using a quadratic approximation of the KL divergence. can be more data efficient, and hence there have been several Whilst TRPO can be used as a pure policy gradient method attempts to merge the two [158, 94, 41, 39, 42]. Earlier with a simple baseline, later work by Schulman et al. [123] work has either utilised a mix of on-policy and off-policy introduced generalised advantage estimation (GAE), which gradient updates [158, 94, 39], or used the off-policy data proposed several, more advanced variance reduction baselines. to train a value function in order to reduce the variance of The combination of TRPO and GAE remains one of the state- on-policy gradient updates [41]. The more recent work by of-the-art RL techniques in continuous control. However, the Gu et al. [42] unified these methods under interpolated policy constrained optimisation of TRPO requires calculating second- gradients (IPGs), resulting in one of the newest state-of-the- order gradients, limiting its applicability. In contrast, the art continuous DRL algorithms, and also providing insights for newer proximal policy optimisation (PPO) algorithm performs future research in this area. Together, the ideas behind IPGs unconstrained optimisation, requiring only first-order gradient and SVGs (of which DPGs can be considered a special case) information [1, 47, 125]. The two main variants include an form algorithmic approaches for improving learning efficiency adaptive penalty on the KL divergence, and a heuristic clipped in DRL. objective which is independent of the KL divergence [125]. An orthogonal approach to speeding up learning is to Being less expensive whilst retaining the performance of exploit parallel computation. In particular, methods for training TRPO means that PPO (with or without GAE) is gaining networks through asynchronous gradient updates have been popularity for a range of RL tasks [47, 125]. developed for use on both single machines [107] and dis- tributed systems [25]. By keeping a canonical set of parameters C. Actor-Critic Methods that are read by and updated in an asynchronous fashion Instead of utilising the average of several Monte Carlo by multiple copies of a single network, computation can be returns as the baseline for policy gradient methods, actor- efficiently distributed over both processing cores in a single critic approaches have grown in popularity as an effective CPU, and across CPUs in a cluster of machines. Using a means of combining the benefits of policy search methods distributed system, Nair et al. [91] developed a framework with learned value functions, which are able to learn from full for training multiple DQNs in parallel, achieving both better returns and/or TD errors. They can benefit from improvements performance and a reduction in training time. However, the in both policy gradient methods, such as GAE [123], and value simpler asynchronous advantage actor-critic (A3C) algorithm function methods, such as target networks [84]. In the last few [85], developed for both single and distributed machine set- years, DRL actor-critic methods have been scaled up from tings, has become one of the most popular DRL techniques learning simulated physics tasks [46, 79] to real robotic visual in recent times. A3C combines advantage updates with the navigation tasks [167], directly from image pixels. actor-critic formulation, and relies on asynchronously updated One recent development in the context of actor-critic algo- policy and value function networks trained in parallel over rithms are deterministic policy gradients (DPGs) [127], which several processing threads. The use of multiple agents, situated extend the standard policy gradient theorems for stochastic in their own, independent environments, not only stabilises policies [164] to deterministic policies. One of the major improvements in the parameters, but conveys an additional advantages of DPGs is that, whilst stochastic policy gradi- benefit in allowing for more exploration to occur. A3C has ents integrate over both state and action spaces, DPGs only been used as a standard starting point in many subsequent integrate over the state space, requiring fewer samples in works, including the work of Zhu et al. [167], who applied it problems with large action spaces. In the initial work on to robotic navigation in the real world through visual inputs. DPGs, Silver et al. [127] introduced and demonstrated an For simplicity, the underlying algorithm may be used with off-policy actor-critic algorithm that vastly improved upon just one agent, termed advantage actor-critic (A2C) [156]. a stochastic policy gradient equivalent in high-dimensional Alternatively, segments from the trajectories of multiple agents continuous control problems. Later work introduced deep DPG can be collected and processed together in a batch, with (DDPG), which utilised neural networks to operate on high- batch processing more efficiently enabled by GPUs; this dimensional, visual state spaces [79]. In the same vein as synchronous version also goes by the name of A2C [125]. DPGs, Heess et al. [46] devised a method for calculating There have been several major advancements on the original gradients to optimise stochastic policies, by “reparameterising” A3C algorithm that reflect various motivations in the field of [61, 108] the stochasticity away from the network, thereby DRL. The first is actor-critic with experience replay [158, 39],
 
-| order to improve sample complexity. Others have attempted to    | though less principled, than Bayesian methods for propagating      |
-| --------------------------------------------------------------- | ------------------------------------------------------------------ |
-| bridge the gap between value and policy-based RL, utilising     | uncertainty [52]. Another way to make use of the flexiblity        |
-| theoretical advancements to improve upon the original A3C       | of neural-network-based models is to let them decide when to       |
-| [89, 94, 124]. Finally, there is a growing trend towards ex-    | plan, that is, given a finite amount of computation, whether it is |
-| ploiting auxiliary tasks to improve the representations learned | worth modelling one long trajectory, several short trajectories,   |
-| by DRL agents, and, hence, improve both the learning speed      | anything in-between, or simply to take an action in the real       |
-| and final performance of these agents [77, 54, 82].             | environment [100].                                                 |
+which adds Retrace( λ ) off-policy bias correction [88] to a it can also learn to downplay this information if it believes Q -value-based A3C, allowing it to use experience replay in that the model is inaccurate [161]. This can be more efficient, order to improve sample complexity. Others have attempted to though less principled, than Bayesian methods for propagating bridge the gap between value and policy-based RL, utilising uncertainty [52]. Another way to make use of the flexiblity theoretical advancements to improve upon the original A3C of neural-network-based models is to let them decide when to [89, 94, 124]. Finally, there is a growing trend towards ex- plan, that is, given a finite amount of computation, whether it is ploiting auxiliary tasks to improve the representations learned worth modelling one long trajectory, several short trajectories, by DRL agents, and, hence, improve both the learning speed anything in-between, or simply to take an action in the real and final performance of these agents [77, 54, 82]. environment [100].
 
 VI. C URRENT R ESEARCH AND C HALLENGES Although deep neural networks can make reasonable pre-
 
@@ -563,84 +465,17 @@ bootstrap the learning process, leading us to imitation learning that can be use
 
 and inverse RL (IRL). For the final topic specific to RL, we A less common but potentially useful paradigm exists will look at multi-agent systems, which have their own special between model-free and model-based methods—the successor considerations. We then bring to attention two broader areas— representation (SR) [24]. Rather than picking actions directly the use of RNNs, and transfer learning—in the context of or performing planning with models, learning T is replaced DRL. We then examine the issue of evaluating RL, and current with learning expected (discounted) future occupancies (SRs), benchmarks for DRL. which can be linearly combined with R in order to calculate the optimal action; this decomposition makes SRs more robust A. Model-based RL than model-free methods when the reward structure changes The key idea behind model-based RL is to learn a tran- (but still fallible when T changes). Work extending SRs to sition model that allows for simulation of the environment deep neural networks has demonstrated its usefulness in multi- without interacting with the environment directly. Model-based task settings, whilst within a complex visual environment [66]. RL does not assume specific prior knowledge. However, in practice, we can incorporate prior knowledge (e.g., physics- B. Exploration vs. Exploitation
 
-| based models [58]) to speed up learning. Model learning            | One of the greatest difficulties in RL is the fundamental       |
-| ------------------------------------------------------------------ | --------------------------------------------------------------- |
-| interactions with the (real) environment, which may be limited     | agent try out (perceived) non-optimal actions in order to       |
-| in practice. For example, it is unrealistic to perform millions of | explore the environment (and potentially improve the model),    |
-| experiments with a robot in a reasonable amount of time and        | and when should it exploit the optimal action in order to make  |
-| without significant hardware wear and tear. There are various      | useful progress? Off-policy algorithms, such as the DQN [84],   |
-| into a lower-dimensional space using autoencoders, several         | progresses towards exploitation. Although adding independent    |
-| model-based DRL algorithms have been proposed for learning         | noise for exploration is usable in continuous control problems, |
-| models and policies from pixel information [95, 160, 155]. If a    | more sophisticated strategies inject noise that is correlated   |
-| sufficiently accurate model of the environment can be learned,     | over time (e.g., from stochastic processes) in order to better  |
-| then even simple controllers can be used to control a robot        | preserve momentum [79].                                         |
-| directly from camera images [32]. Learned models can also          | The observation that temporal correlation is important led      |
-| be used to guide exploration purely based on simulation of the     | Osband et al. [97] to propose the bootstrapped DQN, which       |
-| be scaled up to high-dimensional visual domains [132].             | through a combination of different weight initialisations and   |
-| A compelling insight on the benefits of neural-network-            | bootstrapped sampling from experience replay memory. At         |
-| based models is that they can overcome some of the problems        | the beginning of each training episode, a different head is     |
-| incurred by planning with imperfect models; in effect, by          | chosen, leading to temporally-extended exploration. Usunier     |
-| models into a vector, a DRL agent can not only obtain more         | exploration in policy space by adding noise to a single output  |
-| information than just the final result of any model rollouts, but  | head, using zero-order gradient estimates to allow backpropa-   |
+based models [58]) to speed up learning. Model learning One of the greatest difficulties in RL is the fundamental plays an important role in reducing the amount of required dilemma of exploration versus exploitation : When should the interactions with the (real) environment, which may be limited agent try out (perceived) non-optimal actions in order to in practice. For example, it is unrealistic to perform millions of explore the environment (and potentially improve the model), experiments with a robot in a reasonable amount of time and and when should it exploit the optimal action in order to make without significant hardware wear and tear. There are various useful progress? Off-policy algorithms, such as the DQN [84], approaches to learn predictive models of dynamical systems typically use the simple  -greedy exploration policy, which using pixel information. Based on the deep dynamical model chooses a random action with probability  ∈ [0 , 1] , and the [154], where high-dimensional observations are embedded optimal action otherwise. By decreasing  over time, the agent into a lower-dimensional space using autoencoders, several progresses towards exploitation. Although adding independent model-based DRL algorithms have been proposed for learning noise for exploration is usable in continuous control problems, models and policies from pixel information [95, 160, 155]. If a more sophisticated strategies inject noise that is correlated sufficiently accurate model of the environment can be learned, over time (e.g., from stochastic processes) in order to better then even simple controllers can be used to control a robot preserve momentum [79]. directly from camera images [32]. Learned models can also The observation that temporal correlation is important led be used to guide exploration purely based on simulation of the Osband et al. [97] to propose the bootstrapped DQN, which environment, with deep models allowing these techniques to maintains several Q -value “heads” that learn different values be scaled up to high-dimensional visual domains [132]. through a combination of different weight initialisations and A compelling insight on the benefits of neural-network- bootstrapped sampling from experience replay memory. At based models is that they can overcome some of the problems the beginning of each training episode, a different head is incurred by planning with imperfect models; in effect, by chosen, leading to temporally-extended exploration. Usunier embedding the activations and predictions (outputs) of these et al. [147] later proposed a similar method that performed models into a vector, a DRL agent can not only obtain more exploration in policy space by adding noise to a single output information than just the final result of any model rollouts, but head, using zero-order gradient estimates to allow backpropa-
 
-| gation through the policy.                                      | when it is unsure, allowing it to learn from states away from    |
-| --------------------------------------------------------------- | ---------------------------------------------------------------- |
-| One of the main principled exploration strategies is the        | the optimal trajectories [110]. This has been applied to a deep  |
-| ciple of “optimism in the face of uncertainty” [67]. The idea   | task with active learning significantly improved upon a pure     |
-| high uncertainty and moderate expected return. Whilst easily    | [92]; IRL can be used in combination with RL to improve          |
-| achievable in small tabular cases, the use of powerful density  | upon demonstrated behaviour. Using the power of deep neural      |
-| models [11], or conversely, hashing [139], has allowed this     | networks, it is now possible to learn complex, nonlinear reward  |
-| algorithm to scale to high-dimensional visual domains with      | functions for IRL [165]. Ho and Ermon [51] showed that poli-     |
-| and exploitation in the context of Bayesian optimisation [126]; | state and action distributions) allowing IRL to be reduced to    |
-| future work in DRL may benefit from investigating other         | the problem of measure matching. With this insight, they were    |
-| successful techniques that are used in Bayesian optimisation.   | able to use generative adversarial training [38] to facilitate   |
-| UCB can also be considered one way of implementing              | reward function learning in a more flexible manner, resulting in |
-| decreasing uncertainty/making progress in learning about the    | GAIL was later extended to allow IRL to be applied even when     |
-| environment [119]. There have been several DRL algorithms       | receiving expert trajectories from a different visual viewpoint  |
-| that try to implement intrinsic motivation via minimising       | to that of the RL agent [131]. In complementary work, Baram      |
-| model prediction error [132, 101] or maximising information     | et al. [7] exploit gradient information that was not used in     |
-| gain [86, 52].                                                  | GAIL to learn models within the IRL process.                     |
+gation through the policy. when it is unsure, allowing it to learn from states away from One of the main principled exploration strategies is the the optimal trajectories [110]. This has been applied to a deep upper confidence bound (UCB) algorithm, based on the prin- learning setting, where a CNN trained in a visual navigation ciple of “optimism in the face of uncertainty” [67]. The idea task with active learning significantly improved upon a pure behind UCB is to pick actions that maximise E [ R ] + κσ [ R ] , imitation learning baseline [53]. where σ [ R ] is the standard deviation of the return and The goal of IRL is to estimate an unknown reward function κ > . UCB therefore encourages exploration in regions with from observed trajectories that characterise a desired solution high uncertainty and moderate expected return. Whilst easily [92]; IRL can be used in combination with RL to improve achievable in small tabular cases, the use of powerful density upon demonstrated behaviour. Using the power of deep neural models [11], or conversely, hashing [139], has allowed this networks, it is now possible to learn complex, nonlinear reward algorithm to scale to high-dimensional visual domains with functions for IRL [165]. Ho and Ermon [51] showed that poli- DRL. UCB is only one technique for trading off exploration cies are uniquely characterised by their occupancies (visited and exploitation in the context of Bayesian optimisation [126]; state and action distributions) allowing IRL to be reduced to future work in DRL may benefit from investigating other the problem of measure matching. With this insight, they were successful techniques that are used in Bayesian optimisation. able to use generative adversarial training [38] to facilitate UCB can also be considered one way of implementing reward function learning in a more flexible manner, resulting in intrinsic motivation , which is a general concept that advocates the generative adversarial imitation learning (GAIL) algorithm. decreasing uncertainty/making progress in learning about the GAIL was later extended to allow IRL to be applied even when environment [119]. There have been several DRL algorithms receiving expert trajectories from a different visual viewpoint that try to implement intrinsic motivation via minimising to that of the RL agent [131]. In complementary work, Baram model prediction error [132, 101] or maximising information et al. [7] exploit gradient information that was not used in gain [86, 52]. GAIL to learn models within the IRL process.
 
 - Hierarchical RL E. Multi-agent RL In the same way that deep learning relies on hierarchies Usually, RL considers a single learning agent in a sta- of features, HRL relies on hierarchies of policies. Early work tionary environment. In contrast, multi-agent RL (MARL) in this area introduced options , in which, apart from primi- considers multiple agents learning through RL, and often the tive actions (single-timestep actions), policies could also run non-stationarity introduced by other agents changing their other policies (multi-timestep “actions”) [136]. This approach behaviours as they learn [18]. In DRL, the focus has been allows top-level policies to focus on higher-level goals , whilst on enabling (differentiable) communication between agents, subpolicies are responsible for fine control. Several works in which allows them to co-operate. Several approaches have DRL have attempted HRL by using one top-level policy that been proposed for this purpose, including passing messages chooses between subpolicies, where the division of states or to agents sequentially [33], using a bidirectional channel goals in to subpolicies is achieved either manually [2, 143, 65] (providing ordering with less signal loss) [102], and an all- or automatically [3, 151, 152]. One way to help construct to-all channel [134]. The addition of communication channels subpolicies is to focus on discovering and reaching goals, is a natural strategy to apply to MARL in complex scenarios which are specific states in the environment; they may often be and does not preclude the usual practice of modelling co- locations, which an agent should navigate to. Whether utilised operative or competing agents as applied elsewhere in the with HRL or not, the discovery and generalisation of goals is MARL literature [18]. Other DRL works of note in MARL also an important area of ongoing research [117, 66, 152]. investigate the effects of learning and sequential decision
 
 - Imitation Learning and Inverse RL making in game theory [48, 71].
 
-| One may ask why, if given a sequence of “optimal” actions        | F. Memory and Attention                                           |
-| ---------------------------------------------------------------- | ----------------------------------------------------------------- |
-| from expert demonstrations, it is not possible to use supervised | As one of the earliest works in DRL the DQN spawned               |
-| learning in a straightforward manner—a case of “learning         | many extensions. One of the first extensions was converting       |
-| from demonstration”. This is indeed possible, and is known       | the DQN into an RNN, which allows the network to better           |
-| advantage of the stronger signals available in supervised learn- | periods. Like recursive filters, recurrent connections provide an |
-| ing problems, behavioural cloning enjoyed success in earlier     | efficient means of acting conditionally on temporally distant     |
-| neural network research, with the most notable success being     | prior observations. By using recurrent connections between        |
-| behavioural cloning cannot adapt to new situations, and small    | troduced by Hausknecht and Stone [44] was able to suc-            |
-| deviations from the demonstration during the execution of the    | cessfully infer the velocity of the ball in the game “Pong,”      |
-| learned policy can compound and lead to scenarios where the      | even when frames of the game were randomly blanked out.           |
-| to use provided trajectories to guide the learning of suitable   | a technique where additional connections are added from the       |
-| training, the agent can use active learning to gather extra data | gives a network the ability to choose which part of its next      |
+One may ask why, if given a sequence of “optimal” actions F. Memory and Attention from expert demonstrations, it is not possible to use supervised As one of the earliest works in DRL the DQN spawned learning in a straightforward manner—a case of “learning many extensions. One of the first extensions was converting from demonstration”. This is indeed possible, and is known the DQN into an RNN, which allows the network to better as behavioural cloning in traditional RL literature. Taking deal with POMDPs by integrating information over long time advantage of the stronger signals available in supervised learn- periods. Like recursive filters, recurrent connections provide an ing problems, behavioural cloning enjoyed success in earlier efficient means of acting conditionally on temporally distant neural network research, with the most notable success being prior observations. By using recurrent connections between ALVINN, one of the earliest autonomous cars [104]. However, its hidden units, the deep recurrent Q -network (DRQN) in- behavioural cloning cannot adapt to new situations, and small troduced by Hausknecht and Stone [44] was able to suc- deviations from the demonstration during the execution of the cessfully infer the velocity of the ball in the game “Pong,” learned policy can compound and lead to scenarios where the even when frames of the game were randomly blanked out. policy is unable to recover. A more generalisable solution is Further improvements were gained by introducing attention — to use provided trajectories to guide the learning of suitable a technique where additional connections are added from the state-action pairs, but fine-tune the agent using RL [49]. recurrent units to lower layers—to the DRQN, resulting in the Alternatively, if the expert is still available to query during deep attention recurrent Q -network (DARQN) [130]. Attention training, the agent can use active learning to gather extra data gives a network the ability to choose which part of its next
 
-| input to focus on, and allowed the DARQN to beat both            | mally changing pixel inputs), plus reward prediction and value   |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| the DQN and DRQN on games, which require longer-term             | function learning from experience replay [54]. Meanwhile, the    |
-| planning. However, the DQN outperformed the DRQN and             | A3C-based agent of Mirowski et al. [82] was additionally         |
-| can fluctuate more rapidly.                                      | helps it in its task of learning to navigate a 3D environment.   |
-| Taking recurrent processing further, it is possible to add a     | In an ablation study, Mirowski et al. [82] showed the predicting |
-| differentiable memory to the DQN, which allows it to more        | depth was more useful than receiving depth as an extra input,    |
-| flexibly process information in its “working memory” [96]. In    | lending further support to the idea that gradients induced by    |
-| traditional RNNs, recurrent units are responsible for both per-  | auxiliary tasks can be extremely effective at boosting DRL.      |
-| memories add large matrices that are purely used for storing     | data- and parameter-efficient policies. In the student-teacher   |
-| information, and can be accessed using differentiable read       | paradigm in machine learning, one can first train a more         |
-| and write operations, analagously to computer memory. With       | powerful “teacher” model, and then use it to guide the training  |
-| [96] constructed an agent that could solve a simple maze         | to supervised learning, the neural network knowledge transfer    |
-| was indicated by a coloured block shown near the start of        | transfer policies learned by large DQNs to smaller DQNs, and     |
-| the maze. The MQN, and especially its more sophisticated         | transfer policies learned by several DQNs trained on separate    |
-| variants, significantly outperformed both DQN and DRQN           | games to one single DQN [99, 113]. Together, the combination     |
-| baselines, highlighting the importance of using decoupled        | of multitask and transfer learning can improve the sample        |
-| memory storage. More recent work, where the memory was           | efficiency and robustness of current DRL algorithms [140].       |
-| given a 2D structure in order to resemble a spatial map, hints   | These are important topics if we wish to construct agents that   |
-| at future research where more specialised memory structures      | can accomplish a wide range of tasks, since naively training     |
-| will be developed to address specific problems, such as 2D or    | on multiple RL objectives at once may be infeasible.             |
-| to store and retrieve successful experiences to facilitate rapid | One of the challenges in any field in machine learning is        |
+input to focus on, and allowed the DARQN to beat both mally changing pixel inputs), plus reward prediction and value the DQN and DRQN on games, which require longer-term function learning from experience replay [54]. Meanwhile, the planning. However, the DQN outperformed the DRQN and A3C-based agent of Mirowski et al. [82] was additionally DARQN on games requiring quick reactions, where Q -values trained to construct a depth map given RGB inputs, which can fluctuate more rapidly. helps it in its task of learning to navigate a 3D environment. Taking recurrent processing further, it is possible to add a In an ablation study, Mirowski et al. [82] showed the predicting differentiable memory to the DQN, which allows it to more depth was more useful than receiving depth as an extra input, flexibly process information in its “working memory” [96]. In lending further support to the idea that gradients induced by traditional RNNs, recurrent units are responsible for both per- auxiliary tasks can be extremely effective at boosting DRL. forming calculations and storing information. Differentiable Transfer learning can also be used to construct more memories add large matrices that are purely used for storing data- and parameter-efficient policies. In the student-teacher information, and can be accessed using differentiable read paradigm in machine learning, one can first train a more and write operations, analagously to computer memory. With powerful “teacher” model, and then use it to guide the training their key-value-based memory Q -network (MQN), Oh et al. of a less powerful “student” model. Whilst originally applied [96] constructed an agent that could solve a simple maze to supervised learning, the neural network knowledge transfer built in Minecraft, where the correct goal in each episode technique known as distillation [50] has been utilised to both was indicated by a coloured block shown near the start of transfer policies learned by large DQNs to smaller DQNs, and the maze. The MQN, and especially its more sophisticated transfer policies learned by several DQNs trained on separate variants, significantly outperformed both DQN and DRQN games to one single DQN [99, 113]. Together, the combination baselines, highlighting the importance of using decoupled of multitask and transfer learning can improve the sample memory storage. More recent work, where the memory was efficiency and robustness of current DRL algorithms [140]. given a 2D structure in order to resemble a spatial map, hints These are important topics if we wish to construct agents that at future research where more specialised memory structures can accomplish a wide range of tasks, since naively training will be developed to address specific problems, such as 2D or on multiple RL objectives at once may be infeasible. 3D navigation [98]. Alternatively, differentiable memories can H. Benchmarks be used as approximate hash tables, allowing DRL algorithms to store and retrieve successful experiences to facilitate rapid One of the challenges in any field in machine learning is
 
 learning [105]. developing a standardised way to evaluate new techniques.
 
@@ -648,38 +483,9 @@ Note that RNNs are not restricted to value-function-based Although much early wo
 
 methods but have also been successfully applied to policy there shortly emerged control problems that could be used as
 
-| search [163] and actor-critic methods [45, 85].                  | standard benchmarks for testing new algorithms, such as the       |
-| ---------------------------------------------------------------- | ----------------------------------------------------------------- |
-| G. Transfer Learning                                             | However, these problems were limited to relatively small          |
-| Even though DRL algorithms can process high-dimensional          | state spaces, and therefore failed to capture the complexities    |
-| inputs, it is rarely feasible to train RL agents directly on     | that would be encountered in most realistic scenarios. Ar-        |
-| visual inputs in the real world, due to the large number of      | guably the initial driver of DRL, the ALE provided an interface   |
-| samples required. To speed up learning in DRL, it is possible    | to Atari 2600 video games, with code to access over 50 games      |
-| to exploit previously acquired knowledge from related tasks,     | provided with the initial release [10]. As video games can vary   |
-| which comes in several guises: transfer learning, multitask      | greatly, but still present interesting and challenging objectives |
-| learning [20] and curriculum learning [14] to name a few.        | for humans, they provide an excellent testbed for RL agents.      |
-| There is much interest in transferring learning from one task to | As the first algorithm to successfully play a range of these      |
-| another, particularly from training in physics simulators with   | games directly from their visuals, the DQN [84] has secured       |
-| visual renderers and fine-tuning the models in the real world.   | its place as a milestone in the development of RL algorithms.     |
-| This can be achieved in a naive fashion, directly using the      | This success story has started a trend of using video games       |
-| same network in both the simulated and real phases [167], or     | as standardised RL testbeds, with several interesting options     |
-| with more sophisticated training procedures that directly try    | now available. ViZDoom provides an interface to the Doom          |
-| to mitigate the problem of neural networks “catastrophically     | first-person shooter [60], and echoing the popularity of e-       |
-| forgetting” old knowledge by adding extra layers when trans-     | sports competitions, ViZDoom competitions are now held at         |
-| ferring domain [114, 115]. Other approaches involve directly     | the yearly IEEE Conference on Computational Intelligence          |
-| [146], or even between two different camera viewpoints [131].    | StarCraft II Learning Environment [153] respectively provide      |
-| A different form of transfer can be utilised to help RL in       | interfaces to the StarCraft and StarCraft II real-time strategy   |
-| the form of multitask training [77, 54, 82]. Especially with     | games, presenting challenges in both micromanagement and          |
-| neural networks, supervised and unsupervised learning tasks      | long-term planning. In an aim to provide more flexible envi-      |
-| can help train features that can be used by RL agents, making    | ronments, DeepMind Lab was developed on top of the Quake          |
-| optimising the RL objective easier to achieve. For example,      | III Arena first-person shooter engine [9], and Microsoft’s        |
-| the “unsupervised reinforcement and auxiliary learning” A3C-     | Project Malmo exposed an interface to the Minecraft sandbox       |
-| based agent is additionally trained with “pixel control” (maxi-  | game [55]. Both environments provide customisable platforms       |
+search [163] and actor-critic methods [45, 85]. standard benchmarks for testing new algorithms, such as the Cartpole [8] and Mountain Car [87] domains. G. Transfer Learning However, these problems were limited to relatively small Even though DRL algorithms can process high-dimensional state spaces, and therefore failed to capture the complexities inputs, it is rarely feasible to train RL agents directly on that would be encountered in most realistic scenarios. Ar- visual inputs in the real world, due to the large number of guably the initial driver of DRL, the ALE provided an interface samples required. To speed up learning in DRL, it is possible to Atari 2600 video games, with code to access over 50 games to exploit previously acquired knowledge from related tasks, provided with the initial release [10]. As video games can vary which comes in several guises: transfer learning, multitask greatly, but still present interesting and challenging objectives learning [20] and curriculum learning [14] to name a few. for humans, they provide an excellent testbed for RL agents. There is much interest in transferring learning from one task to As the first algorithm to successfully play a range of these another, particularly from training in physics simulators with games directly from their visuals, the DQN [84] has secured visual renderers and fine-tuning the models in the real world. its place as a milestone in the development of RL algorithms. This can be achieved in a naive fashion, directly using the This success story has started a trend of using video games same network in both the simulated and real phases [167], or as standardised RL testbeds, with several interesting options with more sophisticated training procedures that directly try now available. ViZDoom provides an interface to the Doom to mitigate the problem of neural networks “catastrophically first-person shooter [60], and echoing the popularity of e- forgetting” old knowledge by adding extra layers when trans- sports competitions, ViZDoom competitions are now held at ferring domain [114, 115]. Other approaches involve directly the yearly IEEE Conference on Computational Intelligence learning an alignment between simulated and real visuals in Games. Facebook’s TorchCraft [137] and DeepMind’s [146], or even between two different camera viewpoints [131]. StarCraft II Learning Environment [153] respectively provide A different form of transfer can be utilised to help RL in interfaces to the StarCraft and StarCraft II real-time strategy the form of multitask training [77, 54, 82]. Especially with games, presenting challenges in both micromanagement and neural networks, supervised and unsupervised learning tasks long-term planning. In an aim to provide more flexible envi- can help train features that can be used by RL agents, making ronments, DeepMind Lab was developed on top of the Quake optimising the RL objective easier to achieve. For example, III Arena first-person shooter engine [9], and Microsoft’s the “unsupervised reinforcement and auxiliary learning” A3C- Project Malmo exposed an interface to the Minecraft sandbox based agent is additionally trained with “pixel control” (maxi- game [55]. Both environments provide customisable platforms
 
-| for RL agents in 3D environments.                         | PhD funding from the Department of Bioengineering, Imperial  |
-| --------------------------------------------------------- | ------------------------------------------------------------ |
-| Most DRL approaches focus on discrete actions, but some   | College London. This research has been partially funded by a |
-| solutions have also been developed for continuous control | Google Faculty Research Award to Marc Deisenroth.            |
+for RL agents in 3D environments. PhD funding from the Department of Bioengineering, Imperial Most DRL approaches focus on discrete actions, but some College London. This research has been partially funded by a solutions have also been developed for continuous control Google Faculty Research Award to Marc Deisenroth. problems. Many DRL papers in continuous control [122, 46, R EFERENCES
 
 79, 85, 7, 131] have used the MuJoCo physics engine to
 

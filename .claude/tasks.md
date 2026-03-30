@@ -1,7 +1,7 @@
 # PDF2MD — Tasks
 
 > Source of truth for project status. Updated after every work session.
-> Last updated: 2026-03-26
+> Last updated: 2026-03-30
 
 ## Phase 1: Client-Side MVP ✅ COMPLETE
 - [x] Initialize Next.js + TypeScript + Tailwind project (monorepo with pnpm)
@@ -44,9 +44,16 @@
 - [x] Metadata extraction → YAML front matter (`yamlFrontMatter` option)
 - [ ] Comparison view: original vs Markdown
 - [x] **P0: Multi-column detection** — DONE 2026-03-26. Per-line gap analysis detects 2-column layouts automatically. Multi-column PDFs: 5.0-6.0 → 7.3-8.7/10 (+2.0-2.7 pts). Single-column unaffected.
-- [ ] **P1: Code block detection enhancement** — font subset stripping + indentation heuristics
-- [ ] **P2: Link annotation matching fix** — center-point matching to prevent misattribution
-- [ ] **P3: Heading detection refinement** — bold + section numbering as heading indicators
+- [x] **P1: Code block detection enhancement** — DONE 2026-03-27. Subset font behavior analysis (indentation + line width heuristics)
+- [x] **P2: Link annotation matching fix** — DONE 2026-03-27. Stricter link annotation matching to prevent spurious links on prose
+- [x] **P3: Heading detection refinement** — DONE 2026-03-27. Multi-signal: bold lines, section numbers ("1.1" and "1 Introduction" styles)
+- [x] **Quality polish round** — DONE 2026-03-30. Five fixes:
+  - Prose guard in code block detection (eliminated false code blocks on Berkshire letter, IEEE paper)
+  - Table detection guard for 2-column prose (eliminated false tables on RL survey)
+  - ALL_CAPS heading detection + font size threshold lowered to 1.10x
+  - Text cleanup: ligatures, special spaces, zero-width chars
+  - Fallback metadata title extraction from first heading when PDF metadata is empty
+  - Results: 8.3→8.4/10 avg, metadataExtraction 5.0→8.0/10, headingDetection 8.4→8.4/10 (same score but much cleaner output)
 
 ## Phase 3: SEO & Launch — IN PROGRESS
 - [x] SEO: meta tags, schema markup, OG image (layout.tsx + og-image.png + JSON-LD)
@@ -60,16 +67,17 @@
 ## Infra / Config
 - GitHub: `gmann14/pdf2md`
 - Stack: Next.js 15, TypeScript, Tailwind, PDF.js v5, pnpm monorepo
-- 8 git commits (latest: Phase 2 quality improvements)
+- 15 git commits (latest: heading detection + code block detection improvements)
 - **npm package:** `@pdf2md/core@0.1.0` published (npmjs.com/package/@pdf2md/core)
 - Build works (static export)
 - **Production URL:** https://pdf2md-five.vercel.app
 - Vercel project: `prj_78nJRUrC3YGVgBbkjhLoqgeX6LUi` (root: `apps/web`)
 - Test corpus: `test-corpus/` — 21 real-world PDFs, evaluation script, quality report
-  - Overall quality: 8.0/10 automated, ~6.5/10 manual honest assessment
-  - Top issue: multi-column text interleaving (affects 6+ PDFs)
+  - Overall quality: 8.4/10 automated (21/21 PDFs pass, all scored "Good")
+  - Quality polish landed Mar 30 (false code blocks, false tables, heading detection, metadata, text cleanup)
+  - Remaining weak dimensions: noGarbage (6.9, mostly PDF.js/Type3 font artifacts), linkExtraction (7.3)
   - See `test-corpus/QUALITY-REPORT.md` for full analysis
 
 ## Blockers
-- **Multi-column layout** is the #1 quality gap vs competitors (Marker, MinerU). Should be addressed before launch if targeting academic/scientific users.
-- Otherwise ready for launch activities.
+- No critical blockers. Ready for launch activities.
+- Remaining quality gaps (noGarbage, linkExtraction) are PDF.js limitations, not easily fixable client-side.

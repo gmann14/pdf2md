@@ -101,6 +101,21 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     if (maxX - minX > 30) return null; // 30 PDF points tolerance
   }
 
+  // Guard: reject 2-column "tables" where cells are long prose text.
+  // Real table cells are typically short; two-column layouts produce long cells.
+  if (bestCount === 2) {
+    let totalCellLen = 0;
+    let cellCount = 0;
+    for (const row of consistentRows) {
+      for (const item of row) {
+        totalCellLen += item.str.trim().length;
+        cellCount++;
+      }
+    }
+    const avgCellLen = cellCount > 0 ? totalCellLen / cellCount : 0;
+    if (avgCellLen > 40) return null; // prose, not tabular data
+  }
+
   return consistentRows.map((row) => row.map((item) => item.str.trim()));
 }
 
@@ -195,8 +210,9 @@ export function detectCodeFont(
       }
     }
 
-    // If >50% of multi-line runs are indented/short → code font
-    if (totalRuns >= 3 && indentedRunCount / totalRuns > 0.5) {
+    // If ≥70% of multi-line runs are indented/short → code font candidate
+    // Require at least 5 runs to reduce false positives on prose in subset fonts
+    if (totalRuns >= 5 && indentedRunCount / totalRuns >= 0.7) {
       codeFonts.add(fontName);
     }
   }
@@ -205,8 +221,31 @@ export function detectCodeFont(
 }
 
 /**
+ * Check if text looks like natural prose rather than code.
+ * Checks for sentence-ending punctuation and common English words.
+ */
+function looksLikeProse(items: DetectionItem[]): boolean {
+  const allText = items.map((i) => i.str).join(" ");
+  const words = allText.split(/\s+/).filter(Boolean);
+  if (words.length < 5) return false;
+
+  // Check for sentence-ending punctuation
+  const sentenceEndings = (allText.match(/[.!?]/g) ?? []).length;
+  if (sentenceEndings >= 3) return true;
+
+  // Check for high frequency of common English words
+  const commonPattern =
+    /\b(the|and|a|an|is|are|was|were|to|in|of|for|on|with|at|by|from|it|this|that|be|have|do|not|but|or|as|we|our|his|her|its|has|had|will|would|can|could|may|should|about|than|into|also|been|which|their|more|these|other|some|very|when|what|there|all|after|most|who|between|both|such|only|over|any|each|new|many|how|where|every|through|just|well|being|those|own|first|then|before|still)\b/gi;
+  const commonCount = (allText.match(commonPattern) ?? []).length;
+  if (words.length > 0 && commonCount / words.length > 0.15) return true;
+
+  return false;
+}
+
+/**
  * Check if items form a code block.
  * Uses multiple signals: known monospace fonts, detected code fonts, and syntax patterns.
+ * Includes a prose guard to prevent wrapping natural language text in code fences.
  */
 export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): boolean {
   if (items.length === 0) return false;
@@ -226,10 +265,18 @@ export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): bo
   }
 
   // Signal 1: Known monospace font names
-  if (totalChars > 0 && monoChars / totalChars >= 0.8) return true;
+  if (totalChars > 0 && monoChars / totalChars >= 0.8) {
+    // Even with monospace fonts, reject if text is clearly prose
+    if (looksLikeProse(items)) return false;
+    return true;
+  }
 
   // Signal 2: Detected code font (subset fonts like g_d0_f3)
-  if (totalChars > 0 && codeFonts && codeFontChars / totalChars >= 0.8) return true;
+  // More conservative: also reject if text looks like prose
+  if (totalChars > 0 && codeFonts && codeFontChars / totalChars >= 0.8) {
+    if (looksLikeProse(items)) return false;
+    return true;
+  }
 
   return false;
 }

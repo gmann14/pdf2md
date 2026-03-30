@@ -147,6 +147,19 @@ describe("detectTable", () => {
     expect(detectTable(items)).toBeNull();
   });
 
+  it("rejects 2-column prose text that looks like column layout", () => {
+    const items = [
+      // Two-column paragraph text — long cells typical of academic paper layout
+      makeItem({ str: "The development of deep learning has had a significant impact on many areas", x: 50, y: 100 }),
+      makeItem({ str: "Video games may be an interesting challenge, but learning how to play them", x: 310, y: 100 }),
+      makeItem({ str: "in machine learning, dramatically improving the state of the art in tasks", x: 50, y: 120 }),
+      makeItem({ str: "is not the end goal of DRL. One of the driving forces behind DRL is the", x: 310, y: 120 }),
+      makeItem({ str: "such as object detection, speech recognition, and language translation.", x: 50, y: 140 }),
+      makeItem({ str: "vision of creating systems that are capable of learning how to adapt.", x: 310, y: 140 }),
+    ];
+    expect(detectTable(items)).toBeNull();
+  });
+
   it("tolerates small x-position variance", () => {
     const items = [
       makeItem({ str: "Name", x: 50, y: 100 }),
@@ -599,6 +612,36 @@ describe("isCodeBlock (enhanced)", () => {
       makeItem({ str: "It continues on the next line.", x: 72, y: 114, fontName: "Helvetica" }),
     ];
     expect(isCodeBlock(items, codeFonts)).toBe(false);
+  });
+
+  it("rejects prose text even when font is in codeFonts set", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    const items = [
+      makeItem({ str: "Charlie Munger died on November 28, just 33 days before his 100th birthday.", x: 72, y: 100, fontName: "g_d0_f3" }),
+      makeItem({ str: "Though born and raised in Omaha, he spent 80% of his life domiciled elsewhere.", x: 72, y: 114, fontName: "g_d0_f3" }),
+      makeItem({ str: "Consequently, it was not until 1959 when he was 35 that I first met him.", x: 72, y: 128, fontName: "g_d0_f3" }),
+      makeItem({ str: "In 1962, he decided that he should take up money management.", x: 72, y: 142, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items, codeFonts)).toBe(false);
+  });
+
+  it("rejects prose text even in known monospace font", () => {
+    const items = [
+      makeItem({ str: "The development of GPT-4 is a large-scale multimodal model which can accept image and text inputs.", x: 72, y: 100, fontName: "Courier" }),
+      makeItem({ str: "While less capable than humans in many real-world scenarios, GPT-4 exhibits human-level performance.", x: 72, y: 114, fontName: "Courier" }),
+      makeItem({ str: "The post-training alignment process results in improved performance on measures of factuality.", x: 72, y: 128, fontName: "Courier" }),
+    ];
+    expect(isCodeBlock(items)).toBe(false);
+  });
+
+  it("still detects actual code in subset font", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    const items = [
+      makeItem({ str: "def foo(x, y):", x: 100, y: 100, fontName: "g_d0_f3" }),
+      makeItem({ str: "    result = x + y", x: 100, y: 114, fontName: "g_d0_f3" }),
+      makeItem({ str: "    return result", x: 100, y: 128, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items, codeFonts)).toBe(true);
   });
 
   it("still detects named monospace fonts without codeFonts", () => {

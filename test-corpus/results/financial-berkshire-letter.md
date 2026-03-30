@@ -1,3 +1,7 @@
+---
+title: "Charlie Munger – The Architect of Berkshire Hathaway"
+---
+
 # Charlie Munger – The Architect of Berkshire Hathaway
 
 Charlie Munger died on November 28, just 33 days before his 100th birthday.
