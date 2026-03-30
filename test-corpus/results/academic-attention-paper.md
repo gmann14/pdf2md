@@ -19,7 +19,7 @@ Llion Jones Aidan N. Gomez Łukasz Kaiser Google Research University of Toronto 
 
 ### Illia Polosukhin illia.polosukhin@gmail.com
 
-##### Abstract
+### Abstract
 
 The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.
 
@@ -49,7 +49,7 @@ Attention mechanisms have become an integral part of compelling sequence modelin
 
 In this work we propose the Transformer, a model architecture eschewing recurrence and instead [relying entirely on an attention mechanism to draw global dependencies between input and output.](http://arxiv.org/abs/1508.07909) The Transformer allows for significantly more parallelization and can reach a new state of the art in translation quality after being trained for as little as twelve hours on eight P100 GPUs.
 
-##### Background
+### Background
 
 The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2.
 
@@ -59,7 +59,7 @@ End-to-end memory networks are based on a recurrent attention mechanism instead 
 
 To the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequencealigned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].
 
-##### Model Architecture
+### Model Architecture
 
 Most competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35]. [Here, the encoder maps an input sequence of symbol representations](http://arxiv.org/abs/1601.06733) ( x , ..., x n ) to a sequence of continuous representations z = ( z , ..., z n ) . Given z , the decoder then generates an output sequence ( y , ..., y m ) of symbols one element at a time. At each step the model is auto-regressive [10], consuming the previously generated symbols as additional input when generating the next.
 
@@ -203,7 +203,7 @@ where pos is the position and i is the dimension. That is, each dimension of the
 
 We also experimented with using learned positional embeddings [9] instead, and found that the two versions produced nearly identical results (see Table 3 row (E)). We chose the sinusoidal version because it may allow the model to extrapolate to sequence lengths longer than the ones encountered during training.
 
-##### [Why Self-Attention](https://github.com/tensorflow/tensor2tensor)
+### [Why Self-Attention](https://github.com/tensorflow/tensor2tensor)
 
 In this section we compare various aspects of self-attention layers to the recurrent and convolutional layers commonly used for mapping one variable-length sequence of symbol representations
 
@@ -223,7 +223,7 @@ A single convolutional layer with kernel width k < n does not connect all pairs 
 
 As side benefit, self-attention could yield more interpretable models. We inspect attention distributions from our models and present and discuss examples in the appendix. Not only do individual attention heads clearly learn to perform different tasks, many appear to exhibit behavior related to the syntactic and semantic structure of the sentences.
 
-##### Training
+### Training
 
 This section describes the training regime for our models.
 
@@ -261,7 +261,7 @@ BLEU Training Cost (FLOPs) Model [EN-DE](http://arxiv.org/abs/1705.04304) EN-FR 
 
 Label Smoothing During training, we employed label smoothing of value  ls = 0 . [36]. This hurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.
 
-##### Results
+### Results
 
 ## 6.1 Machine Translation
 
@@ -305,7 +305,7 @@ Our results in Table 4 show that despite the lack of task-specific tuning our mo
 
 [In contrast to RNN sequence-to-sequence models [37], the Transformer outperforms the Berkeley-](http://arxiv.org/abs/1508.07909) Parser [29] even when training only on the WSJ training set of 40K sentences.
 
-##### Conclusion
+### Conclusion
 
 In this work, we presented the Transformer, the first sequence transduction model based entirely on attention, replacing the recurrent layers most commonly used in encoder-decoder architectures with multi-headed self-attention.
 
@@ -317,7 +317,7 @@ The code we used to train and evaluate our models is available at [https://githu
 
 Acknowledgements We are grateful to Nal Kalchbrenner and Stephan Gouws for their fruitful comments, corrections and inspiration.
 
-##### [References](http://arxiv.org/abs/1703.10722)
+### [References](http://arxiv.org/abs/1703.10722)
 
 [1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint arXiv:1607.06450 , 2016.
 
@@ -401,7 +401,7 @@ Acknowledgements We are grateful to Nal Kalchbrenner and Stephan Gouws for their
 
 [40] Muhua Zhu, Yue Zhang, Wenliang Chen, Min Zhang, and Jingbo Zhu. Fast and accurate shift-reduce constituent parsing. In Proceedings of the 51st Annual Meeting of the ACL (Volume 1: Long Papers) , pages 434–443. ACL, August 2013.
 
-##### Attention Visualizations
+### Attention Visualizations
 
 #### Input-Input Layer5
 

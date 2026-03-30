@@ -1,12 +1,12 @@
 ---
-title: "1040A U.S. Individual Income Tax Return (99) 2007 IRS Use Only—Do not write or staple in this space."
+title: "Label"
 ---
 
 Write the words “Stimulus Payment” across the top of the form you file.
 
 Form Department of the Treasury—Internal Revenue Service
 
-###### 1040A U.S. Individual Income Tax Return (99) 2007 IRS Use Only—Do not write or staple in this space.
+1040A U.S. Individual Income Tax Return (99) 2007 IRS Use Only—Do not write or staple in this space.
 
 Your first name and initial Last name OMB No. 1545-0074
 
@@ -232,6 +232,6 @@ Firm’s name (or EIN
 
 use only yours if self-employed), address, and ZIP code
 
-##### Phone no. ( )
+Phone no. ( )
 
 Printed on recycled paper Form 1040A (2007)

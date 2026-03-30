@@ -68,7 +68,7 @@ Step 4(c). Enter in this step any additional tax you want withheld from your pay
 
 Form W-4 (2026) Page 5
 
-##### Married Filing Jointly or Qualifying Surviving Spouse
+### Married Filing Jointly or Qualifying Surviving Spouse
 
 Higher Paying Job Lower Paying Job Annual Taxable Wage & Salary Annual Taxable $0 - $10,000 - $20,000 - $30,000 - $40,000 - $50,000 - $60,000 - $70,000 - $80,000 - $90,000 - $100,000 - $110,000 - Wage & Salary 9,999 19,999 29,999 39,999 49,999 59,999 69,999 79,999 89,999 99,999 109,999 120,000
 
@@ -83,7 +83,7 @@ Higher Paying Job Lower Paying Job Annual Taxable Wage & Salary Annual Taxable $
 | $70,000 - | 79,999 | 1,020 | 2,220 | 3,420 | 3,990 | 4,190 | 4,760  | 5,760  | 6,760  | 7,760  | 8,760  | 9,760  | 10,760 |
 | $80,000 - | 99,999 | 1,020 | 2,220 | 3,420 | 4,240 | 5,440 | 6,610  | 7,610  | 8,610  | 9,610  | 10,610 | 11,610 | 12,610 |
 
-##### Single or Married Filing Separately
+### Single or Married Filing Separately
 
 Higher Paying Job Lower Paying Job Annual Taxable Wage & Salary Annual Taxable $0 - $10,000 - $20,000 - $30,000 - $40,000 - $50,000 - $60,000 - $70,000 - $80,000 - $90,000 - $100,000 - $110,000 - Wage & Salary 9,999 19,999 29,999 39,999 49,999 59,999 69,999 79,999 89,999 99,999 109,999 120,000
 
@@ -93,7 +93,7 @@ $0 - 9,999 $90 $850 $1,020 $1,020 $1,020 $1,070 $1,870 $1,870 $1,870 $1,870 $1,8
 | ------------------ | ----- | ----- | ----- | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 | $450,000 and over  | 3,140 | 6,600 | 9,300 | 11,800 | 14,300 | 16,800 | 19,100 | 20,600 | 22,100 | 23,600 | 25,100 | 26,610 |
 
-##### Head of Household
+### Head of Household
 
 Higher Paying Job Lower Paying Job Annual Taxable Wage & Salary Annual Taxable $0 - $10,000 - $20,000 - $30,000 - $40,000 - $50,000 - $60,000 - $70,000 - $80,000 - $90,000 - $100,000 - $110,000 - Wage & Salary 9,999 19,999 29,999 39,999 49,999 59,999 69,999 79,999 89,999 99,999 109,999 120,000
 

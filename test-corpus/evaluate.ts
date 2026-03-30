@@ -123,7 +123,7 @@ function scoreHeadingDetection(md: string, category: string): number {
   return Math.min(10, score);
 }
 
-function scoreParagraphIntegrity(md: string): number {
+function scoreParagraphIntegrity(md: string, category: string): number {
   const paragraphs = md
     .split(/\n\n+/)
     .filter((p) => p.trim().length > 0 && !p.startsWith("#") && !p.startsWith("|") && !p.startsWith("```"));
@@ -156,9 +156,24 @@ function scoreParagraphIntegrity(md: string): number {
   if (brokenRatio > 0.1) score -= 3;
   else if (brokenRatio > 0.05) score -= 1;
 
-  if (shortRatio > 0.5) score -= 3;
-  else if (shortRatio > 0.3) score -= 2;
-  else if (shortRatio > 0.15) score -= 1;
+  // Categories where short text blocks are inherently normal
+  const shortBlocksExpected =
+    category === "Slide Deck" ||
+    category === "Infographic" ||
+    category === "Code Cheatsheet" ||
+    category === "Landscape Document" ||
+    category === "Government Form" ||
+    category === "Filled Form";
+
+  if (shortBlocksExpected) {
+    // More lenient: only penalize if majority are very short
+    if (shortRatio > 0.7) score -= 2;
+    else if (shortRatio > 0.5) score -= 1;
+  } else {
+    if (shortRatio > 0.5) score -= 3;
+    else if (shortRatio > 0.3) score -= 2;
+    else if (shortRatio > 0.15) score -= 1;
+  }
 
   return Math.max(1, score);
 }
@@ -181,7 +196,8 @@ function scoreListDetection(md: string, category: string): number {
     category === "Financial Report" ||
     category === "Scientific Paper (Tables)" ||
     category === "Multi-Column Layout" ||
-    category === "Statistical Report"
+    category === "Statistical Report" ||
+    category === "Code Cheatsheet"
   ) {
     if (totalLists >= 3) return 9;
     if (totalLists >= 1) return 7;
@@ -213,7 +229,7 @@ function scoreTableDetection(md: string, category: string): number {
 
   // Other categories
   if (hasTables) return 9;
-  return 6; // No tables, but may not need them
+  return 7; // No tables expected, absence is not a failure
 }
 
 function scoreCodeBlockDetection(md: string, category: string): number {
@@ -318,7 +334,8 @@ function scoreLinkExtraction(md: string, category: string): number {
   if (totalLinks === 0) {
     return linksOptional.includes(category) ? 8 : 5;
   }
-  if (totalLinks >= 5) return 9;
+  if (totalLinks >= 10) return 9;
+  if (totalLinks >= 3) return 8;
   if (totalLinks >= 1) return 7;
   return 5;
 }
@@ -404,7 +421,7 @@ function evaluatePdf(
 
   const scores: ScoreBreakdown = {
     headingDetection: scoreHeadingDetection(md, category),
-    paragraphIntegrity: scoreParagraphIntegrity(md),
+    paragraphIntegrity: scoreParagraphIntegrity(md, category),
     listDetection: scoreListDetection(md, category),
     tableDetection: scoreTableDetection(md, category),
     codeBlockDetection: scoreCodeBlockDetection(md, category),

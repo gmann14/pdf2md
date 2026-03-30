@@ -4,13 +4,13 @@ title: "CS229 Lecture Notes"
 
 #### CS229 Lecture Notes
 
-###### Andrew Ng
+Andrew Ng
 
-###### Updated by Tengyu Ma
+Updated by Tengyu Ma
 
 # Contents
 
-###### I Supervised learning
+I Supervised learning
 
 Linear regression 1.1 LMS algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . 1.2 The normal equations . . . . . . . . . . . . . . . . . . . . . . . 1.2.1 Matrix derivatives . . . . . . . . . . . . . . . . . . . . . 1.2.2 Least squares revisited . . . . . . . . . . . . . . . . . . 1.3 Probabilistic interpretation . . . . . . . . . . . . . . . . . . . . 1.4 Locally weighted linear regression (optional reading) . . . . . .
 
@@ -26,11 +26,11 @@ Kernel methods 5.1 Feature maps . . . . . . . . . . . . . . . . . . . . . . . . 
 
 Support vector machines 6.1 Margins: intuition . . . . . . . . . . . . . . . . . . . . . . . . . 6.2 Notation (option reading) . . . . . . . . . . . . . . . . . . . . 6.3 Functional and geometric margins (option reading) . . . . . . 6.4 The optimal margin classifier (option reading) . . . . . . . . . 6.5 Lagrange duality (optional reading) . . . . . . . . . . . . . . . 6.6 Optimal margin classifiers: the dual form (option reading) . . 6.7 Regularization and the non-separable case (optional reading) . 6.8 The SMO algorithm (optional reading) . . . . . . . . . . . . . 6.8.1 Coordinate ascent . . . . . . . . . . . . . . . . . . . . . 6.8.2 SMO . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-###### II Deep learning
+II Deep learning
 
 Deep learning 7.1 Supervised learning with non-linear models . . . . . . . . . . . 7.2 Neural networks . . . . . . . . . . . . . . . . . . . . . . . . . . 7.3 Backpropagation . . . . . . . . . . . . . . . . . . . . . . . . . 7.3.1 Preliminary: chain rule . . . . . . . . . . . . . . . . . . 7.3.2 One-neuron neural networks . . . . . . . . . . . . . . . 7.3.3 Two-layer neural networks: a low-level unpacked computation . . . . . . . . . . . . . . . . . . . . . . . . . . 7.3.4 Two-layer neural network with vector notation . . . . . 7.3.5 Multi-layer neural networks . . . . . . . . . . . . . . . 7.4 Vectorization over training examples . . . . . . . . . . . . . .
 
-###### III Generalization and regularization
+III Generalization and regularization
 
 Generalization 8.1 Bias-variance tradeoff . . . . . . . . . . . . . . . . . . . . . . . 105 8.1.1 A mathematical decomposition (for regression) . . . . . 110 8.2 The double descent phenomenon . . . . . . . . . . . . . . . . . 111
 
@@ -40,7 +40,7 @@ Generalization 8.1 Bias-variance tradeoff . . . . . . . . . . . . . . . . . . . 
 
 Regularization and model selection 9.1 Regularization . . . . . . . . . . . . . . . . . . . . . . . . . . . 125 9.2 Implicit regularization effect . . . . . . . . . . . . . . . . . . . 127 9.3 Model selection via cross validation . . . . . . . . . . . . . . . 129 9.4 Bayesian statistics and regularization . . . . . . . . . . . . . . 132
 
-###### IV Unsupervised learning
+IV Unsupervised learning
 
 ## 10 Clustering and the k -means algorithm
 
@@ -54,7 +54,7 @@ Regularization and model selection 9.1 Regularization . . . . . . . . . . . . . 
 
 ### CS229 Spring 2022
 
-###### V Reinforcement Learning and Control
+V Reinforcement Learning and Control
 
 15 Reinforcement learning 15.1 Markov decision processes . . . . . . . . . . . . . . . . . . . . 177 15.2 Value iteration and policy iteration . . . . . . . . . . . . . . . 179 15.3 Learning a model for an MDP . . . . . . . . . . . . . . . . . . 181 15.4 Continuous state MDPs . . . . . . . . . . . . . . . . . . . . . 183 15.4.1 Discretization . . . . . . . . . . . . . . . . . . . . . . . 183 15.4.2 Value function approximation . . . . . . . . . . . . . . 186 15.5 Connections between Policy and Value Iteration (Optional) . . 190
 
@@ -163,7 +163,7 @@ i =1
 
 If you’ve seen linear regression before, you may recognize this as the familiar least-squares cost function that gives rise to the ordinary least squares regression model. Whether or not you have seen it previously, let’s keep going, and we’ll eventually show this to be a special case of a much broader family of algorithms.
 
-##### 1.1 LMS algorithm
+## 1.1 LMS algorithm
 
 We want to choose θ so as to minimize J ( θ ). To do so, let’s use a search algorithm that starts with some “initial guess” for θ , and that repeatedly changes θ to make J ( θ ) smaller, until hopefully we converge to a value of θ that minimizes J ( θ ). Specifically, let’s consider the gradient descent algorithm, which starts with some initial θ , and repeatedly performs the update: ∂ θ j := θ j − α  J ( θ ) . ∂θ j
 
@@ -296,11 +296,11 @@ In this algorithm, we repeatedly run through the training set, and each time we 
 
 continues to make progress with each example it looks at. Often, stochastic gradient descent gets θ “close” to the minimum much faster than batch gradient descent. (Note however that it may never “converge” to the minimum, and the parameters θ will keep oscillating around the minimum of J ( θ ); but in practice most of the values near the minimum will be reasonably good approximations to the true minimum. ) For these reasons, particularly when the training set is large, stochastic gradient descent is often preferred over batch gradient descent.
 
-##### 1.2 The normal equations
+## 1.2 The normal equations
 
 Gradient descent gives one way of minimizing J . Let’s discuss a second way of doing so, this time performing the minimization explicitly and without resorting to an iterative algorithm. In this method, we will minimize J by explicitly taking its derivatives with respect to the θ j ’s, and setting them to zero. To enable us to do this without having to write reams of algebra and pages full of matrices of derivatives, let’s introduce some notation for doing calculus with matrices.
 
-###### 1.2.1 Matrix derivatives
+### 1.2.1 Matrix derivatives
 
 n × d
 
@@ -342,7 +342,7 @@ By slowly letting the learning rate α decrease to zero as the algorithm runs, i
 
 Here, A ij denotes the ( i, j ) entry of the matrix A . We then have [ ] A ∇ A f ( A ) = . A A
 
-###### 1.2.2 Least squares revisited
+### 1.2.2 Least squares revisited
 
 Armed with the tools of matrix derivatives, let us now proceed to find in closed-form the value of θ that minimizes J ( θ ). We begin by re-writing J in matrix-vectorial notation. Given a training set, define the design matrix X to be the n -byd matrix (actually n -byd + 1, if we include the intercept term) that contains the training examples’ input values in its rows:  
 
@@ -466,7 +466,7 @@ Thus, the value of θ that minimizes J ( θ ) is given in closed form by the equ
 
 θ = ( X X ) X ~ y.
 
-##### 1.3 Probabilistic interpretation
+## 1.3 Probabilistic interpretation
 
 When faced with a regression problem, why might linear regression, and specifically why might the least-squares cost function J , be a reasonable choice? In this section, we will give a set of probabilistic assumptions, under which least-squares regression is derived as a very natural algorithm. Let us assume that the target variables and the inputs are related via the equation
 
@@ -626,7 +626,7 @@ i =1
 
 which we recognize to be J ( θ ), our original least-squares cost function. To summarize: Under the previous probabilistic assumptions on the data, least-squares regression corresponds to finding the maximum likelihood estimate of θ . This is thus one set of assumptions under which least-squares regression can be justified as a very natural method that’s just doing maximum likelihood estimation. (Note however that the probabilistic assumptions are by no means necessary for least-squares to be a perfectly good and rational procedure, and there may—and indeed there are—other natural assumptions that can also be used to justify it.) Note also that, in our previous discussion, our final choice of θ did not depend on what was σ , and indeed we’d have arrived at the same result even if σ were unknown. We will use this fact again later, when we talk about the exponential family and generalized linear models.
 
-##### 1.4 Locally weighted linear regression (optional reading)
+## 1.4 Locally weighted linear regression (optional reading)
 
 Consider the problem of predicting y from x ∈ R . The leftmost figure below shows the result of fitting a y = θ + θ x to a dataset. We see that the data doesn’t really lie on straight line, and so the fit is not very good.
 
@@ -746,7 +746,7 @@ For instance, if we are trying to build a spam classifier for email, then x may 
 
 and “+.” Given x , the corresponding y is also called the label for the training example.
 
-##### 2.1 Logistic regression
+## 2.1 Logistic regression
 
 We could approach the classification problem ignoring the fact that y is discrete-valued, and use our old linear regression algorithm to try to predict y given x . However, it is easy to construct examples where this method performs very poorly. Intuitively, it also doesn’t make sense for h θ ( x ) to take values larger than 1 or smaller than 0 when we know that y ∈ { , } . To fix this, let’s change the form for our hypotheses h θ ( x ). We will choose
 
@@ -915,7 +915,7 @@ T ( i )
 
 function of θ x . Nonetheless, it’s a little surprising that we end up with the same update rule for a rather different algorithm and learning problem. Is this coincidence, or is there a deeper reason behind this? We’ll answer this when we get to GLM models.
 
-##### 2.2 Digression: the perceptron learning algorithn
+## 2.2 Digression: the perceptron learning algorithn
 
 We now digress to talk briefly about an algorithm that’s of some historical interest, and that we will also return to later when we talk about learning theory. Consider modifying the logistic regression method to “force” it to output values that are either 0 or 1 or exactly. To do so, it seems natural to change the definition of g to be the threshold function: { if z ≥ g ( z ) = if z <
 
@@ -937,7 +937,7 @@ f(x) f(x) f(x)
 
 −10 −10 −10 1.5 2.5 3.5 4.5 1.5 2.5 3.5 4.5 1.5 2.5 3.5 4.5 x x x
 
-##### 2.3 Another algorithm for maximizing ` ( θ )
+## 2.3 Another algorithm for maximizing ` ( θ )
 
 Returning to logistic regression with g ( z ) being the sigmoid function, let’s now talk about a different algorithm for maximizing ` ( θ ). To get us started, let’s consider Newton’s method for finding a zero of a function. Specifically, suppose we have some function f : R → R , and we wish to find a value of θ so that f ( θ ) = 0. Here, θ ∈ R is a real number. Newton’s method performs the following update:
 
@@ -975,7 +975,7 @@ Newton’s method typically enjoys faster convergence than (batch) gradient desc
 
 So far, we’ve seen a regression example, and a classification example. In the regression example, we had y | x ; θ ∼ N ( μ, σ ), and in the classification one, y | x ; θ ∼ Bernoulli( φ ), for some appropriate definitions of μ and φ as functions of x and θ . In this section, we will show that both of these methods are special cases of a broader family of models, called Generalized Linear Models (GLMs). We will also show how other models in the GLM family can be derived and applied to other classification and regression problems.
 
-##### 3.1 The exponential family
+## 3.1 The exponential family
 
 To work our way up to GLMs, we will begin by defining exponential family distributions. We say that a class of distributions is in the exponential family if it can be written in the form
 
@@ -1027,7 +1027,7 @@ Thus, we see that the Gaussian is in the exponential family, with
 
 There’re many other distributions that are members of the exponential family: The multinomial (which we’ll see later), the Poisson (for modelling count-data; also see the problem set); the gamma and the exponential (for modelling continuous, non-negative random variables, such as timeintervals); the beta and the Dirichlet (for distributions over probabilities); and many more. In the next section, we will describe a general “recipe” for constructing models in which y (given x and θ ) comes from any of these distributions.
 
-##### 3.2 Constructing GLMs
+## 3.2 Constructing GLMs
 
 Suppose you would like to build a model to estimate the number y of customers arriving in your store (or number of page-views on your website) in any given hour, based on certain features x such as store promotions, recent advertising, weather, day-of-week, etc. We know that the Poisson distribution usually gives a good model for numbers of visitors. Knowing this, how can we come up with a model for our problem? Fortunately, the Poisson is an exponential family distribution, so we can apply a Generalized Linear Model (GLM). In this section, we will we will describe a method for constructing GLM models for problems such as these. More generally, consider a classification or regression problem where we would like to predict the value of some random variable y as a function of x . To derive a GLM for this problem, we will make the following three assumptions about the conditional distribution of y given x and about our model:
 
@@ -1047,7 +1047,7 @@ x .)
 
 The third of these assumptions might seem the least well justified of the above, and it might be better thought of as a “design choice” in our recipe for designing GLMs, rather than as an assumption per se. These three assumptions/design choices will allow us to derive a very elegant class of learning algorithms, namely GLMs, that have many desirable properties such as ease of learning. Furthermore, the resulting models are often very effective for modelling different types of distributions over y ; for example, we will shortly show that both logistic regression and ordinary least squares can both be derived as GLMs.
 
-###### 3.2.1 Ordinary least squares
+### 3.2.1 Ordinary least squares
 
 To show that ordinary least squares is a special case of the GLM family of models, consider the setting where the target variable y (also called the response variable in GLM terminology) is continuous, and we model the conditional distribution of y given x as a Gaussian N ( μ, σ ). (Here, μ may depend x .) So, we let the ExponentialF amily ( η ) distribution above be the Gaussian distribution. As we saw previously, in the formulation of the Gaussian as an exponential family distribution, we had μ = η . So, we have
 
@@ -1063,7 +1063,7 @@ The first equality follows from Assumption 2, above; the second equality follows
 
 by μ ; the third equality follows from Assumption 1 (and our earlier derivation showing that μ = η in the formulation of the Gaussian as an exponential family distribution); and the last equality follows from Assumption 3.
 
-###### 3.2.2 Logistic regression
+### 3.2.2 Logistic regression
 
 We now consider logistic regression. Here we are interested in binary classification, so y ∈ { , } . Given that y is binary-valued, it therefore seems natural to choose the Bernoulli family of distributions to model the conditional distribution of y given x . In our formulation of the Bernoulli distribution as
 
@@ -1101,7 +1101,7 @@ function 1 / (1 + e ), this gives one answer: Once we assume that y conditioned 
 
 is called the canonical response function . Its inverse, g , is called the canonical link function . Thus, the canonical response function for the Gaussian family is just the identify function; and the canonical response function for the Bernoulli is the logistic function.
 
-###### 3.2.3 Softmax regression
+### 3.2.3 Softmax regression
 
 Let’s look at one more example of a GLM. Consider a classification problem in which the response variable y can take on any one of k values, so y ∈ { , , . . . , k } . For example, rather than classifying email into the two classes
 
@@ -1438,11 +1438,11 @@ y y p ( x ) = arg max p ( x | y ) p ( y ) .
 
 y
 
-##### 4.1 Gaussian discriminant analysis
+## 4.1 Gaussian discriminant analysis
 
 The first generative learning algorithm that we’ll look at is Gaussian discriminant analysis (GDA). In this model, we’ll assume that p ( x | y ) is distributed according to a multivariate normal distribution. Let’s talk briefly about the properties of multivariate normal distributions before moving on to the GDA model itself.
 
-###### 4.1.1 The multivariate normal distribution
+### 4.1.1 The multivariate normal distribution
 
 The multivariate normal distribution in d -dimensions, also called the multi-
 
@@ -1552,7 +1552,7 @@ From the leftmost and middle figures, we see that by decreasing the offdiagonal 
 
 The figures above were generated using Σ = I , and respectively [ ] [ ] [ ] -0.5 -1 μ = ; μ = ; μ = . -1.5
 
-###### 4.1.2 The Gaussian discriminant analysis model
+### 4.1.2 The Gaussian discriminant analysis model
 
 When we have a classification problem in which the input features x are continuous-valued random variables, we can then use the Gaussian Discriminant Analysis (GDA) model, which models p ( x | y ) using a multivariate normal distribution. The model is:
 
@@ -1656,7 +1656,7 @@ Pictorially, what the algorithm is doing can be seen in as follows:
 
 Shown in the figure are the training set, as well as the contours of the two Gaussian distributions that have been fit to the data in each of the two classes. Note that the two Gaussians have contours that are the same shape and orientation, since they share a covariance matrix Σ, but they have different means μ and μ . Also shown in the figure is the straight line giving the decision boundary at which p ( y = 1 | x ) = 0 . 5. On one side of the boundary, we’ll predict y = 1 to be the most likely outcome, and on the other side, we’ll predict y = 0.
 
-###### 4.1.3 Discussion: GDA and logistic regression
+### 4.1.3 Discussion: GDA and logistic regression
 
 The GDA model has an interesting relationship to logistic regression. If we view the quantity p ( y = 1 | x ; φ, μ , μ , Σ) as a function of x , we’ll find that it can be expressed in the form
 
@@ -1678,7 +1678,7 @@ dimensional vectors by adding the extra coordinate x = 1; see problem set 1.
 
 regression makes weaker assumptions, and is significantly more robust to deviations from modeling assumptions. Specifically, when the data is indeed non-Gaussian, then in the limit of large datasets, logistic regression will almost always do better than GDA. For this reason, in practice logistic regression is used more often than GDA. (Some related considerations about discriminative vs. generative models also apply for the Naive Bayes algorithm that we discuss next, but the Naive Bayes algorithm is still considered a very good, and is certainly also a very popular, classification algorithm.)
 
-##### 4.2 Naive bayes
+## 4.2 Naive bayes
 
 In GDA, the feature vectors x were continuous, real-valued vectors. Let’s now talk about a different learning algorithm in which the x j ’s are discretevalued. For our motivating example, consider building an email spam filter using machine learning. Here, we wish to classify messages according to whether they are unsolicited commercial (spam) email, or non-spam email. After learning to do this, we can then have our mail reader automatically filter out the spam messages and perhaps place them in a separate mail folder. Classifying emails is one example of a broader set of problems called text classification . Let’s say we have a training set (a set of emails labeled as spam or nonspam). We’ll begin our construction of our spam filter by specifying the features x j used to represent an email. We will represent an email via a feature vector whose length is equal to the number of words in the dictionary. Specifically, if an email contains the j -th word of the dictionary, then we will set x j = 1; otherwise, we let x j = 0. For instance, the vector   a     aardvark     .  aardwolf
 
@@ -1763,7 +1763,7 @@ Living area (sq. feet) < 400-800 800-1200 1200-1600 > x i
 
 Thus, for a house with living area 890 square feet, we would set the value of the corresponding feature x j to 3. We can then apply the Naive Bayes algorithm, and model p ( x j | y ) with a multinomial distribution, as described previously. When the original, continuous-valued attributes are not wellmodeled by a multivariate normal distribution, discretizing the features and using Naive Bayes (instead of GDA) will often result in a better classifier.
 
-###### 4.2.1 Laplace smoothing
+### 4.2.1 Laplace smoothing
 
 The Naive Bayes algorithm as we have described it will work fairly well for many problems, but there is a simple change that makes it work much better, especially for text classification. Let’s briefly discuss a problem with the algorithm in its current form, and then talk about how we can fix it. Consider spam/email classification, and let’s suppose that, we are in the year of 20xx, after completing CS229 and having done excellent work on the project, you decide around May 20xx to submit work you did to the NeurIPS conference for publication. Because you end up discussing the conference in your emails, you also start getting messages with the word “neurips” in it. But this is your first NeurIPS paper, and until this time, you had not previously seen any emails containing the word “neurips”; in particular “neurips” did not ever appear in your training set of spam/non-spam emails. Assuming that “neurips” was the 35000th word in the dictionary, your Naive Bayes spam filter therefore had picked its maximum likelihood estimates of the parameters φ | y to be
 
@@ -1866,7 +1866,7 @@ k j =1
 
 (In practice, it usually doesn’t matter much whether we apply Laplace smoothing to φ y or not, since we will typically have a fair fraction each of spam and non-spam messages, so φ y will be a reasonable estimate of p ( y = 1) and will be quite far from 0 anyway.)
 
-###### 4.2.2 Event models for text classification
+### 4.2.2 Event models for text classification
 
 To close off our discussion of generative learning algorithms, let’s talk about one more model that is specifically for text classification. While Naive Bayes as we’ve presented it will work well for many classification problems, for text classification, there is a related model that does even better. In the specific context of text classification, Naive Bayes as presented uses the what’s called the Bernoulli event model (or sometimes multi-variate Bernoulli event model ). In this model, we assumed that the way an email is generated is that first it is randomly determined (according to the class priors p ( y )) whether a spammer or non-spammer will send you your next message. Then, the person sending the email runs through the dictionary, deciding whether to include each word j in that email independently and according to the probabilities p ( x j = 1 | y ) = φ ∏
 
@@ -2009,7 +2009,7 @@ While not necessarily the very best classification algorithm, the Naive Bayes cl
 
 # Kernel methods
 
-##### 5.1 Feature maps
+## 5.1 Feature maps
 
 Recall that in our discussion about linear regression, we considered the problem of predicting the price of a house (denoted by y ) from the living area of the house (denoted by x ), and we fit a linear function of x to the training data. What if the price y can be more accurately represented as a non-linear function of x ? In this case, we need a more expressive family of models than linear models. We start by considering fitting cubic functions y = θ x + θ x + θ x + θ . It turns out that we can view the cubic function as a linear function over the a different set of feature variables (defined below). Concretely, let the function φ : R → R be defined as
 
@@ -2029,7 +2029,7 @@ Thus, a cubic function of the variable x can be viewed as a linear function over
 
 original input is mapped to some new set of quantities φ ( x ), we will call those new quantities the features variables. (Unfortunately, different authors use different terms to describe these two things in different contexts.) We will call φ a feature map , which maps the attributes to the features.
 
-##### 5.2 LMS (least mean squares) with features
+## 5.2 LMS (least mean squares) with features
 
 T
 
@@ -2115,7 +2115,7 @@ Similarly, the corresponding stochastic gradient descent update rule is (
 
 θ := θ + α y − θ φ ( x ) φ ( x ) (5.4)
 
-##### 5.3 LMS with the kernel trick
+## 5.3 LMS with the kernel trick
 
 The gradient descent update, or stochastic gradient update above becomes computationally expensive when the features φ ( x ) is high-dimensional. For example, consider the direct extension of the feature map in equation (5.1)
 
@@ -2338,7 +2338,7 @@ i =1 i =1
 
 You may realize that fundamentally all we need to know about the feature map φ ( · ) is encapsulated in the corresponding kernel function K ( · , · ). We will expand on this in the next section.
 
-##### 5.4 Properties of kernels
+## 5.4 Properties of kernels
 
 In the last subsection, we started with an explicitly defined feature map φ , which induces the kernel function K ( x, z ) , 〈 φ ( x ) , φ ( z ) 〉 . Then we saw that the kernel function is so intrinsic so that as long as the kernel function is defined, the whole training algorithm can be written entirely in the language of the kernel without referring to the feature map φ , so can the prediction of a test example x (equation (5.12).) Therefore, it would be tempted to define other kernel function K ( · , · ) and run the algorithm (5.11). Note that the algorithm (5.11) does not need to explicitly access the feature map φ , and therefore we only need to ensure the existence of the feature map φ , but do not necessarily need to be able to explicitly write φ down. What kinds of functions K ( · , · ) can correspond to some feature map φ ? In other words, can we tell if there is some feature mapping φ so that K ( x, z ) =
 
@@ -2570,7 +2570,7 @@ Application of kernel methods: We’ve seen the application of kernels to linear
 
 This set of notes presents the Support Vector Machine (SVM) learning algorithm. SVMs are among the best (and many believe are indeed the best) “off-the-shelf” supervised learning algorithms. To tell the SVM story, we’ll need to first talk about margins and the idea of separating data with a large “gap.” Next, we’ll talk about the optimal margin classifier, which will lead us into a digression on Lagrange duality. We’ll also see kernels, which give a way to apply SVMs efficiently in very high dimensional (such as infinitedimensional) feature spaces, and finally, we’ll close off the story with the SMO algorithm, which gives an efficient implementation of SVMs.
 
-##### 6.1 Margins: intuition
+## 6.1 Margins: intuition
 
 We’ll start our story on SVMs by talking about margins. This section will give the intuitions about margins and about the “confidence” of our predictions; these ideas will be made formal in Section 6.3. Consider logistic regression, where the probability p ( y = 1 | x ; θ ) is mod-
 
@@ -2614,7 +2614,7 @@ C
 
 Notice that the point A is very far from the decision boundary. If we are asked to make a prediction for the value of y at A, it seems we should be quite confident that y = 1 there. Conversely, the point C is very close to the decision boundary, and while it’s on the side of the decision boundary on which we would predict y = 1, it seems likely that just a small change to the decision boundary could easily have caused out prediction to be y = 0. Hence, we’re much more confident about our prediction at A than at C. The point B lies in-between these two cases, and more broadly, we see that if a point is far from the separating hyperplane, then we may be significantly more confident in our predictions. Again, informally we think it would be nice if, given a training set, we manage to find a decision boundary that allows us to make all correct and confident (meaning far from the decision boundary) predictions on the training examples. We’ll formalize this later using the notion of geometric margins.
 
-##### 6.2 Notation (option reading)
+## 6.2 Notation (option reading)
 
 To make our discussion of SVMs easier, we’ll first need to introduce a new notation for talking about classification. We will be considering a linear classifier for a binary classification problem with labels y and features x . From now, we’ll use y ∈ {− , } (instead of { , } ) to denote the class labels. Also, rather than parameterizing our linear classifier with the vector θ , we will use parameters w, b , and write our classifier as
 
@@ -2628,7 +2628,7 @@ T
 
 what was previously θ , and w takes the role of [ θ . . . θ d ] . Note also that, from our definition of g above, our classifier will directly predict either 1 or − 1 (cf. the perceptron algorithm), without first going through the intermediate step of estimating p ( y = 1) (which is what logistic regression does).
 
-##### 6.3 Functional and geometric margins (option reading)
+## 6.3 Functional and geometric margins (option reading)
 
 Let’s formalize the notions of the functional and geometric margins. Given a
 
@@ -2774,7 +2774,7 @@ Finally, given a training set S = { ( x , y ); i = 1 , . . . , n } , we also def
 i =1 ,...,n
 ```
 
-##### 6.4 The optimal margin classifier (option reading)
+## 6.4 The optimal margin classifier (option reading)
 
 Given a training set, it seems from our previous discussion that a natural desideratum is to try to find a decision boundary that maximizes the (geometric) margin, since this would reflect a very confident set of predictions
 
@@ -2818,7 +2818,7 @@ s.t. y ( w x + b ) ≥ , i = 1 , . . . , n
 
 We’ve now transformed the problem into a form that can be efficiently solved. The above is an optimization problem with a convex quadratic objective and only linear constraints. Its solution gives us the optimal margin classifier . This optimization problem can be solved using commercial quadratic programming (QP) code. While we could call the problem solved here, what we will instead do is make a digression to talk about Lagrange duality. This will lead us to our optimization problem’s dual form, which will play a key role in allowing us to use kernels to get optimal margin classifiers to work efficiently in very high dimensional spaces. The dual form will also allow us to derive an efficient algorithm for solving the above optimization problem that will typically do much better than generic QP software.
 
-##### 6.5 Lagrange duality (optional reading)
+## 6.5 Lagrange duality (optional reading)
 
 Let’s temporarily put aside SVMs and maximum margin classifiers, and talk about solving constrained optimization problems. Consider a problem of the following form:
 
@@ -2993,7 +2993,7 @@ complementarity condition. Specifically, it implies that if α i
 
 g i ( w ) = 0. (I.e., the “ g i ( w ) ≤ 0” constraint is active , meaning it holds with equality rather than with inequality.) Later on, this will be key for showing that the SVM has only a small number of “support vectors”; the KKT dual complementarity condition will also give us our convergence test when we talk about the SMO algorithm.
 
-##### 6.6 Optimal margin classifiers: the dual form (option reading)
+## 6.6 Optimal margin classifiers: the dual form (option reading)
 
 | problem     | (6.12) | , and the relationship between the primary and dual variables |
 | ----------- | ------ | ------------------------------------------------------------- |
@@ -3181,7 +3181,7 @@ i =1
 
 Hence, if we’ve found the α i ’s, in order to make a prediction, we have to calculate a quantity that depends only on the inner product between x and the points in the training set. Moreover, we saw earlier that the α i ’s will all be zero except for the support vectors. Thus, many of the terms in the sum above will be zero, and we really need to find only the inner products between x and the support vectors (of which there is often only a small number) in order calculate (6.15) and make our prediction. By examining the dual form of the optimization problem, we gained significant insight into the structure of the problem, and were also able to write the entire algorithm in terms of only inner products between input feature vectors. In the next section, we will exploit this property to apply the kernels to our classification problem. The resulting algorithm, support vector machines , will be able to efficiently learn in very high dimensional spaces.
 
-##### 6.7 Regularization and the non-separable case (optional reading)
+## 6.7 Regularization and the non-separable case (optional reading)
 
 The derivation of the SVM as presented so far assumed that the data is linearly separable. While mapping data to a high dimensional feature space via φ does generally increase the likelihood that the data is separable, we can’t guarantee that it always will be so. Also, in some cases it is not clear that finding a separating hyperplane is exactly what we’d want to do, since that might be susceptible to outliers. For instance, the left figure below shows an optimal margin classifier, and when a single outlier is added in the upper-left region (right figure), it causes the decision boundary to make a dramatic swing, and the resulting classifier has a much smaller margin.
 
@@ -3263,13 +3263,13 @@ As before, we also have that w can be expressed in terms of the α i ’s as giv
 
 Now, all that remains is to give an algorithm for actually solving the dual problem, which we will do in the next section.
 
-##### 6.8 The SMO algorithm (optional reading)
+## 6.8 The SMO algorithm (optional reading)
 
 The SMO (sequential minimal optimization) algorithm, due to John Platt, gives an efficient way of solving the dual problem arising from the derivation
 
 of the SVM. Partly to motivate the SMO algorithm, and partly because it’s interesting in its own right, let’s first take another digression to talk about the coordinate ascent algorithm.
 
-###### 6.8.1 Coordinate ascent
+### 6.8.1 Coordinate ascent
 
 Consider trying to solve the unconstrained optimization problem
 
@@ -3311,7 +3311,7 @@ Thus, in the innermost loop of this algorithm, we will hold all the variables ex
 
 The ellipses in the figure are the contours of a quadratic function that we want to optimize. Coordinate ascent was initialized at (2 , − 2), and also plotted in the figure is the path that it took on its way to the global maximum. Notice that on each step, coordinate ascent takes a step that’s parallel to one of the axes, since only one variable is being optimized at a time.
 
-###### 6.8.2 SMO
+### 6.8.2 SMO
 
 We close off the discussion of SVMs by sketching the derivation of the SMO algorithm. Here’s the (dual) optimization problem that we want to solve:
 
@@ -3480,7 +3480,7 @@ find the optimal value of α . There’re a couple more details that are quite e
 
 We now begin our study of deep learning. In this set of notes, we give an overview of neural networks, discuss vectorization and discuss training neural networks with backpropagation.
 
-##### 7.1 Supervised learning with non-linear models
+## 7.1 Supervised learning with non-linear models
 
 In the supervised learning setting (predicting y from the input x ), suppose our model/hypothesis is h θ ( x ). In the past lectures, we have considered the
 
@@ -3587,7 +3587,7 @@ With these generic algorithms, a typical deep learning model is learned with the
 | ------------------------------------------------------- | --- | --- | --- | -------------- |
 | other gradient-based optimizers) with the loss function | J   | (   | θ   | ).             |
 
-##### 7.2 Neural networks
+## 7.2 Neural networks
 
 Neural networks refer to broad type of non-linear models/parametrizations h θ ( x ) that involve combinations of matrix multiplications and other entrywise non-linear operations. We will start small and slowly build up a neural network, step by step.
 
@@ -3973,7 +3973,7 @@ penultimate layer a is often (informally) referred to as the learned features or
 
 (the activation a ), and use them to linearly predict the housing price. Often the feature map / representation obtained from one datasets (that is, the function φ β ( · ) can be also useful for other datasets, which indicates they contain essential information about the data. However, oftentimes, the neural network will discover complex features which are very useful for predicting the output but may be difficult for a human to understand or interpret. This is why some people refer to neural networks as a black box , as it can be difficult to understand the features it has discovered.
 
-##### 7.3 Backpropagation
+## 7.3 Backpropagation
 
 In this section, we introduce backpropgation or auto-differentiation, which
 
@@ -4001,7 +4001,7 @@ to that for computing J ( θ ) itself. This does not only apply to the fullyconn
 
 We note if the output of the function f does not depend on some of the input coordinates, then we set by default the gradient w.r.t that coordinate to zero. Setting to zero does not count towards the total runtime here in our accounting scheme. This is why when N ≤ ` , we can compute the gradient in O ( N ) time, which might be potentially even less than ` .
 
-###### 7.3.1 Preliminary: chain rule
+### 7.3.1 Preliminary: chain rule
 
 We first recall the chain rule in calculus. Suppose the variable J depends on the variables θ , . . . , θ p via the intermediate variable g , . . . , g k :
 
@@ -4021,7 +4021,7 @@ k
 
 For the ease of invoking the chain rule in the following subsections in various ways, we will call J the output variable, g , . . . , g k intermediate variables, and θ , . . . , θ p the input variable in the chain rule.
 
-###### 7.3.2 One-neuron neural networks
+### 7.3.2 One-neuron neural networks
 
 Simplifying notations: In the rest of the section, we will consider a generic input x and compute the gradient of h θ ( x ) w.r.t θ . For simplicity, we use o as a shorthand for h θ ( x ) ( o stands for output ). For simplicity, with slight abuse of notation, we use J = ( y − o ) to denote the loss function. (Note that this overrides the definition of J as the total loss in Section 7.1.) Our goal is to compute the derivative of J w.r.t the parameter θ . We first consider the neural network with one neuron defined in equation (7.7). Recall that we compute the loss function via the following sequential steps:
 
@@ -4117,7 +4117,7 @@ Similarly, we compute the gradient w.r.t b by
 
 = 1)
 
-###### 7.3.3 Two-layer neural networks: a low-level unpacked computation
+### 7.3.3 Two-layer neural networks: a low-level unpacked computation
 
 Note: this subsection derives the derivatives with low-level notations to help you build up intuition on backpropagation. If you are looking for a clean formula, or you are familiar with matrix derivatives, then feel free to jump to the next subsection directly. Now we consider the two-layer neural network defined in equation (7.11). We compute the loss J by following sequence of operations
 
@@ -4423,7 +4423,7 @@ j
 
 ### ∂o
 
-###### 7.3.4 Two-layer neural network with vector notation
+### 7.3.4 Two-layer neural network with vector notation
 
 As we have done before in the definition of neural networks, the equations for backpropagation becomes much cleaner with proper matrix notation. Here we state the algorithm first and also provide a cleaner proof via matrix calculus. Let
 
@@ -4639,7 +4639,7 @@ J ← J , z ← z , W ← W
 
 )
 
-###### 7.3.5 Multi-layer neural networks
+### 7.3.5 Multi-layer neural networks
 
 In this section, we will derive the backpropagation algorithms for the model defined in (7.17). Recall that we have
 
@@ -4691,7 +4691,7 @@ k ]
 
 from δ as described in Algorithm 5.
 
-##### 7.4 Vectorization over training examples
+## 7.4 Vectorization over training examples
 
 As we discussed in Section 7.1, in the implementation of neural networks, we will leverage the parallelism across the multiple examples. This means that we will need to write the forward pass (the evaluation of the outputs) of the neural network and the backward pass (backpropagation) for multiple training examples in matrix notation.
 
@@ -4885,7 +4885,7 @@ are unseen , in the sense that the training procedure has not used the test exam
 
 These days, researchers have increasingly been more interested in the setting with “domain shift”, that is, the training distribution and test distribution are different. the difference between test error and training error is often referred to as the generalization gap. The term generalization error in some literature means the test error, and in some other literature means the generalization gap. e.g., larger than the intrinsic noise level of the data in regression problems.
 
-##### 8.1 Bias-variance tradeoff
+## 8.1 Bias-variance tradeoff
 
 training dataset test dataset
 
@@ -5083,7 +5083,7 @@ Figure 8.9: Best fit quadratic model has small training and test error because q
 
 Interestingly, the bias-variance tradeoff curves or the test error curves do not universally follow the shape in Figure 8.8, at least not universally when the model complexity is simply measured by the number of parameters. (We will discuss the so-called double descent phenomenon in Section 8.2.) Nevertheless, the principle of bias-variance tradeoff is perhaps still the first resort when analyzing and predicting the behavior of test errors.
 
-###### 8.1.1 A mathematical decomposition (for regression)
+### 8.1.1 A mathematical decomposition (for regression)
 
 To formally state the bias-variance tradeoff for regression problems, we consider the following setup (which is an extension of the beginning paragraph of Section 8.1).
 
@@ -5170,7 +5170,7 @@ fundamentally cannot approximate the h . For example, in the illustrating exampl
 
 true quadratic function h , neither can h avg , and thus the bias term has to be large. The variance term captures how the random nature of the finite dataset introduces errors in the learned model. It measures the sensitivity of the learned model to the randomness in the dataset. It often decreases as the size of the dataset increases. There is nothing we can do about the first term σ as we can not predict the noise ξ by definition. Finally, we note that the bias-variance decomposition for classification is much less clear than for regression problems. There have been several proposals, but there is as yet no agreement on what is the “right” and/or the most useful formalism.
 
-##### 8.2 The double descent phenomenon
+## 8.2 The double descent phenomenon
 
 Model-wise double descent. Recent works have demonstrated that the test error can present a “double descent” phenomenon in a range of machine
 
@@ -5268,9 +5268,9 @@ parameters parameters norm
 
 Figure 8.12: Left: The double descent phenomenon, where the number of parameters is used as the model complexity. Middle: The norm of the learned model is peaked around n ≈ d . Right: The test error against the norm of the learnt model. The color bar indicate the number of parameters and the arrows indicates the direction of increasing model size. Their relationship are closer to the convention wisdom than to a double descent. Setup: We consider a linear regression with a fixed dataset of size n = 500 . The input x is a random ReLU feature on Fashion-MNIST, and output y ∈ R is the one-hot label. This is the same setting as in Section 5.2 of Nakkiran et al. [2020].
 
-##### 8.3 Sample complexity bounds (optional readings)
+## 8.3 Sample complexity bounds (optional readings)
 
-###### 8.3.1 Preliminaries
+### 8.3.1 Preliminaries
 
 In this set of notes, we begin our foray into learning theory. Apart from being interesting and enlightening in its own right, this discussion will also help us hone our intuitions and derive rules of thumb about how to best apply learning algorithms in different settings. We will also seek to answer a few questions: First, can we make formal the bias/variance tradeoff that was just discussed? This will also eventually lead us to talk about model selection methods, which can, for instance, automatically decide what order polynomial to fit to a training set. Second, in machine learning it’s really generalization error that we care about, but most learning algorithms fit their models to the training set. Why should doing well on the training set tell us anything about generalization error? Specifically, can we relate error on the training set to generalization error? Third and finally, are there conditions under which we can actually prove that learning algorithms will work well? We start with two simple but very useful lemmas.
 
@@ -5340,7 +5340,7 @@ h ˆ = arg min ε ˆ ( h )
 
 h ∈H
 
-###### 8.3.2 The case of finite H
+### 8.3.2 The case of finite H
 
 Let’s start by considering a learning problem in which we have a finite hypothesis class H = { h , . . . , h k } consisting of k hypotheses. Thus, H is just a set of k functions mapping from X to { , } , and empirical risk minimization selects  h ˆ to be whichever of these k functions has the smallest training error. We would like to give guarantees on the generalization error of  h ˆ . Our strategy for doing so will be in two parts: First, we will show that ˆ ε ( h ) is a reliable estimate of ε ( h ) for all h . Second, we will show that this implies an upper-bound on the generalization error of  h ˆ . Take any one, fixed, h i ∈ H . Consider a Bernoulli random variable Z whose distribution is defined as follows. We’re going to sample ( x, y ) ∼ D . Then, we set Z = 1 { h i ( x ) = y } . I.e., we’re going to draw one example, and let Z indicate whether h i misclassifies it. Similarly, we also define Z j =
 
@@ -5450,7 +5450,7 @@ Corollary. Let |H| = k , and let any δ, γ be fixed. Then for ε ( h ˆ ) ≤ m
 
 k n ≥ log  γ δ ( ) k = O log , γ δ
 
-###### 8.3.3 The case of infinite H
+### 8.3.3 The case of infinite H
 
 We have proved some useful theorems for the case of finite hypothesis classes. But many hypothesis classes, including any parameterized by real numbers (as in linear classification) actually contain an infinite number of functions. Can we prove similar results for this setting? Let’s start by going through something that is not the “right” argument. Better and more general arguments exist , but this will be useful for honing our intuitions about the domain. Suppose we have an H that is parameterized by d real numbers. Since we are using a computer to represent real numbers, and IEEE double-precision floating point ( double ’s in C) uses 64 bits to represent a floating point number, this means that our learning algorithm, assuming we’re using doubleprecision floating point, is parameterized by 64 d bits. Thus, our hypothesis
 
@@ -5554,7 +5554,7 @@ In other words, the number of training examples needed to learn “well” using
 
 # Regularization and model selection
 
-##### 9.1 Regularization
+## 9.1 Regularization
 
 Recall that as discussed in Section 8.1, overftting is typically a result of using too complex models, and we need to choose a proper model complexity to achieve the optimal bias-variance tradeoff. When the model complexity is measured by the number of parameters, we can vary the size of the model (e.g., the width of a neural net). However, the correct, informative complexity measure of the models can be a function of the parameters (e.g., ` norm of the parameters), which may not necessarily depend on the number of parameters. In such cases, we will use regularization, an important technique in machine learning, control the model complexity and prevent overfitting. Regularization typically involves adding an additional term, called a regularizer and denoted by R ( θ ) here, to the training loss/cost function:
 
@@ -5576,7 +5576,7 @@ For linear models, this means the model just uses a few coordinates of the input
 
 The R ( θ ) = ‖ θ ‖ (also called LASSO) and R ( θ ) = ‖ θ ‖ are perhaps among the most commonly used regularizers for linear models. Other norm and powers of norms are sometimes also used. The ` norm regularization is much more commonly used with kernel methods because ` regularization is typically not compatible with the kernel trick (the optimal solution cannot be written as functions of inner products of features.) In deep learning, the most commonly used regularizer is ` regularization or weight decay. Other common ones include dropout, data augmentation, regularizing the spectral norm of the weight matrices, and regularizing the Lipschitzness of the model, etc. Regularization in deep learning is an active research area, and it’s known that there is another implicit source of regularization, as discussed in the next section.
 
-##### 9.2 Implicit regularization effect
+## 9.2 Implicit regularization effect
 
 The implicit regularization effect of optimizers, or implicit bias or algorithmic regularization, is a new concept/phenomenon observed in the deep learning era. It largely refers to that the optimizers can implicitly impose structures on parameters beyond what has been imposed by the regularized loss. In most classical settings, the loss or regularized loss has a unique global minimum, and thus any reasonable optimizer should converge to that global minimum and cannot impose any additional preferences. However, in deep learning, oftentimes the loss or regularized loss has more than one (approximate) global minima, and difference optimizers may converge to different global minima. Though these global minima have the same or similar training losses, they may be of different nature and have dramatically different generalization performance. See Figures 9.1 and 9.2 and its caption for an illustration and some experiment results. For example, it’s possible that one global minimum gives a much more Lipschitz or sparse model than others and thus has a better test error. It turns out that many commonly-used optimizers (or their components) prefer or bias towards finding global minima of certain properties, leading to a better test performance.
 
@@ -5596,7 +5596,7 @@ The setting is the same as in Woodworth et al. [2020], HaoChen et al. [2020]
 
 One may wonder which components of the optimizers bias towards what type of global minima and what type of global minima may generalize better. These are open questions that researchers are actively investigating. Empirical and theoretical research have offered some clues and heuristics. In many (but definitely far from all) situations, among those setting where optimization can succeed in minimizing the training loss, the use of larger initial learning rate, smaller initialization, smaller batch size, and momentum appears to help with biasing towards more generalizable solutions. A conjecture (that can be proven in certain simplified case) is that stochasticity in the optimization process help the optimizer to find flatter global minima (global minima where the curvature of the loss is small), and flat global minima tend to give more Lipschitz models and better generalization. Characterizing the implicit regularization effect formally is still a challenging open research question.
 
-##### 9.3 Model selection via cross validation
+## 9.3 Model selection via cross validation
 
 Suppose we are trying select among several different models for a learning problem. For instance, we might be using a polynomial regression model
 
@@ -5654,7 +5654,7 @@ A typical choice for the number of folds to use here would be k = 10. While the 
 
 its own name; since we’re holding out one training example at a time, this method is called leave-one-out cross validation. Finally, even though we have described the different versions of cross validation as methods for selecting a model, they can also be used more simply to evaluate a single model or algorithm. For example, if you have implemented some learning algorithm and want to estimate how well it performs for your application (or if you have invented a novel learning algorithm and want to report in a technical paper how well it performs on various test sets), cross validation would give a reasonable way of doing so.
 
-##### 9.4 Bayesian statistics and regularization
+## 9.4 Bayesian statistics and regularization
 
 In this section, we will talk about one more tool in our arsenal for our battle against overfitting. At the beginning of the quarter, we talked about parameter fitting using maximum likelihood estimation (MLE), and chose our parameters according to ∏
 
@@ -5818,7 +5818,7 @@ J must monotonically decrease, and the value of J must converge. (Usually, this 
 
 In this set of notes, we discuss the EM (Expectation-Maximization) algorithm for density estimation.
 
-##### 11.1 EM for mixture of Gaussians
+## 11.1 EM for mixture of Gaussians
 
 (1) ( n )
 
@@ -6101,7 +6101,7 @@ The term “soft” refers to our guesses being probabilities and taking values 
 
 that will allow us to easily apply it to other estimation problems in which there are also latent variables, and which will allow us to give a convergence guarantee.
 
-##### 11.2 Jensen’s inequality
+## 11.2 Jensen’s inequality
 
 We begin our discussion with a very useful result called Jensen’s inequality Let f be a function whose domain is the set of real numbers. Recall that
 
@@ -6137,7 +6137,7 @@ taking the value b (indicated on the x -axis). Thus, the expected value of X is 
 
 convex (i.e., f ( x ) ≤ 0 or H ≤ 0). Jensen’s inequality also holds for concave functions f , but with the direction of all the inequalities reversed (E[ f ( X )] ≤ f (E X ), etc.).
 
-##### 11.3 General EM algorithms
+## 11.3 General EM algorithms
 
 Suppose we have an estimation problem in which we have a training set
 
@@ -6487,7 +6487,7 @@ i ( z )
 
 then we know ` ( θ ) ≥ ELBO( Q, θ ) from our previous derivation. The EM can also be viewed an alternating maximization algorithm on ELBO( Q, θ ), in which the E-step maximizes it with respect to Q (check this yourself), and the M-step maximizes it with respect to θ .
 
-###### 11.3.1 Other interpretation of ELBO
+### 11.3.1 Other interpretation of ELBO
 
 ```
 ∑ p ( x,z ; θ )
@@ -6517,7 +6517,7 @@ ELBO( x ; Q, θ ) = log p ( x ) − D KL ( Q ‖ p z | x ) (11.17)
 
 where p z | x is the conditional distribution of z given x under the parameter θ . This forms shows that the maximizer of ELBO( Q, θ ) over Q is obtained when Q = p z | x , which was shown in equation (11.8) before.
 
-##### 11.4 Mixture of Gaussians revisited
+## 11.4 Mixture of Gaussians revisited
 
 Armed with our general definition of the EM algorithm, let’s go back to our old example of fitting the parameters φ , μ and Σ in a mixture of Gaussians. For the sake of brevity, we carry out the derivations for the M-step updates only for φ and μ j , and leave the updates for Σ j as an exercise for the reader. The E-step is easy. Following our algorithm derivation above, we simply calculate
 
@@ -6828,7 +6828,7 @@ i =1
 
 The derivation for the M-step updates to Σ j are also entirely straightforward.
 
-##### 11.5 Variational inference and variational auto-encoder (optional reading)
+## 11.5 Variational inference and variational auto-encoder (optional reading)
 
 Loosely speaking, variational auto-encoder Kingma and Welling [2013] generally refers to a family of algorithms that extend the EM algorithms to more complex models parameterized by neural networks. It extends the technique of variational inference with the additional “re-parametrization trick” which will be introduced below. Variational auto-encoder may not give the best performance for many datasets, but it contains several central ideas about how to extend EM algorithms to high-dimensional continuous latent variables
 
@@ -7381,7 +7381,7 @@ Thus, w i ∈ R , and the j -th source can be recovered as s j
 
 x .
 
-##### 13.1 ICA ambiguities
+## 13.1 ICA ambiguities
 
 −
 
@@ -7471,7 +7471,7 @@ a N (0 , AA ) distribution. Thus, there is no way to tell if the sources were
 
 mixed using A and A . There is an arbitrary rotational component in the mixing matrix that cannot be determined from the data, and we cannot recover the original sources. Our argument above was based on the fact that the multivariate standard normal distribution is rotationally symmetric. Despite the bleak picture that this paints for ICA on Gaussian data, it turns out that, so long as the data is not Gaussian, it is possible, given enough data, to recover the d independent sources.
 
-##### 13.2 Densities and linear transformations
+## 13.2 Densities and linear transformations
 
 Before moving on to derive the ICA algorithm proper, we first digress briefly to talk about the effect of linear transformations on densities. Suppose a random variable s is drawn according to some density p s ( s ). For simplicity, assume for now that s ∈ R is a real number. Now, let the random variable x be defined according to x = As (here, x ∈ R , A ∈ R ). Let p x be the density of x . What is p x ?
 
@@ -7515,7 +7515,7 @@ C is given by | A | . Now, suppose s is uniformly distributed in [0 , 1] , so it
 
 / vol( C ) = 1 / | A | = | A | = | W | . Thus, p x ( x ) = 1 { x ∈ C }| W | = 1 { W x ∈ C }| W | = p s ( W x ) | W | .
 
-##### 13.3 ICA algorithm
+## 13.3 ICA algorithm
 
 We are now ready to derive an ICA algorithm. We describe an algorithm by Bell and Sejnowski, and we give an interpretation of their algorithm as a method for maximum likelihood estimation. (This is different from their original interpretation involving a complicated idea called the infomax principal which is no longer necessary given the modern understanding of ICA.) We suppose that the distribution of each source s j is given by a density p s , and that the joint distribution of the sources s is given by
 
@@ -7644,7 +7644,7 @@ other time series where the x ’s are dependent, but it can be shown that havin
 
 Despite its huge success, supervised learning with neural networks typically relies on the availability of a labeled dataset of decent size, which is sometimes costly to collect. Recently, AI and machine learning are undergoing a paradigm shift with the rise of models (e.g., BERT [Devlin et al., 2019] and GPT-3 [Brown et al., 2020]) that are pre-trained on broad data at scale and are adaptable to a wide range of downstream tasks. These models, called foundation models by Bommasani et al. [2021], oftentimes leverage massive unlabeled data so that much fewer labeled data in the downstream tasks are needed. Moreover, though foundation models are based on standard deep learning and transfer learning, their scale results in new emergent capabilities. These models are typically (pre-)trained by self-supervised learning methods where the supervisions/labels come from parts of the inputs. This chapter will introduce the paradigm of foundation models and basic related concepts.
 
-##### 14.1 Pretraining and adaptation
+## 14.1 Pretraining and adaptation
 
 The foundation models paradigm consists of two phases: pretraining (or simply training) and adaptation. We first pretrain a large model on a massive unlabeled dataset (e.g., billions of unlabeled images). Then, we adapt the pretrained model to a downstream task (e.g., detecting cancer from scan images). These downstream tasks are often prediction tasks with limited or
 
@@ -7755,7 +7755,7 @@ with initialization w ← random vector (14.3)
 
 Various other adaptation methods exists and are sometimes specialized to the particular pretraining methods. We will discuss one of them in Section 14.3.1.
 
-##### 14.2 Pretraining methods in computer vision
+## 14.2 Pretraining methods in computer vision
 
 This section introduces two concrete pretraining methods for computer vision: supervised pretraining and contrastive learning.
 
@@ -7819,7 +7819,7 @@ Random pair may be a more accurate term because it’s still possible (though no
 
 to be large, resulting in φ θ (ˆ x ) and φ θ (˜ x ) to be close.
 
-##### 14.3 Pretrained large language models
+## 14.3 Pretrained large language models
 
 Natural language processing is another area where pretraining models are particularly successful. In language problems, an examples typically corresponds to a document or generally a sequence/trunk of words, denoted by x = ( x , · · · , x T ) where T is the length of the document/sequence, x i ∈ { , · · · , V } are words in the document, and V is the vocabulary size. A language model is a probabilistic model representing the probability of a document, denoted by p ( x , · · · , x T ) . This probability distribution is very
 
@@ -7920,7 +7920,7 @@ t =2
 
 where p t,j denotes the j -th entry of the probability vector p t .
 
-###### 14.3.1 Zero-shot learning and in-context learning
+### 14.3.1 Zero-shot learning and in-context learning
 
 For language models, there are many ways to adapt a pretrained model to downstream tasks. In this notes, we discuss three of them: finetuning, zeroshot learning, and in-context learning.
 
@@ -8011,7 +8011,7 @@ The area of foundation models is very new and quickly growing. The notes here on
 
 We now begin our study of reinforcement learning and adaptive control. In supervised learning, we saw algorithms that tried to make their outputs mimic the labels y given in the training set. In that setting, the labels gave an unambiguous “right answer” for each of the inputs x . In contrast, for many sequential decision making and control problems, it is very difficult to provide this type of explicit supervision to a learning algorithm. For example, if we have just built a four-legged robot and are trying to program it to walk, then initially we have no idea what the “correct” actions to take are to make it walk, and so do not know how to provide explicit supervision for a learning algorithm to try to mimic. In the reinforcement learning framework, we will instead provide our algorithms only a reward function, which indicates to the learning agent when it is doing well, and when it is doing poorly. In the four-legged walking example, the reward function might give the robot positive rewards for moving forwards, and negative rewards for either moving backwards or falling over. It will then be the learning algorithm’s job to figure out how to choose actions over time so as to obtain large rewards. Reinforcement learning has been successful in applications as diverse as autonomous helicopter flight, robot legged locomotion, cell-phone network routing, marketing strategy selection, factory control, and efficient web-page indexing. Our study of reinforcement learning will begin with a definition of the Markov decision processes (MDP) , which provides the formalism in which RL problems are usually posed.
 
-##### 15.1 Markov decision processes
+## 15.1 Markov decision processes
 
 A Markov decision process is a tuple ( S, A, { P sa } , γ, R ), where:
 
@@ -8186,7 +8186,7 @@ optimal policy for s . The same policy π attains the maximum in Equa-
 
 tion (15.1) for all states s . This means that we can use the same policy π no matter what the initial state of our MDP is.
 
-##### 15.2 Value iteration and policy iteration
+## 15.2 Value iteration and policy iteration
 
 We now describe two efficient algorithms for solving finite-state MDPs. For now, we will consider only MDPs with finite state and action spaces ( | S | <
 
@@ -8244,7 +8244,7 @@ Both value iteration and policy iteration are standard algorithms for solving MD
 
 spaces, solving for V explicitly would involve solving a large system of linear equations, and could be difficult (and note that one has to solve the linear system multiple times in policy iteration). In these problems, value iteration may be preferred. For this reason, in practice value iteration seems to be used more often than policy iteration. For some more discussions on the comparison and connection of value iteration and policy iteration, please see Section 15.5.
 
-##### 15.3 Learning a model for an MDP
+## 15.3 Learning a model for an MDP
 
 So far, we have discussed MDPs and algorithms for MDPs assuming that the state transition probabilities and rewards are known. In many realistic problems, we are not given state transition probabilities and rewards explicitly, but must instead estimate them from data. (Usually, S, A and γ are known.) For example, suppose that, for the inverted pendulum problem (see prob-
 
@@ -8312,7 +8312,7 @@ taken action a in state s before—the we might simply estimate P sa ( s ) to be
 
 We note that, for this particular algorithm, there is one simple optimization that can make it run much more quickly. Specifically, in the inner loop of the algorithm where we apply value iteration, if instead of initializing value iteration with V = 0, we initialize it with the solution found during the previous iteration of our algorithm, then that will provide value iteration with a much better initial starting point and make it converge more quickly.
 
-##### 15.4 Continuous state MDPs
+## 15.4 Continuous state MDPs
 
 So far, we’ve focused our attention on MDPs with a finite number of states. We now discuss algorithms for MDPs that may have an infinite number of states. For example, for a car, we might represent the state as ( x, y, θ, x, ˙ y, ˙ θ ˙ ), comprising its position ( x, y ); orientation θ ; velocity in the x and y directions x ˙ and ˙ y ; and angular velocity  θ ˙ . Hence, S = R is an infinite set of states, because there is an infinite number of possible positions and orientations for the car. Similarly, the inverted pendulum you saw in PS4 has states ( x, θ, x, ˙ θ ˙ ), where θ is the angle of the pole. And, a helicopter flying in 3d space has states of the form ( x, y, z, φ, θ, ψ, x, ˙ y, ˙ z, ˙ φ, ˙ θ, ˙ ψ ˙ ), where here the roll φ , pitch θ , and yaw ψ angles specify the 3d orientation of the helicopter.
 
@@ -8320,7 +8320,7 @@ d
 
 In this section, we will consider settings where the state space is S = R , and describe ways for solving such MDPs.
 
-###### 15.4.1 Discretization
+### 15.4.1 Discretization
 
 Perhaps the simplest way to solve a continuous-state MDP is to discretize the state space, and then to use an algorithm like value iteration or policy iteration, as described previously. For example, if we have 2d states ( s , s ), we can use a grid to discretize the state space:
 
@@ -8382,7 +8382,7 @@ d
 
 state into k values. Then the total number of discrete states we have is k . This grows exponentially quickly in the dimension of the state space d , and thus does not scale well to large problems. For example, with a 10d state, if we discretize each state variable into 100 values, we would have 100 = 10 discrete states, which is far too many to represent even on a modern desktop computer. As a rule of thumb, discretization usually works extremely well for 1d and 2d problems (and has the advantage of being simple and quick to implement). Perhaps with a little bit of cleverness and some care in choosing the discretization method, it often works well for problems with up to 4d states. If you’re extremely clever, and somewhat lucky, you may even get it to work for some 6d problems. But it very rarely works for problems any higher dimensional than that.
 
-###### 15.4.2 Value function approximation
+### 15.4.2 Value function approximation
 
 We now describe an alternative method for finding policies in continuous-
 
@@ -8677,7 +8677,7 @@ E s ′ [ V ( s )] ≈ V (E s ′ [ s ]) (15.10) = V ( f ( s, a )) , (15.11)
 
 where here the expectation is over the random s ∼ P sa . So long as the noise terms  t are small, this will usually be a reasonable approximation. However, for problems that don’t lend themselves to such approximations, having to sample k | A | states using the model, in order to approximate the expectation above, can be computationally expensive.
 
-##### 15.5 Connections between Policy and Value Iteration (Optional)
+## 15.5 Connections between Policy and Value Iteration (Optional)
 
 In the policy iteration, line 3 of Algorithm 7, we typically use linear system
 
@@ -8733,7 +8733,7 @@ value iteration (Algorithm 6) is that on line 4, the procedure is using the acti
 
 # LQR, DDP and LQG
 
-##### 16.1 Finite-horizon MDPs
+## 16.1 Finite-horizon MDPs
 
 In Chapter 15, we defined Markov Decision Processes (MDPs) and covered Value Iteration / Policy Iteration in a simplified setting. More specifically we introduced the optimal Bellman equation that defines the optimal value
 
@@ -9047,7 +9047,7 @@ t ∗
 
 In other words, the Bellman operator B is a γ -contracting operator.
 
-##### 16.2 Linear Quadratic Regulation (LQR)
+## 16.2 Linear Quadratic Regulation (LQR)
 
 In this section, we’ll cover a special case of the finite-horizon setting described in Section 16.1, for which the exact solution is (easily) tractable. This model is widely used in robotics, and a common technique in many problems is to reduce the formulation to this framework. First, let’s describe the model’s assumptions. We place ourselves in the continuous setting, with
 
@@ -9319,7 +9319,7 @@ using the discrete Ricatti equations. If there exists a policy that drives the s
 
 Using Fact 3, we can be even more clever and make our algorithm run (slightly) faster! As the optimal policy does not depend on Ψ t , and the update of Φ t only depends on Φ t , it is sufficient to update only Φ t !
 
-##### 16.3 From non-linear dynamics to LQR
+## 16.3 From non-linear dynamics to LQR
 
 It turns out that a lot of problems can be reduced to LQR, even if dynamics are non-linear. While LQR is a nice formulation because we are able to come up with a nice exact solution, it is far from being general. Let’s take for instance the case of the inverted pendulum. The transitions between states look like       x t +1 x t
 
@@ -9343,7 +9343,7 @@ where the function F depends on the cos of the angle etc. Now, the question we m
 
 ### Can we linearize this system?
 
-###### 16.3.1 Linearization of dynamics
+### 16.3.1 Linearization of dynamics
 
 Let’s suppose that at time t , the system spends most of its time in some state s ¯ t and the actions we perform are around ¯ a t . For the inverted pendulum, if we reached some kind of optimal, this is true: our actions are small and we don’t deviate much from the vertical. We are going to use Taylor expansion to linearize the dynamics. In the simple case where the state is one-dimensional and the transition function F does not depend on the action, we would write something like
 
@@ -9363,7 +9363,7 @@ s t +1 ≈ As t + Bs t + κ
 
 where κ is some constant and A, B are matrices. Now, this writing looks awfully similar to the assumptions made for LQR. We just have to get rid of the constant term κ ! It turns out that the constant term can be absorbed into s t by artificially increasing the dimension by one. This is the same trick that we used at the beginning of the class for linear regression...
 
-###### 16.3.2 Differential Dynamic Programming (DDP)
+### 16.3.2 Differential Dynamic Programming (DDP)
 
 The previous method works well for cases where the goal is to stay around
 
@@ -9505,7 +9505,7 @@ s t +1
 
 then, go back to step 2 and repeat until some stopping criterion.
 
-##### 16.4 Linear Quadratic Gaussian (LQG)
+## 16.4 Linear Quadratic Gaussian (LQG)
 
 Often, in the real word, we don’t get to observe the full state s t . For example, an autonomous car could receive an image from a camera, which is merely an observation , and not the full state of the world. So far, we assumed that the state was available. As this might not hold true for most of the real-world problems, we need a new tool to model this situation: Partially Observable MDPs . A POMDP is an MDP with an extra observation layer. In other words, we introduce a new variable o t , that follows some conditional distribution given the current state s t
 

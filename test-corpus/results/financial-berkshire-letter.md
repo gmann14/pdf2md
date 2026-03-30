@@ -4,7 +4,7 @@ title: "Charlie Munger – The Architect of Berkshire Hathaway"
 
 # Charlie Munger – The Architect of Berkshire Hathaway
 
-Charlie Munger died on November 28, just 33 days before his 100th birthday.
+## Charlie Munger died on November 28, just 33 days before his 100th birthday.
 
 Though born and raised in Omaha, he spent 80% of his life domiciled elsewhere. Consequently, it was not until 1959 when he was 35 that I first met him. In 1962, he decided that he should take up money management.
 

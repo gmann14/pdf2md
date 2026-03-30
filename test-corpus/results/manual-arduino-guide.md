@@ -192,7 +192,7 @@ debugWIRE interface for on-chip debugging and programming
 
 ## 1 The Board
 
-#### 1.1 Application Examples
+## 1.1 Application Examples
 
 The UNO board is the fl agship product of Arduino. Regardless if you are new to the world of electronics or will use
 
@@ -218,7 +218,7 @@ various education purposes and scienti [c projects. The board's high standard an
 
 examples.
 
-#### [1.2 Related Products](https://store.arduino.cc/)
+## [1.2 Related Products](https://store.arduino.cc/)
 
 Arduino Starter Kit
 
@@ -230,7 +230,7 @@ Tinkerkit Braccio Robot
 
 ## 2 Ratings
 
-#### 2.1 Recommended Operating Conditions
+## 2.1 Recommended Operating Conditions
 
 ### Symbol Description Min Max
 
@@ -240,7 +240,7 @@ NOTE: In extreme temperatures, EEPROM, voltage regulator, and the crystal oscill
 
 work as expected.
 
-#### 2.2 Power Consumption
+## 2.2 Power Consumption
 
 ### Symbol [Description](https://create.arduino.cc/editor) Min Typ Max Unit
 
@@ -252,7 +252,7 @@ PMax [Maximum Power Consumption](https://www.arduino.cc/) - - xx mA
 
 ## 3 Functional Overview
 
-#### [3.1 Board Topology](https://store.arduino.cc/)
+## [3.1 Board Topology](https://store.arduino.cc/)
 
 Top view
 
@@ -274,19 +274,19 @@ J-ZU4 ATMEGA328P Module ICSP1 Pin header connector (through hole 6)
 
 Y1 ECS-160-20-4X-DU Oscillator
 
-#### 3.2 Processor
+## 3.2 Processor
 
 The Main Processor is a ATmega328P running at up to 20 MHz. Most of its pins are connected to the external
 
 [headers, however some are reserved for internal communication with the USB Bridge coprocessor.](https://create.arduino.cc/editor)
 
-#### 3.3 Power Tree
+## 3.3 Power Tree
 
 Power tree
 
 ## 4 Board Operation
 
-#### 4.1 Getting Started - IDE
+## 4.1 Getting Started - IDE
 
 If you want to program your UNO R3 while o ffl ine you need to install the Arduino Desktop IDE [1] To connect the
 
@@ -294,7 +294,7 @@ UNO R3 to your computer, you’ll need a USB-B cable. This also provides power t
 
 LED.
 
-#### 4.2 Getting Started - Arduino Cloud Editor
+## 4.2 Getting Started - Arduino Cloud Editor
 
 [All Arduino boards, including this one, work out-of-the-box on the Arduino Cloud Editor [2], by just installing a](https://www.arduino.cc/en/Main/Software)
 
@@ -304,13 +304,13 @@ The Arduino Cloud Editor is hosted online, therefore it will always be up-to-dat
 
 for all boards. Follow [[3]](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a) [to start coding on the browser and upload your sketches onto your board.](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a)
 
-#### 4.3 Sample Sketches
+## 4.3 Sample Sketches
 
 [Sample sketches for the UNO R3 can be found either in the “Examples” menu in the Arduino IDE or in the](https://create.arduino.cc/editor)
 
 [“Documentation” section of the Arduino website [4].](https://www.arduino.cc/reference/en/)
 
-#### [4.4 Online Resources](https://store.arduino.cc/)
+## [4.4 Online Resources](https://store.arduino.cc/)
 
 [Now that you have gone through the basics of what you can do with the board you can explore the endless](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending)
 
@@ -324,7 +324,7 @@ more.
 
 Pinout
 
-#### 5.1 JANALOG
+## 5.1 JANALOG
 
 ### Pin Function Type Description
 
@@ -356,7 +356,7 @@ Pinout
 
 ## 14 A5/SCL Analog input/I2C [Analog input 5/I2C Clock line](https://www.arduino.cc/en/Main/Software)
 
-#### 5.2 JDIGITAL
+## 5.2 JDIGITAL
 
 ### Pin [Function](https://store.arduino.cc/) [Type](https://store.arduino.cc/) [Description](https://www.arduino.cc/)
 
@@ -396,15 +396,15 @@ Pinout
 
 18 A5/SD5 Digital Analog input 5/I2C Clock line (duplicated)
 
-#### 5.3 Mechanical Information
+## 5.3 Mechanical Information
 
-#### 5.4 Board Outline & Mounting Holes
+## 5.4 Board Outline & Mounting Holes
 
 Board outline
 
 ## 6 Certifications
 
-#### 6.1 Declaration of Conformity CE DoC (EU)
+## 6.1 Declaration of Conformity CE DoC (EU)
 
 We declare under our sole responsibility that the products above are in conformity with the essential requirements
 
@@ -424,7 +424,7 @@ Conforms to: EN 60950-1:2006/A11:2009/A1:2010/A12:2011/AC:2011
 
 Conforms to: [EN 62311:2008](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a)
 
-#### [6.2 Declaration of Conformity to EU RoHS & REACH 211 01/19/2021](https://www.arduino.cc/en/Main/Software)
+## [6.2 Declaration of Conformity to EU RoHS & REACH 211 01/19/2021](https://www.arduino.cc/en/Main/Software)
 
 [Arduino boards are in compliance with RoHS 2 Directive 2011/65/EU of the European Parliament and RoHS 3](https://create.arduino.cc/editor)
 
@@ -472,7 +472,7 @@ Substances of Very High Concern (SVHC) in any signi cant amounts as speci ed by 
 
 published by ECHA (European Chemical Agency) 1907 /2006/EC.
 
-#### 6.3 Conflict Minerals Declaration
+## 6.3 Conflict Minerals Declaration
 
 As a global supplier of electronic and electrical components, Arduino is aware of our obligations with regards to
 
@@ -780,7 +780,7 @@ Arduino UNO R3 的 ⽰ 例 程 序 可 以 在 [Arduino IDE](https://www.arduino
 
 ### 布 局
 
-#### 15.1 JANALOG
+## 15.1 JANALOG
 
 引 脚 功 能 类 型 描 述
 
@@ -812,7 +812,7 @@ Arduino UNO R3 的 ⽰ 例 程 序 可 以 在 [Arduino IDE](https://www.arduino
 
 ## 14 A5/SCL [模](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending) [拟](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending) [输](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending) [⼊](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending) [/I2C](https://create.arduino.cc/editor) [模](https://create.arduino.cc/editor) [拟](https://create.arduino.cc/editor) [输](https://create.arduino.cc/editor) [⼊](https://create.arduino.cc/editor) [5/I2C](https://create.arduino.cc/editor) [时](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending) [钟](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending) [线](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending)
 
-#### 15.2 JDIGITAL
+## 15.2 JDIGITAL
 
 引 脚 功 能 类 型 描 述
 

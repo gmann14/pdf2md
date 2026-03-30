@@ -239,12 +239,14 @@ function buildFontProfile(items: ExtractedItem[]): FontProfile {
 
   // Sizes larger than body text become headings, ranked largest→smallest
   const largerSizes = [...sizeCharCount.keys()]
-    .filter((s) => s > bodySize * 1.1) // at least 10% larger than body
+    .filter((s) => s > bodySize * 1.08) // at least 8% larger than body
     .sort((a, b) => b - a);
 
+  // Cap at 4 heading levels — H5/H6 from font-size alone are rarely meaningful
+  // and cause overly-deep heading hierarchies
   const headingSizes = new Map<number, number>();
-  for (let i = 0; i < largerSizes.length && i < 6; i++) {
-    headingSizes.set(largerSizes[i], i + 1); // H1, H2, ... H6
+  for (let i = 0; i < largerSizes.length && i < 4; i++) {
+    headingSizes.set(largerSizes[i], i + 1); // H1, H2, H3, H4
   }
 
   return { bodySize, headingSizes };
@@ -398,22 +400,13 @@ function classifyBlock(
   emphasisFonts?: Set<string>,
 ): Block {
   const firstItem = items[0];
-
-  // Check 1: Font size heading (largest font sizes are headings)
-  // Guard: don't classify long blocks as headings — real headings are short
-  const headingLevel = getHeadingLevel(firstItem.fontSize, profile);
-  const blockText = items.map((i) => i.str).join(" ").trim();
-  if (headingLevel !== undefined && blockText.length <= 150) {
-    return { items, type: "heading", headingLevel };
-  }
-
   const allText = items.map((i) => i.str).join(" ").trim();
   const isShortLine = allText.length < 120;
   const hasNoTrailingPunctuation = !/[.,:;]$/.test(allText);
 
-  // Check 2: Section numbering pattern (e.g., "1.1 Background", "II. REWARD-DRIVEN") → heading
-  // Must come before list detection so "1. Introduction" isn't classified as a list item
-  // Also matches Roman numeral prefixes (I, II, III, IV, V, VI, VII, VIII, IX, X)
+  // Check 1: Section numbering pattern (e.g., "1.1 Background", "II. REWARD-DRIVEN") → heading
+  // Takes priority over font-size heading because numbering reliably indicates level.
+  // Must come before list detection so "1. Introduction" isn't classified as a list item.
   const romanMatch = allText.match(/^(I{1,3}|IV|VI{0,3}|IX|X{0,3})\.\s+[A-Z]/);
   if (romanMatch && isShortLine && hasNoTrailingPunctuation) {
     return { items, type: "heading", headingLevel: 2 };
@@ -429,6 +422,13 @@ function classifyBlock(
   const sectionBareMatch = allText.match(/^(\d+)\s+[A-Z]/);
   if (sectionBareMatch && isShortLine && hasNoTrailingPunctuation && allText.length < 60) {
     return { items, type: "heading", headingLevel: 2 };
+  }
+
+  // Check 2: Font size heading (largest font sizes are headings)
+  // Guard: don't classify long blocks as headings — real headings are short
+  const headingLevel = getHeadingLevel(firstItem.fontSize, profile);
+  if (headingLevel !== undefined && allText.length <= 150) {
+    return { items, type: "heading", headingLevel };
   }
 
   // Check 3: Bold text on a short standalone line → heading
@@ -565,6 +565,43 @@ function filterHeadersFooters(
     const normalized = item.str.trim().replace(/\d+/g, "#");
     return !repeated.has(normalized);
   });
+}
+
+// ---------------------------------------------------------------------------
+// Heading level normalization
+// ---------------------------------------------------------------------------
+
+/**
+ * If no H1 heading exists, promote the first heading (on page 1) to H1.
+ * Only promotes a single heading — the document title — without shifting
+ * other headings, to preserve the existing heading hierarchy.
+ */
+function promoteFirstHeading(blocks: Block[]): void {
+  const hasH1 = blocks.some((b) => b.type === "heading" && b.headingLevel === 1);
+  if (hasH1) return;
+
+  const firstHeading = blocks.find(
+    (b) => b.type === "heading" && b.items[0]?.page === 1,
+  );
+  if (!firstHeading || firstHeading.headingLevel === undefined) return;
+  if (firstHeading.headingLevel <= 1) return;
+
+  // Only promote if this heading has a larger font size than most other headings
+  // (i.e., it's genuinely the document title, not just the first section heading)
+  const firstFontSize = firstHeading.items[0]?.fontSize ?? 0;
+  const otherHeadings = blocks.filter(
+    (b) => b !== firstHeading && b.type === "heading",
+  );
+  if (otherHeadings.length === 0) return;
+
+  const otherMaxFontSize = Math.max(
+    ...otherHeadings.map((b) => b.items[0]?.fontSize ?? 0),
+  );
+
+  // Only promote if the first heading's font is larger than other headings
+  if (firstFontSize > otherMaxFontSize) {
+    firstHeading.headingLevel = 1;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -1124,6 +1161,10 @@ export async function convert(
 
   // Group into blocks (paragraphs, headings, list items)
   const blocks = groupIntoBlocks(reordered, profile, emphasisFonts);
+
+  // Promote first heading to H1 if no H1 exists (common for document titles
+  // that get ranked deep by font-size analysis)
+  promoteFirstHeading(blocks);
 
   // Post-process: detect tables and code blocks
   const enrichedBlocks = detectTablesAndCode(blocks, codeFonts);

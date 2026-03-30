@@ -26,7 +26,7 @@ INSIDE Advisory Committee on Immunization Practices [Recommended Immunization Sc
 
 specialties rarely perform confirmatory diagnostic testing ( , ). Understanding prescribing patterns, including identification of clinicians who prescribe a disproportionate volume of topical antifungals, might help establish and promote correct use of these medications ( ). Centers for Medicare & Medicaid Services (CMS) data were used to characterize prescribing volume of topi - cal antifungal medications among Medicare Part D beneficiaries in the United States during 2021.
 
-Methods
+### Methods
 
 Data Source Approximately 48.8 million (76%) Medicare beneficiaries were enrolled in the Part D prescription drug benefit program
 
@@ -106,7 +106,7 @@ Analyses were conducted using SAS software (version 9.4; SAS Institute). This ac
 
 law and CDC policy.
 
-Results
+### Results
 
 Prescriptions During 2021, a total of 6.5 million topical antifungal prescriptions were filled by Part D beneficiaries (overall rate = 134.0 prescriptions per 1,000 beneficiaries) (Table 1). By volume, the most common prescriptions were for ketocon - [azole (2.4 million [36.6%]), nystatin (1.9 million [29.0%]),](https://www.medicare.gov/what-medicare-covers/your-medicare-coverage-choices/whats-medicare) and clotrimazole-betamethasone dipropionate (0.9 million [[14.7%]). The total cost for all topical antifungal prescriptions](https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/cms-program-statistics-medicare-part-d-enrollment) [was $231 million. The highest average per prescription costs](https://data.cms.gov/provider-summary-by-type-of-service/medicare-part-d-prescribers/medicare-part-d-prescribers-by-provider-and-drug)
 
@@ -143,7 +143,7 @@ Butenafine (41 prescriptions), luliconazole (169), miconazole (155), and sertaco
 
 Among 1,017,417 unique prescribers, 130,637 (12.8%) prescribed topical antifungals ( Table 2 ). The number of pre - scriptions per provider was highest for dermatologists (87.1), followed by podiatrists (67.2), and primary care physicians (12.3). Among 6.5 million topical antifungal prescriptions, the most were written by primary care physicians (2.6 million [40.0%], followed by nurse practitioners or physician assistants (1.4 million [21.4%]), dermatologists (1.1 million [17.6%]), and podiatrists (0.9 million [14.1%]). Among all topical anti [-](https://pubmed.ncbi.nlm.nih.gov/33354740) fungal prescriptions, 44.2% (2.9 million) were written by the top 10% (13,106) of topical antifungal prescribers. By provider type, the percentage of topical antifungal prescriptions written [by higher-volume topical antifungal prescribers ranged from](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf) [35.5% for dermatologists to 54.8% for podiatrists.](https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/medicare-monthly-enrollment)
 
-[Discussion](https://doi.org/10.1016/j.cger.2023.09.008) This analysis of publicly available CMS data found that 6.5 million topical antifungal prescriptions (enough to provide
+### [Discussion](https://doi.org/10.1016/j.cger.2023.09.008) This analysis of publicly available CMS data found that 6.5 million topical antifungal prescriptions (enough to provide
 
 | Prescriptions per 1,000 | Aggregate cost, all | Avg. cost per      |
 | ----------------------- | ------------------- | ------------------ |
