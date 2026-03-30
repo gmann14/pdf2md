@@ -49,6 +49,34 @@ console.log(result.stats); // { pageCount, wordCount, processingMs }
 npx @pdf2md/core document.pdf > output.md
 ```
 
+### MCP Server (AI Agents)
+
+Use pdf2md with Claude Code, Cursor, Windsurf, or any MCP-compatible AI agent:
+
+```bash
+# Claude Code
+claude mcp add pdf2md -- npx -y @pdf2md/mcp
+```
+
+Or add to your `.mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "pdf2md": {
+      "command": "npx",
+      "args": ["-y", "@pdf2md/mcp"]
+    }
+  }
+}
+```
+
+The MCP server exposes a `convert_pdf` tool that accepts a file path and returns Markdown. See [@pdf2md/mcp](packages/mcp/) for full documentation.
+
+### Claude Code Skill
+
+The repo includes a Claude Code skill at `.claude/skills/pdf2md/`. When working in this project, Claude can automatically convert PDFs to Markdown.
+
 ## API Reference
 
 ### `convert(pdfBuffer, options?)`
@@ -107,6 +135,7 @@ const result = await convert(pdfBuffer, {
 ```
 apps/web/          — Next.js web app (SSG for SEO, client-side conversion)
 packages/core/     — @pdf2md/core npm package (conversion engine + CLI)
+packages/mcp/      — @pdf2md/mcp MCP server (AI agent integration)
 docs/              — Product spec, launch plan
 research/          — Competitor analysis, tech research
 ```

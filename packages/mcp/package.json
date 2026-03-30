@@ -1,0 +1,43 @@
+{
+  "name": "@pdf2md/mcp",
+  "version": "0.1.0",
+  "description": "MCP server for converting PDF files to Markdown — use with Claude, Cursor, Windsurf, and other AI agents",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "pdf2md-mcp": "./bin/pdf2md-mcp.js",
+    "mcp": "./bin/pdf2md-mcp.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "@pdf2md/core": "workspace:*",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "pdf",
+    "markdown",
+    "converter",
+    "pdf-to-markdown",
+    "claude",
+    "ai-agent",
+    "model-context-protocol"
+  ]
+}
