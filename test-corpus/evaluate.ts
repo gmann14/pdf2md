@@ -249,6 +249,25 @@ function scoreCodeBlockDetection(md: string, category: string): number {
     return 6;
   }
 
+  // Categories where having no code blocks is totally fine (academic, reports, etc.)
+  const codeOptional = [
+    "Academic Paper",
+    "Academic (Footnotes)",
+    "Scientific Paper (Tables)",
+    "Survey Paper (Long)",
+    "Multi-Column Layout",
+    "Newsletter/Report",
+    "Data-Heavy Report",
+    "Statistical Report",
+    "Technical Manual",
+    "Whitepaper",
+    "Slide Deck",
+    "Government Technical Report",
+  ];
+  if (codeOptional.includes(category)) {
+    if (!hasCode) return 9; // No code expected, no code found — fine
+  }
+
   // Other categories: mild bonus for detecting code, but penalize excessive
   if (hasCode) {
     // Check for suspiciously tiny code blocks (likely false positives)
@@ -262,12 +281,28 @@ function scoreCodeBlockDetection(md: string, category: string): number {
   return 6; // N/A
 }
 
-function scoreLinkExtraction(md: string): number {
+function scoreLinkExtraction(md: string, category: string): number {
   const links = md.match(/\[([^\]]+)\]\(([^)]+)\)/g) ?? [];
   const bareUrls = md.match(/https?:\/\/[^\s)]+/g) ?? [];
   const totalLinks = links.length + bareUrls.length;
 
-  if (totalLinks === 0) return 5; // Many PDFs have no links
+  // Categories where having no links is completely normal
+  const linksOptional = [
+    "Financial Report",
+    "Scanned Document",
+    "Resume/CV",
+    "Government Form",
+    "Filled Form",
+    "Landscape Document",
+    "CJK / Multilingual",
+    "Infographic",
+    "Survey Paper (Long)",
+    "Newsletter/Report",
+  ];
+
+  if (totalLinks === 0) {
+    return linksOptional.includes(category) ? 8 : 5;
+  }
   if (totalLinks >= 5) return 9;
   if (totalLinks >= 1) return 7;
   return 5;
@@ -358,7 +393,7 @@ function evaluatePdf(
     listDetection: scoreListDetection(md, category),
     tableDetection: scoreTableDetection(md, category),
     codeBlockDetection: scoreCodeBlockDetection(md, category),
-    linkExtraction: scoreLinkExtraction(md),
+    linkExtraction: scoreLinkExtraction(md, category),
     metadataExtraction: scoreMetadataExtraction(md, result.metadata),
     noGarbage: scoreNoGarbage(md),
     overallReadability: scoreOverallReadability(md, result.stats.wordCount),
