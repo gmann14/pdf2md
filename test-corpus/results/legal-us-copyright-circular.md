@@ -34,7 +34,7 @@ These categories should be viewed broadly for the purpose of registering your wo
 
 note: Before 1978, federal copyright was generally secured by publishing a work with an appro - priate copyright notice . U.S. works that were in the public domain on January 1, 1978, when the 1976 Copyright Act took effect, remain in the public domain under the 1976 Act.
 
-What Are the Rights of a Copyright Owner?
+### What Are the Rights of a Copyright Owner?
 
 Copyright provides the owner of copyright with the exclusive right to
 
@@ -52,7 +52,7 @@ Copyright provides the owner of copyright with the exclusive right to
 
 Copyright also provides the owner of copyright the right to authorize others to exercise these exclusive rights, subject to certain statutory limitations.
 
-What Is Not Protected by Copyright?
+### What Is Not Protected by Copyright?
 
 Copyright does not protect
 
@@ -70,7 +70,7 @@ Copyright does not protect
 
 For more information, see Works Not Protected by Copyright ( Circular 33 ).
 
-Who Can Claim Copyright?
+### Who Can Claim Copyright?
 
 The copyright in a work initially belongs to the author(s) who created that work. When two or more authors create a single work with the intent of merging their contributions into inseparable or inter - dependent parts of a unitary whole, the authors are considered joint authors and have an indivisible interest in the work as a whole. By contrast, if multiple authors contribute to a collective work, each
 
@@ -102,23 +102,23 @@ The concept of work made for hire can be complicated and has serious consequence
 
 note: Mere ownership of a copy or phonorecord that embodies a work does not give the owner of [that copy or phonorecord the ownership of the copyright in the work.](https://www.copyright.gov/circs/circ06a.pdf)
 
-Transfer of Copyright Ownership
+### Transfer of Copyright Ownership
 
 Any or all of the copyright owner’s exclusive rights, or parts of those rights, can be transferred. The transfer, however, generally must be made in writing and signed by the owner of the rights conveyed or the owner’s authorized agent. Transferring a right on a nonexclusive basis does not require a writ - ten agreement. You can bequeath a copyright by will or pass it along as personal property under applicable state laws of intestate succession. It can also be conveyed by operation of law. You can “record” a transfer of copyright ownership with the Copyright Office through its Office [of Public Records and Repositories. Although recordation is not required to make a valid transfer](https://www.copyright.gov/fair-use/) [between parties, it does provide certain legal advantages. For more information, see](http://www.copyright.gov/circs/circ12.pdf) Recordation of Transfers and Other Documents ( Circular 12 ).
 
-Termination of a Copyright Transfer
+### Termination of a Copyright Transfer
 
 Under certain circumstances, the Copyright Act allows authors or their heirs to terminate an agree - ment that transferred or licensed the author’s copyright to a third party after thirty-five years. To terminate a grant, the author or the author’s heirs must serve an advance written “notice of termi - [nation” on the grantee or the grantee’s successor-in-interest and must record a copy of that notice](https://www.copyright.gov/docs/fees.html) with the Copyright Office and pay the required [filing fee](http://www.copyright.gov/) [.](http://www.copyright.gov/) A notice of termination must be recorded before the effective date of termination specified in the notice. If a notice of termination is not recorded in a timely manner, the notice will be invalid, and the author or the author’s heirs will not be able to terminate the agreement. For more information, see chapter 2300 , section 2310 of the [Compendium of U.S. Copyright Office Practices](http://www.copyright.gov/) .
 
-How Long Does Copyright Last?
+### How Long Does Copyright Last?
 
 In general, for works created on or after January 1, 1978, the term of copyright is the life of the author plus seventy years after the author’s death. If the work is a joint work with multiple authors, the term lasts for seventy years after the last surviving author’s death. For works made for hire and anonymous or pseudonymous works, the duration of copyright is 95 years from publication or 120 years from creation, whichever is shorter. For works created before January 1, 1978, that were not published or registered as of that date, the term of copyright is generally the same as for works created on or after January 1, 1978. The law, however, provides that in no case would the term have expired before December 31, 2002, and if the work was published on or before that date, the term will not expire before December 31, 2047. For works created before January 1, 1978, that were published or registered before that date, the initial term of copyright was twenty-eight years from the date of publication with notice or from the date of registration. At the end of the initial term, the copyright could be renewed for another sixty- [seven years for a total term of protection of up to ninety-five years. To extend copyright into the](http://www.copyright.gov/circs/circ03.pdf) renewal term, two registrations had to be made before the original term expired: one for the original term and the other for the renewal term. This requirement was eliminated on June 26, 1992, and renewal term registration is now optional. [For more information on the term of copyright protection, see](https://www.copyright.gov/circs/circ06a.pdf) Duration of Copyright ( Circular 15A ) and Renewal of Copyright ( Circular 6 A ).
 
-How Can I Protect My Work?
+### How Can I Protect My Work?
 
 Copyright exists automatically in an original work of authorship once it is fixed in a tangible medium, but a copyright owner can take steps to enhance the protections of copyright, the most important of which is registering the work. Although registering a work is not mandatory, for U.S. works, registration (or refusal) is necessary to enforce the exclusive rights of copyright through litigation. Applying a copyright notice to a work has not been required since March 1, 1989, but may still provide practical and legal benefits. Notice typically consists of the copyright symbol or the word “Copyright,” the name of the copyright owner, and the year of first publication. Placing a copyright notice on a work is not a substitute for registration.
 
-Benefits of Registration
+### Benefits of Registration
 
 Registration establishes a claim to copyright with the Copyright Office. An application for copyright registration can be filed by the author or owner of an exclusive right in a work, the owner of all exclusive rights, or an agent on behalf of an author or owner. An application contains three essential [elements: a completed application form, a nonrefundable filing fee, and a nonreturnable deposit—](https://www.copyright.gov/docs/fees.html) [that is, a copy or copies of the work being registered and “deposited” with the Copyright Office.](http://www.copyright.gov/) A certificate of registration creates a public record of key facts relating to the authorship and owner - ship of the claimed work, including the title of the work, the author of the work, the name and address of the claimant or copyright owner, the year of creation, and information about whether the work is published, has been previously registered, or includes preexisting material. You can submit an application online through www.copyright.gov or on a paper application. For more information on registering a work with the Copyright Office, see Copyright Registration ( Circular 2 ). In addition to establishing a public record of a copyright claim, registration offers several other [statutory advantages:](http://www.copyright.gov/circs/circ07d.pdf)
 
@@ -132,11 +132,11 @@ Registration establishes a claim to copyright with the Copyright Office. An appl
 
 Registration can be made at any time within the life of the copyright. If you register before pub - [lication, you do not have to re-register when the work is published, although you can register the](http://www.copyright.gov/circs/circ03.pdf) published edition, if desired.
 
-Effective Date of Registration
+### Effective Date of Registration
 
 When the Copyright Office registers a work it assigns an effective date of registration to the certifi - cate of registration. The effective date of registration is the day that the Office receives in proper form all required elements—an acceptable application, an acceptable deposit, and a nonrefundable filing fee. The date is not set until all the required elements are in the Office’s possession. If the Office receives incomplete materials, an unacceptable deposit, or an insufficient fee, the effective date of registration will be set on the date that the Office receives all the required materials in acceptable form. The date is not based on how long it takes the Office to examine the materials or mail the certificate of registration. You do not have to receive your certificate of registration before you publish or produce your work. Nor do you need permission from the Copyright Office to place a copyright notice on your [work. But the Copyright Office must approve or refuse your application before you can file a lawsuit](https://www.copyright.gov/fair-use/) [for copyright infringement, except in cases involving a non-U.S. work.](http://www.copyright.gov/circs/circ12.pdf) You may seek statutory dam - ages and attorneys’ fees in an infringement action provided that the infringement began after the effective date of registration. The law, however, provides a grace period of three months after pub - lication during which full remedies can be recovered for any infringement begun during the three [months after publication if registration is made before this period ends.](http://www.copyright.gov/circs/circ38a.pdf)
 
-Copyright Notice
+### Copyright Notice
 
 A copyright notice is a statement placed on copies or phonorecords of a work to inform the public that a copyright owner is claiming ownership of the work. A copyright notice consists of three elements:
 
@@ -158,11 +158,11 @@ A copyright notice is a statement placed on copies or phonorecords of a work to 
 
 Notice was required for works published in the United States before March 1, 1989. Works pub - lished without notice before that date may have entered the public domain in this country. For more information, see Copyright Notice ( Circular 3 ).
 
-How Can I Use a Copyrighted Work?
+### How Can I Use a Copyrighted Work?
 
 When deciding to use a work protected by copyright, the general rule is to seek permission from the copyright owner. Under the copyright law, a copyright owner may authorize activities that fall under the exclusive rights of copyright. For more information on seeking permission to use a copyrighted work, see How to Obtain Permission ( Circular 16 A ). Sections 107 to 122 of the copyright law contain provisions that establish limitations on the exclu - sive rights of the copyright owner. The provisions make certain uses of copyrighted works permis - sible without first obtaining permission of the copyright owner. One of the most discussed of these statutory provisions is known as fair use, a legal doctrine that promotes freedom of expression by [permitting the unlicensed use of copyright-protected works in certain circumstances. For more](https://www.copyright.gov/fair-use/) information on fair use, see the Office’s Fair Use Index on its website.
 
-What Is Publication and Why Is It Important?
+### What Is Publication and Why Is It Important?
 
 Under copyright law, publication is the distribution of copies or phonorecords of a work to the public by sale or other transfer of ownership or by rental, lease, or lending. Offering to distribute copies or phonorecords to a group of people for purposes of further distribution, public perfor - mance, or public display also constitutes publication. Whether a work is published has important implications, including:
 
@@ -188,31 +188,31 @@ Under copyright law, publication is the distribution of copies or phonorecords o
 
 When you register your work with the Office, you must determine whether the work is published or unpublished. For further information regarding publication, see chapter 1900 of Compendium of U.S. Copyright Office Practices .
 
-How Do I Protect My Work in Other Countries?
+### How Do I Protect My Work in Other Countries?
 
 There is no such thing as an “international copyright” that automatically protects an author’s works [throughout the entire world. Protection against unauthorized use in a particular country depends](https://www.copyright.gov/fair-use/) on the national laws of that country. Most countries offer protection to non-U.S. works under certain conditions, and these conditions have been greatly simplified by international copyright treaties and conventions. Generally, a U.S. work may be protected in another country if that country has entered into an international agreement with the United States. For more information and a list [of countries that maintain copyright relations with the United States, see](http://www.copyright.gov/circs/circ38a.pdf) International Copyright Relations of the United States ( Circular 38A ).
 
-What Is Mandatory Deposit?
+### What Is Mandatory Deposit?
 
 All copyrighted works that are published in the United States are subject to the “mandatory deposit” provision of the copyright law. As a general rule, this provision requires that two complete copies of [the “best edition” of a copyrightable work published in the United States be sent to the Copyright](https://www.copyright.gov/docs/fees.html) [Office for the collections of the Library of Congress within three months of publication. The “best](http://www.copyright.gov/) edition” of a work is “the edition, published in the United States at any time before the date of deposit, that the Library of Congress determines to be most suitable for its purposes.” The owner of copyright or of the exclusive right of publication may comply with this requirement either by sub - [mitting the best edition of the work when registering the work with the Office or by submitting the](http://www.copyright.gov/) work without seeking a registration and solely for the purpose of fulfilling the mandatory deposit requirement. The mandatory deposit provision helps ensure that the Library of Congress obtains copies of every copyrightable work published in the United States for its collections or for exchange with or transfer to any other library. For more information, see Mandatory Deposit of Copies or Phonorecords for the Library of Congress ( [Circular 7D](https://www.copyright.gov/circs/circ07b.pdf) [) and](https://www.copyright.gov/circs/circ07b.pdf) Best Edition of Published Copyrighted Works for the Collections of the Library of Con - gress ( Circular 7B ).
 
 notes 1. This circular is intended as an overview of the basic concepts of copyright. The authoritative source for U.S. copyright law is the Copyright Act, codified in Title 17 of the United States Code . Copy - right Office regulations are codified in Title 37 of the Code of Federal Regulations . Copyright Office practices and procedures are summarized in the third edition of the [Compendium of U.S. Copyright](http://www.copyright.gov/) Office Practices , cited as the Compendium [. The copyright law, regulations, and the](http://www.copyright.gov/) Compendium are available on the Copyright Office website at www.copyright.gov . 2. The Copyright Act defines a “United States work” for the purposes of registration and civil infringement actions as (a) a published work that is first published in the United States; first pub - lished simultaneously in the United States and another treaty party or parties, whose law grants a term of copyright protection that is the same as or longer than the term provided in the United States; first published simultaneously in the United States and a foreign nation that is not a treaty party; or first published in a foreign nation that is not a treaty party, and all of the authors of the work are nationals, domiciliaries, or habitual residents of, or in the case of an audiovisual work legal entities with headquarters in, the United States; (b) an unpublished work where all the authors of the work are nationals, domiciliaries, or habitual residents of the United States, or in the case of an unpublished audiovisual work, all the authors are legal entities with headquarters in the United States; or (c) a pictorial, graphic, or sculptural work incorporated in a building or structure that is located in the United States. 3. A phonorecord is a material object in which sounds, other than those accompanying a motion pic - ture or other audiovisual work, are fixed and from which the sounds can be perceived, reproduced, or otherwise communicated either directly or with a machine. The technology for creating and using a phonorecord includes those now known or later developed. 4. CBP began accepting online applications for recordation of unregistered copyrights through the Intellectual Property Rights Electronic Recordation System (IPRR). Each unregistered copyright recor - dation will be valid for a period of nine months, with a potential one-time ninety-day extension [of time, while an application to register that copyright is pending with the Copyright Office. Upon](http://www.copyright.gov/circs/circ03.pdf) registration, the copyright recordation will continue to receive the benefits of border enforcement from CBP. 5. A “non-U.S. work” is any work that is not a United States work, as defined above.
 
-For Further Information
+### For Further Information
 
-By Internet
+### By Internet
 
 The copyright law, the Compendium , electronic registration, application forms, regulations, and related materials are available on the Copyright Office website at www.copyright.gov .
 
-By Email
+### By Email
 
 To send an email inquiry, click the Contact Us link on the Copyright Office website.
 
-By Telephone
+### By Telephone
 
 For general information, call the Copyright Public Information Office at (202) 707-3000 or 1-877-476-0778 (toll free). Staff members are on duty from 8:30 am to 5:00 pm, eastern time, Monday through Friday, except federal holidays. To request application forms or circulars by postal mail, call (202) 707-9100 or 1-877-476-0778 and leave a recorded message.
 
-[By Regular Mail](https://www.copyright.gov/circs/circ07b.pdf)
+### [By Regular Mail](https://www.copyright.gov/circs/circ07b.pdf)
 
 Write to Library of Congress U.S. Copyright Office Outreach and Education Section 101 Independence Avenue, SE #6304 Washington, DC 20559-6304
 

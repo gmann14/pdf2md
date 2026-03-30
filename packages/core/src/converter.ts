@@ -59,6 +59,90 @@ function isBold(fontName: string): boolean {
   return /bold|heavy|\bbd\b/.test(lower);
 }
 
+/**
+ * Font-pair based bold detection.
+ *
+ * When subset fonts are used (e.g., g_d0_f2, g_d0_f3), we can't tell from the
+ * name which is bold. Instead, we detect "emphasis fonts" by usage pattern:
+ * non-dominant fonts that appear exclusively on short standalone lines at body
+ * font size are likely bold/emphasis variants.
+ *
+ * Returns a Set of font names that are used as emphasis/bold fonts.
+ */
+function detectEmphasisFonts(
+  items: ExtractedItem[],
+  bodySize: number,
+): Set<string> {
+  const emphasisFonts = new Set<string>();
+
+  // Find dominant font by character count
+  const fontCharCount = new Map<string, number>();
+  for (const item of items) {
+    fontCharCount.set(item.fontName, (fontCharCount.get(item.fontName) ?? 0) + item.str.length);
+  }
+
+  let dominantFont = "";
+  let dominantCount = 0;
+  for (const [font, count] of fontCharCount) {
+    if (count > dominantCount) {
+      dominantCount = count;
+      dominantFont = font;
+    }
+  }
+
+  // For each non-dominant font at body size, check if it's used primarily on
+  // short standalone lines (heading-like usage pattern)
+  for (const [fontName, charCount] of fontCharCount) {
+    if (fontName === dominantFont) continue;
+    if (charCount < 10) continue;
+
+    // Skip if the font name already contains bold/italic markers
+    if (isBold(fontName) || isItalic(fontName)) continue;
+
+    // Collect items for this font
+    const fontItems = items.filter((i) => i.fontName === fontName);
+
+    // Check: is this font used at approximately body size?
+    const avgSize = fontItems.reduce((s, i) => s + i.fontSize, 0) / fontItems.length;
+    if (Math.abs(avgSize - bodySize) > bodySize * 0.15) continue;
+
+    // Check usage pattern: group into blocks by proximity
+    // If most blocks are short (<100 chars) standalone lines, it's emphasis
+    let shortBlockCount = 0;
+    let totalBlockCount = 0;
+    let currentBlock: string[] = [];
+    let prevY = -Infinity;
+    let prevPage = -1;
+
+    for (const item of fontItems) {
+      if (item.page !== prevPage || Math.abs(item.y - prevY) > item.height * 1.5) {
+        if (currentBlock.length > 0) {
+          totalBlockCount++;
+          const blockText = currentBlock.join(" ");
+          if (blockText.length < 100) shortBlockCount++;
+        }
+        currentBlock = [item.str];
+      } else {
+        currentBlock.push(item.str);
+      }
+      prevY = item.y;
+      prevPage = item.page;
+    }
+    if (currentBlock.length > 0) {
+      totalBlockCount++;
+      const blockText = currentBlock.join(" ");
+      if (blockText.length < 100) shortBlockCount++;
+    }
+
+    // If ≥60% of occurrences are short standalone lines → emphasis font
+    if (totalBlockCount >= 3 && shortBlockCount / totalBlockCount >= 0.6) {
+      emphasisFonts.add(fontName);
+    }
+  }
+
+  return emphasisFonts;
+}
+
 function isItalic(fontName: string): boolean {
   const lower = fontName.toLowerCase();
   return /italic|oblique|\bit\b/.test(lower);
@@ -269,6 +353,7 @@ function applyColumnReordering(items: ExtractedItem[]): ExtractedItem[] {
 function groupIntoBlocks(
   items: ExtractedItem[],
   profile: FontProfile,
+  emphasisFonts?: Set<string>,
 ): Block[] {
   if (items.length === 0) return [];
 
@@ -301,7 +386,7 @@ function groupIntoBlocks(
     const pageDiff = curr.page !== prev.page;
 
     if (pageDiff || verticalGap > lineHeight || (sizeChange && verticalGap > prev.height * 0.3)) {
-      blocks.push(classifyBlock(currentItems, profile));
+      blocks.push(classifyBlock(currentItems, profile, emphasisFonts));
       currentItems = [curr];
     } else {
       currentItems.push(curr);
@@ -326,6 +411,7 @@ const LETTER_LIST_PATTERN = /^[a-zA-Z][.)]\s+/;
 function classifyBlock(
   items: ExtractedItem[],
   profile: FontProfile,
+  emphasisFonts?: Set<string>,
 ): Block {
   const firstItem = items[0];
 
@@ -341,8 +427,14 @@ function classifyBlock(
   const isShortLine = allText.length < 120;
   const hasNoTrailingPunctuation = !/[.,:;]$/.test(allText);
 
-  // Check 2: Section numbering pattern (e.g., "1.1 Background") → heading
+  // Check 2: Section numbering pattern (e.g., "1.1 Background", "II. REWARD-DRIVEN") → heading
   // Must come before list detection so "1. Introduction" isn't classified as a list item
+  // Also matches Roman numeral prefixes (I, II, III, IV, V, VI, VII, VIII, IX, X)
+  const romanMatch = allText.match(/^(I{1,3}|IV|VI{0,3}|IX|X{0,3})\.\s+[A-Z]/);
+  if (romanMatch && isShortLine && hasNoTrailingPunctuation) {
+    return { items, type: "heading", headingLevel: 2 };
+  }
+
   const sectionDotMatch = allText.match(/^(\d+\.(?:\d+\.?)*)\s+[A-Z]/);
   if (sectionDotMatch && isShortLine && hasNoTrailingPunctuation) {
     const dots = (sectionDotMatch[1].match(/\./g) ?? []).length;
@@ -366,6 +458,18 @@ function classifyBlock(
   ) {
     const isAllCaps = allText === allText.toUpperCase() && allText !== allText.toLowerCase();
     return { items, type: "heading", headingLevel: isAllCaps ? 2 : 3 };
+  }
+
+  // Check 3b: Emphasis font (font-pair detection) on a short standalone line → heading
+  // Catches bold headings in PDFs where font name doesn't contain "Bold" (subset fonts)
+  if (
+    emphasisFonts && emphasisFonts.size > 0 &&
+    items.every((i) => emphasisFonts.has(i.fontName)) &&
+    isShortLine && hasNoTrailingPunctuation &&
+    !looksLikeListItem && allText.length >= 2 && items.length <= 8
+  ) {
+    const isAllCapsEmph = allText === allText.toUpperCase() && allText !== allText.toLowerCase();
+    return { items, type: "heading", headingLevel: isAllCapsEmph ? 2 : 3 };
   }
 
   // Check 4: ALL_CAPS short line → heading (independent of bold detection)
@@ -702,6 +806,36 @@ function blocksToMarkdown(
 }
 
 // ---------------------------------------------------------------------------
+// Bare URL auto-linking
+// ---------------------------------------------------------------------------
+
+/**
+ * Convert bare URLs in text to markdown links, but only if they're not
+ * already inside a markdown link `[text](url)` or code block.
+ */
+function autoLinkUrls(markdown: string): string {
+  // Process line by line, skip code blocks
+  const lines = markdown.split("\n");
+  let inCodeBlock = false;
+  return lines
+    .map((line) => {
+      if (line.startsWith("```")) {
+        inCodeBlock = !inCodeBlock;
+        return line;
+      }
+      if (inCodeBlock) return line;
+
+      // Match URLs not already inside markdown links
+      // Negative lookbehind: not preceded by ]( or by [
+      return line.replace(
+        /(?<!\]\()(?<!\[)(https?:\/\/[^\s\])<>]+)/g,
+        (match) => `[${match}](${match})`,
+      );
+    })
+    .join("\n");
+}
+
+// ---------------------------------------------------------------------------
 // Metadata extraction
 // ---------------------------------------------------------------------------
 
@@ -913,8 +1047,11 @@ export async function convert(
   // Detect code fonts (subset fonts used in indented blocks)
   const codeFonts = detectCodeFont(reordered, profile.bodySize);
 
+  // Detect emphasis fonts (subset fonts used for bold/emphasis on short lines)
+  const emphasisFonts = detectEmphasisFonts(reordered, profile.bodySize);
+
   // Group into blocks (paragraphs, headings, list items)
-  const blocks = groupIntoBlocks(reordered, profile);
+  const blocks = groupIntoBlocks(reordered, profile, emphasisFonts);
 
   // Post-process: detect tables and code blocks
   const enrichedBlocks = detectTablesAndCode(blocks, codeFonts);
@@ -930,6 +1067,9 @@ export async function convert(
 
   // Assemble markdown
   let markdown = blocksToMarkdown(enrichedBlocks, linkMap);
+
+  // Auto-link bare URLs that aren't already inside markdown links
+  markdown = autoLinkUrls(markdown);
 
   // Extract metadata if requested (yamlFrontMatter implies includeMetadata)
   let metadata: ConversionMetadata | undefined;

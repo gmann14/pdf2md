@@ -20,7 +20,7 @@ ciaries in 2021, and 10% of antifungal prescribers prescribed Effectiveness of B
 
 nearly one half of these medications. In the setting of emerging [Preventing COVID-19–Related Thromboembolic](https://pubmed.ncbi.nlm.nih.gov/27866820) Events Among Medicare Enrollees Aged ≥65 Years antimicrobial resistance, these findings highlight the impor - and Those with End Stage Renal Disease — United tance of expanding efforts to understand current prescribing States, September 2022–March 2023 practices while encouraging judicious prescribing by clinicians [Notice to Readers](https://doi.org/10.3390/jof8080831) : Change in Publication Date of and providing patient education about proper use. MMWR Series QuickStats
 
-Introduction Superficial fungal skin infections have an estimated lifetime prevalence of more than 20% worldwide and are particularly [Continuing Education](https://www.cdc.gov/mmwr/mmwr_continuingEducation.html) [examination available at](https://www.cdc.gov/mmwr/mmwr_continuingEducation.html) https://www.cdc.gov/mmwr/mmwr_continuingEducation.html
+Introduction Superficial fungal skin infections have an estimated lifetime prevalence of more than 20% worldwide and are particularly [Continuing Education](https://www.cdc.gov/mmwr/mmwr_continuingEducation.html) [examination available at](https://www.cdc.gov/mmwr/mmwr_continuingEducation.html) [https://www.cdc.gov/mmwr/mmwr_continuingEducation.html](https://www.cdc.gov/mmwr/mmwr_continuingEducation.html)
 
 common among adults aged ≥65 years ( – ). The emergence
 
@@ -139,15 +139,11 @@ Ketoconazole †
 
 * All costs are in U.S. dollars.
 
-```
 †
-```
 
-[It was not possible to distinguish oral from topical ketoconazole, but ketoconazole was included in the analysis because oral ketoconazole use is discouraged](https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-warns-prescribing-nizoral-ketoconazole-oral-tablets-unapproved) [because of safety concerns.](https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-warns-prescribing-nizoral-ketoconazole-oral-tablets-unapproved) https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-warns-prescribing-nizoral-ketoconazole- [oral-tablets-unapproved](https://www.cdc.gov/fungal/diseases/ringworm/health-professionals.html)
+[It was not possible to distinguish oral from topical ketoconazole, but ketoconazole was included in the analysis because oral ketoconazole use is discouraged](https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-warns-prescribing-nizoral-ketoconazole-oral-tablets-unapproved) [because of safety concerns.](https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-warns-prescribing-nizoral-ketoconazole-oral-tablets-unapproved) [https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-warns-prescribing-nizoral-ketoconazole-](https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-warns-prescribing-nizoral-ketoconazole-) [oral-tablets-unapproved](https://www.cdc.gov/fungal/diseases/ringworm/health-professionals.html)
 
-```
 §
-```
 
 ```
 Butenafine (41 prescriptions), luliconazole (169), miconazole (155), and sertaconazole (35).
@@ -161,17 +157,13 @@ Higher-volume prescribers Lower-volume prescribers All topical antifungal prescr
 prescribers (% of total)
 ```
 
-```
 ¶
-```
 
 ```
 prescribers (% of total)
 ```
 
-```
 ¶
-```
 
 Primary care physician 12.3 61,735 2,579,045 (40.0) 6,200 973,824 (37.8) 55,535 1,605,221 (62.2) (209,169) NP or PA (263,999) 5.2 34,476 1,379,981 (21.4) 3,428 570,577 (41.3) [31,048](mailto:jgold@cdc.gov) 809,404 (58.7) Dermatologist (13,029) 87.1 10,735 1,134,347 (17.6) 1,068 402,750 (35.5) 9,667 731,597 (64.5) Podiatrist (13,527) 67.2 8,401 909,569 (14.1) 498,210 (54.8) 7,563 411,359 (45.2) Other (517,693) 0.9 15,290 452,198 (7.0) 1,507 165,742 (36.7) 13,783 286,456 (63.3) Total (1,017,417) 6.3 130,637 6,455,140 (100.0) 13,106 2,851,394 (44.2) 117,531 3,603,746 (55.8)
 
@@ -180,23 +172,17 @@ Abbreviations: NP = nurse practitioner; PA = physician assistant.
 * Top 10% of topical antifungal providers, by volume.
 ```
 
-```
 †
-```
 
 Bottom 90% of topical antifungal providers, by volume.
 
-```
 §
-```
 
 ```
 Column percentage.
 ```
 
-```
 ¶
-```
 
 ```
 Row percentage.
@@ -210,15 +196,13 @@ use of confirmatory testing, inaccuracy of diagnosis made by As with antibiotic 
 
 [Clinicians should be aware of the potential risks](https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-warns-prescribing-nizoral-ketoconazole-oral-tablets-unapproved)
 
-*** https://www.cdc.gov/fungal/diseases/ringworm/health-professionals.html †††
+*** [https://www.cdc.gov/fungal/diseases/ringworm/health-professionals.html](https://www.cdc.gov/fungal/diseases/ringworm/health-professionals.html) †††
 
-https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/018827s046lbl.pdf
+[https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/018827s046lbl.pdf](https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/018827s046lbl.pdf)
 
 the need to evaluate current practices of topical antifungal use.
 
-```
 Summary
-```
 
 Health care providers should be judicious in prescribing topical
 
@@ -242,7 +226,7 @@ What is added by this report?
 
 antifungal-corticosteroids.
 
-Corresponding author: Jeremy A. W. Gold, jgold@cdc.gov . A total of 6.5 million topical antifungal prescriptions, costing $231 million, were filled for Medicare Part D beneficiaries in Division of Foodborne, Waterborne, and Environmental Diseases, National 2021, approximately one prescription for every eight beneficia - Center for Emerging and Zoonotic Infectious Diseases, CDC; Israel Englander ries. Most prescriptions were written by primary care physicians, Department of Dermatology, Weill Cornell Medicine, New York, New York. nurse practitioners, or physician assistants. All authors have completed and submitted the International What are the implications for public health practice? Committee of Medical Journal Editors form for disclosure of potential The large volume of topical antifungal prescriptions in the conflicts of interest. No potential conflicts of interest were disclosed. context of emerging resistance highlights the need to better understand current prescribing practices and to encourage References judicious prescribing by clinicians and improve patient 1. Gupta AK, Renaud HJ, Quinlan EM, Shear NH, Piguet V. The growing education about recommended use. problem of antifungal resistance in onychomycosis and other superficial [mycoses. Am J Clin Dermatol 2021;22:149–57.](https://doi.org/10.1007/s40257-020-00580-6) PMID:33354740 https://doi.org/10.1007/s40257-020-00580-6
+Corresponding author: Jeremy A. W. Gold, jgold@cdc.gov . A total of 6.5 million topical antifungal prescriptions, costing $231 million, were filled for Medicare Part D beneficiaries in Division of Foodborne, Waterborne, and Environmental Diseases, National 2021, approximately one prescription for every eight beneficia - Center for Emerging and Zoonotic Infectious Diseases, CDC; Israel Englander ries. Most prescriptions were written by primary care physicians, Department of Dermatology, Weill Cornell Medicine, New York, New York. nurse practitioners, or physician assistants. All authors have completed and submitted the International What are the implications for public health practice? Committee of Medical Journal Editors form for disclosure of potential The large volume of topical antifungal prescriptions in the conflicts of interest. No potential conflicts of interest were disclosed. context of emerging resistance highlights the need to better understand current prescribing practices and to encourage References judicious prescribing by clinicians and improve patient 1. Gupta AK, Renaud HJ, Quinlan EM, Shear NH, Piguet V. The growing education about recommended use. problem of antifungal resistance in onychomycosis and other superficial [mycoses. Am J Clin Dermatol 2021;22:149–57.](https://doi.org/10.1007/s40257-020-00580-6) PMID:33354740 [https://doi.org/10.1007/s40257-020-00580-6](https://doi.org/10.1007/s40257-020-00580-6)
 
 associated with clotrimazole-betamethasone dipropionate use 2. Gold JAW, Wu K, Jackson BR, Benedict K. Opportunities to improve
 
@@ -266,13 +250,13 @@ on individual patients, drug indication (i.e., candidiasis ver - [of onychomycos
 
 sus dermatophytosis), or diagnostic testing, so prescribing
 
-2023;37:1706–17. PMID:37210652 https://doi.org/10.1111/jdv.19217 5. Cañete-Gibas CF, Mele J, Patterson HP, et al. Terbinafine-resistant
+2023;37:1706–17. PMID:37210652 [https://doi.org/10.1111/jdv.19217](https://doi.org/10.1111/jdv.19217) 5. Cañete-Gibas CF, Mele J, Patterson HP, et al. Terbinafine-resistant
 
 appropriateness could not be determined. Second, the data dermatophytes and the presence of Trichophyton [indotineae](https://pubmed.ncbi.nlm.nih.gov/37432126) [in North](https://pubmed.ncbi.nlm.nih.gov/37432126)
 
 set analyzed only identifies prescriptions for Medicare Part D [America. J Clin Microbiol 2023;61:e0056223.](https://doi.org/10.1128/jcm.00562-23) PMID:37432126
 
-beneficiaries and therefore does not represent all Medicare ben - https://doi.org/10.1128/jcm.00562-23 6. Caplan AS, Chaturvedi S, Zhu Y, et al. Notes from the field: first reported
+beneficiaries and therefore does not represent all Medicare ben - [https://doi.org/10.1128/jcm.00562-23](https://doi.org/10.1128/jcm.00562-23) 6. Caplan AS, Chaturvedi S, Zhu Y, et al. Notes from the field: first reported
 
 eficiaries; topical antifungal prescribing patterns might differ
 
@@ -280,7 +264,7 @@ U.S. cases of tinea caused by Trichophyton indotineae —New York City,
 
 among other populations. Third, the data set only contained [December 2021–March 2023. MMWR Morb Mortal Wkly Rep](https://pubmed.ncbi.nlm.nih.gov/37167192)
 
-information on prescription topical antifungals and did not [2023;72:536–7.](https://doi.org/10.15585/mmwr.mm7219a4) PMID:37167192 https://doi.org/10.15585/mmwr. mm7219a4
+information on prescription topical antifungals and did not [2023;72:536–7.](https://doi.org/10.15585/mmwr.mm7219a4) PMID:37167192 [https://doi.org/10.15585/mmwr.](https://doi.org/10.15585/mmwr.) mm7219a4
 
 capture over-the-counter topical antifungal use; therefore,
 
@@ -288,7 +272,7 @@ capture over-the-counter topical antifungal use; therefore,
 
 actual topical antifungal use is likely underestimated. Finally, [commonly misdiagnosed: a survey-based study. J Am Acad Dermatol](https://pubmed.ncbi.nlm.nih.gov/27866820)
 
-this study likely underestimates the total volume of topical [2017;76:562–3.](https://doi.org/10.1016/j.jaad.2016.09.041) PMID:27866820 https://doi.org/10.1016/j.
+this study likely underestimates the total volume of topical [2017;76:562–3.](https://doi.org/10.1016/j.jaad.2016.09.041) PMID:27866820 [https://doi.org/10.1016/j.](https://doi.org/10.1016/j.)
 
 antifungal drug prescribing among Medicare Part D beneficia -
 
@@ -296,13 +280,13 @@ jaad.2016.09.041 8. Benedict K, Wu K, Gold JAW. Healthcare provider testing prac
 
 ries because records for some lower-volume prescribers (those tinea and familiarity with antifungal drug–resistant tinea—United States,
 
-with <11 prescriptions per year for any given drug) are not [2022. J Fungi (Basel) 2022;8:831.](https://doi.org/10.3390/jof8080831) PMID:36012819 https://doi.
+with <11 prescriptions per year for any given drug) are not [2022. J Fungi (Basel) 2022;8:831.](https://doi.org/10.3390/jof8080831) PMID:36012819 [https://doi.](https://doi.)
 
 included in the data set, and prescribers whose census region org/10.3390/jof8080831 9. Gouin KA, Fleming-Dutra KE, Tsay S, Bizune D, Hicks LA, Kabbani S.
 
 was unknown were excluded.
 
-Identifying higher-volume antibiotic outpatient prescribers using publicly available Medicare Part D—United States, 2019. MMWR Implications for Public Health Practice [Morb Mortal Wkly Rep 2022;71:202–5.](https://doi.org/10.15585/mmwr.mm7106a3) PMID:35143465 https://doi. org/10.15585/mmwr.mm7106a3
+Identifying higher-volume antibiotic outpatient prescribers using publicly available Medicare Part D—United States, 2019. MMWR Implications for Public Health Practice [Morb Mortal Wkly Rep 2022;71:202–5.](https://doi.org/10.15585/mmwr.mm7106a3) PMID:35143465 [https://doi.](https://doi.) org/10.15585/mmwr.mm7106a3
 
 The substantial volume of topical antifungal and antifungal-
 

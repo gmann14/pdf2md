@@ -20,7 +20,7 @@ Generalized linear models 3.1 The exponential family . . . . . . . . . . . . . .
 
 Generative learning algorithms 4.1 Gaussian discriminant analysis . . . . . . . . . . . . . . . . . . 4.1.1 The multivariate normal distribution . . . . . . . . . . 4.1.2 The Gaussian discriminant analysis model . . . . . . . 4.1.3 Discussion: GDA and logistic regression . . . . . . . . 4.2 Naive bayes . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4.2.1 Laplace smoothing . . . . . . . . . . . . . . . . . . . . 4.2.2 Event models for text classification . . . . . . . . . . .
 
-CS229 Spring 2022
+### CS229 Spring 2022
 
 Kernel methods 5.1 Feature maps . . . . . . . . . . . . . . . . . . . . . . . . . . . 5.2 LMS (least mean squares) with features . . . . . . . . . . . . . 5.3 LMS with the kernel trick . . . . . . . . . . . . . . . . . . . . 5.4 Properties of kernels . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -34,7 +34,7 @@ Deep learning 7.1 Supervised learning with non-linear models . . . . . . . . . .
 
 Generalization 8.1 Bias-variance tradeoff . . . . . . . . . . . . . . . . . . . . . . . 105 8.1.1 A mathematical decomposition (for regression) . . . . . 110 8.2 The double descent phenomenon . . . . . . . . . . . . . . . . . 111
 
-CS229 Spring 2022
+### CS229 Spring 2022
 
 8.3 Sample complexity bounds (optional readings) . . . . . . . . . 116 8.3.1 Preliminaries . . . . . . . . . . . . . . . . . . . . . . . 116 8.3.2 The case of finite H . . . . . . . . . . . . . . . . . . . . 118 8.3.3 The case of infinite H . . . . . . . . . . . . . . . . . . 121
 
@@ -52,7 +52,7 @@ Regularization and model selection 9.1 Regularization . . . . . . . . . . . . . 
 
 14 Self-supervised learning and foundation models 14.1 Pretraining and adaptation . . . . . . . . . . . . . . . . . . . . 167 14.2 Pretraining methods in computer vision . . . . . . . . . . . . . 169 14.3 Pretrained large language models . . . . . . . . . . . . . . . . 171 14.3.1 Zero-shot learning and in-context learning . . . . . . . 173
 
-CS229 Spring 2022
+### CS229 Spring 2022
 
 ###### V Reinforcement Learning and Control
 
@@ -82,27 +82,19 @@ square feet
 
 Given data like this, how can we learn to predict the prices of other houses in Portland, as a function of the size of their living areas?
 
-```
 ( i )
-```
 
 To establish notation for future use, we’ll use x to denote the “input”
 
-```
 ( i )
-```
 
 variables (living area in this example), also called input features , and y to denote the “output” or target variable that we are trying to predict
 
-```
 ( i ) ( i )
-```
 
 (price). A pair ( x , y ) is called a training example , and the dataset
 
-```
 ( i ) ( i )
-```
 
 that we’ll be using to learn—a list of n training examples { ( x , y ); i = , . . . , n } —is called a training set . Note that the superscript “( i )” in the notation is simply an index into the training set, and has nothing to do with exponentiation. We will also use X denote the space of input values, and Y the space of output values. In this example, X = Y = R . To describe the supervised learning problem slightly more formally, our goal is, given a training set, to learn a function h : X 7 → Y so that h ( x ) is a “good” predictor for the corresponding value of y . For historical reasons, this
 
@@ -130,15 +122,11 @@ Living area (feet ) #bedrooms Price (1000 $ s)
 
 . . . . . . . . .
 
-```
 ( i )
-```
 
 Here, the x ’s are two-dimensional vectors in R . For instance, x is the
 
-```
 ( i )
-```
 
 living area of the i -th house in the training set, and x is its number of bedrooms. (In general, when designing a learning problem, it will be up to you to decide what features to choose, so if you are out in Portland gathering housing data, you might also decide to include other features such as whether each house has a fireplace, the number of bathrooms, and so on. We’ll say more about feature selection later, but for now let’s take the features as given.) To perform supervised learning, we must decide how we’re going to rep- resent functions/hypotheses h in a computer. As an initial choice, let’s say we decide to approximate y as a linear function of x :
 
@@ -148,28 +136,19 @@ Here, the θ i ’s are the parameters (also called weights ) parameterizing the
 
 confusion, we will drop the θ subscript in h θ ( x ), and write it more simply as h ( x ). To simplify our notation, we also introduce the convention of letting x = 1 (this is the intercept term ), so that
 
-```
-∑ d
-T
-```
+∑ d T
 
 h ( x ) = θ i x i = θ x,
 
-```
 i =0
-```
 
 where on the right-hand side above we are viewing θ and x both as vectors, and here d is the number of input variables (not counting x ). Now, given a training set, how do we pick, or learn, the parameters θ ? One reasonable method seems to be to make h ( x ) close to y , at least for the training examples we have. To formalize this, we will define a function
 
-```
 ( i )
-```
 
 that measures, for each value of the θ ’s, how close the h ( x )’s are to the
 
-```
 ( i )
-```
 
 corresponding y ’s. We define the cost function :
 
@@ -180,9 +159,7 @@ corresponding y ’s. We define the cost function :
 
 J ( θ ) =  ( h θ ( x ) − y ) .
 
-```
 i =1
-```
 
 If you’ve seen linear regression before, you may recognize this as the familiar least-squares cost function that gives rise to the ordinary least squares regression model. Whether or not you have seen it previously, let’s keep going, and we’ll eventually show this to be a special case of a much broader family of algorithms.
 
@@ -198,14 +175,9 @@ case of if we have only one training example ( x, y ), so that we can neglect th
 
 ∂ = · ( h θ ( x ) − y ) · ( h θ ( x ) − y ) ∂θ j
 
-```
-(
-∑
-```
+### ( ∑
 
-```
 d
-```
 
 ```
 )
@@ -218,105 +190,67 @@ d
 
 For a single training example, this gives the update rule: (
 
-```
 ( i ) ( i )
-```
 
-```
 ) ( i )
-```
 
 θ j := θ j + α y − h θ ( x ) x j
 
-```
 .
-```
 
 The rule is called the LMS update rule (LMS stands for “least mean squares”), and is also known as the Widrow-Hoff learning rule. This rule has several properties that seem natural and intuitive. For instance, the magnitude of
 
-```
 ( i ) ( i )
-```
 
 the update is proportional to the error term ( y − h θ ( x )); thus, for in- stance, if we are encountering a training example on which our prediction
 
-```
 ( i )
-```
 
 nearly matches the actual value of y , then we find that there is little need to change the parameters; in contrast, a larger change to the parameters will
 
-```
 ( i )
-```
 
 be made if our prediction h θ ( x ) has a large error (i.e., if it is very far from
 
-```
 ( i )
-```
 
 y ). We’d derived the LMS rule for when there was only a single training example. There are two ways to modify this method for a training set of more than one example. The first is replace it with the following algorithm:
 
 Repeat until convergence {
 
-```
 ∑ n
-```
 
-```
 (
-```
 
-```
 ( i ) ( i )
-```
 
-```
 ) ( i )
-```
 
 θ j := θ j + α y − h θ ( x ) x j
 
 , (for every j ) (1.1)
 
-```
 i =1
-```
 
-```
 }
-```
 
 We use the notation “ a := b ” to denote an operation (in a computer program) in which we set the value of a variable a to be equal to the value of b . In other words, this operation overwrites a with the value of b . In contrast, we will write “ a = b ” when we are asserting a statement of fact, that the value of a is equal to the value of b .
 
 By grouping the updates of the coordinates into an update of the vector θ , we can rewrite update (1.1) in a slightly more succinct way:
 
-```
 ∑ n
-```
 
-```
 (
-```
 
-```
 ( i ) ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 θ := θ + α y − h θ ( x ) x
 
-```
 i =1
-```
 
 The reader can easily verify that the quantity in the summation in the update rule above is just ∂J ( θ ) /∂θ j (for the original definition of J ). So, this is simply gradient descent on the original cost function J . This method looks at every example in the entire training set on every step, and is called batch gradient descent . Note that, while gradient descent can be susceptible to local minima in general, the optimization problem we have posed here for linear regression has only one global, and no other local, optima; thus gradient descent always converges (assuming the learning rate α is not too large) to the global minimum. Indeed, J is a convex quadratic function. Here is an example of gradient descent as it is run to minimize a quadratic function.
 
@@ -334,43 +268,27 @@ Loop {
 
 for i = 1 to n , {
 
-```
 (
-```
 
-```
 ( i ) ( i )
-```
 
-```
 ) ( i )
-```
 
 θ j := θ j + α y − h θ ( x ) x j
 
 , (for every j ) (1.2)
 
-```
 }
-```
 
-```
 }
-```
 
 By grouping the updates of the coordinates into an update of the vector θ , we can rewrite update (1.2) in a slightly more succinct way: (
 
-```
 ( i ) ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 θ := θ + α y − h θ ( x ) x
 
@@ -384,44 +302,27 @@ Gradient descent gives one way of minimizing J . Let’s discuss a second way of
 
 ###### 1.2.1 Matrix derivatives
 
-```
 n × d
-```
 
 For a function f : R → R mapping from n -by- d matrices to the real numbers, we define the derivative of f with respect to A to be: 
 
-```
-∂f
-∂f
-```
+∂f ∂f
 
-```
 
-```
 
-```
 ∂A
-```
 
 - · ·
 
-```
 ∂A d
-```
 
  ∇ A f ( A ) = .  . .  . .  . . .  . 
 
-```
-∂f
-∂f
-∂A n
-```
+∂f ∂f ∂A n
 
 - · ·
 
-```
 ∂A nd
-```
 
 Thus, the gradient ∇ A f ( A ) is itself an [ n -by- d matrix, whose ( ] i, j )-element is
 
@@ -431,9 +332,7 @@ Thus, the gradient ∇ A f ( A ) is itself an [ n -by- d matrix, whose ( ] i, j 
 
 ## A A
 
-```
 ×
-```
 
 the function f : R → R is given by
 
@@ -453,37 +352,23 @@ Armed with the tools of matrix derivatives, let us now proceed to find in closed
 
  — ( x ) —   X =  .  .  . . 
 
-```
 ( n ) T
-```
 
 - ( x ) —
 
 Also, let ~ y be the n -dimensional vector containing all the target values from the training set:  
 
-```
 (1)
-```
 
-```
-y
-
-(2)
-```
+y  (2)
 
  y   ~ y =  .   . . . 
 
-```
 ( n )
-```
 
-```
 y
-```
 
-```
 ( i ) ( i ) T
-```
 
 Now, since h θ ( x ) = ( x ) θ , we can easily verify that    
 
@@ -491,39 +376,27 @@ Now, since h θ ( x ) = ( x ) θ , we can easily verify that    
 
 ( x ) θ y  Xθ − ~ y = .  .     − . .  . . 
 
-```
 ( n ) T ( n )
-```
 
 ( x ) θ y  
 
-```
 (1) (1)
-```
 
 h θ ( x ) − y  = .  .  .  .
 
-```
 ( n ) ( n )
-```
 
 h θ ( x ) − y
 
-```
 T
-```
 
 ∑ Thus, using the fact that for a vector z , we have that z z = i
 
-```
 z i
-```
 
 :
 
-```
 ∑
-```
 
 ```
 n
@@ -532,47 +405,35 @@ T ( i ) ( i )
 
 ( Xθ − ~ y ) ( Xθ − ~ y ) = ( h θ ( x ) − y )
 
-```
 i =1
-```
 
 = J ( θ )
 
 Finally, to minimize J , let’s find its derivatives with respect to θ . Hence,
 
-```
 T
-```
 
 ∇ θ J ( θ ) = ∇ θ ( Xθ − ~ y ) ( Xθ − ~ y )
 
-```
 (
-```
 
 ## T T T T
 
 ) = ∇ θ ( Xθ ) Xθ − ( Xθ ) ~ y − ~ y ( Xθ ) + ~ y ~ y
 
-```
 (
-```
 
 ## T T T T
 
 ) = ∇ θ θ ( X X ) θ − ~ y ( Xθ ) − ~ y ( Xθ )
 
-```
 (
-```
 
 ## T T T T
 
 ) = ∇ θ θ ( X X ) θ − 2( X ~ y ) θ
 
-```
 (
-```
 
 ## T T
 
@@ -597,9 +458,7 @@ used the facts ∇ x b x = b and ∇ x x Ax = 2 Ax for symmetric matrix A (for m
 
 ## T T
 
-```
 X Xθ = X ~ y
-```
 
 Thus, the value of θ that minimizes J ( θ ) is given in closed form by the equation
 
@@ -617,69 +476,45 @@ When faced with a regression problem, why might linear regression, and specifica
 
 y = θ x +  ,
 
-```
 T
-```
 
 Note that in the above step, we are implicitly assuming that X X is an invertible matrix. This can be checked before calculating the inverse. If either the number of linearly independent examples is fewer than the number of features, or if the features
 
-```
 T
-```
 
 are not linearly independent, then X X will not be invertible. Even in such cases, it is possible to “fix” the situation with additional techniques, which we skip here for the sake of simplicty.
 
-```
 ( i )
-```
 
 where  is an error term that captures either unmodeled effects (such as if there are some features very pertinent to predicting housing price, but that we’d left out of the regression), or random noise. Let us further assume
 
-```
 ( i )
-```
 
 that the  are distributed IID (independently and identically distributed) according to a Gaussian distribution (also called a Normal distribution) with
 
-```
 ( i )
-```
 
 mean zero and some variance σ . We can write this assumption as “  ∼
 
-```
 ( i )
-```
 
 N (0 , σ ).” I.e., the density of  is given by (
 
-```
 ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 (  ) p (  ) = √ exp − . πσ σ
 
 This implies that (
 
-```
 ( i ) T ( i )
-```
 
-```
 )
-```
 
-```
 ( i ) ( i )
-```
 
 ( y − θ x ) p ( y | x ; θ ) = √ exp − . πσ σ
 
@@ -689,15 +524,11 @@ This implies that (
 
 The notation “ p ( y | x ; θ )” indicates that this is the distribution of y
 
-```
 ( i )
-```
 
 given x and parameterized by θ . Note that we should not condition on θ
 
-```
 ( i ) ( i )
-```
 
 (“ p ( y | x , θ )”), since θ is not a random variable. We can also write the
 
@@ -707,68 +538,43 @@ given x and parameterized by θ . Note that we should not condition on θ
 
 distribution of y as y | x ; θ ∼ N ( θ x , σ ).
 
-```
 ( i )
-```
 
 Given X (the design matrix, which contains all the x ’s) and θ , what
 
-```
 ( i )
-```
 
 is the distribution of the y ’s? The probability of the data is given by p ( ~ y | X ; θ ). This quantity is typically viewed a function of ~ y (and perhaps X ), for a fixed value of θ . When we wish to explicitly view this as a function of θ , we will instead call it the likelihood function:
 
 L ( θ ) = L ( θ ; X, ~ y ) = p ( ~ y | X ; θ ) .
 
-```
 ( i )
-```
 
 Note that by the independence assumption on the  ’s (and hence also the
 
-```
 ( i ) ( i )
-```
 
 y ’s given the x ’s), this can also be written
 
-```
 ∏
-```
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 L ( θ ) = p ( y | x ; θ )
 
-```
 i =1
-```
 
-```
 ∏ n (
-```
 
-```
 ( i ) T ( i )
-```
 
 ) ( y − θ x ) = √ exp − .
 
-```
 i =1
-```
 
-```
-πσ σ
-```
+### πσ σ
 
-```
 ( i ) ( i )
-```
 
 Now, given this probabilistic model relating the y ’s and the x ’s, what is a reasonable way of choosing our best guess of the parameters θ ? The principal of maximum likelihood says that we should choose θ so as to make the data as high probability as possible. I.e., we should choose θ to maximize L ( θ ).
 
@@ -776,45 +582,27 @@ Instead of maximizing L ( θ ), we can also maximize any strictly increasing fun
 
 ` ( θ ) = log L ( θ ) ∏
 
-```
 n (
-```
 
-```
 ( i ) T ( i )
-```
 
 ) ( y − θ x ) = log √ exp −
 
-```
 i =1
-```
 
-```
-πσ σ
-```
+### πσ σ
 
-```
 ∑ n (
-```
 
-```
 ( i ) T ( i )
-```
 
 ) ( y − θ x ) = log √ exp −
 
-```
 i =1
-```
 
-```
-πσ σ
-```
+### πσ σ
 
-```
 ∑
-```
 
 ```
 n
@@ -823,9 +611,7 @@ n
 
 = n log √ − · ( y − θ x ) . πσ σ
 
-```
 i =1
-```
 
 Hence, maximizing ` ( θ ) gives the same answer as minimizing
 
@@ -836,9 +622,7 @@ Hence, maximizing ` ( θ ) gives the same answer as minimizing
 
 ( y − θ x ) ,
 
-```
 i =1
-```
 
 which we recognize to be J ( θ ), our original least-squares cost function. To summarize: Under the previous probabilistic assumptions on the data, least-squares regression corresponds to finding the maximum likelihood esti- mate of θ . This is thus one set of assumptions under which least-squares re- gression can be justified as a very natural method that’s just doing maximum likelihood estimation. (Note however that the probabilistic assumptions are by no means necessary for least-squares to be a perfectly good and rational procedure, and there may—and indeed there are—other natural assumptions that can also be used to justify it.) Note also that, in our previous discussion, our final choice of θ did not depend on what was σ , and indeed we’d have arrived at the same result even if σ were unknown. We will use this fact again later, when we talk about the exponential family and generalized linear models.
 
@@ -862,25 +646,19 @@ x x x
 
 Instead, if we had added an extra feature x , and fit y = θ + θ x + θ x , then we obtain a slightly better fit to the data. (See middle figure) Naively, it might seem that the more features we add, the better. However, there is also a danger in adding too many features: The rightmost figure is the result of ∑
 
-```
 j
-```
 
 fitting a 5-th order polynomial y = j =0
 
 θ j x . We see that even though the fitted curve passes through the data perfectly, we would not expect this to be a very good predictor of, say, housing prices ( y ) for different living areas ( x ). Without formally defining what these terms mean, we’ll say the figure on the left shows an instance of underfitting —in which the data clearly shows structure not captured by the model—and the figure on the right is an example of overfitting . (Later in this class, when we talk about learning theory we’ll formalize some of these notions, and also define more carefully just what it means for a hypothesis to be good or bad.) As discussed previously, and as shown in the example above, the choice of features is important to ensuring good performance of a learning algorithm. (When we talk about model selection, we’ll also see algorithms for automat- ically choosing a good set of features.) In this section, let us briefly talk about the locally weighted linear regression (LWR) algorithm which, assum- ing there is sufficient training data, makes the choice of features less critical. This treatment will be brief, since you’ll get a chance to explore some of the properties of the LWR algorithm yourself in the homework. In the original linear regression algorithm, to make a prediction at a query point x (i.e., to evaluate h ( x )), we would: ∑
 
-```
 ( i ) T ( i )
-```
 
 ## 1. Fit θ to minimize i
 
 ( y − θ x ) .
 
-```
 T
-```
 
 2. Output θ x .
 
@@ -894,21 +672,15 @@ In contrast, the locally weighted linear regression algorithm does the fol- lowi
 
 w ( y − θ x ) .
 
-```
 T
-```
 
 2. Output θ x .
 
-```
 ( i ) ( i )
-```
 
 Here, the w ’s are non-negative valued weights . Intuitively, if w is large
 
-```
 ( i )
-```
 
 for a particular value of i , then in picking θ , we’ll try hard to make ( y −
 
@@ -918,49 +690,33 @@ T ( i ) ( i ) ( i ) T ( i )
 
 θ x ) small. If w is small, then the ( y − θ x ) error term will be pretty much ignored in the fit. A fairly standard choice for the weights is (
 
-```
 ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 ( x − x ) w = exp − τ
 
 Note that the weights depend on the particular point x at which we’re trying
 
-```
 ( i ) ( i )
-```
 
 to evaluate x . Moreover, if | x − x | is small, then w is close to 1; and
 
-```
 ( i ) ( i )
-```
 
 if | x − x | is large, then w is small. Hence, θ is chosen giving a much higher “weight” to the (errors on) training examples close to the query point x . (Note also that while the formula for the weights takes a form that is
 
-```
 ( i )
-```
 
 cosmetically similar to the density of a Gaussian distribution, the w ’s do
 
-```
 ( i )
-```
 
 not directly have anything to do with Gaussians, and in particular the w are not random variables, normally distributed or otherwise.) The parameter τ controls how quickly the weight of a training example falls off with distance
 
-```
 ( i )
-```
 
 of its x from the query point x ; τ is called the bandwidth parameter, and is also something that you’ll get to experiment with in your homework. Locally weighted linear regression is the first example we’re seeing of a non-parametric algorithm. The (unweighted) linear regression algorithm that we saw earlier is known as a parametric learning algorithm, because it has a fixed, finite number of parameters (the θ i ’s), which are fit to the data. Once we’ve fit the θ i ’s and stored them away, we no longer need to keep the training data around to make future predictions. In contrast, to make predictions using locally weighted linear regression, we need to keep the entire training set around. The term “non-parametric” (roughly) refers to the fact that the amount of stuff we need to keep in order to represent the hypothesis h grows linearly with the size of the training set.
 
@@ -982,15 +738,11 @@ or w = exp( − ( x − x ) Σ ( x − x ) / (2 τ )), for an appropriate choice
 
 Let’s now talk about the classification problem. This is just like the regression problem, except that the values y we now want to predict take on only a small number of discrete values. For now, we will focus on the binary classification problem in which y can take on only two values, 0 and 1. (Most of what we say here will also generalize to the multiple-class case.)
 
-```
 ( i )
-```
 
 For instance, if we are trying to build a spam classifier for email, then x may be some features of a piece of email, and y may be 1 if it is a piece of spam mail, and 0 otherwise. 0 is also called the negative class , and 1 the positive class , and they are sometimes also denoted by the symbols “-”
 
-```
 ( i ) ( i )
-```
 
 and “+.” Given x , the corresponding y is also called the label for the training example.
 
@@ -998,19 +750,13 @@ and “+.” Given x , the corresponding y is also called the label for the trai
 
 We could approach the classification problem ignoring the fact that y is discrete-valued, and use our old linear regression algorithm to try to predict y given x . However, it is easy to construct examples where this method performs very poorly. Intuitively, it also doesn’t make sense for h θ ( x ) to take values larger than 1 or smaller than 0 when we know that y ∈ { , } . To fix this, let’s change the form for our hypotheses h θ ( x ). We will choose
 
-```
 T
-```
 
 h θ ( x ) = g ( θ x ) = 1 + e − θ T
 
-```
 x
-```
 
-```
 ,
-```
 
 where g ( z ) = 1 + e − z
 
@@ -1040,33 +786,23 @@ g(z)
 
 Notice that g ( z ) tends towards 1 as z → ∞ , and g ( z ) tends towards 0 as z → −∞ . Moreover, g(z), and hence also h ( x ), is always bounded between 0 and 1. As before, we are keeping the convention of letting ∑ x = 1, so that
 
-```
 T d
-```
 
 θ x = θ + j =1
 
 θ j x j . For now, let’s take the choice of g as given. Other functions that smoothly increase from 0 to 1 can also be used, but for a couple of reasons that we’ll see later (when we talk about GLMs, and when we talk about generative learning algorithms), the choice of the logistic function is a fairly natural one. Before moving on, here’s a useful property of the derivative of the sigmoid function,
 
-```
 ′
-```
 
 which we write as g :
 
-```
 ′
-```
 
 d g ( z ) = dz 1 + e − z
 
-```
 (
-```
 
-```
 − z
-```
 
 ) = (1 + e − z
 
@@ -1084,9 +820,7 @@ P ( y = 1 | x ; θ ) = h θ ( x ) P ( y = 0 | x ; θ ) = − h θ ( x )
 
 Note that this can be written more compactly as
 
-```
 y − y
-```
 
 p ( y | x ; θ ) = ( h θ ( x )) (1 − h θ ( x ))
 
@@ -1094,54 +828,31 @@ Assuming that the n training examples were generated independently, we can then 
 
 L ( θ ) = p ( ~ y | X ; θ ) ∏
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 = p ( y | x ; θ )
 
-```
 i =1
-```
 
-```
 ∏ n
-```
 
-```
 ( i
-```
 
-```
 ( i )
-```
 
-```
 ) y
-```
 
-```
 ( ) (
-```
 
-```
 ( i )
-```
 
-```
 ) − y
-```
 
-```
 ( i )
-```
 
 = h θ ( x ) − h θ ( x )
 
-```
 i =1
-```
 
 As before, it will be easier to maximize the log likelihood:
 
@@ -1154,9 +865,7 @@ n
 
 = y log h ( x ) + (1 − y ) log(1 − h ( x ))
 
-```
 i =1
-```
 
 How do we maximize the likelihood? Similar to our derivation in the case of linear regression, we can use gradient ascent. Written in vectorial notation, our updates will therefore be given by θ := θ + α ∇ θ ` ( θ ). (Note the positive rather than negative sign in the update formula, since we’re maximizing, rather than minimizing, a function now.) Let’s start by working with just one training example ( x, y ), and take derivatives to derive the stochastic gradient ascent rule: ( ) ∂ ∂ T
 
@@ -1166,9 +875,7 @@ x ) − g ( θ T
 
 x ) x ) ∂θ j
 
-```
-( )
-```
+### ( )
 
 ## T T
 
@@ -1180,9 +887,7 @@ x ) x ) ∂θ j
 
 x )) θ x x ) ∂θ j
 
-```
 (
-```
 
 ## T T
 
@@ -1190,33 +895,23 @@ x )) θ x x ) ∂θ j
 
 = ( y − h θ ( x )) x j
 
-```
 ′
-```
 
 Above, we used the fact that g ( z ) = g ( z )(1 − g ( z )). This therefore gives us the stochastic gradient ascent rule (
 
-```
 ( i ) ( i )
-```
 
-```
 ) ( i )
-```
 
 θ j := θ j + α y − h θ ( x ) x j
 
 If we compare this to the LMS update rule, we see that it looks identical; but
 
-```
 ( i )
-```
 
 this is not the same algorithm, because h θ ( x ) is now defined as a non-linear
 
-```
 T ( i )
-```
 
 function of θ x . Nonetheless, it’s a little surprising that we end up with the same update rule for a rather different algorithm and learning problem. Is this coincidence, or is there a deeper reason behind this? We’ll answer this when we get to GLM models.
 
@@ -1224,25 +919,17 @@ function of θ x . Nonetheless, it’s a little surprising that we end up with t
 
 We now digress to talk briefly about an algorithm that’s of some historical interest, and that we will also return to later when we talk about learning theory. Consider modifying the logistic regression method to “force” it to output values that are either 0 or 1 or exactly. To do so, it seems natural to change the definition of g to be the threshold function: { if z ≥ g ( z ) = if z <
 
-```
 T
-```
 
 If we then let h θ ( x ) = g ( θ x ) as before but using this modified definition of g , and if we use the update rule (
 
-```
 ( i ) ( i )
-```
 
-```
 ) ( i )
-```
 
 θ j := θ j + α y − h θ ( x ) x j
 
-```
 .
-```
 
 then we have the perceptron learning algorithn . In the 1960s, this “perceptron” was argued to be a rough model for how individual neurons in the brain work. Given how simple the algorithm is, it will also provide a starting point for our analysis when we talk about learning theory later in this class. Note however that even though the perceptron may be cosmetically similar to the other algorithms we talked about, it is actually a very different type of algorithm than logistic regression and least squares linear regression; in particular, it is difficult to endow the perceptron’s predic- tions with meaningful probabilistic interpretations, or derive the perceptron as a maximum likelihood estimation algorithm.
 
@@ -1260,15 +947,11 @@ f ( θ ) θ := θ − f ′
 
 This method has a natural interpretation in which we can think of it as approximating the function f via a linear function that is tangent to f at the current guess θ , solving for where that linear function equals to zero, and letting the next guess for θ be where that linear function is zero. Here’s a picture of the Newton’s method in action: In the leftmost figure, we see the function f plotted along with the line y = 0. We’re trying to find θ so that f ( θ ) = 0; the value of θ that achieves this is about 1.3. Suppose we initialized the algorithm with θ = 4 . 5. Newton’s method then fits a straight line tangent to f at θ = 4 . 5, and solves for the where that line evaluates to 0. (Middle figure.) This give us the next guess for θ , which is about 2.8. The rightmost figure shows the result of running one more iteration, which the updates θ to about 1.8. After a few more iterations, we rapidly approach θ = 1 . 3. Newton’s method gives a way of getting to f ( θ ) = 0. What if we want to use it to maximize some function ` ? The maxima of ` correspond to points
 
-```
 ′ ′
-```
 
 where its first derivative ` ( θ ) is zero. So, by letting f ( θ ) = ` ( θ ), we can use the same algorithm to maximize ` , and we obtain update rule:
 
-```
 ′
-```
 
 ` ( θ ) θ := θ − . ` ′′
 
@@ -1278,9 +961,7 @@ where its first derivative ` ( θ ) is zero. So, by letting f ( θ ) = ` ( θ ),
 
 Lastly, in our logistic regression setting, θ is vector-valued, so we need to generalize Newton’s method to this setting. The generalization of Newton’s method to this multidimensional setting (also called the Newton-Raphson method) is given by
 
-```
 −
-```
 
 θ := θ − H ∇ θ ` ( θ ) .
 
@@ -1298,9 +979,7 @@ So far, we’ve seen a regression example, and a classification example. In the 
 
 To work our way up to GLMs, we will begin by defining exponential family distributions. We say that a class of distributions is in the exponential family if it can be written in the form
 
-```
 T
-```
 
 p ( y ; η ) = b ( y ) exp( η T ( y ) − a ( η )) (3.1)
 
@@ -1316,25 +995,19 @@ partition function . The quantity e essentially plays the role of a nor- malizat
 
 We now show that the Bernoulli and the Gaussian distributions are ex- amples of exponential family distributions. The Bernoulli distribution with mean φ , written Bernoulli( φ ), specifies a distribution over y ∈ { , } , so that p ( y = 1; φ ) = φ ; p ( y = 0; φ ) = 1 − φ . As we vary φ , we obtain Bernoulli distributions with different means. We now show that this class of Bernoulli distributions, ones obtained by varying φ , is in the exponential family; i.e., that there is a choice of T , a and b so that Equation (3.1) becomes exactly the class of Bernoulli distributions. We write the Bernoulli distribution as:
 
-```
 y − y
-```
 
 p ( y ; φ ) = φ (1 − φ ) = exp( y log φ + (1 − y ) log(1 − φ )) (( ( )) ) φ = exp log y + log(1 − φ ) . − φ
 
 Thus, the natural parameter is given by η = log( φ/ (1 − φ )). Interestingly, if we invert this definition for η by solving for φ in terms of η , we obtain φ =
 
-```
 − η
-```
 
 / (1 + e ). This is the familiar sigmoid function! This will come up again when we derive logistic regression as a GLM. To complete the formulation of the Bernoulli distribution as an exponential family distribution, we also have
 
 T ( y ) = y a ( η ) = − log(1 − φ )
 
-```
 η
-```
 
 = log(1 + e ) b ( y ) =
 
@@ -1342,9 +1015,7 @@ This shows that the Bernoulli distribution can be written in the form of Equatio
 
 If we leave σ as a variable, the Gaussian distribution can also be shown to be in the exponential family, where η ∈ R is now a 2-dimension vector that depends on both μ and σ . For the purposes of GLMs, however, the σ parameter can also be treated by considering
 
-```
 T
-```
 
 a more general definition of the exponential family: p ( y ; η, τ ) = b ( a, τ ) exp(( η T ( y ) − a ( η )) /c ( τ )). Here, τ is called the dispersion parameter , and for the Gaussian, c ( τ ) = σ ; but given our simplification above, we won’t need the more general definition for the examples we will consider here.
 
@@ -1364,15 +1035,11 @@ Suppose you would like to build a model to estimate the number y of cus- tomers 
 
 2. Given x , our goal is to predict the expected value of T ( y ) given x . In most of our examples, we will have T ( y ) = y , so this means we would like the prediction h ( x ) output by our learned hypothesis h to satisfy h ( x ) = E[ y | x ]. (Note that this assumption is satisfied in the choices for h θ ( x ) for both logistic regression and linear regression. For instance, in logistic regression, we had h θ ( x ) = p ( y = 1 | x ; θ ) = 0 · p ( y = | x ; θ ) + 1 · p ( y = 1 | x ; θ ) = E[ y | x ; θ ].)
 
-```
 T
-```
 
 3. The natural parameter η and the inputs x are related linearly: η = θ x .
 
-```
 T
-```
 
 (Or, if η is vector-valued, then η i = θ i
 
@@ -1388,9 +1055,7 @@ To show that ordinary least squares is a special case of the GLM family of model
 | --- | --- |
 | =   | η   |
 
-```
 T
-```
 
 = θ x.
 
@@ -1402,57 +1067,37 @@ by μ ; the third equality follows from Assumption 1 (and our earlier derivation
 
 We now consider logistic regression. Here we are interested in binary classifi- cation, so y ∈ { , } . Given that y is binary-valued, it therefore seems natural to choose the Bernoulli family of distributions to model the conditional dis- tribution of y given x . In our formulation of the Bernoulli distribution as
 
-```
 − η
-```
 
 an exponential family distribution, we had φ = 1 / (1 + e ). Furthermore, note that if y | x ; θ ∼ Bernoulli( φ ), then E[ y | x ; θ ] = φ . So, following a similar derivation as the one for ordinary least squares, we get:
 
 h θ ( x ) = E [ y | x ; θ ] = φ
 
-```
 − η
-```
 
 = / (1 + e )
 
-```
 − θ
-```
 
-```
 T
-```
 
-```
 x
-```
 
 = / (1 + e )
 
-```
 − θ
-```
 
-```
 T
-```
 
-```
 x
-```
 
 So, this gives us hypothesis functions of the form h θ ( x ) = 1 / (1 + e ). If you are previously wondering how we came up with the form of the logistic
 
-```
 − z
-```
 
 function 1 / (1 + e ), this gives one answer: Once we assume that y condi- tioned on x is Bernoulli, it arises as a consequence of the definition of GLMs and exponential family distributions. To introduce a little more terminology, the function g giving the distri- bution’s mean as a function of the natural parameter ( g ( η ) = E[ T ( y ); η ])
 
-```
 −
-```
 
 is called the canonical response function . Its inverse, g , is called the canonical link function . Thus, the canonical response function for the Gaussian family is just the identify function; and the canonical response function for the Bernoulli is the logistic function.
 
@@ -1466,33 +1111,25 @@ Many texts use g to denote the link function, and g to denote the response funct
 
 spam or not-spam—which would have been a binary classification problem— we might want to classify it into three classes, such as spam, personal mail, and work-related mail. The response variable is still discrete, but can now take on more than two values. We will thus model it as distributed according to a multinomial distribution. Let’s derive a GLM for modelling this type of multinomial data. To do so, we will begin by expressing the multinomial as an exponential family distribution. To parameterize a multinomial over k possible outcomes, one could use k parameters φ , . . . , φ k specifying the probability of each of the outcomes. However, these parameters would be redundant, or more formally, they would not be independent (since knowing any ∑ k − 1 of the φ i ’s uniquely determines
 
-```
 k
-```
 
 the last one, as they must satisfy i =1
 
 φ i = 1). So, we will instead pa- rameterize the multinomial with only k ∑ − 1 parameters, φ , . . . , φ k − , where
 
-```
 k −
-```
 
 φ i = p ( y = i ; φ ), and p ( y = k ; φ ) = 1 − ∑ i =1
 
 φ i . For notational convenience,
 
-```
 k −
-```
 
 we will also let φ k = 1 − i =1
 
 φ i , but we should keep in mind that this is not a parameter, and that it is fully specified by φ , . . . , φ k − . To express the multinomial as an exponential family distribution, we will
 
-```
 k −
-```
 
 define T ( y ) ∈ R as follows:
 
@@ -1521,42 +1158,30 @@ exponential family. We have:
 
 p ( y ; φ ) = φ φ · · · φ k ∑
 
-```
 k −
-```
 
 ```
 { y =1 } { y =2 } −
 ```
 
-```
 i =1
-```
 
-```
 { y = i }
-```
 
 ```
 = φ φ · · · φ k
 ∑
 ```
 
-```
 k −
-```
 
 ```
 ( T ( y )) ( T ( y )) −
 ```
 
-```
 i =1
-```
 
-```
 ( T ( y )) i
-```
 
 ```
 = φ φ · · · φ k
@@ -1564,9 +1189,7 @@ i =1
 
 = exp(( T ( y )) log( φ ) + ( T ( y )) log( φ ) + ( ∑ )
 
-```
 k −
-```
 
 - · · + − i =1
 
@@ -1574,9 +1197,7 @@ k −
 
 = exp(( T ( y )) log( φ /φ k ) + ( T ( y )) log( φ /φ k ) + · · · + ( T ( y )) k − log( φ k − /φ k ) + log( φ k ))
 
-```
 T
-```
 
 = b ( y ) exp( η T ( y ) − a ( η ))
 
@@ -1586,61 +1207,37 @@ a ( η ) = − log( φ k ) b ( y ) = .
 
 This completes our formulation of the multinomial as an exponential family distribution. The link function is given (for i = 1 , . . . , k ) by
 
-```
 φ i
-```
 
 η i = log . φ k
 
 For convenience, we have also defined η k = log( φ k /φ k ) = 0. To invert the link function and derive the response function, we therefore have that
 
-```
 η i
-```
 
-```
 φ i
-```
 
-```
-e =
-φ k
-η i
-```
+e = φ k η i
 
 φ k e = φ i (3.2) ∑
 
-```
 k
-```
 
-```
 ∑
-```
 
-```
-k
-η i
-```
+k η i
 
 φ k e = φ i = 1
 
-```
 i =1 i =1
-```
 
-```
-∑ k
-η i
-```
+∑ k η i
 
 This implies that φ k = 1 / i =1
 
 e , which can be substituted back into Equa- tion (3.2) to give the response function
 
-```
 η i
-```
 
 ```
 e
@@ -1648,33 +1245,23 @@ e
 j =1
 ```
 
-```
 e
-```
 
-```
 η j
-```
 
 This function mapping from the η ’s to the φ ’s is called the softmax function. To complete our model, we use Assumption 3, given earlier, that the η i ’s
 
-```
 T
-```
 
 are linearly related to the x ’s. So, have η i = θ i
 
 x (for i = 1 , . . . , k − 1),
 
-```
 d +1
-```
 
 where θ , . . . , θ k − ∈ R are the parameters of our model. For notational
 
-```
 T
-```
 
 convenience, we can also define θ k = 0, so that η k = θ k
 
@@ -1682,296 +1269,161 @@ x = 0, as given previously. Hence, our model assumes that the conditional distri
 
 p ( y = i | x ; θ ) = φ i η i
 
-```
-e
-= ∑ k
-η j
-```
+e = ∑ k η j
 
-```
 j =1
-```
 
-```
 e
-```
 
-```
 θ
-```
 
-```
 T
-```
 
-```
 e i
-```
 
-```
 x
-```
 
 = ∑ k θ
 
-```
-T
-j
-```
+T j
 
-```
 x
-```
 
 (3.3)
 
-```
 j =1
-```
 
-```
 e
-```
 
 This model, which applies to classification problems where y ∈ { , . . . , k } , is called softmax regression . It is a generalization of logistic regression. Our hypothesis will output
 
 h θ ( x ) = E[ T ( y ) | x ; θ ]  ∣  { y = 1 } ∣ ∣   { y = 2 } ∣  ∣  = E  .  . ∣ x ; θ  . ∣  ∣ { y = k − } ∣   φ    φ  =  .  .  .  φ k −
 
-```
 
-```
 
-```
 exp( θ
-```
 
-```
 T
-```
 
-```
 x )
-```
 
-```
 
-```
 
 ∑
 
-```
-k
-T
-```
+k T
 
-```
-
-j =1
-```
+ j =1
 
-```
 exp( θ
-```
 
-```
 j
-```
 
-```
 x )
-```
 
-```
-
-exp( θ
-```
+ exp( θ
 
-```
 T
-```
 
-```
 
-```
 
-```
 x )
-```
 
  ∑
 
-```
 
-```
 
-```
-k
-
-```
+k 
 
-```
 =1
-```
 
-```
 exp( θ
-```
 
-```
 T
-```
 
 =  j j
 
-```
 x )
-```
 
   . . .   .  
 
-```
 exp( θ
-```
 
-```
-T
-k −
-```
+T k −
 
-```
 x )
-```
 
-```
 
-```
 
 ∑
 
-```
-k
-j =1
-```
+k j =1
 
-```
 exp( θ
-```
 
-```
-T
-j
-```
+T j
 
-```
 x )
-```
 
 In other words, our hypothesis will output the estimated probability that p ( y = i | x ; θ ), for every value of i = 1 , . . . , k . (Even though h θ ( x ) as defined above is only ∑ k − 1 dimensional, clearly p ( y = k | x ; θ ) can be obtained as
 
-```
 k −
-```
 
-```
 − i =1
-```
 
 φ i .)
 
 Lastly, let’s discuss parameter fitting. Similar to our original derivation of ordinary least squares and logistic regression, if we have a training set of
 
-```
 ( i ) ( i )
-```
 
 n examples { ( x , y ); i = 1 , . . . , n } and would like to learn the parameters θ i of this model, we would begin by writing down the log-likelihood
 
-```
 ∑
-```
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 ` ( θ ) = log p ( y | x ; θ )
 
-```
 i =1
-```
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 ∏
-```
 
-```
 k
-```
 
-```
 (
-```
 
-```
 θ
-```
 
-```
 T
-```
 
-```
 x
-```
 
-```
 ( i )
-```
 
-```
 ) { y
-```
 
-```
 ( i )
-```
 
-```
 = l }
-```
 
-```
 e l
-```
 
 = log ∑ k θ
 
-```
-T
-( )
-j
-```
+T ( ) j
 
-```
 x i
-```
 
 ```
 i =1 l =1 j =1
 ```
 
-```
 e
-```
 
 To obtain the second line above, we used the definition for p ( y | x ; θ ) given in Equation (3.3). We can now obtain the maximum likelihood estimate of the parameters by maximizing ` ( θ ) in terms of θ , using a method such as gradient ascent or Newton’s method.
 
@@ -1981,9 +1433,7 @@ To obtain the second line above, we used the definition for p ( y | x ; θ ) giv
 
 So far, we’ve mainly been talking about learning algorithms that model p ( y | x ; θ ), the conditional distribution of y given x . For instance, logistic
 
-```
 T
-```
 
 regression modeled p ( y | x ; θ ) as h θ ( x ) = g ( θ x ) where g is the sigmoid func- tion. In these notes, we’ll talk about a different type of learning algorithm. Consider a classification problem in which we want to learn to distinguish between elephants ( y = 1) and dogs ( y = 0), based on some features of an animal. Given a training set, an algorithm like logistic regression or the perceptron algorithm (basically) tries to find a straight line—that is, a decision boundary—that separates the elephants and dogs. Then, to classify a new animal as either an elephant or a dog, it checks on which side of the decision boundary it falls, and makes its prediction accordingly. Here’s a different approach. First, looking at elephants, we can build a model of what elephants look like. Then, looking at dogs, we can build a separate model of what dogs look like. Finally, to classify a new animal, we can match the new animal against the elephant model, and match it against the dog model, to see whether the new animal looks more like the elephants or more like the dogs we had seen in the training set. Algorithms that try to learn p ( y | x ) directly (such as logistic regression), or algorithms that try to learn mappings directly from the space of inputs X to the labels { , } , (such as the perceptron algorithm) are called discrim- inative learning algorithms. Here, we’ll talk about algorithms that instead try to model p ( x | y ) (and p ( y )). These algorithms are called generative learning algorithms. For instance, if y indicates whether an example is a dog (0) or an elephant (1), then p ( x | y = 0) models the distribution of dogs’ features, and p ( x | y = 1) models the distribution of elephants’ features. After modeling p ( y ) (called the class priors ) and p ( x | y ), our algorithm
 
@@ -1997,9 +1447,7 @@ p ( x | y ) p ( y ) arg max p ( y | x ) = arg max
 
 y y p ( x ) = arg max p ( x | y ) p ( y ) .
 
-```
 y
-```
 
 ##### 4.1 Gaussian discriminant analysis
 
@@ -2009,15 +1457,11 @@ The first generative learning algorithm that we’ll look at is Gaussian discrim
 
 The multivariate normal distribution in d -dimensions, also called the multi-
 
-```
 d
-```
 
 variate Gaussian distribution, is parameterized by a mean vector μ ∈ R
 
-```
 d × d
-```
 
 and a covariance matrix Σ ∈ R , where Σ ≥ 0 is symmetric and positive semi-definite. Also written “ N ( μ, Σ)”, its density is given by: ( )
 
@@ -2031,15 +1475,11 @@ exp
 
 In the equation above, “ | Σ | ” denotes the determinant of the matrix Σ. For a random variable X distributed N ( μ, Σ), the mean is (unsurpris- ingly) given by μ : ∫ E[ X ] = x p ( x ; μ, Σ) dx = μ
 
-```
 x
-```
 
 The covariance of a vector-valued random variable Z is defined as Cov( Z ) =
 
-```
 T
-```
 
 E[( Z − E[ Z ])( Z − E[ Z ]) ]. This generalizes the notion of the variance of a
 
@@ -2133,9 +1573,7 @@ When we have a classification problem in which the input features x are continuo
 
 Writing out the distributions, this is:
 
-```
 y − y
-```
 
 p ( y ) = φ (1 − φ ) ( )
 
@@ -2157,20 +1595,13 @@ exp
 
 Here, the parameters of our model are φ , Σ, μ and μ . (Note that while there’re two different mean vectors μ and μ , this model is usually applied using only one covariance matrix Σ.) The log-likelihood of the data is given by
 
-```
 ∏
-```
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 ` ( φ, μ , μ , Σ) = log p ( x , y ; φ, μ , μ , Σ)
 
-```
 i =1
-```
 
 ```
 ∏ n
@@ -2179,22 +1610,15 @@ i =1
 
 = log p ( x | y ; μ , μ , Σ) p ( y ; φ ) .
 
-```
 i =1
-```
 
 By maximizing ` with respect to the parameters, we find the maximum like- lihood estimate of the parameters (see problem set 1) to be:
 
-```
-∑ n
-( i )
-```
+∑ n ( i )
 
 φ = { y = 1 } n
 
-```
 i =1
-```
 
 ```
 ∑ n
@@ -2206,19 +1630,13 @@ i =1
 
 { y = 0 } ∑ n ( i ) ( i )
 
-```
-μ ∑
-```
+### μ ∑
 
-```
 i =1
-```
 
 { y = 1 } x = n i ) i =1
 
-```
 { y (
-```
 
 = 1 } ∑
 
@@ -2229,9 +1647,7 @@ n
 
 Σ = ( x − μ y ( i ) )( x − μ y ( i ) ) . n
 
-```
 i =1
-```
 
 Pictorially, what the algorithm is doing can be seen in as follows:
 
@@ -2261,15 +1677,11 @@ p ( y = 1 | x ; φ, Σ , μ , μ ) = 1 + exp( − θ T
 
 where θ is some appropriate function of φ, Σ , μ , μ . This is exactly the form that logistic regression—a discriminative algorithm—used to model p ( y = | x ). When would we prefer one model over another? GDA and logistic regres- sion will, in general, give different decision boundaries when trained on the same dataset. Which is better? We just argued that if p ( x | y ) is multivariate gaussian (with shared Σ), then p ( y | x ) necessarily follows a logistic function. The converse, however, is not true; i.e., p ( y | x ) being a logistic function does not imply p ( x | y ) is multivariate gaussian. This shows that GDA makes stronger modeling as- sumptions about the data than does logistic regression. It turns out that when these modeling assumptions are correct, then GDA will find better fits to the data, and is a better model. Specifically, when p ( x | y ) is indeed gaus- sian (with shared Σ), then GDA is asymptotically efficient . Informally, this means that in the limit of very large training sets (large n ), there is no algorithm that is strictly better than GDA (in terms of, say, how accurately they estimate p ( y | x )). In particular, it can be shown that in this setting, GDA will be a better algorithm than logistic regression; and more generally, even for small training set sizes, we would generally expect GDA to better. In contrast, by making significantly weaker assumptions, logistic regres- sion is also more robust and less sensitive to incorrect modeling assumptions. There are many different sets of assumptions that would lead to p ( y | x ) taking the form of a logistic function. For example, if x | y = 0 ∼ Poisson( λ ), and x | y = 1 ∼ Poisson( λ ), then p ( y | x ) will be logistic. Logistic regression will also work well on Poisson data like this. But if we were to use GDA on such data—and fit Gaussian distributions to such non-Gaussian data—then the results will be less predictable, and GDA may (or may not) do well. To summarize: GDA makes stronger modeling assumptions, and is more data efficient (i.e., requires less training data to learn “well”) when the mod- eling assumptions are correct or at least approximately correct. Logistic
 
-```
 ( i )
-```
 
 This uses the convention of redefining the x ’s on the right-hand-side to be ( d + 1)-
 
-```
 ( i )
-```
 
 ```
 dimensional vectors by adding the extra coordinate x = 1; see problem set 1.
@@ -2289,15 +1701,11 @@ is used to represent an email that contains the words “a” and “buy,” but
 
 p ( x , . . . , x | y ) = p ( x | y ) p ( x | y, x ) p ( x | y, x , x ) · · · p ( x | y, x , . . . , x ) = p ( x | y ) p ( x | y ) p ( x | y ) · · · p ( x | y ) ∏
 
-```
 d
-```
 
 = p ( x j | y )
 
-```
 j =1
-```
 
 The first equality simply follows from the usual properties of probabilities, and the second equality used the NB assumption. We note that even though
 
@@ -2305,34 +1713,23 @@ Actually, rather than looking through an English dictionary for the list of all 
 
 the Naive Bayes assumption is an extremely strong assumptions, the resulting algorithm works well on many problems. Our model is parameterized by φ j | y =1 = p ( x j = 1 | y = 1), φ j | y =0 = p ( x j =
 
-```
 ( i ) ( i )
-```
 
 | y = 0), and φ y = p ( y = 1). As usual, given a training set { ( x , y ); i = , . . . , n } , we can write down the joint likelihood of the data:
 
-```
 ∏
-```
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 ```
 L ( φ y , φ j | y =0 , φ j | y =1 ) = p ( x , y ) .
 ```
 
-```
 i =1
-```
 
 Maximizing this with respect to φ y , φ j | y =0 and φ j | y =1 gives the maximum likelihood estimates: ∑ n ( i ) ( i ) i =1
 
-```
 { x j
-```
 
 = 1 ∧ y = 1 } φ j | y =1 = ∑ n ( i ) i =1
 
@@ -2343,15 +1740,11 @@ Maximizing this with respect to φ y , φ j | y =0 and φ j | y =1 gives the max
 i =1
 ```
 
-```
 { x j
-```
 
 = 1 ∧ y = 0 } φ j | y =0 = ∑ n i =1
 
-```
 { y ( i )
-```
 
 = 0 } ∑ n ( i ) i =1
 
@@ -2361,25 +1754,15 @@ In the equations above, the “ ∧ ” symbol means “and.” The parameters h
 
 p ( x | y = 1) p ( y = 1) p ( y = 1 | x ) = p ( x ) ( ∏ )
 
-```
-d
-j =1
-```
+d j =1
 
 p ( x j | y = 1) p ( y = 1) = ( ∏ ) (
 
-```
 d
-```
 
-```
 ∏ ) ,
-```
 
-```
-d
-j =1
-```
+d j =1
 
 p ( x j | y = 1) p ( y = 1) + j =1
 
@@ -2406,9 +1789,7 @@ i =1
 
 = 0
 
-```
 i =1
-```
 
 ```
 { y = 1 }
@@ -2422,13 +1803,9 @@ i =1
 
 = 0
 
-```
 i =1
-```
 
-```
 { y ( )
-```
 
 = 0 }
 
@@ -2442,10 +1819,7 @@ NeurIPS is one of the top machine learning conferences. The deadline for submitt
 
 p ( x j | y = 1) p ( y = 1) p ( y = 1 | x ) = ∏ d
 
-```
-∏ d
-j =1
-```
+∏ d j =1
 
 p ( x j | y = 1) p ( y = 1) + j =1
 
@@ -2453,17 +1827,13 @@ p ( x j | y = 0) p ( y = 0)
 
 = .
 
-```
 ∏ d
-```
 
 This is because each of the terms “ j =1
 
 p ( x j | y )” includes a term p ( x | y ) = 0 that is multiplied into it. Hence, our algorithm obtains 0 / 0, and doesn’t know how to make a prediction. Stating the problem more broadly, it is statistically a bad idea to esti- mate the probability of some event to be zero just because you haven’t seen it before in your finite training set. Take the problem of estimating the mean of a multinomial random variable z taking values in { , . . . , k } . We can pa- rameterize our multinomial with φ j = p ( z = j ). Given a set of n independent
 
-```
 (1) ( n )
-```
 
 observations { z , . . . , z } , the maximum likelihood estimates are given by ∑ n ( i ) i =1
 
@@ -2479,18 +1849,13 @@ As we saw previously, if we were to use these maximum likelihood estimates, then
 
 { z = j } φ j =  . k + n Here, we’ve added 1 to the numerator, and ∑ k to the denominator. Note that
 
-```
-k
-j =1
-```
+k j =1
 
 φ j = 1 still holds (check this yourself!), which is a desirable property since the φ j ’s are estimates for probabilities that we know must sum to 1. Also, φ j = 0 for all values of j , solving our problem of probabilities being estimated as zero. Under certain (arguably quite strong) conditions, it can be shown that the Laplace smoothing actually gives the optimal estimator of the φ j ’s. Returning to our Naive Bayes classifier, with Laplace smoothing, we therefore obtain the following estimates of the parameters: ∑ n ( i ) ( i )
 
 1 + i =1
 
-```
 { x j
-```
 
 = 1 ∧ y = 1 } φ j | y =1 = ∑ n
 
@@ -2500,17 +1865,13 @@ j =1
 
 1 + i =1
 
-```
 { x j
-```
 
 = 1 ∧ y = 0 } φ j | y =0 = ∑ n
 
 2 + ( i i =1
 
-```
 { y )
-```
 
 = 0 }
 
@@ -2522,9 +1883,7 @@ To close off our discussion of generative learning algorithms, let’s talk abou
 
 j | y . Thus, the probability of a
 
-```
 d
-```
 
 message was given by p ( y ) j =1
 
@@ -2552,39 +1911,23 @@ If we are given a training set { ( x , y ); i = 1 , . . . , n } where x =
 
 ) (here, d i is the number of words in the i -training example), the likelihood of the data is given by
 
-```
 ∏
-```
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 ```
 L ( φ y , φ k | y =0 , φ k | y =1 ) = p ( x , y )
 ```
 
-```
 i =1
-```
 
-```
 ∏ n
-```
 
-```
-( )
-∏
-```
+### ( ) ∏
 
-```
 d i
-```
 
-```
 ( i ) ( i )
-```
 
 = p ( x j
 
@@ -2592,45 +1935,33 @@ d i
 | y ; φ k | y =0 , φ k | y =1 ) p ( y ; φ y ) .
 ```
 
-```
 i =1 j =1
-```
 
 Maximizing this yields the maximum likelihood estimates of the parameters:
 
-```
 ∑ n
-```
 
 ```
 ∑ d i ( i ) ( i )
 i =1 j =1
 ```
 
-```
 { x j
-```
 
 = k ∧ y = 1 } φ k | y =1 = ∑ n i =1
 
-```
 { y ( i )
-```
 
 = 1 } d i
 
-```
 ∑ n
-```
 
 ```
 ∑ d i ( i ) ( i )
 i =1 j =1
 ```
 
-```
 { x j
-```
 
 = k ∧ y = 0 } φ k | y =0 = ∑ n ( i ) i =1
 
@@ -2646,9 +1977,7 @@ i =1
 
 If we were to apply Laplace smoothing (which is needed in practice for good performance) when estimating φ k | y =0 and φ k | y =1 , we add 1 to the numerators and | V | to the denominators, and obtain:
 
-```
 ∑ n
-```
 
 ```
 ∑ d i ( i ) ( i )
@@ -2656,9 +1985,7 @@ If we were to apply Laplace smoothing (which is needed in practice for good perf
 
 1 + i =1 j =1
 
-```
 { x j
-```
 
 = k ∧ y = 1 } φ k | y =1 = ∑ n
 
@@ -2669,9 +1996,7 @@ i =1
 
 { y = 1 } d i
 
-```
 ∑ n
-```
 
 ```
 ∑ d i ( i ) ( i )
@@ -2679,19 +2004,13 @@ i =1
 
 1 + i =1 j =1
 
-```
 { x j
-```
 
 = k ∧ y = 0 } φ k | y =0 = ∑ n
 
-```
 | V | + i =1
-```
 
-```
 { y ( i )
-```
 
 . = 0 } d i
 
@@ -2705,22 +2024,15 @@ While not necessarily the very best classification algorithm, the Naive Bayes cl
 
 Recall that in our discussion about linear regression, we considered the prob- lem of predicting the price of a house (denoted by y ) from the living area of the house (denoted by x ), and we fit a linear function of x to the training data. What if the price y can be more accurately represented as a non-linear function of x ? In this case, we need a more expressive family of models than linear models. We start by considering fitting cubic functions y = θ x + θ x + θ x + θ . It turns out that we can view the cubic function as a linear function over the a different set of feature variables (defined below). Concretely, let the function φ : R → R be defined as
 
-```
-
-
-```
+###  
 
  x  φ ( x ) =    x  ∈ R . (5.1)
 
-```
 x
-```
 
 Let θ ∈ R be the vector containing θ , θ , θ , θ as entries. Then we can rewrite the cubic function in x as:
 
-```
 T
-```
 
 θ x + θ x + θ x + θ = θ φ ( x )
 
@@ -2730,147 +2042,87 @@ original input is mapped to some new set of quantities φ ( x ), we will call th
 
 ##### 5.2 LMS (least mean squares) with features
 
-```
 T
-```
 
 We will derive the gradient descent algorithm for fitting the model θ φ ( x ).
 
-```
 T
-```
 
 First recall that for ordinary least square problem where we were to fit θ x , the batch gradient descent update is (see the first lecture note for its deriva- tion):
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 (
-```
 
-```
 ( i ) ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 θ := θ + α y − h θ ( x ) x
 
-```
 i =1
-```
 
-```
 ∑ n
-```
 
-```
 (
-```
 
-```
 ( i ) T ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 := θ + α y − θ x x . (5.2)
 
-```
 i =1
-```
 
-```
 d p d
-```
 
 Let φ : R → R be a feature map that maps attribute x (in R ) to the
 
-```
 p
-```
 
 features φ ( x ) in R . (In the motivating example in the previous subsection,
 
-```
 T
-```
 
 we have d = 1 and p = 4.) Now our goal is to fit the function θ φ ( x ), with
 
-```
 p d
-```
 
 θ being a vector in R instead of R . We can replace all the occurrences of
 
-```
 ( i ) ( i )
-```
 
 x in the algorithm above by φ ( x ) to obtain the new update:
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 (
-```
 
-```
 ( i ) T ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 θ := θ + α y − θ φ ( x ) φ ( x ) (5.3)
 
-```
 i =1
-```
 
 Similarly, the corresponding stochastic gradient descent update rule is (
 
-```
 ( i ) T ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 θ := θ + α y − θ φ ( x ) φ ( x ) (5.4)
 
@@ -2878,9 +2130,7 @@ Similarly, the corresponding stochastic gradient descent update rule is (
 
 The gradient descent update, or stochastic gradient update above becomes computationally expensive when the features φ ( x ) is high-dimensional. For example, consider the direct extension of the feature map in equation (5.1)
 
-```
 d
-```
 
 to high-dimensional input x : suppose x ∈ R , and let φ ( x ) be the vector that
 
@@ -2890,158 +2140,91 @@ contains all the monomials of x with degree ≤  
 
 The dimension of the features φ ( x ) is on the order of d . This is a pro- hibitively long vector for computational purpose — when d = 1000, each update requires at least computing and storing a 1000 = 10 dimensional vector, which is 10 times slower than the update rule for for ordinary least squares updates (5.2). It may appear at first that such d runtime per update and memory usage are inevitable, because the vector θ itself is of dimension p ≈ d , and we may need to update every entry of θ and store it. However, we will introduce the kernel trick with which we will not need to store θ explicitly, and the runtime can be significantly improved. For simplicity, we assume the initialize the value θ = 0, and we focus on the iterative update (5.3). The main observation is that at any time, θ
 
-```
 (1) ( n )
-```
 
 can be represented as a linear combination of the vectors φ ( x ) , . . . , φ ( x ). Indeed, we can show this inductively as follows. At initialization, ∑ θ = 0 =
 
-```
-n
-( i )
-i =1
-```
+n ( i ) i =1
 
 - φ ( x ). Assume at some point, θ can be represented as
 
-```
-∑ n
-( i )
-```
+∑ n ( i )
 
 θ = β i φ ( x ) (5.6)
 
-```
 i =1
-```
 
 Here, for simplicity, we include all the monomials with repetitions (so that, e.g., x x x and x x x both appear in φ ( x )). Therefore, there are totally 1 + d + d + d entries in φ ( x ).
 
 for some β , . . . , β n ∈ R . Then we claim that in the next round, θ is still a
 
-```
 (1) ( n )
-```
 
 linear combination of φ ( x ) , . . . , φ ( x ) because
 
-```
 ∑ n
-```
 
-```
 (
-```
 
-```
 ( i ) T ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 θ := θ + α y − θ φ ( x ) φ ( x )
 
-```
 i =1
-```
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 ∑
-```
 
-```
-n
-( i )
-```
+n ( i )
 
-```
 (
-```
 
-```
 ( i ) T ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 = β i φ ( x ) + α y − θ φ ( x ) φ ( x )
 
-```
 i =1 i =1
-```
 
-```
 ∑ n
-```
 
-```
 (
-```
 
-```
 ( i ) T ( i )
-```
 
-```
 )
-```
 
-```
 ( i )
-```
 
 = ( β i + α y − θ φ ( x ) ) φ ( x ) (5.7)
 
-```
 i =1
-```
 
-```
-︸ ︷︷ ︸
-```
+### ︸ ︷︷ ︸
 
-```
 new β i
-```
 
 You may realize that our general strategy is to implicitly represent the p - dimensional vector θ by a set of coefficients β , . . . , β n . Towards doing this, we derive the update rule of the coefficients β , . . . , β n . Using the equation above, we see that the new β i depends on the old one via (
 
-```
 ( i ) T ( i )
-```
 
 ) β i := β i + α y − θ φ ( x ) (5.8)
 
 Here we still have the old ∑ θ on the RHS of the equation. Replacing θ by
 
-```
-n
-( j )
-```
+n ( j )
 
-```
 θ = j =1
-```
 
 β j φ ( x ) gives
 
@@ -3053,9 +2236,7 @@ n
 
 ∀ i ∈ { , . . . , n } , β i := β i + α y − β j φ ( x ) φ ( x )
 
-```
 j =1
-```
 
 ```
 ( j ) T ( i ) ( j ) ( i )
@@ -3063,69 +2244,43 @@ j =1
 
 We often rewrite φ ( x ) φ ( x ) as 〈 φ ( x ) , φ ( x ) 〉 to emphasize that it’s the inner product of the two feature vectors. Viewing β i ’s as the new representa- tion of θ , we have successfully translated the batch gradient descent algorithm into an algorithm that updates the value of β iteratively. It may appear that
 
-```
 ( j ) ( i )
-```
 
 at every iteration, we still need to compute the values of 〈 φ ( x ) , φ ( x ) 〉 for all pairs of i, j , each of which may take roughly O ( p ) operation. However, two important properties come to rescue:
 
-```
 ( j ) ( i )
-```
 
 1. We can pre-compute the pairwise inner products 〈 φ ( x ) , φ ( x ) 〉 for all pairs of i, j before the loop starts.
 
 ## 2. For the feature map φ defined in (5.5) (or many other interesting fea-
 
-```
 ( j ) ( i )
-```
 
 ture maps), computing 〈 φ ( x ) , φ ( x ) 〉 can be efficient and does not
 
-```
 ( i )
-```
 
 necessarily require computing φ ( x ) explicitly. This is because:
 
-```
 ∑
-```
 
-```
 d
-```
 
 ∑ ∑ 〈 φ ( x ) , φ ( z ) 〉 = 1 + x i z i + x i x j z i z j + x i x j x k z i z j z k
 
 i =1 i,j ∈{ ,...,d } i,j,k ∈{ ,...,d }
 
-```
-( )
-∑
-```
+### ( ) ∑
 
-```
 d
-```
 
-```
 ∑
-```
 
-```
 d
-```
 
-```
-) (
-∑
-```
+### ) ( ∑
 
-```
 d
-```
 
 = 1 + x i z i + x i z i + x i z i
 
@@ -3151,9 +2306,7 @@ To wrap up the discussion, we write the down the final algorithm as follows:
 
 ## 2. Loop: ( ∑ n
 
-```
 )
-```
 
 ```
 ( i ) ( i ) ( j )
@@ -3161,15 +2314,11 @@ To wrap up the discussion, we write the down the final algorithm as follows:
 
 ∀ i ∈ { , . . . , n } , β i := β i + α y − β j K ( x , x ) (5.11)
 
-```
 j =1
-```
 
 Or in vector notation, letting K be the n × n matrix with K ij =
 
-```
 ( i ) ( j )
-```
 
 K ( x , x ), we have
 
@@ -3177,23 +2326,17 @@ K ( x , x ), we have
 
 With the algorithm above, we can update the representation β of the vector θ efficiently with O ( n ) time per update. Finally, we need to show that
 
-```
 d
-```
 
 Recall that X is the space of the input x . In our running example, X = R
 
 the knowledge of the representation β suffices to compute the prediction
 
-```
 T
-```
 
 θ φ ( x ). Indeed, we have
 
-```
 ∑ n
-```
 
 ```
 ∑ n
@@ -3202,9 +2345,7 @@ T ( i ) T ( i )
 
 θ φ ( x ) = β i φ ( x ) φ ( x ) = β i K ( x , x ) (5.12)
 
-```
 i =1 i =1
-```
 
 You may realize that fundamentally all we need to know about the feature map φ ( · ) is encapsulated in the corresponding kernel function K ( · , · ). We will expand on this in the next section.
 
@@ -3212,94 +2353,61 @@ You may realize that fundamentally all we need to know about the feature map φ 
 
 In the last subsection, we started with an explicitly defined feature map φ , which induces the kernel function K ( x, z ) , 〈 φ ( x ) , φ ( z ) 〉 . Then we saw that the kernel function is so intrinsic so that as long as the kernel function is defined, the whole training algorithm can be written entirely in the language of the kernel without referring to the feature map φ , so can the prediction of a test example x (equation (5.12).) Therefore, it would be tempted to define other kernel function K ( · , · ) and run the algorithm (5.11). Note that the algorithm (5.11) does not need to explicitly access the feature map φ , and therefore we only need to ensure the existence of the feature map φ , but do not necessarily need to be able to explicitly write φ down. What kinds of functions K ( · , · ) can correspond to some feature map φ ? In other words, can we tell if there is some feature mapping φ so that K ( x, z ) =
 
-```
 T
-```
 
 φ ( x ) φ ( z ) for all x , z ? If we can answer this question by giving a precise characterization of valid kernel functions, then we can completely change the interface of selecting feature maps φ to the interface of selecting kernel function K . Concretely, we can pick a function K , verify that it satisfies the characterization (so that there exists a feature map φ that K corresponds to), and then we can run update rule (5.11). The benefit here is that we don’t have to be able to compute φ or write it down analytically, and we only need to know its existence. We will answer this question at the end of this subsection after we go through several concrete examples of kernels.
 
-```
 d
-```
 
 Suppose x, z ∈ R , and let’s first consider the function K ( · , · ) defined as:
 
-```
 T
-```
 
 K ( x, z ) = ( x z ) .
 
 We can also write this as ( ∑
 
-```
 d
-```
 
-```
-) (
-∑
-```
+### ) ( ∑
 
-```
 d
-```
 
-```
 )
-```
 
 ```
 K ( x, z ) = x i z i x j z j
 ```
 
-```
 i =1 j =1
-```
 
-```
 ∑ d
-```
 
-```
 ∑ d
-```
 
 ```
 = x i x j z i z j
 ```
 
-```
 i =1 j =1
-```
 
-```
 ∑
-```
 
-```
 d
-```
 
 = ( x i x j )( z i z j )
 
-```
 i,j =1
-```
 
 Thus, we see that K ( x, z ) = 〈 φ ( x ) , φ ( z ) 〉 is the kernel function that corre- sponds to the the feature mapping φ given (shown here for the case of d = 3) by   x x   x x     x x     x x   φ ( x ) =    x x  .    x x    x x    x x  x x
 
 Revisiting the computational efficiency perspective of kernel, note that whereas calculating the high-dimensional φ ( x ) requires O ( d ) time, finding K ( x, z ) takes only O ( d ) time—linear in the dimension of the input attributes. For another related example, also consider K ( · , · ) defined by
 
-```
 T
-```
 
 K ( x, z ) = ( x z + c ) ∑ d
 
-```
 ∑ d
-```
 
 √ √ = ( x i x j )( z i z j ) + ( cx i )( cz i ) + c .
 
@@ -3311,49 +2419,35 @@ i,j =1 i =1
 
 to the feature mapping (again shown for d = 3)   x x   x x     x x     x x     x x     x x   φ ( x ) =   x x   ,   x x     √ x x     √ cx     √ cx    cx 
 
-```
 c
-```
 
 and the parameter c controls the relative weighting between the x i (first order) and the x i x j (second order) terms.
 
-```
 T k
-```
 
 More broadly, the kernel ( K ( x, z ) = ( x z + c ) corresponds to a feature
 
-```
 d + k
-```
 
 ) mapping to an
 
-```
 k
-```
 
 feature space, corresponding of all monomials of the form x i x i . . . x i k
 
 that are up to order k . However, despite working in this
 
-```
 k
-```
 
 O ( d )-dimensional space, computing K ( x, z ) still takes only O ( d ) time, and hence we never need to explicitly represent feature vectors in this very high dimensional feature space.
 
 Kernels as similarity metrics. Now, let’s talk about a slightly different view of kernels. Intuitively, (and there are things wrong with this intuition, but nevermind), if φ ( x ) and φ ( z ) are close together, then we might expect
 
-```
 T
-```
 
 K ( x, z ) = φ ( x ) φ ( z ) to be large. Conversely, if φ ( x ) and φ ( z ) are far apart—
 
-```
 T
-```
 
 say nearly orthogonal to each other—then K ( x, z ) = φ ( x ) φ ( z ) will be small. So, we can think of K ( x, z ) as some measurement of how similar are φ ( x ) and φ ( z ), or of how similar are x and z . Given this intuition, suppose that for some learning problem that you’re working on, you’ve come up with some function K ( x, z ) that you think might be a reasonable measure of how similar x and z are. For instance, perhaps you chose ( ) || x − z || K ( x, z ) = exp − . σ
 
@@ -3361,23 +2455,17 @@ This is a reasonable measure of x and z ’s similarity, and is close to 1 when 
 
 a feature map φ such that the kernel K defined above satisfies K ( x, z ) =
 
-```
 T
-```
 
 φ ( x ) φ ( z )? In this particular example, the answer is yes. This kernel is called the Gaussian kernel , and corresponds to an infinite dimensional feature mapping φ . We will give a precise characterization about what properties a function K needs to satisfy so that it can be a valid kernel function that corresponds to some feature map φ .
 
 Necessary conditions for valid kernels. Suppose for now that K is indeed a valid kernel corresponding to some feature mapping φ , and we will first see what properties it satisfies. Now, consider some finite set of n points
 
-```
 (1) ( n )
-```
 
 (not necessarily the training set) { x , . . . , x } , and let a square, n -by- n
 
-```
 ( i ) ( j )
-```
 
 matrix K be defined so that its ( i, j )-entry is given by K ij = K ( x , x ). This matrix is called the kernel matrix . Note that we’ve overloaded the notation and used K to denote both the kernel function K ( x, z ) and the kernel matrix K , due to their obvious close relationship.
 
@@ -3393,74 +2481,45 @@ Now, if K is a valid kernel, then K ij = K ( x , x ) = φ ( x ) φ ( x ) =
 
 φ ( x ) φ ( x ) = K ( x , x ) = K ji , and hence K must be symmetric. More- over, letting φ k ( x ) denote the k -th coordinate of the vector φ ( x ), we find that for any vector z , we have ∑ ∑
 
-```
 T
-```
 
 ```
 z Kz = z i K ij z j
 ```
 
-```
 i j
-```
 
-```
-∑ ∑
-```
+### ∑ ∑
 
-```
 ( i ) T ( j )
-```
 
 = z i φ ( x ) φ ( x ) z j
 
-```
 i j
-```
 
-```
-∑ ∑ ∑
-```
+### ∑ ∑ ∑
 
-```
 ( i ) ( j )
-```
 
 = z i φ k ( x ) φ k ( x ) z j
 
-```
 i j k
-```
 
-```
-∑ ∑ ∑
-```
+### ∑ ∑ ∑
 
-```
 ( i ) ( j )
-```
 
 = z i φ k ( x ) φ k ( x ) z j
 
-```
 k i j
-```
 
-```
-( )
-∑ ∑
-```
+### ( ) ∑ ∑
 
-```
 ( i )
-```
 
 = z i φ k ( x )
 
-```
 k i
-```
 
 ≥ . ∑ ∑ The second-to-last step uses the fact that i,j
 
@@ -3468,69 +2527,49 @@ a i a j = ( i
 
 a i ) for a i =
 
-```
 ( i )
-```
 
 z i φ k ( x ). Since z was arbitrary, this shows that K is positive semi-definite ( K ≥ 0). Hence, we’ve shown that if K is a valid kernel (i.e., if it corresponds to
 
-```
 n × n
-```
 
 some feature mapping φ ), then the corresponding kernel matrix K ∈ R is symmetric positive semidefinite.
 
 Sufficient conditions for valid kernels. More generally, the condition above turns out to be not only a necessary, but also a sufficient, condition for K to be a valid kernel (also called a Mercer kernel). The following result is due to Mercer.
 
-```
 d d
-```
 
 Theorem (Mercer). Let K : R × R → R be given. Then for K to be a valid (Mercer) kernel, it is necessary and sufficient that for any
 
-```
 (1) ( n )
-```
 
 { x , . . . , x } , ( n < ∞ ), the corresponding kernel matrix is symmetric pos- itive semi-definite.
 
 Given a function K , apart from trying to find a feature mapping φ that corresponds to it, this theorem therefore gives another way of testing if it is a valid kernel. You’ll also have a chance to play with these ideas more in problem set 2. In class, we also briefly talked about a couple of other examples of ker- nels. For instance, consider the digit recognition problem, in which given an image (16x16 pixels) of a handwritten digit (0-9), we have to figure out
 
-```
 T k
-```
 
 which digit it was. Using either a simple polynomial kernel K ( x, z ) = ( x z ) or the Gaussian kernel, SVMs were able to obtain extremely good perfor- mance on this problem. This was particularly surprising since the input attributes x were just 256-dimensional vectors of the image pixel intensity values, and the system had no prior knowledge about vision, or even about which pixels are adjacent to which other ones. Another example that we briefly talked about in lecture was that if the objects x that we are trying to classify are strings (say, x is a list of amino acids, which strung together form a protein), then it seems hard to construct a reasonable, “small” set of features for most learning algorithms, especially if different strings have dif- ferent lengths. However, consider letting φ ( x ) be a feature vector that counts the number of occurrences of each length- k substring in x . If we’re consid-
 
-```
 k
-```
 
 ering strings of English letters, then there are 26 such strings. Hence, φ ( x )
 
-```
 k
-```
 
 is a 26 dimensional vector; even for moderate values of k , this is probably too big for us to efficiently work with. (e.g., 26 ≈ 460000.) However, using (dynamic programming-ish) string matching algorithms, it is possible to ef-
 
-```
 T
-```
 
 ficiently compute K ( x, z ) = φ ( x ) φ ( z ), so that we can now implicitly work
 
-```
 k
-```
 
 in this 26 -dimensional feature space, but without ever explicitly computing feature vectors in this space.
 
 Many texts present Mercer’s theorem in a slightly more complicated form involving
 
-```
 d
-```
 
 L functions, but when the input attributes take values in R , the version given here is equivalent.
 
@@ -3546,33 +2585,23 @@ This set of notes presents the Support Vector Machine (SVM) learning al- gorithm
 
 We’ll start our story on SVMs by talking about margins. This section will give the intuitions about margins and about the “confidence” of our predic- tions; these ideas will be made formal in Section 6.3. Consider logistic regression, where the probability p ( y = 1 | x ; θ ) is mod-
 
-```
 T
-```
 
 eled by h θ ( x ) = g ( θ x ). We then predict “1” on an input x if and only if
 
-```
 T
-```
 
 h θ ( x ) ≥ . 5, or equivalently, if and only if θ x ≥ 0. Consider a positive
 
-```
 T
-```
 
 training example ( y = 1). The larger θ x is, the larger also is h θ ( x ) = p ( y = | x ; θ ), and thus also the higher our degree of “confidence” that the label is 1. Thus, informally we can think of our prediction as being very confident that
 
-```
 T
-```
 
 y = 1 if θ x  0. Similarly, we think of logistic regression as confidently
 
-```
 T
-```
 
 predicting y = 0, if θ x  0. Given a training set, again informally it seems that we’d have found a good fit to the training data if we can find θ so that
 
@@ -3584,9 +2613,7 @@ T ( i ) ( i ) T ( i ) ( i )
 
 training examples. This seems to be a nice goal to aim for, and we’ll soon formalize this idea using the notion of functional margins. For a different type of intuition, consider the following figure, in which x’s represent positive training examples, o’s denote negative training examples,
 
-```
 T
-```
 
 a decision boundary (this is the line given by the equation θ x = 0, and is also called the separating hyperplane ) is also shown, and three points have also been labeled A, B and C.
 
@@ -3602,17 +2629,13 @@ Notice that the point A is very far from the decision boundary. If we are asked 
 
 To make our discussion of SVMs easier, we’ll first need to introduce a new notation for talking about classification. We will be considering a linear classifier for a binary classification problem with labels y and features x . From now, we’ll use y ∈ {− , } (instead of { , } ) to denote the class labels. Also, rather than parameterizing our linear classifier with the vector θ , we will use parameters w, b , and write our classifier as
 
-```
 T
-```
 
 h w,b ( x ) = g ( w x + b ) .
 
 Here, g ( z ) = 1 if z ≥ 0, and g ( z ) = − 1 otherwise. This “ w, b ” notation allows us to explicitly treat the intercept term b separately from the other parameters. (We also drop the convention we had previously of letting x = 1 be an extra coordinate in the input feature vector.) Thus, b takes the role of
 
-```
 T
-```
 
 what was previously θ , and w takes the role of [ θ . . . θ d ] . Note also that, from our definition of g above, our classifier will directly predict either 1 or − 1 (cf. the perceptron algorithm), without first going through the intermediate step of estimating p ( y = 1) (which is what logistic regression does).
 
@@ -3620,9 +2643,7 @@ what was previously θ , and w takes the role of [ θ . . . θ d ] . Note also t
 
 Let’s formalize the notions of the functional and geometric margins. Given a
 
-```
 ( i ) ( i )
-```
 
 training example ( x , y ), we define the functional margin of ( w, b ) with respect to the training example as
 
@@ -3632,33 +2653,23 @@ training example ( x , y ), we define the functional margin of ( w, b ) with res
 
 γ ˆ = y ( w x + b ) .
 
-```
 ( i )
-```
 
 Note that if y = 1, then for the functional margin to be large (i.e., for
 
-```
 T ( i )
-```
 
 our prediction to be confident and correct), we need w x + b to be a large
 
-```
 ( i )
-```
 
 positive number. Conversely, if y = − 1, then for the functional margin
 
-```
 T ( i )
-```
 
 to be large, we need w x + b to be a large negative number. Moreover, if
 
-```
 ( i ) T ( i )
-```
 
 y ( w x + b ) > 0, then our prediction on this example is correct. (Check this yourself.) Hence, a large functional margin represents a confident and a correct prediction. For a linear classifier with the choice of g given above (taking values in {− , } ), there’s one property of the functional margin that makes it not a very good measure of confidence, however. Given our choice of g , we note that
 
@@ -3666,21 +2677,15 @@ y ( w x + b ) > 0, then our prediction on this example is correct. (Check this y
 
 if we replace w with 2 w and b with 2 b , then since g ( w x + b ) = g (2 w x + 2 b ), this would not change h w,b ( x ) at all. I.e., g , and hence also h w,b ( x ), depends
 
-```
 T
-```
 
 only on the sign, but not on the magnitude, of w x + b . However, replacing ( w, b ) with (2 w, b ) also results in multiplying our functional margin by a factor of 2. Thus, it seems that by exploiting our freedom to scale w and b , we can make the functional margin arbitrarily large without really changing anything meaningful. Intuitively, it might therefore make sense to impose some sort of normalization condition such as that || w || = 1; i.e., we might replace ( w, b ) with ( w/ || w || , b/ || w || ), and instead consider the functional margin of ( w/ || w || , b/ || w || ). We’ll come back to this later.
 
-```
 ( i ) ( i )
-```
 
 Given a training set S = { ( x , y ); i = 1 , . . . , n } , we also define the function margin of ( w, b ) with respect to S as the smallest of the functional margins of the individual training examples. Denoted by ˆ γ , this can therefore be written:
 
-```
 ( i )
-```
 
 γ ˆ = min γ ˆ .
 
@@ -3704,62 +2709,41 @@ The decision boundary corresponding to ( w, b ) is shown, along with the
 
 vector w . Note that w is orthogonal (at 90 ) to the separating hyperplane. (You should convince yourself that this must be the case.) Consider the
 
-```
 ( i )
-```
 
 point at A, which represents the input x of some training example with
 
-```
 ( i ) ( i )
-```
 
 label y = 1. Its distance to the decision boundary, γ , is given by the line segment AB.
 
-```
 ( i )
-```
 
 How can we find the value of γ ? Well, w/ || w || is a unit-length vector
 
-```
 ( i )
-```
 
 pointing in the same direction as w . Since A represents x , we therefore
 
-```
 ( i ) ( i )
-```
 
 find that the point B is given by x − γ · w/ || w || . But this point lies on the decision boundary, and all points x on the decision boundary satisfy the
 
-```
 T
-```
 
 equation w x + b = 0. Hence, ( )
 
-```
 T ( i ) ( i )
-```
 
 w w x − γ + b = 0 . || w ||
 
-```
 ( i )
-```
 
 Solving for γ yields
 
-```
 T ( i )
-```
 
-```
-( ) T
-( i )
-```
+( ) T ( i )
 
 ```
 w x + b w ( i )
@@ -3773,20 +2757,13 @@ b
 
 This was worked out for the case of a positive training example at A in the figure, where being on the “positive” side of the decision boundary is good. More generally, we define the geometric margin of ( w, b ) with respect to a
 
-```
 ( i ) ( i )
-```
 
 training example ( x , y ) to be ( ( ) )
 
-```
-T
-( i ) ( i )
-```
+T ( i ) ( i )
 
-```
 w ( i )
-```
 
 ```
 b
@@ -3796,15 +2773,11 @@ b
 
 Note that if || w || = 1, then the functional margin equals the geometric margin—this thus gives us a way of relating these two different notions of margin. Also, the geometric margin is invariant to rescaling of the parame- ters; i.e., if we replace w with 2 w and b with 2 b , then the geometric margin does not change. This will in fact come in handy later. Specifically, because of this invariance to the scaling of the parameters, when trying to fit w and b to training data, we can impose an arbitrary scaling constraint on w without changing anything important; for instance, we can demand that || w || = 1, or | w | = 5, or | w + b | + | w | = 2, and any of these can be satisfied simply by rescaling w and b .
 
-```
 ( i ) ( i )
-```
 
 Finally, given a training set S = { ( x , y ); i = 1 , . . . , n } , we also define the geometric margin of ( w, b ) with respect to S to be the smallest of the geometric margins on the individual training examples:
 
-```
 ( i )
-```
 
 γ = min γ .
 
@@ -3820,9 +2793,7 @@ on the training set and a good “fit” to the training data. Specifically, thi
 
 max γ,w,b γ
 
-```
 ( i ) T ( i )
-```
 
 s.t. y ( w x + b ) ≥ γ, i = 1 , . . . , n || w || = 1 .
 
@@ -3830,27 +2801,19 @@ I.e., we want to maximize γ , subject to each training example having func- tio
 
 γ ˆ max γ,w,b ˆ
 
-```
-|| w ||
-```
+### || w ||
 
-```
 ( i ) T ( i )
-```
 
 s.t. y ( w x + b ) ≥ γ, ˆ i = 1 , . . . , n
 
 Here, we’re going to maximize ˆ γ/ || w || , subject to the functional margins all being at least ˆ γ . Since the geometric and functional margins are related by γ = ˆ γ/ || w | , this will give us the answer we want. Moreover, we’ve gotten rid of the constraint || w || = 1 that we didn’t like. The downside is that we now
 
-```
 γ ˆ
-```
 
 have a nasty (again, non-convex) objective
 
-```
 || w ||
-```
 
 function; and, we still don’t have any off-the-shelf software that can solve this form of an optimization problem. Let’s keep going. Recall our earlier discussion that we can add an arbi- trary scaling constraint on w and b without changing anything. This is the key idea we’ll use now. We will introduce the scaling constraint that the functional margin of w, b with respect to the training set must be 1:
 
@@ -3860,9 +2823,7 @@ Since multiplying w and b by some constant results in the functional margin bein
 
 min w,b || w ||
 
-```
 ( i ) T ( i )
-```
 
 s.t. y ( w x + b ) ≥ , i = 1 , . . . , n
 
@@ -3876,15 +2837,11 @@ min w f ( w ) s.t. h i ( w ) = 0 , i = 1 , . . . , l.
 
 Some of you may recall how the method of Lagrange multipliers can be used to solve it. (Don’t worry if you haven’t seen it before.) In this method, we define the Lagrangian to be
 
-```
 ∑ l
-```
 
 L ( w, β ) = f ( w ) + β i h i ( w )
 
-```
 i =1
-```
 
 You may be familiar with linear programming, which solves optimization problems that have linear objectives and linear constraints. QP software is also widely available, which allows convex quadratic objectives and linear constraints.
 
@@ -3900,53 +2857,33 @@ min w f ( w ) s.t. g i ( w ) ≤ , i = 1 , . . . , k h i ( w ) = 0 , i = 1 , . .
 
 To solve it, we start by defining the generalized Lagrangian
 
-```
 ∑
-```
 
-```
 k
-```
 
-```
 ∑
-```
 
-```
 l
-```
 
 L ( w, α, β ) = f ( w ) + α i g i ( w ) + β i h i ( w ) .
 
-```
 i =1 i =1
-```
 
 Here, the α i ’s and β i ’s are the Lagrange multipliers. Consider the quantity
 
 θ P ( w ) = max L ( w, α, β ) .
 
-```
 α,β : α i ≥
-```
 
 Here, the “ P ” subscript stands for “primal.” Let some w be given. If w violates any of the primal constraints (i.e., if either g i ( w ) > 0 or h i ( w ) = 0 for some i ), then you should be able to verify that
 
-```
 ∑
-```
 
-```
 k
-```
 
-```
 ∑
-```
 
-```
 l
-```
 
 θ P ( w ) = max f ( w ) + α i g i ( w ) + β i h i ( w ) (6.1)
 
@@ -3971,17 +2908,13 @@ w w α,β : α i ≥
 
 we see that it is the same problem (i.e., and has the same solutions as) our original, primal problem. For later use, we also define the optimal value of
 
-```
 ∗
-```
 
 the objective to be p = min w θ P ( w ); we call this the value of the primal problem. Now, let’s look at a slightly different problem. We define
 
 θ D ( α, β ) = min L ( w, α, β ) .
 
-```
 w
-```
 
 Here, the “ D ” subscript stands for “dual.” Note also that whereas in the definition of θ P we were optimizing (maximizing) with respect to α, β , here we are minimizing with respect to w . We can now pose the dual optimization problem:
 
@@ -3993,15 +2926,11 @@ max θ D ( α, β ) = max min L ( w, α, β ) .
 
 This is exactly the same as our primal problem shown above, except that the order of the “max” and the “min” are now exchanged. We also define the
 
-```
 ∗
-```
 
 optimal value of the dual problem’s objective to be d = max α,β : α i ≥ θ D ( w ). How are the primal and the dual problems related? It can easily be shown that
 
-```
 ∗ ∗
-```
 
 d = max min L ( w, α, β ) ≤ min max L ( w, α, β ) = p .
 
@@ -4011,9 +2940,7 @@ d = max min L ( w, α, β ) ≤ min max L ( w, α, β ) = p .
 
 (You should convince yourself of this; this follows from the “max min” of a function always being less than or equal to the “min max.”) However, under certain conditions, we will have
 
-```
 ∗ ∗
-```
 
 d = p ,
 
@@ -4021,29 +2948,21 @@ so that we can solve the dual problem in lieu of the primal problem. Let’s see
 
 When f has a Hessian, then it is convex if and only if the Hessian is positive semi-
 
-```
 T
-```
 
 definite. For instance, f ( w ) = w w is convex; similarly, all linear (and affine) functions are also convex. (A function f can also be convex without being differentiable, but we won’t need those more general definitions of convexity here.)
 
-```
 T
-```
 
 I.e., there exists a i , b i , so that h i ( w ) = a i
 
 w + b i . “Affine” means the same thing as linear, except that we also allow the extra intercept term b i .
 
-```
 ∗ ∗ ∗ ∗
-```
 
 Under our above assumptions, there must exist w , α , β so that w is the
 
-```
 ∗ ∗
-```
 
 solution to the primal problem, α , β are the solution to the dual problem,
 
@@ -4053,35 +2972,23 @@ solution to the primal problem, α , β are the solution to the dual problem,
 
 and moreover p = d = L ( w , α , β ). Moreover, w , α and β satisfy the Karush-Kuhn-Tucker (KKT) conditions , which are as follows:
 
-```
-∂
-∗ ∗ ∗
-```
+∂ ∗ ∗ ∗
 
 L ( w , α , β ) = , i = 1 , . . . , d (6.3) ∂w i
 
-```
-∂
-∗ ∗ ∗
-```
+∂ ∗ ∗ ∗
 
 L ( w , α , β ) = , i = 1 , . . . , l (6.4) ∂β i ∗ ∗
 
-```
 α i
-```
 
 g i ( w ) = , i = 1 , . . . , k (6.5)
 
-```
 ∗
-```
 
 g i ( w ) ≤ , i = 1 , . . . , k (6.6)
 
-```
 ∗
-```
 
 α ≥ , i = 1 , . . . , k (6.7)
 
@@ -4089,17 +2996,13 @@ g i ( w ) ≤ , i = 1 , . . . , k (6.6)
 
 Moreover, if some w , α , β satisfy the KKT conditions, then it is also a solution to t he primal and dual problems. We draw attention to Equation (6.5), which is called the KKT dual
 
-```
 ∗
-```
 
 complementarity condition. Specifically, it implies that if α i
 
 > 0, then
 
-```
 ∗
-```
 
 g i ( w ) = 0. (I.e., the “ g i ( w ) ≤ 0” constraint is active , meaning it holds with equality rather than with inequality.) Later on, this will be key for showing that the SVM has only a small number of “support vectors”; the KKT dual complementarity condition will also give us our convergence test when we talk about the SMO algorithm.
 
@@ -4113,17 +3016,13 @@ Previously, we posed the following (primal) optimization problem for find- ing t
 
 min w,b || w || (6.8)
 
-```
 ( i ) T ( i )
-```
 
 s.t. y ( w x + b ) ≥ , i = 1 , . . . , n
 
 We can write the constraints as
 
-```
 ( i ) T ( i )
-```
 
 g i ( w ) = − y ( w x + b ) + 1 ≤ .
 
@@ -4137,87 +3036,53 @@ The points with the smallest margins are exactly the ones closest to the decisio
 
 in terms of only the inner product 〈 x , x 〉 (think of this as ( x ) x ) between points in the input feature space. The fact that we can express our algorithm in terms of these inner products will be key when we apply the kernel trick. When we construct the Lagrangian for our optimization problem we have:
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 [
-```
 
-```
 ( i ) T ( i )
-```
 
 ] L ( w, b, α ) =  || w || − α i y ( w x + b ) − . (6.9)
 
-```
 i =1
-```
 
 Note that there’re only “ α i ” but no “ β i ” Lagrange multipliers, since the problem has only inequality constraints.
 
 Let’s find the dual form of the problem. To do so, we need to first minimize L ( w, b, α ) with respect to w and b (for fixed α ), to get θ D , which we’ll do by setting the derivatives of L with respect to w and b to zero. We have: ∑
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 ∇ w L ( w, b, α ) = w − α i y x = 0
 
-```
 i =1
-```
 
 This implies that ∑
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 w = α i y x . (6.10)
 
-```
 i =1
-```
 
 As for the derivative with respect to b , we obtain
 
-```
-∂
-∑
-```
+### ∂ ∑
 
-```
-n
-( i )
-```
+n ( i )
 
 L ( w, b, α ) = α i y = 0 . (6.11) ∂b
 
-```
 i =1
-```
 
 If we take the definition of w in Equation (6.10) and plug that back into the Lagrangian (Equation 6.9), and simplify, we get
 
-```
 ∑ n
-```
 
-```
 ∑ n
-```
 
-```
 ∑
-```
 
 ```
 n
@@ -4234,17 +3099,11 @@ i =1 i,j =1 i =1
 
 But from Equation (6.11), the last term must be zero, so we obtain
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 ∑
-```
 
 ```
 n
@@ -4259,9 +3118,7 @@ i =1 i,j =1
 
 Recall that we got to the equation above by minimizing L with respect to w and b . Putting this together with the constraints α i ≥ 0 (that we always had) and the constraint (6.11), we obtain the following dual optimization problem:
 
-```
 ∑ n
-```
 
 ```
 ∑ n
@@ -4276,28 +3133,19 @@ i =1 i,j =1
 
 s.t. α i ≥ , i = 1 , . . . , n ∑
 
-```
-n
-( i )
-```
+n ( i )
 
 α i y = 0 ,
 
-```
 i =1
-```
 
-```
 ∗ ∗
-```
 
 You should also be able to verify that the conditions required for p = d and the KKT conditions (Equations 6.3–6.7) to hold are indeed satisfied in
 
 our optimization problem. Hence, we can solve the dual in lieu of solving the primal problem. Specifically, in the dual problem above, we have a maximization problem in which the parameters are the α i ’s. We’ll talk later about the specific algorithm that we’re going to use to solve the dual problem, but if we are indeed able to solve it (i.e., find the α ’s that maximize W ( α ) subject to the constraints), then we can use Equation (6.10) to go back and
 
-```
 ∗
-```
 
 find the optimal w ’s as a function of the α ’s. Having found w , by considering the primal problem, it is also straightforward to find the optimal value for the intercept term b as
 
@@ -4308,64 +3156,41 @@ find the optimal w ’s as a function of the α ’s. Having found w , by consid
 
 max i : y ( i )
 
-```
 = −
-```
 
 w x + min i : y ( i )
 
-```
 =1
-```
 
 w x b = − . (6.13)
 
 (Check for yourself that this is correct.) Before moving on, let’s also take a more careful look at Equation (6.10), which gives the optimal value of w in terms of (the optimal value of) α . Suppose we’ve fit our model’s parameters to a training set, and now wish to
 
-```
 T
-```
 
 make a prediction at a new point input x . We would then calculate w x + b , and predict y = 1 if and only if this quantity is bigger than zero. But using (6.10), this quantity can also be written:
 
-```
 (
-```
 
-```
 n
-```
 
 ## ) T
 
-```
 ∑
-```
 
-```
 T ( i ) ( i )
-```
 
 w x + b = α i y x x + b (6.14)
 
-```
 i =1
-```
 
-```
 ∑
-```
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 = α i y 〈 x , x 〉 + b. (6.15)
 
-```
 i =1
-```
 
 Hence, if we’ve found the α i ’s, in order to make a prediction, we have to calculate a quantity that depends only on the inner product between x and the points in the training set. Moreover, we saw earlier that the α i ’s will all be zero except for the support vectors. Thus, many of the terms in the sum above will be zero, and we really need to find only the inner products between x and the support vectors (of which there is often only a small number) in order calculate (6.15) and make our prediction. By examining the dual form of the optimization problem, we gained sig- nificant insight into the structure of the problem, and were also able to write the entire algorithm in terms of only inner products between input feature vectors. In the next section, we will exploit this property to apply the ker- nels to our classification problem. The resulting algorithm, support vector machines , will be able to efficiently learn in very high dimensional spaces.
 
@@ -4375,9 +3200,7 @@ The derivation of the SVM as presented so far assumed that the data is linearly 
 
 To make the algorithm work for non-linearly separable datasets as well as be less sensitive to outliers, we reformulate our optimization (using ` regularization ) as follows:
 
-```
 ∑ n
-```
 
 min γ,w,b || w || + C ξ i
 
@@ -4392,22 +3215,13 @@ Thus, examples are now permitted to have (functional) margin less than 1, and if
 
 As before, we can form the Lagrangian:
 
-```
 ∑ n
-```
 
-```
-∑ n n
-T
-```
+∑ n n T
 
-```
-[ ∑
-```
+### [ ∑
 
-```
 ( i ) T
-```
 
 ] L ( w, b, ξ, α, r ) =  w w + C ξ i − α i y ( x w + b ) − 1 + ξ i − r i ξ i .
 
@@ -4417,17 +3231,11 @@ i =1 i =1 i =1
 
 Here, the α i ’s and r i ’s are our Lagrange multipliers (constrained to be ≥ 0). We won’t go through the derivation of the dual again in detail, but after setting the derivatives with respect to w and b to zero as before, substituting them back in, and simplifying, we obtain the following dual form of the problem:
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 ∑
-```
 
 ```
 n
@@ -4442,40 +3250,27 @@ i =1 i,j =1
 
 s.t. ≤ α i ≤ C, i = 1 , . . . , n ∑
 
-```
-n
-( i )
-```
+n ( i )
 
 α i y = 0 ,
 
-```
 i =1
-```
 
 As before, we also have that w can be expressed in terms of the α i ’s as given in Equation (6.10), so that after solving the dual problem, we can con- tinue to use Equation (6.15) to make our predictions. Note that, somewhat surprisingly, in adding ` regularization, the only change to the dual prob- lem is that what was originally a constraint that 0 ≤ α i has now become
 
-```
 ∗
-```
 
 ≤ α i ≤ C . The calculation for b also has to be modified (Equation 6.13 is no longer valid); see the comments in the next section/Platt’s paper. Also, the KKT dual-complementarity conditions (which in the next sec- tion will be useful for testing for the convergence of the SMO algorithm) are:
 
-```
 ( i ) T ( i )
-```
 
 α i = 0 ⇒ y ( w x + b ) ≥ (6.16)
 
-```
 ( i ) T ( i )
-```
 
 α i = C ⇒ y ( w x + b ) ≤ (6.17)
 
-```
 ( i ) T ( i )
-```
 
 < α i < C ⇒ y ( w x + b ) = 1 . (6.18)
 
@@ -4493,9 +3288,7 @@ Consider trying to solve the unconstrained optimization problem
 
 max W ( α , α , . . . , α n ) .
 
-```
 α
-```
 
 Here, we think of W as just some function of the parameters α i ’s, and for now ignore any relationship between this problem and SVMs. We’ve already seen two optimization algorithms, gradient ascent and Newton’s method. The new algorithm we’re going to consider here is called coordinate ascent :
 
@@ -4507,13 +3300,9 @@ For i = 1 , . . . , n , {
 
 W ( α , . . . , α i − , α ˆ i , α i +1 , . . . , α n ).
 
-```
 }
-```
 
-```
 }
-```
 
 Thus, in the innermost loop of this algorithm, we will hold all the variables except for some α i fixed, and reoptimize W with respect to just the parameter α i . In the version of this method presented here, the inner-loop reoptimizes the variables in order α , α , . . . , α n , α , α , . . . . (A more sophisticated version might choose other orderings; for instance, we may choose the next variable to update according to which one we expect to allow us to make the largest increase in W ( α ).) When the function W happens to be of such a form that the “arg max” in the inner loop can be performed efficiently, then coordinate ascent can be a fairly efficient algorithm. Here’s a picture of coordinate ascent in action:
 
@@ -4539,9 +3328,7 @@ The ellipses in the figure are the contours of a quadratic function that we want
 
 We close off the discussion of SVMs by sketching the derivation of the SMO algorithm. Here’s the (dual) optimization problem that we want to solve:
 
-```
 ∑ n
-```
 
 ```
 ∑ n
@@ -4556,62 +3343,39 @@ i =1 i,j =1
 
 s.t. ≤ α i ≤ C, i = 1 , . . . , n (6.20) ∑
 
-```
-n
-( i )
-```
+n ( i )
 
 α i y = 0 . (6.21)
 
-```
 i =1
-```
 
 Let’s say we have set of α i ’s that satisfy the constraints (6.20-6.21). Now, suppose we want to hold α , . . . , α n fixed, and take a coordinate ascent step and reoptimize the objective with respect to α . Can we make any progress? The answer is no, because the constraint (6.21) ensures that
 
-```
 ∑
-```
 
-```
-n
-(1) ( i )
-```
+n (1) ( i )
 
 ```
 α y = − α i y .
 ```
 
-```
 i =2
-```
 
-```
 (1)
-```
 
 Or, by multiplying both sides by y , we equivalently have
 
-```
 ∑
-```
 
-```
-n
-(1) ( i )
-```
+n (1) ( i )
 
 ```
 α = − y α i y .
 ```
 
-```
 i =2
-```
 
-```
 (1) (1)
-```
 
 (This step used the fact that y ∈ {− , } , and hence ( y ) = 1.) Hence, α is exactly determined by the other α i ’s, and if we were to hold α , . . . , α n
 
@@ -4623,15 +3387,11 @@ Repeat till convergence {
 
 2. Reoptimize W ( α ) with respect to α i and α j , while holding all the other α k ’s ( k = i, j ) fixed.
 
-```
 }
-```
 
 To test for convergence of this algorithm, we can check whether the KKT conditions (Equations 6.16-6.18) are satisfied to within some t ol . Here, t ol is the convergence tolerance parameter, and is typically set to around 0.01 to 0.001. (See the paper and pseudocode for details.) The key reason that SMO is an efficient algorithm is that the update to α i , α j can be computed very efficiently. Let’s now briefly sketch the main ideas for deriving the efficient update. Let’s say we currently have some setting of the α i ’s that satisfy the con- straints (6.20-6.21), and suppose we’ve decided to hold α , . . . , α n fixed, and want to reoptimize W ( α , α , . . . , α n ) with respect to α and α (subject to the constraints). From (6.21), we require that
 
-```
 ∑
-```
 
 ```
 n
@@ -4642,15 +3402,11 @@ n
 α y + α y = − α i y .
 ```
 
-```
 i =3
-```
 
 Since the right hand side is fixed (as we’ve fixed α , . . . α n ), we can just let it be denoted by some constant ζ :
 
-```
 (1) (2)
-```
 
 α y + α y = ζ. (6.22)
 
@@ -4670,39 +3426,27 @@ L α C
 
 From the constraints (6.20), we know that α and α must lie within the box
 
-```
 (1) (2)
-```
 
 [0 , C ] × [0 , C ] shown. Also plotted is the line α y + α y = ζ , on which we know α and α must lie. Note also that, from these constraints, we know L ≤ α ≤ H ; otherwise, ( α , α ) can’t simultaneously satisfy both the box and the straight line constraint. In this example, L = 0. But depending on
 
-```
 (1) (2)
-```
 
 what the line α y + α y = ζ looks like, this won’t always necessarily be the case; but more generally, there will be some lower-bound L and some upper-bound H on the permissible values for α that will ensure that α , α lie within the box [0 , C ] × [0 , C ]. Using Equation (6.22), we can also write α as a function of α :
 
-```
 (2) (1)
-```
 
 α = ( ζ − α y ) y .
 
-```
 (1)
-```
 
 (Check this derivation yourself; we again used the fact that y ∈ {− , } so
 
-```
 (1)
-```
 
 that ( y ) = 1.) Hence, the objective W ( α ) can be written
 
-```
 (2) (1)
-```
 
 W ( α , α , . . . , α n ) = W (( ζ − α y ) y , α , . . . , α n ) .
 
@@ -4761,37 +3505,27 @@ We now begin our study of deep learning. In this set of notes, we give an overvi
 
 In the supervised learning setting (predicting y from the input x ), suppose our model/hypothesis is h θ ( x ). In the past lectures, we have considered the
 
-```
 >
-```
 
 cases when h θ ( x ) = θ x (in linear regression or logistic regression) or h θ ( x ) =
 
-```
 >
-```
 
 θ φ ( x ) (where φ ( x ) is the feature map). A commonality of these two models is that they are linear in the parameters θ . Next we will consider learning general family of models that are non-linear in both the parameters θ and the inputs x . The most common non-linear models are neural networks, which we will define staring from the next section. For this section, it suffices to think h θ ( x ) as an abstract non-linear model.
 
-```
 ( i ) ( i ) n
-```
 
 Suppose { ( x , y ) } i =1
 
 are the training examples. For simplicity, we start
 
-```
 ( i )
-```
 
 with the case where y ∈ R and h θ ( x ) ∈ R .
 
 Cost/loss function. We define the least square cost function for the i -th
 
-```
 ( i ) ( i )
-```
 
 example ( x , y ) as
 
@@ -4806,24 +3540,17 @@ If a concrete example is helpful, perhaps think about the model h θ ( x ) = θ 
 · · · + θ d
 ```
 
-```
 x d
-```
 
 in this subsection, even though it’s not a neural network.
 
 and define the mean-square cost function for the dataset as
 
-```
-∑ n
-( i )
-```
+∑ n ( i )
 
 J ( θ ) =  J ( θ ) (7.2) n
 
-```
 i =1
-```
 
 which is same as in linear regression except that we introduce a constant /n in front of the cost function to be consistent with the convention. Note that multiplying the cost function with a scalar will not change the local minima or global minima of the cost function. Also note that the underlying parameterization for h θ ( x ) is different from the case of linear regression, even though the form of the cost function is the same mean-squared loss. Throughout the notes, we use the words “loss” and “cost” interchangeably.
 
@@ -4843,9 +3570,7 @@ Algorithm 1 Stochastic Gradient Descent
 
 4: Sample j uniformly from { , . . . , n } , and update θ by
 
-```
 ( j )
-```
 
 θ := θ − α ∇ θ J ( θ ) (7.4)
 
@@ -4865,30 +3590,19 @@ Algorithm 2 Mini-batch Stochastic Gradient Descent
 
 4: Sample B examples j , . . . , j B (without replacement) uniformly from { , . . . , n } , and update θ by
 
-```
 B
-```
 
-```
-α
-∑
-```
+### α ∑
 
-```
 ( j k )
-```
 
 θ := θ − ∇ θ J ( θ ) (7.5) B
 
-```
 k =1
-```
 
 With these generic algorithms, a typical deep learning model is learned with the following steps. 1. Define a neural network parametrization h θ ( x ), which we will introduce in Section 7.2, and 2. write the backpropagation
 
-```
 ( j )
-```
 
 | algorithm to compute the gradient of the loss function  | J   | (   | θ   | ) efficiently, |
 | ------------------------------------------------------- | --- | --- | --- | -------------- |
@@ -4906,15 +3620,11 @@ h θ ( x ) = max( wx + b, 0) , where θ = ( w, b ) ∈ R (7.6)
 
 Here h θ ( x ) returns a single value: ( wx + b ) or zero, whichever is greater. In the context of neural networks, the function max { t, } is called a ReLU (pro- nounced “ray-lu”), or rectified linear unit, and often denoted by ReLU( t ) , max { t, } . Generally, a one-dimensional non-linear function that maps R to R such as ReLU is often referred to as an activation function . The model h θ ( x ) is said to have a single neuron partly because it has a single non-linear activation function. (We will discuss more about why a non-linear activation is called neuron.)
 
-```
 d
-```
 
 When the input x ∈ R has multiple dimensions, a neural network with a single neuron can be written as
 
-```
 > d
-```
 
 h θ ( x ) = ReLU( w x + b ) , where w ∈ R , b ∈ R , and θ = ( w, b ) (7.7)
 
@@ -4954,21 +3664,15 @@ Inspiration from Biological Neural Networks. As the name suggests, artificial ne
 
 Two-layer Fully-Connected Neural Networks. We constructed the neural network in equation (7.8) using a significant amount of prior knowl- edge/belief about how the “family size”, “walkable”, and “school quality” are determined by the inputs. We implicitly assumed that we know the family size is an important quantity to look at and that it can be determined by only the “size” and “# bedrooms”. Such a prior knowledge might not be available for other applications. It would be more flexible and general to have a generic parameterization. A simple way would be to write the intermediate variable a as a function of all x , . . . , x :
 
-```
 >
-```
 
 a = ReLU( w x + b ) , where w ∈ R and b ∈ R (7.9)
 
-```
 >
-```
 
 a = ReLU( w x + b ) , where w ∈ R and b ∈ R
 
-```
 >
-```
 
 a = ReLU( w x + b ) , where w ∈ R and b ∈ R
 
@@ -4978,17 +3682,13 @@ Typically, for multi-layer neural network, at the end, near the output, we don�
 
 Figure 7.3: Diagram of a two-layer fully connected neural network. Each edge from node x i to node a j indicates that a j depends on x i . The edge from
 
-```
 [1]
-```
 
 x i to a j is associated with the weight ( w j
 
 ) i which denotes the i -th coordinate
 
-```
 [1]
-```
 
 of the vector w j
 
@@ -5002,9 +3702,7 @@ the incoming edges, that is, a j = ReLU( i =1
 
 visualized in the dependency graph in Figure 7.3 because all the intermediate variables a i ’s depend on all the inputs x i ’s. For full generality, a two-layer fully-connected neural network with m
 
-```
 d
-```
 
 hidden units and d dimensional input x ∈ R is defined as
 
@@ -5018,17 +3716,13 @@ x + b j
 
 where w j
 
-```
 ∈ R , b j
-```
 
 ## ∈ R (7.10)
 
 a j = ReLU( z j ) ,
 
-```
 > m
-```
 
 a = [ a , . . . , a m ] ∈ R
 
@@ -5038,9 +3732,7 @@ a = [ a , . . . , a m ] ∈ R
 
 h θ ( x ) = w a + b where w ∈ R , b ∈ R , (7.11)
 
-```
 d
-```
 
 Note that by default the vectors in R are viewed as column vectors, and in particular a is a column vector with components a , a , ..., a m . The indices
 
@@ -5052,9 +3744,7 @@ and are used to distinguish two sets of parameters: the w j
 
 ’s (each of
 
-```
 d [2] m
-```
 
 which is a vector in R ) and w (which is a vector in R ). We will have more of these later.
 
@@ -5062,40 +3752,25 @@ Vectorization. Before we introduce neural networks with more layers and more com
 
 vectorization is the speed perspective in the implementation. In order to implement a neural network efficiently, one must be careful when using for loops. The most natural way to implement equation (7.10) in code is perhaps to use a for loop. In practice, the dimensionalities of the inputs and hidden units are high. As a result, code will run very slowly if you use for loops. Leveraging the parallelism in GPUs is/was crucial for the progress of deep learning. This gave rise to vectorization . Instead of using for loops, vectorization takes advantage of matrix algebra and highly optimized numerical linear algebra packages (e.g., BLAS) to make neural network computations run quickly. Before the deep learning era, a for loop may have been sufficient on smaller datasets, but modern deep networks and state-of-the-art datasets will be infeasible to run with for loops. We vectorize the two-layer fully-connected neural network as below. We
 
-```
 [1] m × d
-```
 
 define a weight matrix W in R as the concatenation of all the vectors
 
-```
 [1]
-```
 
-```
 w j
-```
 
 ’s in the following way:
 
-```
 
-```
 
-```
-[1]
->
-```
+[1] >
 
  — w — 
 
-```
 [1]
-```
 
-```
 
-```
 
 ```
 [1]
@@ -5109,54 +3784,31 @@ m × d
 
  . ∈ R (7.12) .   . 
 
-```
 [1] >
-```
 
 - w m —
 
 Now by the definition of matrix vector multiplication, we can write z =
 
-```
 > m
-```
 
 [ z , . . . , z m ] ∈ R as
 
-```
-
-
-
-```
+###   
 
-```
-[1]
->
-```
+[1] >
 
-```
-
-
-
-
-[1]
-```
+    [1]
 
  z — w — x b  .   [1] >    . .   — w —  x   [1]
 
        b    . = . . . .    .   .  +  .   .   .  (7.13) . . 
 
-```
 [1] >
-```
 
-```
 x [1]
-```
 
-```
 z m d
-```
 
 ```
 ︸ ︷︷ ︸ — w m — b m
@@ -5166,41 +3818,29 @@ z m d
 ︸ ︷︷ ︸ ︸ ︷︷ ︸ ︸ ︷︷ ︸
 ```
 
-```
 m × d ×
-```
 
 ```
 z ∈ R [1] m × d x ∈ R [1] m ×
 ```
 
-```
-W ∈ R b ∈ R
-```
+### W ∈ R b ∈ R
 
 Or succinctly,
 
-```
 [1] [1]
-```
 
 z = W x + b (7.14)
 
-```
 d
-```
 
 We remark again that a vector in R in this notes, following the conventions previously established, is automatically viewed as a column vector, and can also be viewed as a d × 1 dimensional matrix. (Note that this is different from numpy where a vector is viewed as a row vector in broadcasting.)
 
-```
 m m
-```
 
 Computing the activations a ∈ R from z ∈ R involves an element- wise non-linear application of the ReLU function, which can be computed in parallel efficiently. Overloading ReLU for element-wise application of ReLU
 
-```
 d
-```
 
 (meaning, for a vector t ∈ R , ReLU( t ) is a vector such that ReLU( t ) i = ReLU( t i )), we have
 
@@ -5212,21 +3852,15 @@ a = ReLU( z ) (7.15)
 
 Define W = [ w ] ∈ R similarly. Then, the model in equa- tion (7.11) can be summarized as
 
-```
 [1] [1]
-```
 
 a = ReLU( W x + b )
 
-```
 [2] [2]
-```
 
 h θ ( x ) = W a + b (7.16)
 
-```
 [1] [2]
-```
 
 Here θ consists of W , W (often referred to as the weight matrices) and
 
@@ -5236,9 +3870,7 @@ Here θ consists of W , W (often referred to as the weight matrices) and
 
 b , b (referred to as the biases). The collection of W , b is referred to as
 
-```
 [2] [2]
-```
 
 the first layer, and W , b the second layer. The activation a is referred to as the hidden layer. A two-layer neural network is also called one-hidden-layer neural network.
 
@@ -5276,15 +3908,11 @@ h θ ( x ) = W a + b (7.17)
 
 We note that the weight matrices and biases need to have compatible
 
-```
 [ k ]
-```
 
 dimensions for the equations above to make sense. If a has dimension m k ,
 
-```
 [ k ]
-```
 
 then the weight matrix W should be of dimension m k × m k − , and the bias
 
@@ -5292,15 +3920,11 @@ then the weight matrix W should be of dimension m k × m k − , and the bias
 [ k ] m [1] m × d [ r ] × r
 ```
 
-```
 b ∈ R k m −
-```
 
 . Moreover, W ∈ R and W ∈ R . The total number of neurons in the network is m + · · · + m r , and the total number of parameters in this network is ( d + 1) m + ( m + 1) m + · · · + ( m r − + 1) m r .
 
-```
 [0] [ r ]
-```
 
 Sometimes for notational consistency we also write a = x , and a = h θ ( x ). Then we have simple recursion that
 
@@ -5318,9 +3942,7 @@ Other activation functions. The activation function ReLU can be re- placed by ma
 
 (sigmoid) (7.19)
 
-```
 z − z
-```
 
 e − e σ ( z ) = e z
 
@@ -5330,33 +3952,23 @@ e − e σ ( z ) = e z
 
 Why do we not use the identity function for σ ( z ) ? That is, why
 
-```
 [1] [2]
-```
 
 not use σ ( z ) = z ? Assume for sake of argument that b and b are zeros. Suppose σ ( z ) = z , then for two-layer neural network, we have that
 
-```
 [2] [1]
-```
 
 h θ ( x ) = W a (7.21)
 
-```
 [2] [1]
-```
 
 = W σ ( z ) by definition (7.22)
 
-```
 [2] [1]
-```
 
 = W z since σ ( z ) = z (7.23)
 
-```
 [2] [1]
-```
 
 = W W x from Equation (7.13) (7.24)
 
@@ -5364,15 +3976,11 @@ h θ ( x ) = W a (7.21)
 
 ## = W W (7.25)
 
-```
 [2] [1]
-```
 
 Notice how W W collapsed into W ˜ . This is because applying a linear function to another linear function will result in a linear function over the original input (i.e., you can construct a  W ˜
 
-```
 [1]
-```
 
 such that W x ˜ [2]
 
@@ -5380,47 +3988,33 @@ such that W x ˜ [2]
 
 Connection to the Kernel Method. In the previous lectures, we covered the concept of feature maps. Recall that the main motivation for feature
 
-```
 >
-```
 
 maps is to represent functions that are non-linear in the input x by θ φ ( x ), where θ are the parameters and φ ( x ), the feature map, is a handcrafted function non-linear in the raw input x . The performance of the learning algorithms can significantly depends on the choice of the feature map φ ( x ). Oftentimes people use domain knowledge to design the feature map φ ( x ) that suits the particular applications. The process of choosing the feature maps is often referred to as feature engineering . We can view deep learning as a way to automatically learn the right feature map (sometimes also referred to as “the representation”) as follows. Suppose we denote by β the collection of the parameters in a fully-connected neural networks (equation (7.17)) except those in the last layer. Then we
 
-```
 [ r − 1]
-```
 
 can abstract right a as a function of the input x and the parameters in
 
-```
 [ r − 1]
-```
 
 β : a = φ β ( x ). Now we can write the model as
 
-```
 [ r ] [ r ]
-```
 
 h θ ( x ) = W φ β ( x ) + b (7.26)
 
 When β is fixed, then φ β ( · ) can viewed as a feature map, and therefore h θ ( x ) is just a linear model over the features φ β ( x ). However, we will train the
 
-```
 [ r ] [ r ]
-```
 
 neural networks, both the parameters in β and the parameters W , b are optimized, and therefore we are not learning a linear model in the feature space, but also learning a good feature map φ β ( · ) itself so that it’s possi- ble to predict accurately with a linear model on top of the feature map. Therefore, deep learning tends to depend less on the domain knowledge of the particular applications and requires often less feature engineering. The
 
-```
 [ r ]
-```
 
 penultimate layer a is often (informally) referred to as the learned features or representations in the context of deep learning. In the example of house price prediction, a fully-connected neural network does not need us to specify the intermediate quantity such “family size”, and may automatically discover some useful features in the last penultimate layer
 
-```
 [ r − 1]
-```
 
 (the activation a ), and use them to linearly predict the housing price. Often the feature map / representation obtained from one datasets (that is, the function φ β ( · ) can be also useful for other datasets, which indicates they contain essential information about the data. However, oftentimes, the neural network will discover complex features which are very useful for predicting the output but may be difficult for a human to understand or interpret. This is why some people refer to neural networks as a black box , as it can be difficult to understand the features it has discovered.
 
@@ -5428,35 +4022,25 @@ penultimate layer a is often (informally) referred to as the learned features or
 
 In this section, we introduce backpropgation or auto-differentiation, which
 
-```
 ( j )
-```
 
 computes the gradient of the loss ∇ J ( θ ) efficiently. We will start with an informal theorem that states that as long as a real-valued function f can be efficiently computed/evaluated by a differentiable network or circuit, then its gradient can be efficiently computed in a similar time. We will then show how to do this concretely for fully-connected neural networks. Because the formality of the general theorem is not the main focus here, we will introduce the terms with informal definitions. By a differentiable circuit or a differentiable network, we mean a composition of a sequence of differentiable arithmetic operations (additions, subtraction, multiplication, divisions, etc) and elementary differentiable functions (ReLU, exp, log, sin, cos, etc.). Let the size of the circuit be the total number of such operations and elementary functions. We assume that each of the operations and func- tions, and their derivatives or partial derivatives ecan be computed in O (1) time in the computer.
 
 Theorem 7.3.1: [backpropagation or auto-differentiation, informally stated] Suppose a differentiable circuit of size N computes a real-valued function
 
-```
 `
-```
 
 f : R → R . Then, the gradient ∇ f can be computed in time O ( N ) , by a circuit of size O ( N ) .
 
-```
 ( j )
-```
 
 We note that the loss function J ( θ ) for j -th example can be indeed computed by a sequence of operations and functions involving additions, subtraction, multiplications, and non-linear activations. Thus the theorem
 
-```
 ( j )
-```
 
 suggests that we should be able to compute the ∇ J ( θ ) in a similar time
 
-```
 ( j )
-```
 
 to that for computing J ( θ ) itself. This does not only apply to the fully- connected neural network introduced in the Section 7.2, but also many other types of neural networks. In the rest of the section, we will showcase how to compute the gradient of the loss efficiently for fully-connected neural networks using backpropagation. Even though auto-differentiation or backpropagation is implemented in all the deep learning packages such as tensorflow and pytorch, understanding it is very helpful for gaining insights into the working of deep learning.
 
@@ -5472,20 +4056,13 @@ Here we overload the meaning of g j ’s: they denote both the intermediate vari
 
 ## ∂J ∑
 
-```
 k
-```
 
-```
-∂J
-∂g j
-```
+∂J ∂g j
 
 = (7.29) ∂θ i j =1
 
-```
 ∂g j ∂θ i
-```
 
 For the ease of invoking the chain rule in the following subsections in various ways, we will call J the output variable, g , . . . , g k intermediate variables, and θ , . . . , θ p the input variable in the chain rule.
 
@@ -5493,9 +4070,7 @@ For the ease of invoking the chain rule in the following subsections in various 
 
 Simplifying notations: In the rest of the section, we will consider a generic input x and compute the gradient of h θ ( x ) w.r.t θ . For simplicity, we use o as a shorthand for h θ ( x ) ( o stands for output ). For simplicity, with slight abuse of notation, we use J = ( y − o ) to denote the loss function. (Note that this overrides the definition of J as the total loss in Section 7.1.) Our goal is to compute the derivative of J w.r.t the parameter θ . We first consider the neural network with one neuron defined in equa- tion (7.7). Recall that we compute the loss function via the following se- quential steps:
 
-```
 >
-```
 
 z = w x + b (7.30) o = ReLU( z ) (7.31)
 
@@ -5536,67 +4111,43 @@ Combining the equation above with equation (7.33), we have
 
 (because
 
-```
 ∂o
-```
 
 = ( o − y ) and
 
-```
 ∂z
-```
 
 = ReLU ( z ) and
 
-```
 ∂w i
-```
 
 = x i )
 
-```
 ∂J
-```
 
 Here, the key is that we reduce the computation of
 
-```
 ∂w i
-```
 
 to the computa-
 
-```
-∂J
-∂o
-∂z
-```
+∂J ∂o ∂z
 
 tion of three simpler more “local” objects
 
-```
 ∂o
-```
 
-```
 ,
-```
 
-```
 ∂z
-```
 
 , and
 
-```
 ∂w i
-```
 
 , which are much simpler to compute because J directly depends on o via equation (7.32), o directly depends on a via equation (7.31), and z directly depends on w i via equation (7.30). Note that in a vectorized form, we can also write
 
-```
 ′
-```
 
 ∇ w J = ( o − y ) · ReLU ( z ) · x
 
@@ -5612,29 +4163,19 @@ Similarly, we compute the gradient w.r.t b by
 
 = · · = ( o − y ) · ReLU ( z ) ∂b ∂o ∂z ∂b
 
-```
-∂J
-∂o
-′ ∂z
-```
+∂J ∂o ′ ∂z
 
 (because
 
-```
 ∂o
-```
 
 = ( o − y ) and
 
-```
 ∂z
-```
 
 = ReLU ( z ) and
 
-```
 ∂b
-```
 
 = 1)
 
@@ -5652,15 +4193,11 @@ x + b j
 
 where w j
 
-```
 ∈ R , b j
-```
 
 a j = ReLU( z j ) ,
 
-```
 > m
-```
 
 a = [ a , . . . , a m ] ∈ R
 
@@ -5680,17 +4217,13 @@ We will use ( w ) ` to denote the ` -th coordinate of w , and ( w j
 
 ) ` to denote
 
-```
 [1]
-```
 
 the ` -coordinate of w j
 
 . (We will avoid using these cumbersome notations once we figure out how to write everything in matrix and vector forms.) By invoking chain rule with J as the output variable, o as intermediate
 
-```
 [2]
-```
 
 variable, and ( w ) ` as the input variable, we have
 
@@ -5709,31 +4242,21 @@ variable, and ( w ) ` as the input variable, we have
 
 = ( o − y ) a `
 
-```
 ∂J
-```
 
 It’s more challenging to compute [1]
 
-. Towards computing it, we first
+## . Towards computing it, we first
 
-```
 ∂ ( w
-```
 
-```
 j
-```
 
-```
 ) `
-```
 
 invoke the chain rule with J as the output variable, z j as the intermediate
 
-```
 [1]
-```
 
 variable, and ( w j
 
@@ -5748,54 +4271,35 @@ variable, and ( w j
 
 = ·
 
-```
 [1]
-```
 
 ∂ ( w j
 
 ) `
 
-```
 ∂z j ∂ ( w j
-```
 
 ) `
 
-```
-∂J
-∂z j
-```
+∂J ∂z j
 
 = · x ` (becaues [1]
 
 = x ` .) ∂z j ∂ ( w
 
-```
 j
-```
 
-```
 ) `
-```
 
-```
 ∂J
-```
 
 Thus, it suffices to compute the
 
-```
 ∂z j
-```
 
 . We invoke the chain rule with J as the output variable, a j as the intermediate variable, and z j as the input variable,
 
-```
-∂J
-∂J
-∂a j
-```
+∂J ∂J ∂a j
 
 ```
 =
@@ -5806,15 +4310,11 @@ Thus, it suffices to compute the
 
 = ReLU ( z j ) ∂a j
 
-```
 ∂J
-```
 
 Now it suffices to compute
 
-```
 ∂a j
-```
 
 , and we invoke the chain rule with J as the output variable, o as the intermediate variable, and a j as the input variable,
 
@@ -5834,77 +4334,49 @@ Now combining the equations above, we obtain
 
 Next we gauge the runtime of computing these partial derivatives. Let p denotes the total number of parameters in the network. We note that p ≥ md where m is the number of hidden units and d is the input dimension. For
 
-```
 ∂J
-```
 
 every j and ` , to compute [1]
 
 , apparently we need to compute at least
 
-```
 ∂ ( w
-```
 
-```
 j
-```
 
-```
 ) `
-```
 
 the output o , which takes at least p ≥ md operations. Therefore at the first glance computing a single gradient takes at least md time, and the total time to compute the derivatives w.r.t to all the parameters is at least ( md ) , which is inefficient. However, the key of the backpropagation is that for different choices of ` ,
 
-```
 ∂J
-```
 
 the formulas above for computing [1]
 
 share many terms, such as, ( o − y ),
 
-```
 ∂ ( w
-```
 
-```
 j
-```
 
-```
 ) `
-```
 
-```
 [2] ′
-```
 
 ( w ) j and ReLU ( z j ). This suggests that we can re-organize the computation to leverage the shared computation.
 
-```
 ∂J
-```
 
 It turns out the crucial shared quantities in these formulas are
 
-```
 ∂o
-```
 
 ,
 
-```
-∂J
-∂J
-∂z
-```
+∂J ∂J ∂z
 
 , . . . ,
 
-```
 ∂z m
-```
 
 . We now write the following formulas to compute the gradi- ents efficiently in Algorithm 3.
 
@@ -5912,27 +4384,19 @@ Algorithm 3 Backpropagation for two-layer neural networks
 
 1: Compute the values of z , . . . , z m , a , . . . , a m and o as in the definition of neural network (equation (7.34)).
 
-```
 ∂J
-```
 
 2: Compute
 
-```
 ∂o
-```
 
 = ( o − y ).
 
-```
 ∂J
-```
 
 3: Compute
 
-```
 ∂z j
-```
 
 for j = 1 , . . . , m by
 
@@ -5954,37 +4418,23 @@ for j = 1 , . . . , m by
 
 ,
 
-```
 ∂ ( w [2]
-```
 
-```
 ) j
-```
 
 , and
 
-```
 ∂b [2]
-```
 
 by
 
-```
 ∂ ( w
-```
 
-```
 j
-```
 
-```
 ) ` ∂b
-```
 
-```
 j
-```
 
 ```
 ∂J
@@ -5992,15 +4442,11 @@ j
 ∂z j ∂J
 ```
 
-```
 [1]
-```
 
 = ·
 
-```
 [1]
-```
 
 = · x `
 
@@ -6008,15 +4454,11 @@ j
 
 ) `
 
-```
 ∂z j ∂ ( w j
-```
 
 ) `
 
-```
 ∂z j
-```
 
 ```
 ∂J
@@ -6024,25 +4466,17 @@ j
 ∂z j ∂J
 ```
 
-```
 [1]
-```
 
 = ·
 
-```
 [1]
-```
 
 = ∂b j
 
-```
 ∂z j ∂b j
-```
 
-```
 ∂z j
-```
 
 ```
 ∂J
@@ -6054,9 +4488,7 @@ j
 
 =
 
-```
 [2]
-```
 
 = · a j
 
@@ -6072,17 +4504,13 @@ j
 
 = = ∂o ∂b [2]
 
-```
-∂o
-```
+### ∂o
 
 ###### 7.3.4 Two-layer neural network with vector notation
 
 As we have done before in the definition of neural networks, the equations for backpropagation becomes much cleaner with proper matrix notation. Here we state the algorithm first and also provide a cleaner proof via matrix cal- culus. Let
 
-```
 [2]
-```
 
 ```
 ∂J
@@ -6090,28 +4518,19 @@ As we have done before in the definition of neural networks, the equations for b
 ∂o
 ```
 
-```
 [1]
-```
 
-```
-∂J
-m
-```
+∂J m
 
 δ , ∈ R (7.36) ∂z
 
 Here we note that when A is a real-valued variable, and B is a vector or
 
-```
 ∂A
-```
 
 matrix variable, then
 
-```
 ∂B
-```
 
 denotes the collection of the partial derivatives with the same shape as B . In other words, if B is a matrix of dimension m × d ,
 
@@ -6119,29 +4538,21 @@ denotes the collection of the partial derivatives with the same shape as B . In 
 
 then
 
-```
 ∂B
-```
 
 is a matrix in R with
 
-```
 ∂B ij
-```
 
 as the ij th-entry. Let v w denote the entry-wise product of two vectors v and w of the same dimension. Now we are ready to describe backpropagation in Algorithm 4.
 
 Algorithm 4 Back-propagation for two-layer neural networks in vectorized notations. .
 
-```
 m m
-```
 
 1: Compute the values of z ∈ R , a ∈ R , and o
 
-```
 [2]
-```
 
 2: Compute δ = ( o − y ) ∈ R
 
@@ -6160,16 +4571,11 @@ m m
 
 ## = ∂W [2]
 
-```
-δ a ∈ R
-```
+### δ a ∈ R
 
 ## ∂J [2]
 
-```
-δ ∈
-∂b [2]
-```
+δ ∈ ∂b [2]
 
 ## = R
 
@@ -6183,53 +4589,36 @@ m m
 ∂W [1]
 ```
 
-```
 ∈
-```
 
-```
-∂J
-[1] m
-```
+∂J [1] m
 
 ```
 = δ ∈
 ∂b [1]
 ```
 
-```
 R
-```
 
-```
 ∂A
-```
 
 We will avoid using the notation
 
-```
 ∂B
-```
 
 for A that is not a real-valued variable. If you are familiar with the notion of total derivatives, we note that the dimensionality here is different from that for total derivatives.
 
 Derivation using the chain rule for matrix multiplication. To have a succinct derivation of the backpropagation algorithm in Algorithm 4 without working with the complex indices, we state the extensions of the chain rule in vectorized notations. It requires more knowledge of matrix calculus to state the most general result, and therefore we will introduce a few special cases that are most relevant for deep learning. Suppose J
 
-```
 m
-```
 
 is a real-valued output variable, z ∈ R is the intermediate variable and
 
-```
 m × d d
-```
 
 W ∈ R , u ∈ R are the input variables. Suppose they satisfy:
 
-```
 m × d
-```
 
 z = W u + b, where W ∈ R J = J ( z ) (7.37)
 
@@ -6237,15 +4626,11 @@ z = W u + b, where W ∈ R J = J ( z ) (7.37)
 
 Then we can compute
 
-```
 ∂u
-```
 
 and
 
-```
 ∂W
-```
 
 by:
 
@@ -6255,16 +4640,11 @@ by:
 
 = · u (7.39) ∂W ∂z ∂J ∂J = (7.40) ∂b ∂z
 
-```
-∂J
-m
-```
+∂J m
 
 We can verify the dimensionality is indeed compatible because
 
-```
 ∂z
-```
 
 ∈ R ,
 
@@ -6276,21 +4656,15 @@ m × d > × d
 
 W ∈ R ,
 
-```
 ∂u
-```
 
 ∈ R ,
 
-```
 ∂W
-```
 
 ∈ R , u ∈ R . Here the chain rule in equation (7.38) only works for the special cases where z = W u . Another useful case is the following:
 
-```
 d
-```
 
 a = σ ( z ) , where σ is an element-wise activation, z, a ∈ R J = J ( a )
 
@@ -6300,9 +4674,7 @@ Then, we have that
 
 = σ ( z ) (7.41) ∂z ∂a
 
-```
 ′
-```
 
 where σ ( · ) is the element-wise derivative of the activation function σ , and is element-wise product of two vectors of the same dimensionality. Using equation (7.38), (7.39),and (7.41), we can verify the correctness of Algorithm 4. Indeed, using the notations in the two-layer neural network
 
@@ -6310,10 +4682,7 @@ where σ ( · ) is the element-wise derivative of the activation function σ , a
 
 = ReLU ( z ) ( J ← J , a ← a , z ← a , σ ← ReLU.
 
-```
-)
-∂z ∂a
-```
+) ∂z ∂a
 
 [2] > ′ by invoking equation (7.38) with setting
 
@@ -6323,9 +4692,7 @@ where σ ( · ) is the element-wise derivative of the activation function σ , a
 J ← J , z ← o , W ← W
 ```
 
-```
 [2]
-```
 
 ```
 , u ← a , b ← b
@@ -6337,18 +4704,13 @@ J ← J , z ← o , W ← W
 
 Therefore, δ =
 
-```
 ∂z
-```
 
 , and we verify the correctness of Line 3 in Algorithm 4. Similarly, let’s verify the third equation in Line 4,
 
 ∂J ∂J > by invoking equation (7.39) with setting
 
-```
-= x
-∂W [1]
-```
+= x ∂W [1]
 
 - ( ∂z
 
@@ -6356,9 +4718,7 @@ Therefore, δ =
 J ← J , z ← z , W ← W
 ```
 
-```
 [1]
-```
 
 ```
 , u ← x , b ← b
@@ -6370,9 +4730,7 @@ J ← J , z ← z , W ← W
 
 = δ x (because we have proved δ =
 
-```
 ∂z
-```
 
 )
 
@@ -6404,21 +4762,15 @@ a = ReLU( W a + b )
 
 a = z = W a + b
 
-```
 [ r ]
-```
 
 J =  ( a − y )
 
-```
 [ r ] [ r ]
-```
 
 Here we define both a and z as h θ ( x ) for notational simplicity. Define
 
-```
 [ k ]
-```
 
 ```
 ∂J
@@ -6428,24 +4780,17 @@ Here we define both a and z as h θ ( x ) for notational simplicity. Define
 
 (7.42)
 
-```
 [ k ]
-```
 
 The backpropagation algorithm computes δ ’s from k = r to 1, and
 
-```
-∂J
-[ k ]
-```
+∂J [ k ]
 
 computes
 
 ## ∂W [
 
-```
 k ]
-```
 
 from δ as described in Algorithm 5.
 
@@ -6463,9 +4808,7 @@ set with three examples x , x , x . The first-layer activations for each
 
 Algorithm 5 Back-propagation for multi-layer neural networks. .
 
-```
 [ k ] [ k ]
-```
 
 1: Compute and store the values of a ’s and z ’s for k = 1 , . . . , r − 1, and J . . This is often called the “forward pass”
 
@@ -6476,9 +4819,7 @@ Algorithm 5 Back-propagation for multi-layer neural networks. .
 
 2: Compute δ =
 
-```
 ∂z [ r ]
-```
 
 = ( z − o ).
 
@@ -6486,23 +4827,16 @@ Algorithm 5 Back-propagation for multi-layer neural networks. .
 
 4: Compute
 
-```
-( )
-```
+### ( )
 
-```
 [ k ]
-```
 
 ```
 ∂J
 [ k +1] > [ k +1] ′ [ k ]
 ```
 
-```
-δ =
-∂z [ k ]
-```
+δ = ∂z [ k ]
 
 = W δ ReLU ( z )
 
@@ -6513,20 +4847,13 @@ Algorithm 5 Back-propagation for multi-layer neural networks. .
 [ k +1] [ k ] >
 ```
 
-```
 ∂W [ k +1]
-```
 
 = δ a
 
-```
-∂J
-[ k +1]
-```
+∂J [ k +1]
 
-```
 ∂b [ k +1]
-```
 
 = δ
 
@@ -6552,15 +4879,11 @@ z = W x + b
 
 Note the difference between square brackets [ · ], which refer to the layer num- ber, and parenthesis ( · ), which refer to the training example number. In- tuitively, one would implement this using a for loop. It turns out, we can vectorize these operations as well. First, define:   | | |
 
-```
 (1) (3)
-```
 
 ## X =  (2)
 
-```
 x x x  d ×
-```
 
 ## ∈ R (7.43) | | |
 
@@ -6572,23 +4895,17 @@ Note that we are stacking training examples in columns and not rows. We can then
 
 Z =  z z z  = W X + b (7.44) | | |
 
-```
 [1] × [1]
-```
 
 You may notice that we are attempting to add b ∈ R to W X ∈
 
-```
 ×
-```
 
 R . Strictly following the rules of linear algebra, this is not allowed. In
 
 practice however, this addition is performed using broadcasting . We create
 
-```
 ×
-```
 
 an intermediate  ˜ [1]
 
@@ -6612,9 +4929,7 @@ b b b  (7.45) | | |
 
 We can then perform the computation: Z = W X +  ˜ b . Often times, it
 
-```
 [1]
-```
 
 is not necessary to explicitly construct  ˜ b . By inspecting the dimensions in
 
@@ -6626,15 +4941,11 @@ is not necessary to explicitly construct  ˜ b . By inspecting the dimensions in
 
 Complications/Subtlety in the Implementation. All the deep learn- ing packages or implementations put the data points in the rows of a data matrix. (If the data point itself is a matrix or tensor, then the data are con- centrated along the zero-th dimension.) However, most of the deep learning papers use a similar notation to these notes where the data points are treated as column vectors. There is a simple conversion to deal with the mismatch: in the implementation, all the columns become row vectors, row vectors be- come column vectors, all the matrices are transposed, and the orders of the matrix multiplications are flipped. In the example above, using the row ma-
 
-```
 × d
-```
 
 jor convention, the data matrix is X ∈ R , the first layer weight matrix has dimensionality d × m (instead of m × d as in the two layer neural net
 
-```
 [1] × m
-```
 
 section), and the bias vector b ∈ R . The computation for the hidden activation becomes
 
@@ -6656,9 +4967,7 @@ The instructor suspects that this is mostly because in mathematics we naturally 
 
 This chapter discusses tools to analyze and understand the generaliza- tion of machine learning models, i.e, their performances on unseen test examples. Recall that for supervised learning problems, given a train-
 
-```
 ( i ) ( i ) n
-```
 
 ing dataset { ( x , y ) } i =1
 
@@ -6666,9 +4975,7 @@ ing dataset { ( x , y ) } i =1
 
 J ( θ ) =
 
-```
 n i =1
-```
 
 ( y − h θ ( x )) . This loss function for training purposes is oftentimes referred to as the training loss/error/cost. However, minimizing the training loss is not our ultimate goal—it is merely our approach towards the goal of learning a predictive model. The most important evaluation metric of a model is the loss on unseen test exam- ples, which is oftentimes referred to as the test error. Formally, we sample a test example ( x, y ) from the so-called test distribution D , and measure the model’s error on it, by, e.g., the mean squared error, ( h θ ( x ) − y ) . The ex- pected loss/error over the randomness of the test example is called the test loss/error,
 
@@ -6678,15 +4985,11 @@ Note that the measurement of the error involves computing the expectation, and i
 
 In theoretical and statistical literature, we oftentimes call the uniform distribution
 
-```
 ( i ) ( i ) n
-```
 
 over the training set { ( x , y ) } ̂
 
-```
 i =1
-```
 
 , denoted by D , an empirical distribution, and call D the population distribution. Partly because of this, the training loss is also referred to as the empirical loss/risk/error, and the test loss is also referred to as the population loss/risk/error.
 
@@ -6718,9 +5021,7 @@ Figure 8.1: A running example of training and test dataset for this section.
 
 As an illustrating example, we consider the following training dataset and
 
-```
 ( i )
-```
 
 test dataset, which are also shown in Figure 8.1. The training inputs x ’s are
 
@@ -6730,33 +5031,23 @@ test dataset, which are also shown in Figure 8.1. The training inputs x ’s are
 
 randomly chosen and the outputs y are generated by y = h ( x ) + ξ
 
-```
 ?
-```
 
 where the function h ( · ) is a quadratic function and is shown in Figure 8.1
 
-```
 ( i )
-```
 
 as the solid line, and ξ is the a observation noise assumed to be generated from ∼ N (0 , σ ). A test example ( x, y ) also has the same input-output
 
-```
 ?
-```
 
 relationship y = h ( x ) + ξ where ξ ∼ N (0 , σ ). It’s impossible to predict the
 
-```
 ?
-```
 
 noise ξ , and therefore essentially our goal is to recover the function h ( · ). We will consider the test error of learning various types of models. When talking about linear regression, we discussed the problem of whether to fit a “simple” model such as the linear “ y = θ + θ x ,” or a more “complex” model such as the polynomial “ y = θ + θ x + · · · θ x .” We start with fitting a linear model, as shown in Figure 8.2. The best fitted linear model cannot predict y from x accurately even on the training dataset, let alone on the test dataset. This is because the true relationship between y and x is not linear—any linear model is far away from the true
 
-```
 ?
-```
 
 function h ( · ). As a result, the training error is large and this is a typical situation of underfitting .
 
@@ -6776,9 +5067,7 @@ Figure 8.2: The best fit linear model has large training and test errors.
 
 The issue cannot be mitigated with more training examples—even with a very large amount of, or even infinite training examples, the best fitted linear model is still inaccurate and fails to capture the structure of the data (Figure 8.3). Even if the noise is not present in the training data, the issue still occurs (Figure 8.4). Therefore, the fundamental bottleneck here is the linear model family’s inability to capture the structure in the data—linear
 
-```
 ?
-```
 
 models cannot represent the true quadratic function h —, but not the lack of the data. Informally, we define the bias of a model to be the test error even if we were to fit it to a very (say, infinitely) large training dataset. Thus, in this case, the linear model suffers from large bias, and underfits (i.e., fails to capture structure exhibited by) the data.
 
@@ -6808,9 +5097,7 @@ y y
 
 Next, we fit a 5th-degree polynomial to the data. Figure 8.5 shows that it fails to learn a good model either. However, the failure pattern is different from the linear model case. Specifically, even though the learnt 5th-degree
 
-```
 ( i ) ( i )
-```
 
 polynomial did a very good job predicting y ’s from x ’s for training ex- amples, it does not work well on test examples (Figure 8.5). In other words, the model learnt from the training set does not generalize well to other test examples—the test error is high. Contrary to the behavior of linear models, the bias of the 5-th degree polynomials is small—if we were to fit a 5-th de- gree polynomial to an extremely large dataset, the resulting model would be close to a quadratic function and be accurate (Figure 8.6). This is because the family of 5-th degree polynomials contains all the quadratic functions (setting θ = θ = θ = 0 results in a quadratic function), and, therefore, 5-th degree polynomials are in principle capable of capturing the structure of the data.
 
@@ -6854,9 +5141,7 @@ The failure of fitting 5-th degree polynomials can be captured by another
 
 component of the test error, called variance of a model fitting procedure. Specifically, when fitting a 5-th degree polynomial as in Figure 8.7, there is a large risk that we’re fitting patterns in the data that happened to be present in our small, finite training set, but that do not reflect the wider pattern of the relationship between x and y . These “spurious” patterns in the training
 
-```
 ( i )
-```
 
 set are (mostly) due to the observation noise ξ , and fitting these spurious patters results in a model with large test error. In this case, we say the model has a large variance.
 
@@ -6923,9 +5208,7 @@ To formally state the bias-variance tradeoff for regression problems, we con- si
 
 such that y = h ( x ) + ξ
 
-```
 ( i )
-```
 
 where ξ ∈ N (0 , σ ).
 
@@ -6933,9 +5216,7 @@ where ξ ∈ N (0 , σ ).
 
 S .
 
-```
 ?
-```
 
 - Take a test example ( x, y ) such that y = h ( x ) + ξ where ξ ∼ N (0 , σ ), and measure the expected test error (averaged over the random draw of the training set S and the randomness of ξ )
 
@@ -6947,29 +5228,21 @@ Claim 8.1.1: Suppose A and B are two independent real random variables and E [ A
 
 The proof of the claim follows from expanding the square: E [( A + B ) ] = E [ A ] + E [ B ] + 2 E [ AB ] = E [ A ] + E [ B ]. Here we used the independence to show that E [ AB ] = E [ A ] E [ B ] = 0.
 
-```
 ?
-```
 
 Using Claim 8.1.1 with A = ξ and B = h ( x ) − h ˆ
 
 S ( x ), we have
 
-```
 ?
-```
 
 MSE( x ) = E [( y − h S ( x )) ] = E [( ξ + ( h ( x ) − h S ( x ))) ] (8.3)
 
-```
 ?
-```
 
 = E [ ξ ] + E [( h ( x ) − h S ( x )) ] (by Claim 8.1.1)
 
-```
 ?
-```
 
 = σ + E [( h ( x ) − h S ( x )) ] (8.4)
 
@@ -6981,27 +5254,19 @@ have infinite number of datasets). It turns out that for many cases, h avg
 
 is (approximately) equal to the the model obtained by training on a single dataset with infinite samples. Thus, we can also intuitively interpret h avg this way, which is consistent with our intuitive definition of bias in the previous subsection.
 
-```
 ?
-```
 
 We can further decompose MSE( x ) by letting c = h ( x ) − h avg ( x ) (which is a constant that does not depend on the choice of S !) and A = h avg ( x ) − h S ( x ) in the corollary part of Claim 8.1.1:
 
-```
 ?
-```
 
 MSE( x ) = σ + E [( h ( x ) − h S ( x )) ] (8.5)
 
-```
 ?
-```
 
 = σ + ( h ( x ) − h avg ( x )) + E [( h avg − h S ( x )) ] (8.6)
 
-```
 ?
-```
 
 = ︸︷︷︸ σ + ( h ( x ) − h avg ( x )) + var( h S ( x )) (8.7) ︸ ︷︷ ︸ ︸ ︷︷ ︸
 
@@ -7012,15 +5277,11 @@ unavoidable
 
 We call the second term the bias (square) and the third term the variance. As discussed before, the bias captures the part of the error that are introduced due to the lack of expressivity of the model. Recall that h avg can be thought of as the best possible model learned even with infinite data. Thus, the bias is not due to the lack of data, but is rather caused by that the family of models
 
-```
 ?
-```
 
 fundamentally cannot approximate the h . For example, in the illustrating example in Figure 8.2, because any linear model cannot approximate the
 
-```
 ?
-```
 
 true quadratic function h , neither can h avg , and thus the bias term has to be large. The variance term captures how the random nature of the finite dataset introduces errors in the learned model. It measures the sensitivity of the learned model to the randomness in the dataset. It often decreases as the size of the dataset increases. There is nothing we can do about the first term σ as we can not predict the noise ξ by definition. Finally, we note that the bias-variance decomposition for classification is much less clear than for regression problems. There have been several proposals, but there is as yet no agreement on what is the “right” and/or the most useful formalism.
 
@@ -7084,9 +5345,7 @@ Num Samples
 
 Figure 8.11: Left: The sample-wise double descent phenomenon for linear models. Right: The sample-wise double descent with different regularization strength for linear models. Using the optimal regularization parameter λ (optimally tuned for each n , shown in green solid curve) mitigates double descent. Setup: The data distribution of ( x, y ) is x ∼ N (0 , I d ) and y ∼
 
-```
 >
-```
 
 x β + N (0 , σ ) where d = 500 , σ = 0 . 5 and ‖ β ‖ = 1.
 
@@ -7096,41 +5355,21 @@ The figure is reproduced from Figure 1 of Nakkiran et al. [2020]. Similar phenom
 
 test err or vs. params norm vs. params test err or vs. norm
 
-```
-1.0
-1.0
-```
+1.0 1.0
 
-```
-0.8
-0.8
-```
+0.8 0.8
 
-```
 d=n
-```
 
-```
 or or
-```
 
-```
-0.6
-0.6
-```
+0.6 0.6
 
-```
 err err
-```
 
-```
 norm
-```
 
-```
-0.4
-0.4
-```
+0.4 0.4
 
 ```
 test test
@@ -7140,15 +5379,9 @@ test test
 parameters
 ```
 
-```
-0.2
-0.2
-```
+0.2 0.2
 
-```
-0.0
-0.0
-```
+0.0 0.0
 
 ```
 parameters
@@ -7172,15 +5405,11 @@ In probability theory, the union bound is usually stated as an axiom (and thus w
 
 Lemma. (Hoeffding inequality) Let Z , . . . , Z n be n independent and iden- tically distributed (iid) random variables drawn from a Bernoulli( φ ∑ ) distri-
 
-```
 n
-```
 
 bution. I.e., P ( Z i = 1) = φ , and P ( Z i = 0) = 1 − φ . Let  φ ˆ = (1 /n ) i =1
 
-```
 Z i
-```
 
 be the mean of these random variables, and let any γ > 0 be fixed. Then
 
@@ -7190,32 +5419,21 @@ This lemma (which in learning theory is also called the Chernoff bound ) says th
 
 times and calculate the fraction of times that it came up heads, that will be a good estimate of φ with high probability (if n is large). Using just these two lemmas, we will be able to prove some of the deepest and most important results in learning theory. To simplify our exposition, let’s restrict our attention to binary classifica- tion in which the labels are y ∈ { , } . Everything we’ll say here generalizes to other problems, including regression and multi-class classification.
 
-```
 ( i ) ( i )
-```
 
 We assume we are given a training set S = { ( x , y ); i = 1 , . . . , n } of size
 
-```
 ( i ) ( i )
-```
 
 n , where the training examples ( x , y ) are drawn iid from some probability distribution D . For a hypothesis h , we define the training error (also called the empirical risk or empirical error in learning theory) to be
 
-```
 ∑
-```
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 ε ˆ ( h ) =  { h ( x ) = y } . n
 
-```
 i =1
-```
 
 This is just the fraction of training examples that h misclassifies. When we want to make explicit the dependence of ˆ ε ( h ) on the training set S , we may also write this a ˆ ε S ( h ). We also define the generalization error to be
 
@@ -7223,17 +5441,13 @@ This is just the fraction of training examples that h misclassifies. When we wan
 
 I.e. this is the probability that, if we now draw a new example ( x, y ) from the distribution D , h will misclassify it. Note that we have assumed that the training data was drawn from the same distribution D with which we’re going to evaluate our hypotheses (in the definition of generalization error). This is sometimes also referred to as one of the PAC assumptions.
 
-```
 T
-```
 
 Consider the setting of linear classification, and let h θ ( x ) = 1 { θ x ≥ } . What’s a reasonable way of fitting the parameters θ ? One approach is to try to minimize the training error, and pick
 
 θ ˆ = arg min ε ˆ ( h θ ) .
 
-```
 θ
-```
 
 We call this process empirical risk minimization (ERM), and the resulting hypothesis output by the learning algorithm is  h ˆ = h θ ˆ . We think of ERM as the most “basic” learning algorithm, and it will be this algorithm that we
 
@@ -7241,41 +5455,29 @@ PAC stands for “probably approximately correct,” which is a framework and se
 
 focus on in these notes. (Algorithms such as logistic regression can also be viewed as approximations to empirical risk minimization.) In our study of learning theory, it will be useful to abstract away from the specific parameterization of hypotheses and from issues such as whether we’re using a linear classifier. We define the hypothesis class H used by a learning algorithm to be the set of all classifiers considered by it. For linear
 
-```
 T d +1
-```
 
 classification, H = { h θ : h θ ( x ) = 1 { θ x ≥ } , θ ∈ R } is thus the set of all classifiers over X (the domain of the inputs) where the decision boundary is linear. More broadly, if we were studying, say, neural networks, then we could let H be the set of all classifiers representable by some neural network architecture. Empirical risk minimization can now be thought of as a minimization over the class of functions H , in which the learning algorithm picks the hypothesis:
 
 h ˆ = arg min ε ˆ ( h )
 
-```
 h ∈H
-```
 
 ###### 8.3.2 The case of finite H
 
 Let’s start by considering a learning problem in which we have a finite hy- pothesis class H = { h , . . . , h k } consisting of k hypotheses. Thus, H is just a set of k functions mapping from X to { , } , and empirical risk minimization selects  h ˆ to be whichever of these k functions has the smallest training error. We would like to give guarantees on the generalization error of  h ˆ . Our strategy for doing so will be in two parts: First, we will show that ˆ ε ( h ) is a reliable estimate of ε ( h ) for all h . Second, we will show that this implies an upper-bound on the generalization error of  h ˆ . Take any one, fixed, h i ∈ H . Consider a Bernoulli random variable Z whose distribution is defined as follows. We’re going to sample ( x, y ) ∼ D . Then, we set Z = 1 { h i ( x ) = y } . I.e., we’re going to draw one example, and let Z indicate whether h i misclassifies it. Similarly, we also define Z j =
 
-```
 ( j ) ( j )
-```
 
 { h i ( x ) = y } . Since our training set was drawn iid from D , Z and the Z j ’s have the same distribution. We see that the misclassification probability on a randomly drawn example—that is, ε ( h )—is exactly the expected value of Z (and Z j ). More- over, the training error can be written
 
-```
 ∑
-```
 
-```
 n
-```
 
 ε ˆ ( h i ) =  Z j . n
 
-```
 j =1
-```
 
 Thus, ˆ ε ( h i ) is exactly the mean of the n random variables Z j that are drawn iid from a Bernoulli distribution with mean ε ( h i ). Hence, we can apply the
 
@@ -7287,29 +5489,19 @@ This shows that, for our particular h i , training error will be close to genera
 
 P ( ∃ h ∈ H . | ε ( h i ) − ε ˆ ( h i ) | > γ ) = P ( A ∪ · · · ∪ A k ) ∑
 
-```
 k
-```
 
 ≤ P ( A i )
 
-```
 i =1
-```
 
-```
 ∑
-```
 
-```
 k
-```
 
 ≤ 2 exp( − γ n )
 
-```
 i =1
-```
 
 = k exp( − γ n )
 
@@ -7325,55 +5517,39 @@ then with probability at least 1 − δ , we have that | ε ( h ) − ε ˆ ( h 
 
 Now, let’s assume that uniform convergence holds, i.e., that | ε ( h ) − ε ˆ ( h ) | ≤ γ for all h ∈ H . What can we prove about the generalization of our learning algorithm that picked  h ˆ = arg min h ∈H ε ˆ ( h )?
 
-```
 ∗
-```
 
 Define h = arg min h ∈H ε ( h ) to be the best possible hypothesis in H . Note
 
-```
 ∗
-```
 
 that h is the best that we could possibly do given that we are using H , so
 
-```
 ∗
-```
 
 it makes sense to compare our performance to that of h . We have:
 
 ε ( h ˆ ) ≤ ε ˆ ( h ˆ ) + γ
 
-```
 ∗
-```
 
 ≤ ε ˆ ( h ) + γ
 
-```
 ∗
-```
 
 ≤ ε ( h ) + 2 γ
 
 The first line used the fact that | ε ( h ˆ ) − ε ˆ ( h ˆ ) | ≤ γ (by our uniform convergence assumption). The second used the fact that  h ˆ was chosen to minimize ˆ ε ( h ),
 
-```
 ∗
-```
 
 and hence ˆ ε ( h ˆ ) ≤ ε ˆ ( h ) for all h , and in particular ˆ ε ( h ˆ ) ≤ ε ˆ ( h ). The third
 
-```
 ∗
-```
 
 line used the uniform convergence assumption again, to show that ˆ ε ( h ) ≤
 
-```
 ∗
-```
 
 ε ( h ) + γ . So, what we’ve shown is the following: If uniform convergence occurs, then the generalization error of  h ˆ is at most 2 γ worse than the best possible hypothesis in H ! Let’s put all this together into a theorem.
 
@@ -7381,21 +5557,15 @@ Theorem. Let |H| = k , and let any n, δ be fixed. Then with probability at leas
 
 ( ) √ k ε ( h ˆ ) ≤ min ε ( h ) + 2 log  .
 
-```
-h ∈H n δ 
-```
+h ∈H n δ
 
 √ This is proved by letting γ equal the · term, using our previous argu- ment that uniform convergence occurs with probability at least 1 − δ , and then noting that uniform convergence implies ε ( h ) is at most 2 γ higher than
 
-```
 ∗
-```
 
 ε ( h ) = min h ∈H ε ( h ) (as we showed previously). This also quantifies what we were saying previously saying about the bias/variance tradeoff in model selection. Specifically, suppose we have some hypothesis class H , and are considering switching to some much larger hy-
 
-```
 ′ ′
-```
 
 pothesis class H ⊇ H . If we switch to H , then the first term min h ε ( h ) can only decrease (since we’d then be taking a min over a larger set of func- tions). Hence, by learning using a larger hypothesis class, our “bias” can √ only decrease. However, if k increases, then the second 2 · term would also increase. This increase corresponds to our “variance” increasing when we use a larger hypothesis class. By holding γ and δ fixed and solving for n like we did before, we can also obtain the following sample complexity bound:
 
@@ -7407,71 +5577,47 @@ k n ≥ log  γ δ ( ) k = O log , γ δ
 
 We have proved some useful theorems for the case of finite hypothesis classes. But many hypothesis classes, including any parameterized by real numbers (as in linear classification) actually contain an infinite number of functions. Can we prove similar results for this setting? Let’s start by going through something that is not the “right” argument. Better and more general arguments exist , but this will be useful for honing our intuitions about the domain. Suppose we have an H that is parameterized by d real numbers. Since we are using a computer to represent real numbers, and IEEE double-precision floating point ( double ’s in C) uses 64 bits to represent a floating point num- ber, this means that our learning algorithm, assuming we’re using double- precision floating point, is parameterized by 64 d bits. Thus, our hypothesis
 
-```
 d
-```
 
 class really consists of at most k = 2 different hypotheses. From the Corol- lary at the end of the previous section, we therefore find that, to guarantee
 
-```
 ∗
-```
 
 ε ( h ˆ ) ≤ ( ε ( h ) + 2 γ , with to hold with probability at least 1
 
-```
 d
-```
 
 ) ( ) − δ , it suffices that
 
-```
 d
-```
 
-```
-n ≥ O
-```
+### n ≥ O
 
-```
 γ
-```
 
 log
 
-```
 δ
-```
 
 ## = O
 
-```
 γ
-```
 
 log
 
-```
 δ
-```
 
 = O γ,δ ( d ). (The γ, δ subscripts indicate that the last big- O is hiding constants that may depend on γ and δ .) Thus, the number of training examples needed is at most linear in the parameters of the model. The fact that we relied on 64-bit floating point makes this argument not entirely satisfying, but the conclusion is nonetheless roughly correct: If what we try to do is minimize training error, then in order to learn “well” using a hypothesis class that has d parameters, generally we’re going to need on the order of a linear number of training examples in d . (At this point, it’s worth noting that these results were proved for an al- gorithm that uses empirical risk minimization. Thus, while the linear depen- dence of sample complexity on d does generally hold for most discriminative learning algorithms that try to minimize training error or some approxima- tion to training error, these conclusions do not always apply as readily to discriminative learning algorithms. Giving good theoretical guarantees on many non-ERM learning algorithms is still an area of active research.) The other part of our previous argument that’s slightly unsatisfying is that it relies on the parameterization of H . Intuitively, this doesn’t seem like it should matter: We had written the class of linear classifiers as h θ ( x ) = { θ + θ x + · · · θ d x d ≥ } , with n + 1 parameters θ , . . . , θ d . But it could also be written h u,v ( x ) = 1 { ( u − v ) + ( u − v ) x + · · · ( u d
 
-```
 − v d
-```
 
 ) x d ≥ } with 2 d + 2 parameters u i , v i . Yet, both of these are just defining the same H : The set of linear classifiers in d dimensions. To derive a more satisfying argument, let’s define a few more things.
 
-```
 ( i ) ( D )
-```
 
 Given a set S = { x , . . . , x } (no relation to the training set) of points
 
-```
 ( i )
-```
 
 x ∈ X , we say that H shatters S if H can realize any labeling on S .
 
@@ -7479,9 +5625,7 @@ x ∈ X , we say that H shatters S if H can realize any labeling on S .
 
 I.e., if for any set of labels { y , . . . , y } , there exists some h ∈ H so that
 
-```
 ( i ) ( i )
-```
 
 h ( x ) = y for all i = 1 , . . . D . Given a hypothesis class H , we then define its Vapnik-Chervonenkis dimension , written VC( H ), to be the size of the largest set that is shattered by H . (If H can shatter arbitrarily large sets, then VC( H ) = ∞ .) For instance, consider the following set of three points:
 
@@ -7497,13 +5641,13 @@ h ( x ) = y for all i = 1 , . . . D . Given a hypothesis class H , we then defin
 
 Can the set H of linear classifiers in two dimensions ( h ( x ) = 1 { θ + θ x + θ x ≥ } ) can shatter the set above? The answer is yes. Specifically, we see that, for any of the eight possible labelings of these points, we can find a linear classifier that obtains “zero training error” on them:
 
-x x x x
+### x x x x
 
-x x x x
+### x x x x
 
-x x x x
+### x x x x
 
-x x x x
+### x x x x
 
 Moreover, it is possible to show that there is no set of 4 points that this hypothesis class can shatter. Thus, the largest set that H can shatter is of size 3, and hence VC( H ) = 3. Note that the VC dimension of H here is 3 even though there may be sets of size 3 that it cannot shatter. For instance, if we had a set of three points lying in a straight line (left figure), then there is no way to find a linear separator for the labeling of the three points shown below (right figure):
 
@@ -7523,25 +5667,19 @@ In order words, under the definition of the VC dimension, in order to prove that
 
 Thus, with probability at least 1 − δ , we also have that: (√ )
 
-```
 ∗
-```
 
 n ε ( h ˆ D ) ≤ ε ( h ) + O log +  log  . n D n δ
 
 In other words, if a hypothesis class has finite VC dimension, then uniform convergence occurs as n becomes large. As before, this allows us to give a
 
-```
 ∗
-```
 
 bound on ε ( h ) in terms of ε ( h ). We also have the following corollary:
 
 Corollary. For | ε ( h ) − ε ˆ ( h ) | ≤ γ to hold for all h ∈ H (and hence ε ( h ˆ ) ≤
 
-```
 ∗
-```
 
 ε ( h ) + 2 γ ) with probability at least 1 − δ , it suffices that n = O γ,δ ( D ).
 
@@ -7599,17 +5737,13 @@ One may wonder which components of the optimizers bias towards what type of glob
 
 Suppose we are trying select among several different models for a learning problem. For instance, we might be using a polynomial regression model
 
-```
 k
-```
 
 h θ ( x ) = g ( θ + θ x + θ x + · · · + θ k x ), and wish to decide if k should be 0, 1, . . . , or 10. How can we automatically select a model that represents a good tradeoff between the twin evils of bias and variance ? Alternatively, suppose we want to automatically choose the bandwidth parameter τ for locally weighted regression, or the parameter C for our ` -regularized SVM. How can we do that? For the sake of concreteness, in these notes we assume we have some finite set of models M = { M , . . . , M d } that we’re trying to select among. For instance, in our first example above, the model M i would be an i -th degree polynomial regression model. (The generalization to infinite M is not hard. ) Alternatively, if we are trying to decide between using an SVM, a neural network or logistic regression, then M may contain these models.
 
 Given that we said in the previous set of notes that bias and variance are two very different beasts, some readers may be wondering if we should be calling them “twin” evils here. Perhaps it’d be better to think of them as non-identical twins. The phrase “the fraternal twin evils of bias and variance” doesn’t have the same ring to it, though. If we are trying to choose from an infinite set of models, say corresponding to the
 
-```
 +
-```
 
 possible values of the bandwidth τ ∈ R , we may discretize τ and consider only a finite number of possible values for it. More generally, most of the algorithms described here can all be viewed as performing optimization search in the space of models, and we can perform this search over infinite model classes as well.
 
@@ -7661,23 +5795,15 @@ its own name; since we’re holding out one training example at a time, this met
 
 In this section, we will talk about one more tool in our arsenal for our battle against overfitting. At the beginning of the quarter, we talked about parameter fitting using maximum likelihood estimation (MLE), and chose our parameters according to ∏
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 θ MLE = arg max p ( y | x ; θ ) .
 
-```
-θ
-i =1
-```
+θ i =1
 
 Throughout our subsequent discussions, we viewed θ as an unknown param- eter of the world. This view of the θ as being constant-valued but unknown is taken in frequentist statistics. In the frequentist this view of the world, θ is not random—it just happens to be unknown—and it’s our job to come up with statistical procedures (such as maximum likelihood) to try to estimate this parameter. An alternative way to approach our parameter estimation problems is to take the Bayesian view of the world, and think of θ as being a random variable whose value is unknown. In this approach, we would specify a prior distribution p ( θ ) on θ that expresses our “prior beliefs” about the
 
-```
 ( i ) ( i ) n
-```
 
 parameters. Given a training set S = { ( x , y ) } i =1
 
@@ -7685,36 +5811,23 @@ parameters. Given a training set S = { ( x , y ) } i =1
 
 p ( S | θ ) p ( θ ) p ( θ | S ) = p ( S ) (∏
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
-```
 )
-```
 
-```
 i =1
-```
 
 p ( y | x , θ ) p ( θ ) = ∫ ∏ n ( i θ
 
-```
 ( ) ( i )
-```
 
 (9.3)
 
-```
 i =1
-```
 
 p ( y | x , θ ) p ( θ )) dθ
 
-```
 ( i ) ( i )
-```
 
 In the equation above, p ( y | x , θ ) comes from whatever model you’re using
 
@@ -7724,57 +5837,35 @@ for your learning problem. For example, if you are using Bayesian logistic re-
 ( i ) ( i ) ( i ) y
 ```
 
-```
 ( i )
-```
 
-```
 ( i ) (1 − y
-```
 
-```
 ( i )
-```
 
-```
 )
-```
 
 gression, then you might choose p ( y | x , θ ) = h θ ( x ) (1 − h θ ( x )) ,
 
-```
 ( i ) T ( i )
-```
 
 where h θ ( x ) = 1 / (1 + exp( − θ x )). When we are given a new test example x and asked to make it prediction on it, we can compute our posterior distribution on the class label using the posterior distribution on θ : ∫ p ( y | x, S ) = p ( y | x, θ ) p ( θ | S ) dθ (9.4)
 
-```
 θ
-```
 
 In the equation above, p ( θ | S ) comes from Equation (9.3). Thus, for example, if the goal is to the predict the expected value of y given x , then we would output ∫ E[ y | x, S ] = yp ( y | x, S ) dy
 
-```
 y
-```
 
 The procedure that we’ve outlined here can be thought of as doing “fully Bayesian” prediction, where our prediction is computed by taking an average with respect to the posterior p ( θ | S ) over θ . Unfortunately, in general it is computationally very difficult to compute this posterior distribution. This is because it requires taking integrals over the (usually high-dimensional) θ as in Equation (9.3), and this typically cannot be done in closed-form. Thus, in practice we will instead approximate the posterior distribution for θ . One common approximation is to replace our posterior distribution for θ (as in Equation 9.4) with a single point estimate. The MAP (maximum a posteriori) estimate for θ is given by
 
-```
 ∏
-```
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 θ MAP = arg max p ( y | x , θ ) p ( θ ) . (9.5)
 
-```
-θ
-i =1
-```
+θ i =1
 
 Note that this is the same formulas as for the MLE (maximum likelihood) estimate for θ , except for the prior p ( θ ) term at the end. In practical applications, a common choice for the prior p ( θ ) is to assume that θ ∼ N (0 , τ I ). Using this choice of prior, the fitted parameters θ MAP will have smaller norm than that selected by maximum likelihood. In practice, this causes the Bayesian MAP estimate to be less susceptible to overfitting than the ML estimate of the parameters. For example, Bayesian logistic regression turns out to be an effective algorithm for text classification, even though in text classification we usually have d  n .
 
@@ -7788,27 +5879,19 @@ Since we are now viewing θ as a random variable, it is okay to condition on it 
 
 # Clustering and the k -means algorithm
 
-```
 (1) ( n )
-```
 
 In the clustering problem, we are given a training set { x , . . . , x } , and
 
-```
 ( i ) d
-```
 
 want to group the data into a few cohesive “clusters.” Here, x ∈ R
 
-```
 ( i )
-```
 
 as usual; but no labels y are given. So, this is an unsupervised learning problem. The k -means clustering algorithm is as follows:
 
-```
 d
-```
 
 1. Initialize cluster centroids μ , μ , . . . , μ k ∈ R randomly.
 
@@ -7816,15 +5899,11 @@ d
 
 For every i , set
 
-```
 ( i ) ( i )
-```
 
 c := arg min || x − μ j || .
 
-```
 j
-```
 
 For each j , set ∑ n ( i ) ( i ) i =1
 
@@ -7834,27 +5913,17 @@ For each j , set ∑ n ( i ) ( i ) i =1
 ( i )
 ```
 
-```
 .
-```
 
-```
 i =1
-```
 
-```
 { c = j }
-```
 
-```
 }
-```
 
 In the algorithm above, k (a parameter of the algorithm) is the number of clusters we want to find; and the cluster centroids μ j represent our current guesses for the positions of the centers of the clusters. To initialize the cluster centroids (in step 1 of the algorithm above), we could choose k training examples randomly, and set the cluster centroids to be equal to the values of these k examples. (Other initialization methods are also possible.) The inner-loop of the algorithm repeatedly carries out two steps: (i)
 
-```
 ( i )
-```
 
 “Assigning” each training example x to the closest cluster centroid μ j , and
 
@@ -7862,28 +5931,19 @@ Figure 10.1: K-means algorithm. Training examples are shown as dots, and cluster
 
 (ii) Moving each cluster centroid μ j to the mean of the points assigned to it. Figure 10.1 shows an illustration of running k -means. Is the k -means algorithm guaranteed to converge? Yes it is, in a certain sense. In particular, let us define the distortion function to be:
 
-```
 ∑
-```
 
-```
-n
-( i )
-```
+n ( i )
 
 ```
 J ( c, μ ) = || x − μ c ( i ) ||
 ```
 
-```
 i =1
-```
 
 Thus, J measures the sum of squared distances between each training exam-
 
-```
 ( i )
-```
 
 ple x and the cluster centroid μ c ( i ) to which it has been assigned. It can be shown that k -means is exactly coordinate descent on J . Specifically, the inner-loop of k -means repeatedly minimizes J with respect to c while holding μ fixed, and then minimizes J with respect to μ while holding c fixed. Thus,
 
@@ -7897,15 +5957,11 @@ In this set of notes, we discuss the EM (Expectation-Maximization) algorithm for
 
 ##### 11.1 EM for mixture of Gaussians
 
-```
 (1) ( n )
-```
 
 Suppose that we are given a training set { x , . . . , x } as usual. Since we are in the unsupervised learning setting, these points do not come with any labels.
 
-```
 ( i ) ( i )
-```
 
 We wish to model the data by specifying a joint distribution p ( x , z ) =
 
@@ -7913,9 +5969,7 @@ We wish to model the data by specifying a joint distribution p ( x , z ) =
 ( i ) ( i ) ( i ) ( i )
 ```
 
-```
 ∑ k
-```
 
 p ( x | z ) p ( z ). Here, z ∼ Multinomial( φ ) (where φ j ≥ 0, j =1
 
@@ -7927,50 +5981,33 @@ p ( x | z ) p ( z ). Here, z ∼ Multinomial( φ ) (where φ j ≥ 0, j =1
 
 and the parameter φ j gives p ( z = j )), and x | z = j ∼ N ( μ j , Σ j ). We
 
-```
 ( i )
-```
 
 let k denote the number of values that the z ’s can take on. Thus, our
 
-```
 ( i ) ( i )
-```
 
 model posits that each x was generated by randomly choosing z from
 
-```
 ( i )
-```
 
 { , . . . , k } , and then x was drawn from one of k Gaussians depending on
 
-```
 ( i )
-```
 
 z . This is called the mixture of Gaussians model. Also, note that the
 
-```
 ( i )
-```
 
 z ’s are latent random variables, meaning that they’re hidden/unobserved. This is what will make our estimation problem difficult. The parameters of our model are thus φ , μ and Σ. To estimate them, we can write down the likelihood of our data:
 
-```
-∑ n
-( i )
-```
+∑ n ( i )
 
 ` ( φ, μ, Σ) = log p ( x ; φ, μ, Σ)
 
-```
 i =1
-```
 
-```
 ∑ n
-```
 
 ```
 ∑ k
@@ -7979,27 +6016,19 @@ i =1
 
 = log p ( x | z ; μ, Σ) p ( z ; φ ) .
 
-```
 i =1 z ( i )
-```
 
-```
 =1
-```
 
 However, if we set to zero the derivatives of this formula with respect to
 
 the parameters and try to solve, we’ll find that it is not possible to find the maximum likelihood estimates of the parameters in closed form. (Try this yourself at home.)
 
-```
 ( i ) ( i )
-```
 
 The random variables z indicate which of the k Gaussians each x
 
-```
 ( i )
-```
 
 had come from. Note that if we knew what the z ’s were, the maximum likelihood problem would have been easy. Specifically, we could then write down the likelihood as
 
@@ -8010,29 +6039,20 @@ had come from. Note that if we knew what the z ’s were, the maximum likelihood
 
 ` ( φ, μ, Σ) = log p ( x | z ; μ, Σ) + log p ( z ; φ ) .
 
-```
 i =1
-```
 
 Maximizing this with respect to φ , μ and Σ gives the parameters:
 
-```
 ∑
-```
 
-```
-n
-( i )
-```
+n ( i )
 
 ```
 φ j = { z = j } ,
 n
 ```
 
-```
 i =1
-```
 
 ```
 ∑ n
@@ -8046,17 +6066,11 @@ i =1
 ( i
 ```
 
-```
 ,
-```
 
-```
 i =1
-```
 
-```
 { z )
-```
 
 ```
 = j }
@@ -8067,45 +6081,29 @@ i =1
 
 { z = j } ( x − μ j )( x − μ Σ j
 
-```
 ∑
-```
 
 j ) = n ( i )
 
-```
 .
-```
 
-```
 i =1
-```
 
-```
 { z = j }
-```
 
-```
 ( i )
-```
 
 Indeed, we see that if the z ’s were known, then maximum likelihood estimation becomes nearly identical to what we had when estimating the parameters of the Gaussian discriminant analysis model, except that here
 
-```
 ( i )
-```
 
 the z ’s playing the role of the class labels.
 
-```
 ( i )
-```
 
 However, in our density estimation problem, the z ’s are not known. What can we do? The EM algorithm is an iterative algorithm that has two main steps. Applied to our problem, in the E-step, it tries to “guess” the values of the
 
-```
 ( i )
-```
 
 z ’s. In the M-step, it updates the parameters of our model based on our guesses. Since in the M-step we are pretending that the guesses in the first part were correct, the maximization becomes easy. Here’s the algorithm:
 
@@ -8117,17 +6115,13 @@ Repeat until convergence: {
 ( i ) ( i ) ( i )
 ```
 
-```
 w j
-```
 
 := p ( z = j | x ; φ, μ, Σ)
 
 There are other minor differences in the formulas here from what we’d obtained in
 
-```
 ( i )
-```
 
 PS1 with Gaussian discriminant analysis, first because we’ve generalized the z ’s to be multinomial rather than Bernoulli, and second because here we are using a different Σ j
 
@@ -8137,21 +6131,13 @@ for each Gaussian.
 
 (M-step) Update the parameters:
 
-```
-∑ n
-( i )
-```
+∑ n ( i )
 
 φ j := w j
 
-```
-,
-n
-```
+### , n
 
-```
 i =1
-```
 
 ```
 ∑ n
@@ -8159,9 +6145,7 @@ i =1
 i =1
 ```
 
-```
 w j
-```
 
 ```
 x
@@ -8169,17 +6153,11 @@ x
 ( i )
 ```
 
-```
 ,
-```
 
-```
 i =1
-```
 
-```
 w j
-```
 
 ```
 ∑ n
@@ -8187,25 +6165,17 @@ w j
 i =1
 ```
 
-```
 w j
-```
 
 ( x − μ j )( x − μ j ) Σ j := ∑ n ( i ) i =1
 
-```
 w j
-```
 
-```
 }
-```
 
 In the E-step, we calculate the posterior probability of our parameters
 
-```
 ( i ) ( i )
-```
 
 the z ’s, given the x and using the current setting of our parameters. I.e., using Bayes rule, we obtain:
 
@@ -8224,63 +6194,45 @@ p ( x | z ( i )
 
 = l ; φ )
 
-```
 ( i ) ( i )
-```
 
 Here, p ( x | z = j ; μ, Σ) is given by evaluating the density of a Gaussian
 
-```
 ( i ) ( i )
-```
 
 with mean μ j and covariance Σ j at x ; p ( z = j ; φ ) is given by φ j , and so
 
-```
 ( i )
-```
 
 on. The values w j
 
 calculated in the E-step represent our “soft” guesses for
 
-```
 ( i )
-```
 
 the values of z . Also, you should contrast the updates in the M-step with the formulas we
 
-```
 ( i )
-```
 
 had when the z ’s were known exactly. They are identical, except that in-
 
-```
 ( i )
-```
 
 stead of the indicator functions “1 { z = j } ” indicating from which Gaussian
 
-```
 ( i )
-```
 
 each datapoint had come, we now instead have the w j
 
 ’s. The EM-algorithm is also reminiscent of the K-means clustering algo- rithm, except that instead of the “hard” cluster assignments c ( i ), we instead
 
-```
 ( i )
-```
 
 have the “soft” assignments w j
 
 . Similar to K-means, it is also susceptible to local optima, so reinitializing at several different initial parameters may be a good idea. It’s clear that the EM algorithm has a very natural interpretation of
 
-```
 ( i )
-```
 
 repeatedly trying to guess the unknown z ’s; but how did it come about, and can we make any guarantees about it, such as regarding its convergence? In the next set of notes, we will describe a more general view of EM, one
 
@@ -8292,15 +6244,11 @@ that will allow us to easily apply it to other estimation problems in which ther
 
 We begin our discussion with a very useful result called Jensen’s inequality Let f be a function whose domain is the set of real numbers. Recall that
 
-```
 ′′
-```
 
 f is a convex function if f ( x ) ≥ 0 (for all x ∈ R ). In the case of f taking vector-valued inputs, this is generalized to the condition that its hessian H
 
-```
 ′′
-```
 
 is positive semi-definite ( H ≥ 0). If f ( x ) > 0 for all x , then we say f is strictly convex (in the vector-valued case, the corresponding statement is that H must be positive definite, written H > 0). Jensen’s inequality can then be stated as follows:
 
@@ -8324,9 +6272,7 @@ Here, f is a convex function shown by the solid line. Also, X is a random variab
 
 taking the value b (indicated on the x -axis). Thus, the expected value of X is given by the midpoint between a and b . We also see the values f ( a ), f ( b ) and f (E[ X ]) indicated on the y -axis. Moreover, the value E[ f ( X )] is now the midpoint on the y -axis between f ( a ) and f ( b ). From our example, we see that because f is convex, it must be the case that E[ f ( X )] ≥ f (E X ). Incidentally, quite a lot of people have trouble remembering which way the inequality goes, and remembering a picture like this is a good way to quickly figure out the answer. Remark. Recall that f is [strictly] concave if and only if − f is [strictly]
 
-```
 ′′
-```
 
 convex (i.e., f ( x ) ≤ 0 or H ≤ 0). Jensen’s inequality also holds for concave functions f , but with the direction of all the inequalities reversed (E[ f ( X )] ≤ f (E X ), etc.).
 
@@ -8334,79 +6280,49 @@ convex (i.e., f ( x ) ≤ 0 or H ≤ 0). Jensen’s inequality also holds for co
 
 Suppose we have an estimation problem in which we have a training set
 
-```
 (1) ( n )
-```
 
 { x , . . . , x } consisting of n independent examples. We have a latent vari- able model p ( x, z ; θ ) with z being the latent variable (which for simplicity is assumed to take finite number of values). The density for x can be obtained by marginalized over the latent variable z : ∑ p ( x ; θ ) = p ( x, z ; θ ) (11.1)
 
-```
 z
-```
 
 We wish to fit the parameters θ by maximizing the log-likelihood of the data, defined by
 
-```
 ∑
-```
 
-```
-n
-( i )
-```
+n ( i )
 
 ` ( θ ) = log p ( x ; θ ) (11.2)
 
-```
 i =1
-```
 
 We can rewrite the objective in terms of the joint density p ( x, z ; θ ) by
 
-```
-∑ n
-( i )
-```
+∑ n ( i )
 
 ` ( θ ) = log p ( x ; θ ) (11.3)
 
-```
 i =1
-```
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 ∑
-```
 
-```
 ( i ) ( i )
-```
 
 = log p ( x , z ; θ ) . (11.4)
 
-```
 i =1 z ( i )
-```
 
 But, explicitly finding the maximum likelihood estimates of the parameters θ may be hard since it will result in difficult non-convex optimization prob-
 
-```
 ( i )
-```
 
 lems. Here, the z ’s are the latent random variables; and it is often the case
 
-```
 ( i )
-```
 
 that if the z ’s were observed, then maximum likelihood estimation would be easy. In such a setting, the EM algorithm gives an efficient method for max- imum likelihood estimation. Maximizing ` ( θ ) explicitly might be difficult, and our strategy will be to instead repeatedly construct a lower-bound on ` (E-step), and then optimize that lower-bound (M-step). ∑ n
 
@@ -8414,53 +6330,39 @@ It turns out that the summation i =1
 
 is not essential here, and towards a simpler exposition of the EM algorithm, we will first consider optimizing the the likelihood log p ( x ) for a single example x . After we derive the algorithm for optimizing log p ( x ), we will convert it to an algorithm that works for n examples by adding back the sum to each of the relevant equations. Thus, now we aim to optimize log p ( x ; θ ) which can be rewritten as ∑ log p ( x ; θ ) = log p ( x, z ; θ ) (11.5)
 
-```
 z
-```
 
 ∑ Let Q be a distribution over the possible values of z . That is, z
 
 Q ( z ) = 1, Q ( z ) ≥ 0). Consider the following: ∑ log p ( x ; θ ) = log p ( x, z ; θ )
 
-```
 z
-```
 
 ∑ p ( x, z ; θ ) = log Q ( z ) (11.6)
 
-```
 z
-```
 
 Q ( z ) ∑ p ( x, z ; θ ) ≥ Q ( z ) log (11.7)
 
-```
 z
-```
 
 Q ( z )
 
 The last step of this derivation used Jensen’s inequality. Specifically,
 
-```
 ′′
-```
 
 f ( x ) = log x is a concave function, since f ( x ) = − /x < 0 over its domain
 
 It’s mostly an empirical observation that the optimization problem is difficult to op- timize. Empirically, the E-step and M-step can often be computed more efficiently than op- timizing the function ` ( · ) directly. However, it doesn’t necessarily mean that alternating the two steps can always converge to the global optimum of ` ( · ). Even for mixture of Gaussians, the EM algorithm can either converge to a global optimum or get stuck, de- pending on the properties of the training data. Empirically, for real-world data, often EM can converge to a solution with relatively high likelihood (if not the optimum), and the theory behind it is still largely not understood. If z were continuous, then Q would be a density, and the summations over z in our discussion are replaced with integrals over z .
 
-```
 +
-```
 
 x ∈ R . Also, the term
 
 ∑ [ ] p ( x, z ; θ ) Q ( z )
 
-```
 z
-```
 
 Q ( z )
 
@@ -8476,9 +6378,7 @@ Q ( z ) = 1 (because it is a distribution), this further tells us that
 
 p ( x, z ; θ ) Q ( z ) = ∑
 
-```
 z
-```
 
 | p   | (   | x, z | ;   | θ   | )   |
 | --- | --- | ---- | --- | --- | --- |
@@ -8491,41 +6391,29 @@ p ( x,z ; θ )
 
 We note that the notion
 
-```
 Q ( z )
-```
 
 only makes sense if Q ( z ) = 0 whenever p ( x, z ; θ ) = 0. Here we implicitly assume that we only consider those Q with such a property.
 
 Thus, we simply set the Q ’s to be the posterior distribution of the z ’s given x and the setting of the parameters θ . Indeed, we can directly verify that when Q ( z ) = p ( z | x ; θ ), then equa- tion (11.7) is an equality because ∑ p ( x, z ; θ ) ∑ p ( x, z ; θ ) Q ( z ) log = p ( z | x ; θ ) log
 
-```
 z
-```
 
 Q ( z )
 
-```
 z
-```
 
 p ( z | x ; θ ) ∑ p ( z | x ; θ ) p ( x ; θ ) = p ( z | x ; θ ) log
 
-```
 z
-```
 
 p ( z | x ; θ ) ∑ = p ( z | x ; θ ) log p ( x ; θ )
 
-```
 z
-```
 
 ∑ = log p ( x ; θ ) p ( z | x ; θ )
 
-```
 z
-```
 
 ∑ = log p ( x ; θ ) (because z
 
@@ -8533,9 +6421,7 @@ p ( z | x ; θ ) = 1)
 
 For convenience, we call the expression in Equation (11.7) the evidence lower bound (ELBO) and we denote it by ∑ p ( x, z ; θ ) ELBO( x ; Q, θ ) = Q ( z ) log (11.9)
 
-```
 z
-```
 
 Q ( z )
 
@@ -8545,43 +6431,31 @@ With this equation, we can re-write equation (11.7) as
 
 Intuitively, the EM algorithm alternatively updates Q and θ by a) set- ting Q ( z ) = p ( z | x ; θ ) following Equation (11.8) so that ELBO( x ; Q, θ ) = log p ( x ; θ ) for x and the current θ , and b) maximizing ELBO( x ; Q, θ ) w.r.t θ while fixing the choice of Q . Recall that all the discussion above was under the assumption that we aim to optimize the log-likelihood log p ( x ; θ ) for a single example x . It turns out that with multiple training examples, the basic idea is the same and we only needs to take a sum over examples at relevant places. Next, we will build the evidence lower bound for multiple training examples and make the EM algorithm formal.
 
-```
 (1) ( n )
-```
 
 Recall we have a training set { x , . . . , x } . Note that the optimal choice of Q is p ( z | x ; θ ), and it depends on the particular example x . Therefore here
 
-```
 ( i )
-```
 
 we will introduce n distributions Q , . . . , Q n , one for each example x . For
 
-```
 ( i )
-```
 
 each example x , we can build the evidence lower bound ∑ ( i ) ( i ) ( i ) ( i ) ( i )
 
 p ( x , z ; θ ) log p ( x ; θ ) ≥ ELBO( x ; Q i , θ ) = Q i ( z ) log Q i z ( i )
 
-```
 i ( z ( )
-```
 
 )
 
 Taking sum over all the examples, we obtain a lower bound for the log- likelihood ∑
 
-```
 ( i )
-```
 
 ` ( θ ) ≥ ELBO( x ; Q i , θ ) (11.11)
 
-```
 i
-```
 
 ```
 ∑ ∑ ( i ) ( i )
@@ -8590,9 +6464,7 @@ i
 
 p ( x , z ; θ ) = Q i ( z ) log
 
-```
 i
-```
 
 ```
 Q i ( z ( i )
@@ -8609,15 +6481,11 @@ For any set of distributions Q , . . . , Q n , the formula (11.11) gives a lower
 
 Q i ( z ) = p ( z | x ; θ )
 
-```
 ( i )
-```
 
 Thus, we simply set the Q i ’s to be the posterior distribution of the z ’s
 
-```
 ( i )
-```
 
 given x with the current setting of the parameters θ . Now, for this choice of the Q i ’s, Equation (11.11) gives a lower-bound on the loglikelihood ` that we’re trying to maximize. This is the E-step. In the M-step of the algorithm, we then maximize our formula in Equation (11.11) with respect to the parameters to obtain a new setting of the θ ’s. Repeatedly carrying out these two steps gives us the EM algorithm, which is as follows:
 
@@ -8633,21 +6501,13 @@ Q i ( z ) := p ( z | x ; θ ) .
 
 (M-step) Set
 
-```
 ∑
-```
 
-```
-n
-( i )
-```
+n ( i )
 
 θ := arg max ELBO( x ; Q i , θ )
 
-```
-θ
-i =1
-```
+θ i =1
 
 ```
 ∑ ∑ ( i ) ( i )
@@ -8656,30 +6516,19 @@ i =1
 
 p ( x , z ; θ ) = arg max Q i ( z ) log . (11.12)
 
-```
-θ
-i z ( i )
-```
+θ i z ( i )
 
-```
 Q i ( z ( i )
-```
 
 )
 
-```
 }
-```
 
-```
 ( t )
-```
 
 How do we know if this algorithm will converge? Well, suppose θ and
 
-```
 ( t +1)
-```
 
 θ are the parameters from two successive iterations of EM. We will now
 
@@ -8708,19 +6557,13 @@ started out as θ , we would have chosen Q i
 
 , θ ) (11.13)
 
-```
 i =1
-```
 
-```
 ( t +1)
-```
 
 The parameters θ are then obtained by maximizing the right hand side of the equation above. Thus,
 
-```
 ∑
-```
 
 ```
 n
@@ -8731,9 +6574,7 @@ n
 
 , θ )
 
-```
 i =1
-```
 
 (because ineqaulity (11.11) holds for all Q and θ ) ∑ n ( i ) ( t ) ( t )
 
@@ -8741,44 +6582,29 @@ i =1
 
 , θ ) (see reason below)
 
-```
-i =1
-( t )
-```
+i =1 ( t )
 
 = ` ( θ ) (by equation (11.13))
 
-```
 ( t +1)
-```
 
 where the last inequality follows from that θ is chosen explicitly to be
 
-```
 ∑
-```
 
-```
-n
-( i ) ( t )
-```
+n ( i ) ( t )
 
 arg max ELBO( x ; Q i
 
 , θ )
 
-```
-θ
-i =1
-```
+θ i =1
 
 Hence, EM causes the likelihood to converge monotonically. In our de- scription of the EM algorithm, we said we’d run it until convergence. Given the result that we just showed, one reasonable convergence test would be to check if the increase in ` ( θ ) between successive iterations is smaller than some tolerance parameter, and to declare convergence if EM is improving ` ( θ ) too slowly.
 
 Remark. If we define (by overloading ELBO( · ))
 
-```
 ∑ n
-```
 
 ```
 ∑ ∑ ( i ) ( i )
@@ -8787,9 +6613,7 @@ Remark. If we define (by overloading ELBO( · ))
 
 p ( x , z ; θ ) ELBO( Q, θ ) = ELBO( x ; Q i , θ ) = Q i ( z ) log
 
-```
 i =1 i
-```
 
 ```
 Q ( i )
@@ -8812,9 +6636,7 @@ Let ELBO( x ; Q, θ ) = z
 
 Q ( z ) log
 
-```
 Q ( z )
-```
 
 be defined as in equation (11.9). There are several other forms of ELBO. First, we can rewrite
 
@@ -8824,9 +6646,7 @@ where we use p z to denote the marginal distribution of z (under the distri- but
 
 ∑ Q ( z ) D KL ( Q ‖ p z ) = Q ( z ) log (11.16)
 
-```
 z
-```
 
 p ( z )
 
@@ -8844,23 +6664,17 @@ Armed with our general definition of the EM algorithm, let’s go back to our ol
 ( i ) ( i ) ( i ) ( i )
 ```
 
-```
 w j
-```
 
 = Q i ( z = j ) = P ( z = j | x ; φ, μ, Σ) .
 
-```
 ( i ) ( i )
-```
 
 Here, “ Q i ( z = j )” denotes the probability of z taking the value j under the distribution Q i .
 
 Next, in the M-step, we need to maximize, with respect to our parameters φ, μ, Σ, the quantity
 
-```
 ∑ n
-```
 
 ```
 ∑ ( i ) ( i )
@@ -8869,9 +6683,7 @@ Next, in the M-step, we need to maximize, with respect to our parameters φ, μ,
 
 p ( x , z ; φ, μ, Σ) Q i ( z ) log
 
-```
 i =1
-```
 
 ```
 Q )
@@ -8881,17 +6693,11 @@ z ( i )
 
 )
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 ∑
-```
 
 ```
 k ( i ) ( i ) ( i )
@@ -8900,35 +6706,23 @@ k ( i ) ( i ) ( i )
 
 p ( x | z = j ; μ, Σ) p ( z = j ; φ ) = Q i ( z = j ) log
 
-```
 i =1 j =1
-```
 
-```
 Q i ( z ( i )
-```
 
 = j ) ( ∑
 
-```
 n
-```
 
-```
 ∑
-```
 
 ```
 k ( i ) T − ( i )
 ```
 
-```
 )
-```
 
-```
 d/
-```
 
 ```
 ( i ) (2 π ) | Σ j | /
@@ -8947,47 +6741,33 @@ log
 i =1 j =1
 ```
 
-```
 w j
-```
 
 Let’s maximize this with respect to μ l . If we take the derivative with respect to μ l , we find (
 
-```
 (
-```
 
-```
 ∑ n
-```
 
 ```
 ∑ k i ) T − ( i )
 ```
 
-```
 )
-```
 
 ```
 ( i ) (2 π ) d/
 ```
 
-```
 | Σ j | /
-```
 
 exp − ( x − μ j ) Σ j
 
 ( x − μ j ) · φ j
 
-```
 ∇ μ l
-```
 
-```
 w j
-```
 
 log
 
@@ -8996,46 +6776,30 @@ log
 i =1 j =1
 ```
 
-```
 w j
-```
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 ∑
-```
 
 ```
 k
 ( i ) ( i ) T − ( i )
 ```
 
-```
 = −∇ μ l
-```
 
-```
 w j
-```
 
 ( x − μ j ) Σ j
 
 ( x − μ j )
 
-```
 i =1 j =1
-```
 
-```
 ∑
-```
 
 ```
 n
@@ -9046,46 +6810,27 @@ n
 
 = w l
 
-```
 ∇ μ l
-```
 
-```
 μ l
-```
 
 Σ l
 
-```
 x − μ l
-```
 
 Σ l
 
-```
 μ l
-```
 
-```
 i =1
-```
 
-```
 ∑
-```
 
-```
-n
-( i )
-```
+n ( i )
 
-```
 (
-```
 
-```
 − ( i ) −
-```
 
 ) = w l
 
@@ -9093,13 +6838,9 @@ n
 
 x − Σ l
 
-```
 μ l
-```
 
-```
 i =1
-```
 
 Setting this to zero and solving for μ l therefore yields the update rule
 
@@ -9109,9 +6850,7 @@ Setting this to zero and solving for μ l therefore yields the update rule
 i =1
 ```
 
-```
 w l
-```
 
 ```
 x
@@ -9119,67 +6858,41 @@ x
 ( i )
 ```
 
-```
 ,
-```
 
-```
 i =1
-```
 
-```
 w l
-```
 
 which was what we had in the previous set of notes. Let’s do one more example, and derive the M-step update for the param- eters φ j . Grouping together only the terms that depend on φ j , we find that we need to maximize ∑ n
 
-```
-∑ k
-( i )
-```
+∑ k ( i )
 
-```
 w j
-```
 
 log φ j .
 
-```
 i =1 j =1
-```
 
 However, there is an additional constraint that the φ j ’s sum to 1, since they
 
-```
 ( i )
-```
 
 represent the probabilities φ j = p ( z = j ; φ ). To deal with the constraint
 
-```
 ∑ k
-```
 
 that j =1
 
 φ j = 1, we construct the Lagrangian
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 ∑
-```
 
-```
-k k
-( i )
-```
+k k ( i )
 
 ∑ L ( φ ) = w j
 
@@ -9191,26 +6904,17 @@ i =1 j =1 j =1
 
 where β is the Lagrange multiplier. Taking derivatives, we find
 
-```
 ∑ n ( i )
-```
 
-```
-∂
-w j
-```
+∂ w j
 
 L ( φ ) = + β ∂φ j i =1
 
-```
 φ j
-```
 
 Setting this to zero and solving, we get ∑ n ( i ) i =1
 
-```
 w j
-```
 
 ```
 φ j =
@@ -9221,29 +6925,19 @@ w j
 
 ∑ I.e., φ j ∝ i =1
 
-```
 w j
-```
 
-. Using the constraint that j
+## . Using the constraint that j
 
 φ j = 1, we easily find ∑ n
 
-```
-∑ k
-( i )
-```
+∑ k ( i )
 
-```
-∑ n
-( i )
-```
+∑ n ( i )
 
 that − β = i =1 j =1
 
-```
 w j
-```
 
 = i =1
 
@@ -9251,41 +6945,25 @@ w j
 
 =
 
-```
 ( i )
-```
 
-```
 ∑ ( i )
-```
 
 Q i ( z = j ), and since probabilities sum to 1, j
 
-```
 w j
-```
 
 = 1.) We therefore have our M-step updates for the parameters φ j :
 
-```
 ∑
-```
 
-```
-n
-( i )
-```
+n ( i )
 
 φ j :=  w j
 
-```
-.
-n
-```
+### . n
 
-```
 i =1
-```
 
 The derivation for the M-step updates to Σ j are also entirely straightfor- ward.
 
@@ -9297,9 +6975,7 @@ We don’t need to worry about the constraint that φ j ≥ 0, because as we’l
 
 with non-linear models. Understanding it will likely give you the language and backgrounds to understand various recent papers related to it. As a running example, we will consider the following parameterization of p ( x, z ; θ ) by a neural network. Let θ be the collection of the weights of a
 
-```
 k d
-```
 
 neural network g ( z ; θ ) that maps z ∈ R to R . Let
 
@@ -9307,13 +6983,9 @@ z ∼ N (0 , I k × k ) (11.18) x | z ∼ N ( g ( z ; θ ) , σ I d × d ) (11.1
 
 Here I k × k denotes identity matrix of dimension k by k , and σ is a scalar that we assume to be known for simplicity. For the Gaussian mixture models in Section 11.4, the optimal choice of Q ( z ) = p ( z | x ; θ ) for each fixed θ , that is the posterior distribution of z , can be analytically computed. In many more complex models such as the model (11.19), it’s intractable to compute the exact the posterior distribution p ( z | x ; θ ). Recall that from equation (11.10), ELBO is always a lower bound for any choice of Q , and therefore, we can also aim for finding an approximation of the true posterior distribution. Often, one has to use some particular form to approximate the true posterior distribution. Let Q be a family of Q ’s that we are considering, and we will aim to find a Q within the family of Q that is closest to the true posterior distribution. To formalize, recall the definition of the ELBO lower bound as a function of Q and θ defined in equation (11.14)
 
-```
 ∑
-```
 
-```
 n
-```
 
 ```
 ∑ ∑ ( i ) ( i )
@@ -9328,15 +7000,11 @@ Recall that EM can be viewed as alternating maximization of ELBO( Q, θ ). Here 
 
 max max ELBO( Q, θ ) (11.20)
 
-```
 Q ∈Q θ
-```
 
 Now the next question is what form of Q (or what structural assumptions to make about Q ) allows us to efficiently maximize the objective above. When the latent variable z are high-dimensional discrete variables, one popular as- sumption is the mean field assumption , which assumes that Q i ( z ) gives a distribution with independent coordinates, or in other words, Q i can be de-
 
-```
 k
-```
 
 composed into Q i ( z ) = Q i
 
@@ -9348,89 +7016,59 @@ composed into Q i ( z ) = Q i
 
 their impact to a wide range of applications including computational biology, computational neuroscience, social sciences. We will not get into the details about the discrete latent variable cases, and our main focus is to deal with continuous latent variables, which requires not only mean field assumptions, but additional techniques.
 
-```
 k
-```
 
 When z ∈ R is a continuous latent variable, there are several decisions to make towards successfully optimizing (11.20). First we need to give a succinct representation of the distribution Q i because it is over an infinite number of points. A natural choice is to assume Q i is a Gaussian distribution with some mean and variance. We would also like to have more succinct representation
 
-```
 ( i )
-```
 
 of the means of Q i of all the examples. Note that Q i ( z ) is supposed to
 
-```
 ( i ) ( i )
-```
 
 approximate p ( z | x ; θ ). It would make sense let all the means of the Q i ’s
 
-```
 ( i )
-```
 
 be some function of x . Concretely, let q ( · ; φ ) , v ( · ; φ ) be two functions that map from dimension d to k , which are parameterized by φ and ψ , we assume that
 
-```
 ( i ) ( i )
-```
 
 Q i = N ( q ( x ; φ ) , diag( v ( x ; ψ )) ) (11.21)
 
-```
 k
-```
 
 Here diag( w ) means the k × k matrix with the entries of w ∈ R on the diagonal. In other words, the distribution Q i is assumed to be a Gaussian distribution with independent coordinates, and the mean and standard de- viations are governed by q and v . Often in variational auto-encoder, q and v are chosen to be neural networks. In recent deep learning literature, often q, v are called encoder (in the sense of encoding the data into latent code), whereas g ( z ; θ ) if often referred to as the decoder. We remark that Q i of such form in many cases are very far from a good ap- proximation of the true posterior distribution. However, some approximation is necessary for feasible optimization. In fact, the form of Q i needs to satisfy other requirements (which happened to be satisfied by the form (11.21)) Before optimizing the ELBO, let’s first verify whether we can efficiently evaluate the value of the ELBO for fixed Q of the form (11.21) and θ . We rewrite the ELBO as a function of φ, ψ, θ by
 
-```
 ∑
-```
 
-```
 n [
-```
 
-```
 ( i ) ( i )
-```
 
 ] p ( x , z ; θ ) ELBO( φ, ψ, θ ) = E z ( i )
 
-```
 ∼ Q i
-```
 
 log
 
-```
 ( i )
-```
 
 , (11.22)
 
-```
 i =1
-```
 
 Q i ( z )
 
-```
 ( i ) ( i )
-```
 
 where Q i = N ( q ( x ; φ ) , diag( v ( x ; ψ )) )
 
-```
 ( i )
-```
 
 Note that to evaluate Q i ( z ) inside the expectation, we should be able to compute the density of Q i . To estimate the expectation E z ( i )
 
-```
 ∼ Q i
-```
 
 , we
 
@@ -9438,9 +7076,7 @@ q and v can also share parameters. We sweep this level of details under the rug 
 
 should be able to sample from distribution Q i so that we can build an empirical estimator with samples. It happens that for Gaussian distribution
 
-```
 ( i ) ( i )
-```
 
 Q i = N ( q ( x ; φ ) , diag( v ( x ; ψ )) ), we are able to be both efficiently. Now let’s optimize the ELBO. It turns out that we can run gradient ascent over φ, ψ, θ instead of alternating maximization. There is no strong need to compute the maximum over each variable at a much greater cost. (For Gaus- sian mixture model in Section 11.4, computing the maximum is analytically feasible and relatively cheap, and therefore we did alternating maximization.) Mathematically, let η be the learning rate, the gradient ascent step is
 
@@ -9451,79 +7087,49 @@ Q i = N ( q ( x ; φ ) , diag( v ( x ; ψ )) ), we are able to be both efficient
 
 Computing the gradient over θ is simple because
 
-```
 ∑
-```
 
-```
 n [
-```
 
-```
 ( i ) ( i )
-```
 
 ] p ( x , z ; θ ) ∇ θ ELBO( φ, ψ, θ ) = ∇ θ E z ( i )
 
-```
 ∼ Q i
-```
 
 log
 
-```
 i =1
-```
 
 Q ( i ) i ( z )
 
-```
 ∑ n
-```
 
-```
 [
-```
 
-```
 ( i ) ( i )
-```
 
 ] = ∇ θ E z ( i )
 
-```
 ∼ Q i
-```
 
 log p ( x , z ; θ )
 
-```
 i =1
-```
 
-```
 ∑ n
-```
 
-```
 [
-```
 
-```
 ( i ) ( i )
-```
 
 ] = E z ( i )
 
-```
 ∼ Q i
-```
 
 ∇ θ log p ( x , z ; θ ) , (11.23)
 
-```
 i =1
-```
 
 But computing the gradient over φ and ψ is tricky because the sam- pling distribution Q i depends on φ and ψ . (Abstractly speaking, the is- sue we face can be simplified as the problem of computing the gradi- ent E z ∼ Q φ
 
@@ -9547,23 +7153,17 @@ z = q ( x ; φ ) + v ( x ; ψ ) ξ where ξ ∼ N (0 , I k × k ) (11.24)
 
 Here x y denotes the entry-wise product of two vectors of the same dimension. Here we used the fact that x ∼ N ( μ, σ ) is equivalent to that x = μ + ξσ with ξ ∼ N (0 , 1). We mostly just used this fact in every dimension
 
-```
 ( i )
-```
 
 simultaneously for the random variable z ∼ Q i .
 
 With this re-parameterization, we have that [
 
-```
 ( i ) ( i )
-```
 
 ] p ( x , z ; θ ) E z ( i )
 
-```
 ∼ Q i
-```
 
 log Q ( i )
 
@@ -9589,15 +7189,11 @@ log Q i ( q ( x ( i )
 
 It follows that [
 
-```
 ( i ) ( i )
-```
 
 ] p ( x , z ; θ ) ∇ φ E z ( i )
 
-```
 ∼ Q i
-```
 
 log Q i ( z ( i )
 
@@ -9635,9 +7231,7 @@ log Q i ( q ( x ( i )
 
 )
 
-```
 ( i )
-```
 
 We can now sample multiple copies of ξ ’s to estimate the the expecta- tion in the RHS of the equation above. We can estimate the gradient with respect to ψ similarly, and with these, we can implement the gradient ascent algorithm to optimize the ELBO over φ, ψ, θ. There are not many high-dimensional distributions with analytically com- putable density function are known to be re-parameterizable. We refer to Kingma and Welling [2013] for a few other choices that can replace Gaussian distribution.
 
@@ -9649,27 +7243,19 @@ Empirically people sometimes just use one sample to estimate it for maximum com-
 
 In this set of notes, we will develop a method, Principal Components Analysis (PCA), that tries to identify the subspace in which the data approximately lies. PCA is computationally efficient: it will require only an eigenvector calculation (easily done with the eig function in Matlab).
 
-```
 ( i )
-```
 
 Suppose we are given a dataset { x ; i = 1 , . . . , n } of attributes of n dif- ferent types of automobiles, such as their maximum speed, turn radius, and
 
-```
 ( i ) d
-```
 
 so on. Let x ∈ R for each i ( d  n ). But unknown to us, two different attributes—some x i and x j —respectively give a car’s maximum speed mea- sured in miles per hour, and the maximum speed measured in kilometers per hour. These two attributes are therefore almost linearly dependent, up to only small differences introduced by rounding off to the nearest mph or kph. Thus, the data really lies approximately on an n − 1 dimensional subspace. How can we automatically detect, and perhaps remove, this redundancy? For a less contrived example, consider a dataset resulting from a survey of
 
-```
 ( i )
-```
 
 pilots for radio-controlled helicopters, where x is a measure of the piloting
 
-```
 ( i )
-```
 
 skill of pilot i , and x captures how much he/she enjoys flying. Because RC helicopters are very difficult to fly, only the most committed students, ones that truly enjoy flying, become good pilots. So, the two attributes x and x are strongly correlated. Indeed, we might posit that that the data actually likes along some diagonal axis (the u direction) capturing the intrinsic piloting “karma” of a person, with only a small amount of noise lying off this axis. (See figure.) How can we automatically compute this u direction?
 
@@ -9683,63 +7269,37 @@ x (skill)
 
 We will shortly develop the PCA algorithm. But prior to running PCA per se, typically we first preprocess the data by normalizing each feature to have mean 0 and variance 1. We do this by subtracting the mean and dividing by the empirical standard deviation:
 
-```
-( i )
-( i )
-```
+( i ) ( i )
 
-```
 x j
-```
 
-```
 − μ j
-```
 
-```
 x j
-```
 
-```
-←
-σ j
-```
+← σ j
 
-```
-∑ n
-( i )
-```
+∑ n ( i )
 
-```
-∑ n
-( i )
-```
+∑ n ( i )
 
 where μ j =
 
-```
 n i =1
-```
 
-```
 x j
-```
 
 and σ j
 
 =
 
-```
 n i =1
-```
 
 ( x j
 
 − μ j ) are the mean variance of feature j , respectively. Subtracting μ j zeros out the mean and may be omitted for data known to have zero mean (for instance, time series corresponding to speech or other acoustic signals). Dividing by the standard deviation σ j rescales each coor- dinate to have unit variance, which ensures that different attributes are all treated on the same “scale.” For instance, if x was cars’ maximum speed in mph (taking values in the high tens or low hundreds) and x were the num- ber of seats (taking values around 2-4), then this renormalization rescales the different attributes to make them more comparable. This rescaling may be omitted if we had a priori knowledge that the different attributes are all on the same scale. One example of this is if each data point represented a
 
-```
 ( i )
-```
 
 grayscale image, and each x j
 
@@ -9765,26 +7325,17 @@ Here, the projections have a significantly smaller variance, and are much closer
 
 unit vector u and a point x , the length of the projection of x onto u is given
 
-```
 T ( i )
-```
 
 by x u . I.e., if x is a point in our dataset (one of the crosses in the plot), then its projection onto u (the corresponding circle in the figure) is distance
 
-```
 T
-```
 
 x u from the origin. Hence, to maximize the variance of the projections, we would like to choose a unit-length u so as to maximize:
 
-```
-∑ n n
-( i ) T
-```
+∑ n n ( i ) T
 
-```
 ∑
-```
 
 ```
 T ( i ) ( i ) T
@@ -9792,70 +7343,43 @@ T ( i ) ( i ) T
 
 ( x u ) =  u x x u n
 
-```
 i =1
-```
 
-```
 n
-```
 
-```
 i
-```
 
-```
 (
-```
 
-```
 =1
-```
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 )
-```
 
 ```
 T ( i ) ( i ) T
 ```
 
-```
-= u x x u.
-n
-```
+= u x x u. n
 
-```
 i =1
-```
 
 We easily recognize that the maximizing this subject to ‖ u ‖ = 1 gives the ∑ n ( i ) ( i ) T
 
 principal eigenvector of Σ =
 
-```
 n i =1
-```
 
 x x , which is just the empirical covariance matrix of the data (assuming it has zero mean). To summarize, we have found that if we wish to find a 1-dimensional subspace with with to approximate the data, we should choose u to be the principal eigenvector of Σ. More generally, if we wish to project our data into a k -dimensional subspace ( k < d ), we should choose u , . . . , u k to be the top k eigenvectors of Σ. The u i ’s now form a new, orthogonal basis for the data.
 
-```
 ( i )
-```
 
 Then, to represent x in this basis, we need only compute the corre- sponding vector  
 
-```
 T ( i )
-```
 
 ```
 u x
@@ -9869,28 +7393,17 @@ k
 
 y =  .   . ∈ R . . 
 
-```
-T
-( i )
-```
+T ( i )
 
-```
 u k
-```
 
-```
 x
-```
 
-```
 ( i ) d ( i )
-```
 
 Thus, whereas x ∈ R , the vector y now gives a lower, k -dimensional,
 
-```
 ( i )
-```
 
 approximation/representation for x . PCA is therefore also referred to as a dimensionality reduction algorithm. The vectors u , . . . , u k are called the first k principal components of the data.
 
@@ -9904,9 +7417,7 @@ imize u Σ u subject to that u u = 1. You should be able to show that Σ u = λu
 
 of all possible orthogonal bases ∑ u , . . . , u k , the one that we have chosen max-
 
-```
 ( i )
-```
 
 imizes i
 
@@ -9914,45 +7425,31 @@ imizes i
 
 PCA can also be derived by picking the basis that minimizes the ap- proximation error arising from projecting the data onto the k -dimensional subspace spanned by them. (See more in homework.) PCA has many applications; we will close our discussion with a few exam-
 
-```
 ( i ) ( i )
-```
 
 ples. First, compression—representing x ’s with lower dimension y ’s—is an obvious application. If we reduce high dimensional data to k = 2 or 3 di-
 
-```
 ( i )
-```
 
 mensions, then we can also plot the y ’s to visualize the data. For instance, if we were to reduce our automobiles data to 2 dimensions, then we can plot it (one point in our plot would correspond to one car type, say) to see what cars are similar to each other and what groups of cars may cluster together. Another standard application is to preprocess a dataset to reduce its dimension before running a supervised learning learning algorithm with the
 
-```
 ( i )
-```
 
 x ’s as inputs. Apart from computational benefits, reducing the data’s dimension can also reduce the complexity of the hypothesis class considered and help avoid overfitting (e.g., linear classifiers over lower dimensional input spaces will have smaller VC dimension). Lastly, as in our RC pilot example, we can also view PCA as a noise reduction algorithm. In our example it, estimates the intrinsic “piloting karma” from the noisy measures of piloting skill and enjoyment. In class, we also saw the application of this idea to face images, resulting in eigenfaces
 
-```
 ( i ) ×
-```
 
 method. Here, each point x ∈ R was a 10000 dimensional vector, with each coordinate corresponding to a pixel intensity value in a 100x100
 
-```
 ( i )
-```
 
 image of a face. Using PCA, we represent each image x with a much lower-
 
-```
 ( i )
-```
 
 dimensional y . In doing so, we hope that the principal components we found retain the interesting, systematic variations between faces that capture what a person really looks like, but not the “noise” in the images introduced by minor lighting variations, slightly different imaging conditions, and so on. We then measure distances between faces i and j by working in the reduced
 
-```
 ( i ) ( j )
-```
 
 dimension, and computing ‖ y − y ‖ . This resulted in a surprisingly good face-matching and retrieval algorithm.
 
@@ -9962,21 +7459,15 @@ dimension, and computing ‖ y − y ‖ . This resulted in a surprisingly good 
 
 Our next topic is Independent Components Analysis (ICA). Similar to PCA, this will find a new basis in which to represent our data. However, the goal is very different. As a motivating example, consider the “cocktail party problem.” Here, d speakers are speaking simultaneously at a party, and any microphone placed in the room records only an overlapping combination of the d speakers’ voices. But lets say we have d different microphones placed in the room, and because each microphone is a different distance from each of the speakers, it records a different combination of the speakers’ voices. Using these microphone record- ings, can we separate out the original d speakers’ speech signals?
 
-```
 d
-```
 
 To formalize this problem, we imagine that there is some data s ∈ R that is generated via d independent sources. What we observe is
 
-```
 x = As,
-```
 
 where A is an unknown square matrix called the mixing matrix . Repeated
 
-```
 ( i )
-```
 
 observations gives us a dataset { x ; i = 1 , . . . , n } , and our goal is to recover
 
@@ -9986,43 +7477,31 @@ observations gives us a dataset { x ; i = 1 , . . . , n } , and our goal is to r
 
 the sources s that had generated our data ( x = As ).
 
-```
 ( i ) ( i )
-```
 
 In our cocktail party problem, s is an d -dimensional vector, and s j
 
 is
 
-```
 ( i )
-```
 
 the sound that speaker j was uttering at time i . Also, x in an d -dimensional
 
-```
 ( i )
-```
 
 vector, and x j
 
 is the acoustic reading recorded by microphone j at time i .
 
-```
 −
-```
 
 Let W = A be the unmixing matrix. Our goal is to find W , so
 
-```
 ( i )
-```
 
 that given our microphone recordings x , we can recover the sources by
 
-```
 ( i ) ( i ) T
-```
 
 computing s = W x . For notational convenience, we also let w i
 
@@ -10030,15 +7509,11 @@ denote
 
 the i -th row of W , so that  
 
-```
 T
-```
 
 - w —  W = .  .  .  .
 
-```
 T
-```
 
 - w d
 
@@ -10057,55 +7532,39 @@ x .
 
 ##### 13.1 ICA ambiguities
 
-```
 −
-```
 
 To what degree can W = A be recovered? If we have no prior knowledge about the sources and the mixing matrix, it is easy to see that there are some
 
-```
 ( i )
-```
 
 inherent ambiguities in A that are impossible to recover, given only the x ’s. Specifically, let P be any d -by- d permutation matrix. This means that each row and each column of P has exactly one “1.” Here are some examples of permutation matrices:   [ ] [ ] P =   ; P = ; P = .
 
 If z is a vector, then P z is another vector that contains a permuted version
 
-```
 ( i )
-```
 
 of z ’s coordinates. Given only the x ’s, there will be no way to distinguish between W and P W . Specifically, the permutation of the original sources is ambiguous, which should be no surprise. Fortunately, this does not matter for most applications. Further, there is no way to recover the correct scaling of the w i ’s. For in-
 
-```
 ( i ) ( i )
-```
 
 stance, if A were replaced with 2 A , and every s were replaced with (0 . 5) s ,
 
-```
 ( i ) ( i )
-```
 
 then our observed x = 2 A · (0 . 5) s would still be the same. More broadly, if a single column of A were scaled by a factor of α , and the corresponding source were scaled by a factor of 1 /α , then there is again no way to determine
 
-```
 ( i )
-```
 
 that this had happened given only the x ’s. Thus, we cannot recover the “correct” scaling of the sources. However, for the applications that we are concerned with—including the cocktail party problem—this ambiguity also
 
-```
 ( i )
-```
 
 does not matter. Specifically, scaling a speaker’s speech signal s j
 
 by some positive factor α affects only the volume of that speaker’s speech. Also, sign
 
-```
 ( i ) ( i )
-```
 
 changes do not matter, and s j
 
@@ -10113,9 +7572,7 @@ and − s j
 
 sound identical when played on a speaker. Thus, if the w i found by an algorithm is scaled by any non-zero real
 
-```
 T
-```
 
 number, the corresponding recovered source s i = w i
 
@@ -10123,9 +7580,7 @@ x will be scaled by the
 
 same factor; but this usually does not matter. (These comments also apply to ICA for the brain/MEG data that we talked about in class.) Are these the only sources of ambiguity in ICA? It turns out that they are, so long as the sources s i are non-Gaussian . To see what the difficulty is with Gaussian data, consider an example in which n = 2, and s ∼ N (0 , I ). Here, I is the 2x2 identity matrix. Note that the contours of the density of the standard normal distribution N (0 , I ) are circles centered on the origin, and the density is rotationally symmetric. Now, suppose we observe some x = As , where A is our mixing matrix.
 
-```
 T
-```
 
 Then, the distribution of x will be Gaussian, x ∼ N (0 , AA ), since
 
@@ -10141,9 +7596,7 @@ Now, let R be an arbitrary orthogonal (less formally, a rotation/reflection)
 
 matrix, so that RR = R R = I , and let A = AR . Then if the data had
 
-```
 ′
-```
 
 been mixed according to A instead of A , we would have instead observed
 
@@ -10157,21 +7610,15 @@ x = A s . The distribution of x is also Gaussian, x ∼ N (0 , AA ), since
 
 E s ∼N (0 ,I ) [ x ( x ) ] = E[ A ss ( A ) ] = E[ ARss ( AR ) ] = ARR A = AA .
 
-```
 ′
-```
 
 Hence, whether the mixing matrix is A or A , we would observe data from
 
-```
 T
-```
 
 a N (0 , AA ) distribution. Thus, there is no way to tell if the sources were
 
-```
 ′
-```
 
 mixed using A and A . There is an arbitrary rotational component in the mixing matrix that cannot be determined from the data, and we cannot recover the original sources. Our argument above was based on the fact that the multivariate standard normal distribution is rotationally symmetric. Despite the bleak picture that this paints for ICA on Gaussian data, it turns out that, so long as the data is not Gaussian, it is possible, given enough data, to recover the d independent sources.
 
@@ -10179,61 +7626,43 @@ mixed using A and A . There is an arbitrary rotational component in the mixing m
 
 Before moving on to derive the ICA algorithm proper, we first digress briefly to talk about the effect of linear transformations on densities. Suppose a random variable s is drawn according to some density p s ( s ). For simplicity, assume for now that s ∈ R is a real number. Now, let the random variable x be defined according to x = As (here, x ∈ R , A ∈ R ). Let p x be the density of x . What is p x ?
 
-```
 −
-```
 
 Let W = A . To calculate the “probability” of a particular value of x , it is tempting to compute s = W x , then then evaluate p s at that point, and
 
 conclude that “ p x ( x ) = p s ( W x ).” However, this is incorrect . For example, let s ∼ Uniform[0 , 1], so p s ( s ) = 1 { ≤ s ≤ } . Now, let A = 2, so x = 2 s . Clearly, x is distributed uniformly in the interval [0 , 2]. Thus, its density is given by p x ( x ) = (0 . 5)1 { ≤ x ≤ } . This does not equal p s ( W x ), where
 
-```
 −
-```
 
 W = 0 . 5 = A . Instead, the correct formula is p x ( x ) = p s ( W x ) | W | . More generally, if s is a vector-valued distribution with density p s , and x = As for a square, invertible matrix A , then the density of x is given by
 
 p x ( x ) = p s ( W x ) · | W | ,
 
-```
 −
-```
 
 where W = A .
 
-```
 d
-```
 
 Remark. If you’re seen the result that A maps [0 , 1] to a set of volume | A | , then here’s another way to remember the formula for p x given above, that also
 
-```
 d × d
-```
 
 generalizes our previous 1-dimensional example. Specifically, let A ∈ R be
 
-```
 − d
-```
 
 given, and let W = A as usual. Also let C = [0 , 1] be the d -dimensional
 
-```
 d
-```
 
 hypercube, and define C = { As : s ∈ C } ⊆ R to be the image of C under the mapping given by A . Then it is a standard result in linear algebra (and, indeed, one of the ways of defining determinants) that the volume of
 
-```
 d
-```
 
 C is given by | A | . Now, suppose s is uniformly distributed in [0 , 1] , so its density is p s ( s ) = 1 { s ∈ C } . Then clearly x will be uniformly distributed in C . Its density is therefore found to be p x ( x ) = 1 { x ∈ C } / vol( C ) (since it must integrate over C to 1). But using the fact that the determinant of the inverse of a matrix is just the inverse of the determinant, we have
 
-```
 −
-```
 
 / vol( C ) = 1 / | A | = | A | = | W | . Thus, p x ( x ) = 1 { x ∈ C }| W | = 1 { W x ∈ C }| W | = p s ( W x ) | W | .
 
@@ -10241,32 +7670,21 @@ C is given by | A | . Now, suppose s is uniformly distributed in [0 , 1] , so it
 
 We are now ready to derive an ICA algorithm. We describe an algorithm by Bell and Sejnowski, and we give an interpretation of their algorithm as a method for maximum likelihood estimation. (This is different from their orig- inal interpretation involving a complicated idea called the infomax principal which is no longer necessary given the modern understanding of ICA.) We suppose that the distribution of each source s j is given by a density p s , and that the joint distribution of the sources s is given by
 
-```
 ∏
-```
 
-```
 d
-```
 
 p ( s ) = p s ( s j ) .
 
-```
 j =1
-```
 
 Note that by modeling the joint distribution as a product of marginals, we capture the assumption that the sources are independent. Using our formulas from the previous section, this implies the following density on x = As =
 
-```
 −
-```
 
 W s : ∏
 
-```
-d
-T
-```
+d T
 
 p ( x ) = p s ( w j
 
@@ -10274,58 +7692,39 @@ p ( x ) = p s ( w j
 x ) · | W | .
 ```
 
-```
 j =1
-```
 
 All that remains is to specify a density for the individual sources p s . Recall that, given a real-valued random variable z , its cumulative distri- ∫ z
 
 bution function (cdf) F is defined by F ( z ) = P ( z ≤ z ) =
 
-```
 −∞
-```
 
 p z ( z ) dz and
 
-```
 ′
-```
 
 the density is the derivative of the cdf: p z ( z ) = F ( z ). Thus, to specify a density for the s i ’s, all we need to do is to specify some cdf for it. A cdf has to be a monotonic function that increases from zero to one. Following our previous discussion, we cannot choose the Gaussian cdf, as ICA doesn’t work on Gaussian data. What we’ll choose instead as a reasonable “default” cdf that slowly increases from 0 to 1, is the sigmoid
 
-```
 − s ′
-```
 
 function g ( s ) = 1 / (1 + e ). Hence, p s ( s ) = g ( s ). The square matrix W is the parameter in our model. Given a training
 
-```
 ( i )
-```
 
 set { x ; i = 1 , . . . , n } , the log likelihood is given by ( ∑ n
 
-```
 ∑ d
-```
 
-```
 )
-```
 
-```
-′ T
-( i )
-```
+′ T ( i )
 
 ` ( W ) = log g ( w j
 
 x ) + log | W | .
 
-```
 i =1 j =1
-```
 
 We would like to maximize this in terms W . By taking derivatives and using
 
@@ -10333,15 +7732,11 @@ We would like to maximize this in terms W . By taking derivatives and using
 
 the fact (from the first set of notes) that ∇ W | W | = | W | ( W ) , we easily
 
-```
 ( i )
-```
 
 derive a stochastic gradient ascent learning rule. For a training example x , the update rule is:    
 
-```
 T ( i )
-```
 
 ```
 − g ( w x )
@@ -10352,22 +7747,15 @@ T ( i )
 
   − g ( w x )    ( i ) T T −  W := W + α   . .  x + ( W )  ,   .  
 
-```
-T
-( i )
-```
+T ( i )
 
-```
 − g ( w d
-```
 
 x )
 
 If you have prior knowledge that the sources’ densities take a certain form, then it is a good idea to substitute that in here. But in the absence of such knowledge, the sigmoid function can be thought of as a reasonable default that seems to work well for
 
-```
 ( i )
-```
 
 many problems. Also, the presentation here assumes that either the data x has been preprocessed to have zero mean, or that it can naturally be expected to have zero mean
 
@@ -10377,37 +7765,27 @@ many problems. Also, the presentation here assumes that either the data x has be
 
 where α is the learning rate.
 
-```
 ( i ) ( i )
-```
 
 After the algorithm converges, we then compute s = W x to recover the original sources.
 
 Remark. When writing down the likelihood of the data, we implicitly as-
 
-```
 ( i )
-```
 
 sumed that the x ’s were independent of each other (for different values of i ; note this issue is different from whether the different coordinates of
 
-```
 ( i )
-```
 
 x ∏ are independent), so that the likelihood of the training set was given
 
-```
 ( i )
-```
 
 by i
 
 p ( x ; W ). This assumption is clearly incorrect for speech data and
 
-```
 ( i )
-```
 
 other time series where the x ’s are dependent, but it can be shown that having correlated training examples will not hurt the performance of the al- gorithm if we have sufficient data. However, for problems where successive training examples are correlated, when implementing stochastic gradient as- cent, it sometimes helps accelerate convergence if we visit training examples in a randomly permuted order. (I.e., run stochastic gradient ascent on a randomly shuffled copy of the training set.)
 
@@ -10433,29 +7811,21 @@ Pretraining. Suppose we have an unlabeled pretraining dataset
 
 { x , x · · · , x } that consists of n examples in R . Let φ θ be a model that is parameterized by θ and maps the input x to some m -dimensional represen-
 
-```
 m
-```
 
 tation φ θ ( x ). (People also call φ θ ( x ) ∈ R the embedding or features of the example x .) We pretrain the model θ with a pretraining loss, which is often ∑ n ( i )
 
 an average of loss functions on all the examples: L pre ( θ ) =
 
-```
 n i =1
-```
 
 ` pre ( θ, x ).
 
-```
 ( i )
-```
 
 Here ` pre is a so-called self-supervised loss on a single datapoint x , because as shown later, e.g., in Section 14.3, the “supervision” comes from the data
 
-```
 ( i )
-```
 
 point x itself. It is also possible that the pretraining loss is not a sum of losses on individual examples. We will discuss two pretraining losses in Section 14.2 and Section 14.3. We use some optimizers (mostly likely SGD or ADAM [Kingma and Ba, 2014]) to minimize L pre ( θ ). We denote the obtained pretrained model by  θ ˆ .
 
@@ -10468,50 +7838,33 @@ Adaptation. For a downstream task, we usually have a labeled dataset
 ( n task )
 ```
 
-```
 { ( x task
-```
 
-```
 , y task
-```
 
 ```
 ) , · · · , ( x task
 ```
 
-```
 , y task
-```
 
 ) } with n task examples. The setting when n task = 0 is called zero-shot learning—the downstream task doesn’t have any labeled examples. When n task is relatively small (say, between 1 and 50), the setting is called few-shot learning. It’s also pretty common to have a larger n task on the order of ranging from hundreds to tens of thousands. An adaptation algorithm generally takes in a downstream dataset and the pretrained model  θ ˆ , and outputs a variant of  θ ˆ that solves the downstream task. We will discuss below two popular and general adaptation methods, linear probe and finetuning. In addition, two other methods specific to lan- guage problems are introduced in 14.3.1. The linear probe approach uses a linear head on top of the representation to predict the downstream labels. Mathematically, the adapted model out-
 
-```
 > m
-```
 
 puts w φ θ ˆ ( x ), where w ∈ R is a parameter to be learned, and  θ ˆ is exactly the pretrained model (fixed). We can use SGD (or other optimizers) to train
 
 w on the downstream task loss to predict the task label
 
-```
 n
-```
 
-```
 ∑ task
-```
 
-```
-( i )
-> ( i )
-```
+( i ) > ( i )
 
 min ` task ( y task
 
-```
-, w φ
-```
+### , w φ
 
 ```
 w ∈ R m θ ˆ ( x task
@@ -10521,30 +7874,19 @@ w ∈ R m θ ˆ ( x task
 
 E.g., if the downstream task is a regression problem, we will have
 
-```
 > >
-```
 
 ` task ( y task , w φ θ ˆ ( x task )) = ( y task − w φ θ ˆ ( x task )) . The finetuning algorithm uses a similar structure for the downstream prediction model, but also further finetunes the pretrained model (instead
 
-```
 >
-```
 
 of keeping it fixed). Concretely, the prediction model is w φ θ ( x ) with pa- rameters w and θ. We optimize both w and θ to fit the downstream data, but initialize θ with the pretrained model  θ ˆ . The linear head w is usually initialized randomly.
 
-```
 n
-```
 
-```
 ∑ task
-```
 
-```
-( i )
-> ( i )
-```
+( i ) > ( i )
 
 minimize ` task ( y task
 
@@ -10590,9 +7932,7 @@ have the augmented batch of 2 B examples: ˆ x , · · · , x ˆ , ˜ x , · · 
 
 ) exp φ θ (ˆ x ) φ θ (˜ x ) L pre ( θ ) = − log
 
-```
 i =1
-```
 
 exp ( φ θ (ˆ x ( i )
 
@@ -10606,21 +7946,15 @@ exp ( φ θ (ˆ x ) φ θ (˜ x ( j )
 
 . ))
 
-```
 ( i ) > ( j )
-```
 
 The intuition is as follows. The loss is increasing in φ θ (ˆ x ) φ θ (˜ x ), and
 
-```
 ( i ) > ( j )
-```
 
 thus minimizing the loss encourages φ θ (ˆ x ) φ θ (˜ x ) to be small, making
 
-```
 ( i ) ( j )
-```
 
 φ θ (ˆ x ) far away from φ θ (˜ x ). On the other hand, the loss is decreasing in
 
@@ -10632,9 +7966,7 @@ Random pair may be a more accurate term because it’s still possible (though no
 
 φ θ (ˆ x ) φ θ (˜ x ), and thus minimizing the loss encourages φ θ (ˆ x ) φ θ (˜ x )
 
-```
 ( i ) ( i )
-```
 
 to be large, resulting in φ θ (ˆ x ) and φ θ (˜ x ) to be close.
 
@@ -10642,9 +7974,7 @@ to be large, resulting in φ θ (ˆ x ) and φ θ (˜ x ) to be close.
 
 Natural language processing is another area where pretraining models are particularly successful. In language problems, an examples typically cor- responds to a document or generally a sequence/trunk of words, denoted by x = ( x , · · · , x T ) where T is the length of the document/sequence, x i ∈ { , · · · , V } are words in the document, and V is the vocabulary size. A language model is a probabilistic model representing the probability of a document, denoted by p ( x , · · · , x T ) . This probability distribution is very
 
-```
 T
-```
 
 complex because its support size is V — exponential in the length of the document. Instead of modeling the distribution of a document itself, we can apply the chain rule of conditional probability to decompose it as follows:
 
@@ -10652,29 +7982,21 @@ p ( x , · · · , x T ) = p ( x ) p ( x | x ) · · · p ( x T | x , · · · ,
 
 Now the support of each of the conditional probability p ( x t | x , · · · , x t − ) is V . We will model the conditional probability p ( x t | x , · · · , x t − ) with some parameterized form. To this end, we first turn the discrete words into word embeddings.
 
-```
 d
-```
 
 Let e i ∈ R be the embedding of the word i ∈ { , , · · · , V } . We call
 
-```
 d × V
-```
 
 [ e , · · · , e V ] ∈ R the embedding matrix. The most commonly used model is transformer [Vaswani et al., 2017]. We will introduce the basic concepts regarding the inputs and outputs of a transformer, but treat the interme- diate computation in transformer as a blackbox. We refer the students to more advanced courses or the original paper for more details. The high-level pipeline is visualized in Figure 14.1. Given a document ( x , · · · , x T ), we first compute the corresponding word embeddings ( e x , · · · , e x T
 
 ). Then, the word embeddings is passed to a transformer model, which takes in a sequence of
 
-```
 p
-```
 
 To see this, you can verify that the function − log
 
-```
 p + q
-```
 
 is decreasing in p , and increasing in q when p, q > . In the practical implementations, typically all the data are concatenated into a single sequence in some order, and each example typically corresponds a sub-sequence of consec- utive words which may corresponds to a subset of a document or may span across multiple documents. Technically, words may be decomposed into tokens which could be words or sub-words (combinations of letters), but this note omits this technicality. In fact most commons words are a single token themselves.
 
@@ -10688,9 +8010,7 @@ To learn the parameters θ in the transformer, we use c t to predict the conditi
 
 = softmax( W t φ θ ( x , · · · , x t − )) , (14.7)
 
-```
 V × d
-```
 
 where W ∈ R is a weight matrix that maps the contextualized embedding c t to the logits. In other words, W t is an additional linear layer for the
 
@@ -10698,32 +8018,19 @@ where W ∈ R is a weight matrix that maps the contextualized embedding c t to t
 
 prediction of the conditional probability. Recall that softmax( · ) : R → R maps the logits to the probabilities: 
 
-```
 exp( u )
-```
 
-```
 
-```
 
 ∑
 
-```
 V
-```
 
-```
 exp( u i
-```
 
-```
-
-i =1
-```
+ i =1
 
-```
 )
-```
 
 .  softmax( u ) =  .  .   (14.8)
 
@@ -10732,54 +8039,35 @@ exp( u V )
 ∑
 ```
 
-```
-V
-i =1
-```
+V i =1
 
-```
 exp( u i )
-```
 
 This property no longer holds in masked language models [Devlin et al., 2019] where the losses are also different. Here t ≥ 2 and we omit the loss for predicting p ( x ) for simplicity (which also doesn’t affect the performance much). To formally model p ( x ), an option is to prepend a special token x = ⊥ to the sequence, and then ask the language model to predict p ( x | x = ⊥ ).
 
 We train all the parameters θ in the transformers as well as the parameters W = ( W , . . . , W T ) by the cross entropy loss. Let p t =
 
-```
 V
-```
 
 softmax( W t φ θ ( x , · · · , x t − )) ∈ R be the predicted conditional probability at position t . Let W be the concatenation of W , · · · , W T . The loss function is often called language modeling loss and defined as
 
-```
 ∑
-```
 
-```
 T
-```
 
 L ( W, θ ) = (cross entropy loss at position t )
 
-```
 t =2
-```
 
-```
 ∑
-```
 
-```
 T
-```
 
 = − log p t,x t
 
 , (14.9)
 
-```
 t =2
-```
 
 where p t,j denotes the j -th entry of the probability vector p t .
 
@@ -10789,15 +8077,11 @@ For language models, there are many ways to adapt a pretrained model to downstre
 
 Finetuning is not very common for the autoregressive language models that we introduced in Section 14.3 but much more common for other variants such as masked language models which has similar input-output interfaces but are pretrained differently [Devlin et al., 2019]. The finetuning method is the same as introduced generally in Section 14.1—the only question is how we define the prediction task with an additional linear head. One option
 
-```
 >
-```
 
 is to treat c T +1 = φ θ ( x , · · · , x T ) as the representation and use w c T +1 =
 
-```
 >
-```
 
 w φ θ ( x , · · · , x T ) to predict task label. As described in Section 14.1, we initialize θ to the pretrained model  θ ˆ and then optimize both w and θ .
 
@@ -10822,58 +8106,37 @@ In-context learning is mostly used for few-shot settings where we have a
 
 few labeled examples ( x task
 
-```
 , y task
-```
 
 ```
 ) , · · · , ( x task
 ```
 
-```
 , y task
-```
 
 ). Given a test example x test , we construct a document ( x , · · · , x T ), which is more commonly called a “prompt” in this context, by concatenating the labeled examples and the text example in some format. For example, we may construct the prompt as follows
 
-```
 (1)
-```
 
 ```
 x , · · · , x T = “Q: 2 ∼ 3 = ? x
 ```
 
-```
-task
-(1)
-```
+task (1)
 
-```
 A: 5 y
-```
 
-```
-task
-(2)
-```
+task (2)
 
 ```
 Q: 6 ∼ 7 = ? x
 ```
 
-```
-task
-(2)
-```
+task (2)
 
-```
 A: 13 y
-```
 
-```
 task
-```
 
 - · ·
 
@@ -10915,9 +8178,7 @@ A Markov decision process is a tuple ( S, A, { P sa } , γ, R ), where:
 
 The dynamics of an MDP proceeds as follows: We start in some state s , and get to choose some action a ∈ A to take in the MDP. As a result of our choice, the state of the MDP randomly transitions to some successor state s , drawn according to s ∼ P s a . Then, we get to pick another action a . As a result of this action, the state transitions again, now to some s ∼ P s a . We then pick a , and so on. . . . Pictorially, we can represent this process as follows:
 
-```
 a a a a
-```
 
 s −→ s −→ s −→ s −→ . . .
 
@@ -10933,51 +8194,35 @@ For most of our development, we will use the simpler state-rewards R ( s ), thou
 
 Our goal in reinforcement learning is to choose actions over time so as to maximize the expected value of the total payoff: [ ] E R ( s ) + γR ( s ) + γ R ( s ) + · · ·
 
-```
 t
-```
 
 Note that the reward at timestep t is discounted by a factor of γ . Thus, to make this expectation large, we would like to accrue positive rewards as soon as possible (and postpone negative rewards as long as possible). In economic applications where R ( · ) is the amount of money made, γ also has a natural interpretation in terms of the interest rate (where a dollar today is worth more than a dollar tomorrow). A policy is any function π : S → A mapping from the states to the actions. We say that we are executing some policy π if, whenever we are in state s , we take action a = π ( s ). We also define the value function for a policy π according to
 
-```
 π
-```
 
 [ ∣ V ( s ) = E R ( s ) + γR ( s ) + γ R ( s ) + · · · ∣ s = s, π ] .
 
-```
 π
-```
 
 V ( s ) is simply the expected sum of discounted rewards upon starting in state s , and taking actions according to π .
 
-```
 π
-```
 
 Given a fixed policy π , its value function V satisfies the Bellman equa- tions : ∑
 
-```
 π ′ π ′
-```
 
 V ( s ) = R ( s ) + γ P sπ ( s ) ( s ) V ( s ) .
 
-```
 s ′
-```
 
 ## ∈ S
 
-```
 π
-```
 
 This says that the expected sum of discounted rewards V ( s ) for starting in s consists of two terms: First, the immediate reward R ( s ) that we get right away simply for starting in state s , and second, the expected sum of future discounted rewards. Examining the second term in more detail, we
 
-```
 ′
-```
 
 see that the summation term above can be rewritten E s ′
 
@@ -10988,33 +8233,23 @@ see that the summation term above can be rewritten E s ′
 
 [ V ( s )]. This
 
-```
 ′ ′
-```
 
 is the expected sum of discounted rewards for starting in state s , where s is distributed according P sπ ( s ) , which is the distribution over where we will end up after taking the first action π ( s ) in the MDP from state s . Thus, the second term above gives the expected sum of discounted rewards obtained after the first step in the MDP.
 
-```
 π
-```
 
 Bellman’s equations can be used to efficiently solve for V . Specifically, in a finite-state MDP ( | S | < ∞ ), we can write down one such equation for
 
-```
 π
-```
 
 V ( s ) for every state s . This gives us a set of | S | linear equations in | S |
 
-```
 π
-```
 
 variables (the unknown V ( s )’s, one for each state), which can be efficiently
 
-```
 π
-```
 
 solved for the V ( s )’s.
 
@@ -11022,21 +8257,15 @@ This notation in which we condition on π isn’t technically correct because π
 
 We also define the optimal value function according to
 
-```
 ∗ π
-```
 
 V ( s ) = max V ( s ) . (15.1)
 
-```
 π
-```
 
 In other words, this is the best possible expected sum of discounted rewards that can be attained using any policy. There is also a version of Bellman’s equations for the optimal value function: ∑
 
-```
 ∗ ′ ∗ ′
-```
 
 V ( s ) = R ( s ) + max γ P sa ( s ) V ( s ) . (15.2)
 
@@ -11046,15 +8275,11 @@ a ∈ A s ′
 
 The first term above is the immediate reward as before. The second term is the maximum over all actions a of the expected future sum of discounted rewards we’ll get upon after action a . You should make sure you understand this equation and see why it makes sense.
 
-```
 ∗
-```
 
 We also define a policy π : S → A as follows: ∑
 
-```
 ∗ ′ ∗ ′
-```
 
 π ( s ) = arg max P sa ( s ) V ( s ) . (15.3)
 
@@ -11062,81 +8287,53 @@ a ∈ A s ′
 
 ## ∈ S
 
-```
 ∗
-```
 
 Note that π ( s ) gives the action a that attains the maximum in the “max” in Equation (15.2). It is a fact that for every state s and every policy π , we have
 
-```
 ∗ π
-```
 
-```
 ∗
-```
 
-```
 π
-```
 
 V ( s ) = V ( s ) ≥ V ( s ) .
 
-```
 π
-```
 
-```
 ∗
-```
 
-```
 ∗
-```
 
 The first equality says that the V , the value function for π , is equal to the
 
-```
 ∗
-```
 
 optimal value function V for every state s . Further, the inequality above
 
-```
 ∗
-```
 
 says that π ’s value is at least a large as the value of any other other policy.
 
-```
 ∗
-```
 
 In other words, π as defined in Equation (15.3) is the optimal policy.
 
-```
 ∗
-```
 
 | Note that  | π   | has the interesting property that it is the optimal policy    |
 | ---------- | --- | ------------------------------------------------------------- |
 | some state | s   | then there’d be some optimal policy for that state, and if we |
 
-```
 ′
-```
 
 were starting in some other state s then there’d be some other policy that’s
 
-```
 ′ ∗
-```
 
 optimal policy for s . The same policy π attains the maximum in Equa-
 
-```
 ∗
-```
 
 tion (15.1) for all states s . This means that we can use the same policy π no matter what the initial state of our MDP is.
 
@@ -11154,9 +8351,7 @@ Algorithm 6 Value Iteration
 
 3: For every state, update ∑
 
-```
 ′ ′
-```
 
 V ( s ) := R ( s ) + max γ P sa ( s ) V ( s ) . (15.4)
 
@@ -11164,15 +8359,11 @@ a ∈ A s ′
 
 This algorithm can be thought of as repeatedly trying to update the estimated value function using Bellman Equations (15.2). There are two possible ways of performing the updates in the inner loop of the algorithm. In the first, we can first compute the new values for V ( s ) for every state s , and then overwrite all the old values with the new values. This is called a synchronous update. In this case, the algorithm can be viewed as implementing a “Bellman backup operator” that takes a current estimate of the value function, and maps it to a new estimate. (See homework problem for details.) Alternatively, we can also perform asynchronous updates. Here, we would loop over the states (in some order), updating the values one at a time. Under either synchronous or asynchronous updates, it can be shown that
 
-```
 ∗ ∗
-```
 
 value iteration will cause V to converge to V . Having found V , we can then use Equation (15.3) to find the optimal policy. Apart from value iteration, there is a second standard algorithm for find- ing an optimal policy for an MDP. The policy iteration algorithm proceeds as follows: Thus, the inner-loop repeatedly computes the value function for the cur- rent policy, and then updates the policy using the current value function. (The policy π found in step (b) is also called the policy that is greedy with respect to V .) Note that step (a) can be done via solving Bellman’s equa- tions as described earlier, which in the case of a fixed policy, is just a set of | S | linear equations in | S | variables. After at most a finite number of iterations of this algorithm, V will con-
 
-```
 ∗ ∗
-```
 
 verge to V , and π will converge to π .
 
@@ -11186,17 +8377,13 @@ Algorithm 7 Policy Iteration
 
 2: for until convergence do
 
-```
 π
-```
 
 3: Let V := V . . typically by linear system solver
 
 4: For each state s , let ∑
 
-```
 ′ ′
-```
 
 π ( s ) := arg max P sa ( s ) V ( s ) .
 
@@ -11204,9 +8391,7 @@ a ∈ A s ′
 
 Both value iteration and policy iteration are standard algorithms for solv- ing MDPs, and there isn’t currently universal agreement over which algo- rithm is better. For small MDPs, policy iteration is often very fats and converges with very few iterations. However, for MDPs with large state
 
-```
 π
-```
 
 spaces, solving for V explicitly would involve solving a large system of lin- ear equations, and could be difficult (and note that one has to solve the linear system multiple times in policy iteration). In these problems, value iteration may be preferred. For this reason, in practice value iteration seems to be used more often than policy iteration. For some more discussions on the comparison and connection of value iteration and policy iteration, please see Section 15.5.
 
@@ -11244,9 +8429,7 @@ s −→ s −→ s −→ s −→ . . .
 
 s −→ s −→ s −→ s −→ . . . . . .
 
-```
 ( j ) ( j )
-```
 
 Here, s i
 
@@ -11254,18 +8437,13 @@ is the state we were at time i of trial j , and a i
 
 is the cor- responding action that was taken from that state. In practice, each of the trials above might be run until the MDP terminates (such as if the pole falls over in the inverted pendulum problem), or it might be run for some large but finite number of timesteps. Given this “experience” in the MDP consisting of a number of trials, we can then easily derive the maximum likelihood estimates for the state transition probabilities:
 
-```
-′
-′
-```
+′ ′
 
 #times took we action a in state s and got to s P sa ( s ) =  (15.5) #times we took action a in state s
 
 Or, if the ratio above is “0/0”—corresponding to the case of never having
 
-```
 ′
-```
 
 taken action a in state s before—the we might simply estimate P sa ( s ) to be / | S | . (I.e., estimate P sa to be the uniform distribution over all states.) Note that, if we gain more experience (observe more trials) in the MDP, there is an efficient way to update our estimated state transition probabilities using the new experience. Specifically, if we keep around the counts for both the numerator and denominator terms of (15.5), then as we observe more trials, we can simply keep accumulating those counts. Computing the ratio of these counts then given our estimate of P sa . Using a similar procedure, if R is unknown, we can also pick our estimate of the expected immediate reward R ( s ) in state s to be the average reward observed in state s . Having learned a model for the MDP, we can then use either value it- eration or policy iteration to solve the MDP using the estimated transition probabilities and rewards. For example, putting together model learning and value iteration, here is one possible algorithm for learning in an MDP with unknown state transition probabilities:
 
@@ -11281,9 +8459,7 @@ taken action a in state s before—the we might simply estimate P sa ( s ) to be
 
 (d) Update π to be the greedy policy with respect to V .
 
-```
 }
-```
 
 We note that, for this particular algorithm, there is one simple optimiza- tion that can make it run much more quickly. Specifically, in the inner loop of the algorithm where we apply value iteration, if instead of initializing value iteration with V = 0, we initialize it with the solution found during the pre- vious iteration of our algorithm, then that will provide value iteration with a much better initial starting point and make it converge more quickly.
 
@@ -11291,9 +8467,7 @@ We note that, for this particular algorithm, there is one simple optimiza- tion 
 
 So far, we’ve focused our attention on MDPs with a finite number of states. We now discuss algorithms for MDPs that may have an infinite number of states. For example, for a car, we might represent the state as ( x, y, θ, x, ˙ y, ˙ θ ˙ ), comprising its position ( x, y ); orientation θ ; velocity in the x and y directions x ˙ and ˙ y ; and angular velocity  θ ˙ . Hence, S = R is an infinite set of states, because there is an infinite number of possible positions and orientations for the car. Similarly, the inverted pendulum you saw in PS4 has states ( x, θ, x, ˙ θ ˙ ), where θ is the angle of the pole. And, a helicopter flying in 3d space has states of the form ( x, y, z, φ, θ, ψ, x, ˙ y, ˙ z, ˙ φ, ˙ θ, ˙ ψ ˙ ), where here the roll φ , pitch θ , and yaw ψ angles specify the 3d orientation of the helicopter.
 
-```
 d
-```
 
 In this section, we will consider settings where the state space is S = R , and describe ways for solving such MDPs.
 
@@ -11307,27 +8481,19 @@ Technically, θ is an orientation and so the range of θ is better written θ �
 
 Here, each grid cell represents a separate discrete state s ¯ . We can then approximate the continuous-state MDP via a discrete-state one (  S, A, ¯ { P sa ¯ } , γ, R ), where  S ¯ is the set of discrete states, { P sa ¯ } are our state transition probabilities over the discrete states, and so on. We can then use
 
-```
 ∗ ∗
-```
 
 value iteration or policy iteration to solve for the V (¯ s ) and π (¯ s ) in the discrete state MDP (  S, A, ¯ { P sa ¯ } , γ, R ). When our actual system is in some continuous-valued state s ∈ S and we need to pick an action to execute, we
 
-```
 ∗
-```
 
 compute the corresponding discretized state ¯ s , and execute action π (¯ s ). This discretization approach can work well for many problems. However,
 
-```
 ∗
-```
 
 there are two downsides. First, it uses a fairly naive representation for V
 
-```
 ∗
-```
 
 (and π ). Specifically, it assumes that the value function is takes a constant value over each of the discretization intervals (i.e., that the value function is piecewise constant in each of the gridcells). To better understand the limitations of such a representation, consider a supervised learning problem of fitting a function to this dataset:
 
@@ -11359,15 +8525,11 @@ y 3.5
 
 This piecewise constant representation just isn’t a good representation for many smooth functions. It results in little smoothing over the inputs, and no generalization over the different grid cells. Using this sort of representation, we would also need a very fine discretization (very small grid cells) to get a good approximation. A second downside of this representation is called the curse of dimen-
 
-```
 d
-```
 
 sionality . Suppose S = R , and we discretize each of the d dimensions of the
 
-```
 d
-```
 
 state into k values. Then the total number of discrete states we have is k . This grows exponentially quickly in the dimension of the state space d , and thus does not scale well to large problems. For example, with a 10d state, if we discretize each state variable into 100 values, we would have 100 = 10 discrete states, which is far too many to represent even on a modern desktop computer. As a rule of thumb, discretization usually works extremely well for 1d and 2d problems (and has the advantage of being simple and quick to im- plement). Perhaps with a little bit of cleverness and some care in choosing the discretization method, it often works well for problems with up to 4d states. If you’re extremely clever, and somewhat lucky, you may even get it to work for some 6d problems. But it very rarely works for problems any higher dimensional than that.
 
@@ -11375,9 +8537,7 @@ state into k values. Then the total number of discrete states we have is k . Thi
 
 We now describe an alternative method for finding policies in continuous-
 
-```
 ∗
-```
 
 state MDPs, in which we approximate V directly, without resorting to dis- cretization. This approach, called value function approximation, has been successfully applied to many RL problems.
 
@@ -11391,7 +8551,7 @@ To develop a value function approximation algorithm, we will assume that we have
 
 There are several ways that one can get such a model. One is to use physics simulation. For example, the simulator for the inverted pendulum in PS4 was obtained by using the laws of physics to calculate what position and orientation the cart/pole will be in at time t + 1, given the current state at time t and the action a taken, assuming that we know all the parameters of the system such as the length of the pole, the mass of the pole, and so on. Alternatively, one can also use an off-the-shelf physics simulation software package which takes as input a complete physical description of a mechanical system, the current state s t and action a t , and computes the state s t +1 of the system a small fraction of a second into the future. An alternative way to get a model is to learn one from data collected in the MDP. For example, suppose we execute n trials in which we repeatedly take actions in an MDP, each trial for T timesteps. This can be done picking actions at random, executing some specific policy, or via some other way of
 
-Open Dynamics Engine (http://www.ode.com) is one example of a free/open-source physics simulator that can be used to simulate systems like the inverted pendulum, and that has been a reasonably popular choice among RL researchers.
+Open Dynamics Engine ([http://www.ode.com](http://www.ode.com)) is one example of a free/open-source physics simulator that can be used to simulate systems like the inverted pendulum, and that has been a reasonably popular choice among RL researchers.
 
 choosing actions. We would then observe n state sequences like the following:
 
@@ -11436,9 +8596,7 @@ s −→ s −→ s −→ · · · −→ s T
 
 ( n ) a ( n ) a ( n ) a a
 
-```
 T − ( n )
-```
 
 ```
 s −→ s −→ s −→ · · · −→ s T
@@ -11452,27 +8610,17 @@ s t +1 = As t + Ba t , (15.6)
 
 using an algorithm similar to linear regression. Here, the parameters of the model are the matrices A and B , and we can estimate them using the data collected from our n trials, by picking
 
-```
 ∑
-```
 
-```
 n
-```
 
-```
 ∑
-```
 
 T − ∥ ( )∥ ∥ ( i ) ( i ) ( i ) ∥ arg min ∥ s t +1
 
-```
 − As t
-```
 
-```
 + Ba t ∥ .
-```
 
 A,B i =1 t =0
 
@@ -11490,88 +8638,59 @@ Fitted value iteration
 
 We now describe the fitted value iteration algorithm for approximating the value function of a continuous state MDP. In the sequel, we will assume
 
-```
 d
-```
 
 that the problem has a continuous state space S = R , but that the action space A is small and discrete. Recall that in value iteration, we would like to perform the update ∫
 
-```
 ′ ′ ′
-```
 
 V ( s ) := R ( s ) + γ max P sa ( s ) V ( s ) ds (15.7)
 
-```
 a s ′
-```
 
-```
 ′
-```
 
 = R ( s ) + γ max E s ′
 
-```
 ∼ P sa
-```
 
 [ V ( s )] (15.8)
 
-```
 a
-```
 
 (In Section 15.2, we had written the value iteration update with a summation ∑
 
-```
 ′ ′
-```
 
 V ( s ) := R ( s ) + γ max a s ′ P sa ( s ) V ( s ) rather than an integral over states; the new notation reflects that we are now working in continuous states rather than discrete states.) The main idea of fitted value iteration is that we are going to approxi-
 
-```
 (1) ( n )
-```
 
 mately carry out this step, over a finite sample of states s , . . . , s . Specif- ically, we will use a supervised learning algorithm—linear regression in our description below—to approximate the value function as a linear or non-linear function of the states:
 
-```
 T
-```
 
 V ( s ) = θ φ ( s ) .
 
 Here, φ is some appropriate feature mapping of the states. For each state s in our finite sample of n states, fitted value iteration
 
-```
 ( i )
-```
 
 will first compute a quantity y , which will be our approximation to R ( s ) +
 
-```
 ′
-```
 
 γ max a E s ′
 
-```
 ∼ P sa
-```
 
 [ V ( s )] (the right hand side of Equation 15.8). Then, it will apply a supervised learning algorithm to try to get V ( s ) close to R ( s ) +
 
-```
 ′ (
-```
 
 γ max a E s ′
 
-```
-i )
-∼ P sa
-```
+i ) ∼ P sa
 
 [ V ( s )] (or, in other words, to try to get V ( s ) close to y ). In detail, the algorithm is as follows:
 
@@ -11591,41 +8710,29 @@ In practice, most MDPs have much smaller action spaces than state spaces. E.g., 
 
 For each action a ∈ A {
 
-```
 ′ ′
-```
 
 Sample s , . . . , s k
 
-```
 ∼ P s ( i )
-```
 
-```
 a
-```
 
 (using a model of the MDP). ∑ k ( i ) ′
 
 Set q ( a ) =
 
-```
 k j =1
-```
 
 R ( s ) + γV ( s j
 
 )
 
-```
 ( i )
-```
 
 // Hence, q ( a ) is an estimate of R ( s ) +
 
-```
 ′
-```
 
 γ E s ′
 
@@ -11635,25 +8742,17 @@ s ( i ) a
 
 [ V ( s )].
 
-```
 }
-```
 
-```
 ( i )
-```
 
 Set y = max a q ( a ).
 
-```
 ( i ) ( i )
-```
 
 // Hence, y is an estimate of R ( s ) +
 
-```
 ′
-```
 
 γ max a E s ′
 
@@ -11663,47 +8762,33 @@ s ( i ) a
 
 [ V ( s )].
 
-```
 }
-```
 
 // In the original value iteration algorithm (over discrete states)
 
-```
 ( i ) ( i )
-```
 
 // we updated the value function according to V ( s ) := y .
 
-```
 ( i ) ( i )
-```
 
 // In this algorithm, we want V ( s ) ≈ y , which we’ll achieve
 
 // using supervised learning (linear regression). ∑ n
 
-```
 (
-```
 
-```
 T ( i ) ( i )
-```
 
 ) Set θ := arg min θ i =1
 
 θ φ ( s ) − y
 
-```
 }
-```
 
 Above, we had written out fitted value iteration using linear regression
 
-```
 ( i ) ( i )
-```
 
 as the algorithm to try to make V ( s ) close to y . That step of the algo- rithm is completely analogous to a standard supervised learning (regression)
 
@@ -11715,33 +8800,23 @@ problem in which we have a training set ( x , y ) , ( x , y ) , . . . , ( x , y 
 
 Finally, fitted value iteration outputs V , which is an approximation to
 
-```
 ∗
-```
 
 V . This implicitly defines our policy. Specifically, when our system is in some state s , and we need to choose an action, we would like to choose the action
 
-```
 ′
-```
 
 arg max E s ′
 
-```
 ∼ P sa
-```
 
 [ V ( s )] (15.9)
 
-```
 a
-```
 
 The process for computing/approximating this is similar to the inner-loop of
 
-```
 ′ ′
-```
 
 fitted value iteration, where for each action, we sample s , . . . , s k
 
@@ -11749,21 +8824,15 @@ fitted value iteration, where for each action, we sample s , . . . , s k
 
 arg max V ( f ( s, a )) .
 
-```
 a
-```
 
 In other words, here we are just setting  t = 0 (i.e., ignoring the noise in the simulator), and setting k = 1. Equivalent, this can be derived from Equation (15.9) using the approximation
 
-```
 ′ ′
-```
 
 E s ′ [ V ( s )] ≈ V (E s ′ [ s ]) (15.10) = V ( f ( s, a )) , (15.11)
 
-```
 ′
-```
 
 where here the expectation is over the random s ∼ P sa . So long as the noise terms  t are small, this will usually be a reasonable approximation. However, for problems that don’t lend themselves to such approximations, having to sample k | A | states using the model, in order to approximate the expectation above, can be computationally expensive.
 
@@ -11771,23 +8840,17 @@ where here the expectation is over the random s ∼ P sa . So long as the noise 
 
 In the policy iteration, line 3 of Algorithm 7, we typically use linear system
 
-```
 π
-```
 
 solver to compute V . Alternatively, one can also the iterative Bellman
 
-```
 π
-```
 
 updates, similarly to the value iteration, to evaluate V , as in the Procedure VE( · ) in Line 1 of Algorithm 8 below. Here if we take option 1 in Line 2 of the Procedure VE, then the difference between the Procedure VE from the
 
 Algorithm 8 Variant of Policy Iteration
 
-```
 π
-```
 
 1: procedure VE ( π , k ) . To evaluate V
 
@@ -11797,23 +8860,15 @@ Algorithm 8 Variant of Policy Iteration
 
 4: For every state s , update ∑
 
-```
 ′ ′
-```
 
 V ( s ) := R ( s ) + γ P sπ ( s ) ( s ) V ( s ) . (15.12)
 
-```
 s ′
-```
 
-```
 return V
-```
 
-```
 5:
-```
 
 Require: hyperparameter k .
 
@@ -11825,9 +8880,7 @@ Require: hyperparameter k .
 
 9: For each state s , let ∑
 
-```
 ′ ′
-```
 
 π ( s ) := arg max P sa ( s ) V ( s ) . (15.13)
 
@@ -11843,125 +8896,75 @@ value iteration (Algorithm 6) is that on line 4, the procedure is using the acti
 
 In Chapter 15, we defined Markov Decision Processes (MDPs) and covered Value Iteration / Policy Iteration in a simplified setting. More specifically we introduced the optimal Bellman equation that defines the optimal value
 
-```
 π
-```
 
-```
 ∗
-```
 
-```
 ∗
-```
 
 function V of the optimal policy π .
 
-```
 π
-```
 
-```
 ∗
-```
 
-```
 ∑
-```
 
-```
 ′ π
-```
 
-```
 ∗
-```
 
-```
 ′
-```
 
 V ( s ) = R ( s ) + max γ P sa ( s ) V ( s )
 
-```
-a ∈A
-s ′
-```
+a ∈A s ′
 
 ## ∈ S
 
 Recall that from the optimal value function, we were able to recover the
 
-```
 ∗
-```
 
 optimal policy π with ∑
 
-```
 ∗ ′ ∗ ′
-```
 
 π ( s ) = argmax a ∈A
 
 P sa ( s ) V ( s )
 
-```
 s ′
-```
 
-```
 ∈S
-```
 
 In this chapter, we’ll place ourselves in a more general setting:
 
 ## 1. We want to write equations that make sense for both the discrete and the continuous case. We’ll therefore write
 
-```
 [
-```
 
-```
 π
-```
 
-```
 ∗
-```
 
-```
 ′
-```
 
-```
-]
-E s ′
-```
+] E s ′
 
-```
 ∼ P sa
-```
 
 V ( s ) instead of ∑
 
-```
 ′ π
-```
 
-```
 ∗
-```
 
-```
 ′
-```
 
 P sa ( s ) V ( s )
 
-```
 s ′
-```
 
 ## ∈ S
 
@@ -11969,41 +8972,27 @@ meaning that we take the expectation of the value function at the next state. In
 
 states. In the continuous case, we can rewrite the expectation as an
 
-```
 ′ ′
-```
 
 integral. The notation s ∼ P sa means that the state s is sampled from the distribution P sa .
 
 2. We’ll assume that the rewards depend on both states and actions . In other words, R : S × A → R . This implies that the previous mechanism for computing the optimal action is changed into
 
-```
 ∗
-```
 
-```
 [
-```
 
-```
 π
-```
 
-```
 ∗
-```
 
-```
 ′
-```
 
 ] π ( s ) = argmax a ∈A
 
 R ( s, a ) + γ E s ′
 
-```
 ∼ P sa
-```
 
 V ( s )
 
@@ -12021,73 +9010,49 @@ instead of (infinite horizon case)
 
 R ( s , a ) + γR ( s , a ) + γ R ( s , a ) + . . . ∑
 
-```
-∞
-t
-```
+∞ t
 
 ```
 R ( s t , a t ) γ
 ```
 
-```
 t =0
-```
 
 What happened to the discount factor γ ? Remember that the intro- duction of γ was (partly) justified by the necessity of making sure that the infinite sum would be finite and well-defined. If the rewards are bounded by a constant  R ¯ , the payoff is indeed bounded by
 
-```
 ∑ ∞
-```
 
-```
-∑ ∞
-t
-```
+∑ ∞ t
 
-```
 | ≤ R ¯ t
-```
 
 | R ( s t ) γ γ
 
-```
 t =0 t =0
-```
 
 and we recognize a geometric sum! Here, as the payoff is a finite sum, the discount factor γ is not necessary anymore.
 
 In this new setting, things behave quite differently. First, the optimal
 
-```
 ∗
-```
 
 policy π might be non-stationary, meaning that it changes over time . In other words, now we have
 
-```
 ( t )
-```
 
 π : S → A
 
 where the superscript ( t ) denotes the policy at time step t . The dynam-
 
-```
 ( t )
-```
 
 ics of the finite horizon MDP following policy π proceeds as follows:
 
-```
 (0)
-```
 
 we start in some state s , take some action a := π ( s ) according to our policy at time step 0. The MDP transitions to a successor s , drawn
 
-```
 (1)
-```
 
 according to P s a . Then, we get to pick another action a := π ( s ) following our new policy at time step 1 and so on...
 
@@ -12095,35 +9060,25 @@ Why does the optimal policy happen to be non-stationary in the finite- horizon s
 
 ## 4. This observation allows us to use time dependent dynamics
 
-```
 ( t )
-```
 
 ```
 s t +1 ∼ P s t ,a t
 ```
 
-```
 ( t )
-```
 
 meaning that the transition’s distribution P s t ,a t
 
 changes over time. The
 
-```
 ( t )
-```
 
 same thing can be said about R . Note that this setting is a better model for real life. In a car, the gas tank empties, traffic changes, etc. Combining the previous remarks, we’ll use the following general formulation for our finite horizon MDP
 
-```
 (
-```
 
-```
 ( t ) ( t )
-```
 
 ```
 )
@@ -12136,35 +9091,25 @@ Remark : notice that the above formulation would be equivalent to adding the tim
 
 The value function at time t for a policy π is then defined in the same way as before, as an expectation over trajectories generated following policy π starting in state s .
 
-```
 [
-```
 
-```
 ( t ) ( T )
-```
 
 ] V t ( s ) = E R ( s t , a t ) + · · · + R ( s T , a T ) | s t = s, π
 
 Now, the question is
 
-In this finite-horizon setting, how do we find the optimal value function
+### In this finite-horizon setting, how do we find the optimal value function
 
-```
 ∗ π
-```
 
-```
 V t
-```
 
 ( s ) = max V t
 
 ( s )
 
-```
 π
-```
 
 It turns out that Bellman’s equation for Value Iteration is made for Dy- namic Programming . This may come as no surprise as Bellman is one of the fathers of dynamic programming and the Bellman equation is strongly related to the field. To understand how we can simplify the problem by adopting an iteration-based approach, we make the following observations:
 
@@ -12178,35 +9123,23 @@ It turns out that Bellman’s equation for Value Iteration is made for Dy- namic
 
 ( s ) := max R ( s, a ) (16.1)
 
-```
 a ∈A
-```
 
 ## 2. For another time step 0 ≤ t < T , if we suppose that we know the
 
-```
 ∗
-```
 
 optimal value function for the next time step V t +1
 
 , then we have
 
-```
 [
-```
 
-```
 ∗ ( t )
-```
 
-```
-[ ]
-```
+### [ ]
 
-```
 ∗ ′
-```
 
 ```
 ]
@@ -12217,25 +9150,17 @@ optimal value function for the next time step V t +1
 
 a s ′ ( t )
 
-```
 ∼ P sa
-```
 
-```
 V t +1
-```
 
 ( s ) (16.2)
 
-```
 ∈A
-```
 
 With these observations in mind, we can come up with a clever algorithm to solve for the optimal value function:
 
-```
 ∗
-```
 
 1. compute V T
 
@@ -12243,9 +9168,7 @@ using equation (16.1).
 
 2. for t = T − , . . . , 0:
 
-```
 ∗ ∗
-```
 
 compute V t
 
@@ -12255,9 +9178,7 @@ using equation (16.2)
 
 Side note We can interpret standard value iteration as a special case of this general case, but without keeping track of time. It turns out that
 
-```
 T
-```
 
 | in the standard setting, if we run value iteration for T steps, we get a | γ   |
 | ------------------------------------------------------------------------ | --- |
@@ -12267,9 +9188,7 @@ Theorem Let B denote the Bellman update and || f ( x ) || ∞ := sup x
 
 | f ( x ) | . If V t denotes the value function at the t -th step, then
 
-```
 ∗ ∗
-```
 
 ```
 || V t +1 − V || ∞ = || B ( V t ) − V || ∞
@@ -12291,9 +9210,7 @@ In other words, the Bellman operator B is a γ -contracting operator.
 
 In this section, we’ll cover a special case of the finite-horizon setting described in Section 16.1, for which the exact solution is (easily) tractable. This model is widely used in robotics, and a common technique in many problems is to reduce the formulation to this framework. First, let’s describe the model’s assumptions. We place ourselves in the continuous setting, with
 
-```
 d d
-```
 
 ## S = R , A = R
 
@@ -12303,29 +9220,19 @@ and we’ll assume linear transitions (with noise)
 s t +1 = A t s t + B t a t + w t
 ```
 
-```
 d × d d × d
-```
 
 where A t ∈ R , B t ∈ R are matrices and w t ∼ N (0 , Σ t ) is some gaussian noise (with zero mean). As we’ll show in the following paragraphs, it turns out that the noise, as long as it has zero mean, does not impact the optimal policy! We’ll also assume quadratic rewards
 
-```
 ( t ) > >
-```
 
 R ( s t , a t ) = − s t
 
-```
 U t s t − a t
-```
 
-```
 W t a t
-```
 
-```
 d × n d × d
-```
 
 where U t ∈ R , W t ∈ R are positive definite matrices (meaning that the reward is always negative ).
 
@@ -12335,20 +9242,13 @@ Now that we have defined the assumptions of our LQR model, let’s cover the 2 s
 
 step 1 suppose that we don’t know the matrices A, B, Σ. To esti- mate them, we can follow the ideas outlined in the Value Ap- proximation section of the RL notes. First, collect transitions from an arbitrary policy. Then, use linear regression to find ∑ n
 
-```
-∑ ∥
-( )∥
-```
+### ∑ ∥ ( )∥
 
 T − ∥ ( i ) ( i ) ( i ) ∥ argmin A,B i =1 t =0
 
-```
 ∥ s t +1
-```
 
-```
 − As t
-```
 
 + Ba t ∥ . Finally, use a tech- nique seen in Gaussian Discriminant Analysis to learn Σ.
 
@@ -12358,59 +9258,41 @@ In other words, given
 
 { s t +1 = A t s t + B t a t + w t A t , B t , U t , W t , Σ t known
 
-```
 ( t ) > >
-```
 
 R ( s t , a t ) = − s t
 
-```
 U t s t − a t
-```
 
-```
 W t a t
-```
 
-```
 ∗
-```
 
 we want to compute V t
 
-. If we go back to section 16.1, we can apply dynamic programming, which yields
+## . If we go back to section 16.1, we can apply dynamic programming, which yields
 
 ## 1. Initialization step
 
 For the last time step T ,
 
-```
 ∗
-```
 
 ## V T
 
 ( s T ) = max R T ( s T , a T )
 
-```
 a T ∈A
-```
 
-```
 > >
-```
 
 = max − s T
 
-```
 U T s T − a T
-```
 
 W t a T a T ∈A
 
-```
 >
-```
 
 = − s T
 
@@ -12418,17 +9300,13 @@ U t s T (maximized for a T = 0)
 
 ## 2. Recurrence step
 
-```
 ∗
-```
 
 Let t < T . Suppose we know V t +1
 
 .
 
-```
 ∗ ∗
-```
 
 Fact 1: It can be shown that if V t +1
 
@@ -12436,9 +9314,7 @@ is a quadratic function in s t , then V t
 
 is also a quadratic function. In other words, there exists some matrix Φ and some scalar Ψ such that
 
-```
 ∗ >
-```
 
 if V t +1
 
@@ -12446,9 +9322,7 @@ if V t +1
 
 Φ t +1 s t +1 + Ψ t +1
 
-```
 ∗ >
-```
 
 then V t
 
@@ -12460,73 +9334,47 @@ For time step t = T , we had Φ t = − U T and Ψ T = 0.
 
 Fact 2: We can show that the optimal policy is just a linear function of the state.
 
-```
 ∗
-```
 
 Knowing V t +1
 
 is equivalent to knowing Φ t +1 and Ψ t +1 , so we just need to explain how we compute Φ t and Ψ t from Φ t +1 and Ψ t +1 and the other parameters of the problem.
 
-```
 ∗ >
-```
 
-```
 V t
-```
 
 ( s t ) = s t
 
 Φ t s t + Ψ t
 
-```
-[ ]
-```
+### [ ]
 
-```
 ( t ) ∗
-```
 
 = max R ( s t , a t ) + E ( t )
 
-```
 a t
-```
 
-```
 s t +1 ∼ P s
-```
 
-```
 t
-```
 
 ( s t )]
 
-```
 t ,a
-```
 
 ## [ V +1 +1
 
-```
 t
-```
 
-```
 [
-```
 
-```
 > > >
-```
 
 ] = max − s t
 
-```
 U t s t − a t
-```
 
 ```
 V t a t + E s t +1 ∼N ( A t s t + B t a t , Σ t ) [ s t +1
@@ -12534,34 +9382,21 @@ V t a t + E s t +1 ∼N ( A t s t + B t a t , Σ t ) [ s t +1
 
 Φ t +1 s t +1 + Ψ t +1 ]
 
-```
 a t
-```
 
 where the second line is just the definition of the optimal value function and the third line is obtained by plugging in the dynamics of our model along with the quadratic assumption. Notice that the last expression is a quadratic function in a t and can thus be (easily) optimized . We get
 
-```
 ∗
-```
 
 the optimal action a t
 
-```
 ∗
-```
 
-```
 [
-```
 
-```
 > −
-```
 
-```
-]
-a t
-```
+] a t
 
 = ( B t
 
@@ -12569,15 +9404,11 @@ a t
 Φ t +1 B t − V t ) B t Φ t +1 A t · s t
 ```
 
-```
 = L t · s t
-```
 
 where [
 
-```
 > −
-```
 
 ] L t := ( B t
 
@@ -12585,9 +9416,7 @@ where [
 Φ t +1 B t − W t ) B t Φ t +1 A t
 ```
 
-```
 [
-```
 
 >
 
@@ -12602,35 +9431,21 @@ Use the identity E w t
 
 which is an impressive result: our optimal policy is linear in s t . Given
 
-```
 ∗
-```
 
-```
 a t
-```
 
 we can solve for Φ t and Ψ t . We finally get the Discrete Ricatti equations
 
-```
 (
-```
 
-```
 >
-```
 
-```
 (
-```
 
-```
 >
-```
 
-```
 ) −
-```
 
 ) Φ t = A t
 
@@ -12648,9 +9463,7 @@ Fact 3: we notice that Φ t depends on neither Ψ nor the noise Σ t ! As L t
 
 is a function of A t , B t and Φ t +1 , it implies that the optimal policy also does not depend on the noise ! (But Ψ t does depend on Σ t , which
 
-```
 ∗
-```
 
 implies that V t
 
@@ -12672,24 +9485,11 @@ Using Fact 3, we can be even more clever and make our algorithm run (slightly) f
 
 It turns out that a lot of problems can be reduced to LQR, even if dynamics are non-linear. While LQR is a nice formulation because we are able to come up with a nice exact solution, it is far from being general. Let’s take for instance the case of the inverted pendulum. The transitions between states look like       x t +1 x t
 
-```
-
-
-x ˙ t +1
-```
+  x ˙ t +1
 
-```
-
-
-
-
-t
-```
+    t
 
-```
- =
-θ t +1
-```
+ = θ t +1
 
 ```
  F 
@@ -12702,31 +9502,23 @@ x ˙ 
   , a t
 ```
 
-```
 θ t
-```
 
  θ ˙
 
-```
 t +1 θ ˙
-```
 
-```
 t
-```
 
 where the function F depends on the cos of the angle etc. Now, the question we may ask is
 
-Can we linearize this system?
+### Can we linearize this system?
 
 ###### 16.3.1 Linearization of dynamics
 
 Let’s suppose that at time t , the system spends most of its time in some state s ¯ t and the actions we perform are around ¯ a t . For the inverted pendulum, if we reached some kind of optimal, this is true: our actions are small and we don’t deviate much from the vertical. We are going to use Taylor expansion to linearize the dynamics. In the simple case where the state is one-dimensional and the transition function F does not depend on the action, we would write something like
 
-```
 ′
-```
 
 s t +1 = F ( s t ) ≈ F ( ¯ s t ) + F ( ¯ s t ) · ( s t − s ¯ t )
 
@@ -12746,23 +9538,17 @@ where κ is some constant and A, B are matrices. Now, this writing looks awfully
 
 The previous method works well for cases where the goal is to stay around
 
-```
 ∗
-```
 
 some state s (think about the inverted pendulum, or a car having to stay in the middle of a lane). However, in some cases, the goal can be more complicated. We’ll cover a method that applies when our system has to follow some trajectory (think about a rocket). This method is going to discretize the trajectory into discrete time steps, and create intermediary goals around which we will be able to use the previous technique! This method is called Differential Dynamic Programming . The main steps are
 
 step 1 come up with a nominal trajectory using a naive controller, that approx- imate the trajectory we want to follow. In other words, our controller is able to approximate the gold trajectory with
 
-```
 ∗ ∗ ∗ ∗
-```
 
 s , a → s , a → . . .
 
-```
 ∗
-```
 
 step 2 linearize the dynamics around each trajectory point s t
 
@@ -12776,23 +9562,17 @@ step 2 linearize the dynamics around each trajectory point s t
 s t +1 ≈ F ( s t
 ```
 
-```
 , a t
-```
 
 ) + ∇ s F ( s t
 
-```
 , a t
-```
 
 )( s t − s t
 
 ) + ∇ a F ( s t
 
-```
 , a t
-```
 
 )( a t − a t
 
@@ -12806,9 +9586,7 @@ s t +1 = A t · s t + B t · a t
 
 (notice that in that case, we use the non-stationary dynamics setting that we mentioned at the beginning of these lecture notes)
 
-```
 ( t )
-```
 
 Note We can apply a similar derivation for the reward R , with a second-order Taylor expansion.
 
@@ -12818,31 +9596,23 @@ Note We can apply a similar derivation for the reward R , with a second-order Ta
 
 R ( s t , a t ) ≈ R ( s t
 
-```
 , a t
-```
 
 ) + ∇ s R ( s t
 
-```
 , a t
-```
 
 )( s t − s t
 
 ) + ∇ a R ( s t
 
-```
 , a t
-```
 
 )( a t − a t
 
 )
 
-```
 ∗ > ∗ ∗ > ∗
-```
 
 +  ( s t − s t
 
@@ -12856,9 +9626,7 @@ R ( s t , a t ) ≈ R ( s t
 
 )
 
-```
 ∗ > ∗
-```
 
 +  ( a t − a t
 
@@ -12868,31 +9636,21 @@ R ( s t , a t ) ≈ R ( s t
 
 where H xy refers to the entry of the Hessian of R with respect to x and
 
-```
 ∗ ∗
-```
 
 y evaluated in ( s t
 
-```
 , a t
-```
 
 ) (omitted for readability). This expression can be re-written as
 
-```
 > >
-```
 
 R t ( s t , a t ) = − s t
 
-```
 U t s t − a t
-```
 
-```
 W t a t
-```
 
 for some matrices U t , W t , with the same trick of adding an extra dimen- sion of ones. To convince yourself, notice that
 
@@ -12904,27 +9662,19 @@ Note: Some problems might arise if the LQR trajectory deviates too much from the
 
 step 4 Now that we get a new controller (our new policy π t ), we use it to produce a new trajectory
 
-```
 ∗ ∗ ∗ ∗ ∗
-```
 
 s , π ( s ) → s , π ( s ) → . . . → s T
 
 note that when we generate this new trajectory, we use the real F and not its linear approximation to compute transitions, meaning that
 
-```
 ∗ ∗ ∗
-```
 
-```
 s t +1
-```
 
 = F ( s t
 
-```
 , a t
-```
 
 )
 
@@ -12948,9 +9698,7 @@ Within this framework, the general strategy is to maintain a belief state (distr
 
 In this section, we’ll present a extension of LQR to this new setting.
 
-```
 n
-```
 
 Assume that we observe y t ∈ R with m < n such that { y t = C · s t + v t
 
@@ -12958,15 +9706,11 @@ Assume that we observe y t ∈ R with m < n such that { y t = C · s t + v t
 s t +1 = A · s t + B · a t + w t
 ```
 
-```
 n × d
-```
 
 where C ∈ R is a compression matrix and v t is the sensor noise (also
 
-```
 ( t )
-```
 
 gaussian, like w t ). Note that the reward function R is left unchanged, as a function of the state (not the observation) and action. Also, as distributions are gaussian, the belief state is also going to be gaussian. In this new frame- work, let’s give an overview of the strategy we are going to adopt to find the optimal policy:
 
@@ -12986,9 +9730,7 @@ As noises are Gaussians, we can easily prove that the joint distribution is also
 
   s  .  .  .     s t    ∼ N ( μ, Σ) for some μ, Σ  y   .   . . 
 
-```
 y t
-```
 
 then, using the marginal formulas of gaussians (see Factor Analysis notes), we would get
 
@@ -13044,9 +9786,7 @@ s t +1 | t +1 = s t +1 | t + K t ( y t +1 − Cs t +1 | t )
 
 with
 
-```
 > > −
-```
 
 K t := Σ t +1 | t C ( C Σ t +1 | t C + Σ y )
 
@@ -13054,9 +9794,7 @@ The matrix K t is called the Kalman gain .
 
 Now, if we have a closer look at the formulas, we notice that we don’t need the observations prior to time step t ! The update steps only depends on the previous distribution. Putting it all together, the algorithm first runs a forward pass to compute the K t , Σ t | t and s t | t (sometimes referred to as s ˆ in the literature). Then, it runs a backward pass (the LQR updates) to compute the quantities Ψ t , Ψ t and L t . Finally, we recover the optimal policy
 
-```
 ∗
-```
 
 with a t
 
@@ -13070,27 +9808,19 @@ We will present a model-free algorithm called REINFORCE that does not require th
 
 ## T −
 
-```
 ]
-```
 
-```
 t
-```
 
 η ( θ ) , E γ R ( s t , a t ) (17.1)
 
-```
 t =0
-```
 
 Recall that s t ∼ P s t − a t −
 
 and a t ∼ π θ ( ·| s t ). Also note that η ( θ ) =
 
-```
 π
-```
 
 E θ
 
@@ -13100,9 +9830,7 @@ In this notes we will work with the general setting where the reward depends on 
 
 We aim to use gradient ascent to maximize η ( θ ). The main challenge we face here is to compute (or estimate) the gradient of η ( θ ) without the knowledge of the form of the reward function and the transition probabilities. Let P θ ( ∑ τ ) denote the distribution of τ (generated by the policy π θ ), and
 
-```
 T − t
-```
 
 let f ( τ ) = t =0
 
@@ -13118,15 +9846,11 @@ depends on θ . Recall that in VAE, we used the re-parametrization techniques to
 
 [ f ( τ )] = ∇ θ P θ ( τ ) f ( τ ) dτ ∫ = ∇ θ ( P θ ( τ ) f ( τ )) dτ (swap integration with gradient) ∫ = ( ∇ θ P θ ( τ )) f ( τ ) dτ (becaue f does not depend on θ ) ∫ = P θ ( τ )( ∇ θ log P θ ( τ )) f ( τ ) dτ
 
-```
 ∇ P θ ( τ )
-```
 
 (because ∇ log P θ ( τ ) =
 
-```
 P θ ( τ )
-```
 
 )
 
@@ -13134,32 +9858,23 @@ P θ ( τ )
 
 [( ∇ θ log P θ ( τ )) f ( τ )] (17.3)
 
-```
 (1) ( n )
-```
 
 Now we have a sample-based estimator for ∇ θ E τ ∼ P θ
 
 [ f ( τ )]. Let τ , . . . , τ be n empirical samples from P θ (which are obtained by running the policy π θ for n times, with T steps for each run). We can estimate the gradient of η ( θ ) by
 
-```
 ∇ θ E τ ∼ P θ
-```
 
 [ f ( τ )] = E τ ∼ P θ
 
 [( ∇ θ log P θ ( τ )) f ( τ )] (17.4) ∑
 
-```
-n
-( i ) ( i )
-```
+n ( i ) ( i )
 
 ≈ ( ∇ θ log P θ ( τ )) f ( τ ) (17.5) n
 
-```
 i =1
-```
 
 The next question is how to compute log P θ ( τ ). We derive an analyt- ical formula for log P θ ( τ ) and compute its gradient w.r.t θ (using auto- differentiation). Using the definition of τ , we have
 
@@ -13179,9 +9894,7 @@ Taking gradient w.r.t to θ , we obtain
 
 Note that many of the terms disappear because they don’t depend on θ and thus have zero gradients. (This is somewhat important — we don’t know how to evaluate those terms such as log P s a ( s ) because we don’t have access to the transition probabilities, but luckily those terms have zero gradients!) Plugging the equation above into equation (17.4), we conclude that [( ∑ T −
 
-```
-) ]
-```
+### ) ]
 
 ∇ θ η ( θ ) = ∇ θ E τ ∼ P θ
 
@@ -13189,29 +9902,21 @@ Note that many of the terms disappear because they don’t depend on θ and thus
 
 ∇ θ log π θ ( a t | s t ) · f ( τ )
 
-```
 t =0
-```
 
 ## [( ∑ T −
 
 ## ) ( ∑ T −
 
-```
-)]
-```
+### )]
 
-```
 t
-```
 
 = E τ ∼ P θ
 
 ∇ θ log π θ ( a t | s t ) · γ R ( s t , a t )
 
-```
 t =0 t =0
-```
 
 (17.8)
 
@@ -13227,19 +9932,13 @@ Interpretation of the policy gradient formula ∑ (17.8) . The quantity
 
 that can increase the probability of the trajectory τ (or the direction that increases the probability of choosing a , . . . , a t − ), and if τ has low payoff, we try less hard with a smaller weight. An interesting fact that follows from formula (17.3) is that [ ∑ T −
 
-```
 ]
-```
 
-```
 E τ ∼ P θ
-```
 
 ∇ θ log π θ ( a t | s t ) = 0 (17.9)
 
-```
 t =0
-```
 
 To see this, we take f ( τ ) = 1 (that is, the reward is always a constant), then the LHS of (17.8) is zero because the payoff is always a fixed constant ∑ T t t =0
 
@@ -13247,86 +9946,53 @@ To see this, we take f ( τ ) = 1 (that is, the reward is always a constant), th
 
 ## T −
 
-```
-[ ( )]
-∑ ∑
-```
+### [ ( )] ∑ ∑
 
-```
-T −
-j
-```
+T − j
 
 ∇ θ η ( θ ) = E τ ∼ P θ
 
 ∇ θ log π θ ( a t | s t ) · γ R ( s j , a j )
 
-```
 t =0 j =0
-```
 
-```
 ∑
-```
 
 ## T −
 
-```
-[ ( )]
-∑
-```
+### [ ( )] ∑
 
-```
-T −
-j
-```
+T − j
 
 = E τ ∼ P θ
 
 ∇ θ log π θ ( a t | s t ) · γ R ( s j , a j ) (17.10)
 
-```
 t =0 j ≥ t
-```
 
 where the second equality follows from [ (  )] ∑
 
-```
 j
-```
 
-```
 E τ ∼ P θ
-```
 
 ∇ θ log π θ ( a t | s t ) · γ R ( s j , a j )
 
-```
 ≤ j<t
-```
 
-```
-[ (  )]
-∑
-```
+### [ (  )] ∑
 
-```
 j
-```
 
 = E E [ ∇ θ log π θ ( a t | s t ) | s , a , . . . , s t − , a t − , s t ] · γ R ( s j , a j )
 
-```
 ≤ j<t
-```
 
 = 0 (because E [ ∇ θ log π θ ( a t | s t ) | s , a , . . . , s t − , a t − , s t ] = 0)
 
 Note that here we used the law of total expectation. The outer expecta- tion in the second line above is over the randomness of s , a , . . . , a t − , s t , whereas the inner expectation is over the randomness of a t (conditioned on s , a , . . . , a t − , s t .) We see that we’ve made the estimator slightly simpler. The second consequence of E a t ∼ π θ ( ·| s t ) ∇ θ log π θ ( a t | s t ) = 0 is the following: for any value B ( s t ) that only depends on s t , it holds that
 
-```
 E τ ∼ P θ
-```
 
 [ ∇ θ log π θ ( a t | s t ) · B ( s t )] = E [E [ ∇ θ log π θ ( a t | s t ) | s , a , . . . , s t − , a t − , s t ] B ( s t )] = 0 (because E [ ∇ θ log π θ ( a t | s t ) | s , a , . . . , s t − , a t − , s t ] = 0)
 
@@ -13338,63 +10004,45 @@ In general, it’s true that E x ∼ p θ
 
 Again here we used the law of total expectation. The outer expecta- tion in the second line above is over the randomness of s , a , . . . , a t − , s t , whereas the inner expectation is over the randomness of a t (conditioned on s , a , . . . , a t − , s t .) It follows from equation (17.10) and the equation above that )] ∑ T −
 
-```
-[ (
-∑ T −
-j t
-```
+[ ( ∑ T − j t
 
 ∇ θ η ( θ ) = E τ ∼ P θ
 
 ∇ θ log π θ ( a t | s t ) · γ R ( s j , a j ) − γ B ( s t )
 
-```
 t =0 j ≥ t
-```
 
 ## ∑ T −
 
 ## [ ( ∑ T −
 
-```
-)]
-```
+### )]
 
-```
 t j − t
-```
 
 = E τ ∼ P θ
 
 ∇ θ log π θ ( a t | s t ) · γ γ R ( s j , a j ) − B ( s t )
 
-```
 t =0 j ≥ t
-```
 
 (17.11)
 
 Therefore, we will get a different estimator for estimating the ∇ η ( θ ) with a difference choice of B ( · ). The benefit of introducing a proper B ( · ) — which is often referred to as a baseline — is that it helps reduce the variance of the estimator. It turns out that a near optimal estimator would be the expected [ ∑ ]
 
-```
 T − j − t
-```
 
 future payoff E j ≥ t
 
 γ R ( s j , a j ) | s t , which is pretty much the same as the
 
-```
 π
-```
 
 value function V θ
 
 ( s t ) (if we ignore the difference between finite and infinite
 
-```
 π
-```
 
 horizon.) Here one could estimate the value function V θ
 
@@ -13406,9 +10054,7 @@ T − j − t j ≥ t
 
 γ R ( s j , a j ) randomly takes two values 1000 + 1 and 1000 − 2 with equal proba- bility, and the corresponding values for ∇ θ log π θ ( a t | s t ) are vector z and − z . (Note that because E [ ∇ θ log π θ ( a t | s t )] = 0, if ∇ θ log π θ ( a t | s t ) can only take two values uniformly, then the two values have to two vectors in an opposite direction.) In this case, without subtracting the baseline, the estimators take two values (1000 + 1) z and − (1000 − 2) z , whereas after subtracting a baseline of 1000, the estimator has two values z and 2 z . The latter estimator has much lower variance compared to the original estimator. We note that the estimator of the gradient in the algorithm does not exactly match
 
-```
 t
-```
 
 the equation 17.11. If we multiply γ in the summand of equation (17.13), then they will exactly match. Removing such discount factors empirically works well because it gives a large update.
 
@@ -13418,15 +10064,11 @@ as a shorthand for j ≥ t
 
 γ R ( s j , a j ) Fit the baseline by finding a function B that minimizes ∑ ∑ ( R ≥ t − B ( s t )) (17.12)
 
-```
 τ t
-```
 
 Update the policy parameter θ with the gradient estimator ∑ ∑ ∇ θ log π θ ( a t | s t ) · ( R ≥ t − B ( s t )) (17.13)
 
-```
 τ t
-```
 
 # Bibliography
 

@@ -22,9 +22,7 @@ Maker, introduction, industries
 
 ATMega328P Processor
 
-```
-Memory
-```
+### Memory
 
 AVR CPU at up to 16 MHz
 
@@ -34,17 +32,13 @@ AVR CPU at up to 16 MHz
 
 1 kB EEPROM
 
-```
-Security
-```
+### Security
 
 [Power On Reset (POR)](https://create.arduino.cc/editor)
 
 Brown Out Detection (BOD)
 
-```
-Peripherals
-```
+### Peripherals
 
 [2x 8-bit Timer/Counter with a dedicated period register and compare channels](https://www.arduino.cc/en/Main/Software)
 
@@ -64,15 +58,11 @@ Six PWM channels
 
 Interrupt and wake-up on pin change
 
-```
-ATMega16U2 Processor
-```
+### ATMega16U2 Processor
 
 8-bit AVR® RISC-based microcontroller
 
-```
-Memory
-```
+### Memory
 
 16 kB ISP Flash
 
@@ -82,9 +72,7 @@ Memory
 
 debugWIRE interface for on-chip debugging and programming
 
-```
-Power
-```
+### Power
 
 [2.7-5.5 volts](https://echa.europa.eu/web/guest/candidate-list-table)
 
@@ -244,9 +232,7 @@ Tinkerkit Braccio Robot
 
 #### 2.1 Recommended Operating Conditions
 
-```
-Symbol Description Min Max
-```
+### Symbol Description Min Max
 
 Conservative thermal limits for the whole board: -40 °C (-40 °F) 85 °C ( 185 °F)
 
@@ -256,9 +242,7 @@ work as expected.
 
 #### 2.2 Power Consumption
 
-```
-Symbol Description Min Typ Max Unit
-```
+### Symbol [Description](https://create.arduino.cc/editor) Min Typ Max Unit
 
 VINMax [Maximum input voltage from VIN pad](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a) [6](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a) [-](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a) [20](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a) [V](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a)
 
@@ -274,9 +258,7 @@ Top view
 
 Board topology
 
-```
-Ref. Description Ref. Description
-```
+### Ref. Description Ref. Description
 
 X1 Power jack 2.1x5.5mm U1 SPX1117M3-L-5 Regulator
 
@@ -344,9 +326,7 @@ Pinout
 
 #### 5.1 JANALOG
 
-```
-Pin Function Type Description
-```
+### Pin Function Type Description
 
 ## 1 NC NC Not connected
 
@@ -378,9 +358,7 @@ Pin Function Type Description
 
 #### 5.2 JDIGITAL
 
-```
-Pin Function Type Description
-```
+### Pin [Function](https://store.arduino.cc/) [Type](https://store.arduino.cc/) [Description](https://www.arduino.cc/)
 
 ## 1 D0 Digital/GPIO [Digital pin 0/GPIO](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending)
 
@@ -434,21 +412,15 @@ of the following EU Directives and therefore qualify for free movement within ma
 
 Union (EU) and European Economic Area (EEA).
 
-```
-ROHS 2 Directive 2011/65/EU
-```
+### ROHS 2 Directive 2011/65/EU
 
 Conforms to: EN50581:2012
 
-```
-Directive 2014/35/EU. (LVD)
-```
+### Directive 2014/35/EU. (LVD)
 
 Conforms to: EN 60950-1:2006/A11:2009/A1:2010/A12:2011/AC:2011
 
-```
-Directive 2004/40/EC & 2008/46/EC & 2013/35/EU, EMF
-```
+### Directive 2004/40/EC & 2008/46/EC & 2013/35/EU, EMF
 
 Conforms to: [EN 62311:2008](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a)
 
@@ -460,9 +432,7 @@ Conforms to: [EN 62311:2008](https://create.arduino.cc/projecthub/Arduino_Genuin
 
 electrical and electronic equipment.
 
-```
-Substance Maximum limit (ppm)
-```
+### Substance Maximum limit (ppm)
 
 Lead (Pb) [1000](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending)
 
@@ -490,7 +460,7 @@ Arduino Boards are fully compliant with the related requirements of European Uni
 
 concerning the Registration, Evaluation, Authorization and Restriction of Chemicals (REACH). We declare none of the
 
-SVHCs (https://echa.europa.eu/web/guest/candidate-list-table), the Candidate List of Substances of Very High
+SVHCs ([https://echa.europa.eu/web/guest/candidate-list-table](https://echa.europa.eu/web/guest/candidate-list-table)), the Candidate List of Substances of Very High
 
 Concern for authorization currently released by ECHA, is present in all products (and also package) in quantities
 
@@ -584,37 +554,31 @@ provisions of Directive 2014/53/EU. This product is allowed to be used in all EU
 
 ## 8 Company Information
 
-```
-Company name Arduino S.r.l
-```
+### Company name [Arduino S.r.l](https://www.arduino.cc/en/Main/Software)
 
 Company Address Via Andrea Appiani 25 20900 MONZA Italy
 
 ## [9 Reference Documentation](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-4b3e4a)
 
-```
-Reference Link
-```
+### Reference [Link](https://www.arduino.cc/)
 
 Arduino IDE (Desktop) [https://www.arduino.cc/en/Main/Software](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending)
 
-Arduino Cloud Editor https://create.arduino.cc/editor
+Arduino Cloud Editor [https://create.arduino.cc/editor](https://create.arduino.cc/editor)
 
 Arduino Cloud Editor - Getting [https://docs.arduino.cc/arduino-cloud/guides/editor/](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending) Started
 
-Arduino Website https://www.arduino.cc/
+Arduino Website [https://www.arduino.cc/](https://www.arduino.cc/)
 
 [https://create.arduino.cc/projecthub?](https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending) Arduino Project Hub by=part&part_id=11332&sort=trending
 
-Library Reference https://www.arduino.cc/reference/en/
+Library Reference [https://www.arduino.cc/reference/en/](https://www.arduino.cc/reference/en/)
 
-Arduino Store https://store.arduino.cc/
+Arduino Store [https://store.arduino.cc/](https://store.arduino.cc/)
 
 ## 10 Revision History
 
-```
-Date Revision Changes
-```
+### Date Revision Changes
 
 25/04/2024 3 Updated link to new Cloud Editor
 
@@ -638,9 +602,7 @@ Arduino UNO R3 是 熟 悉 电 ⼦ 技 术 和 编 码 的 完 美 开 发 板 �
 
 # 特 点
 
-```
-ATMega328P 处 理 器
-```
+### ATMega328P 处 理 [器](https://www.arduino.cc/)
 
 内 存
 
@@ -760,9 +722,7 @@ PMax 最 [⼤](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-star
 
 俯 视 图
 
-```
-电 路 板 拓扑 结 构
-```
+### 电 路 板 拓扑 结 构
 
 编 号 描 述 编 号 描 述
 
@@ -792,7 +752,7 @@ J-ZU4 ATMEGA328P 模 块 ICSP1 引 脚 接 头 连 接 器（ 通 过 6 号 孔 
 
 #### 13.3 电 源 树
 
-电 源 树
+### 电 源 树
 
 ## 14 电 路 板 操 作
 
@@ -806,9 +766,7 @@ J-ZU4 ATMEGA328P 模 块 ICSP1 引 脚 接 头 连 接 器（ 通 过 6 号 孔 
 
 包 括 本 电 路 板 在 内 的 所 有 Arduino 电 路 板 ， 都 可 以 在 Arduino Cloud Editor [2] 上 开 箱 即 ⽤ ， 只 需 安 装 ⼀ 个 简 单 的 插 件 即
 
-```
-可 。
-```
+### 可 。
 
 Arduino Cloud Editor [是](https://create.arduino.cc/editor) [在](https://create.arduino.cc/editor) [线](https://create.arduino.cc/editor) [托](https://create.arduino.cc/editor) [管](https://create.arduino.cc/editor) [的](https://create.arduino.cc/editor) [，](https://create.arduino.cc/editor) [因](https://create.arduino.cc/editor) [此](https://create.arduino.cc/editor) [它](https://create.arduino.cc/editor) [将](https://create.arduino.cc/editor) [始](https://create.arduino.cc/editor) [终](https://create.arduino.cc/editor) [提](https://create.arduino.cc/editor) [供](https://create.arduino.cc/editor) 最 新 功 能 并 ⽀ 持 所 有 电 路 板 。 接 下 来 **[3]** 开 始 在 浏 览 器 上 编 码
 
@@ -826,15 +784,11 @@ Arduino UNO R3 的 ⽰ 例 程 序 可 以 在 [Arduino IDE](https://www.arduino
 
 以 及 在 线 Arduino 商 店 **[7]** 上 的 精 彩 项 ⽬ 来 探 索 它 所 提 供 的 ⽆ 限 可 能 性 ； 在 这 些 项 ⽬ 中 ， 您 可 以 为 电 路 板 配 备 传 感
 
-```
-器 、 执 ⾏ 器 等 。
-```
+### 器 、 执 ⾏ 器 等 。
 
 ## 15 连 接 器 引 脚 布 局
 
-```
-布 局
-```
+### 布 局
 
 #### 15.1 JANALOG
 
@@ -844,9 +798,7 @@ Arduino UNO R3 的 ⽰ 例 程 序 可 以 在 [Arduino IDE](https://www.arduino
 
 ## 2 IOREF IOREF 数 [字](https://www.arduino.cc/en/Main/Software) [逻](https://www.arduino.cc/en/Main/Software) [辑](https://www.arduino.cc/en/Main/Software) [参](https://www.arduino.cc/en/Main/Software) [考](https://www.arduino.cc/en/Main/Software) [电](https://www.arduino.cc/en/Main/Software) [压](https://www.arduino.cc/en/Main/Software) [V -](https://www.arduino.cc/en/Main/Software) [连](https://www.arduino.cc/en/Main/Software) 接 ⾄ 5V
 
-```
 3 复 位 复 位 复 位
-```
 
 ## 4 +3V3 电 源 +3V3 电 源 轨
 
@@ -914,9 +866,7 @@ Arduino UNO R3 的 ⽰ 例 程 序 可 以 在 [Arduino IDE](https://www.arduino
 
 #### 15.4 电 路 板 外 形 图 和 安 装 孔
 
-```
-电 路 板 外 形 图
-```
+### 电 路 板 外 形 图
 
 ## 16 认证
 
@@ -924,9 +874,7 @@ Arduino UNO R3 的 ⽰ 例 程 序 可 以 在 [Arduino IDE](https://www.arduino
 
 我 们 在 此 郑 重 声 明 ， 上 述 产 品 符 合 以 下 欧 盟 指 令 的 基 本 要 求 ， 因 此 有 资 格 在 包 括 欧 盟 （ EU ） 和 欧 洲 经 济 区 （ EEA ） 在 内 的
 
-```
-市 场 内 ⾃ 由 流 通 。
-```
+### 市 场 内 ⾃ 由 流 通 。
 
 ```
 RoHS 2 指 令 2011/65/EU
@@ -974,7 +922,7 @@ Arduino 电 路 板 符 合 欧 [洲](https://create.arduino.cc/projecthub?by=pa
 
 Arduino 电 路 板 完 全 符 合 欧 盟 法 规 (EC) 1907/2006 中 关 于 化 学 品 注 册 、 评 估 、 许 可和 限 制 (REACH) 的 相 关 要 求 。 我 们 声
 
-明 ， 所 有 产 品 （ 包 括 包 装 ） 中 的 SVHC (https://echa.europa.eu/web/guest/candidate-list-table), （ 欧 洲 化 学 品 管 理 局 ⽬
+明 ， 所 有 产 品 （ 包 括 包 装 ） 中 的 SVHC ([https://echa.europa.eu/web/guest/candidate-list-table](https://echa.europa.eu/web/guest/candidate-list-table)), （ 欧 洲 化 学 品 管 理 局 ⽬
 
 前 发 布 的 《 ⾼ 度 关 注 物 质 候 选 授 权 清 单 》 ） 含 量 总 浓 度 均 未 超 过 0.1% 。 据 我 们 所 知 ， 我 们 还 声 明 ， 我 们 的 产 品 不 含 ECHA
 
@@ -1068,19 +1016,19 @@ Arduino S.r.l. 特 此 声 明 ， 本 产 品 符 合 2014/53/EU 指 令 的 �
 
 参 考 资 料 链 接
 
-Arduino IDE https://www.arduino.cc/en/Main/Software (Desktop)
+Arduino IDE [https://www.arduino.cc/en/Main/Software](https://www.arduino.cc/en/Main/Software) (Desktop)
 
-Arduino IDE https://create.arduino.cc/editor (Cloud)
+Arduino IDE [https://create.arduino.cc/editor](https://create.arduino.cc/editor) (Cloud)
 
-Cloud IDE ⼊ ⻔ 指 https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web- 南 editor-4b3e4a
+Cloud IDE ⼊ ⻔ 指 [https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-](https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-) 南 editor-4b3e4a
 
-Arduino ⽹ 站 https://www.arduino.cc/
+Arduino ⽹ 站 [https://www.arduino.cc/](https://www.arduino.cc/)
 
 Arduino Project [https://create.arduino.cc/projecthub?by=part&part_id=11332&sort=trending](https://create.arduino.cc/editor) Hub
 
 库 参 考 [https://www.arduino.cc/reference/en/](https://docs.arduino.cc/arduino-cloud/guides/editor/)
 
-在 线 商 店 https://store.arduino.cc/
+在 线 商 店 [https://store.arduino.cc/](https://store.arduino.cc/)
 
 ## 20 修 订记 录
 

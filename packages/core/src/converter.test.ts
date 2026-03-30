@@ -651,4 +651,36 @@ describe("isCodeBlock (enhanced)", () => {
     ];
     expect(isCodeBlock(items)).toBe(true);
   });
+
+  it("rejects very short blocks (isolated math symbols)", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    // Single math symbol
+    const items1 = [
+      makeItem({ str: "π", x: 100, y: 100, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items1, codeFonts)).toBe(false);
+
+    // Very short expression
+    const items2 = [
+      makeItem({ str: "Q∗", x: 100, y: 100, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items2, codeFonts)).toBe(false);
+
+    // Short word (under 8 chars)
+    const items3 = [
+      makeItem({ str: "Label", x: 100, y: 100, fontName: "Courier" }),
+    ];
+    expect(isCodeBlock(items3)).toBe(false);
+  });
+
+  it("still detects code blocks with sufficient content", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    const items = [
+      makeItem({ str: "def calculate(x, y):", x: 100, y: 100, fontName: "g_d0_f3" }),
+      makeItem({ str: "    result = x + y", x: 100, y: 114, fontName: "g_d0_f3" }),
+      makeItem({ str: "    return result * 2", x: 100, y: 128, fontName: "g_d0_f3" }),
+      makeItem({ str: "print(calculate(3, 4))", x: 100, y: 142, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items, codeFonts)).toBe(true);
+  });
 });

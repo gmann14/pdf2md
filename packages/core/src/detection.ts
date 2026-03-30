@@ -264,6 +264,9 @@ export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): bo
     }
   }
 
+  // Minimum content: reject very short blocks (isolated math symbols, single words)
+  if (totalChars < 8) return false;
+
   // Signal 1: Known monospace font names
   if (totalChars > 0 && monoChars / totalChars >= 0.8) {
     // Even with monospace fonts, reject if text is clearly prose

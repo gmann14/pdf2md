@@ -17,7 +17,7 @@ Llion Jones Aidan N. Gomez Łukasz Kaiser Google Research University of Toronto 
 
 ∗ ‡
 
-Illia Polosukhin illia.polosukhin@gmail.com
+### Illia Polosukhin illia.polosukhin@gmail.com
 
 ##### Abstract
 
@@ -87,9 +87,7 @@ We call our particular attention "Scaled Dot-Product Attention" (Figure 2). The 
 
 In practice, we compute the attention function on a set of queries simultaneously, packed together into a matrix Q . The keys and values are also packed together into matrices K and V . We compute the matrix of outputs as:
 
-```
 T
-```
 
 ```
 QK
@@ -99,7 +97,7 @@ d k
 
 The two most commonly used attention functions are additive attention [2], and dot-product (multi- plicative) attention. Dot-product attention is identical to our algorithm, except for the scaling factor of √ d
 
-. Additive attention computes the compatibility function using a feed-forward network with
+## . Additive attention computes the compatibility function using a feed-forward network with
 
 k
 
@@ -125,9 +123,7 @@ q i k i , has mean and variance d k .
 
 Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions. With a single attention head, averaging inhibits this.
 
-```
 O
-```
 
 MultiHead( Q, K, V [) = Concat(head](http://arxiv.org/abs/1705.04304) , ..., head h ) W
 
@@ -135,17 +131,11 @@ MultiHead( Q, K, V [) = Concat(head](http://arxiv.org/abs/1705.04304) , ..., hea
 
 where head i = Attention( QW i
 
-```
 , KW i
-```
 
-```
 , V W i
-```
 
-```
 )
-```
 
 Q d model × d k K d model × d k V d model × d v
 
@@ -217,9 +207,7 @@ We also experimented with using learned positional embeddings [9] instead, and f
 
 In this section we compare various aspects of self-attention layers to the recurrent and convolu- tional layers commonly used for mapping one variable-length sequence of symbol representations
 
-```
 d
-```
 
 ( x , ..., x n ) to another sequence of equal length ( z , ..., z n ) , with x i , z i ∈ R , such as a hidden layer in a typical sequence transduction encoder or decoder. Motivating our use of self-attention we consider three desiderata.
 
@@ -325,7 +313,7 @@ For translation tasks, the Transformer can be trained significantly faster than 
 
 We are excited about the future of attention-based models and plan to apply them to other tasks. We plan to extend the Transformer to problems involving input and output modalities other than text and to investigate local, restricted attention mechanisms to efficiently handle large inputs and outputs such as images, audio and video. Making generation less sequential is another research goals of ours.
 
-The code we used to train and evaluate our models is available at https://github.com/ tensorflow/tensor2tensor .
+The code we used to train and evaluate our models is available at [https://github.com/](https://github.com/) tensorflow/tensor2tensor .
 
 Acknowledgements We are grateful to Nal Kalchbrenner and Stephan Gouws for their fruitful comments, corrections and inspiration.
 

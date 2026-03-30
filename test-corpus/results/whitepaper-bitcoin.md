@@ -183,9 +183,7 @@ Merkle Branch for Tx3
 Hash2 Hash3
 ```
 
-```
 Tx3
-```
 
 As such, the verification is reliable as long as honest nodes control the network, but is more vulnerable if the network is overpowered by an attacker. While network nodes can verify transactions for themselves, the simplified method can be fooled by an attacker's fabricated transactions for as long as the attacker can continue to overpower the network. One strategy to protect against this would be to accept alerts from network nodes when they detect an invalid block, prompting the user's software to download the full block and alerted transactions to confirm the inconsistency. Businesses that receive frequent payments will probably still want to run their own nodes for more independent security and quicker verification.
 
@@ -197,18 +195,11 @@ Although it would be possible to handle coins individually, it would be unwieldy
 Transaction
 ```
 
-```
 In Out
-```
 
-```
-In
-...
-```
+In ...
 
-```
 ...
-```
 
 It should be noted that fan-out, where a transaction depends on several transactions, and those transactions depend on many more, is not a problem here. There is never the need to extract a complete standalone copy of a transaction's history.
 
@@ -332,7 +323,7 @@ We have proposed a system for electronic transactions without relying on trust. 
 
 ##### References
 
-[1] W. Dai, "b-money," http://www.weidai.com/bmoney.txt, 1998.
+[1] W. Dai, "b-money," [http://www.weidai.com/bmoney.txt,](http://www.weidai.com/bmoney.txt,) 1998.
 
 [2] H. Massias, X.S. Avila, and J.-J. Quisquater, "Design of a secure timestamping service with minimal trust requirements," In 20th Symposium on Information Theory in the Benelux , May 1999.
 
@@ -342,7 +333,7 @@ We have proposed a system for electronic transactions without relying on trust. 
 
 [5] S. Haber, W.S. Stornetta, "Secure names for bit-strings," In Proceedings of the 4th ACM Conference on Computer and Communications Security , pages 28-35, April 1997.
 
-[6] A. Back, "Hashcash - a denial of service counter-measure," http://www.hashcash.org/papers/hashcash.pdf, 2002.
+[6] A. Back, "Hashcash - a denial of service counter-measure," [http://www.hashcash.org/papers/hashcash.pdf,](http://www.hashcash.org/papers/hashcash.pdf,) 2002.
 
 [7] R.C. Merkle, "Protocols for public key cryptosystems," In Proc. 1980 Symposium on Security and Privacy , IEEE Computer Society, pages 122-133, April 1980.
 

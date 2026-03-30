@@ -71,6 +71,13 @@ function getCategory(filename: string): string {
     "slides-stanford-ml": "Slide Deck",
     "tables-cdc-report": "Data-Heavy Report",
     "whitepaper-bitcoin": "Whitepaper",
+    "legal-contract-clauses": "Legal Contract",
+    "tables-census-poverty": "Statistical Report",
+    "infographic-cdc-diseases": "Infographic",
+    "landscape-gantt-chart": "Landscape Document",
+    "academic-footnotes-philosophy": "Academic (Footnotes)",
+    "multilingual-udhr-chinese": "CJK / Multilingual",
+    "form-filled-1040": "Filled Form",
   };
   const stem = filename.replace(/\.pdf$/, "");
   return categories[stem] ?? "Unknown";
@@ -87,8 +94,15 @@ function scoreHeadingDetection(md: string, category: string): number {
   const h3Count = headingLines.filter((l) => l.startsWith("### ")).length;
   const totalHeadings = headingLines.length;
 
-  // Cheatsheets and forms may legitimately have few headings
-  if (category === "Code Cheatsheet" || category === "Government Form") {
+  // Some categories may legitimately have few headings
+  if (
+    category === "Code Cheatsheet" ||
+    category === "Government Form" ||
+    category === "Landscape Document" ||
+    category === "Filled Form" ||
+    category === "Scanned Document" ||
+    category === "Infographic"
+  ) {
     return totalHeadings >= 1 ? 8 : 5;
   }
 
@@ -159,7 +173,12 @@ function scoreListDetection(md: string, category: string): number {
   if (
     category === "Scanned Document" ||
     category === "Whitepaper" ||
-    category === "Resume/CV"
+    category === "Resume/CV" ||
+    category === "Landscape Document" ||
+    category === "Infographic" ||
+    category === "CJK / Multilingual" ||
+    category === "Filled Form" ||
+    category === "Financial Report"
   ) {
     return totalLists >= 0 ? 7 : 5;
   }
@@ -209,8 +228,37 @@ function scoreCodeBlockDetection(md: string, category: string): number {
     return 2; // Expected code but none found
   }
 
-  // Other categories
-  if (hasCode) return 9; // Bonus for detecting code
+  // Categories where code blocks are very unlikely — penalize false positives
+  const noCodeExpected = [
+    "Financial Report",
+    "Legal Document",
+    "Legal Contract",
+    "Government Form",
+    "Filled Form",
+    "Scanned Document",
+    "Resume/CV",
+    "Infographic",
+    "Landscape Document",
+    "CJK / Multilingual",
+  ];
+  if (noCodeExpected.includes(category)) {
+    if (!hasCode) return 9; // Correct: no false code blocks
+    // Penalize: code blocks in a non-code document are likely false positives
+    if (codeBlocks.length > 5) return 3;
+    if (codeBlocks.length > 2) return 5;
+    return 6;
+  }
+
+  // Other categories: mild bonus for detecting code, but penalize excessive
+  if (hasCode) {
+    // Check for suspiciously tiny code blocks (likely false positives)
+    const tinyBlocks = codeBlocks.filter((b) => {
+      const content = b.replace(/```/g, "").trim();
+      return content.length < 10;
+    });
+    if (tinyBlocks.length > codeBlocks.length * 0.5 && tinyBlocks.length > 3) return 6;
+    return 9;
+  }
   return 6; // N/A
 }
 

@@ -160,9 +160,7 @@ CONTENTS iii
 
 4.6 Kind Inference . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Modules
-```
 
 5.1 Module Structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -346,9 +344,7 @@ vi CONTENTS
 
 ##### II The Haskell 2010 Libraries
 
-```
-Control.Monad
-```
+### Control.Monad
 
 13.1 Functor and monad classes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -366,9 +362,7 @@ Control.Monad
 
 CONTENTS vii
 
-```
-Data.Array
-```
+### Data.Array
 
 14.1 Immutable non-strict arrays . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -382,13 +376,9 @@ Data.Array
 
 14.6 Specification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Data.Bits
-```
+### Data.Bits
 
-```
-Data.Char
-```
+### Data.Char
 
 16.1 Characters and strings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -406,9 +396,7 @@ Data.Char
 
 16.6 String representations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Data.Complex
-```
+### Data.Complex
 
 17.1 Rectangular form . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -418,15 +406,11 @@ Data.Complex
 
 17.4 Specification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Data.Int
-```
+### Data.Int
 
 18.1 Signed integer types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Data.Ix
-```
+### Data.Ix
 
 19.1 The Ix class . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -434,9 +418,7 @@ Data.Ix
 
 viii CONTENTS
 
-```
-Data.List
-```
+### Data.List
 
 20.1 Basic functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -492,37 +474,25 @@ Data.List
 
 CONTENTS ix
 
-```
-Data.Maybe
-```
+### Data.Maybe
 
 21.1 The Maybe type and operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 21.2 Specification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Data.Ratio
-```
+### Data.Ratio
 
 22.1 Specification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Data.Word
-```
+### Data.Word
 
 23.1 Unsigned integral types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Foreign
-```
+### Foreign
 
-```
-Foreign.C
-```
+### Foreign.C
 
-```
-Foreign.C.Error
-```
+### Foreign.C.Error
 
 26.1 Haskell representations of errno values . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -532,9 +502,7 @@ Foreign.C.Error
 
 26.1.3 Guards for IO operations that may fail . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Foreign.C.String
-```
+### Foreign.C.String
 
 27.1 C strings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -544,9 +512,7 @@ Foreign.C.String
 
 27.2 C wide strings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Foreign.C.Types
-```
+### Foreign.C.Types
 
 28.1 Representations of C types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -560,9 +526,7 @@ Foreign.C.Types
 
 x CONTENTS
 
-```
-Foreign.ForeignPtr
-```
+### Foreign.ForeignPtr
 
 29.1 Finalised data pointers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -572,13 +536,9 @@ Foreign.ForeignPtr
 
 29.1.3 Allocating managed memory . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Foreign.Marshal
-```
+### Foreign.Marshal
 
-```
-Foreign.Marshal.Alloc
-```
+### Foreign.Marshal.Alloc
 
 31.1 Memory allocation [. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](http://unicode.org/standard/standard.html)
 
@@ -586,9 +546,7 @@ Foreign.Marshal.Alloc
 
 31.1.2 Dynamic allocation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Foreign.Marshal.Array
-```
+### Foreign.Marshal.Array
 
 32.1 Marshalling arrays . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -604,13 +562,9 @@ Foreign.Marshal.Array
 
 32.1.6 Indexing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Foreign.Marshal.Error
-```
+### Foreign.Marshal.Error
 
-```
-Foreign.Marshal.Utils
-```
+### Foreign.Marshal.Utils
 
 34.1 General marshalling utilities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -626,9 +580,7 @@ Foreign.Marshal.Utils
 
 CONTENTS xi
 
-```
-Foreign.Ptr
-```
+### Foreign.Ptr
 
 35.1 Data pointers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -636,21 +588,15 @@ Foreign.Ptr
 
 35.3 Integral types with lossless conversion to and from pointers . . . . . . . . . . . . . . . . .
 
-```
-Foreign.StablePtr
-```
+### Foreign.StablePtr
 
 36.1 Stable references to Haskell values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 36.1.1 [The C-side interface](http://www.unicode.org/) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Foreign.Storable
-```
+### Foreign.Storable
 
-```
-Numeric
-```
+### Numeric
 
 38.1 Showing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -658,17 +604,11 @@ Numeric
 
 38.3 Miscellaneous . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-System.Environment
-```
+### System.Environment
 
-```
-System.Exit
-```
+### System.Exit
 
-```
-System.IO
-```
+### System.IO
 
 41.1 The IO monad . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -712,9 +652,7 @@ xii CONTENTS
 
 41.5.3 Special cases for standard input and output [. . . . . . . . . . . . . . . . . . . . . .](http://unicode.org/standard/standard.html)
 
-```
-System.IO.Error
-```
+### System.IO.Error
 
 42.1 I/O errors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -786,7 +724,7 @@ Removed language features:
 
 #### Haskell Resources
 
-The Haskell web site http://haskell.org gives access to many useful resources, including:
+The Haskell web site [http://haskell.org](http://haskell.org) gives access to many useful resources, including:
 
 - Online versions of the language and library definitions.
 
@@ -868,9 +806,7 @@ The chapters not mentioned above are Chapter 6, which describes the standard bui
 
 Examples of Haskell program fragments in running text are given in typewriter font:
 
-| let | x   | =   |
-| --- | --- | --- |
-| z   | =   | x+y |
+### let x = z = x+y in z+1
 
 “Holes” in program fragments representing arbitrary pieces of Haskell code are written in italics, as in if e then e else e . Generally the italicized names are mnemonic, such as e for expressions, d for declarations, t for types, etc.
 
@@ -919,9 +855,7 @@ These notational conventions are used for presenting syntax:
 
 〉 difference—elements generated by pat
 
-```
 ′
-```
 
 except those generated by pat fibonacci terminal syntax in typewriter font
 
@@ -1247,7 +1181,7 @@ For the sake of clarity, the rest of this section will assume that expressions i
 
 Errors during expression evaluation, denoted by ⊥ (“bottom”), are indistinguishable by a Haskell program from non-termination. Since Haskell is a non-strict language, all Haskell types include ⊥ . That is, a value of any type may be bound to a computation that, when demanded, results in an error. When evaluated, errors cause immediate program termination and cannot be caught by the user. The Prelude provides two functions to directly cause such errors:
 
-error :: String -> a undefined :: a
+### error :: String -> a undefined :: a
 
 A call to error terminates execution of the program and returns an appropriate error indication to the operating system. It should also display the string in some system-dependent manner. When undefined is used, the error message is created by the compiler.
 
@@ -1327,25 +1261,19 @@ Sections are written as ( op e ) or ( e op ) , where op is a binary operator and
 
 Syntactic precedence rules apply to sections as follows. ( op e ) is legal if and only if (x op e ) parses in the same way as (x op ( e )) ; and similarly for ( e op ) . For example, (*a+b) is syntactically invalid, but (+a*b) and (*(a+b)) are valid. Because (+) is left associative, (a+b+) is syntactically correct, but (+a+b) [is not; the latter may legally be written as](http://www.unicode.org/) (+(a+b)) . As another example, the expression
 
-(let n = in n +)
+### (let n = in n +)
 
 is invalid because, by the let/lambda meta-rule (Section 3), the expression
 
-```
-(let n = in n + x)
-```
+### (let n = in n + x)
 
 parses as
 
-```
-(let n = in (n + x))
-```
+### (let n = in (n + x))
 
 rather than
 
-```
-((let n = in n) + x)
-```
+### ((let n = in n) + x)
 
 Because - is treated specially in the grammar, (- exp ) is not a section, but an application of prefix negation, as described in the preceding section. However, there is a subtract function defined in the Prelude such that (subtract exp ) is equivalent to the disallowed section. The expression (+ (- exp )) can serve the same purpose.
 
@@ -1470,7 +1398,7 @@ As indicated by the translation of list comprehensions, variables bound by let h
 
 #### 3.12 Let Expressions
 
-lexp → [let](http://haskell.org/) [decls](http://haskell.org/) [in](http://haskell.org/) [exp](http://haskell.org/)
+### lexp → [let](http://haskell.org/) [decls](http://haskell.org/) [in](http://haskell.org/) [exp](http://haskell.org/)
 
 Let expressions have the general form let { d ; . . . ; d n } in e , and introduce a nested, lexically- scoped, mutually-recursive list of declarations ( let is often called letrec in other languages). The scope
 
@@ -1478,7 +1406,7 @@ Let expressions have the general form let { d ; . . . ; d n } in e , and introdu
 
 of the declarations is the expression e and the right hand side of the declarations. Declarations are described in Chapter 4. Pattern bindings are matched lazily; an implicit ˜ makes these patterns irrefutable. For example,
 
-let (x,y) = undefined in e
+### let (x,y) = undefined in e
 
 does not cause an execution-time error until x or y is evaluated.
 
@@ -1594,9 +1522,7 @@ Here S is legal but T is not, because y is given inconsistent typings in the lat
 
 ##### 3.15.1 Field Selection
 
-```
-aexp → qvar
-```
+### aexp → qvar
 
 Field labels are used as selector functions. When used as a variable, a field label serves as a function that extracts the field from an object. Selectors are top level bindings and so they may be shadowed by local variables but cannot conflict with other top level bindings of the same name. This shadowing only affects selector functions; in record construction (Section 3.15.2) and update (Section 3.15.3), field labels cannot be confused with ordinary variables.
 
@@ -1630,15 +1556,11 @@ Translation: In the binding f = v , the field f labels v .
 
 C { bs } = C ( pick bs undefined ) . . . ( pick k
 
-```
-bs undefined )
-```
+### bs undefined )
 
 where k is the arity of C .
 
-```
 C
-```
 
 The auxiliary function pick i
 
@@ -1678,32 +1600,21 @@ e { bs } = case e of
 
 C v . . . v k -> C ( pick bs v ) . . . ( pick
 
-```
 k
-```
 
 bs v k ) ...
 
-```
 C j C j
-```
 
 C j v . . . v k j
 
 - > C j ( pick bs v ) . . . ( pick
 
-```
 k j
-```
 
-```
 bs v k j
-```
 
-```
-)
-_ -> error "Update error"
-```
+### ) _ -> error "Update error"
 
 where { C , . . . , C j } is the set of constructors containing all labels in bs , and k i is the arity of C i .
 
@@ -1757,9 +1668,7 @@ lpat → apat | - ( integer | float ) ( negative literal ) | gcon apat . . . apa
 
 apat → var [ @ apat ] ( as pattern ) | gcon ( arity gcon = ) | qcon { fpat , . . . , fpat k } ( labeled pattern , k ≥ ) | literal | _ ( wildcard ) | ( pat ) ( parenthesized pattern ) | ( pat , . . . , pat k ) ( tuple pattern , k ≥ ) | [ pat , . . . , pat k ] ( list pattern , k ≥ ) | ˜ apat ( irrefutable pattern )
 
-```
-fpat → qvar = pat
-```
+### fpat → qvar = pat
 
 The arity of a constructor must match the number of sub-patterns associated with it; one cannot match against a partially-applied constructor.
 
@@ -1816,9 +1725,7 @@ Operationally, this means that no matching is done on a ˜ apat pattern until on
 
 - If the value is of the form con v . . . v n , sub-patterns are matched left-to-right against the com- ponents of the data value; if all matches succeed, the overall match succeeds; the first to fail or diverge causes the overall match to fail or diverge, respectively.
 
-```
 ′ ′
-```
 
 - If the value is of the form con v . . . v m , where con is a different constructor to con , the match fails.
 
@@ -1892,15 +1799,11 @@ both a and y will be evaluated by == in the guard.
 
 The semantics of all pattern matching constructs other than case expressions are defined by giving identities that relate those constructs to case expressions. The semantics of case expressions themselves are in turn given as a series of identities, in Figures 3.1–3.3. Any implementation should behave so that these identities hold; it is not expected that it will use them directly, since that would generate rather inefficient code.
 
-```
 ′
-```
 
 In Figures 3.1–3.3: e , e and e i are expressions; g i and gs i are guards and sequences of guards respecively;
 
-```
 ′
-```
 
 p and p i are patterns; v , x , and x i are variables; K and K are algebraic datatype ( data ) constructors (including tuple constructors); and N is a newtype constructor.
 
@@ -1922,45 +1825,31 @@ where { decls i }
 
 (c) case v of { p | gs -> e ; . . . | gs n -> e n where { decls }
 
-```
 ′
-```
 
-```
-_ -> e }
-```
+### _ -> e }
 
-```
 ′
-```
 
 = case e of { y -> case v of { p -> let { decls } in case () of { () | gs -> e ; _ -> . . . case () of { () | gs n -> e n ; _ -> y } . . . } _ -> y }} where y is a new variable
 
-```
 ′
-```
 
 (d) case v of { ˜ p -> e ; _ -> e } = (\ x . . . x n -> e ) (case v of { p -> x }) . . . (case v of { p -> x n }) where x , . . . , x n are all the variables in p
 
-```
 ′
-```
 
 ```
 (e) case v of { x @ p -> e ; _ -> e }
 ```
 
-```
 ′
-```
 
 ```
 = case v of { p -> ( \ x -> e ) v ; _ -> e }
 ```
 
-```
 ′
-```
 
 ```
 (f) case v of { _ -> e ; _ -> e } = e
@@ -1970,41 +1859,27 @@ Figure 3.1: Semantics of Case Expressions, Part 1
 
 ### 3.17. PATTERN MATCHING
 
-```
 ′
-```
 
 (g) case v of { K p . . . p n -> e ; _ -> e } = case v of { K x . . . x n -> case x of {
 
-```
 ′
-```
 
 p -> . . . case x n of { p n -> e ; _ -> e } . . .
 
-```
 ′
-```
 
-```
-_ -> e }
-```
+### _ -> e }
 
-```
 ′
-```
 
 _ -> e } at least one of p , . . . , p n is not a variable; x , . . . , x n are new variables
 
-```
-′ ′
-```
+[′](http://www.unicode.org/) ′
 
 (h) case v of { k -> e ; _ -> e } = if ( v == k ) then e else e where k is a numeric, character, or string literal
 
-```
 ′
-```
 
 ```
 (i) case v of { x -> e ; _ -> e } = case v of { x -> e }
@@ -2014,91 +1889,65 @@ _ -> e } at least one of p , . . . , p n is not a variable; x , . . . , x n are 
 (j) case v of { x -> e } = ( \ x -> e ) v
 ```
 
-```
 ′
-```
 
 ```
 (k) case N v of { N p -> e ; _ -> e }
 ```
 
-```
 ′
-```
 
 = case v of { p -> e ; _ -> e } where N is a newtype constructor
 
-```
 ′
-```
 
 (l) case ⊥ of { N p -> e ; _ -> e } = case ⊥ of { p -> e } where N is a newtype constructor
 
-```
 ′
-```
 
 (m) case v of { K { f = p , f = p , . . . } -> e ; _ -> e }
 
-```
 ′
-```
 
 = case e of { y -> case v of { K { f = p } -> case v of { K { f = p , . . . } -> e ; _ -> y }; _ -> y }} where f , f , . . . are fields of constructor K ; y is a new variable
 
-```
 ′
-```
 
 ```
 (n) case v of { K { f = p } -> e ; _ -> e }
 = case v of {
 ```
 
-```
 ′
-```
 
 K p . . . p n -> e ; _ -> e } where p i is p if f labels the i th component of K , _ otherwise
 
-```
 ′
-```
 
 ```
 (o) case v of { K {} -> e ; _ -> e }
 = case v of {
 ```
 
-```
 ′
-```
 
 K _ . . . _ -> e ; _ -> e }
 
-```
 ′ ′ ′
-```
 
 (p) case ( K e . . . e m ) of { K x . . . x n -> e ; _ -> e } = e
 
-```
 ′
-```
 
 where K and K are distinct data constructors of arity n and m , respectively
 
-```
 ′
-```
 
 (q) case ( K e . . . e n ) of { K x . . . x n -> e ; _ -> e } = (\ x . . . x n -> e ) e . . . e n
 
 where K is a data constructor of arity n
 
-```
 ′
-```
 
 (r) case ⊥ of { K x . . . x n -> e ; _ -> e } = ⊥ where K is a data constructor of arity n
 
@@ -2106,64 +1955,46 @@ Figure 3.2: Semantics of Case Expressions, Part 2
 
 ## CHAPTER 3. EXPRESSIONS
 
-```
 ′
-```
 
 (s) case () of { () | g , . . . , g n -> e ; _ -> e } = case () of { () | g -> . . . case () of { () | g n -> e ;
 
-```
 ′
-```
 
 _ -> e } . . .
 
-```
 ′
-```
 
 _ -> e } where y is a new variable
 
-```
 ′
-```
 
 ```
 (t) case () of { () | p <- e -> e ; _ -> e }
 ```
 
-```
 ′
-```
 
 ```
 = case e of { p -> e ; _ -> e }
 ```
 
-```
 ′
-```
 
 ```
 (u) case () of { () | let decls -> e ; _ -> e }
 = let decls in e
 ```
 
-```
 ′
-```
 
 ```
 (v) case () of { () | e -> e ; _ -> e }
 ```
 
-```
 ′
-```
 
-```
-= if e then e else e
-```
+### = if e then e else e
 
 Figure 3.3: Semantics of Case Expressions, Part 3
 
@@ -2339,9 +2170,7 @@ The type ∀ u . cx ⇒ t is more general than the type ∀ w . cx ⇒ t if and 
 
 A value of type ∀ u . cx ⇒ t , may be instantiated at types s if and only if the context cx [ s / u ] holds. For example, consider the function double :
 
-```
-double x = x + x
-```
+### double x = x + x
 
 The most general type of double is ∀ a . Num a ⇒ a → a . double may be applied to values of type Int (instantiating a to Int ), since Num Int holds, because Int is an instance of the class Num . However, double may not normally be applied to values of type Char , because Char is not normally an instance of class Num . The user may choose to declare such an instance, in which case double may indeed be applied to a Char .
 
@@ -2391,7 +2220,7 @@ NilSet :: ∀ a . Set a ConsSet :: ∀ a . Eq a ⇒ a → Set a → Set a
 
 In the example given, the overloaded type for ConsSet ensures that ConsSet can only be applied to values whose type is an instance of the class Eq . Pattern matching against ConsSet also gives rise to an Eq a constraint. For example:
 
-f (ConsSet a s) = a
+### f (ConsSet a s) = a
 
 the function f has inferred type Eq a => Set a -> a . The context in the data declaration has no other effect whatsoever.
 
@@ -2411,9 +2240,7 @@ data C = F { f1,f2 :: Int, f3 :: Bool }
 
 defines a type and constructor identical to the one produced by
 
-```
-data C = F Int Int Bool
-```
+### data C = F Int Int Bool
 
 Operations using field labels are described in Section 3.15. A data declaration may use the same field label [in multiple constructors as long as the typing of the field is the same in all cases after type synonym expansion.](http://www.unicode.org/) A label cannot be shared by more than one type in scope. Field names share the top level namespace with ordinary variables and class methods and must not conflict with other top level names in scope.
 
@@ -2443,9 +2270,7 @@ which introduces a new type constructor, T . The type ( T t . . . t k ) is equiv
 
 ### 4.2. USER-DEFINED DATATYPES
 
-```
-type List = []
-```
+### type List = []
 
 Type constructor symbols T introduced by type synonym declarations cannot be partially applied; it is a static error to use T without the full number of arguments.
 
@@ -2544,7 +2369,7 @@ Other than these cases, no other declarations are permitted in cdecls .
 
 A class declaration with no where part may be useful for combining a collection of classes into a larger one that inherits all of the class methods in the original ones. For example:
 
-class (Read a, Show a) => Textual a
+### class (Read a, Show a) => Textual a
 
 In such a case, if a type is an instance of all superclasses, it is not automatically an instance of the sub- class, even though the subclass has no immediate class methods. The instance declaration must be given explicitly with no where part.
 
@@ -2558,15 +2383,11 @@ topdecl [→](http://haskell.org/) [instance](http://haskell.org/) [[](http://ha
 
 An instance declaration introduces an instance of a class. Let
 
-```
-class cx => C u where { cbody }
-```
+### class cx => C u where { cbody }
 
 be a class declaration. The general form of the corresponding instance declaration is:
 
-```
 ′
-```
 
 instance cx => C ( T u . . . u k ) where { d }
 
@@ -2581,7 +2402,7 @@ This prohibits instance declarations such as:
 
 The declarations d may contain bindings only for the class methods of C . It is illegal to give a binding for a class method that is not in scope, but the name under which it is in scope is immaterial; in particular, it may be a qualified name. (This rule is identical to that used for subordinate names in export lists — Section 5.2.) For example, this is legal, even though range is in scope only with the qualified name Data.Ix.range .
 
-module A where import qualified Data.Ix
+### module A where import qualified Data.Ix
 
 instance Data.Ix.Ix T where range = ...
 
@@ -2597,9 +2418,7 @@ An instance declaration that makes the type T to be an instance of class C is ca
 
 - Assume that the type variables in the instance type ( T u . . . u k ) satisfy the constraints in the instance
 
-```
 ′
-```
 
 context cx . Under this assumption, the following two conditions must also be satisfied:
 
@@ -2607,9 +2426,7 @@ context cx . Under this assumption, the following two conditions must also be sa
 
 1. The constraints expressed by the superclass context cx [( T u1 . . . uk ) / u ] of C must be satis- fied. In other words, T must be an instance of each of C ’s superclasses and the contexts of all
 
-```
 ′
-```
 
 superclass instances must be implied by cx .
 
@@ -2617,9 +2434,7 @@ superclass instances must be implied by cx .
 
 In fact, except in pathological cases it is possible to infer from the instance declaration the most general
 
-```
 ′
-```
 
 instance context cx satisfying the above two constraints, but it is nevertheless mandatory to write an explicit instance context.
 
@@ -2677,7 +2492,7 @@ For example, the earlier expression involving show and read has an ambiguous typ
 
 Ambiguous types can only be circumvented by input from the user. One way is through the use of expression type-signatures as described in Section 3.16. For example, for the ambiguous expression given earlier, one could write:
 
-let x = read "..." in show (x::Bool)
+### let x = read "..." in show (x::Bool)
 
 which disambiguates the type.
 
@@ -2705,9 +2520,7 @@ Each defaultable variable is replaced by the first type in the default list that
 
 Only one default declaration is permitted per module, and its effect is limited to that module. If no default declaration is given in a module then it assumed to be:
 
-```
-default (Integer, Double)
-```
+### default (Integer, Double)
 
 The empty default declaration, default () [, turns off all defaults in a module.](http://unicode.org/standard/standard.html)
 
@@ -2737,15 +2550,11 @@ If a variable f is defined without providing a corresponding type signature decl
 
 For example, if we define
 
-```
-sqr x = x*x
-```
+### sqr x = x*x
 
 then the principal type is sqr :: ∀ a . Num a ⇒ a → a , which allows applications such as sqr 5 or sqr 0.1 . It is also valid to declare a more specific type, such as
 
-```
-sqr :: Int -> Int
-```
+### sqr :: Int -> Int
 
 but now applications such as sqr 0.1 [are invalid. Type signatures such as](http://unicode.org/standard/standard.html)
 
@@ -2779,13 +2588,9 @@ Fixity is a property of a particular entity (constructor or variable), just like
 
 module Bar( op ) where infixr ‘op‘ op = ...
 
-```
-module Foo where
-import qualified Bar
-infix ‘op‘
-```
+### module Foo where import qualified Bar infix ‘op‘
 
-a ‘op‘ b = (a ‘Bar.op‘ b) +
+### a ‘op‘ b = (a ‘Bar.op‘ b) +
 
 f x = let p ‘op‘ q = (p ‘Foo.op‘ q) * 2 in ...
 
@@ -2793,29 +2598,20 @@ Here, ‘Bar.op‘ is infixr , ‘Foo.op‘ is infix 3 , and the nested definiti
 
 ##### 4.4.3 Function and Pattern Bindings
 
-```
-decl → ( funlhs | pat ) rhs
-```
+### decl → ( funlhs | pat ) rhs
 
-```
-funlhs → var apat { apat }
-| pat varop pat
-```
+### funlhs → var apat { apat } | pat varop pat
 
 ## CHAPTER 4. DECLARATIONS AND BINDINGS
 
-```
-| ( funlhs ) apat { apat }
-```
+### | ( funlhs ) apat { apat }
 
 ```
 rhs → = exp [ where decls ]
 | gdrhs [ where decls ]
 ```
 
-```
-gdrhs → guards = exp [ gdrhs ]
-```
+### gdrhs → guards = exp [ gdrhs ]
 
 guards → | guard , . . . , guard n ( n ≥ )
 
@@ -2840,9 +2636,7 @@ or
 
 . . . | gs im i
 
-```
 = e im i
-```
 
 where { decls i }
 
@@ -2860,9 +2654,7 @@ Alternative syntax is provided for binding functional values to infix operators.
 
 Note that fixity resolution applies to the infix variants of the function binding in the same way as for expres- sions (Section 10.6). Applying fixity resolution to the left side of the equals in a function binding must leave the varop being defined at the top level. For example, if we are defining a new operator ## with precedence 6, then this definition would be illegal:
 
-```
-a ## b : xs = exp
-```
+### a ## b : xs = exp
 
 because : has precedence 5, so the left hand side resolves to (a ## x) : xs , and this cannot be a pattern binding because (a ## x) is not a valid pattern.
 
@@ -2880,17 +2672,13 @@ The general form of a pattern binding is p match , where a match is the same str
 
 p | gs = e | gs = e . . . | gs m = e m
 
-```
-where { decls }
-```
+### where { decls }
 
 Translation: The pattern binding above is semantically equivalent to this simple pattern binding:
 
 p = let decls in case () of () | gs -> e | gs -> e . . . | gs m -> e m
 
-```
-_ -> error "Unmatched pattern"
-```
+### _ -> error "Unmatched pattern"
 
 #### 4.5 Static Semantics of Function and Pattern Bindings
 
@@ -2944,9 +2732,7 @@ If the programmer supplies explicit type signatures for more than one variable i
 
 As mentioned in Section 4.1.4, the context of a type may constrain only a type variable, or the application of a type variable to one or more types. Hence, types produced by generalization must be expressed in a form in which all context constraints have be reduced to this “head normal form”. Consider, for example, the definition:
 
-```
-f xs y = xs == [y]
-```
+### f xs y = xs == [y]
 
 Its type is given by
 
@@ -2985,15 +2771,11 @@ In an environment where x has type a , the type of g ’s definition is a → b 
 
 [The effect of such monomorphism is that the first argument of all applications of](http://www.unicode.org/) g must be of a single type. For example, it would be valid for the “ ... ” to be
 
-```
-(g True, g False)
-```
+### (g True, g False)
 
 (which would, incidentally, force x to have type Bool ) but invalid for it to be
 
-```
-(g True, g ’c’)
-```
+### (g True, g ’c’)
 
 In general, a type ∀ u . cx ⇒ t is said to be monomorphic in the type variable a if a is free in ∀ u . cx ⇒ t .
 
@@ -3003,9 +2785,7 @@ f x = let g :: a -> b -> ([a],b) g y z = ([x,y], z) in ...
 
 because that would claim that g was polymorphic in both a and b (Section 4.4.1). In this program, g can only be given a type signature if its first argument is restricted to a type not involving type variables; for example
 
-```
-g :: Int -> b -> ([Int],b)
-```
+### g :: Int -> b -> ([Int],b)
 
 This signature would also cause x to have type Int .
 
@@ -3073,15 +2853,11 @@ When type inference on module M1 is complete, len1 has the monomorphic type Num 
 
 Consequences [The monomorphism rule has a number of consequences for the programmer.](http://unicode.org/standard/standard.html) [Anything](http://unicode.org/standard/standard.html) defined with function syntax usually generalizes as a function is expected to. Thus in
 
-```
-f x y = x+y
-```
+### f x y = x+y
 
 the function f may be used at any overloading in class Num . There is no danger of recomputation here. However, the same function defined with pattern syntax:
 
-```
-f = \x -> \y -> x+y
-```
+### f = \x -> \y -> x+y
 
 requires a type signature if f is to be fully overloaded. Many functions are most naturally defined using simple pattern bindings; the user must be careful to affix these with type signatures to retain full overloading. The standard prelude contains many examples of this:
 
@@ -3117,9 +2893,7 @@ This would give kinds ( κ → ∗ ) → κ → ∗ and κ → ∗ for App and T
 
 Defaults are applied to each dependency group without consideration of the ways in which particular type constructor constants or classes are used in later dependency groups or elsewhere in the program. For exam- ple, adding the following definition to those above does not influence the kind inferred for Tree (by changing it to ( ∗ → ∗ ) → ∗ , for instance), and instead generates a static error because the kind of [] , ∗ → ∗ , does not match the kind ∗ that is expected for an argument of Tree :
 
-```
-type FunnyTree = Tree [] -- invalid
-```
+### type FunnyTree = Tree [] -- invalid
 
 This is important because it ensures that each constructor and class are used consistently with the same kind whenever they are in scope.
 
@@ -3149,22 +2923,15 @@ module Main where import A import B main = A.f >> B.f
 
 It is equivalent to the following single-module program:
 
-```
-module Main where
-main = af >> bf
-```
+### module Main where main = af >> bf
 
 There are two minor exceptions to this statement. First, default declarations scope over a single module (Section 4.3.4). Second, Rule 2 of the monomorphism restriction (Section 4.5.5) is affected by module boundaries.
 
 ## CHAPTER 5. MODULES
 
-```
 af = ...
-```
 
-```
 bf = ...
-```
 
 Because they are allowed to be mutually recursive, modules allow a program to be partitioned freely without regard to dependencies.
 
@@ -3204,9 +2971,7 @@ exports → ( export , . . . , export n [ , ] ) ( n ≥ )
 
 export → qvar | qtycon [ (..) | ( cname , . . . , cname n ) ] ( n ≥ ) | qtycls [ (..) | ( var , . . . , var n ) ] ( n ≥ ) | module modid
 
-```
-cname → var | con
-```
+### cname → var | con
 
 An export list identifies the entities to be exported by a module declaration. A module implementation may only export an entity that it declares, or that it imports from some other module. If the export list is omitted, all values, types and classes defined in the module are exported, [but not those that are imported](http://unicode.org/standard/standard.html) [.](http://unicode.org/standard/standard.html)
 
@@ -3309,15 +3074,13 @@ module Ring where import qualified Prelude -- All Prelude names must be qualifie
 
 l1 + l2 = l1 Prelude.++ l2 -- This + differs from the one in the Prelude l1 * l2 = nub (l1 + l2) -- This * differs from the one in the Prelude
 
-```
-succ = (Prelude.+ 1)
-```
+### succ = (Prelude.+ 1)
 
 ##### 5.3.3 Local aliases
 
 Imported modules may be assigned a local alias in the importing module using the as clause. For example, in
 
-import qualified VeryLongModuleName as C
+### import qualified VeryLongModuleName as C
 
 entities must be referenced using ‘ C. ’ as a qualifier instead of ‘ VeryLongModuleName. ’. This also allows a different module to be substituted for VeryLongModuleName without changing the qualifiers used for the imported module. It is legal for more than one module in scope to use the same qualifier, provided that all names can still be resolved unambiguously. For example:
 
@@ -3327,9 +3090,7 @@ This module is legal provided only that Foo and Baz do not both export f .
 
 An as clause may also be used on an un- qualified import statement:
 
-```
-import Foo as A(f)
-```
+### import Foo as A(f)
 
 This declaration brings into scope f and A.f .
 
@@ -3401,18 +3162,14 @@ Consider the definition of tup .
 
 The name occurring in a type signature or fixity declarations is always unqualified, and unambiguously refers to another declaration in the same declaration list (except that the fixity declaration for a class method can occur at top level — Section 4.4.2). For example, the following module is legal:
 
-```
-module F where
-```
+### module F where
 
 ```
 sin :: Float -> Float
 sin x = (x::Float)
 ```
 
-```
-f x = Prelude.sin (F.sin x)
-```
+### f x = Prelude.sin (F.sin x)
 
 The local declaration for sin is legal, even though the Prelude function sin is implicitly in scope. The references to [Prelude.sin](http://www.unicode.org/) [and](http://www.unicode.org/) [F.sin](http://www.unicode.org/) must both be qualified to make it unambiguous which sin is meant. However, the unqualified name sin in the type signature in the first line of F unambiguously refers to the local declaration for sin .
 
@@ -3426,9 +3183,7 @@ data T = T
 x = T
 ```
 
-| module | M2  | where |
-| ------ | --- | ----- |
-| y      | =   | x     |
+### module M2 where import M1(x) y = x
 
 In this example, there is no way to supply an explicit type signature for y since T is not in scope. Whether or not T is explicitly exported, module M2 knows enough about T to correctly type check the program.
 
@@ -3549,9 +3304,7 @@ A string is a list of characters:
 
 ## CHAPTER 6. PREDEFINED TYPES AND CLASSES
 
-```
-type String = [Char]
-```
+### type String = [Char]
 
 Strings may be abbreviated using the lexical syntax described in Section 2.6. For example, "A string" abbreviates [ ’A’,’ ’,’s’,’t’,’r’, ’i’,’n’,’g’]
 
@@ -3606,9 +3359,7 @@ The Maybe type is an instance of classes Functor , Monad , and MonadPlus . The O
 
 Function application in Haskell is non-strict; that is, a function argument is evaluated only when required. Sometimes it is desirable to force the evaluation of a value, using the seq function:
 
-```
-seq :: a -> b -> b
-```
+### seq :: a -> b -> b
 
 The function seq is defined by the equations:
 
@@ -3724,13 +3475,11 @@ The default declarations allow a user to create an Ord instance either with a ty
 
 ##### 6.3.3 The Read and Show Classes
 
-type ReadS a = String -> [(a,String)]
+### type ReadS a = String -> [(a,String)]
 
 ## CHAPTER 6. PREDEFINED TYPES AND CLASSES
 
-```
-type ShowS = String -> String
-```
+### type ShowS = String -> String
 
 class Read a where readsPrec :: Int -> ReadS a readList :: ReadS [a] -- ... default decl for readList given in Prelude
 
@@ -3851,9 +3600,7 @@ Instances of Monad should satisfy the following laws:
 
 Instances of both Monad and Functor should additionally satisfy the law:
 
-```
-fmap f xs = xs >>= return . f
-```
+### fmap f xs = xs >>= return . f
 
 All instances of [Monad](http://www.unicode.org/) [defined in the Prelude satisfy these laws.](http://www.unicode.org/)
 
@@ -3869,7 +3616,7 @@ mapM_ :: Monad m => (a -> m b) -> [a] -> m ()
 
 ##### 6.3.7 The Bounded Class
 
-class Bounded a where minBound, maxBound :: a
+### class Bounded a where minBound, maxBound :: a
 
 The Bounded class is used to name the upper and lower limits of a type. Ord is not a superclass of Bounded since types that are not totally ordered may also have upper and lower bounds. The types Int , Char , Bool , () , Ordering , and all tuples are instances of Bounded . The Bounded class may be derived for any enumeration type; minBound is the first constructor listed in the data declaration and maxBound is the last. Bounded may also be derived for single-constructor datatypes whose constituent types are in Bounded .
 
@@ -3968,9 +3715,7 @@ The one-argument exponential function exp and the logarithm function log act on 
 
 A number has a magnitude and a sign . The functions abs and signum apply to any number and satisfy the law:
 
-```
-abs x * signum x == x
-```
+### abs x * signum x == x
 
 For real numbers, these functions are defined by:
 
@@ -3979,9 +3724,7 @@ abs x | x >= = x
 | x < = -x
 ```
 
-```
-signum x | x > =
-```
+### signum x | x > =
 
 ### 6.4. NUMBERS
 
@@ -4006,29 +3749,21 @@ The function properFraction takes a real fractional number x and returns a pair 
 
 Two functions convert numbers to type Rational : toRational returns the rational equivalent of its real argument with full precision; approxRational takes two real fractional arguments x and  and returns
 
-```
 ′ ′
-```
 
 the simplest rational number within  of x , where a rational p/q in reduced form is simpler than another p /q
 
-```
 ′ ′
-```
 
 if | p | ≤ | p | and q ≤ q . Every real interval contains a unique simplest rational; in particular, note that / is the simplest rational of all.
 
 The class methods of class RealFloat allow efficient, machine-independent access to the components of a floating-point number. The functions floatRadix , floatDigits , and floatRange give the parameters of a floating-point type: the radix of the representation, the number of digits of this radix in the significand, and the lowest and highest values the exponent may assume, respectively. The function decodeFloat applied to a real floating-point number returns the significand expressed as an Integer and an appropriately scaled exponent (an Int ). If decodeFloat x yields ( m , n ) , then x is equal in
 
-```
 n
-```
 
 value to mb , where b is the floating-point radix, and furthermore, either m and n are both zero or else
 
-```
 d − d
-```
 
 b ≤ | m | [<](http://haskell.org/) [b](http://haskell.org/) [, where](http://haskell.org/) [d](http://haskell.org/) [is the value of](http://haskell.org/) floatDigits x . encodeFloat performs the inverse of this transformation. The functions significand and exponent together provide the same information as decodeFloat , but rather than an Integer , significand x yields a value of the same type as x , scaled to lie in the open interval ( − , ) . exponent 0 is zero. scaleFloat multiplies a floating-point number by an integer power of the radix.
 
@@ -4098,17 +3833,13 @@ Typically, the read operation from class Read is used to convert the string to a
 
 The following program simply removes all non-ASCII characters from its standard input and echoes the result on its standard output. (The isAscii function is defined in a library.)
 
-```
-main = interact (filter isAscii)
-```
+### main = interact (filter isAscii)
 
 Files These functions operate on files of characters. Files are named by strings using some implementation- specific method to resolve strings as file names.
 
 The writeFile and appendFile functions write or append the string, their second argument, to the file, their first argument. The readFile function reads a file and returns the contents of the file as a string. The file is read lazily, on demand, as with getContents .
 
-```
-type FilePath = String
-```
+### type FilePath [=](http://haskell.org/) [String](http://haskell.org/)
 
 | writeFile  | ::  | FilePath | ->  | String | ->  | IO  | ()  |
 | ---------- | --- | -------- | --- | ------ | --- | --- | --- |
@@ -4170,9 +3901,7 @@ The I/O monad includes a simple exception handling system. Any I/O operation may
 
 Exceptions in the I/O monad are represented by values of type IOError . This is an abstract type: its constructors are hidden from the user. The IO library defines functions that construct and examine IOError values. The only Prelude function that creates an IOError value is userError . User error values include a string describing the error.
 
-```
-userError :: String -> IOError
-```
+### userError :: String -> IOError
 
 Exceptions are raised and caught using the following functions:
 
@@ -4192,9 +3921,7 @@ The fail method of the IO instance of the Monad class (Section 6.3.6) raises a u
 
 instance Monad IO where ...bindings for return, (>>=), (>>)
 
-```
-fail s = ioError (userError s)
-```
+### fail s = ioError (userError s)
 
 The exceptions raised by the I/O functions in the Prelude are defined in Chapter 42.
 
@@ -4236,9 +3963,7 @@ To refer to objects of an external C context, we introduce the following phrases
 
 chname → { chchar } . h ( C header filename ) cid → letter { letter | ascDigit } ( C identifier ) chchar → letter | ascSymbol 〈 & 〉
 
-```
-letter → ascSmall | ascLarge | _
-```
+### letter → [ascSmall](http://haskell.org/) [|](http://haskell.org/) [ascLarge](http://haskell.org/) [|](http://haskell.org/) [_](http://haskell.org/)
 
 The range of lexemes that are admissible for chname is a subset of those permitted as arguments to the #include directive in C. In particular, a file name chname must end in the suffix .h . The lexemes produced by cid coincide with those allowed as C identifiers, as specified in [9].
 
@@ -4317,9 +4042,7 @@ Marshallable foreign types. The argument types at i produced by fatype must be m
 
 - a type synonym that expands to a marshallable foreign type,
 
-```
 ′ ′
-```
 
 - a type T t . . . t n
 
@@ -4331,9 +4054,7 @@ and
 
 - the constructor N is visible where T is used,
 
-```
 ′ ′
-```
 
 - t [ t / a .. t n
 
@@ -4351,9 +4072,7 @@ Marshallable foreign result types. The result type rt produced by frtype must be
 
 - a type synonym that expands to marshallable foreign result type,
 
-```
 ′ ′
-```
 
 - a type T t . . . t n
 
@@ -4365,9 +4084,7 @@ and
 
 - the constructor N is visible where T is used,
 
-```
 ′ ′
-```
 
 - t [ t / a .. t n
 
@@ -4377,9 +4094,7 @@ and
 
 Generally, an import declaration has the form
 
-```
-foreign import c e v :: t
-```
+### foreign import c e v :: t
 
 which declares the variable v of type t to be defined externally. Moreover, it specifies that v is evaluated by executing the external entity identified by the string e using calling convention c . The precise form of e depends on the calling convention and is detailed in Section 8.5. If a variable v is defined by an import declaration, no other top-level declaration for v is allowed in the same module. For example, the declaration
 
@@ -4407,9 +4122,7 @@ Optionally, an import declaration can specify, after the calling convention, the
 
 The general form of export declarations is
 
-```
-foreign export c e v :: t
-```
+### foreign export c e v :: t
 
 Such a declaration enables external access to v , which may be a value, field name, or class method that is declared on the top-level of the same module or imported. Moreover, the Haskell system defines the external entity described by the string e , which may be used by external code using the calling convention c ; an external invocation of the external entity e is translated into evaluation of v . The type t must be an instance of the type of v . For example, we may have
 
@@ -4449,9 +4162,7 @@ Import Declarations For import declarations, the syntax for the specification of
 
 The first alternative either imports a static function cid or, if & precedes the identifier, a static address. If cid is omitted, it defaults to the name of the imported Haskell variable. The optional filename chname specifies a C header file, where the intended meaning is that the header file declares the C entity identified by cid . In particular, when the Haskell system compiles Haskell to C code, the directive
 
-```
-#include " chname "
-```
+### #include " chname "
 
 ## CHAPTER 8. FOREIGN FUNCTION INTERFACE
 
@@ -4461,23 +4172,17 @@ The second and third alternative, identified by the keywords dynamic and wrapper
 
 It should be noted that a static foreign declaration that does not import an address (i.e., where & is not used in the specification of the external entity) always refers to a C function, even if the Haskell type is non-functional. For example,
 
-```
-foreign import ccall foo :: CInt
-```
+### foreign import ccall foo :: CInt
 
 refers to a pure C function foo with no arguments that returns an integer value. Similarly, if the type is IO CInt , the declaration refers to an impure nullary function. If a Haskell program needs to access a C variable bar of integer type,
 
-```
-foreign import ccall "&" bar :: Ptr CInt
-```
+### foreign import ccall "&" bar :: Ptr CInt
 
 must be used to obtain a pointer referring to the variable. The variable can be read and updated using the routines provided by the module Foreign.Storable (cf. Section 37).
 
 Export Declarations External entities in ccall export declarations are of the form
 
-```
-expent → " [ cid ] "
-```
+### expent → " [ cid ] "
 
 The optional C identifier cid defines the external name by which the exported Haskell variable is accessible in C. If it is omitted, the external name defaults to the name of the exported Haskell variable.
 
@@ -4525,7 +4230,7 @@ This convention implies that the onus for ensuring the match between C and Haske
 
 ## CHAPTER 8. FOREIGN FUNCTION INTERFACE
 
-void foo (a) float a; { ... }
+### void foo (a) float a; { ... }
 
 The lack of a prototype implies that a C compiler will apply default argument promotion to the param- eter a , and thus, foo will expect to receive a value of type double , not float . Hence, the correct foreign import declaration is
 
@@ -4941,9 +4646,7 @@ data Bool = False | True deriving (Eq, Ord, Enum, Read, Show, Bounded)
 | --- | ----- | --- | ----- |
 | not | False | =   | True  |
 
-| otherwise | ::  | Bool |
-| --------- | --- | ---- |
-| otherwise | =   | True |
+### otherwise :: Bool otherwise = True
 
 - - Character type
 
@@ -4965,9 +4668,7 @@ instance Enum Char where toEnum [=](http://www.unicode.org/) [primIntToChar](htt
 | -------- | --- | ------------------ |
 | maxBound | =   | primUnicodeMaxChar |
 
-```
-type String = [Char]
-```
+### type String = [Char]
 
 - - Maybe type
 
@@ -5003,7 +4704,7 @@ data Either a b = Left a | Right b deriving (Eq, Ord, Read, Show)
 
 - - IO type
 
-data IO a = ... -- abstract
+### data IO a = ... -- abstract
 
 ```
 instance Functor IO where
@@ -5092,10 +4793,7 @@ numericEnumFrom :: (Fractional a) => a -> [a] numericEnumFromThen :: (Fractional
 
 data [a] = [] | a : [a] deriving (Eq, Ord) -- [Not](http://haskell.org/) [legal](http://haskell.org/) [Haskell;](http://haskell.org/) for illustration only
 
-```
-instance Functor [] where
-fmap = map
-```
+### instance Functor [] where fmap = map
 
 ## CHAPTER 9. STANDARD PRELUDE
 
@@ -5132,17 +4830,11 @@ uncurry f p = f (fst p) (snd p)
 
 - - error stops execution and displays an error message
 
-```
-error :: String -> a
-error = primError
-```
+### error :: String -> a error = primError
 
 - - It is expected that compilers will recognize this and insert error -- messages that [are](http://haskell.org/) [more](http://haskell.org/) [appropriate](http://haskell.org/) to the context in which undefined -- appears.
 
-```
-undefined :: a
-undefined = error "Prelude.undefined"
-```
+### undefined :: a undefined = error "Prelude.undefined"
 
 ### 9.1. PRELUDE PRELUDELIST
 
@@ -5164,13 +4856,9 @@ zip, zip3, zipWith, zipWith3, unzip, unzip3)
 where
 ```
 
-```
-import qualified Data.Char(isSpace)
-```
+### import qualified Data.Char(isSpace)
 
-| infixl | !!  |
-| ------ | --- |
-| infixr | ++  |
+### infixl !! infixr ++ infix ‘elem‘, ‘notElem‘
 
 - - Map and append map :: (a -> b) -> [a] -> [b] map f [] = [] map f (x:xs) = f x : map f xs
 
@@ -5326,9 +5014,7 @@ dropWhile p xs@(x:xs’)
 
 span, break :: (a -> Bool) -> [a] -> ([a],[a]) span p [] = ([],[]) span p xs@(x:xs’) | p x = (x:ys,zs) | otherwise = ([],xs) where (ys,zs) = span p xs’
 
-```
-break p = span (not . p)
-```
+### break p = span (not . p)
 
 - - lines breaks a string up into a list of strings at newline characters. -- The resulting strings do not contain newlines. Similary, words -- breaks a string up into a list of words, which were delimited by -- white space. unlines and unwords are the inverse operations. -- unlines joins lines with terminating newlines, and unwords joins -- words with separating spaces.
 
@@ -5415,15 +5101,9 @@ showChar, showString, readParen, showParen ) where
 
 - - The instances of Read and Show for -- Bool, Maybe, Either, Ordering -- are done via "deriving" clauses in Prelude.hs
 
-```
-import Data.Char(isSpace, isAlpha, isDigit, isAlphaNum,
-showLitChar, readLitChar, lexLitChar)
-```
+### import Data.Char(isSpace, isAlpha, isDigit, isAlphaNum, showLitChar, readLitChar, lexLitChar)
 
-```
-import Numeric(showSigned, showInt, readSigned, readDec, showFloat,
-readFloat, lexDigits)
-```
+### import Numeric(showSigned, showInt, readSigned, readDec, showFloat, readFloat, lexDigits)
 
 type ReadS a = String -> [(a,String)] type ShowS = String -> String
 
@@ -5435,9 +5115,7 @@ class Show a where showsPrec :: Int -> a -> ShowS show :: a -> String showList :
 
 - - Mimimal complete definition: -- show or showsPrec showsPrec _ x s = show x ++ s
 
-```
-show x = showsPrec x ""
-```
+### show x = showsPrec x ""
 
 showList [[]](http://haskell.org/) [=](http://haskell.org/) [showString](http://haskell.org/) "[]" showList (x:xs) = showChar ’[’ . shows x . showl xs where showl [] = showChar ’]’ showl (x:xs) = showChar ’,’ . shows x . showl xs
 
@@ -5455,15 +5133,9 @@ read s = case [x | (x,t) <- reads s, ("","") <- lex t] of
 _ -> error "Prelude.read: ambiguous parse"
 ```
 
-```
-showChar :: Char -> ShowS
-showChar = (:)
-```
+### showChar :: [Char](http://www.unicode.org/) [->](http://www.unicode.org/) [ShowS](http://www.unicode.org/) showChar = (:)
 
-```
-showString :: String -> ShowS
-showString = (++)
-```
+### showString :: String -> ShowS showString = (++)
 
 ```
 showParen :: Bool -> ShowS -> ShowS
@@ -5538,30 +5210,21 @@ readsPrec p r = [(fromInteger i, t) | (i,t) <- readsPrec p r]
 -- possible difficulty with minInt
 ```
 
-```
-instance Show Integer where
-showsPrec = showSigned showInt
-```
+### instance Show Integer where showsPrec = showSigned showInt
 
 ```
 instance Read Integer where
 readsPrec p = readSigned readDec
 ```
 
-```
-instance Show Float where
-showsPrec p = showFloat
-```
+### instance Show Float where showsPrec p = showFloat
 
 ```
 instance Read Float where
 readsPrec p = readSigned readFloat
 ```
 
-```
-instance Show Double where
-showsPrec p = showFloat
-```
+### instance Show Double where showsPrec p = showFloat
 
 ```
 instance Read Double where
@@ -5636,13 +5299,9 @@ readFile, writeFile, appendFile, readIO, readLn
 ) where
 ```
 
-```
-import PreludeBuiltin
-```
+### import PreludeBuiltin
 
-```
-type FilePath = String
-```
+### type FilePath [=](http://www.unicode.org/) [String](http://www.unicode.org/)
 
 data IOError -- The internals of [this](http://unicode.org/standard/standard.html) [type](http://unicode.org/standard/standard.html) [are](http://unicode.org/standard/standard.html) [system](http://unicode.org/standard/standard.html) [dependent](http://unicode.org/standard/standard.html)
 
@@ -5655,10 +5314,7 @@ ioError :: IOError -> IO a
 ioError = primIOError
 ```
 
-```
-userError :: String -> IOError
-userError = primUserError
-```
+### userError :: String -> IOError userError = primUserError
 
 catch :: IO a -> (IOError -> IO a) -> IO a catch = primCatch
 
@@ -5683,10 +5339,7 @@ print :: Show a => a -> IO ()
 print x = putStrLn (show x)
 ```
 
-```
-getChar :: IO Char
-getChar = primGetChar
-```
+### getChar :: IO Char getChar = primGetChar
 
 ```
 getLine :: IO String
@@ -5698,10 +5351,7 @@ return (c:s)
 
 ## CHAPTER 9. STANDARD PRELUDE
 
-```
-getContents :: IO String
-getContents = primGetContents
-```
+### getContents :: IO String getContents = primGetContents
 
 ```
 interact :: (String -> String) -> IO ()
@@ -5748,9 +5398,7 @@ These notational conventions are used for presenting syntax:
 
 〉 difference—elements generated by pat
 
-```
 ′
-```
 
 except those generated by pat fibonacci terminal syntax in typewriter font
 
@@ -6000,9 +5648,7 @@ By convention, the style of comment is indicated by the file extension, with “
 
 This literate program prompts the user for a number and prints the factorial of that number:
 
-```
-> main :: IO ()
-```
+### > main :: IO ()
 
 ```
 > main = do putStr "Enter a number: "
@@ -6027,17 +5673,11 @@ An alternative style of literate programming is particularly suitable for use wi
 
 It is not necessary to insert additional blank lines before or after these delimiters, though it may be stylistically desirable. For example,
 
-```
-\documentstyle{article}
-```
+### \documentstyle{article}
 
-```
-\begin{document}
-```
+### [\begin{document}](http://haskell.org/)
 
-```
-\chapter{Introduction}
-```
+### \chapter{Introduction}
 
 This is a trivial program that prints the first factorials.
 
@@ -6045,9 +5685,7 @@ This is a trivial program that prints the first factorials.
 
 \begin{code} main :: IO () main = print [ (n, product [1..n]) | n <- [1..20]] \end{code}
 
-```
-\end{document}
-```
+### \end{document}
 
 This style uses the same file extension. It is not advisable to mix these two styles in the same file.
 
@@ -6124,9 +5762,7 @@ rhs → = exp [ where decls ]
 | gdrhs [ where decls ]
 ```
 
-```
-gdrhs → guards = exp [ gdrhs ]
-```
+### gdrhs → guards = exp [ gdrhs ]
 
 guards → | guard , . . . , guard n ( n ≥ ) guard → pat <- infixexp ( pattern guard ) | let decls ( local declaration ) | infixexp ( boolean guard )
 
@@ -6146,15 +5782,11 @@ qual → pat <- exp ( generator ) | let decls ( local declaration ) | exp ( guar
 
 alts → alt ; . . . ; alt n ( n ≥ ) alt → pat -> exp [ where decls ] | pat gdpat [ where decls ] | ( empty alternative )
 
-```
-gdpat → guards -> exp [ gdpat ]
-```
+### gdpat → guards -> exp [ gdpat ]
 
 stmts → stmt . . . stmt n exp [ ; ] [(](http://unicode.org/standard/standard.html) [n](http://unicode.org/standard/standard.html) [≥](http://unicode.org/standard/standard.html) [)](http://unicode.org/standard/standard.html) stmt → exp ; | pat <- exp ; | let decls ; | ; ( empty statement )
 
-```
-fbind → qvar = exp
-```
+### fbind → qvar = exp
 
 pat → lpat qconop pat ( infix constructor ) | lpat
 
@@ -6162,9 +5794,7 @@ lpat → apat | - ( integer | float ) ( negative literal ) | gcon apat . . . apa
 
 apat → var [ @ apat ] ( as pattern ) | gcon ( arity gcon = ) | qcon { fpat , . . . , fpat k } ( labeled pattern , k ≥ ) | literal | _ ( wildcard ) | ( pat ) ( parenthesized pattern ) | ( pat , . . . , pat k ) ( tuple pattern , k ≥ ) | [ pat , . . . , pat k ] ( list pattern , k ≥ ) | ˜ apat ( irrefutable pattern )
 
-```
-fpat → qvar = pat
-```
+### fpat → qvar = pat
 
 ```
 gcon → ()
@@ -6190,13 +5820,9 @@ The following is an example implementation of fixity resolution for Haskell expr
 | expression, or   | Nothing | if the input does not represent a valid expression. In a compiler, of course, it would |
 | message, but the | Maybe   | type will suffice to illustrate the algorithm here.                                    |
 
-```
-import Control.Monad
-```
+### import Control.Monad
 
-| type | Prec | =   | Int    |
-| ---- | ---- | --- | ------ |
-| type | Var  | =   | String |
+### type Prec = Int type Var = String
 
 ```
 data Op = Op String Prec Fixity
@@ -6259,13 +5885,11 @@ Op _ prec2 fix2 = op2
 
 The algorithm works as follows. At each stage we have a call
 
-```
-parse op1 E1 (op2 : tokens)
-```
+### parse op1 E1 (op2 : tokens)
 
 which means that we are looking at an expression like
 
-E0 ‘op1‘ E1 ‘op2‘ ... (1)
+### E0 ‘op1‘ E1 ‘op2‘ ... (1)
 
 (the caller holds E0). The job of parse is to build the expression to the right of op1 , returning the expression and any remaining input.
 
@@ -6307,9 +5931,7 @@ deriving ( C , . . . , C m )
 
 1. C is one of Eq , Ord , Enum , Bounded , Show , or Read .
 
-```
 ′ ′
-```
 
 2. There is a context cx such that cx ⇒ C t ij holds for each of the constituent types t ij .
 
@@ -6329,17 +5951,13 @@ If the deriving form is present, an instance declaration is automatically genera
 
 Each derived instance declaration will have the form:
 
-```
 ′
-```
 
 instance ( cx , cx ) => C i ( T u . . . u k ) where { d }
 
 where d is derived automatically depending on C i and the data type declaration for T (as will be described in the remainder of this section).
 
-```
 ′
-```
 
 The context cx is the smallest context satisfying point (2) above. For mutually recusive data types, the compiler may need to perform a fixpoint calculation to compute it.
 
@@ -6402,9 +6020,7 @@ The class methods automatically introduced by derived instances of Read and Show
 
 The function showsPrec d x r accepts a precedence level d (a number from to ), a value x , and a string r . It returns a string representing x concatenated to r . showsPrec satisfies the law:
 
-```
-showsPrec d x r ++ s == showsPrec d x (r ++ s)
-```
+### showsPrec d x r ++ s == showsPrec d x (r ++ s)
 
 The representation will be enclosed in parentheses if the precedence of the top-level constructor in x is less than d . Thus, if d is then the result is never surrounded in parentheses; if d is it is always surrounded in parentheses, unless it is an atomic expression (recall that function application has precedence ). The extra parameter r is essential if tree-like structures are to be printed in linear time rather than time quadratic in the size of the tree.
 
@@ -6481,7 +6097,7 @@ u:ˆ:v <= Leaf n = False
 u:ˆ:v <= x:ˆ:y = u<x || u==x && v<=y
 ```
 
-instance (Show a) => Show (Tree a) where
+### instance (Show a) => Show (Tree a) where
 
 ```
 showsPrec d (Leaf m) = showParen (d > app_prec) showStr
@@ -6498,7 +6114,7 @@ showsPrec (up_prec+1) v
 -- Note: right-associativity of :ˆ: ignored
 ```
 
-instance (Read a) => Read (Tree a) where
+### instance (Read a) => Read (Tree a) where
 
 ```
 readsPrec d r = readParen (d > up_prec)
@@ -6559,24 +6175,17 @@ The LANGUAGE pragma is a file-header pragma. A file-header pragma must precede t
 
 For example, to enable scoped type variables and preprocessing with CPP, if your Haskell implementation supports these extensions:
 
-```
-{-# LANGUAGE ScopedTypeVariables, CPP #-}
-```
+### {-# LANGUAGE ScopedTypeVariables, CPP #-}
 
 If a Haskell implementation does not recognize or support a particular language feature that a source file requests (or cannot support the combination of language features requested), any attempt to compile or oth- erwise use that file with that Haskell implementation must fail with an error.
 
 In the interests of portability, multiple attempts to enable the same, supported language features (e.g. via command-line arguments, implementation-specific features dependencies or non-standard pragmas) are specifically permitted. Haskell 2010 implementations that support the LANGUAGE pragma are required to support
 
-```
-{-# LANGUAGE Haskell2010 #-}
-```
+### {-# LANGUAGE Haskell2010 #-}
 
 Those implementations are also encouraged to support the following named language features:
 
-```
-PatternGuards, NoNPlusKPatterns, RelaxedPolyRec,
-EmptyDataDecls, ForeignFunctionInterface
-```
+### PatternGuards, NoNPlusKPatterns, RelaxedPolyRec, EmptyDataDecls, ForeignFunctionInterface
 
 These are the named language extensions supported by some pre-Haskell 2010 implementations, that have been integrated into this report.
 
@@ -6602,9 +6211,7 @@ The Control.Monad module provides the Functor , Monad and MonadPlus classes, tog
 
 #### 13.1 Functor and monad classes
 
-```
-class Functor f where
-```
+### class Functor f where
 
 The Functor class is used for types that can be mapped over. Instances of Functor should satisfy the following laws:
 
@@ -6615,9 +6222,7 @@ fmap (f . g) == fmap f . fmap g
 
 The instances of Functor for lists, Data.Maybe.Maybe and System.IO.IO satisfy these laws.
 
-```
 Methods
-```
 
 fmap :: (a -> b) -> f a -> f b
 
@@ -6628,9 +6233,7 @@ fmap :: (a -> b) -> f a -> f b
 
 ## CHAPTER 13. CONTROL.MONAD
 
-```
-class Monad m where
-```
+### class Monad m where
 
 The Monad class defines the basic operations over a monad , a concept from a branch of mathematics known as category theory . From the perspective of a Haskell programmer, however, it is best to think of a monad as an abstract datatype of actions. Haskell’s do expressions provide a convenient syntax for writing monadic expressions.
 
@@ -6652,9 +6255,7 @@ fmap f xs == xs >>= return . f
 
 The instances of Monad for lists, Data.Maybe.Maybe and System.IO.IO defined in the Prelude satisfy these laws.
 
-```
 Methods
-```
 
 (>>=) :: m a -> (a -> m b) -> m b
 
@@ -6666,11 +6267,11 @@ Sequentially compose two actions, passing any value produced by the first as an 
 
 Sequentially compose two actions, discarding any value produced by the first, like sequencing operators (such as the semicolon) in imperative languages.
 
-return :: a -> m a
+### return :: a -> m a
 
 Inject a value into the monadic type.
 
-fail :: String -> m a
+### fail :: String -> m a
 
 Fail with a message. This operation is not part of the mathematical definition of a monad, but is invoked on pattern-match failure in a do expression.
 
@@ -6679,19 +6280,13 @@ Fail with a message. This operation is not part of the mathematical definition o
 | instance | Monad | IO    |
 | instance | Monad | Maybe |
 
-```
-class Monad m => MonadPlus m where
-```
+### class Monad m => MonadPlus m where
 
 Monads that also support choice and failure.
 
-```
 Methods
-```
 
-```
-mzero :: m a
-```
+### mzero :: m [a](http://haskell.org/)
 
 the identity of mplus . It should also satisfy the equations
 
@@ -6705,9 +6300,7 @@ mplus :: m a -> m a -> m a
 
 an associative operation
 
-| instance | MonadPlus | []    |
-| -------- | --------- | ----- |
-| instance | MonadPlus | Maybe |
+### instance MonadPlus [] instance MonadPlus Maybe
 
 #### 13.2 Functions
 
@@ -6835,7 +6428,7 @@ foldM :: Monad m => (a -> b -> m a) -> a -> [b] -> m a
 
 The foldM function is analogous to foldl , except that its result is encapsulated in a monad. Note that foldM works from left-to-right over the list arguments. This could be an issue where (>>) and the ‘folded function’ are not commutative.
 
-foldM f a1 [x1, x2, ..., xm]
+### foldM f a1 [x1, x2, ..., xm]
 
 ==
 
@@ -6871,9 +6464,7 @@ when :: Monad m => Bool -> m () -> m ()
 
 Conditional execution of monadic expressions. For example,
 
-```
-when debug (putStr "Debugging\n")
-```
+### when debug (putStr "Debugging\n")
 
 will output the string Debugging\n if the Boolean value debug is True , and otherwise do nothing.
 
@@ -6931,11 +6522,11 @@ ap :: Monad m => m (a -> b) -> m a -> m b
 
 In many situations, the liftM operations can be replaced by uses of ap , which promotes function application.
 
-return f ‘ap‘ x1 ‘ap‘ ... ‘ap‘ xn
+### return f ‘ap‘ x1 ‘ap‘ ... ‘ap‘ xn
 
 is equivalent to
 
-liftMn f x1 x2 ... xn
+### liftMn f x1 x2 ... xn
 
 ## Chapter 14
 
@@ -6949,13 +6540,9 @@ Haskell provides indexable arrays , which may be thought of as functions whose d
 
 Since most array functions involve the class Ix , the contents of the module Data.Ix are re-exported from Data.Array for convenience:
 
-```
-module Data.Ix
-```
+### module Data.Ix
 
-```
-data Ix i => Array i e
-```
+### data Ix i => Array i e
 
 The type of immutable non-strict (boxed) arrays with indices in i and elements in e .
 
@@ -6971,9 +6558,7 @@ instance (Ix a, Show a, Show b) => Show (Array a b)
 
 #### 14.2 Array construction
 
-```
-array
-```
+### array
 
 :: Ix i => (i, i) a pair of bounds , each of the index type of the array. These bounds are the lowest and highest indices in the array, in that order. For example, a one-origin vector of length ’10’ has bounds ’(1,10)’, and a one-origin ’10’ by ’10’ matrix has bounds ’((1,1),(10,10))’. -> [(i, e)] a list of associations of the form ( index , value ). Typically, this list will be ex- pressed as a comprehension. An association ’(i, x)’ defines the value of the array at index i to be x . -> Array i e
 
@@ -6995,9 +6580,7 @@ listArray :: Ix i => (i, i) -> [e] -> Array i e
 
 Construct an array from a pair of bounds and a list of values in index order.
 
-```
-accumArray
-```
+### accumArray
 
 :: Ix i => (e -> a -> e) accumulating function -> e initial value -> (i, i) bounds of the array -> [(i, a)] association list -> Array i e
 
@@ -7049,9 +6632,7 @@ The list of associations of an array in index order.
 
 Constructs an array identical to the first argument except that it has been updated by the associations in the right argument. For example, if m is a 1-origin, n by n matrix, then
 
-```
-m//[((i,i), 0) | i <- [1..n]]
-```
+### m//[((i,i), 0) | i <- [1..n]]
 
 is the same matrix, except with the diagonal zeroed.
 
@@ -7085,14 +6666,9 @@ A similar transformation of array values may be achieved using fmap from the Arr
 
 module Array ( module Data.Ix, -- export all of Data.Ix Array, array, listArray, (!), bounds, indices, elems, assocs, accumArray, (//), accum, ixmap ) where
 
-```
-import Data.Ix
-import Data.List( (\\) )
-```
+### import Data.Ix import Data.List( (\\) )
 
-```
-infixl !, //
-```
+### infixl !, //
 
 data (Ix a) => Array a b = MkArray (a,a) (a -> b) deriving ()
 
@@ -7153,7 +6729,7 @@ module Data.Bits ( Bits((.&.), (.|.), xor, complement, shift, rotate, bit, setBi
 
 This module defines bitwise operations for signed and unsigned integers.
 
-class Num a => Bits a where
+### class Num a => Bits a where
 
 The Bits class defines bitwise operations over integral types.
 
@@ -7161,79 +6737,75 @@ The Bits class defines bitwise operations over integral types.
 
 Minimal complete definition: .&. , .|. , xor , complement , ( shift or ( shiftL and shiftR )), ( rotate or ( rotateL and rotateR )), bitSize and isSigned .
 
-```
 Methods
-```
 
 ## CHAPTER 15. DATA.BITS
 
-(.&.) :: a -> a -> a
+### (.&.) :: a -> a -> a
 
 Bitwise ”and”
 
-(.|.) :: a -> a -> a
+### (.|.) :: a -> a -> a
 
 Bitwise ”or”
 
-xor :: a -> a -> a
+### xor :: a -> a -> a
 
 Bitwise ”xor”
 
-complement :: a -> a
+### complement :: a -> a
 
 Reverse all the bits in the argument
 
-shift :: a -> Int -> a
+### shift :: a -> Int -> a
 
 shift x i shifts x left by i bits if i is positive, or right by -i bits otherwise. Right shifts perform sign extension on signed number types; i.e. they fill the top bits with 1 if the x is negative and with 0 otherwise. An instance can define either this unified shift or shiftL and shiftR , depending on which is more convenient for the type in question.
 
-rotate :: a -> Int -> a
+### rotate :: a -> Int -> a
 
 rotate x i rotates x left by i bits if i is positive, or right by -i bits otherwise. For unbounded types like Integer , rotate is equivalent to shift . An instance can define either this unified rotate or rotateL and rotateR , depending on which is more convenient for the type in question.
 
-bit :: Int -> a
+### bit :: Int -> a
 
 bit i is a value with the i th bit set and all other bits clear
 
-setBit :: a -> Int -> a
+### setBit :: a -> Int -> a
 
 x ‘setBit‘ i is the same as x .|. bit i
 
-clearBit :: a -> Int -> a
+### clearBit :: a -> Int -> a
 
 x ‘clearBit‘ i is the same as x .&. complement (bit i)
 
-complementBit :: a -> Int -> a
+### complementBit :: a -> Int -> a
 
 x ‘complementBit‘ i is the same as x ‘xor‘ bit i
 
-```
-testBit :: a -> Int -> Bool
-```
+### testBit :: a -> Int -> Bool
 
 Return True if the n th bit of the argument is 1
 
-bitSize :: a -> Int
+### bitSize :: a -> Int
 
 Return the number of bits in the type of the argument. The actual value of the argument is ignored. The function bitSize is undefined for types that do not have a fixed bitsize, like Integer .
 
-isSigned :: a -> Bool
+### isSigned :: a -> Bool
 
 Return True if the argument is a signed type. The actual value of the argument is ignored
 
-shiftL :: a -> Int -> a
+### shiftL :: a -> Int -> a
 
 Shift the argument left by the specified number of bits (which must be non-negative). An instance can define either this and shiftR or the unified shift , depending on which is more convenient for the type in question.
 
-shiftR :: a -> Int -> a
+### shiftR :: a -> Int -> a
 
 Shift the first argument right by the specified number of bits (which must be non-negative). Right shifts perform sign extension on signed number types; i.e. they fill the top bits with 1 if the x is negative and with 0 otherwise. An instance can define either this and shiftL or the unified shift , depending on which is more convenient for the type in question.
 
-rotateL :: a -> Int -> a
+### rotateL :: a -> Int -> a
 
 Rotate the argument left by the specified number of bits (which must be non-negative). An instance can define either this and rotateR or the unified rotate , depending on which is more convenient for the type in question.
 
-rotateR :: a -> Int -> a
+### rotateR :: a -> Int -> a
 
 Rotate the argument right by the specified number of bits (which must be non-negative). An instance can define either this and rotateL or the unified rotate , depending on which is more convenient for the type in question.
 
@@ -7325,11 +6897,9 @@ ord, chr, showLitChar, lexLitChar, readLitChar
 
 #### 16.1 Characters and strings
 
-```
-data Char
-```
+### data Char
 
-The character type Char is an enumeration whose values represent Unicode (or equivalently ISO/IEC 10646) characters (see http://www.unicode.org/ for details). This set extends the ISO 8859-1 (Latin-1) character set (the first 256 charachers), which is itself an extension of the ASCII character set (the first 128 characters). A character literal in Haskell has type [Char](http://unicode.org/standard/standard.html) [.](http://unicode.org/standard/standard.html)
+The character type Char is an enumeration whose values represent Unicode (or equivalently ISO/IEC 10646) characters (see [http://www.unicode.org/](http://www.unicode.org/) for details). This set extends the ISO 8859-1 (Latin-1) character set (the first 256 charachers), which is itself an extension of the ASCII character set (the first 128 characters). A character literal in Haskell has type [Char](http://unicode.org/standard/standard.html) [.](http://unicode.org/standard/standard.html)
 
 To convert a Char to or from the corresponding Int value defined by Unicode, use Prelude.toEnum and Prelude.fromEnum from the Prelude.Enum class respectively (or equivalently ord and chr ).
 
@@ -7344,9 +6914,7 @@ instance Ix Char
 instance Storable Char
 ```
 
-```
-type String = [Char]
-```
+### type String = [Char]
 
 A String is a list of characters. String constants in Haskell are values of type String .
 
@@ -7354,103 +6922,71 @@ A String is a list of characters. String constants in Haskell are values of type
 
 Unicode characters are divided into letters, numbers, marks, punctuation, symbols, separators (including spaces) and others (including control characters).
 
-```
-isControl :: Char -> Bool
-```
+### isControl :: Char -> Bool
 
 Selects control characters, which are the non-printing characters of the Latin-1 subset of Unicode.
 
-```
-isSpace :: Char -> Bool
-```
+### isSpace :: Char -> Bool
 
 Returns True for any Unicode space character, and the control characters \t , \n , \r , \f , \v .
 
-```
-isLower :: Char -> Bool
-```
+### isLower :: Char -> Bool
 
 Selects lower-case alphabetic Unicode characters (letters).
 
 ### 16.2. CHARACTER CLASSIFICATION
 
-```
-isUpper :: Char -> Bool
-```
+### isUpper :: Char -> Bool
 
 Selects upper-case or title-case alphabetic Unicode characters (letters). Title case is used by a small number of letter ligatures like the single-character form of Lj .
 
-```
-isAlpha :: Char -> Bool
-```
+### isAlpha :: Char -> Bool
 
 Selects alphabetic Unicode characters (lower-case, upper-case and title-case letters, plus letters of case- less scripts and modifiers letters). This function is equivalent to Data.Char.isLetter .
 
-```
-isAlphaNum :: Char -> Bool
-```
+### isAlphaNum :: Char -> Bool
 
 Selects alphabetic or numeric digit Unicode characters.
 
 [Note that numeric digits outside the ASCII range are selected by this function but not by](http://www.unicode.org/) isDigit . Such digits may be part of identifiers but are not used by the printer and reader to represent numbers.
 
-```
-isPrint :: Char -> Bool
-```
+### isPrint :: Char -> Bool
 
 Selects printable Unicode characters (letters, numbers, marks, punctuation, symbols and spaces).
 
-```
-isDigit :: Char -> Bool
-```
+### isDigit :: Char -> Bool
 
 Selects ASCII digits, i.e. ’0’ .. ’9’ .
 
-```
-isOctDigit :: Char -> Bool
-```
+### isOctDigit :: Char -> Bool
 
 Selects ASCII octal digits, i.e. ’0’ .. ’7’ .
 
-```
-isHexDigit :: Char -> Bool
-```
+### isHexDigit :: Char -> Bool
 
 Selects ASCII hexadecimal digits, i.e. ’0’ .. ’9’ , ’a’ .. ’f’ , ’A’ .. ’F’ .
 
-```
-isLetter :: Char -> Bool
-```
+### isLetter :: Char -> Bool
 
 Selects alphabetic Unicode characters (lower-case, upper-case and title-case letters, plus letters of case- less scripts and modifiers letters). This function is equivalent to Data.Char.isAlpha .
 
-```
-isMark :: Char -> Bool
-```
+### isMark :: Char -> Bool
 
 Selects Unicode mark characters, e.g. accents and the like, which combine with preceding letters.
 
-```
-isNumber :: Char -> Bool
-```
+### isNumber :: Char -> Bool
 
 Selects Unicode numeric characters, including digits from various scripts, Roman numerals, etc.
 
-```
-isPunctuation :: Char -> Bool
-```
+### isPunctuation :: Char -> Bool
 
 Selects Unicode punctuation characters, including various kinds of connectors, brackets and quotes.
 
-```
-isSymbol :: Char -> Bool
-```
+### isSymbol :: Char -> Bool
 
 Selects Unicode symbol characters, including mathematical and currency symbols.
 
-```
-isSeparator :: Char -> Bool
-```
+### isSeparator :: Char -> Bool
 
 Selects Unicode space and separator characters.
 
@@ -7458,35 +6994,25 @@ Selects Unicode space and separator characters.
 
 ##### 16.2.1 Subranges
 
-```
-isAscii :: Char -> Bool
-```
+### isAscii :: Char -> Bool
 
 Selects the first 128 characters of the Unicode character set, corresponding to the ASCII character set.
 
-```
-isLatin1 :: Char -> Bool
-```
+### isLatin1 :: Char -> Bool
 
 Selects the first 256 characters of the Unicode character set, corresponding to the ISO 8859-1 (Latin-1) character set.
 
-```
-isAsciiUpper :: Char -> Bool
-```
+### isAsciiUpper :: Char -> Bool
 
 [Selects ASCII upper-case letters, i.e. characters satisfying both](http://www.unicode.org/) isAscii and isUpper .
 
-```
-isAsciiLower :: Char -> Bool
-```
+### isAsciiLower :: Char -> Bool
 
 Selects ASCII lower-case letters, i.e. characters satisfying both [isAscii](http://unicode.org/standard/standard.html) and [isLower](http://unicode.org/standard/standard.html) .
 
 ##### 16.2.2 Unicode general categories
 
-```
-data GeneralCategory
-```
+### data GeneralCategory
 
 | =   | UppercaseLetter      | Lu: Letter, Uppercase          |
 | --- | -------------------- | ------------------------------ |
@@ -7533,43 +7059,31 @@ Unicode General Categories (column 2 of the UnicodeData table) in the order they
 | instance | Show    | GeneralCategory |
 | instance | Ix      | GeneralCategory |
 
-```
-generalCategory :: Char -> GeneralCategory
-```
+### generalCategory [::](http://www.unicode.org/) [Char](http://www.unicode.org/) [->](http://www.unicode.org/) [GeneralCategory](http://www.unicode.org/)
 
 The Unicode general category of the character.
 
 #### 16.3 Case conversion
 
-```
-toUpper :: Char -> Char
-```
+### toUpper :: Char -> Char
 
 Convert a letter to the corresponding upper-case letter, if any. Any other character is returned un- changed.
 
-```
-toLower :: Char -> Char
-```
+### toLower :: Char -> Char
 
 Convert a letter to the corresponding lower-case letter, if any. Any other character is returned un- changed.
 
-```
-toTitle :: Char -> Char
-```
+### toTitle :: Char -> Char
 
 Convert a letter to the corresponding title-case or upper-case letter, if any. (Title case differs from upper case only for a small number of ligature letters.) Any other character is returned unchanged.
 
 #### 16.4 Single digit characters
 
-```
-digitToInt :: Char -> Int
-```
+### digitToInt :: Char -> Int
 
 Convert a single digit Char to the corresponding Int . This function fails unless its argument satisfies isHexDigit , but recognises both upper and lower-case hexadecimal digits (i.e. ’0’ .. ’9’ , ’a’ .. ’f’ , ’A’ .. ’F’ ).
 
-```
-intToDigit :: Int -> Char
-```
+### intToDigit :: Int -> Char
 
 Convert an Int in the range .. to the corresponding single digit Char . This function fails on other inputs, and generates lower-case hexadecimal digits.
 
@@ -7577,49 +7091,33 @@ Convert an Int in the range .. to the corresponding single digit Char . This fun
 
 #### 16.5 Numeric representations
 
-```
-ord :: Char -> Int
-```
+### ord :: Char -> Int
 
 The Prelude.fromEnum method restricted to the type Data.Char.Char .
 
-```
-chr :: Int -> Char
-```
+### chr :: Int -> Char
 
 The Prelude.toEnum method restricted to the type Data.Char.Char .
 
 #### 16.6 String representations
 
-```
-showLitChar :: Char -> ShowS
-```
+### showLitChar :: Char -> ShowS
 
 [Convert a character to a string using only printable characters, using Haskell source-language escape](http://unicode.org/standard/standard.html) conventions. For example:
 
-```
-showLitChar ’\n’ s = "\\n" ++ s
-```
+### showLitChar ’\n’ s = "\\n" ++ s
 
-```
-lexLitChar :: ReadS String
-```
+### lexLitChar :: ReadS String
 
 Read a string representation of a character, using Haskell source-language escape conventions. For example:
 
-```
-lexLitChar "\\nHello" = [("\\n", "Hello")]
-```
+### lexLitChar "\\nHello" = [("\\n", "Hello")]
 
-```
-readLitChar :: ReadS Char
-```
+### readLitChar :: ReadS Char
 
 Read a string representation of a character, using Haskell source-language escape conventions, and convert it to the character that it encodes. For example:
 
-```
-readLitChar "\\nHello" = [(’\n’, "Hello")]
-```
+### readLitChar "\\nHello" = [(’\n’, "Hello")]
 
 ## Chapter 17
 
@@ -7634,7 +7132,7 @@ phase, conjugate
 
 #### 17.1 Rectangular form
 
-data RealFloat a => Complex a
+### data RealFloat a => Complex a
 
 = !a :+ !a forms a complex number from its real and imaginary rectangular components.
 
@@ -7689,9 +7187,7 @@ module Data.Complex(Complex((:+)), realPart, imagPart, conjugate, mkPolar,
 cis, polar, magnitude, phase) where
 ```
 
-```
-infix :+
-```
+### infix :+
 
 data (RealFloat a) => Complex a = !a :+ !a deriving (Eq,Read,Show)
 
@@ -7744,7 +7240,7 @@ k = - max (exponent x’) (exponent y’)
 d = x’*x’’ + y’*y’’
 ```
 
-fromRational a = fromRational a :+
+### fromRational a = fromRational a :+
 
 ```
 instance (RealFloat a) => Floating (Complex a) where
@@ -7773,9 +7269,7 @@ sinhy = sinh y
 
 ## CHAPTER 17. DATA.COMPLEX
 
-```
-coshy = cosh y
-```
+### coshy = cosh y
 
 ```
 sinh (x:+y) = cos y * sinh x :+ sin y * cosh x
@@ -7821,9 +7315,7 @@ The rules that hold for Enum instances over a bounded type such as Int (see the 
 
 Right and left shifts by amounts greater than or equal to the width of the type result in either zero or -1, depending on the sign of the value being shifted. This is contrary to the behaviour in C, which is undefined; a common interpretation is to truncate the shift count to the width of the type, for example << 32 == 1 in some C implementations.
 
-```
-data Int
-```
+### data Int
 
 [A fixed-precision integer type with at least the range](http://haskell.org/) [-2ˆ29 .. 2ˆ29-1] . The exact range for a given implementation can be determined by using Prelude.minBound and Prelude.maxBound from the Prelude.Bounded class.
 
@@ -7844,9 +7336,7 @@ instance Storable Int
 instance Bits Int
 ```
 
-```
-data Int8
-```
+### data Int8
 
 8-bit signed integer type
 
@@ -7865,9 +7355,7 @@ instance Storable Int8
 instance Bits Int8
 ```
 
-```
-data Int16
-```
+### data Int16
 
 16-bit signed integer type
 
@@ -7886,9 +7374,7 @@ instance Storable Int16
 instance Bits Int16
 ```
 
-```
-data Int32
-```
+### data Int32
 
 32-bit signed integer type
 
@@ -7909,9 +7395,7 @@ instance Storable Int32
 instance Bits Int32
 ```
 
-```
-data Int64
-```
+### data Int64
 
 64-bit signed integer type
 
@@ -7936,15 +7420,11 @@ instance Bits Int64
 
 # Data.Ix
 
-```
-module Data.Ix (
-Ix(range, index, inRange, rangeSize)
-) where
-```
+### module Data.Ix ( Ix(range, index, inRange, rangeSize) ) where
 
 #### 19.1 The Ix class
 
-class Ord a => Ix a where
+### class Ord a => Ix a where
 
 The Ix class is used to map a contiguous subrange of values in a type onto integers. It is used primarily for array indexing (see the array package).
 
@@ -7962,25 +7442,23 @@ An implementation is entitled to assume the following laws about these operation
 
 Minimal complete instance: range , index and inRange .
 
-```
 Methods
-```
 
-range :: (a, a) -> [a]
+### range :: (a, a) -> [a]
 
 The list of values in the subrange defined by a bounding pair.
 
 ## CHAPTER 19. DATA.IX
 
-index :: (a, a) -> a -> Int
+### index :: (a, a) -> a -> Int
 
 The position of a subscript in the subrange.
 
-inRange :: (a, a) -> a -> Bool
+### inRange :: (a, a) -> a -> Bool
 
 Returns True the given subscript lies in the range defined the bounding pair.
 
-rangeSize :: (a, a) -> Int
+### rangeSize :: (a, a) -> Int
 
 The size of the subrange defined by a bounding pair.
 
@@ -8048,7 +7526,7 @@ module Data.List ( (++), head, last, tail, init, null, length, map, reverse, int
 
 #### 20.1 Basic functions
 
-(++) :: [a] -> [a] -> [a]
+### (++) :: [a] -> [a] -> [a]
 
 Append two lists, i.e.,
 
@@ -8058,27 +7536,27 @@ If the first list is not finite, the result is the first list.
 
 ## CHAPTER 20. DATA.LIST
 
-head :: [a] -> a
+### head :: [a] -> a
 
 Extract the first element of a list, which must be non-empty.
 
-last :: [a] -> a
+### last :: [a] -> a
 
 Extract the last element of a list, which must be finite and non-empty.
 
-tail :: [a] -> [a]
+### tail :: [a] -> [a]
 
 Extract the elements after the head of a list, which must be non-empty.
 
-init :: [a] -> [a]
+### init :: [a] -> [a]
 
 Return all the elements of a list except the last one. The list must be non-empty.
 
-null :: [a] -> Bool
+### null :: [a] -> Bool
 
 Test whether a list is empty.
 
-length :: [a] -> Int
+### length :: [a] -> Int
 
 O(n) . length returns the length of a finite list as an Int . It is an instance of the more general Data.List.genericLength , the result type of which may be any kind of number.
 
@@ -8090,45 +7568,39 @@ map f xs is the list obtained by applying f to each element of xs , i.e.,
 
 map f [x1, x2, ..., xn] == [f x1, f x2, ..., f xn] map f [x1, x2, ...] == [f x1, f x2, ...]
 
-reverse :: [a] -> [a]
+### reverse :: [a] -> [a]
 
 reverse xs returns the elements of xs in reverse order. xs must be finite.
 
-intersperse :: a -> [a] -> [a]
+### intersperse :: a -> [a] -> [a]
 
 The intersperse function takes an element and a list and ‘intersperses’ that element between the elements of the list. For example,
 
-intersperse ’,’ "abcde" == "a,b,c,d,e"
+### intersperse ’,’ "abcde" == "a,b,c,d,e"
 
-intercalate :: [a] -> [[a]] -> [a]
+### intercalate :: [a] -> [[a]] -> [a]
 
 intercalate xs xss is equivalent to (concat (intersperse xs xss)) . It inserts the list xs in between the lists in [xss](http://haskell.org/) [and concatenates the result.](http://haskell.org/)
 
-transpose :: [[a]] -> [[a]]
+### transpose :: [[a]] -> [[a]]
 
 The transpose function transposes the rows and columns of its argument. For example,
 
 ### 20.3. REDUCING LISTS (FOLDS)
 
-```
-transpose [[1,2,3],[4,5,6]] == [[1,4],[2,5],[3,6]]
-```
+### transpose [[1,2,3],[4,5,6]] == [[1,4],[2,5],[3,6]]
 
-subsequences :: [a] -> [[a]]
+### subsequences :: [a] -> [[a]]
 
 The subsequences function returns the list of all subsequences of the argument.
 
-```
-subsequences "abc" == ["","a","b","ab","c","ac","bc","abc"]
-```
+### subsequences "abc" == ["","a","b","ab","c","ac","bc","abc"]
 
-permutations :: [a] -> [[a]]
+### permutations :: [a] -> [[a]]
 
 The permutations function returns the list of all permutations of the argument.
 
-```
-permutations "abc" == ["abc","bac","cba","bca","cab","acb"]
-```
+### [permutations](http://www.unicode.org/) ["abc"](http://www.unicode.org/) [==](http://www.unicode.org/) ["abc","bac","cba","bca","cab","acb"]
 
 #### 20.3 Reducing lists (folds)
 
@@ -8166,7 +7638,7 @@ foldr1 is a variant of foldr that has no starting value argument, and thus must 
 
 ##### 20.3.1 Special folds
 
-concat :: [[a]] -> [a]
+### concat :: [[a]] -> [a]
 
 Concatenate a list of lists.
 
@@ -8174,11 +7646,11 @@ concatMap :: (a -> [b]) -> [a] -> [b]
 
 Map a function over a list and concatenate the results.
 
-and :: [Bool] -> Bool
+### and :: [Bool] -> Bool
 
 and returns the conjunction of a Boolean list. For the result to be True , the list must be finite; False , however, results from a [False](http://www.unicode.org/) [value at a finite index of a finite or infinite list.](http://www.unicode.org/)
 
-or :: [Bool] -> Bool
+### or :: [Bool] -> Bool
 
 or returns the disjunction of a Boolean list. For the result to be False , the list must be finite; True , however, results from a True value at a finite index of a finite or infinite list.
 
@@ -8190,19 +7662,19 @@ all :: (a -> Bool) -> [a] -> Bool
 
 Applied to a predicate and a list, all determines if all elements of the list satisfy the predicate. For the result to be True , the list must be finite; False , however, results from a False value for the predicate applied to an element at a finite index of a finite or infinite list.
 
-sum :: Num a => [a] -> a
+### sum :: Num a => [a] -> a
 
 The sum function computes the sum of a finite list of numbers.
 
-product :: Num a => [a] -> a
+### product :: Num a => [a] -> a
 
 The product function computes the product of a finite list of numbers.
 
-maximum :: Ord a => [a] -> a
+### maximum :: Ord a => [a] -> a
 
 maximum returns the maximum value from a list, which must be non-empty, finite, and of an ordered type. It is a special case of maximumBy , which allows the programmer to supply their own comparison function.
 
-minimum :: Ord a [=>](http://haskell.org/) [[a]](http://haskell.org/) [->](http://haskell.org/) [a](http://haskell.org/)
+### minimum :: Ord a [=>](http://haskell.org/) [[a]](http://haskell.org/) [->](http://haskell.org/) [a](http://haskell.org/)
 
 minimum returns the minimum value from a list, which must be non-empty, finite, and of an ordered type. It is a special case of minimumBy , which allows the programmer to supply their own comparison function.
 
@@ -8258,7 +7730,7 @@ The mapAccumR function behaves like a combination of map and foldr ; it applies 
 
 ##### 20.4.3 Infinite lists
 
-iterate :: [(a](http://haskell.org/) [->](http://haskell.org/) [a)](http://haskell.org/) [->](http://haskell.org/) [a](http://haskell.org/) [-> [a]](http://haskell.org/)
+### iterate :: [(a](http://haskell.org/) [->](http://haskell.org/) [a)](http://haskell.org/) [->](http://haskell.org/) [a](http://haskell.org/) [-> [a]](http://haskell.org/)
 
 iterate f x returns an infinite list of repeated applications of f to x :
 
@@ -8266,15 +7738,15 @@ iterate f x == [x, f x, f (f x), ...]
 
 ## CHAPTER 20. DATA.LIST
 
-repeat :: a -> [a]
+### repeat :: a -> [a]
 
 repeat x is an infinite list, with x the value of every element.
 
-replicate :: Int -> a -> [a]
+### replicate :: Int -> a -> [a]
 
 replicate n x is a list of length n with x the value of every element. It is an instance of the more general Data.List.genericReplicate , in which n may be of any integral type.
 
-cycle :: [a] -> [a]
+### cycle :: [a] -> [a]
 
 cycle ties a finite list into a circular one, or equivalently, the infinite repetition of the original list. It is the identity on infinite lists.
 
@@ -8290,9 +7762,7 @@ iterate f == unfoldr (\x -> Just (x, f x))
 
 In some cases, unfoldr can undo a foldr operation:
 
-```
-unfoldr f’ (foldr f z xs) == xs
-```
+### unfoldr f’ (foldr f z xs) == xs
 
 if the following holds:
 
@@ -8309,7 +7779,7 @@ unfoldr (\b -> if b == then Nothing else Just (b, b-1)) [10,9,8,7,6,5,4,3,2,1]
 
 ##### 20.5.1 Extracting sublists
 
-take :: Int -> [a] -> [a]
+### take :: Int -> [a] -> [a]
 
 take n , applied to a list xs , returns the prefix of xs of length n , or xs itself if n > length xs :
 
@@ -8326,7 +7796,7 @@ take [1,2] == []
 
 It is an instance of the more general Data.List.genericTake , in which n may be of any integral type.
 
-drop :: Int -> [a] -> [a]
+### drop :: Int -> [a] -> [a]
 
 drop n xs returns the suffix of xs after the first n elements, or [] if n > length xs :
 
@@ -8341,7 +7811,7 @@ drop [1,2] == [1,2]
 
 It is an instance of the more general Data.List.genericDrop , in which n may be of any integral type.
 
-splitAt :: Int -> [a] -> ([a], [a])
+### splitAt :: Int -> [a] -> ([a], [a])
 
 splitAt n xs returns a tuple where first element is xs prefix of length n and second element is the remainder of the list:
 
@@ -8357,7 +7827,7 @@ splitAt (-1) [1,2,3] == ([],[1,2,3])
 
 It is equivalent to (take n xs, drop n xs) . splitAt is an instance of the more general Data.List.genericSplitAt , in which n may be of any integral type.
 
-takeWhile :: (a -> Bool) -> [a] -> [a]
+### takeWhile :: (a -> Bool) -> [a] -> [a]
 
 takeWhile , applied to a predicate p and a list xs , returns the longest prefix (possibly empty) of xs of elements that satisfy p :
 
@@ -8367,7 +7837,7 @@ takeWhile (< 9) [1,2,3] == [1,2,3]
 takeWhile (< 0) [1,2,3] == []
 ```
 
-dropWhile :: (a -> Bool) -> [a] -> [a]
+### dropWhile :: (a -> Bool) -> [a] -> [a]
 
 dropWhile p xs returns the suffix remaining after takeWhile p xs :
 
@@ -8414,31 +7884,25 @@ stripPrefix "foo" "barfoo" == Nothing
 stripPrefix "foo" "barfoobaz" == Nothing
 ```
 
-group :: Eq a => [a] -> [[a]]
+### group :: Eq a => [a] -> [[a]]
 
 The group function takes a list and returns a list of lists such that the concatenation of the result is equal to the argument. Moreover, each sublist in the result contains only equal elements. For example,
 
-```
-group "Mississippi" = ["M","i","ss","i","ss","i","pp","i"]
-```
+### group "Mississippi" = ["M","i","ss","i","ss","i","pp","i"]
 
 It is a special case of groupBy , which allows the programmer to supply their own equality test.
 
-inits :: [a] -> [[a]]
+### inits :: [a] -> [[a]]
 
 The inits function returns all initial segments of the argument, shortest first. For example,
 
-```
-inits "abc" == ["","a","ab","abc"]
-```
+### inits "abc" == ["","a","ab","abc"]
 
-tails :: [a] -> [[a]]
+### tails :: [a] -> [[a]]
 
 The tails function returns all final segments of the argument, longest first. For example,
 
-```
-tails "abc" == ["abc", "bc", "c",""]
-```
+### tails "abc" == ["abc", "bc", "c",""]
 
 ### 20.6. SEARCHING LISTS
 
@@ -8507,7 +7971,7 @@ partition p xs == (filter p xs, filter (not . p) xs)
 
 These functions treat a list xs as a indexed collection, with indices ranging from 0 to length xs - .
 
-(!!) :: [a] -> Int -> a
+### (!!) :: [a] -> Int -> a
 
 List index (subscript) operator, starting from 0. It is an instance of the more general Data.List.genericIndex , which takes an index of any integral type.
 
@@ -8529,7 +7993,7 @@ The findIndices function extends findIndex , by returning the indices of all ele
 
 #### 20.8 Zipping and unzipping lists
 
-zip :: [a] -> [b] -> [(a, b)]
+### zip :: [a] -> [b] -> [(a, b)]
 
 zip takes two lists and returns a list of corresponding pairs. If one input list is short, excess elements [of the longer list are discarded.](http://haskell.org/)
 
@@ -8606,7 +8070,7 @@ The zipWith7 function takes a function which combines seven elements, as well as
 
 ## CHAPTER 20. DATA.LIST
 
-unzip :: [(a, b)] -> ([a], [b])
+### unzip :: [(a, b)] -> ([a], [b])
 
 unzip transforms a list of pairs into a list of first components and a list of second components.
 
@@ -8639,27 +8103,19 @@ The unzip7 function takes a list of seven-tuples and returns seven lists, analog
 
 ##### 20.9.1 Functions on strings
 
-```
-lines :: String -> [String]
-```
+### lines :: String -> [String]
 
 lines breaks a string up into a list of strings at newline characters. The resulting strings do not contain newlines.
 
-```
-words :: String -> [String]
-```
+### words :: String -> [String]
 
 words breaks a string up into a list of words, which were delimited by white space.
 
-```
-unlines :: [String] -> String
-```
+### unlines :: [String] -> String
 
 unlines is an inverse operation to lines . It joins lines, after appending a terminating newline to each.
 
-```
-unwords :: [String] -> String
-```
+### unwords :: [String] -> String
 
 unwords [is an inverse operation to](http://haskell.org/) [words](http://haskell.org/) . It joins words with separating spaces.
 
@@ -8667,7 +8123,7 @@ unwords [is an inverse operation to](http://haskell.org/) [words](http://haskell
 
 ##### 20.9.2 ”Set” operations
 
-nub :: Eq a => [a] -> [a]
+### nub :: Eq a => [a] -> [a]
 
 O(nˆ2) . The nub function removes duplicate elements from a list. In particular, it keeps only the first occurrence of each element. (The name nub means ‘essence’.) It is a special case of nubBy , which allows the programmer to supply their own equality test.
 
@@ -8675,7 +8131,7 @@ delete :: Eq a => a -> [a] -> [a]
 
 delete x removes the first occurrence of x from its list argument. For example,
 
-delete ’a’ "banana" == "bnana"
+### delete ’a’ "banana" == "bnana"
 
 It is a special case of deleteBy , which allows the programmer to supply their own equality test.
 
@@ -8693,9 +8149,7 @@ union :: Eq a => [a] -> [a] -> [a]
 
 The union function returns the list union of the two lists. For example,
 
-```
-"dog" ‘union‘ "cow" == "dogcw"
-```
+### "dog" ‘union‘ "cow" == "dogcw"
 
 Duplicates, and elements of the first list, are removed from the the second list, but if the first list contains duplicates, so will the result. It is a special case of unionBy , which allows the programmer to supply their own equality test.
 
@@ -8703,15 +8157,11 @@ intersect :: Eq a => [a] -> [a] -> [a]
 
 The intersect function takes the list intersection of two lists. For example,
 
-```
-[1,2,3,4] ‘intersect‘ [2,4,6,8] == [2,4]
-```
+### [1,2,3,4] ‘intersect‘ [2,4,6,8] == [2,4]
 
 If the first list contains duplicates, so will the result.
 
-```
-[1,2,2,3,4] ‘intersect‘ [6,4,4,2] == [2,2,4]
-```
+### [1,2,2,3,4] ‘intersect‘ [6,4,4,2] == [2,2,4]
 
 It is a special case of intersectBy , which allows the programmer to supply their own equality test.
 
@@ -8719,7 +8169,7 @@ It is a special case of intersectBy , which allows the programmer to supply thei
 
 ##### 20.9.3 Ordered lists
 
-sort :: Ord a => [a] -> [a]
+### sort :: Ord a => [a] -> [a]
 
 The sort function implements a stable sorting algorithm. It is a special case of sortBy , which allows the programmer to supply their own comparison function.
 
@@ -8787,9 +8237,7 @@ The minimumBy function takes a comparison function and a list and returns the le
 
 The prefix ‘ generic ’ indicates an overloaded function that is a generalized version of a Prelude function.
 
-```
-genericLength :: Num i => [b] -> i
-```
+### genericLength :: Num i => [b] -> i
 
 The genericLength function is an overloaded version of length . In particular, instead of returning an Int , it returns any type which is an instance of Num . It is, however, less efficient than length .
 
@@ -8830,11 +8278,9 @@ listToMaybe, maybeToList, catMaybes, mapMaybe
 
 #### 21.1 The Maybe type and operations
 
-```
-data Maybe a
-```
+### data Maybe a
 
-= Nothing | Just a
+### = Nothing | Just a
 
 The Maybe type encapsulates an optional value. A value of type Maybe a either contains a value of type a (represented as Just a ), or it is empty (represented as Nothing ). Using Maybe is a good way to deal with errors or exceptional cases without resorting to drastic measures such as error .
 
@@ -8848,31 +8294,31 @@ The maybe function takes a default value, a function, and a Maybe value. If the 
 
 ## CHAPTER 21. DATA.MAYBE
 
-isJust :: Maybe a -> Bool
+### isJust :: Maybe a -> Bool
 
 The isJust function returns True iff its argument is of the form Just _ .
 
-isNothing :: Maybe a -> Bool
+### isNothing :: Maybe a -> Bool
 
 The isNothing function returns True iff its argument is Nothing .
 
-fromJust :: Maybe a -> a
+### fromJust :: Maybe a -> a
 
 The fromJust function extracts the element out of a Just and throws an error if its argument is Nothing .
 
-fromMaybe :: a -> Maybe a -> a
+### fromMaybe :: a -> Maybe a -> a
 
 The fromMaybe function takes a default value and and [Maybe](http://unicode.org/standard/standard.html) [value.](http://unicode.org/standard/standard.html) [If the](http://unicode.org/standard/standard.html) [Maybe](http://unicode.org/standard/standard.html) [is](http://unicode.org/standard/standard.html) [Nothing](http://unicode.org/standard/standard.html) [, it](http://unicode.org/standard/standard.html) returns the default values; otherwise, it returns the value contained in the Maybe .
 
-listToMaybe :: [a] -> Maybe a
+### listToMaybe :: [a] -> Maybe a
 
 The listToMaybe function returns Nothing on an empty list or Just a where a is the first element of the list.
 
-maybeToList :: Maybe a -> [a]
+### maybeToList :: Maybe a -> [a]
 
 The maybeToList function returns an empty list when given Nothing or a singleton list when not given Nothing .
 
-catMaybes :: [Maybe a] -> [a]
+### catMaybes :: [Maybe a] -> [a]
 
 The catMaybes function takes a list of Maybe s and returns a list of all the Just values.
 
@@ -8931,15 +8377,13 @@ Ratio, Rational, (%), numerator, denominator, approxRational
 ) where
 ```
 
-data Integral a => Ratio a
+### data Integral a => Ratio a
 
 Rational numbers, with numerator and denominator of some Integral type.
 
 instance Integral a => Enum (Ratio a) instance Integral a => Eq (Ratio a) instance Integral a => Fractional (Ratio a) instance Integral a => Num (Ratio a) instance Integral a => Ord (Ratio a) instance (Integral a, Read a) => Read (Ratio a) instance Integral a => Real (Ratio a) instance Integral a => RealFrac (Ratio a) instance Integral a => Show (Ratio a)
 
-```
-type Rational = Ratio Integer
-```
+### type Rational = Ratio Integer
 
 Arbitrary-precision rational numbers, represented as a ratio of two Integer values. A rational number may be constructed using the % operator.
 
@@ -8974,13 +8418,9 @@ module Data.Ratio (
 Ratio, Rational, (%), numerator, denominator, approxRational ) where
 ```
 
-```
-infixl %
-```
+### infixl %
 
-```
-ratPrec = :: Int
-```
+### ratPrec = :: Int
 
 data (Integral a) => Ratio a = !a :% !a deriving (Eq) type Rational = Ratio Integer
 
@@ -8998,13 +8438,9 @@ where d = gcd x y
 x % y = reduce (x * signum y) (abs y)
 ```
 
-```
-numerator (x :% _) = x
-```
+### numerator (x :% _) = x
 
-```
-denominator (_ :% y) = y
-```
+### denominator [(_](http://haskell.org/) [:%](http://haskell.org/) [y)](http://haskell.org/) [=](http://haskell.org/) [y](http://haskell.org/)
 
 instance (Integral a) => Ord (Ratio a) where (x:%y) <= (x’:%y’) = x * y’ <= x’ * y
 
@@ -9096,9 +8532,7 @@ The rules that hold for Enum instances over a bounded type such as Int (see the 
 
 Right and left shifts by amounts greater than or equal to the width of the type result in a zero result. This is contrary to the behaviour in C, which is undefined; a common interpretation is to truncate the shift count to the width of the type, for example 1 << == in some C implementations.
 
-```
-data Word
-```
+### data Word
 
 A Word is an unsigned integral type, with the same size as Int .
 
@@ -9119,9 +8553,7 @@ instance Storable Word
 instance Bits Word
 ```
 
-```
-data Word8
-```
+### data Word8
 
 8-bit unsigned integer type
 
@@ -9140,9 +8572,7 @@ instance Storable Word8
 instance Bits Word8
 ```
 
-```
-data Word16
-```
+### data Word16
 
 16-bit unsigned integer type
 
@@ -9161,9 +8591,7 @@ instance Storable Word16
 instance Bits Word16
 ```
 
-```
-data Word32
-```
+### data Word32
 
 32-bit unsigned integer type
 
@@ -9184,9 +8612,7 @@ instance Storable Word32
 instance Bits Word32
 ```
 
-```
-data Word64
-```
+### data Word64
 
 64-bit unsigned integer type
 
@@ -9235,10 +8661,7 @@ module Foreign.C ( module Foreign.C.Types, module Foreign.C.String, module Forei
 
 The module Foreign.C combines the interfaces of all modules providing C-specific marshalling support, namely
 
-| module | Foreign.C.Types  |
-| ------ | ---------------- |
-| module | Foreign.C.String |
-| module | Foreign.C.Error  |
+### module Foreign.C.Types module Foreign.C.String module Foreign.C.Error
 
 ## CHAPTER 25. FOREIGN.C
 
@@ -9278,453 +8701,241 @@ The module Foreign.C.Error facilitates C-specific error handling of errno .
 
 #### 26.1 Haskell representations of errno values
 
-```
-newtype Errno
-```
+### newtype Errno
 
 ## CHAPTER 26. FOREIGN.C.ERROR
 
-```
-= Errno CInt
-```
+### = Errno CInt
 
 | Haskell representation for      | errno | values. The implementation is deliberately exposed, to allow users |
 | ------------------------------- | ----- | ------------------------------------------------------------------ |
 | to add their own definitions of | Errno | values.                                                            |
 
-```
-instance Eq Errno
-```
+### instance Eq Errno
 
 ##### 26.1.1 Common errno symbols
 
 Different operating systems and/or C libraries often support different values of errno . This module de- [fines the common values, but due to the open definition of](http://www.unicode.org/) [Errno](http://www.unicode.org/) users may add definitions which are not predefined.
 
-```
-eOK :: Errno
-```
+### eOK :: Errno
 
-```
-e2BIG :: Errno
-```
+### e2BIG :: Errno
 
-```
-eACCES :: Errno
-```
+### eACCES :: Errno
 
-```
-eADDRINUSE :: Errno
-```
+### eADDRINUSE :: Errno
 
-```
-eADDRNOTAVAIL :: Errno
-```
+### eADDRNOTAVAIL :: Errno
 
-```
-eADV :: Errno
-```
+### eADV :: Errno
 
-```
-eAFNOSUPPORT :: Errno
-```
+### eAFNOSUPPORT :: Errno
 
-```
-eAGAIN :: Errno
-```
+### eAGAIN :: Errno
 
-```
-eALREADY :: Errno
-```
+### eALREADY :: Errno
 
-```
-eBADF :: Errno
-```
+### eBADF :: Errno
 
-```
-eBADMSG :: Errno
-```
+### eBADMSG :: Errno
 
-```
-eBADRPC :: Errno
-```
+### eBADRPC :: Errno
 
-```
-eBUSY :: Errno
-```
+### eBUSY :: Errno
 
-```
-eCHILD :: Errno
-```
+### eCHILD :: Errno
 
-```
-eCOMM :: Errno
-```
+### eCOMM :: Errno
 
-```
-eCONNABORTED :: Errno
-```
+### eCONNABORTED :: Errno
 
-```
-eCONNREFUSED :: Errno
-```
+### eCONNREFUSED :: Errno
 
-```
-eCONNRESET :: Errno
-```
+### eCONNRESET :: Errno
 
-```
-eDEADLK :: Errno
-```
+### eDEADLK :: Errno
 
-```
-eDESTADDRREQ :: Errno
-```
+### eDESTADDRREQ :: Errno
 
-```
-eDIRTY :: Errno
-```
+### eDIRTY :: Errno
 
-```
-eDOM :: Errno
-```
+### eDOM :: Errno
 
 ### 26.1. HASKELL REPRESENTATIONS OF ERRNO VALUES
 
-```
-eDQUOT :: Errno
-```
+### eDQUOT :: Errno
 
-```
-eEXIST :: Errno
-```
+### eEXIST :: Errno
 
-```
-eFAULT :: Errno
-```
+### eFAULT :: Errno
 
-```
-eFBIG :: Errno
-```
+### eFBIG :: Errno
 
-```
-eFTYPE :: Errno
-```
+### eFTYPE :: Errno
 
-```
-eHOSTDOWN :: Errno
-```
+### eHOSTDOWN :: Errno
 
-```
-eHOSTUNREACH :: Errno
-```
+### eHOSTUNREACH :: Errno
 
-```
-eIDRM :: Errno
-```
+### eIDRM :: Errno
 
-```
-eILSEQ :: Errno
-```
+### eILSEQ :: Errno
 
-```
-eINPROGRESS :: Errno
-```
+### eINPROGRESS :: Errno
 
-```
-eINTR :: Errno
-```
+### eINTR :: Errno
 
-```
-eINVAL :: Errno
-```
+### eINVAL :: Errno
 
-```
-eIO :: Errno
-```
+### eIO :: Errno
 
-```
-eISCONN :: Errno
-```
+### eISCONN :: Errno
 
-```
-eISDIR :: Errno
-```
+### eISDIR :: Errno
 
-```
-eLOOP :: Errno
-```
+### eLOOP :: Errno
 
-```
-eMFILE :: Errno
-```
+### eMFILE :: Errno
 
-```
-eMLINK :: Errno
-```
+### eMLINK :: Errno
 
-```
-eMSGSIZE :: Errno
-```
+### eMSGSIZE :: Errno
 
-```
-eMULTIHOP :: Errno
-```
+### eMULTIHOP :: Errno
 
-```
-eNAMETOOLONG :: Errno
-```
+### eNAMETOOLONG :: Errno
 
-```
-eNETDOWN :: Errno
-```
+### eNETDOWN :: Errno
 
-```
-eNETRESET :: Errno
-```
+### eNETRESET :: Errno
 
-```
-eNETUNREACH :: Errno
-```
+### eNETUNREACH :: Errno
 
-```
-eNFILE :: Errno
-```
+### eNFILE :: Errno
 
-```
-eNOBUFS :: Errno
-```
+### eNOBUFS :: Errno
 
-```
-eNODATA :: Errno
-```
+### eNODATA :: Errno
 
-```
-eNODEV :: Errno
-```
+### eNODEV :: Errno
 
-```
-eNOENT :: Errno
-```
+### eNOENT :: [Errno](http://haskell.org/)
 
-```
-eNOEXEC :: Errno
-```
+### eNOEXEC :: Errno
 
-```
-eNOLCK :: Errno
-```
+### eNOLCK :: Errno
 
 ## CHAPTER 26. FOREIGN.C.ERROR
 
-```
-eNOLINK :: Errno
-```
+### eNOLINK :: Errno
 
-```
-eNOMEM :: Errno
-```
+### eNOMEM :: Errno
 
-```
-eNOMSG :: Errno
-```
+### eNOMSG :: Errno
 
-```
-eNONET :: Errno
-```
+### eNONET :: Errno
 
-```
-eNOPROTOOPT :: Errno
-```
+### eNOPROTOOPT :: Errno
 
-```
-eNOSPC :: Errno
-```
+### eNOSPC :: Errno
 
-```
-eNOSR :: Errno
-```
+### eNOSR :: Errno
 
-```
-eNOSTR :: Errno
-```
+### eNOSTR :: Errno
 
-```
-eNOSYS :: Errno
-```
+### eNOSYS :: Errno
 
-```
-eNOTBLK :: Errno
-```
+### eNOTBLK :: Errno
 
-```
-eNOTCONN :: Errno
-```
+### eNOTCONN :: Errno
 
-```
-eNOTDIR :: Errno
-```
+### eNOTDIR :: Errno
 
-```
-eNOTEMPTY :: Errno
-```
+### eNOTEMPTY :: Errno
 
-```
-eNOTSOCK :: Errno
-```
+### eNOTSOCK :: Errno
 
-```
-eNOTTY :: Errno
-```
+### eNOTTY :: Errno
 
-```
-eNXIO :: Errno
-```
+### eNXIO :: Errno
 
-```
-eOPNOTSUPP :: Errno
-```
+### eOPNOTSUPP :: Errno
 
-```
-ePERM :: Errno
-```
+### ePERM :: Errno
 
-```
-ePFNOSUPPORT :: Errno
-```
+### ePFNOSUPPORT :: Errno
 
-```
-ePIPE :: Errno
-```
+### ePIPE :: Errno
 
-```
-ePROCLIM :: Errno
-```
+### ePROCLIM :: Errno
 
-```
-ePROCUNAVAIL :: Errno
-```
+### ePROCUNAVAIL :: Errno
 
-```
-ePROGMISMATCH :: Errno
-```
+### ePROGMISMATCH :: Errno
 
-```
-ePROGUNAVAIL :: Errno
-```
+### ePROGUNAVAIL :: Errno
 
-```
-ePROTO :: Errno
-```
+### ePROTO :: Errno
 
-```
-ePROTONOSUPPORT :: Errno
-```
+### ePROTONOSUPPORT :: Errno
 
-```
-ePROTOTYPE :: Errno
-```
+### ePROTOTYPE :: Errno
 
-```
-eRANGE :: Errno
-```
+### eRANGE :: Errno
 
-```
-eREMCHG :: Errno
-```
+### eREMCHG :: Errno
 
-```
-eREMOTE :: Errno
-```
+### eREMOTE :: Errno
 
-```
-eROFS :: Errno
-```
+### eROFS :: Errno
 
 ### 26.1. HASKELL REPRESENTATIONS OF ERRNO VALUES
 
-```
-eRPCMISMATCH :: Errno
-```
+### eRPCMISMATCH :: Errno
 
-```
-eRREMOTE :: Errno
-```
+### eRREMOTE :: Errno
 
-```
-eSHUTDOWN :: Errno
-```
+### eSHUTDOWN :: Errno
 
-```
-eSOCKTNOSUPPORT :: Errno
-```
+### eSOCKTNOSUPPORT :: Errno
 
-```
-eSPIPE :: Errno
-```
+### eSPIPE :: Errno
 
-```
-eSRCH :: Errno
-```
+### eSRCH :: Errno
 
-```
-eSRMNT :: Errno
-```
+### eSRMNT :: Errno
 
-```
-eSTALE :: Errno
-```
+### eSTALE :: Errno
 
-```
-eTIME :: Errno
-```
+### eTIME :: Errno
 
-```
-eTIMEDOUT :: Errno
-```
+### eTIMEDOUT :: Errno
 
-```
-eTOOMANYREFS :: Errno
-```
+### eTOOMANYREFS :: Errno
 
-```
-eTXTBSY :: Errno
-```
+### eTXTBSY :: Errno
 
-```
-eUSERS :: Errno
-```
+### eUSERS :: Errno
 
-```
-eWOULDBLOCK :: Errno
-```
+### eWOULDBLOCK :: Errno
 
-```
-eXDEV :: Errno
-```
+### eXDEV :: Errno
 
 ##### 26.1.2 Errno functions
 
-```
-isValidErrno :: Errno -> Bool
-```
+### isValidErrno :: Errno -> Bool
 
 Yield True if the given Errno value is valid on the system. This implies that the Eq instance of Errno is also system dependent as it is only defined for valid values of Errno .
 
-```
-getErrno :: IO Errno
-```
+### getErrno :: IO Errno
 
 Get the current value of errno in the current thread.
 
-```
-resetErrno :: IO ()
-```
+### resetErrno :: IO ()
 
 Reset the current thread’s errno value to eOK .
 
-```
-errnoToIOError
-```
+### errnoToIOError
 
 :: String the location where the error occurred -> Errno the error number -> Maybe Handle optional handle associated with the error -> Maybe String optional filename associated with the error -> IOError
 
@@ -9732,9 +8943,7 @@ Construct an IOError based on the given Errno value. The optional information ca
 
 ## CHAPTER 26. FOREIGN.C.ERROR
 
-```
-throwErrno
-```
+### throwErrno
 
 | ::  | String | textual description of the error location |
 | --- | ------ | ----------------------------------------- |
@@ -9744,9 +8953,7 @@ Throw an IOError corresponding to the current value of getErrno .
 
 ##### 26.1.3 Guards for IO operations that may fail
 
-```
-throwErrnoIf
-```
+### throwErrnoIf
 
 :: (a -> Bool) predicate to apply to the result value of the IO operation -> String textual description of the location -> IO a [the](http://www.unicode.org/) [IO](http://www.unicode.org/) [operation to be executed](http://www.unicode.org/) -> IO a
 
@@ -9790,9 +8997,7 @@ throwErrnoIfNullRetry :: String -> IO (Ptr a) -> IO (Ptr a)
 
 Throw an IOError corresponding to the current value of getErrno if the IO action returns nullPtr , but retry in case of an interrupted operation.
 
-```
-throwErrnoIfRetryMayBlock
-```
+### throwErrnoIfRetryMayBlock
 
 :: (a -> Bool) predicate to apply to the result value of the IO operation -> String textual description of the location -> IO a the IO operation to be executed -> IO b action to execute before retrying if an immediate retry would block -> IO a
 
@@ -9823,9 +9028,7 @@ throwErrnoIfNullRetryMayBlock :: String
 
 as throwErrnoIfNullRetry , but checks for operations that would block.
 
-```
-throwErrnoPath :: String -> FilePath -> IO a
-```
+### throwErrnoPath :: String -> FilePath -> IO a
 
 as throwErrno , but exceptions include the given path when appropriate.
 
@@ -9879,15 +9082,11 @@ The marshalling converts each Haskell character, representing a Unicode code poi
 
 #### 27.1 C strings
 
-```
-type CString = Ptr CChar
-```
+### type CString = Ptr CChar
 
 A C string is a reference to an array of C characters terminated by NUL.
 
-```
-type CStringLen = (Ptr CChar, Int)
-```
+### type CStringLen = (Ptr CChar, Int)
 
 A string with explicit length information in bytes instead of a terminating NUL (allowing NUL char- acters in the middle of the string).
 
@@ -9897,21 +9096,15 @@ A string with explicit length information in bytes instead of a terminating NUL 
 
 Currently these functions are identical to their CAString counterparts; eventually they will use an encoding determined by the current locale.
 
-```
-peekCString :: CString -> IO String
-```
+### peekCString :: CString -> IO String
 
 Marshal a NUL terminated C string into a Haskell string.
 
-```
-peekCStringLen :: CStringLen -> IO String
-```
+### peekCStringLen :: CStringLen -> IO String
 
 Marshal a C string with explicit length into a Haskell string.
 
-```
-newCString :: String -> IO CString
-```
+### newCString :: String -> IO CString
 
 Marshal a Haskell string into a NUL terminated C string.
 
@@ -9919,9 +9112,7 @@ Marshal a Haskell string into a NUL terminated C string.
 
 - new storage is allocated for the C string and must be explicitly freed using Foreign.Marshal.Alloc.free or Foreign.Marshal.Alloc.finalizerFree .
 
-```
-newCStringLen :: String -> IO CStringLen
-```
+### newCStringLen :: String -> IO CStringLen
 
 Marshal a Haskell string into a C string (ie, character array) with explicit length information.
 
@@ -9941,9 +9132,7 @@ Marshal a Haskell string into a C string (ie, character array) in temporary stor
 
 - the memory is freed when the subcomputation terminates (either normally or via an exception), so the pointer to the temporary storage must not be used after this.
 
-```
-charIsRepresentable :: Char -> IO Bool
-```
+### charIsRepresentable :: Char -> IO Bool
 
 [Determines whether a character can be accurately encoded in a](http://haskell.org/) CString . Unrepresentable characters are converted to ’?’ .
 
@@ -9955,57 +9144,39 @@ Currently only Latin-1 characters are representable.
 
 These variants of the above functions are for use with C libraries that are ignorant of Unicode. These functions should be used with care, as a loss of information can occur.
 
-```
-castCharToCChar :: Char -> CChar
-```
+### castCharToCChar :: Char -> CChar
 
 Convert a Haskell character to a C character. This function is only safe on the first 256 characters.
 
-```
-castCCharToChar :: CChar -> Char
-```
+### castCCharToChar :: CChar -> Char
 
 Convert a C byte, representing a Latin-1 character, to the corresponding Haskell character.
 
-```
-castCharToCUChar :: Char -> CUChar
-```
+### castCharToCUChar :: Char -> CUChar
 
 Convert a Haskell character to a C [unsigned](http://unicode.org/standard/standard.html) [char](http://unicode.org/standard/standard.html) [. This function is only safe on the first 256 char-](http://unicode.org/standard/standard.html) acters.
 
-```
-castCUCharToChar :: CUChar -> Char
-```
+### castCUCharToChar :: CUChar -> Char
 
 Convert a C unsigned char , representing a Latin-1 character, to the corresponding Haskell character.
 
-```
-castCharToCSChar :: Char -> CSChar
-```
+### castCharToCSChar :: Char -> CSChar
 
 Convert a Haskell character to a C signed char . This function is only safe on the first 256 characters.
 
-```
-castCSCharToChar :: CSChar -> Char
-```
+### castCSCharToChar :: CSChar -> Char
 
 Convert a C signed char , representing a Latin-1 character, to the corresponding Haskell character.
 
-```
-peekCAString :: CString -> IO String
-```
+### peekCAString :: CString -> IO String
 
 Marshal a NUL terminated C string into a Haskell string.
 
-```
-peekCAStringLen :: CStringLen -> IO String
-```
+### peekCAStringLen :: CStringLen -> IO String
 
 Marshal a C string with explicit length into a Haskell string.
 
-```
-newCAString :: String -> IO CString
-```
+### newCAString :: String -> IO CString
 
 Marshal a Haskell string into a NUL terminated C string.
 
@@ -10013,9 +9184,7 @@ Marshal a Haskell string into a NUL terminated C string.
 
 - new storage is allocated for the C string and must be explicitly freed using Foreign.Marshal.Alloc.free or Foreign.Marshal.Alloc.finalizerFree .
 
-```
-newCAStringLen :: String -> IO CStringLen
-```
+### newCAStringLen [::](http://haskell.org/) [String](http://haskell.org/) [->](http://haskell.org/) [IO](http://haskell.org/) CStringLen
 
 Marshal a Haskell string into a C string (ie, character array) with explicit length information.
 
@@ -10045,33 +9214,23 @@ These variants of the above functions are for use with C libraries that encode U
 
 - UTF-16 (as used on Windows systems).
 
-```
-type CWString = Ptr CWchar
-```
+### type CWString = Ptr CWchar
 
 A C wide string is a reference to an array of C wide characters terminated by NUL.
 
-```
-type CWStringLen = (Ptr CWchar, Int)
-```
+### type CWStringLen = (Ptr CWchar, Int)
 
 A wide character string with explicit length information in CWchar s instead of a terminating NUL (allowing NUL characters in the middle of the string).
 
-```
-peekCWString :: CWString -> IO String
-```
+### peekCWString :: CWString -> IO String
 
 Marshal a NUL terminated C wide string into a Haskell string.
 
-```
-peekCWStringLen :: CWStringLen -> IO String
-```
+### peekCWStringLen :: CWStringLen -> IO String
 
 Marshal a C wide string with explicit length into a Haskell string.
 
-```
-newCWString :: String -> IO CWString
-```
+### newCWString :: String -> IO CWString
 
 [Marshal a Haskell string into a NUL terminated C wide string.](http://haskell.org/)
 
@@ -10081,9 +9240,7 @@ newCWString :: String -> IO CWString
 
 ### 27.2. C WIDE STRINGS
 
-```
-newCWStringLen :: String -> IO CWStringLen
-```
+### newCWStringLen :: String -> IO CWStringLen
 
 Marshal a Haskell string into a C wide string (ie, wide character array) with explicit length information.
 
@@ -10146,9 +9303,7 @@ These types are needed to accurately represent C function prototypes, in order t
 
 These types are are represented as newtype s of types in Data.Int and Data.Word , and are instances of Eq , Ord , Num , Read , Show , Enum , Storable , Bounded , Real , Integral and Bits .
 
-```
-data CChar
-```
+### data CChar
 
 Haskell type representing the C char type.
 
@@ -10166,9 +9321,7 @@ instance Storable CChar
 instance Bits CChar
 ```
 
-```
-data CSChar
-```
+### data CSChar
 
 Haskell type representing the C signed char type.
 
@@ -10186,9 +9339,7 @@ instance Storable CSChar
 instance Bits CSChar
 ```
 
-```
-data CUChar
-```
+### data CUChar
 
 Haskell type representing the C unsigned char type.
 
@@ -10208,9 +9359,7 @@ instance Storable CUChar
 instance Bits CUChar
 ```
 
-```
-data CShort
-```
+### data CShort
 
 Haskell type representing the C short type.
 
@@ -10228,9 +9377,7 @@ instance Storable CShort
 instance Bits CShort
 ```
 
-```
-data CUShort
-```
+### data CUShort
 
 Haskell type representing the C unsigned short type.
 
@@ -10248,9 +9395,7 @@ instance Storable CUShort
 instance Bits CUShort
 ```
 
-```
-data CInt
-```
+### data CInt
 
 Haskell type representing the C int type.
 
@@ -10270,9 +9415,7 @@ instance Storable CInt
 instance Bits CInt
 ```
 
-```
-data CUInt
-```
+### data CUInt
 
 Haskell type representing the C unsigned int type.
 
@@ -10290,9 +9433,7 @@ instance Storable CUInt
 instance Bits CUInt
 ```
 
-```
-data CLong
-```
+### data CLong
 
 Haskell type representing the C long type.
 
@@ -10310,9 +9451,7 @@ instance Storable CLong
 instance Bits CLong
 ```
 
-```
-data CULong
-```
+### data CULong
 
 Haskell type representing the C unsigned long type.
 
@@ -10332,9 +9471,7 @@ instance Storable CULong
 instance Bits CULong
 ```
 
-```
-data CPtrdiff
-```
+### data CPtrdiff
 
 Haskell type representing the C ptrdiff_t type.
 
@@ -10352,9 +9489,7 @@ instance Storable CPtrdiff
 instance Bits CPtrdiff
 ```
 
-```
-data CSize
-```
+### data CSize
 
 Haskell type representing the C size_t type.
 
@@ -10372,9 +9507,7 @@ instance Storable CSize
 instance Bits CSize
 ```
 
-```
-data CWchar
-```
+### data CWchar
 
 Haskell type representing the C wchar_t type.
 
@@ -10394,9 +9527,7 @@ instance Storable CWchar
 instance Bits CWchar
 ```
 
-```
-data CSigAtomic
-```
+### data CSigAtomic
 
 Haskell type representing the C sig_atomic_t type.
 
@@ -10414,9 +9545,7 @@ instance Storable CSigAtomic
 instance Bits CSigAtomic
 ```
 
-```
-data CLLong
-```
+### data CLLong
 
 Haskell type representing the C long long type.
 
@@ -10434,9 +9563,7 @@ instance Storable CLLong
 instance Bits CLLong
 ```
 
-```
-data CULLong
-```
+### data CULLong
 
 Haskell type representing the C unsigned long long type.
 
@@ -10456,9 +9583,7 @@ instance Storable CULLong
 instance Bits CULLong
 ```
 
-```
-data CIntPtr
-```
+### data CIntPtr
 
 ```
 instance Bounded CIntPtr
@@ -10474,9 +9599,7 @@ instance Storable CIntPtr
 instance Bits CIntPtr
 ```
 
-```
-data CUIntPtr
-```
+### data CUIntPtr
 
 ```
 instance Bounded CUIntPtr
@@ -10492,9 +9615,7 @@ instance Storable CUIntPtr
 instance Bits CUIntPtr
 ```
 
-```
-data CIntMax
-```
+### data CIntMax
 
 ```
 instance Bounded CIntMax
@@ -10512,9 +9633,7 @@ instance Bits CIntMax
 
 ## CHAPTER 28. FOREIGN.C.TYPES
 
-```
-data CUIntMax
-```
+### data CUIntMax
 
 ```
 instance Bounded CUIntMax
@@ -10534,9 +9653,7 @@ instance Bits CUIntMax
 
 These types are are represented as newtype s of basic foreign types, and are instances of Eq , Ord , Num , Read , Show , Enum and Storable .
 
-```
-data CClock
-```
+### data CClock
 
 Haskell type representing the C clock_t type.
 
@@ -10551,9 +9668,7 @@ instance Show CClock
 instance Storable CClock
 ```
 
-```
-data CTime
-```
+### data CTime
 
 Haskell type representing the C time_t type.
 
@@ -10574,9 +9689,7 @@ These types are are represented as newtype s of Float and Double , and are insta
 
 ### 28.1. REPRESENTATIONS OF C TYPES
 
-```
-data CFloat
-```
+### data CFloat
 
 Haskell type representing the C float type.
 
@@ -10595,9 +9708,7 @@ instance Show CFloat
 instance Storable CFloat
 ```
 
-```
-data CDouble
-```
+### data CDouble
 
 Haskell type representing the C double type.
 
@@ -10618,21 +9729,15 @@ instance Storable CDouble
 
 ##### 28.1.4 Other types
 
-```
-data CFile
-```
+### data CFile
 
 Haskell type representing the C FILE type.
 
-```
-data CFpos
-```
+### data CFpos
 
 Haskell type representing the C fpos_t type.
 
-```
-data CJmpBuf
-```
+### data CJmpBuf
 
 Haskell type representing the C jmp_buf type.
 
@@ -10655,9 +9760,7 @@ mallocForeignPtrArray0
 
 #### 29.1 Finalised data pointers
 
-```
-data ForeignPtr a
-```
+### data ForeignPtr a
 
 The type ForeignPtr represents references to objects that are maintained in a foreign language, i.e., that are not part of the data structures usually managed by the Haskell storage manager. The essential difference between ForeignPtr s and vanilla memory references of type Ptr a is that the former may be associated with finalizers . A finalizer is a routine that is invoked when the Haskell storage manager detects that - within the Haskell heap and stack - there are no more references left that are pointing to the ForeignPtr . Typically, the finalizer will, then, invoke routines in the foreign language that free the resources bound by the foreign object.
 
@@ -10684,7 +9787,7 @@ newForeignPtr :: FinalizerPtr a -> Ptr a -> IO (ForeignPtr a)
 
 Turns a plain memory reference into a foreign pointer, and associates a finalizer with the reference. The [finalizer will be executed after the last reference to the foreign object is dropped. There is no guarantee](http://www.unicode.org/) of promptness, however the finalizer will be executed before the program exits.
 
-newForeignPtr_ :: Ptr a -> IO (ForeignPtr [a)](http://unicode.org/standard/standard.html)
+### newForeignPtr_ :: Ptr a -> IO (ForeignPtr [a)](http://unicode.org/standard/standard.html)
 
 Turns a plain memory reference into a foreign pointer that may be associated with finalizers by using addForeignPtrFinalizer .
 
@@ -10709,9 +9812,7 @@ This is a way to look at the pointer living inside a foreign object. This functi
 
 This function is normally used for marshalling data to or from the object pointed to by the ForeignPtr [, using the operations from the](http://haskell.org/) Storable class.
 
-```
-finalizeForeignPtr :: ForeignPtr a -> IO ()
-```
+### finalizeForeignPtr :: ForeignPtr a -> IO ()
 
 Causes the finalizers associated with a foreign pointer to be run immediately.
 
@@ -10719,15 +9820,13 @@ Causes the finalizers associated with a foreign pointer to be run immediately.
 
 ##### 29.1.2 Low-level operations
 
-unsafeForeignPtrToPtr :: ForeignPtr a -> Ptr a
+### unsafeForeignPtrToPtr :: ForeignPtr a -> Ptr a
 
 This function extracts the pointer component of a foreign pointer. This is a potentially dangerous operations, as if the argument to unsafeForeignPtrToPtr is the last usage occurrence of the given foreign pointer, then its finalizer(s) will be run, which potentially invalidates the plain pointer just obtained. Hence, touchForeignPtr must be used wherever it has to be guaranteed that the pointer lives on - i.e., has another usage occurrence.
 
 To avoid subtle coding errors, hand written marshalling code should preferably use Foreign.ForeignPtr.withForeignPtr rather than combinations of unsafeForeignPtrToPtr and touchForeignPtr . However, the latter routines are occasionally preferred in tool generated marshalling code.
 
-```
-touchForeignPtr :: ForeignPtr a -> IO ()
-```
+### touchForeignPtr :: ForeignPtr a -> IO ()
 
 This function ensures that the foreign object in question is alive at the given place in the sequence of IO actions. In particular withForeignPtr does a touchForeignPtr after it executes the user action.
 
@@ -10735,15 +9834,13 @@ Note that this function should not be used to express dependencies between final
 
 In general, it is not recommended to use finalizers on separate objects with ordering constraints between them. To express the ordering robustly requires explicit synchronisation between finalizers.
 
-```
-castForeignPtr :: ForeignPtr a -> ForeignPtr b
-```
+### castForeignPtr :: ForeignPtr a -> ForeignPtr b
 
 This function casts a ForeignPtr parameterised by one type into another type.
 
 ##### 29.1.3 Allocating managed memory
 
-mallocForeignPtr :: Storable a => IO (ForeignPtr a)
+### mallocForeignPtr :: Storable a => IO (ForeignPtr a)
 
 Allocate some memory and return a ForeignPtr to it. The memory will be released automatically when the ForeignPtr is discarded.
 
@@ -10755,9 +9852,7 @@ do { p <- malloc; newForeignPtr finalizerFree p }
 
 although it may be implemented differently internally: you may not assume that the memory returned by mallocForeignPtr has been allocated with Foreign.Marshal.Alloc.malloc .
 
-```
-mallocForeignPtrBytes :: Int -> IO (ForeignPtr a)
-```
+### mallocForeignPtrBytes :: Int -> IO (ForeignPtr a)
 
 This function is similar to mallocForeignPtr , except that the size of the memory required is given explicitly as a number of bytes.
 
@@ -10779,15 +9874,11 @@ module Foreign.Marshal ( module Foreign.Marshal.Alloc, module Foreign.Marshal.Ar
 
 The module Foreign.Marshal re-exports the other modules in the Foreign.Marshal hierarchy:
 
-| module | Foreign.Marshal.Alloc |
-| ------ | --------------------- |
-| module | Foreign.Marshal.Array |
-| module | Foreign.Marshal.Error |
-| module | Foreign.Marshal.Utils |
+### module Foreign.Marshal.Alloc module Foreign.Marshal.Array module Foreign.Marshal.Error module Foreign.Marshal.Utils
 
 and provides one function:
 
-unsafeLocalState :: IO a -> a
+### unsafeLocalState :: IO a -> a
 
 Sometimes an external entity is a pure function, except that it passes arguments and/or results via pointers. The function unsafeLocalState permits the packaging of such entities as pure functions.
 
@@ -10836,15 +9927,13 @@ The memory is freed when f terminates (either normally or via an exception), so 
 
 ##### 31.1.2 Dynamic allocation
 
-malloc :: Storable a => IO (Ptr a)
+### malloc :: Storable a => IO (Ptr a)
 
 Allocate a block of memory that is sufficient to hold values of type a . The size of the area allocated is determined by the sizeOf method from the instance of Storable for the appropriate type.
 
 The memory may be deallocated using free or finalizerFree when no longer required.
 
-```
-mallocBytes :: Int -> IO (Ptr a)
-```
+### mallocBytes :: Int -> IO (Ptr a)
 
 Allocate a block of memory of the given number of bytes. The block of memory is sufficiently aligned for any of the basic foreign types that fits into a memory block of the allocated size.
 
@@ -10864,17 +9953,13 @@ Resize a memory area that was allocated with malloc or mallocBytes to the given 
 
 If the pointer argument to reallocBytes is nullPtr , reallocBytes behaves like malloc . If the requested size is 0, reallocBytes behaves like free .
 
-```
-free :: Ptr a -> IO ()
-```
+### free :: Ptr a -> IO ()
 
 Free a block of memory that was allocated with malloc , mallocBytes , realloc , reallocBytes , Foreign.Marshal.Utils.new or any of the new X functions in Foreign.Marshal.Array or Foreign.C.String .
 
 ### 31.1. MEMORY ALLOCATION
 
-```
-finalizerFree :: FinalizerPtr a
-```
+### finalizerFree :: FinalizerPtr a
 
 A pointer to a foreign function equivalent to free , which may be used as a finalizer (cf Foreign.ForeignPtr.ForeignPtr ) for storage allocated with malloc , mallocBytes , realloc or reallocBytes .
 
@@ -11011,9 +10096,7 @@ throwIf, throwIf_, throwIfNeg, throwIfNeg_, throwIfNull, void
 ) where
 ```
 
-```
-throwIf
-```
+### throwIf
 
 :: (a -> Bool) error condition on the result of the IO action -> (a -> String) computes an error message from erroneous results of the IO action -> IO a the IO action to be executed -> IO a
 
@@ -11035,9 +10118,7 @@ throwIfNull :: String -> IO (Ptr a) -> IO (Ptr a)
 
 [Guards against null pointers](http://haskell.org/)
 
-```
-void :: IO a -> IO ()
-```
+### void :: IO a -> IO ()
 
 Discard the return value of an IO action
 
@@ -11069,11 +10150,11 @@ The memory may be deallocated using Foreign.Marshal.Alloc.free or [Foreign.Marsh
 
 ##### 34.1.2 Marshalling of Boolean values (non-zero corresponds to True )
 
-fromBool :: Num a => Bool -> a
+### fromBool :: Num a => Bool -> a
 
 Convert a Haskell Bool to its numeric representation
 
-toBool :: Num a => a -> Bool
+### toBool :: Num a => a -> Bool
 
 Convert a Boolean in numeric representation to a Haskell value
 
@@ -11135,9 +10216,7 @@ The module Foreign.Ptr provides typed pointers to foreign entities. We distingui
 
 #### 35.1 Data pointers
 
-```
-data Ptr a
-```
+### data Ptr a
 
 A value of type Ptr a represents a pointer to an object, or an array of objects, which may be marshalled to or from Haskell values of type a .
 
@@ -11147,21 +10226,15 @@ instance Eq (Ptr a) instance [Ord](http://haskell.org/) [(Ptr](http://haskell.or
 
 ## CHAPTER 35. FOREIGN.PTR
 
-```
-nullPtr :: Ptr a
-```
+### nullPtr :: Ptr a
 
 The constant nullPtr contains a distinguished value of Ptr that is not associated with a valid memory location.
 
-```
-castPtr :: Ptr a -> Ptr b
-```
+### castPtr :: Ptr a -> Ptr b
 
 The castPtr function casts a pointer from one type to another.
 
-```
-plusPtr :: Ptr a -> Int -> Ptr b
-```
+### plusPtr :: Ptr a -> Int -> Ptr b
 
 Advances the given address by the given offset in bytes.
 
@@ -11175,15 +10248,11 @@ minusPtr :: Ptr a -> Ptr b -> Int
 
 Computes the offset required to get from the second to the first argument. We have
 
-```
-p2 == p1 ‘plusPtr‘ (p2 ‘minusPtr‘ p1)
-```
+### p2 == p1 ‘plusPtr‘ (p2 ‘minusPtr‘ p1)
 
 #### 35.2 Function pointers
 
-```
-data FunPtr a
-```
+### data FunPtr a
 
 A value of type FunPtr a is a pointer to a function callable from foreign code. The type a will normally be a foreign type , a function type with zero or more arguments where
 
@@ -11220,45 +10289,33 @@ mkFun :: FunPtr IntFunction -> IntFunction
 
 instance Eq (FunPtr a) instance Ord (FunPtr a) instance Show (FunPtr a) instance Storable [(FunPtr](http://www.unicode.org/) [a)](http://www.unicode.org/)
 
-```
-nullFunPtr :: FunPtr a
-```
+### nullFunPtr :: FunPtr a
 
 The constant nullFunPtr contains a distinguished value of FunPtr that is not associated with a valid memory location.
 
-```
-castFunPtr :: FunPtr a -> FunPtr b
-```
+### castFunPtr :: FunPtr a -> FunPtr b
 
 Casts a FunPtr to a FunPtr of a different type.
 
-```
-castFunPtrToPtr :: FunPtr a -> Ptr b
-```
+### castFunPtrToPtr :: FunPtr a -> Ptr b
 
 Casts a FunPtr to a Ptr .
 
 Note: this is valid only on architectures where data and function pointers range over the same set of addresses, and should only be used for bindings to external libraries whose interface already relies on this assumption.
 
-```
-castPtrToFunPtr :: Ptr a -> FunPtr b
-```
+### castPtrToFunPtr :: Ptr a -> FunPtr b
 
 Casts a Ptr to a FunPtr .
 
 Note: this is valid only on architectures where data and function pointers range over the same set of addresses, and should only be used for bindings to external libraries whose interface already relies on this assumption.
 
-```
-freeHaskellFunPtr :: FunPtr a -> IO ()
-```
+### freeHaskellFunPtr :: FunPtr a -> IO ()
 
 Release the storage associated with the given FunPtr , which must have been obtained from a wrapper stub. This should be called whenever the return value from a foreign import wrapper function is no longer required; otherwise, the storage it uses will leak.
 
 #### 35.3 Integral types with lossless conversion to and from pointers
 
-```
-data IntPtr
-```
+### data IntPtr
 
 A signed integral type that can be losslessly converted to and from Ptr . This type is also compatible with the C99 type intptr_t , and can be marshalled to and from that type safely.
 
@@ -11278,17 +10335,15 @@ instance Storable IntPtr
 instance Bits IntPtr
 ```
 
-ptrToIntPtr :: Ptr a [->](http://www.unicode.org/) [IntPtr](http://www.unicode.org/)
+### ptrToIntPtr :: Ptr a [->](http://www.unicode.org/) [IntPtr](http://www.unicode.org/)
 
 casts a Ptr to an IntPtr
 
-intPtrToPtr :: IntPtr -> Ptr a
+### intPtrToPtr :: IntPtr -> Ptr a
 
 casts an IntPtr to a Ptr
 
-```
-data WordPtr
-```
+### data WordPtr
 
 An unsigned integral type that can be losslessly converted to and from Ptr . This type is also compatible with the C99 type uintptr_t , and can be marshalled to and from that type safely.
 
@@ -11306,11 +10361,11 @@ instance Storable WordPtr
 instance Bits WordPtr
 ```
 
-ptrToWordPtr :: Ptr a -> WordPtr
+### ptrToWordPtr :: Ptr a -> WordPtr
 
 casts a Ptr to a WordPtr
 
-wordPtrToPtr :: WordPtr -> Ptr a
+### wordPtrToPtr :: WordPtr -> Ptr a
 
 casts a WordPtr to a Ptr
 
@@ -11327,47 +10382,37 @@ castStablePtrToPtr, castPtrToStablePtr
 
 #### 36.1 Stable references to Haskell values
 
-```
-data StablePtr a
-```
+### data StablePtr a
 
 A stable pointer is a reference to a Haskell expression that is guaranteed not to be affected by garbage collection, i.e., it will neither be deallocated nor will the value of the stable pointer itself change during garbage collection (ordinary references may be relocated during garbage collection). Consequently, stable pointers can be passed to foreign code, which can treat it as an opaque reference to a Haskell value.
 
 A value of type StablePtr a is a stable pointer to a Haskell expression of type a .
 
-instance Eq (StablePtr a) instance Storable (StablePtr a)
+### instance Eq (StablePtr a) instance Storable (StablePtr a)
 
-newStablePtr :: a -> IO (StablePtr a)
+### newStablePtr :: a -> IO (StablePtr a)
 
 Create a stable pointer referring to the given Haskell value.
 
-deRefStablePtr :: StablePtr a -> IO a
+### deRefStablePtr :: StablePtr a -> IO a
 
 Obtain the Haskell value referenced by a stable pointer, i.e., the same value that was passed to the corresponding call to makeStablePtr . If the argument to deRefStablePtr has already been freed using freeStablePtr , the behaviour of deRefStablePtr is undefined.
 
 ## CHAPTER 36. FOREIGN.STABLEPTR
 
-```
-freeStablePtr :: StablePtr a -> IO ()
-```
+### freeStablePtr :: StablePtr a -> IO ()
 
 Dissolve the association between the stable pointer and the Haskell value. Afterwards, if the sta- ble pointer is passed to deRefStablePtr or freeStablePtr , the behaviour is undefined. How- ever, the stable pointer may still be passed to castStablePtrToPtr , but the Foreign.Ptr.Ptr () value returned by castStablePtrToPtr , in this case, is undefined (in particular, it may be Foreign.Ptr.nullPtr ). Nevertheless, the call to castStablePtrToPtr is guaranteed not to di- verge.
 
-```
-castStablePtrToPtr :: StablePtr a -> Ptr ()
-```
+### castStablePtrToPtr :: StablePtr a -> Ptr ()
 
 Coerce a stable pointer to an address. No guarantees are made about the resulting value, except that the original stable pointer can be recovered by castPtrToStablePtr . In particular, the address may not refer to an accessible memory location and any attempt to pass it to the member functions of the class Foreign.Storable.Storable leads to undefined behaviour.
 
-```
-castPtrToStablePtr :: Ptr () -> StablePtr a
-```
+### castPtrToStablePtr :: Ptr () -> StablePtr a
 
 The inverse of castStablePtrToPtr , i.e., we have the identity
 
-```
-sp == castPtrToStablePtr (castStablePtrToPtr sp)
-```
+### sp == castPtrToStablePtr (castStablePtrToPtr sp)
 
 for any stable pointer sp on which freeStablePtr has not been executed yet. More- over, castPtrToStablePtr may only be applied to pointers that have been produced by castStablePtrToPtr .
 
@@ -11398,9 +10443,7 @@ poke)
 ) where
 ```
 
-```
-class Storable a where
-```
+### class Storable a where
 
 The member functions of this class facilitate writing values of primitive types to raw memory (which may have been allocated with the above mentioned routines) and reading values from blocks of raw memory. The class, furthermore, includes support for computing the storage requirements and align- ment restrictions of storable types.
 
@@ -11412,15 +10455,13 @@ Minimal complete definition: sizeOf , alignment , one of peek , peekElemOff and 
 
 ## CHAPTER 37. FOREIGN.STORABLE
 
-```
 Methods
-```
 
-sizeOf :: a -> Int
+### sizeOf :: a -> Int
 
 Computes the storage requirements (in bytes) of the argument. The value of the argument is not used.
 
-alignment :: a -> Int
+### alignment :: a -> Int
 
 Computes the alignment constraint of the argument. An alignment constraint x is fulfilled by any address divisible by x . The value of the argument is not used.
 
@@ -11450,9 +10491,7 @@ peekByteOff :: Ptr b -> Int -> IO a
 
 Read a value from a memory location given by a base address and offset. The following equality holds:
 
-```
-peekByteOff addr off = peek (addr ‘plusPtr‘ off)
-```
+### peekByteOff addr off = peek (addr ‘plusPtr‘ off)
 
 ```
 pokeByteOff :: Ptr b -> Int -> a -> IO ()
@@ -11464,7 +10503,7 @@ Write a value to a memory location given by a base address and offset. The follo
 pokeByteOff addr off x = poke (addr ‘plusPtr‘ off) x
 ```
 
-peek :: Ptr a -> IO a
+### peek :: Ptr a -> IO a
 
 Read a value from the given memory location. Note that the peek and poke functions might require properly aligned addresses to function cor- rectly. This is architecture dependent; thus, portable code should ensure that when peeking or poking values of some type a , the alignment constraint for a , as given by the function alignment is fulfilled.
 
@@ -11529,9 +10568,7 @@ readDec, readOct, readHex, readFloat, lexDigits, fromRat
 
 #### 38.1 Showing
 
-```
-showSigned
-```
+### showSigned
 
 :: Real a => (a -> ShowS) a function that can show unsigned values -> Int the precedence of the enclosing context -> a the value to show -> ShowS
 
@@ -11541,17 +10578,17 @@ showIntAtBase :: Integral a => a -> (Int -> Char) -> a -> ShowS
 
 Shows a non-negative Integral number using the base specified by the first argument, and the char- acter representation specified by the second.
 
-showInt :: Integral a => a -> ShowS
+### showInt :: Integral a => a -> ShowS
 
 Show [non-negative](http://haskell.org/) [Integral](http://haskell.org/) numbers in base 10.
 
-showHex :: Integral a => a -> ShowS
+### showHex :: Integral a => a -> ShowS
 
 Show non-negative Integral numbers in base 16.
 
 ## CHAPTER 38. NUMERIC
 
-showOct :: Integral a => a -> ShowS
+### showOct :: Integral a => a -> ShowS
 
 Show non-negative Integral numbers in base 8.
 
@@ -11573,7 +10610,7 @@ Show a signed RealFloat value using standard decimal notation for arguments whos
 
 In the call showGFloat digs val , if digs is Nothing , the value is shown to full precision; if digs is Just d , then at most d digits after the decimal point are shown.
 
-showFloat :: RealFloat a => a -> ShowS
+### showFloat :: RealFloat a => a -> ShowS
 
 Show a signed RealFloat value to full precision using standard decimal notation for arguments whose absolute value lies between 0.1 and 9,999,999 , and scientific notation otherwise.
 
@@ -11581,7 +10618,7 @@ floatToDigits :: RealFloat a => Integer -> a -> ([Int], Int)
 
 floatToDigits takes a base and a non-negative RealFloat number, and returns a list of digits and an exponent. In particular, if x>=0 , and
 
-floatToDigits base x = ([d1,d2,...,dn], e)
+### floatToDigits base x = ([d1,d2,...,dn], e)
 
 then
 
@@ -11603,39 +10640,35 @@ Reads a signed Real value, given a reader for an unsigned value.
 
 ### 38.3. MISCELLANEOUS
 
-```
-readInt
-```
+### readInt
 
 :: Num a => a the base -> (Char -> Bool) a predicate distinguishing valid digits in this base -> (Char -> Int) a function converting a valid digit character to an Int -> ReadS a
 
 Reads an unsigned Integral value in an arbitrary base.
 
-readDec :: Num a => ReadS a
+### readDec :: Num a => ReadS a
 
 Read an unsigned number in decimal notation.
 
-readOct :: Num a => ReadS a
+### readOct :: Num a => ReadS a
 
 Read an unsigned number in octal notation.
 
-readHex :: Num a => ReadS a
+### readHex :: Num a => ReadS a
 
 Read an unsigned number in hexadecimal notation. Both upper or lower case letters are allowed.
 
-readFloat :: RealFrac a => ReadS a
+### readFloat :: RealFrac a => ReadS a
 
 Reads an unsigned RealFrac value, expressed in decimal scientific notation.
 
-```
-lexDigits :: ReadS String
-```
+### lexDigits :: ReadS String
 
 Reads a non-empty string of decimal digits.
 
 #### 38.3 Miscellaneous
 
-fromRat :: RealFloat a => Rational -> a
+### fromRat :: RealFloat a => Rational -> a
 
 Converts a Rational value into any type in class RealFloat .
 
@@ -11645,29 +10678,19 @@ Converts a Rational value into any type in class RealFloat .
 
 # System.Environment
 
-```
-module System.Environment (
-getArgs, getProgName, getEnv
-) where
-```
+### module System.Environment ( getArgs, getProgName, getEnv ) where
 
-```
-getArgs :: IO [String]
-```
+### getArgs :: IO [String]
 
 Computation getArgs returns a list of the program’s command line arguments (not including the program name).
 
-```
-getProgName :: IO String
-```
+### getProgName :: IO String
 
 Computation getProgName returns the name of the program as it was invoked.
 
 However, this is hard-to-impossible to implement on some non-Unix OSes, so instead, for maximum portability, we just return the leafname of the program as invoked. Even then there are some differences between platforms: on Windows, for example, a program invoked as foo is probably really FOO.EXE , and that is what getProgName will return.
 
-```
-getEnv :: String -> IO String
-```
+### getEnv :: String -> IO String
 
 Computation getEnv var returns the value of the environment variable var .
 
@@ -11687,9 +10710,7 @@ ExitCode(ExitSuccess, ExitFailure), exitWith, exitFailure, exitSuccess
 ) where
 ```
 
-```
-data ExitCode
-```
+### data ExitCode
 
 = ExitSuccess indicates successful termination; | ExitFailure Int indicates program failure with an exit code. The exact interpretation of the code is operating-system dependent. In particular, some values may be prohibited (e.g. 0 on a POSIX-compliant system).
 
@@ -11701,21 +10722,17 @@ Defines the exit codes that a program can return.
 | instance | Read | ExitCode |
 | instance | Show | ExitCode |
 
-exitWith :: ExitCode -> IO a
+### exitWith :: ExitCode -> IO a
 
 Computation exitWith code terminates the program, returning code to the program’s caller. The caller may interpret the return code as it wishes, but the program should return ExitSuccess to mean normal completion, and ExitFailure n to mean that the program encountered a problem from which it could not recover. The value exitFailure is equal to exitWith (ExitFailure exitfail) , where exitfail is implementation-dependent. exitWith bypasses the error handling in the I/O monad and cannot be intercepted by catch from the Prelude .
 
-```
-exitFailure :: IO a
-```
+### exitFailure :: IO a
 
 The computation exitFailure is equivalent to exitWith (ExitFailure exitfail ) , where exitfail is implementation-dependent.
 
 ## CHAPTER 40. SYSTEM.EXIT
 
-```
-exitSuccess :: IO a
-```
+### exitSuccess :: IO a
 
 The computation exitSuccess is equivalent to exitWith ExitSuccess , It terminates the program successfully.
 
@@ -11741,9 +10758,7 @@ getChar, getLine, getContents, readIO, readLn
 
 #### 41.1 The IO monad
 
-```
-data IO a
-```
+### data IO a
 
 A value of type IO a is a computation which, when performed, does some I/O before returning a value of type a .
 
@@ -11751,9 +10766,7 @@ There is really only one way to ”perform” an I/O action: bind it to Main.mai
 
 IO [is a monad, so](http://haskell.org/) [IO](http://haskell.org/) actions can be combined using either the do-notation or the >> and >>= operations from the Monad class.
 
-| instance | Monad   | IO  |
-| -------- | ------- | --- |
-| instance | Functor | IO  |
+### instance Monad IO instance Functor IO
 
 ## CHAPTER 41. SYSTEM.IO
 
@@ -11761,15 +10774,11 @@ fixIO :: (a -> IO a) -> IO a
 
 #### 41.2 Files and handles
 
-```
-type FilePath = String
-```
+### type FilePath = String
 
 File and directory names are values of type String , whose precise meaning is operating system de- pendent. Files can be opened, yielding a handle which can then be used to operate on the contents of that file.
 
-```
-data Handle
-```
+### data Handle
 
 Haskell defines operations to read and write characters from and to files, represented by values of type Handle . Each value of this type is a handle : a record used by the Haskell run-time system to manage I/O with file system objects. A handle has at least the following properties:
 
@@ -11785,29 +10794,21 @@ Haskell defines operations to read and write characters from and to files, repre
 
 Most handles will also have a current I/O position indicating where the next input or output operation will occur. A handle is readable if it manages only input or both input and output; likewise, it is writable if it manages only output or both input and output. A handle is open when first allocated. Once it is closed it can no longer be used for either input or output, though an implementation cannot re-use its storage while references remain to it. Handles are in the Show and Eq classes. The string produced by showing a handle is system dependent; it should include enough information to identify the handle for debugging. A handle is equal according to == only to itself; no attempt is made to compare the internal state of different handles for equality.
 
-| instance | Eq   | Handle |
-| -------- | ---- | ------ |
-| instance | Show | Handle |
+### instance Eq Handle instance Show Handle
 
 ##### 41.2.1 Standard handles
 
 Three handles are allocated during program initialisation, and are initially open.
 
-```
-stdin :: Handle
-```
+### stdin :: Handle
 
 A handle managing input from the Haskell program’s standard input channel.
 
-```
-stdout :: Handle
-```
+### stdout :: Handle
 
 [A handle managing output to the Haskell program’s standard output channel.](http://haskell.org/)
 
-```
-stderr :: Handle
-```
+### stderr :: Handle
 
 A handle managing output to the Haskell program’s standard error channel.
 
@@ -11823,9 +10824,7 @@ withFile :: FilePath -> IOMode -> (Handle -> IO r) -> IO r
 
 withFile name mode act opens a file using openFile and passes the resulting handle to the com- putation act . The handle will be closed on exit from withFile , whether by normal termination or by raising an exception. If closing the handle raises an exception, then this exception will be raised by withFile rather than any exception raised by act .
 
-```
-openFile :: FilePath -> IOMode -> IO Handle
-```
+### openFile :: FilePath -> IOMode -> IO Handle
 
 Computation [openFile file](http://www.unicode.org/) [mode](http://www.unicode.org/) allocates and returns a new, open handle to manage the file file . It manages input if mode is ReadMode , output if mode is WriteMode or AppendMode , and both input and output if mode is ReadWriteMode .
 
@@ -11835,15 +10834,9 @@ This operation may fail with:
 
 - isAlreadyInUseError if the file is already open and cannot be reopened; • isDoesNotExistError if the file does not exist; or • isPermissionError if the user does not have permission to open the file.
 
-```
-data IOMode
-```
+### data IOMode
 
-| =   | ReadMode      |
-| --- | ------------- |
-| |   | WriteMode     |
-| |   | AppendMode    |
-| |   | ReadWriteMode |
+### = ReadMode | WriteMode | AppendMode | ReadWriteMode
 
 ```
 See System.IO.openFile
@@ -11859,9 +10852,7 @@ See System.IO.openFile
 
 ##### 41.3.2 Closing files
 
-```
-hClose :: Handle -> IO ()
-```
+### hClose :: Handle -> IO ()
 
 [Computation](http://haskell.org/) [hClose hdl](http://haskell.org/) makes handle hdl closed. Before the computation finishes, if hdl is writable its buffer is flushed as for hFlush . Performing hClose on a handle that has already been closed has no effect; doing so is not an error. All other operations on a closed handle will fail. If hClose fails for any reason, any further operations (apart from hClose ) on the handle will still fail as if hdl had been successfully closed.
 
@@ -11871,21 +10862,15 @@ hClose :: Handle -> IO ()
 
 These functions are also exported by the Prelude .
 
-```
-readFile :: FilePath -> IO String
-```
+### readFile :: FilePath -> IO String
 
 The readFile function reads a file and returns the contents of the file as a string. The file is read lazily, on demand, as with getContents .
 
-```
-writeFile :: FilePath -> String -> IO ()
-```
+### writeFile :: FilePath -> String -> IO ()
 
 The computation writeFile file str function writes the string str , to the file file .
 
-```
-appendFile :: FilePath -> String -> IO ()
-```
+### appendFile :: FilePath -> String -> IO ()
 
 The computation appendFile file str function appends the string str , to the file file .
 
@@ -11905,15 +10890,11 @@ Warning : the readFile operation holds a semi-closed handle on the file until th
 
 ##### 41.4.1 Determining and changing the size of a file
 
-```
-hFileSize :: Handle -> IO Integer
-```
+### hFileSize :: Handle -> IO Integer
 
 For a handle hdl which attached to a physical file, hFileSize hdl returns the size of that file in 8-bit bytes.
 
-```
-hSetFileSize :: Handle -> Integer -> IO ()
-```
+### hSetFileSize :: Handle -> Integer -> IO ()
 
 hSetFileSize hdl size truncates the physical file with handle hdl to size bytes.
 
@@ -11921,25 +10902,19 @@ hSetFileSize hdl size truncates the physical file with handle hdl to size bytes.
 
 ##### 41.4.2 Detecting the end of input
 
-```
-hIsEOF :: Handle -> IO Bool
-```
+### hIsEOF :: Handle -> IO Bool
 
 For a readable handle hdl , hIsEOF hdl returns True if no further input can be taken from hdl or for a physical file, if the current I/O position is equal to the length of the file. Otherwise, it returns False .
 
 NOTE: hIsEOF may block, because it has to attempt to read from the stream to determine whether there is any more data to be read.
 
-```
-isEOF :: IO Bool
-```
+### isEOF :: IO Bool
 
 The computation isEOF is identical to hIsEOF , except that it works only on stdin .
 
 ##### 41.4.3 Buffering operations
 
-```
-data BufferMode
-```
+### data BufferMode
 
 = NoBuffering buffering is disabled if possible. | LineBuffering line-buffering should be enabled if possible. | BlockBuffering (Maybe Int) block-buffering should be enabled if possible. The size of the buffer is n items if the argument is Just n and is other- wise implementation-dependent.
 
@@ -11971,9 +10946,7 @@ The default buffering mode when a handle is opened is implementation-dependent a
 | instance | Read | BufferMode |
 | instance | Show | BufferMode |
 
-```
-hSetBuffering :: Handle -> BufferMode -> IO ()
-```
+### hSetBuffering :: Handle -> BufferMode -> IO ()
 
 Computation hSetBuffering hdl mode sets the mode of buffering for handle hdl on subsequent reads and writes.
 
@@ -11987,15 +10960,11 @@ This operation may fail with:
 
 - isPermissionError if the handle has already been used for reading or writing and the imple- mentation does not allow the buffering mode to be changed.
 
-```
-hGetBuffering :: Handle -> IO BufferMode
-```
+### hGetBuffering :: Handle -> IO BufferMode
 
 Computation hGetBuffering hdl returns the current buffering mode for hdl .
 
-```
-hFlush :: Handle -> IO ()
-```
+### hFlush :: Handle -> IO ()
 
 The action hFlush hdl causes any items buffered for output in handle hdl to be sent immediately to the operating system.
 
@@ -12007,15 +10976,11 @@ This operation may fail with:
 
 ##### 41.4.4 Repositioning handles
 
-```
-hGetPosn :: Handle -> IO HandlePosn
-```
+### hGetPosn :: Handle -> IO HandlePosn
 
 Computation hGetPosn hdl returns the current I/O position of hdl as a value of the abstract type HandlePosn .
 
-```
-hSetPosn :: HandlePosn -> IO ()
-```
+### hSetPosn :: HandlePosn -> IO ()
 
 If a call to hGetPosn hdl returns a position p , then computation hSetPosn p sets the position of hdl to the position it held at the time of the call to hGetPosn .
 
@@ -12023,15 +10988,11 @@ This operation may fail with:
 
 - isPermissionError if a system resource limit would be exceeded.
 
-```
-data HandlePosn
-```
+### data HandlePosn
 
 ### 41.4. OPERATIONS ON HANDLES
 
-| instance | Eq   | HandlePosn |
-| -------- | ---- | ---------- |
-| instance | Show | HandlePosn |
+### instance Eq HandlePosn instance Show HandlePosn
 
 ```
 hSeek :: Handle -> SeekMode -> Integer -> IO ()
@@ -12047,9 +11008,7 @@ This operation may fail with:
 
 - isPermissionError if a system resource limit would be exceeded.
 
-```
-data SeekMode
-```
+### data SeekMode
 
 | =   | AbsoluteSeek | the position of | hdl | is set to        | i   | .                          |
 | --- | ------------ | --------------- | --- | ---------------- | --- | -------------------------- |
@@ -12066,9 +11025,7 @@ A mode that determines the effect of hSeek hdl mode i .
 | instance | Show | SeekMode |
 | instance | Ix   | SeekMode |
 
-```
-hTell :: Handle -> IO Integer
-```
+### hTell :: Handle -> IO Integer
 
 Computation hTell hdl returns the current position of the handle hdl , as the number of bytes from the beginning of the file. The value returned may be subsequently passed to hSeek to reposition the handle to the current position.
 
@@ -12080,53 +11037,35 @@ This operation may fail with:
 
 [Each of these operations returns](http://haskell.org/) [True](http://haskell.org/) if the handle has the the specified property, or False otherwise.
 
-```
-hIsOpen :: Handle -> IO Bool
-```
+### hIsOpen :: Handle -> IO Bool
 
-```
-hIsClosed :: Handle -> IO Bool
-```
+### hIsClosed :: Handle -> IO Bool
 
 ## CHAPTER 41. SYSTEM.IO
 
-```
-hIsReadable :: Handle -> IO Bool
-```
+### hIsReadable :: Handle -> IO Bool
 
-```
-hIsWritable :: Handle -> IO Bool
-```
+### hIsWritable :: Handle -> IO Bool
 
-```
-hIsSeekable :: Handle -> IO Bool
-```
+### hIsSeekable :: Handle -> IO Bool
 
 ##### 41.4.6 Terminal operations
 
-```
-hIsTerminalDevice :: Handle -> IO Bool
-```
+### hIsTerminalDevice :: Handle -> IO Bool
 
 Is the handle connected to a terminal?
 
-```
-hSetEcho :: Handle -> Bool -> IO ()
-```
+### hSetEcho :: Handle -> Bool -> IO ()
 
 Set the echoing status of a handle connected to a terminal.
 
-```
-hGetEcho :: Handle -> IO Bool
-```
+### hGetEcho :: Handle -> IO Bool
 
 Get the echoing status of a handle connected to a terminal.
 
 ##### 41.4.7 Showing handle state
 
-```
-hShow :: Handle -> IO String
-```
+### hShow :: Handle -> IO String
 
 hShow is in the IO monad, and gives more comprehensive output than the (pure) instance of Show for Handle .
 
@@ -12134,9 +11073,7 @@ hShow is in the IO monad, and gives more comprehensive output than the (pure) in
 
 ##### 41.5.1 Text input
 
-```
-hWaitForInput :: Handle -> Int -> IO Bool
-```
+### hWaitForInput :: Handle -> Int -> IO Bool
 
 Computation hWaitForInput hdl t waits until input is available on handle hdl . It returns True as soon as input is available on hdl , or False if no input is available within t milliseconds. Note that hWaitForInput waits until one or more full characters are available, which means that it needs to do decoding, and hence may fail with a decoding error.
 
@@ -12148,9 +11085,7 @@ This operation may fail with:
 
 - a decoding error, if the input begins with an invalid byte sequence in this Handle’s encoding.
 
-```
-hReady :: Handle -> IO Bool
-```
+### hReady :: Handle [->](http://haskell.org/) [IO](http://haskell.org/) [Bool](http://haskell.org/)
 
 Computation hReady hdl indicates whether at least one item is available for input from handle hdl .
 
@@ -12160,9 +11095,7 @@ This operation may fail with:
 
 - System.IO.Error.isEOFError if the end of file has been reached.
 
-```
-hGetChar :: Handle -> IO Char
-```
+### hGetChar :: Handle -> IO Char
 
 Computation hGetChar hdl reads a character from the file or channel managed by hdl , blocking until a character is available.
 
@@ -12170,9 +11103,7 @@ This operation may fail with:
 
 - isEOFError if the end of file has been reached.
 
-```
-hGetLine :: Handle -> IO String
-```
+### hGetLine :: Handle -> IO String
 
 Computation [hGetLine hdl](http://www.unicode.org/) reads a line from the file or channel managed by hdl .
 
@@ -12182,9 +11113,7 @@ This operation may fail with:
 
 If hGetLine encounters end-of-file at any other point while reading in a line, it is treated as a line terminator and the (partial) line is returned.
 
-```
-hLookAhead :: Handle -> IO Char
-```
+### hLookAhead :: Handle -> IO Char
 
 Computation hLookAhead returns the next character from the handle without removing it from the input buffer, blocking until a character is available.
 
@@ -12192,9 +11121,7 @@ This operation may fail with:
 
 - isEOFError if the end of file has been reached.
 
-```
-hGetContents :: Handle -> IO String
-```
+### hGetContents :: Handle -> IO String
 
 Computation hGetContents hdl returns the list of characters corresponding to the unread portion of the channel or file managed by hdl , which is put into an intermediate state, semi-closed . In this state, hdl is effectively closed, but items are read from hdl on demand and accumulated in a special list returned by hGetContents hdl .
 
@@ -12218,9 +11145,7 @@ Any I/O errors encountered while a handle is semi-closed are simply discarded.
 
 ##### 41.5.2 Text output
 
-```
-hPutChar :: Handle -> Char -> IO ()
-```
+### hPutChar :: Handle -> Char -> IO ()
 
 Computation hPutChar hdl ch writes the character ch to the file or channel managed by hdl . Char- acters may be buffered if buffering is enabled for hdl .
 
@@ -12230,9 +11155,7 @@ This operation may fail with:
 
 - isPermissionError if another system resource limit would be exceeded.
 
-```
-hPutStr :: Handle -> String -> IO ()
-```
+### hPutStr :: Handle -> String -> IO ()
 
 Computation hPutStr hdl s writes the string s to the file or channel managed by hdl .
 
@@ -12242,9 +11165,7 @@ This operation may fail with:
 
 - isPermissionError if another system resource limit would be exceeded.
 
-```
-hPutStrLn :: Handle -> String -> IO ()
-```
+### hPutStrLn :: Handle -> String -> IO ()
 
 The same as hPutStr , but adds a newline character.
 
@@ -12262,29 +11183,21 @@ This operation may fail with:
 
 These functions are also exported by the Prelude .
 
-```
-interact :: (String -> String) -> IO ()
-```
+### interact :: (String -> String) -> IO ()
 
 The interact function takes a function of type String->String as its argument. The entire input from the standard input device is passed to this function as its argument, and the resulting string is output on the standard output device.
 
-```
-putChar :: Char -> IO ()
-```
+### putChar :: Char -> IO ()
 
 [Write a character to the standard output device (same as](http://haskell.org/) hPutChar stdout ).
 
-```
-putStr :: String -> IO ()
-```
+### putStr :: String -> IO ()
 
 Write a string to the standard output device (same as hPutStr stdout ).
 
 ### 41.5. TEXT INPUT AND OUTPUT
 
-```
-putStrLn :: String -> IO ()
-```
+### putStrLn :: String -> IO ()
 
 The same as putStr , but adds a newline character.
 
@@ -12298,21 +11211,15 @@ For example, a program to print the first 20 integers and their powers of 2 coul
 main = print ([(n, 2ˆn) | n <- [0..19]])
 ```
 
-```
-getChar :: IO Char
-```
+### getChar :: IO Char
 
 Read a character from the standard input device (same as [hGetChar stdin](http://unicode.org/standard/standard.html) [).](http://unicode.org/standard/standard.html)
 
-```
-getLine :: IO String
-```
+### getLine :: IO String
 
 Read a line from the standard input device (same as hGetLine stdin ).
 
-```
-getContents :: IO String
-```
+### getContents :: IO String
 
 The getContents operation returns all user input as a single string, which is read lazily as it is needed (same as hGetContents stdin ).
 
@@ -12320,7 +11227,7 @@ readIO :: Read a => String -> IO a
 
 The readIO function is similar to read except that it signals parse failure to the IO monad instead of terminating the program.
 
-readLn :: Read a => IO a
+### readLn :: Read a => IO a
 
 The readLn function combines getLine and readIO .
 
@@ -12344,15 +11251,11 @@ userErrorType, ioError, catch, try
 
 #### 42.1 I/O errors
 
-```
-type IOError = IOError
-```
+### type IOError = IOError
 
 Errors of type IOError are used by the IO monad. This is an abstract type; the module System.IO.Error provides functions to interrogate and construct values of type IOError .
 
-```
-userError :: String -> IOError
-```
+### userError :: String -> IOError
 
 Construct an IOError value with a string describing the error. The fail method of the IO instance of the Monad class raises a userError , thus:
 
@@ -12376,133 +11279,91 @@ Adds a location description and maybe a file path and file handle to an IOError 
 
 ##### 42.1.1 Classifying I/O errors
 
-```
-isAlreadyExistsError :: IOError -> Bool
-```
+### isAlreadyExistsError :: IOError -> Bool
 
 An error indicating that an IO operation failed because one of its arguments already exists.
 
-```
-isDoesNotExistError :: IOError -> Bool
-```
+### isDoesNotExistError :: [IOError](http://www.unicode.org/) [->](http://www.unicode.org/) [Bool](http://www.unicode.org/)
 
 An error indicating that an IO operation failed because one of its arguments does not exist.
 
-```
-isAlreadyInUseError :: IOError -> Bool
-```
+### isAlreadyInUseError :: IOError -> Bool
 
 An error indicating that an IO operation failed because one of its arguments is a single-use resource, which is already being used (for example, opening the same file twice for writing might give this error).
 
-```
-isFullError :: IOError -> Bool
-```
+### isFullError :: IOError -> Bool
 
 An error indicating that an IO operation failed because the device is full.
 
-```
-isEOFError :: IOError -> Bool
-```
+### isEOFError :: IOError -> Bool
 
 An error indicating that an IO operation failed because the end of file has been reached.
 
-```
-isIllegalOperation :: IOError -> Bool
-```
+### isIllegalOperation :: IOError -> Bool
 
 An error indicating that an IO operation failed because the operation was not possible. Any computa- tion which returns an IO result may fail with isIllegalOperation . In some cases, an implemen- tation will not be able to distinguish between the possible error causes. In this case it should fail with isIllegalOperation .
 
-```
-isPermissionError :: IOError -> Bool
-```
+### isPermissionError :: IOError -> Bool
 
 An error indicating that an IO operation failed because the user does not have sufficient operating system privilege to perform that operation.
 
-```
-isUserError :: IOError -> Bool
-```
+### isUserError :: IOError -> Bool
 
 A programmer-defined error value constructed using userError .
 
 ##### 42.1.2 Attributes of I/O errors
 
-```
-ioeGetErrorString :: IOError -> String
-```
+### ioeGetErrorString :: IOError -> String
 
-```
-ioeGetHandle :: IOError -> Maybe Handle
-```
+### ioeGetHandle :: IOError -> Maybe Handle
 
-```
-ioeGetFileName :: IOError -> Maybe FilePath
-```
+### ioeGetFileName :: IOError -> Maybe FilePath
 
 ### 42.2. TYPES OF I/O ERROR
 
 #### 42.2 Types of I/O error
 
-```
-data IOErrorType
-```
+### data IOErrorType
 
 An abstract type that contains a value for each variant of IOError .
 
-| instance | Eq   | IOErrorType |
-| -------- | ---- | ----------- |
-| instance | Show | IOErrorType |
+### instance Eq IOErrorType instance Show IOErrorType
 
-```
-alreadyExistsErrorType :: IOErrorType
-```
+### alreadyExistsErrorType :: IOErrorType
 
 I/O error where the operation failed because one of its arguments already exists.
 
-```
-doesNotExistErrorType :: IOErrorType
-```
+### doesNotExistErrorType :: IOErrorType
 
 I/O error where the operation failed because one of its arguments does not exist.
 
-```
-alreadyInUseErrorType :: IOErrorType
-```
+### alreadyInUseErrorType :: IOErrorType
 
 I/O error where the operation failed because one of its arguments is a single-use resource, which is already being used.
 
-```
-fullErrorType :: IOErrorType
-```
+### fullErrorType :: IOErrorType
 
 I/O error where the operation failed because the device is full.
 
-```
-eofErrorType :: IOErrorType
-```
+### eofErrorType :: IOErrorType
 
 I/O error where the operation failed because the end of file has been reached.
 
-```
-illegalOperationErrorType :: IOErrorType
-```
+### illegalOperationErrorType :: IOErrorType
 
 I/O error where the operation is not possible.
 
-```
-permissionErrorType :: IOErrorType
-```
+### permissionErrorType :: IOErrorType
 
 I/O error where the operation failed because the user does not have sufficient operating system privilege to perform that operation.
 
-```
-userErrorType :: IOErrorType
-```
+### userErrorType :: IOErrorType
 
 I/O error that is programmer-defined.
 
 #### 42.3 Throwing and catching I/O errors
 
-ioError :: IOError -> IO a
+### ioError :: IOError -> IO a
 
 Raise an IOError in the IO monad.
 
@@ -12528,7 +11389,7 @@ The construct try comp exposes IO errors which occur within a computation, and w
 
 [1] J. Backus. Can programming be liberated from the von Neumann style? A functional style and its algebra of programs. CACM , 21(8):613–641, August 1978.
 
-[2] Unicode Consortium. Unicode standard. http://unicode.org/standard/standard.html .
+[2] Unicode Consortium. Unicode standard. [http://unicode.org/standard/standard.html](http://unicode.org/standard/standard.html) .
 
 [3] H.K. Curry and R. Feys. Combinatory Logic . North-Holland Pub. Co., Amsterdam, 1958.
 

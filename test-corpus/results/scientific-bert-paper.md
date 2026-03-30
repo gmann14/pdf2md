@@ -26,7 +26,7 @@ is also in contrast to Peters et al. (2018a), which right-to-left language model
 
 [uses a shallow concatenation of independently](https://openreview.net/forum?id=rJvJXZb0W) resentation of each token is the concatenation of
 
-trained left-to-right and right-to-left LMs. the left-to-right and right-to-left representations. When integrating contextual word embeddings • We show that pre-trained representations reduce with existing task-specific architectures, ELMo the need for many heavily-engineered task- advances the state of the art for several major NLP specific architectures. BERT is the first fine- benchmarks (Peters et al., 2018a) including ques- tuning based representation model that achieves tion answering (Rajpurkar et al., 2016), sentiment state-of-the-art performance on a large suite analysis (Socher et al., 2013), and named entity of sentence-level and token-level tasks, outper- recognition (Tjong Kim Sang and De Meulder, forming many task-specific architectures. [2003). Melamud et al. (2016) proposed learning](https://gluebenchmark.com/leaderboard) contextual representations through a task to pre- • BERT advances the state of the art for eleven [dict a single word from both left and right context](https://blog.openai.com/language-unsupervised) NLP tasks. [The code and pre-trained mod-](https://github.com/google-research/bert) using LSTMs. Similar to ELMo, their model is els are available at https://github.com/ feature-based and not deeply bidirectional. Fedus google-research/bert . et al. (2018) shows that the cloze task can be used
+trained left-to-right and right-to-left LMs. the left-to-right and right-to-left representations. When integrating contextual word embeddings • We show that pre-trained representations reduce with existing task-specific architectures, ELMo the need for many heavily-engineered task- advances the state of the art for several major NLP specific architectures. BERT is the first fine- benchmarks (Peters et al., 2018a) including ques- tuning based representation model that achieves tion answering (Rajpurkar et al., 2016), sentiment state-of-the-art performance on a large suite analysis (Socher et al., 2013), and named entity of sentence-level and token-level tasks, outper- recognition (Tjong Kim Sang and De Meulder, forming many task-specific architectures. [2003). Melamud et al. (2016) proposed learning](https://gluebenchmark.com/leaderboard) contextual representations through a task to pre- • BERT advances the state of the art for eleven [dict a single word from both left and right context](https://blog.openai.com/language-unsupervised) NLP tasks. [The code and pre-trained mod-](https://github.com/google-research/bert) using LSTMs. Similar to ELMo, their model is els are available at [https://github.com/](https://github.com/) feature-based and not deeply bidirectional. Fedus google-research/bert . et al. (2018) shows that the cloze task can be used
 
 2 [Related Work](http://papers.nips.cc/paper/3583-a-scalable-hierarchical-distributed-language-model.pdf) to improve the robustness of text generation mod- els. There is a long history of pre-training general lan- guage representations, and we briefly review the 2.2 Unsupervised Fine-tuning Approaches [most widely-used approaches in this section.](https://doi.org/10.18653/v1/S17-2001) As with the feature-based approaches, the first 2.1 Unsupervised Feature-based Approaches works in this direction only pre-trained word em- Learning widely applicable representations of bedding parameters from unlabeled text (Col- words has been an active area of research for lobert and Weston, 2008). decades, including non-neural (Brown et al., 1992; More recently, sentence or document encoders Ando and Zhang, 2005; Blitzer et al., 2006) and which produce contextual token representations neural (Mikolov et al., 2013; Pennington et al., have been pre-trained from unlabeled text and 2014) methods. Pre-trained word embeddings fine-tuned for a supervised downstream task (Dai are an integral part of modern NLP systems, of- and Le, 2015; Howard and Ruder, 2018; Radford fering significant improvements over embeddings et al., 2018). The advantage of these approaches learned from scratch (Turian et al., 2010). To pre- is that few parameters need to be learned from train word embedding vectors, left-to-right lan- scratch. At least partly due to this advantage, guage modeling objectives have been used (Mnih OpenAI GPT (Radford et al., 2018) achieved pre- and Hinton, 2009), as well as objectives to dis- [viously state-of-the-art results on many sentence-](http://arxiv.org/abs/1705.00557) criminate correct from incorrect words in left and [level tasks from the GLUE benchmark (Wang](https://gluebenchmark.com/faq) right context (Mikolov et al., 2013). et al., 2018a). Left-to-right language model-
 
@@ -34,55 +34,37 @@ NSP Mask LM Mask LM MNLI NER SQuAD Start/End Span
 
 ## C T
 
-```
 1
-```
 
 ## ... T T
 
 ## N [SEP]
 
-```
 T
-```
 
-```
 1
-```
 
 ## ’ ... T
 
-```
 M
-```
 
 ## ’ C T
 
-```
 1
-```
 
 ## ... T T
 
 ## N [SEP]
 
-```
 T
-```
 
-```
 1
-```
 
 ## ’ ... T
 
-```
 M
-```
 
-```
 ’
-```
 
 ## BERT BERT BERT
 
@@ -90,65 +72,41 @@ M
 
 ## [CLS]
 
-```
 E
-```
 
-```
 1
-```
 
 ## ... E E [CLS]
 
-```
 E
-```
 
-```
 1
-```
 
 ## ... E E
 
 ## N [SEP]
 
-```
 E
-```
 
-```
 1
-```
 
 ## ’ ... E
 
 ## [SEP] M
 
-```
 ’
-```
 
-```
 N
-```
 
-```
 E
-```
 
-```
 1
-```
 
 ## ’ ... E
 
-```
 M
-```
 
-```
 ’
-```
 
 [CLS] Tok 1 ... Tok N [SEP] Tok 1 ... TokM [CLS] Tok 1 ... Tok N [SEP] Tok 1 ... TokM
 
@@ -202,7 +160,7 @@ tialized with the same pre-trained parameters. The
 
 1
 
-question-answering example in Figure 1 will serve https://github.com/tensorflow/tensor2tensor
+question-answering example in Figure 1 will serve [https://github.com/tensorflow/tensor2tensor](https://github.com/tensorflow/tensor2tensor)
 
 2
 
@@ -222,9 +180,7 @@ chitecture across different tasks. There is mini- We note that in the literature
 
 Input/Output Representations To make BERT In order to train a deep bidirectional representa- handle a variety of down-stream tasks, our input tion, we simply mask some percentage of the input representation is able to unambiguously represent tokens at random, and then predict those masked both a single sentence and a pair of sentences tokens. We refer to this procedure as a “masked (e.g., 〈 Question, Answer 〉 ) in one token sequence. LM” (MLM), although it is often referred to as a Throughout this work, a “sentence” can be an arbi- Cloze task in the literature (Taylor, 1953). In this trary span of contiguous text, rather than an actual case, the final hidden vectors corresponding to the linguistic sentence. A “sequence” refers to the in- [mask tokens are fed into an output softmax over](https://gluebenchmark.com/leaderboard) put token sequence to BERT, which may be a sin- the vocabulary, as in a standard LM. In all of our gle sentence or two sentences packed together. experiments, we mask 15% of all WordPiece to- We use WordPiece embeddings (Wu et al., kens in each sequence at random. In contrast to 2016) with a 30,000 token vocabulary. The first denoising auto-encoders (Vincent et al., 2008), we token of every sequence is always a special clas- [only predict the masked words rather than recon-](https://www.aclweb.org/anthology/D17-1070) sification token ( [CLS] ). The final hidden state structing the entire input. corresponding to this token is used as the ag- Although this allows us to obtain a bidirec- gregate sequence representation for classification tional pre-trained model, a downside is that we [tasks.](https://openreview.net/forum?id=rJvJXZb0W) [Sentence pairs are packed together into a](https://openreview.net/forum?id=rJvJXZb0W) are creating a mismatch between pre-training and single sequence. We differentiate the sentences in fine-tuning, since the [MASK] token does not ap- two ways. First, we separate them with a special pear during fine-tuning. To mitigate this, we do token ( [SEP] ). Second, we add a learned embed- not always replace “masked” words with the ac- ding to every token indicating whether it belongs tual [MASK] token. The training data generator to sentence A or sentence B . As shown in Figure 1, chooses 15% of the token positions at random for we denote input embedding as E , the final hidden prediction. If the i -th token is chosen, we replace vector of the special [CLS] token as C ∈ R
 
-```
 H
-```
 
 , the i -th token with (1) the [MASK] token 80% of and the final hidden vector for the i
 
@@ -232,9 +188,7 @@ th
 
 input token the time (2) a random token 10% of the time (3) as T i ∈ R
 
-```
 H
-```
 
 . the unchanged [i](https://gluebenchmark.com/leaderboard) [-th token 10% of the time. Then,](https://gluebenchmark.com/leaderboard) For a given token, its input representation is [T](https://gluebenchmark.com/leaderboard) [i](https://gluebenchmark.com/leaderboard) will be used to predict the original token with constructed by summing the corresponding token, [cross entropy loss. We compare variations of this](https://blog.openai.com/language-unsupervised) segment, and position embeddings. [A visualiza-](https://github.com/google-research/bert) procedure in Appendix C.2. [tion of this construction can be seen in Figure 2.](https://github.com/google-research/bert) Task #2: Next Sentence Prediction (NSP) 3.1 Pre-training BERT Many important downstream tasks such as Ques-
 
@@ -366,9 +320,7 @@ We de- For Wikipedia we extract only the text passages scribe the task-specific 
 
 [Fine-tuning](http://papers.nips.cc/paper/3583-a-scalable-hierarchical-distributed-language-model.pdf) [is](http://papers.nips.cc/paper/3583-a-scalable-hierarchical-distributed-language-model.pdf) [straightforward](http://papers.nips.cc/paper/3583-a-scalable-hierarchical-distributed-language-model.pdf) [since](http://papers.nips.cc/paper/3583-a-scalable-hierarchical-distributed-language-model.pdf) [the](http://papers.nips.cc/paper/3583-a-scalable-hierarchical-distributed-language-model.pdf) self- 4.1 [GLUE](http://arxiv.org/abs/1606.08415) attention mechanism in the Transformer al- The General Language Understanding Evaluation lows BERT to model many downstream tasks— (GLUE) benchmark (Wang et al., 2018a) is a col- [whether they involve single text or text pairs—by](https://doi.org/10.18653/v1/S17-2001) lection of diverse natural language understanding [swapping out the appropriate inputs and outputs.](https://doi.org/10.18653/v1/S17-2001) tasks. Detailed descriptions of GLUE datasets are For applications involving text pairs, a common included in Appendix B.1. pattern is to independently encode text pairs be- To fine-tune on GLUE, we represent the input fore applying bidirectional cross attention, such sequence (for single sentence or sentence pairs) as Parikh et al. (2016); Seo et al. (2017). BERT as described in Section 3, and use the final hid- instead uses the self-attention mechanism to unify [den vector](http://arxiv.org/abs/1801.06146) [C](http://arxiv.org/abs/1801.06146) [∈](http://arxiv.org/abs/1801.06146) [R](http://arxiv.org/abs/1801.06146)
 
-```
 H
-```
 
 [corresponding to the first](http://arxiv.org/abs/1801.06146) these two stages, as encoding a concatenated text input token ( [CLS] ) as the aggregate representa- pair with self-attention effectively includes bidi- tion. The only new parameters introduced during rectional cross attention between two sentences. fine-tuning are classification layer weights W ∈ For each task, we simply plug in the task- R
 
@@ -376,9 +328,7 @@ H
 
 , where K is the number of labels. We com- specific inputs and outputs into BERT and fine- pute a standard classification loss with C and W , [tune all the parameters end-to-end.](https://data.quora.com/First-Quora-Dataset-Release-Question-Pairs) At the in- i.e., log(softmax( CW
 
-```
 T
-```
 
 )) . put, sentence A and sentence B from pre-training
 
@@ -392,11 +342,11 @@ ing, (2) hypothesis-premise pairs in entailment, (3) [F1 score of 91.0%.](https:
 
 8
 
-question-passage pairs in question answering, and See (10) in https://gluebenchmark.com/faq .
+question-passage pairs in question answering, and See (10) in [https://gluebenchmark.com/faq](https://gluebenchmark.com/faq) .
 
 System MNLI-(m/mm) QQP QNLI SST-2 CoLA STS-B MRPC RTE Average 392k 363k 108k 67k 8.5k 5.7k 3.5k 2.5k - Pre-OpenAI SOTA 80.6/80.1 66.1 82.3 93.2 35.0 81.0 86.0 61.7 74.0 BiLSTM+ELMo+Attn 76.4/76.1 64.8 79.8 90.4 36.0 73.3 84.9 56.8 71.0 OpenAI GPT 82.1/81.4 70.3 87.4 91.3 45.4 80.0 82.3 56.0 75.1 BERT BASE 84.6/83.4 71.2 90.5 93.5 52.1 85.8 88.9 66.4 79.6 BERT LARGE 86.7/85.9 72.1 92.7 94.9 60.5 86.5 89.3 70.1 82.1
 
-Table 1: GLUE Test results, scored by the evaluation server ( https://gluebenchmark.com/leaderboard ). The number below each task denotes the number of training examples. The “Average” column is slightly different
+Table 1: GLUE Test results, scored by the evaluation server ( [https://gluebenchmark.com/leaderboard](https://gluebenchmark.com/leaderboard) ). The number below each task denotes the number of training examples. The “Average” column is slightly different
 
 8
 
@@ -404,15 +354,11 @@ than the official GLUE score, since we exclude the problematic WNLI set. BERT an
 
 We use a batch size of 32 and fine-tune for 3 Wikipedia containing the answer, the task is to epochs over the data for all GLUE tasks. For each predict the answer text span in the passage. task, we selected the best fine-tuning learning rate As shown in Figure 1, in the question answer- [(among 5e-5, 4e-5, 3e-5, and 2e-5) on the Dev set.](https://openreview.net/forum?id=rJvJXZb0W) ing task, we represent the input question and pas- Additionally, for BERT LARGE we found that fine- sage as a single packed sequence, with the ques- tuning was sometimes unstable on small datasets, tion using the A embedding and the passage using so we ran several random restarts and selected the the B embedding. We only introduce a start vec- best model on the Dev set. With random restarts, tor S ∈ R
 
-```
 H
-```
 
 and an end vector E ∈ R
 
-```
 H
-```
 
 during we use the same pre-trained checkpoint but per- fine-tuning. The probability of word i being the form different fine-tuning data shuffling and clas- start of the answer span is computed as a dot prod- sifier layer initialization.
 
@@ -420,9 +366,7 @@ during we use the same pre-trained checkpoint but per- fine-tuning. The probabil
 
 uct between T i and S followed by a softmax over
 
-```
-e
-```
+[e](https://gluebenchmark.com/leaderboard)
 
 S · T i
 
@@ -454,7 +398,7 @@ labels, and we only made a single GLUE evaluation server submission for each of 
 
 10
 
-https://gluebenchmark.com/leaderboard has improved substantially after publication.
+[https://gluebenchmark.com/leaderboard](https://gluebenchmark.com/leaderboard) has improved substantially after publication.
 
 System Dev Test System Dev Test EM F1 EM F1 ESIM+GloVe 51.9 52.7 Top Leaderboard Systems (Dec 10th, 2018) ESIM+ELMo 59.1 59.2 Human - - 82.3 91.2 OpenAI GPT - 78.0 #1 Ensemble - nlnet - - 86.0 91.7 BERT BASE 81.6 - #2 Ensemble - QANet - - 84.5 90.5 BERT LARGE 86.6 86.3 Published †
 
@@ -758,33 +702,23 @@ size of 32,000 words; BERT was trained for Dataset (Rajpurkar et al., 2016) whic
 
 ## C T
 
-```
 1
-```
 
 ## ... T T
 
 ## N [SEP]
 
-```
 T
-```
 
-```
 1
-```
 
 ## ’ ... C T
 
 ## ... T
 
-```
 M
-```
 
-```
 ’ 1
-```
 
 ## T T
 
@@ -792,55 +726,35 @@ M
 
 ## BERT BERT
 
-```
 E
-```
 
 ## [CLS]
 
 ## E ... E E
 
-```
 ...
-```
 
-```
 1
-```
 
-```
 E
-```
 
 ## N [SEP]
 
-```
 E
-```
 
-```
 1
-```
 
 ## ’ ... E
 
-```
 M
-```
 
-```
 ’
-```
 
 ## [[CLS]](https://gluebenchmark.com/leaderboard)
 
-```
 E
-```
 
-```
-1
-```
+[1](https://gluebenchmark.com/leaderboard)
 
 ## E E
 
@@ -859,77 +773,51 @@ Start/End Span O B-PER ... O
 
 ## C T
 
-```
 1
-```
 
 ## ... T T
 
 ## N [SEP]
 
-```
 T
-```
 
-```
 1
-```
 
 ## ’ ... T
 
-```
 M
-```
 
 ## ’ C T T
 
-```
 1
-```
 
-```
 T
-```
 
-```
 ...
-```
 
 ## 2 N
 
 ## BERT BERT
 
-```
 E
-```
 
 ## [CLS]
 
-```
 E
-```
 
-```
 1
-```
 
 ## ... E E
 
 ## N [SEP]
 
-```
 E
-```
 
-```
 1
-```
 
 ## ’ ... E
 
-```
 M
-```
 
 ## ’ E
 
@@ -937,17 +825,11 @@ M
 
 ## E E
 
-```
 1
-```
 
-```
 E
-```
 
-```
 ...
-```
 
 ## 2 N
 
@@ -960,17 +842,13 @@ Tok
 1
 ```
 
-```
 ...
-```
 
 ## N 1
 
 ... [CLS] Tok 1 Tok 2 ... Tok N
 
-```
 M
-```
 
 ```
 Question Paragraph Single Sentence
@@ -1002,7 +880,7 @@ consists of sentence pairs automatically extracted [task training with MNLI.](ht
 
 15
 
-from online news sources, with human annotations https://gluebenchmark.com/faq
+from online news sources, with human annotations [https://gluebenchmark.com/faq](https://gluebenchmark.com/faq)
 
 jority class. Note that the purpose of the masking strategies is to reduce the mismatch between pre-training C Additional Ablation Studies and fine-tuning, as the [MASK] symbol never ap- pears during the fine-tuning stage. We report the C.1 Effect of Number of Training Steps Dev results for both MNLI and NER. For NER, Figure 5 presents MNLI Dev accuracy after fine- we report both fine-tuning and feature-based ap- tuning from a checkpoint that has been pre-trained proaches, as we expect the mismatch will be am- for k steps. This allows us to answer the following [plified for the feature-based approach as the model](https://gluebenchmark.com/leaderboard) questions: will not have the chance to adjust the representa- tions. 1. Question: Does BERT really need such a large amount of pre-training (128,000 Masking Rates Dev Set Results
 

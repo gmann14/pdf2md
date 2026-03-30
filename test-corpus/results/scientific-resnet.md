@@ -12,7 +12,7 @@ title: "Deep Residual Learning for Image Recognition"
 
 56-layer
 
-Deeper neural networks are more difficult to train. We
+### Deeper neural networks are more difficult to train. We
 
 20-layer
 
@@ -38,7 +38,7 @@ such degradation is not caused by overfitting , and adding Deep convolutional ne
 
 [than its shallower counterpart. But experiments show that](http://host.robots.ox.ac.uk:8080/anonymous/3OJ4OJ.html)
 
-http://mscoco.org/dataset/#detections-challenge2015 . our current solvers on hand are unable to find solutions that
+[http://mscoco.org/dataset/#detections-challenge2015](http://mscoco.org/dataset/#detections-challenge2015) . our current solvers on hand are unable to find solutions that
 
 x ImageNet test set, and won the 1st place in the ILSVRC 2015 classification competition . The extremely deep rep-
 
@@ -377,9 +377,7 @@ avg pool
 
 result on the 100k test images, reported by the test server.
 
-```
 size: 1
-```
 
 We evaluate both top-1 and top-5 error rates.
 
@@ -591,7 +589,7 @@ system net data mAP areo bike bird boat bottle bus car cat chair cow table dog h
 | -------- | ---------- | ------ | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --------- |
 | baseline | ResNet-101 | 07++12 | 73.8 | 86.5 | 81.6 | 77.2 | 58.0 | 51.0 | 78.6 | 76.6 | 93.2 | 48.6 | 80.4 | 59.0 | 92.1 | 85.3 | 84.8 | 80.7 | 48.1 | 77.3 | 66.5 | 84.7 65.6 |
 
-[Table 11. Detection results on the PASCAL VOC 2012 test set (](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) http://host.robots.ox.ac.uk:8080/leaderboard/ displaylb.php?challengeid=11&compid=4 ). The baseline is the Faster R-CNN system. The system “baseline+++” include box refinement, context, and multi-scale testing in Table 9.
+[Table 11. Detection results on the PASCAL VOC 2012 test set (](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4) [http://host.robots.ox.ac.uk:8080/leaderboard/](http://host.robots.ox.ac.uk:8080/leaderboard/) displaylb.php?challengeid=11&compid=4 ). The baseline is the Faster R-CNN system. The system “baseline+++” include box refinement, context, and multi-scale testing in Table 9.
 
 We select two adjacent scales from the pyramid following val2 test [33]. RoI pooling and subsequent layers are performed on GoogLeNet [44] (ILSVRC’14) - 43.9 the feature maps of these two scales [33], which are merged our single model (ILSVRC’15) 60.5 58.8 by maxout as in [33]. Multi-scale testing improves the mAP our ensemble (ILSVRC’15) 63.6 62.1 by over 2 points (Table 9). Table 12. Our results (mAP, %) on the ImageNet detection dataset. Using validation data. Next we use the 80k+40k trainval set Our detection system is Faster R-CNN [32] with the improvements for training and the 20k test-dev set for evaluation. The test- in Table 9, using ResNet-101. dev set has no publicly available ground truth and the result is reported by the evaluation server. Under this setting, the we achieve 85.6% mAP on PASCAL VOC 2007 (Table 10) results are an mAP@.5 of 55.7% and an mAP@[.5, .95] of and 83.8% on PASCAL VOC 2012 (Table 11) . The result 34.9% (Table 9). This is our single-model result. on PASCAL VOC 2012 is 10 points higher than the previ- Ensemble. In Faster R-CNN, the system is designed to learn ous state-of-the-art result [6]. region proposals and also object classifiers, so an ensemble can be used to boost both tasks. We use an ensemble for ImageNet Detection
 
@@ -605,7 +603,7 @@ mAP is 59.0% and 37.4% on the test-dev set. This result as that for MS COCO in T
 
 won the 1st place in the detection task in COCO 2015. trained on the 1000-class ImageNet classification set, and are fine-tuned on the DET data. We split the validation set PASCAL VOC into two parts (val1/val2) following [8]. We fine-tune the We revisit the PASCAL VOC dataset based on the above detection models using the DET training set and the val1 model. With the single model on the COCO dataset (55.7% set. The val2 set is used for validation. We do not use other mAP@.5 in Table 9), we fine-tune this model on the PAS- ILSVRC 2015 data. Our single model with ResNet-101 has [CAL VOC sets. The improvements of box refinement, con-](http://image-net.org/challenges/LSVRC/2015/)
 
-http://host.robots.ox.ac.uk:8080/anonymous/3OJ4OJ.html ,
+[http://host.robots.ox.ac.uk:8080/anonymous/3OJ4OJ.html](http://host.robots.ox.ac.uk:8080/anonymous/3OJ4OJ.html) ,
 
 text, and multi-scale testing are also adopted. By doing so submitted on 2015-11-26.
 

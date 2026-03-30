@@ -46,7 +46,7 @@ Bertie understands the power – for good or bad – of incentives, the weakness
 
 So, what would interest Bertie this year?
 
-Operating Results, Fact and Fiction
+### Operating Results, Fact and Fiction
 
 Let’s begin with the numbers. The official annual report begins on K-1 and extends for 124 pages. It is filled with a vast amount of information – some important, some trivial.
 
@@ -68,7 +68,7 @@ I can’t remember a period since March 11, 1942 – the date of my first stock 
 
 It is more than silly, however, to make judgments about Berkshire’s investment value based on “earnings” that incorporate the capricious day-by-day and, yes, even year-by-year movements of the stock market. As Ben Graham taught me, “In the short run the market acts as a voting machine; in the long run it becomes a weighing machine.”
 
-What We Do
+### What We Do
 
 Our goal at Berkshire is simple: We want to own either all or a portion of businesses that enjoy good economics that are fundamental and enduring. Within capitalism, some businesses will flourish for a very long time while others will prove to be sinkholes. It’s harder than you would think to predict which will be the winners and losers. And those who tell you they know the answer are usually either self-delusional or snake-oil salesmen.
 
@@ -94,7 +94,7 @@ Nevertheless, managing Berkshire is mostly fun and always interesting. On the po
 
 With that focus, and with our present mix of businesses, Berkshire should do a bit better than the average American corporation and, more important, should also operate with materially less risk of permanent loss of capital. Anything beyond “slightly better,” though, is wishful thinking. This modest aspiration wasn’t the case when Bertie went all-in on Berkshire – but it is now.
 
-Our Not-So-Secret Weapon
+### Our Not-So-Secret Weapon
 
 Occasionally, markets and/or the economy will cause stocks and bonds of some large and fundamentally good businesses to be strikingly mispriced. Indeed, markets can – and will – unpredictably seize up or even vanish as they did for four months in 1914 and for a few days in 2001. If you believe that American investors are now more stable than in the past, think back to September 2008. Speed of communication and the wonders of technology facilitate instant worldwide paralysis, and we have come a long way since smoke signals. Such instant panics won’t happen often – but they will happen.
 
@@ -118,7 +118,7 @@ Extreme fiscal conservatism is a corporate pledge we make to those who have join
 
 Berkshire is built to last.
 
-Non-controlled Businesses That Leave Us Comfortable
+### Non-controlled Businesses That Leave Us Comfortable
 
 Last year I mentioned two of Berkshire’s long-duration partial-ownership positions – Coca-Cola and American Express. These are not huge commitments like our Apple position. Each only accounts for 4-5% of Berkshire’s GAAP net worth. But they are meaningful assets and also illustrate our thought processes.
 
@@ -162,7 +162,7 @@ An additional benefit for Berkshire is the possibility that our investment may l
 
 Our Japanese purchases began on July 4, 2019. Given Berkshire’s present size, building positions through open-market purchases takes a lot of patience and an extended period of “friendly” prices. The process is like turning a battleship. That is an important disadvantage which we did not face in our early days at Berkshire.
 
-The Scorecard in 2023
+### The Scorecard in 2023
 
 Every quarter we issue a press release that reports our summarized operating earnings (or loss) in a manner similar to what is shown below. Here is the full-year compilation:
 
@@ -228,7 +228,7 @@ Ajit’s achievements since joining Berkshire have been supported by a large cas
 
 Bertie, you can feel good about the fact that you own a piece of an incredible P/C operation that now operates worldwide with unmatched financial resources, reputation and talent. It carried the day in 2023.
 
-What is it with Omaha?
+### What is it with Omaha?
 
 Come to Berkshire’s annual gathering on May 4, 2024. On stage you will see the three managers who now bear the prime responsibilities for steering your company. What, you may wonder, do the three have in common? They certainly don’t look alike. Let’s dig deeper.
 
@@ -262,7 +262,7 @@ edition of Poor Charlie’s Almanack. Pick up a copy. Charlie’s wisdom will im
 
 February 24, 2024 Warren E. Buffett Chairman of the Board
 
-Berkshire’s Performance vs. the S&P 500
+### Berkshire’s Performance vs. the S&P 500
 
 | Year                                                                                                                                                 | Berkshire | Included |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- |

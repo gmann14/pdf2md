@@ -4,15 +4,11 @@ title: "Generative Adversarial Nets"
 
 # Generative Adversarial Nets
 
-```
 ∗
-```
 
 Ian J. Goodfellow, Jean Pouget-Abadie , Mehdi Mirza, Bing Xu, David Warde-Farley,
 
-```
 † ‡
-```
 
 Sherjil Ozair , Aaron Courville, Yoshua Bengio D´ epartement d’informatique et de recherche op´ erationnelle Universit´ e de Montr´ eal Montr´ eal, QC H3C 3J7
 
@@ -38,7 +34,7 @@ Sherjil Ozair is visiting Universit´ e de Montr´ eal from Indian Institute of 
 
 ‡
 
-Yoshua Bengio is a CIFAR Senior Fellow. All code and hyperparameters available at http://www.github.com/goodfeli/adversarial
+Yoshua Bengio is a CIFAR Senior Fellow. All code and hyperparameters available at [http://www.github.com/goodfeli/adversarial](http://www.github.com/goodfeli/adversarial)
 
 This framework can yield specific training algorithms for many kinds of model and optimization algorithm. In this article, we explore the special case when the generative model generates samples by passing random noise through a multilayer perceptron, and the discriminative model is also a multilayer perceptron. We refer to this special case as adversarial nets . In this case, we can train both models using only the highly successful backpropagation and dropout algorithms [17] and sample from the generative model using only forward propagation. No approximate inference or Markov chains are necessary.
 
@@ -98,15 +94,11 @@ We will show in section 4.1 that this minimax game has a global optimum for p g 
 
 Algorithm 1 Minibatch stochastic gradient descent training of generative adversarial nets. The number of steps to apply to the discriminator, k , is a hyperparameter. We used k = 1 , the least expensive option, in our experiments. for number of training iterations do for k steps do
 
-```
 (1) ( m )
-```
 
 - Sample minibatch of m noise samples { z , . . . , z } from noise prior p g ( z ) .
 
-```
 (1) ( m )
-```
 
 - Sample minibatch of m examples { x , . . . , x } from data generating distribution p data ( x ) . • Update the discriminator by ascending its stochastic gradient:
 
@@ -114,9 +106,7 @@ Algorithm 1 Minibatch stochastic gradient descent training of generative adversa
 ∑ m [ ( ) ( ( ( )))]
 ```
 
-```
 ( i ) ( i )
-```
 
 ∇ θ d
 
@@ -125,15 +115,11 @@ log D x + log − D G z .
 m
 ```
 
-```
 i =1
-```
 
-end for
+### end for
 
-```
 (1) ( m )
-```
 
 - Sample minibatch of m noise samples { z , . . . , z } from noise prior p g ( z ) . • Update the generator by descending its stochastic gradient:
 
@@ -141,20 +127,13 @@ end for
 ∑ m ( ( ( )))
 ```
 
-```
 ( i )
-```
 
 ∇ θ g
 
-```
-log − D G z .
-m
-```
+### log − D G z . m
 
-```
 i =1
-```
 
 end for The gradient-based updates can use any standard gradient-based learning rule. We used momen- tum in our experiments.
 
@@ -162,11 +141,9 @@ end for The gradient-based updates can use any standard gradient-based learning 
 
 We first consider the optimal discriminator D for any given generator G .
 
-Proposition 1. For G fixed, the optimal discriminator D is
+### Proposition 1. For G fixed, the optimal discriminator D is
 
-```
 ∗
-```
 
 ```
 p data ( x )
@@ -180,29 +157,21 @@ p data ( x ) + p g ( x )
 
 Proof. The training criterion for the discriminator D, given any generator G , is to maximize the quantity V ( G, D ) ∫ ∫ V ( G, D ) = p data ( x ) log( D ( x )) dx + p z ( z ) log(1 − D ( g ( z ))) dz ∫
 
-```
 x z
-```
 
 ```
 = p data ( x ) log( D ( x )) + p g ( x ) log(1 − D ( x )) dx (3)
 ```
 
-```
 x
-```
 
 For any ( a, b ) ∈ R \ { , } , the function y → a log( y ) + b log(1 − y ) achieves its maximum in
 
-```
 a
-```
 
 [0 , 1] at
 
-```
 a + b
-```
 
 . The discriminator does not need to be defined outside of Supp ( p data ) ∪ Supp ( p g ) , concluding the proof.
 
@@ -210,17 +179,13 @@ Note that the training objective for D can be interpreted as maximizing the log-
 
 (with y = 1 ) or from p g (with y = 0 ). The minimax game in Eq. 1 can now be reformulated as:
 
-```
-C ( G ) = max V ( G, D )
-```
+### C ( G ) = max V ( G, D )
 
 ## D ∗ ∗
 
 = E x ∼ p data
 
-```
 [log D G
-```
 
 ```
 ( x )] + E z ∼ p z
@@ -232,15 +197,11 @@ C ( G ) = max V ( G, D )
 
 ( G ( z )))] (4)
 
-```
 ∗ ∗
-```
 
 = E x ∼ p data
 
-```
 [log D G
-```
 
 ```
 ( x )] + E x ∼ p g
@@ -260,9 +221,7 @@ log P data ( x ) + p g ( x ) p data ( x ) + p g ( x )
 
 Theorem 1. The global minimum of the virtual training criterion C ( G ) is achieved if and only if p g = p data . At that point, C ( G ) achieves the value − log 4 .
 
-```
 ∗ ∗
-```
 
 Proof. For p g = p data , D G
 
@@ -276,13 +235,9 @@ E x ∼ p data
 [ − log 2] + E x ∼ p g
 ```
 
-```
-[ − log 2] = − log 4
-```
+### [ − log 2] = − log 4
 
-```
 ∗
-```
 
 and that by subtracting this expression from C ( G ) = V ( D G
 
@@ -297,9 +252,7 @@ C ( G ) = − log(4) + KL p data
 
 ∥ p data + p g
 
-```
 ∥ + KL p g
-```
 
 ∥ ∥ (5)
 
@@ -309,9 +262,7 @@ C ( G ) = − log(4) + 2 · JSD ( p data ‖ p g ) (6)
 
 Since the Jensen–Shannon divergence between two distributions is always non-negative and zero
 
-```
 ∗
-```
 
 only when they are equal, we have shown that C = − log(4) is the global minimum of C ( G ) and that the only solution is p g = p data , i.e., the generative model perfectly replicating the data generating process.
 
@@ -319,17 +270,13 @@ only when they are equal, we have shown that C = − log(4) is the global minimu
 
 Proposition 2. If G and D have enough capacity, and at each step of Algorithm 1, the discriminator is allowed to reach its optimum given G , and p g is updated so as to improve the criterion
 
-```
 ∗ ∗
-```
 
 ```
 E x ∼ p data
 ```
 
-```
 [log D G
-```
 
 ```
 ( x )] + E x ∼ p g
@@ -339,9 +286,7 @@ E x ∼ p data
 [log(1 − D G
 ```
 
-```
-( x ))]
-```
+### ( x ))]
 
 then p g converges to p data
 
@@ -400,7 +345,7 @@ This framework admits many straightforward extensions:
 
 This paper has demonstrated the viability of the adversarial modeling framework, suggesting that these research directions could prove useful.
 
-Acknowledgments
+### Acknowledgments
 
 We would like to acknowledge Patrice Marcotte, Olivier Delalleau, Kyunghyun Cho, Guillaume Alain and Jason Yosinski for helpful discussions. Yann Dauphin shared his Parzen window eval- uation code with us. We would like to thank the developers of Pylearn2 [12] and Theano [7, 1], particularly Fr´ ed´ eric Bastien who rushed a Theano feature specifically to benefit this project. Ar- naud Bergeron provided much-needed support with L A TEX typesetting. We would also like to thank CIFAR, and Canada Research Chairs for funding, and Compute Canada, and Calcul Qu´ ebec for providing computational resources. Ian Goodfellow is supported by the 2013 Google Fellowship in Deep Learning. Finally, we would like to thank Les Trois Brasseurs for stimulating our creativity.
 

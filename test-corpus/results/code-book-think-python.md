@@ -100,9 +100,7 @@ Olin College
 
 [Thanks to the Free Software Foundation for developing the GNU Free Documentation Li-](https://thinkpython.com/code/metathesis.py) [cense, which helped make my collaboration with Jeff and Chris possible, and Creative](http://wiki.python.org/moin/BitwiseOperators) Commons for the license I am using now.
 
-```
 vii
-```
 
 [Thanks to the editors at Lulu who worked on](https://thinkpython.com/code/polygon.py) How to Think Like a Computer Scientist .
 
@@ -200,9 +198,7 @@ viii Chapter 0. Preface
 
 - [• Gregor Lingl is teaching Python at a high school in Vienna, Austria. He is working on a Ger-](http://wiki.python.org/moin/BitwiseOperators) man translation of the book, and he caught a couple of bad errors in Chapter 5.
 
-```
 ix
-```
 
 - [• Julie Peters caught a typo in the Preface.](https://thinkpython.com/code/polygon.py)
 
@@ -324,9 +320,7 @@ x Chapter 0. Preface
 
 - Patryk Wolowiec helped me with a problem in the HTML version.
 
-```
 xi
-```
 
 - [• Mark Chonofsky told me about a new keyword in Python 3.](https://thinkpython.com/code/polygon.py)
 
@@ -592,9 +586,7 @@ Iteration
 
 7.9 [Exercises](http://en.wikipedia.org/wiki/Md5) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Strings
-```
+[Strings](http://docs.python.org/3/reference/datamodel.html#specialnames)
 
 8.1 [A string is a sequence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](https://thinkpython.com/code/has_duplicates.py)
 
@@ -978,9 +970,7 @@ Python 3.4.0 (default, Jun 19 2015, 14:20:21) [GCC 4.8.2] on linux Type "help", 
 
 The last line is a [prompt](http://en.wikipedia.org/wiki/Koch_snowflake) [that indicates that the interpreter is ready for you to enter code. If](https://thinkpython.com/code/anagram_sets.py) [you type a line of code and hit Enter, the interpreter displays the result:](https://thinkpython.com/code/cartalk3.py)
 
-```
->>> 1 + 1
-```
+### >>> 1 + 1
 
 [Now you’re ready to get started. From here on, I assume that you know how to start the](http://wiki.python.org/moin/BitwiseOperators) Python interpreter and run code.
 
@@ -990,15 +980,11 @@ The last line is a [prompt](http://en.wikipedia.org/wiki/Koch_snowflake) [that i
 
 [Traditionally, the first program you write in a new language is called “Hello, World!” be-](http://www.cartalk.com/content/puzzlers) cause all it does is display the words “Hello, World!”. In Python, it looks like this:
 
-```
->>> print( ' Hello, World! ' )
-```
+### [>>> print(](https://thinkpython.com/code/grid.py) ['](https://thinkpython.com/code/grid.py) [Hello, World!](https://thinkpython.com/code/grid.py) ['](https://thinkpython.com/code/grid.py) [)](https://thinkpython.com/code/grid.py)
 
 This is an example of a [print statement](https://thinkpython.com/code/Time2_soln.py) [, although it doesn’t actually print anything on](https://thinkpython.com/code/Time2_soln.py) [paper. It displays a result on the screen. In this case, the result is the words](http://docs.python.org/3/library/stdtypes.html#types-set)
 
-```
-Hello, World!
-```
+### [Hello, World!](https://thinkpython.com/code/emma.txt)
 
 [The quotation marks in the program mark the beginning and end of the text to be dis-](https://thinkpython.com/code/analyze_book2.py) [played; they don’t appear in the result.](http://en.wikipedia.org/wiki/Ackermann_function)
 
@@ -1006,9 +992,7 @@ Hello, World!
 
 In Python 2, the print statement is slightly different; it is not a function, so it doesn’t use [parentheses.](https://thinkpython.com/code/Circle.py)
 
-```
->>> print ' Hello, World! '
-```
+### [>>> print](http://docs.python.org/3/reference/datamodel.html#specialnames) ['](http://docs.python.org/3/reference/datamodel.html#specialnames) [Hello, World!](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e)
 
 [This distinction will make more sense soon, but that’s enough to get started.](http://en.wikipedia.org/wiki/Birthday_paradox)
 
@@ -1018,38 +1002,25 @@ In Python 2, the print statement is slightly different; it is not a function, so
 
 [The operators](http://tinyurl.com/thinkpython2e) [+](http://tinyurl.com/thinkpython2e) [,](http://tinyurl.com/thinkpython2e) [-](http://tinyurl.com/thinkpython2e) [, and](http://tinyurl.com/thinkpython2e) [*](http://tinyurl.com/thinkpython2e) perform addition, subtraction, and multiplication, as in the fol- [lowing examples:](http://en.wikipedia.org/wiki/Big_O_notation)
 
-```
->>> 40 + 2
-```
+### [>>> 40 + 2](https://thinkpython.com/code/polygon.py)
 
-```
->>> 43 - 1
-```
+### [>>> 43 - 1](http://www.cartalk.com/content/puzzlers)
 
-```
->>> 6 * 7
-```
+### [>>> 6 * 7](https://thinkpython.com/code/list_exercises.py)
 
 The operator / performs division:
 
-```
->>> 84 / 2
-42.0
-```
+### >>> 84 / 2 42.0
 
 [You might wonder why the result is](https://thinkpython.com/code/flower.py) [42.0](https://thinkpython.com/code/flower.py) [instead of](https://thinkpython.com/code/flower.py) . I’ll explain in the next section.
 
 [Finally, the operator](https://thinkpython.com/code/polygon.py) [**](https://thinkpython.com/code/polygon.py) [performs exponentiation; that is, it raises a number to a power:](http://gutenberg.org/)
 
-```
->>> 6**2 + 6
-```
+### >>> 62 + 6
 
 [In some other languages,](http://en.wikipedia.org/wiki/Koch_snowflake) [^](http://en.wikipedia.org/wiki/Koch_snowflake) [is used for exponentiation, but in Python it is a bitwise operator](https://thinkpython.com/code/anagram_sets.py) [called XOR. If you are not familiar with bitwise operators, the result will surprise you:](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)
 
-```
->>> 6 ^ 2
-```
+### [>>> 6 ^ 2](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)
 
 [I won’t cover bitwise operators in this book, but you can read about them at](http://wiki.python.org/moin/BitwiseOperators) [http://wiki.](https://thinkpython.com/code/interlock.py) python.org/moin/BitwiseOperators .
 
@@ -1087,10 +1058,7 @@ They’re strings.
 
 [When you type a large integer, you might be tempted to use commas between groups of](http://wikipedia.org/wiki/Moby_Project) digits, as in [1,000,000](https://thinkpython.com/code/reducible.py) [. This is not a legal](https://thinkpython.com/code/reducible.py) [integer](https://thinkpython.com/code/reducible.py) in Python, but it is legal:
 
-```
->>> 1,000,000
-(1, 0, 0)
-```
+### >>> 1,000,000 [(1, 0, 0)](https://thinkpython.com/code/list_exercises.py)
 
 [That’s not what we expected at all! Python interprets](http://docs.python.org/3/library/datetime.html) 1,000,000 [as a comma-separated](http://en.wikipedia.org/wiki/Radix_sort) sequence of integers. We’ll learn more about this kind of sequence later.
 
@@ -1238,11 +1206,11 @@ One of the most powerful features of a programming language is the ability to ma
 
 [Programmers generally choose names for their variables that are meaningful—they docu-](https://thinkpython.com/code/koch.py) [ment what the variable is used for.](https://thinkpython.com/code/pie.py)
 
-[message](https://thinkpython.com/code/cartalk3.py) [’And now for something completely different’](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)
+### [message](https://thinkpython.com/code/cartalk3.py) [’And now for something completely different’](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)
 
 [n](https://thinkpython.com/code/c06d)
 
-[pi](https://thinkpython.com/code/pronounce.py) [3.1415926535897932](https://thinkpython.com/code/pronounce.py)
+### [pi](https://thinkpython.com/code/pronounce.py) [3.1415926535897932](https://thinkpython.com/code/pronounce.py)
 
 [Figure 2.1: State diagram.](https://thinkpython.com/code/typewriter.py)
 
@@ -1282,26 +1250,17 @@ It turns out that class [is one of Python’s](http://tinyurl.com/thinkpython2e)
 
 An expression is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:
 
-```
->>> 42
-```
+### >>> 42
 
-```
->>> n
-```
+### >>> n
 
-```
->>> n + 25
-```
+### >>> n + 25
 
 [When you type an expression at the prompt, the interpreter](https://thinkpython.com/code/pie.py) [evaluates](https://thinkpython.com/code/analyze_book3.py) [it, which means that](http://en.wikipedia.org/wiki/Koch_snowflake) [it finds the value of the expression. In this example,](http://en.wikipedia.org/wiki/Koch_snowflake) [n](https://thinkpython.com/code/anagram_sets.py) [has the value 17 and](https://thinkpython.com/code/anagram_sets.py) [n + 25](https://thinkpython.com/code/anagram_sets.py) has the value 42.
 
 A statement [is a unit of code that has an effect, like creating a variable or displaying a](https://thinkpython.com/code/c06d) value.
 
-```
->>> n = 17
->>> print(n)
-```
+### >>> n = 17 >>> print(n)
 
 ### 2.4. Script mode
 
@@ -1321,23 +1280,17 @@ Because Python provides both modes, you can test bits of code in interactive mod
 
 [For example, if you are using Python as a calculator, you might type](https://thinkpython.com/code/rotate_pairs.py)
 
-[>>> miles = 26.2](https://thinkpython.com/code/do_four.py) [>>> miles * 1.61](http://www.cartalk.com/content/puzzlers) [42.182](http://tinyurl.com/thinkpython2e)
+### [>>> miles = 26.2](https://thinkpython.com/code/do_four.py) [>>> miles * 1.61](http://www.cartalk.com/content/puzzlers) [42.182](http://tinyurl.com/thinkpython2e)
 
 [The first line assigns a value to](http://en.wikipedia.org/wiki/Big_O_notation) miles , but it has no visible effect. The second line is an ex- [pression, so the interpreter evaluates it and displays the result. It turns out that a marathon](https://thinkpython.com/code/markov.py) [is about 42 kilometers.](https://thinkpython.com/code/polygon.py)
 
 [But if you type the same code into a script and run it, you get no output at all. In script](https://thinkpython.com/code/PokerHandSoln.py) [mode an expression, all by itself, has no visible effect. Python evaluates the expression, but](https://thinkpython.com/code/words.txt) it doesn’t display the result. To display the result, you need a print statement like this:
 
-```
-miles = 26.2
-print(miles * 1.61)
-```
+### [miles = 26.2](http://docs.python.org/3/library/datetime.html) print(miles * 1.61)
 
 This behavior can be confusing at first. To check your understanding, type the following [statements in the Python interpreter and see what they do:](https://thinkpython.com/code/palindrome_soln.py)
 
-```
-x = 5
-x + 1
-```
+### x = 5 [x + 1](https://thinkpython.com/code/polygon.py)
 
 [Now put the same statements in a script and run it. What is the output? Modify the script](https://thinkpython.com/code/koch.py) [by transforming each expression into a print statement and then run it again.](https://thinkpython.com/code/pie.py)
 
@@ -1486,10 +1439,7 @@ Chapter 2. Variables, expressions and statements
 
 [We have already seen one example of a](https://thinkpython.com/code/do_four.py) [function call](http://tinyurl.com/thinkpython2e) [:](http://tinyurl.com/thinkpython2e)
 
-```
->>> type(42)
-<class ' int ' >
-```
+### >>> type(42) [<class](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) [int](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) [>](http://tinyurl.com/thinkpython2e)
 
 [The name of the function is](https://thinkpython.com/code/markov.py) [type](https://thinkpython.com/code/markov.py) [. The expression in parentheses is called the](https://thinkpython.com/code/markov.py) [argument](https://thinkpython.com/code/polygon.py) [of](https://thinkpython.com/code/polygon.py) [the function. The result, for this function, is the type of the argument.](http://wikipedia.org/wiki/Moby_Project)
 
@@ -1497,29 +1447,19 @@ Chapter 2. Variables, expressions and statements
 
 Python provides functions that convert values from one type to another. The int function [takes any value and converts it to an integer, if it can, or complains otherwise:](http://docs.python.org/3/library/datetime.html)
 
-```
->>> int( ' ' )
-```
+### >>> int( ' ' )
 
-```
->>> int( ' Hello ' )
-ValueError: invalid literal for int(): Hello
-```
+### >>> int( ['](https://thinkpython.com/code/palindrome_soln.py) [Hello](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) [)](https://thinkpython.com/code/palindrome_soln.py) ValueError: invalid literal for int(): Hello
 
 [int](http://docs.python.org/3/library/stdtypes.html#string-methods) [can convert floating-point values to integers, but it doesn’t round off; it chops off the](https://thinkpython.com/code/flower.py) [fraction part:](https://thinkpython.com/code/polygon.py)
 
-```
->>> int(3.99999)
-```
+### >>> int(3.99999)
 
-```
->>> int(-2.3)
--2
-```
+### [>>> int(-2.3)](http://en.wikipedia.org/wiki/Fibonacci_number) [-2](https://thinkpython.com/code/cartalk3.py)
 
 [float](https://thinkpython.com/code/anagram_sets.py) [converts integers and strings to floating-point numbers:](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 
-[>>> float(32)](https://thinkpython.com/code/pronounce.py) [32.0](https://thinkpython.com/code/double.py) [>>> float(](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [3.14159](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [)](http://wiki.python.org/moin/BitwiseOperators) 3.14159
+### [>>> float(32)](https://thinkpython.com/code/pronounce.py) [32.0](https://thinkpython.com/code/double.py) [>>> float(](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [3.14159](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [)](http://wiki.python.org/moin/BitwiseOperators) 3.14159
 
 ```
 Chapter 3. Functions
@@ -1527,12 +1467,7 @@ Chapter 3. Functions
 
 [Finally,](https://thinkpython.com/code/polygon.py) [str](https://thinkpython.com/code/polygon.py) [converts its argument to a string:](https://thinkpython.com/code/polygon.py)
 
-```
->>> str(32)
-' '
->>> str(3.14159)
-' 3.14159 '
-```
+### >>> str(32) ['](https://thinkpython.com/code/Time2.py) ['](https://thinkpython.com/code/Time2.py) [>>> str(3.14159)](https://thinkpython.com/code/spiral.py) ' 3.14159 ['](https://thinkpython.com/code/grid.py)
 
 #### 3.2 [Math functions](https://thinkpython.com/code/rotate.py)
 
@@ -1540,40 +1475,29 @@ Chapter 3. Functions
 
 Before we can use the functions in a module, we have to import it with an import state- ment :
 
-```
->>> import math
-```
+### [>>> import math](http://docs.python.org/3/reference/datamodel.html#specialnames)
 
 [This statement creates a](https://thinkpython.com/code/has_duplicates.py) [module object](http://en.wikipedia.org/wiki/Birthday_paradox) [named math. If you display the module object, you](http://en.wikipedia.org/wiki/Birthday_paradox) get some information about it:
 
-```
->>> math
-<module ' math ' (built-in)>
-```
+### [>>> math](https://thinkpython.com/code/markov.py) [<module](https://thinkpython.com/code/walk.py) ['](http://en.wikipedia.org/wiki/Letter_frequencies) [math](http://en.wikipedia.org/wiki/Letter_frequencies) ['](http://en.wikipedia.org/wiki/Letter_frequencies) [(built-in)>](http://en.wikipedia.org/wiki/Letter_frequencies)
 
 [The module object contains the functions and variables defined in the module. To access](https://thinkpython.com/code/rotate_pairs.py) [one of the functions, you have to specify the name of the module and the name of the](http://tinyurl.com/thinkpython2e) function, separated by a dot (also known as a period). This format is called dot notation .
 
-```
->>> ratio = signal_power / noise_power
->>> decibels = 10 * math.log10(ratio)
-```
+### [>>> ratio = signal_power / noise_power](http://tinyurl.com/thinkpython2e) [>>> decibels = 10 * math.log10(ratio)](http://en.wikipedia.org/wiki/Big_O_notation)
 
-```
->>> radians = 0.7
->>> height = math.sin(radians)
-```
+### [>>> radians = 0.7](https://thinkpython.com/code/polygon.py) [>>> height = math.sin(radians)](http://www.cartalk.com/content/puzzlers)
 
 [The first example uses](https://thinkpython.com/code/PokerHandSoln.py) [math.log10](https://thinkpython.com/code/PokerHandSoln.py) [to compute a signal-to-noise ratio in decibels (assuming](https://thinkpython.com/code/words.txt) [that](https://thinkpython.com/code/list_exercises.py) [signal_power](https://thinkpython.com/code/list_exercises.py) and noise_power are defined). The math module also provides log , [which computes logarithms base](http://docs.python.org/3/library/datetime.html) [e](http://docs.python.org/3/library/datetime.html) [.](http://docs.python.org/3/library/datetime.html)
 
 The second example finds the sine of radians . The variable name radians is a hint that sin and the other trigonometric functions ( cos , tan , etc.) take arguments in radians. To [convert from degrees to radians, divide by 180 and multiply by](https://thinkpython.com/code/palindrome_soln.py) [π](https://thinkpython.com/code/palindrome_soln.py) [:](https://thinkpython.com/code/palindrome_soln.py)
 
->>> degrees = 45 [>>> radians = degrees / 180.0 * math.pi](https://thinkpython.com/code/polygon.py) >>> math.sin(radians) 0.707106781187
+### >>> degrees = 45 [>>> radians = degrees / 180.0 * math.pi](https://thinkpython.com/code/polygon.py) >>> math.sin(radians) 0.707106781187
 
 The expression [math.pi](https://thinkpython.com/code/anagram_sets.py) [gets the variable](https://thinkpython.com/code/anagram_sets.py) [pi](https://thinkpython.com/code/anagram_sets.py) [from the math module. Its value is a floating-](https://thinkpython.com/code/anagram_sets.py) [point approximation of](https://thinkpython.com/code/cartalk3.py) [π](http://en.wikipedia.org/wiki/Koch_snowflake) [, accurate to about 15 digits.](https://thinkpython.com/code/cartalk3.py)
 
 [If you know trigonometry, you can check the previous result by comparing it to the square](https://thinkpython.com/code/c06d) [root of two, divided by two:](https://thinkpython.com/code/reverse_pair.py)
 
-[>>> math.sqrt(2) / 2.0](http://wiki.python.org/moin/BitwiseOperators) 0.707106781187
+### [>>> math.sqrt(2) / 2.0](http://wiki.python.org/moin/BitwiseOperators) 0.707106781187
 
 ### 3.3. Composition
 
@@ -1583,19 +1507,15 @@ So far, [we have looked at the elements of a program—variables,](http://en.wik
 
 [One of the most useful features of programming languages is their ability to take small](https://thinkpython.com/code/grid.py) building blocks and [compose](https://thinkpython.com/code/Time2_soln.py) [them. For example, the argument of a function can be any](https://thinkpython.com/code/Time2_soln.py) [kind of expression, including arithmetic operators:](http://creativecommons.org/licenses/by-nc/3.0/)
 
-x = math.sin(degrees / 360.0 * 2 * math.pi)
+### x = math.sin(degrees / 360.0 * 2 * math.pi)
 
 [And even function calls:](https://thinkpython.com/code/rotate.py)
 
-```
-x = math.exp(math.log(x+1))
-```
+### [x = math.exp(math.log(x+1))](http://en.wikipedia.org/wiki/Ackermann_function)
 
 [Almost anywhere you can put a value, you can put an arbitrary expression, with one ex-](http://www.thinkpython.com/) ception: the left side of an assignment statement has to be a variable name. [Any other](https://thinkpython.com/code/ackermann.py) expression on the left side is a syntax error (we will see exceptions to this rule later).
 
-| >>> minutes = hours * 60 | # right  |
-| ------------------------ | -------- |
-| >>> hours * 60 = minutes | # wrong! |
+### [>>> minutes = hours * 60](https://thinkpython.com/code/Circle.py) [# right](http://docs.python.org/3/reference/datamodel.html#specialnames) [>>> hours * 60 = minutes](http://docs.python.org/3/reference/datamodel.html#specialnames) # wrong! [SyntaxError: can](https://thinkpython.com/code/zipf.py) ['](http://tinyurl.com/thinkpython2e) [t assign to operator](http://tinyurl.com/thinkpython2e)
 
 #### [3.4](https://thinkpython.com/code/draw.py) [Adding new functions](https://thinkpython.com/code/draw.py)
 
@@ -1603,7 +1523,7 @@ x = math.exp(math.log(x+1))
 
 [Here is an example:](http://tinyurl.com/thinkpython2e)
 
-def print_lyrics(): [print("I](http://en.wikipedia.org/wiki/Big_O_notation) ['](https://thinkpython.com/code/markov.py) [m a lumberjack, and I](https://thinkpython.com/code/markov.py) ['](https://thinkpython.com/code/markov.py) [m okay.")](https://thinkpython.com/code/markov.py) [print("I sleep all night and I work all day.")](http://wikipedia.org/wiki/Moby_Project)
+### def print_lyrics(): [print("I](http://en.wikipedia.org/wiki/Big_O_notation) ['](https://thinkpython.com/code/markov.py) [m a lumberjack, and I](https://thinkpython.com/code/markov.py) ['](https://thinkpython.com/code/markov.py) [m okay.")](https://thinkpython.com/code/markov.py) [print("I sleep all night and I work all day.")](http://wikipedia.org/wiki/Moby_Project)
 
 [def](https://thinkpython.com/code/reducible.py) [is a keyword that indicates that this is a function definition. The name of the function](https://thinkpython.com/code/reducible.py) [is](http://www.cartalk.com/content/puzzlers) [print_lyrics](http://www.cartalk.com/content/puzzlers) [. The rules for function names are the same as for variable names: letters,](https://thinkpython.com/code/list_exercises.py) [numbers and underscore are legal, but the first character can’t be a number. You can’t use a](https://thinkpython.com/code/words.txt) keyword as the name of a function, and you should avoid having a variable and a function [with the same name.](http://en.wikipedia.org/wiki/Radix_sort)
 
@@ -1627,12 +1547,7 @@ Chapter 3. Functions
 
 Defining a function creates a function object , which has type function :
 
-```
->>> print(print_lyrics)
-<function print_lyrics at 0xb7e99e9c>
->>> type(print_lyrics)
-<class ' function ' >
-```
+### [>>> print(print_lyrics)](https://thinkpython.com/code/emma.txt) [<function print_lyrics at 0xb7e99e9c>](https://thinkpython.com/code/rotate.py) [>>> type(print_lyrics)](https://thinkpython.com/code/analyze_book2.py) <class ' [function](http://en.wikipedia.org/wiki/Ackermann_function) ['](http://en.wikipedia.org/wiki/Ackermann_function) [>](http://en.wikipedia.org/wiki/Ackermann_function)
 
 [The syntax for calling the new function is the same as for built-in functions:](https://thinkpython.com/code/ackermann_memo.py)
 
@@ -1640,11 +1555,7 @@ Defining a function creates a function object , which has type function :
 
 [Once you have defined a function, you can use it inside another function. For example, to](http://tinyurl.com/thinkpython2e) [repeat the previous refrain, we could write a function called](https://thinkpython.com/code/has_duplicates.py) repeat_lyrics :
 
-```
-def repeat_lyrics():
-print_lyrics()
-print_lyrics()
-```
+### [def repeat_lyrics():](https://thinkpython.com/code/BadKangaroo.py) [print_lyrics()](https://thinkpython.com/code/draw.py) [print_lyrics()](http://en.wikipedia.org/wiki/Letter_frequencies)
 
 [And then call](https://thinkpython.com/code/markov2.py) [repeat_lyrics](https://thinkpython.com/code/rotate_pairs.py) [:](https://thinkpython.com/code/rotate_pairs.py)
 
@@ -1656,17 +1567,11 @@ print_lyrics()
 
 Pulling together the code fragments from the previous section, the whole program looks like this:
 
-def print_lyrics(): print("I ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [m a lumberjack, and I](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [m okay.")](http://docs.python.org/3/library/stdtypes.html#string-methods) [print("I sleep all night and I work all day.")](https://thinkpython.com/code/flower.py)
+### def print_lyrics(): print("I ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [m a lumberjack, and I](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [m okay.")](http://docs.python.org/3/library/stdtypes.html#string-methods) [print("I sleep all night and I work all day.")](https://thinkpython.com/code/flower.py)
 
-```
-def repeat_lyrics():
-print_lyrics()
-print_lyrics()
-```
+### [def repeat_lyrics():](https://thinkpython.com/code/sed.py) [print_lyrics()](https://thinkpython.com/code/analyze_book3.py) [print_lyrics()](http://en.wikipedia.org/wiki/Fibonacci_number)
 
-```
-repeat_lyrics()
-```
+### [repeat_lyrics()](https://thinkpython.com/code/anagram_sets.py)
 
 [This program contains two function definitions:](https://thinkpython.com/code/pronounce.py) [print_lyrics](https://thinkpython.com/code/pronounce.py) [and](https://thinkpython.com/code/pronounce.py) repeat_lyrics . Func- [tion definitions get executed just like other statements, but the effect is to create function](https://thinkpython.com/code/metathesis.py) [objects. The statements inside the function do not run until the function is called, and the](http://wiki.python.org/moin/BitwiseOperators) function definition generates no output.
 
@@ -1700,11 +1605,7 @@ Some of the functions we have seen require arguments. [For example, when you cal
 
 [Inside the function, the arguments are assigned to variables called](https://thinkpython.com/code/koch.py) [parameters](http://en.wikipedia.org/wiki/Fibonacci_number) [. Here is a](http://en.wikipedia.org/wiki/Fibonacci_number) [definition for a function that takes an argument:](https://thinkpython.com/code/pie.py)
 
-```
-def print_twice(bruce):
-print(bruce)
-print(bruce)
-```
+### [def print_twice(bruce):](http://en.wikipedia.org/wiki/Koch_snowflake) [print(bruce)](https://thinkpython.com/code/cartalk3.py) print(bruce)
 
 [This function assigns the argument to a parameter named](https://thinkpython.com/code/pronounce.py) bruce . When the function is [called, it prints the value of the parameter (whatever it is) twice.](https://thinkpython.com/code/metathesis.py)
 
@@ -1714,18 +1615,9 @@ This function works with any value that can be printed.
 Chapter 3. Functions
 ```
 
-```
->>> print_twice( ' Spam ' )
-Spam
-Spam
->>> print_twice(42)
-```
+### [>>> print_twice(](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [Spam](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [)](https://thinkpython.com/code/polygon.py) Spam [Spam](https://thinkpython.com/code/Time2.py) [>>> print_twice(42)](https://thinkpython.com/code/spiral.py)
 
-```
->>> print_twice(math.pi)
-3.14159265359
-3.14159265359
-```
+### >>> print_twice(math.pi) [3.14159265359](http://creativecommons.org/licenses/by-nc/3.0/) [3.14159265359](https://thinkpython.com/code/emma.txt)
 
 [The same rules of composition that apply to built-in functions also apply to programmer-](https://thinkpython.com/code/analyze_book2.py) [defined functions, so we can use any kind of expression as an argument for](http://en.wikipedia.org/wiki/Ackermann_function) [print_twice](https://docs.python.org/3/library/stdtypes.html#str.format) [:](https://docs.python.org/3/library/stdtypes.html#str.format)
 
@@ -1743,11 +1635,7 @@ Spam
 
 When you create a variable inside a function, it is local , which means that it only exists inside the function. For example:
 
-```
-def cat_twice(part1, part2):
-cat = part1 + part2
-print_twice(cat)
-```
+### def cat_twice(part1, part2): [cat = part1 + part2](http://docs.python.org/3/library/stdtypes.html#string-methods) [print_twice(cat)](https://thinkpython.com/code/polygon.py)
 
 [This function takes two arguments, concatenates them, and prints the result twice. Here is](https://thinkpython.com/code/koch.py) [an example that uses it:](https://docs.python.org/3/library/pdb.html)
 
@@ -1757,21 +1645,19 @@ When [cat_twice](http://wiki.python.org/moin/BitwiseOperators) [terminates, the 
 
 ### 3.9. Stack diagrams
 
-| line1 | ’Bing tiddle ’ |
-| ----- | -------------- |
-| line2 | ’tiddle bang.’ |
+### [line1](https://thinkpython.com/code/polygon.py) [’Bing tiddle ’](http://en.wikipedia.org/wiki/Zipf's_law) [__main__](https://thinkpython.com/code/polygon.py) [line2](http://en.wikipedia.org/wiki/Spiral) [’tiddle bang.’](http://en.wikipedia.org/wiki/Spiral)
 
-part1 ’Bing tiddle ’
+### part1 ’Bing tiddle ’
 
-cat_twice [part2](https://thinkpython.com/code) [’tiddle bang.’](https://thinkpython.com/code)
+### cat_twice [part2](https://thinkpython.com/code) [’tiddle bang.’](https://thinkpython.com/code)
 
-[cat](https://thinkpython.com/code/Time2_soln.py) [’Bing tiddle tiddle bang.’](https://thinkpython.com/code/Time2_soln.py)
+### [cat](https://thinkpython.com/code/Time2_soln.py) [’Bing tiddle tiddle bang.’](https://thinkpython.com/code/Time2_soln.py)
 
-print_twice bruce [’Bing tiddle tiddle bang.’](https://thinkpython.com/code/invert_dict.py)
+### print_twice bruce [’Bing tiddle tiddle bang.’](https://thinkpython.com/code/invert_dict.py)
 
 [Figure 3.1: Stack diagram.](http://en.wikipedia.org/wiki/Ackermann_function)
 
-[>>> print(cat)](https://thinkpython.com/code/ackermann.py) [NameError: name](http://en.wikipedia.org/wiki/Md5) ' cat ' is not defined
+### [>>> print(cat)](https://thinkpython.com/code/ackermann.py) [NameError: name](http://en.wikipedia.org/wiki/Md5) ' cat ' is not defined
 
 Parameters are also local. [For example, outside](http://docs.python.org/3/reference/datamodel.html#specialnames) [print_twice](http://docs.python.org/3/reference/datamodel.html#specialnames) [, there is no such thing as](http://docs.python.org/3/reference/datamodel.html#specialnames) [bruce](http://docs.python.org/3/reference/datamodel.html#specialnames) [.](http://docs.python.org/3/reference/datamodel.html#specialnames)
 
@@ -1805,23 +1691,15 @@ Chapter 3. Functions
 
 [When you call a fruitful function, you almost always want to do something with the result;](https://thinkpython.com/code/Circle.py) for example, you might assign it to a variable or use it as part of an expression:
 
-```
-x = math.cos(radians)
-golden = (math.sqrt(5) + 1) / 2
-```
+### x = math.cos(radians) [golden = (math.sqrt(5) + 1) / 2](http://en.wikipedia.org/wiki/Birthday_paradox)
 
 [When you call a function in interactive mode, Python displays the result:](http://en.wikipedia.org/wiki/Sexagesimal)
 
-```
->>> math.sqrt(5)
-2.2360679774997898
-```
+### [>>> math.sqrt(5)](https://thinkpython.com/code/walk.py) [2.2360679774997898](https://thinkpython.com/code/most_frequent.py)
 
 But in a script, if you call a fruitful function all by itself, the return value is lost forever!
 
-```
-math.sqrt(5)
-```
+### [math.sqrt(5)](https://thinkpython.com/code/Time1_soln.py)
 
 This script computes the square root of 5, but since it doesn’t store or display the result, it is not very useful.
 
@@ -1837,10 +1715,7 @@ None
 
 The value None [is not the same as the string](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) [None](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) [. It is a special value that has its own](https://thinkpython.com/code/palindrome_soln.py) type:
 
-```
->>> type(None)
-<class ' NoneType ' >
-```
+### >>> type(None) <class ' NoneType ' >
 
 [The functions we have written so far are all void. We will start writing fruitful functions in](https://docs.python.org/3/library/pdb.html) a few chapters.
 
@@ -1924,10 +1799,7 @@ traceback: [A list of the functions that are executing, printed when an exceptio
 
 Exercise 3.1. [Write a function named](https://thinkpython.com/code/pie.py) [right_justify](https://thinkpython.com/code/pie.py) [that takes a string named](https://thinkpython.com/code/pie.py) [s](http://en.wikipedia.org/wiki/Koch_snowflake) [as a parameter](http://en.wikipedia.org/wiki/Koch_snowflake) [and prints the string with enough leading spaces so that the last letter of the string is in column 70](https://thinkpython.com/code/inlist.py) of the display.
 
-```
->>> right_justify( ' monty ' )
-monty
-```
+### [>>> right_justify(](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) ' monty ' [)](https://thinkpython.com/code/c06d) monty
 
 [Hint: Use string concatenation and repetition. Also, Python provides a built-in function called](http://puzzlers.org/) [len](http://wiki.python.org/moin/BitwiseOperators) [that returns the length of a string, so the value of](http://wiki.python.org/moin/BitwiseOperators) [len(](http://wiki.python.org/moin/BitwiseOperators) ['](https://thinkpython.com/code/typewriter.py) [monty](https://thinkpython.com/code/typewriter.py) ['](http://en.wikipedia.org/wiki/Collatz_conjecture) [)](http://en.wikipedia.org/wiki/Collatz_conjecture) [is 5.](https://wiki.python.org/moin/HowTo/Sorting)
 
@@ -1935,22 +1807,13 @@ monty
 
 [Exercise 3.2.](https://thinkpython.com/code/polygon.py) A function object is a value you can assign to a variable or pass as an argument. For example, do_twice [is a function that takes a function object as an argument and calls it twice:](http://en.wikipedia.org/wiki/Spiral)
 
-```
-def do_twice(f):
-f()
-f()
-```
+### [def do_twice(f):](http://www.cartalk.com/content/puzzlers) [f()](https://thinkpython.com/code/spiral.py) [f()](https://thinkpython.com/code/grid.py)
 
 Here’s an example that uses [do_twice](https://thinkpython.com/code/Time2_soln.py) [to call a function named](https://thinkpython.com/code/Time2_soln.py) [print_spam](https://thinkpython.com/code/Time2_soln.py) twice.
 
-```
-def print_spam():
-print( ' spam ' )
-```
+### [def print_spam():](http://creativecommons.org/licenses/by-nc/3.0/) [print(](https://thinkpython.com/code/emma.txt) ['](https://thinkpython.com/code/emma.txt) [spam](https://thinkpython.com/code/emma.txt) ['](https://thinkpython.com/code/emma.txt) [)](https://thinkpython.com/code/emma.txt)
 
-```
-do_twice(print_spam)
-```
+### [do_twice(print_spam)](http://en.wikipedia.org/wiki/Ackermann_function)
 
 1. [1. Type this example into a script and test it.](https://thinkpython.com/code/ackermann_memo.py)
 
@@ -2015,27 +1878,17 @@ Solution: https: // thinkpython. com/ code/ grid. py [. Credit: This exercise is
 
 To check whether you have the turtle module, open the Python interpreter and type
 
-```
->>> import turtle
->>> bob = turtle.Turtle()
-```
+### >>> import turtle [>>> bob = turtle.Turtle()](https://thinkpython.com/code/palindrome_soln.py)
 
 When you run this code, it should create a new window with small arrow that represents [the turtle. Close the window.](https://thinkpython.com/code/flower.py)
 
 Create a file named mypolygon.py [and type in the following code:](http://gutenberg.org/)
 
-```
-import turtle
-bob = turtle.Turtle()
-print(bob)
-turtle.mainloop()
-```
+### [import turtle](https://docs.python.org/3/library/pdb.html) [bob = turtle.Turtle()](http://en.wikipedia.org/wiki/Fibonacci_number) [print(bob)](http://en.wikipedia.org/wiki/Koch_snowflake) [turtle.mainloop()](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 
 [The](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [turtle](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [module (with a lowercase ’t’) provides a function called](https://thinkpython.com/code/c06d) [Turtle](https://thinkpython.com/code/reverse_pair.py) [(with an up-](https://thinkpython.com/code/reverse_pair.py) [percase ’T’) that creates a Turtle object, which we assign to a variable named](https://thinkpython.com/code/pronounce.py) bob . Printing bob displays something like:
 
-```
-<turtle.Turtle object at 0xb7bfbf4c>
-```
+### <turtle.Turtle object at 0xb7bfbf4c>
 
 ```
 Chapter 4. Case study: interface design
@@ -2047,9 +1900,7 @@ mainloop [tells the window to wait for the user to do something, although in thi
 
 [Once you create a Turtle, you can call a](https://thinkpython.com/code/grid.py) [method](https://thinkpython.com/code/grid.py) [to move it around the window. A method](https://thinkpython.com/code) [is similar to a function, but it uses slightly different syntax. For example, to move the turtle](https://thinkpython.com/code/Time2_soln.py) [forward:](http://creativecommons.org/licenses/by-nc/3.0/)
 
-```
-bob.fd(100)
-```
+### [bob.fd(100)](https://thinkpython.com/code/emma.txt)
 
 The method, [fd](https://thinkpython.com/code/rotate.py) [, is associated with the turtle object we’re calling](https://thinkpython.com/code/rotate.py) [bob](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [. Calling a method is](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [like making a request: you are asking](http://en.wikipedia.org/wiki/Ackermann_function) [bob](http://en.wikipedia.org/wiki/Ackermann_function) [to move forward.](http://en.wikipedia.org/wiki/Ackermann_function)
 
@@ -2061,11 +1912,7 @@ The argument of [fd](https://thinkpython.com/code/ackermann_memo.py) [is a dista
 
 [To draw a right angle, add these lines to the program (after creating](https://thinkpython.com/code/BadKangaroo.py) [bob](http://en.wikipedia.org/wiki/Sexagesimal) [and before calling](http://en.wikipedia.org/wiki/Sexagesimal) [mainloop](https://thinkpython.com/code/markov.py) [):](https://thinkpython.com/code/draw.py)
 
-```
-bob.fd(100)
-bob.lt(90)
-bob.fd(100)
-```
+### bob.fd(100) [bob.lt(90)](https://thinkpython.com/code/markov2.py) [bob.fd(100)](https://thinkpython.com/code/Time1.py)
 
 When you run this program, you should see bob move east and then north, leaving two [line segments behind.](http://tinyurl.com/thinkpython2e)
 
@@ -2075,28 +1922,17 @@ When you run this program, you should see bob move east and then north, leaving 
 
 [Chances are you wrote something like this:](http://docs.python.org/3/library/datetime.html)
 
-```
-bob.fd(100)
-bob.lt(90)
-```
+### bob.fd(100) bob.lt(90)
 
-```
-bob.fd(100)
-bob.lt(90)
-```
+### bob.fd(100) bob.lt(90)
 
-```
-bob.fd(100)
-bob.lt(90)
-```
+### bob.fd(100) bob.lt(90)
 
-```
-bob.fd(100)
-```
+### bob.fd(100)
 
 [We can do the same thing more concisely with a](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [for](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [statement.](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [Add this example to](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) mypolygon.py and run it again:
 
-[for i in range(4):](https://thinkpython.com/code/reverse_pair.py) print( ' Hello! ' )
+### [for i in range(4):](https://thinkpython.com/code/reverse_pair.py) print( ' Hello! ' )
 
 You should see something like this:
 
@@ -2138,20 +1974,15 @@ Chapter 4. Case study: interface design
 
 [The first exercise asks you to put your square-drawing code into a function definition and](http://www.cartalk.com/content/puzzlers) [then call the function, passing the turtle as a parameter. Here is a solution:](https://thinkpython.com/code/spiral.py)
 
-def square(t): for i in range(4): [t.fd(100)](http://creativecommons.org/licenses/by-nc/3.0/) [t.lt(90)](https://thinkpython.com/code/emma.txt)
+### def square(t): for i in range(4): [t.fd(100)](http://creativecommons.org/licenses/by-nc/3.0/) [t.lt(90)](https://thinkpython.com/code/emma.txt)
 
-```
-square(bob)
-```
+### square(bob)
 
 [The innermost statements,](https://thinkpython.com/code/structshape.py) [fd](https://thinkpython.com/code/structshape.py) [and](https://thinkpython.com/code/structshape.py) [lt](https://thinkpython.com/code/cartalk1.py) [are indented twice to show that they are inside the](https://thinkpython.com/code/cartalk1.py) for [loop, which is inside the function definition. The next line,](https://thinkpython.com/code/ackermann_memo.py) [square(bob)](http://www.thinkpython.com/) [, is flush with](https://thinkpython.com/code/ackermann.py) the left margin, which indicates the end of both the for loop and the function definition.
 
 [Inside the function,](https://thinkpython.com/code/Circle.py) [t](https://thinkpython.com/code/Circle.py) [refers to the same turtle](https://thinkpython.com/code/Circle.py) [bob](https://thinkpython.com/code/Circle.py) [, so](https://thinkpython.com/code/Circle.py) [t.lt(90)](http://docs.python.org/3/reference/datamodel.html#specialnames) [has the same effect as](http://docs.python.org/3/reference/datamodel.html#specialnames) [bob.lt(90)](http://docs.python.org/3/reference/datamodel.html#specialnames) . In that case, why not call the parameter bob ? The idea is that t can be any turtle, not just [bob](http://en.wikipedia.org/wiki/Birthday_paradox) [, so you could create a second turtle and pass it as an argument to](http://tinyurl.com/thinkpython2e) square [:](https://thinkpython.com/code/has_duplicates.py)
 
-```
-alice = turtle.Turtle()
-square(alice)
-```
+### alice = turtle.Turtle() square(alice)
 
 [Wrapping a piece of code up in a function is called](http://en.wikipedia.org/wiki/Letter_frequencies) [encapsulation](http://en.wikipedia.org/wiki/Letter_frequencies) [. One of the benefits of](https://thinkpython.com/code/most_frequent.py) [encapsulation is that it attaches a name to the code, which serves as a kind of documenta-](https://thinkpython.com/code/GoodKangaroo.py) tion. Another advantage is that if you re-use the code, it is more concise to call a function [twice than to copy and paste the body!](https://thinkpython.com/code/do_four.py)
 
@@ -2159,27 +1990,17 @@ square(alice)
 
 [The next step is to add a](https://thinkpython.com/code/reducible.py) [length](https://thinkpython.com/code/reducible.py) [parameter to](https://thinkpython.com/code/reducible.py) [square](https://thinkpython.com/code/reducible.py) . Here is a solution:
 
-def square(t, length): [for i in range(4):](https://thinkpython.com/code/list_exercises.py) [t.fd(length)](http://docs.python.org/3/library/datetime.html) [t.lt(90)](http://en.wikipedia.org/wiki/Radix_sort)
+### def square(t, length): [for i in range(4):](https://thinkpython.com/code/list_exercises.py) [t.fd(length)](http://docs.python.org/3/library/datetime.html) [t.lt(90)](http://en.wikipedia.org/wiki/Radix_sort)
 
-```
-square(bob, 100)
-```
+### square(bob, 100)
 
 [Adding a parameter to a function is called](https://thinkpython.com/code/palindrome_soln.py) [generalization](https://thinkpython.com/code/palindrome_soln.py) [because it makes the function](https://thinkpython.com/code/palindrome_soln.py) [more general: in the previous version, the square is always the same size; in this version it](https://thinkpython.com/code/flower.py) can be any size.
 
 [The next step is also a generalization. Instead of drawing squares,](https://thinkpython.com/code/koch.py) polygon draws regular [polygons with any number of sides. Here is a solution:](https://thinkpython.com/code/pie.py)
 
-```
-def polygon(t, n, length):
-angle = 360 / n
-for i in range(n):
-t.fd(length)
-t.lt(angle)
-```
+### [def polygon(t, n, length):](http://en.wikipedia.org/wiki/Koch_snowflake) [angle = 360 / n](https://thinkpython.com/code/cartalk3.py) [for i in range(n):](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [t.fd(length)](https://thinkpython.com/code/pronounce.py) [t.lt(angle)](https://thinkpython.com/code/double.py)
 
-```
-polygon(bob, 7, 70)
-```
+### polygon(bob, 7, 70)
 
 ### 4.6. Interface design
 
@@ -2189,9 +2010,7 @@ If you are using Python 2, the value of [angle](http://en.wikipedia.org/wiki/Spi
 
 [When a function has more than a few numeric arguments, it is easy to forget what they are,](https://thinkpython.com/code/Time2_soln.py) or what order they should be in. In that case it is often a good idea to include the names of [the parameters in the argument list:](https://thinkpython.com/code/markov.py)
 
-```
-polygon(bob, n=7, length=70)
-```
+### [polygon(bob, n=7, length=70)](https://thinkpython.com/code/rotate.py)
 
 [These are called](http://en.wikipedia.org/wiki/Ackermann_function) [keyword arguments](http://en.wikipedia.org/wiki/Ackermann_function) because they include the parameter names as “key- [words” (not to be confused with Python keywords like](https://thinkpython.com/code/structshape.py) while [and](https://docs.python.org/3/library/stdtypes.html#str.format) [def](https://docs.python.org/3/library/stdtypes.html#str.format) [).](https://docs.python.org/3/library/stdtypes.html#str.format)
 
@@ -2201,17 +2020,9 @@ polygon(bob, n=7, length=70)
 
 [The next step is to write](https://thinkpython.com/code/draw.py) [circle](https://thinkpython.com/code/draw.py) [, which takes a radius,](https://thinkpython.com/code/draw.py) [r](https://thinkpython.com/code/Time1.py) [, as a parameter. Here is a simple](https://thinkpython.com/code/Time1.py) [solution that uses](http://en.wikipedia.org/wiki/Letter_frequencies) [polygon](http://en.wikipedia.org/wiki/Letter_frequencies) [to draw a 50-sided polygon:](http://en.wikipedia.org/wiki/Letter_frequencies)
 
-```
-import math
-```
+### [import math](https://thinkpython.com/code/rotate_pairs.py)
 
-```
-def circle(t, r):
-circumference = 2 * math.pi * r
-n = 50
-length = circumference / n
-polygon(t, n, length)
-```
+### [def circle(t, r):](https://thinkpython.com/code/do_four.py) [circumference = 2 * math.pi * r](http://tinyurl.com/thinkpython2e) n = 50 [length = circumference / n](https://thinkpython.com/code/markov.py) [polygon(t, n, length)](http://wikipedia.org/wiki/Moby_Project)
 
 [The first line computes the circumference of a circle with radius](https://thinkpython.com/code/reducible.py) [r](http://www.cartalk.com/content/puzzlers) [using the formula 2](http://www.cartalk.com/content/puzzlers) π r . [Since we use](http://www.cartalk.com/content/puzzlers) [math.pi](http://www.cartalk.com/content/puzzlers) [, we have to import](https://thinkpython.com/code/PokerHandSoln.py) [math](https://thinkpython.com/code/PokerHandSoln.py) [.](https://thinkpython.com/code/PokerHandSoln.py) [By convention,](http://www.youtube.com/watch?v=k4RRi_ntQc8) [import](https://thinkpython.com/code/PokerHandSoln.py) [statements are](https://thinkpython.com/code/PokerHandSoln.py) [usually at the beginning of the script.](https://thinkpython.com/code/PokerHandSoln.py)
 
@@ -2255,19 +2066,15 @@ step_length = arc_length / n
 step_angle = angle / n
 ```
 
-for i in range(n): [t.fd(step_length)](http://en.wikipedia.org/wiki/Big_O_notation) [t.lt(step_angle)](https://thinkpython.com/code/polygon.py)
+### for i in range(n): [t.fd(step_length)](http://en.wikipedia.org/wiki/Big_O_notation) [t.lt(step_angle)](https://thinkpython.com/code/polygon.py)
 
 [The second half of this function looks like](https://thinkpython.com/code/reducible.py) [polygon](https://thinkpython.com/code/reducible.py) , but we can’t re-use [polygon](http://www.cartalk.com/content/puzzlers) [without](http://www.cartalk.com/content/puzzlers) [changing the interface. We could generalize](http://www.cartalk.com/content/puzzlers) [polygon](https://thinkpython.com/code/PokerHandSoln.py) [to take an angle as a third argument,](https://thinkpython.com/code/PokerHandSoln.py) but then [polygon](https://thinkpython.com/code/PokerHandSoln.py) would no longer be an appropriate name! [Instead, let’s call the more](https://thinkpython.com/code/words.txt) [general function](https://thinkpython.com/code/list_exercises.py) polyline :
 
-[def polyline(t, n, length, angle):](http://en.wikipedia.org/wiki/Radix_sort) for i in range(n): t.fd(length) t.lt(angle)
+### [def polyline(t, n, length, angle):](http://en.wikipedia.org/wiki/Radix_sort) for i in range(n): t.fd(length) t.lt(angle)
 
 [Now we can rewrite](http://docs.python.org/3/library/stdtypes.html#string-methods) [polygon](http://docs.python.org/3/library/stdtypes.html#string-methods) [and](http://docs.python.org/3/library/stdtypes.html#string-methods) [arc](http://docs.python.org/3/library/stdtypes.html#string-methods) [to use](http://docs.python.org/3/library/stdtypes.html#string-methods) [polyline](http://docs.python.org/3/library/stdtypes.html#string-methods) :
 
-```
-def polygon(t, n, length):
-angle = 360.0 / n
-polyline(t, n, length, angle)
-```
+### def polygon(t, n, length): [angle = 360.0 / n](https://thinkpython.com/code/polygon.py) polyline(t, n, length, angle)
 
 ```
 def arc(t, r, angle):
@@ -2282,10 +2089,7 @@ Finally, we can rewrite circle to use arc :
 
 ### 4.8. A development plan
 
-```
-def circle(t, r):
-arc(t, r, 360)
-```
+### [def circle(t, r):](https://thinkpython.com/code/polygon.py) arc(t, r, 360)
 
 [This process—rearranging a program to improve interfaces and facilitate code re-use—is](http://www.cartalk.com/content/puzzlers) [called](https://thinkpython.com/code/spiral.py) [refactoring](https://thinkpython.com/code/spiral.py) . In this case, we noticed that there was similar code in arc and polygon , [so we “factored it out” into](https://thinkpython.com/code/grid.py) [polyline](https://thinkpython.com/code/grid.py) [.](https://thinkpython.com/code/grid.py)
 
@@ -2395,33 +2199,19 @@ Chapter 4. Case study: interface design
 
 [The](http://www.cartalk.com/content/puzzlers) floor division operator, // , divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
 
-```
->>> minutes = 105
->>> minutes / 60
-1.75
-```
+### [>>> minutes = 105](https://thinkpython.com/code/polygon.py) [>>> minutes / 60](https://thinkpython.com/code/polygon.py) [1.75](https://thinkpython.com/code/reducible.py)
 
 [But we don’t normally write hours with decimal points. Floor division returns the integer](https://thinkpython.com/code/words.txt) number of hours, rounding down:
 
-```
->>> minutes = 105
->>> hours = minutes // 60
->>> hours
-```
+### [>>> minutes = 105](http://docs.python.org/3/library/datetime.html) >>> hours = minutes // 60 >>> hours
 
 [To get the remainder, you could subtract off one hour in minutes:](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
-```
->>> remainder = minutes - hours * 60
->>> remainder
-```
+### [>>> remainder = minutes - hours * 60](https://thinkpython.com/code/polygon.py) >>> remainder
 
 [An alternative is to use the](https://thinkpython.com/code/pie.py) [modulus operator](https://thinkpython.com/code/pie.py) [,](https://thinkpython.com/code/pie.py) [%](https://thinkpython.com/code/pie.py) [, which divides two numbers and returns](http://en.wikipedia.org/wiki/Koch_snowflake) [the remainder.](http://en.wikipedia.org/wiki/Koch_snowflake)
 
-```
->>> remainder = minutes % 60
->>> remainder
-```
+### [>>> remainder = minutes % 60](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [>>> remainder](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)
 
 [The modulus operator is more useful than it seems. For example, you can check whether](https://thinkpython.com/code/typewriter.py) one number is divisible by another—if x % y is zero, then x is divisible by y .
 
@@ -2435,12 +2225,7 @@ Chapter 5. Conditionals and recursion
 
 A [boolean expression](https://thinkpython.com/code/pi.py) [is an expression that is either true or false. The following examples](http://en.wikipedia.org/wiki/Ackermann_function) [use the operator](https://thinkpython.com/code/structshape.py) [==](https://thinkpython.com/code/structshape.py) [, which compares two operands and produces](http://www.thinkpython.com/) [True](http://www.thinkpython.com/) [if they are equal](https://thinkpython.com/code/cartalk1.py) and False otherwise:
 
-```
->>> 5 == 5
-True
->>> 5 == 6
-False
-```
+### [>>> 5 == 5](http://www.cartalk.com/content/puzzlers) True [>>> 5 == 6](http://docs.python.org/3/reference/datamodel.html#specialnames) False
 
 True and False are special values that belong to the type bool [; they are not strings:](https://thinkpython.com/code/Map.py)
 
@@ -2474,7 +2259,7 @@ Finally, the [not](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [operator negat
 
 ### 5.4. Conditional execution
 
-[>>> 42 and True](https://thinkpython.com/code/polygon.py) True
+### [>>> 42 and True](https://thinkpython.com/code/polygon.py) True
 
 [This flexibility can be useful, but there are some subtleties to it that might be confusing.](http://www.cartalk.com/content/puzzlers) You might want to avoid it (unless you know what you are doing).
 
@@ -2482,10 +2267,7 @@ Finally, the [not](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [operator negat
 
 [In order to write useful programs, we almost always need the ability to check conditions](https://thinkpython.com/code/analyze_book2.py) [and change the behavior of the program accordingly.](http://en.wikipedia.org/wiki/Ackermann_function) [Conditional statements](https://thinkpython.com/code/analyze_book1.py) [give us this](https://thinkpython.com/code/ackermann_memo.py) [ability. The simplest form is the](https://thinkpython.com/code/ackermann_memo.py) [if](http://www.thinkpython.com/) [statement:](http://www.thinkpython.com/)
 
-```
-if x > 0:
-print( ' x is positive ' )
-```
+### [if x > 0:](https://thinkpython.com/code/ackermann.py) [print(](http://en.wikipedia.org/wiki/Md5) ['](http://en.wikipedia.org/wiki/Md5) x is positive ' )
 
 The boolean expression after if is called the condition . If it is true, the indented statement runs. If not, nothing happens.
 
@@ -2493,10 +2275,7 @@ if statements have the same structure as function definitions: a header followed
 
 [There is no limit on the number of statements that can appear in the body, but there has to](http://en.wikipedia.org/wiki/Letter_frequencies) [be at least one. Occasionally, it is useful to have a body with no statements (usually as a](https://thinkpython.com/code/rotate_pairs.py) [place keeper for code you haven’t written yet). In that case, you can use the](http://tinyurl.com/thinkpython2e) [pass](https://thinkpython.com/code/birthday.py) [statement,](http://www.cartalk.com/content/puzzlers) [which does nothing.](https://thinkpython.com/code/do_four.py)
 
-```
-if x < 0:
-pass # TODO: need to handle negative values!
-```
+### [if x < 0:](http://tinyurl.com/thinkpython2e) [pass](http://en.wikipedia.org/wiki/Big_O_notation) # TODO: need to handle negative values!
 
 #### [5.5](http://www.cartalk.com/content/puzzlers) [Alternative execution](http://www.cartalk.com/content/puzzlers)
 
@@ -2544,24 +2323,17 @@ The outer conditional contains two branches. The first branch contains a simple 
 
 [Logical operators often provide a way to simplify nested conditional statements. For ex-](https://thinkpython.com/code/koch.py) [ample, we can rewrite the following code using a single conditional:](https://docs.python.org/3/library/pdb.html)
 
-```
-if 0 < x:
-if x < 10:
-print( ' x is a positive single-digit number. ' )
-```
+### if 0 < x: [if x < 10:](https://thinkpython.com/code/cartalk3.py) [print(](https://thinkpython.com/code/anagram_sets.py) ['](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [x is a positive single-digit number.](https://en.wikipedia.org/wiki/Rubber_duck_debugging) ['](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [)](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)
 
 The print [statement runs only if we make it past both conditionals, so we can get the same](https://thinkpython.com/code/c06d) effect with the [and](https://thinkpython.com/code/reverse_pair.py) [operator:](https://thinkpython.com/code/reverse_pair.py)
 
-[if 0 < x and x < 10:](http://wiki.python.org/moin/BitwiseOperators) print( ' x is a positive single-digit number. ' )
+### [if 0 < x and x < 10:](http://wiki.python.org/moin/BitwiseOperators) print( ' x is a positive single-digit number. ' )
 
 ### 5.8. Recursion
 
 [For this kind of condition, Python provides a more concise option:](https://thinkpython.com/code/polygon.py)
 
-```
-if 0 < x < 10:
-print( ' x is a positive single-digit number. ' )
-```
+### if 0 < x < 10: [print(](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) [x is a positive single-digit number.](http://www.cartalk.com/content/puzzlers) ' )
 
 #### 5.8 Recursion
 
@@ -2580,9 +2352,7 @@ If [n](http://en.wikipedia.org/wiki/Birthday_paradox) [is 0 or negative, it outp
 
 [What happens if we call this function like this?](https://thinkpython.com/code/draw.py)
 
-```
->>> countdown(3)
-```
+### [>>> countdown(3)](http://en.wikipedia.org/wiki/Letter_frequencies)
 
 [The execution of](https://thinkpython.com/code/rotate_pairs.py) [countdown](https://thinkpython.com/code/rotate_pairs.py) [begins with](https://thinkpython.com/code/rotate_pairs.py) [n=3](https://thinkpython.com/code/rotate_pairs.py) [, and since](https://thinkpython.com/code/Time1.py) [n](https://thinkpython.com/code/Point1_soln.py) [is greater than 0, it outputs the](https://thinkpython.com/code/Point1_soln.py) [value 3, and then calls itself...](https://thinkpython.com/code/Point1_soln.py)
 
@@ -2600,33 +2370,25 @@ The countdown that got n=3 returns.
 
 [And then you’re back in](https://thinkpython.com/code/palindrome_soln.py) [__main__](https://thinkpython.com/code/palindrome_soln.py) [. So, the total output looks like this:](https://thinkpython.com/code/palindrome_soln.py)
 
-```
-Blastoff!
-```
+### Blastoff!
 
 [A function that calls itself is](https://thinkpython.com/code/pie.py) [recursive](https://thinkpython.com/code/pie.py) [; the process of executing it is called](https://thinkpython.com/code/analyze_book3.py) [recursion](http://en.wikipedia.org/wiki/Koch_snowflake) [.](http://en.wikipedia.org/wiki/Koch_snowflake)
 
 [As another example, we can write a function that prints a string](https://thinkpython.com/code/cartalk3.py) [n](https://thinkpython.com/code/anagram_sets.py) [times.](https://thinkpython.com/code/anagram_sets.py)
 
-```
-def print_n(s, n):
-if n <= 0:
-return
-print(s)
-print_n(s, n-1)
-```
+### def print_n(s, n): [if n <= 0:](https://thinkpython.com/code/pronounce.py) [return](https://thinkpython.com/code/double.py) [print(s)](http://wiki.python.org/moin/BitwiseOperators) print_n(s, n-1)
 
 Chapter 5. Conditionals and recursion
 
-[__main__](https://thinkpython.com/code/polygon.py)
+### [__main__](https://thinkpython.com/code/polygon.py)
 
-[countdown](http://www.cartalk.com/content/puzzlers) [n](http://www.cartalk.com/content/puzzlers)
+### [countdown](http://www.cartalk.com/content/puzzlers) [n](http://www.cartalk.com/content/puzzlers)
 
-[countdown](https://thinkpython.com/code/grid.py) [n](https://thinkpython.com/code/grid.py)
+### [countdown](https://thinkpython.com/code/grid.py) [n](https://thinkpython.com/code/grid.py)
 
-countdown n
+### countdown n
 
-[countdown](https://thinkpython.com/code/rotate.py) [n](https://thinkpython.com/code/rotate.py)
+### [countdown](https://thinkpython.com/code/rotate.py) [n](https://thinkpython.com/code/rotate.py)
 
 [Figure 5.1: Stack diagram.](https://thinkpython.com/code/cartalk1.py)
 
@@ -2668,9 +2430,7 @@ Python provides a built-in function called input that stops the program and wait
 
 [If you expect the user to type an integer, you can try to convert the return value to](https://thinkpython.com/code/anagram_sets.py) [int](http://en.wikipedia.org/wiki/Koch_snowflake) [:](http://en.wikipedia.org/wiki/Koch_snowflake) [>>> prompt =](https://thinkpython.com/code/cartalk3.py) ['](https://thinkpython.com/code/cartalk3.py) [What...is the airspeed velocity of an unladen swallow?\n](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) ['](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) >>> speed = input(prompt) [What...is the airspeed velocity of an unladen swallow?](https://thinkpython.com/code/pronounce.py)
 
-```
->>> int(speed)
-```
+### [>>> int(speed)](http://wiki.python.org/moin/BitwiseOperators)
 
 Chapter 5. Conditionals and recursion
 
@@ -2728,11 +2488,7 @@ infinite recursion: A recursion that doesn’t have a base case, or never reache
 
 [Exercise 5.1.](https://docs.python.org/3/library/pdb.html) [The](https://docs.python.org/3/library/pdb.html) [time](https://docs.python.org/3/library/pdb.html) [module provides a function, also named](https://docs.python.org/3/library/pdb.html) [time](http://en.wikipedia.org/wiki/Fibonacci_number) [, that returns the current](http://en.wikipedia.org/wiki/Fibonacci_number) [Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On](https://thinkpython.com/code/pie.py) [UNIX systems, the epoch is 1 January 1970.](http://en.wikipedia.org/wiki/Koch_snowflake)
 
-```
->>> import time
->>> time.time()
-1437746094.5735958
-```
+### [>>> import time](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [>>> time.time()](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [1437746094.5735958](https://thinkpython.com/code/reverse_pair.py)
 
 [Write a script that reads the current time and converts it to a time of day in hours, minutes, and](http://puzzlers.org/) [seconds, plus the number of days since the epoch.](http://wiki.python.org/moin/BitwiseOperators)
 
@@ -2740,9 +2496,7 @@ Chapter 5. Conditionals and recursion
 
 [Exercise 5.2.](https://thinkpython.com/code/polygon.py) [Fermat’s Last Theorem says that there are no positive integers a, b, and c such that](http://en.wikipedia.org/wiki/Zipf's_law)
 
-```
-n n n
-```
+[n](http://www.cartalk.com/content/puzzlers) [n](http://www.cartalk.com/content/puzzlers) [n](http://www.cartalk.com/content/puzzlers)
 
 [a](http://www.cartalk.com/content/puzzlers) [+](http://www.cartalk.com/content/puzzlers) [b](http://www.cartalk.com/content/puzzlers) [=](http://www.cartalk.com/content/puzzlers) [c](http://www.cartalk.com/content/puzzlers)
 
@@ -2750,9 +2504,7 @@ n n n
 
 1. [1. Write a function named](http://creativecommons.org/licenses/by-nc/3.0/) [check_fermat](http://creativecommons.org/licenses/by-nc/3.0/) [that takes four parameters—](http://docs.python.org/3/library/stdtypes.html#types-set) a , b , c [and](https://thinkpython.com/code/emma.txt) [n](https://thinkpython.com/code/emma.txt) [—and](https://thinkpython.com/code/emma.txt) checks to see if Fermat’s theorem holds. If n is greater than 2 and
 
-```
-n n n
-```
+[n](https://thinkpython.com/code/analyze_book2.py) [n](https://thinkpython.com/code/analyze_book2.py) [n](https://thinkpython.com/code/analyze_book2.py)
 
 [a](http://en.wikipedia.org/wiki/Ackermann_function) [+](http://en.wikipedia.org/wiki/Ackermann_function) [b](http://en.wikipedia.org/wiki/Ackermann_function) [=](http://en.wikipedia.org/wiki/Ackermann_function) [c](http://en.wikipedia.org/wiki/Ackermann_function)
 
@@ -2770,17 +2522,9 @@ Exercise 5.3. [If you are given three sticks, you may or may not be able to arra
 
 [Exercise 5.4.](https://thinkpython.com/code/list_exercises.py) What is the output of the following program? Draw a stack diagram that shows the [state of the program when it prints the result.](http://docs.python.org/3/library/datetime.html)
 
-```
-def recurse(n, s):
-if n == 0:
-print(s)
-else:
-recurse(n-1, n+s)
-```
+### [def recurse(n, s):](http://en.wikipedia.org/wiki/Radix_sort) if n == 0: print(s) else: [recurse(n-1, n+s)](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
-```
-recurse(3, 0)
-```
+### recurse(3, 0)
 
 ## [1. What would happen if you called this function like this:](https://thinkpython.com/code/pie.py) [recurse(-1, 0)](https://thinkpython.com/code/analyze_book3.py) [?](http://en.wikipedia.org/wiki/Koch_snowflake)
 
@@ -2830,20 +2574,17 @@ Chapter 5. Conditionals and recursion
 
 Calling the function generates a return value, which we usually assign to a variable or use [as part of an expression.](https://thinkpython.com/code/markov.py)
 
-[e = math.exp(1.0)](https://thinkpython.com/code/polygon.py) [height = radius * math.sin(radians)](https://thinkpython.com/code/reducible.py)
+### [e = math.exp(1.0)](https://thinkpython.com/code/polygon.py) [height = radius * math.sin(radians)](https://thinkpython.com/code/reducible.py)
 
 [The functions we have written so far are void.](https://thinkpython.com/code/PokerHandSoln.py) [Speaking casually, they have no return](https://thinkpython.com/code/words.txt) value; more precisely, their return value is None .
 
 In this chapter, we are (finally) going to write fruitful functions. The first example is area , which returns the area of a circle with the given radius:
 
-def area(radius): [a = math.pi * radius**2](https://thinkpython.com/code/palindrome_soln.py) [return a](http://docs.python.org/3/library/stdtypes.html#string-methods)
+### def area(radius): [a = math.pi * radius2](https://thinkpython.com/code/palindrome_soln.py) [return a](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
 [We have seen the](https://thinkpython.com/code/polygon.py) [return](https://thinkpython.com/code/polygon.py) [statement before, but in a fruitful function the](http://gutenberg.org/) return statement includes an expression. [This statement means: “Return immediately from this function](https://thinkpython.com/code/koch.py) [and use the following expression as a return value.”](https://docs.python.org/3/library/pdb.html) [The expression can be arbitrarily](http://en.wikipedia.org/wiki/Fibonacci_number) [complicated, so we could have written this function more concisely:](https://thinkpython.com/code/pie.py)
 
-```
-def area(radius):
-return math.pi * radius**2
-```
+### [def area(radius):](http://en.wikipedia.org/wiki/Koch_snowflake) [return math.pi * radius2](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 
 [On the other hand,](https://thinkpython.com/code/reverse_pair.py) [temporary variables](https://thinkpython.com/code/pronounce.py) [like](https://thinkpython.com/code/pronounce.py) [a](https://thinkpython.com/code/pronounce.py) can make debugging easier.
 
@@ -2853,13 +2594,7 @@ return math.pi * radius**2
 Chapter 6. Fruitful functions
 ```
 
-```
-def absolute_value(x):
-if x < 0:
-return -x
-else:
-return x
-```
+### [def absolute_value(x):](https://thinkpython.com/code/polygon.py) if x < 0: [return -x](http://www.cartalk.com/content/puzzlers) [else:](https://thinkpython.com/code/spiral.py) [return x](https://thinkpython.com/code/grid.py)
 
 Since these return [statements are in an alternative conditional, only one runs.](https://thinkpython.com/code/Time2_soln.py)
 
@@ -2869,23 +2604,14 @@ Since these return [statements are in an alternative conditional, only one runs.
 
 [In a fruitful function, it is a good idea to ensure that every possible path through the pro-](http://en.wikipedia.org/wiki/Ackermann_function) [gram hits a](https://thinkpython.com/code/structshape.py) [return](https://thinkpython.com/code/ackermann_memo.py) [statement. For example:](https://thinkpython.com/code/ackermann_memo.py)
 
-```
-def absolute_value(x):
-if x < 0:
-return -x
-if x > 0:
-return x
-```
+### [def absolute_value(x):](https://thinkpython.com/code/ackermann.py) [if x < 0:](http://www.cartalk.com/content/puzzlers) [return -x](https://thinkpython.com/code/Circle.py) [if x > 0:](http://docs.python.org/3/reference/datamodel.html#specialnames) [return x](http://en.wikipedia.org/wiki/Birthday_paradox)
 
 | This function is incorrect because if | x      | happens to be 0, neither condition is true, and the |
 | ------------------------------------- | ------ | --------------------------------------------------- |
 | function ends without hitting a       | return | statement. If the flow of execution gets to the end |
 | of a function, the return value is    | None   | , which is not the absolute value of 0.             |
 
-```
->>> print(absolute_value(0))
-None
-```
+### [>>> print(absolute_value(0))](https://thinkpython.com/code/most_frequent.py) [None](https://thinkpython.com/code/markov2.py)
 
 [By the way, Python provides a built-in function called](https://thinkpython.com/code/do_four.py) [abs](http://tinyurl.com/thinkpython2e) [that computes absolute values.](https://thinkpython.com/code/birthday.py)
 
@@ -2907,10 +2633,7 @@ As you write larger functions, you might find yourself spending more time debugg
 
 [Immediately you can write an outline of the function:](https://thinkpython.com/code/reverse_pair.py)
 
-```
-def distance(x1, y1, x2, y2):
-return 0.0
-```
+### [def distance(x1, y1, x2, y2):](http://wiki.python.org/moin/BitwiseOperators) return 0.0
 
 ### 6.2. Incremental development
 
@@ -2946,43 +2669,25 @@ Chapter 6. Fruitful functions
 
 [Assume that the center point is stored in the variables](https://thinkpython.com/code/draw.py) xc and yc [, and the perimeter point is](https://thinkpython.com/code/Time1.py) [in](https://thinkpython.com/code/walk.py) [xp](https://thinkpython.com/code/walk.py) [and](https://thinkpython.com/code/walk.py) [yp](http://en.wikipedia.org/wiki/Letter_frequencies) [. The first step is to find the radius of the circle, which is the distance between](http://en.wikipedia.org/wiki/Letter_frequencies) [the two points. We just wrote a function,](https://thinkpython.com/code/rotate_pairs.py) [distance](https://thinkpython.com/code/rotate_pairs.py) [, that does that:](https://thinkpython.com/code/Point2_soln.py)
 
-```
-radius = distance(xc, yc, xp, yp)
-```
+### [radius = distance(xc, yc, xp, yp)](https://thinkpython.com/code/Point1_soln.py)
 
 The next step is to find the area of a circle with that radius; we just wrote that, too:
 
-```
-result = area(radius)
-```
+### result = area(radius)
 
 [Encapsulating these steps in a function, we get:](https://thinkpython.com/code/markov.py)
 
-```
-def circle_area(xc, yc, xp, yp):
-radius = distance(xc, yc, xp, yp)
-result = area(radius)
-return result
-```
+### [def circle_area(xc, yc, xp, yp):](https://thinkpython.com/code/polygon.py) [radius = distance(xc, yc, xp, yp)](https://thinkpython.com/code/reducible.py) [result = area(radius)](http://www.cartalk.com/content/puzzlers) [return result](https://thinkpython.com/code/list_exercises.py)
 
 [The temporary variables](http://docs.python.org/3/library/datetime.html) [radius](http://docs.python.org/3/library/datetime.html) [and](http://docs.python.org/3/library/datetime.html) [result](http://docs.python.org/3/library/datetime.html) [are useful for development and debugging,](http://en.wikipedia.org/wiki/Radix_sort) but once the program is working, we can make it more concise by composing the function calls:
 
-```
-def circle_area(xc, yc, xp, yp):
-return area(distance(xc, yc, xp, yp))
-```
+### [def circle_area(xc, yc, xp, yp):](https://thinkpython.com/code/palindrome_soln.py) return area(distance(xc, yc, xp, yp))
 
 #### 6.4 Boolean functions
 
 [Functions can return booleans, which is often convenient for hiding complicated tests in-](https://thinkpython.com/code/anagram_sets.py) [side functions. For example:](https://thinkpython.com/code/cartalk3.py)
 
-```
-def is_divisible(x, y):
-if x % y == 0:
-return True
-else:
-return False
-```
+### [def is_divisible(x, y):](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) if x % y == 0: [return True](https://thinkpython.com/code/double.py) else: return False
 
 ### 6.5. More recursion
 
@@ -3022,23 +2727,11 @@ def factorial(n):
 
 [If the argument happens to be 0, all we have to do is return 1:](http://en.wikipedia.org/wiki/Ackermann_function)
 
-```
-def factorial(n):
-if n == 0:
-return 1
-```
+### [def factorial(n):](https://thinkpython.com/code/ackermann_memo.py) [if n == 0:](https://thinkpython.com/code/ackermann.py) [return 1](http://en.wikipedia.org/wiki/Md5)
 
 Otherwise, and this is the interesting part, we have to make a recursive call to find the [factorial of](http://docs.python.org/3/reference/datamodel.html#specialnames) [n](http://docs.python.org/3/reference/datamodel.html#specialnames) [−](http://docs.python.org/3/reference/datamodel.html#specialnames) [1 and then multiply it by](http://tinyurl.com/thinkpython2e) [n](http://tinyurl.com/thinkpython2e) [:](http://tinyurl.com/thinkpython2e)
 
-```
-def factorial(n):
-if n == 0:
-return 1
-else:
-recurse = factorial(n-1)
-result = n * recurse
-return result
-```
+### [def factorial(n):](https://thinkpython.com/code/has_duplicates.py) [if n == 0:](https://thinkpython.com/code/Map.py) [return 1](https://thinkpython.com/code/draw.py) [else:](https://thinkpython.com/code/walk.py) [recurse = factorial(n-1)](https://thinkpython.com/code/rotate_pairs.py) [result = n * recurse](https://thinkpython.com/code/Point1_soln.py) [return result](http://www.cartalk.com/content/puzzlers)
 
 [The flow of execution for this program is similar to the flow of](http://tinyurl.com/thinkpython2e) countdown in Section 5.8. If we call factorial with the value 3:
 
@@ -3064,15 +2757,15 @@ The return value (2) is multiplied by [n](https://thinkpython.com/code/koch.py) 
 
 ### 6.6. Leap of faith
 
-[__main__](https://thinkpython.com/code/polygon.py)
+### [__main__](https://thinkpython.com/code/polygon.py)
 
-[factorial](http://www.cartalk.com/content/puzzlers) [n](http://www.cartalk.com/content/puzzlers) [recurse](http://www.cartalk.com/content/puzzlers) result
+### [factorial](http://www.cartalk.com/content/puzzlers) [n](http://www.cartalk.com/content/puzzlers) [recurse](http://www.cartalk.com/content/puzzlers) result
 
-[factorial](https://thinkpython.com/code/grid.py) [n](https://thinkpython.com/code/grid.py) [recurse](https://thinkpython.com/code/grid.py) [result](https://thinkpython.com/code)
+### [factorial](https://thinkpython.com/code/grid.py) [n](https://thinkpython.com/code/grid.py) [recurse](https://thinkpython.com/code/grid.py) [result](https://thinkpython.com/code)
 
-factorial n recurse result
+### factorial n recurse result
 
-[factorial](https://thinkpython.com/code/rotate.py) [n](https://thinkpython.com/code/rotate.py)
+### [factorial](https://thinkpython.com/code/rotate.py) [n](https://thinkpython.com/code/rotate.py)
 
 [Figure 6.1: Stack diagram.](https://thinkpython.com/code/cartalk1.py)
 
@@ -3102,15 +2795,7 @@ Translated into Python, it looks like this:
 Chapter 6. Fruitful functions
 ```
 
-```
-def fibonacci(n):
-if n == 0:
-return 0
-elif n == 1:
-return 1
-else:
-return fibonacci(n-1) + fibonacci(n-2)
-```
+### [def fibonacci(n):](https://thinkpython.com/code/polygon.py) if n == 0: [return 0](http://www.cartalk.com/content/puzzlers) [elif](https://thinkpython.com/code/spiral.py) [n == 1:](https://thinkpython.com/code/spiral.py) [return 1](https://thinkpython.com/code/grid.py) else: return fibonacci(n-1) + fibonacci(n-2)
 
 [If you try to follow the flow of execution here, even for fairly small values of](https://thinkpython.com/code/markov.py) n [, your head](https://thinkpython.com/code/emma.txt) explodes. But according to the leap of faith, if you assume that the two recursive calls work [correctly, then it is clear that you get the right result by adding them together.](https://thinkpython.com/code/analyze_book2.py)
 
@@ -3118,10 +2803,7 @@ return fibonacci(n-1) + fibonacci(n-2)
 
 [What happens if we call](https://thinkpython.com/code/Circle.py) [factorial](https://thinkpython.com/code/Circle.py) [and give it 1.5 as an argument?](https://thinkpython.com/code/Circle.py)
 
-```
->>> factorial(1.5)
-RuntimeError: Maximum recursion depth exceeded
-```
+### [>>> factorial(1.5)](http://docs.python.org/3/reference/datamodel.html#specialnames) [RuntimeError: Maximum recursion depth exceeded](http://tinyurl.com/thinkpython2e)
 
 It looks like an infinite recursion. How can that be? The function has a base case—when [n](https://thinkpython.com/code/Map.py) == 0 . But if [n](https://thinkpython.com/code/BadKangaroo.py) [is not an integer, we can](https://thinkpython.com/code/BadKangaroo.py) [miss](http://en.wikipedia.org/wiki/Sexagesimal) [the base case and recurse forever.](http://en.wikipedia.org/wiki/Sexagesimal)
 
@@ -3214,25 +2896,11 @@ guardian: [A programming pattern that uses a conditional statement to check for 
 
 Exercise 6.1. Draw a stack diagram for the following program. What does the program print?
 
-```
-def b(z):
-prod = a(z, z)
-print(z, prod)
-return prod
-```
+### def b(z): prod = a(z, z) [print(z, prod)](http://docs.python.org/3/library/stdtypes.html#string-methods) [return prod](https://thinkpython.com/code/polygon.py)
 
-```
-def a(x, y):
-x = x + 1
-return x * y
-```
+### def a(x, y): [x = x + 1](http://en.wikipedia.org/wiki/Fibonacci_number) [return x * y](https://thinkpython.com/code/inlist.py)
 
-```
-def c(x, y, z):
-total = x + y + z
-square = b(total)**2
-return square
-```
+### [def c(x, y, z):](https://thinkpython.com/code/anagram_sets.py) [total = x + y + z](https://thinkpython.com/code/pronounce.py) [square = b(total)2](https://thinkpython.com/code/double.py) [return square](http://wiki.python.org/moin/BitwiseOperators)
 
 ### 6.11. Exercises
 
@@ -3249,20 +2917,11 @@ Exercise 6.2. The Ackermann function, A ( m , n ) , is defined:
 
 The following are functions that take a string argument and return the first, last, and middle letters:
 
-```
-def first(word):
-return word[0]
-```
+### [def first(word):](https://thinkpython.com/code/draw.py) [return word[0]](http://en.wikipedia.org/wiki/Letter_frequencies)
 
-```
-def last(word):
-return word[-1]
-```
+### [def last(word):](https://thinkpython.com/code/Point1_soln.py) [return word[-1]](https://thinkpython.com/code/do_four.py)
 
-```
-def middle(word):
-return word[1:-1]
-```
+### [def middle(word):](http://tinyurl.com/thinkpython2e) [return word[1:-1]](http://en.wikipedia.org/wiki/Big_O_notation)
 
 [We’ll see how they work in Chapter 8.](http://wikipedia.org/wiki/Moby_Project)
 
@@ -3292,15 +2951,9 @@ Chapter 6. Fruitful functions
 
 As you may have discovered, it is legal to make more than one assignment to the same [variable.](http://en.wikipedia.org/wiki/Big_O_notation) A new assignment makes an existing variable refer to a new value (and stop [referring to the old value).](https://thinkpython.com/code/markov.py)
 
-```
->>> x = 5
->>> x
-```
+### [>>> x = 5](https://thinkpython.com/code/polygon.py) [>>> x](http://www.cartalk.com/content/puzzlers)
 
-```
->>> x = 7
->>> x
-```
+### [>>> x = 7](https://thinkpython.com/code/list_exercises.py) [>>> x](http://docs.python.org/3/library/datetime.html)
 
 The first time we display x , its value is 5; the second time, its value is 7.
 
@@ -3320,7 +2973,7 @@ Chapter 7. Iteration
 
 [Figure 7.1: State diagram.](https://thinkpython.com/code/grid.py)
 
-[>>> a = 5](http://creativecommons.org/licenses/by-nc/3.0/) [>>> b = a](https://thinkpython.com/code/emma.txt) [# a and b are now equal](https://thinkpython.com/code/emma.txt) >>> a = 3 [# a and b are no longer equal](https://thinkpython.com/code/rotate.py) >>> b
+### [>>> a = 5](http://creativecommons.org/licenses/by-nc/3.0/) [>>> b = a](https://thinkpython.com/code/emma.txt) [# a and b are now equal](https://thinkpython.com/code/emma.txt) >>> a = 3 [# a and b are no longer equal](https://thinkpython.com/code/rotate.py) >>> b
 
 [The third line changes the value of](https://thinkpython.com/code/ackermann_memo.py) [a](https://thinkpython.com/code/cartalk1.py) [but does not change the value of](http://www.thinkpython.com/) [b](https://thinkpython.com/code/ackermann.py) [, so they are no](https://thinkpython.com/code/ackermann.py) longer equal.
 
@@ -3330,25 +2983,17 @@ Chapter 7. Iteration
 
 [A common kind of reassignment is an](http://en.wikipedia.org/wiki/Letter_frequencies) [update](http://en.wikipedia.org/wiki/Letter_frequencies) [, where the new value of the variable depends](https://thinkpython.com/code/Point1.py) [on the old.](https://thinkpython.com/code/markov2.py)
 
-```
->>> x = x + 1
-```
+### [>>> x = x + 1](https://thinkpython.com/code/Time1.py)
 
 This means “get the current value of x , add one, and then update x with the new value.”
 
 If you try to update a variable that doesn’t exist, you get an error, because Python evaluates [the right side before it assigns a value to](http://en.wikipedia.org/wiki/Big_O_notation) [x](https://thinkpython.com/code/markov.py) [:](https://thinkpython.com/code/markov.py)
 
-```
->>> x = x + 1
-NameError: name ' x ' is not defined
-```
+### [>>> x = x + 1](http://en.wikipedia.org/wiki/Hand_rankings) [NameError: name](https://thinkpython.com/code/reducible.py) ['](https://thinkpython.com/code/reducible.py) [x](https://thinkpython.com/code/reducible.py) ['](https://thinkpython.com/code/reducible.py) [is not defined](https://thinkpython.com/code/reducible.py)
 
 [Before you can update a variable, you have to](https://thinkpython.com/code/PokerHandSoln.py) [initialize](https://thinkpython.com/code/words.txt) [it, usually with a simple assign-](https://thinkpython.com/code/words.txt) [ment:](https://thinkpython.com/code/list_exercises.py)
 
-```
->>> x = 0
->>> x = x + 1
-```
+### [>>> x = 0](http://docs.python.org/3/library/datetime.html) >>> x = x + 1
 
 Updating a variable by adding 1 is called an increment ; subtracting 1 is called a decrement .
 
@@ -3428,10 +3073,7 @@ Loops are often used in programs that compute numerical results by starting with
 
 For example, one way of computing square roots is Newton’s method. Suppose that you [want to know the square root of](http://docs.python.org/3/library/stdtypes.html#string-methods) [a](https://thinkpython.com/code/flower.py) [. If you start with almost any estimate,](https://thinkpython.com/code/flower.py) x , you can com- [pute a better estimate with the following formula:](https://thinkpython.com/code/polygon.py)
 
-```
-x + a / x
-y =
-```
+[x](https://thinkpython.com/code/pie.py) [+](https://thinkpython.com/code/pie.py) [a](https://thinkpython.com/code/pie.py) [/](https://thinkpython.com/code/pie.py) [x](https://thinkpython.com/code/pie.py) [y](https://thinkpython.com/code/pie.py) [=](https://thinkpython.com/code/pie.py)
 
 For example, if [a](http://en.wikipedia.org/wiki/Koch_snowflake) [is 4 and](http://en.wikipedia.org/wiki/Koch_snowflake) [x](http://en.wikipedia.org/wiki/Koch_snowflake) [is 3:](http://en.wikipedia.org/wiki/Koch_snowflake) [>>> a = 4](https://thinkpython.com/code/anagram_sets.py) >>> x = 3 [>>> y = (x + a/x) / 2](https://thinkpython.com/code/double.py) >>> y 2.16666666667
 
@@ -3439,58 +3081,25 @@ For example, if [a](http://en.wikipedia.org/wiki/Koch_snowflake) [is 4 and](http
 
 [√](https://thinkpython.com/code/letters.py) [The result is closer to the correct answer (](https://thinkpython.com/code/polygon.py) [=](http://en.wikipedia.org/wiki/Zipf's_law) 2). If we repeat the process with the new estimate, it gets even closer:
 
-```
->>> x = y
->>> y = (x + a/x) / 2
->>> y
-2.00641025641
-```
+### [>>> x = y](http://www.cartalk.com/content/puzzlers) [>>> y = (x + a/x) / 2](https://thinkpython.com/code/spiral.py) [>>> y](https://thinkpython.com/code/grid.py) 2.00641025641
 
 [After a few more updates, the estimate is almost exact:](http://creativecommons.org/licenses/by-nc/3.0/)
 
-```
->>> x = y
->>> y = (x + a/x) / 2
->>> y
-2.00001024003
->>> x = y
->>> y = (x + a/x) / 2
->>> y
-2.00000000003
-```
+### [>>> x = y](https://thinkpython.com/code/emma.txt) [>>> y = (x + a/x) / 2](https://thinkpython.com/code/rotate.py) [>>> y](https://thinkpython.com/code/pi.py) [2.00001024003](https://thinkpython.com/code/structshape.py) [>>> x = y](https://thinkpython.com/code/ackermann_memo.py) [>>> y = (x + a/x) / 2](https://thinkpython.com/code/ackermann.py) [>>> y](http://en.wikipedia.org/wiki/Md5) [2.00000000003](https://thinkpython.com/code/Circle.py)
 
 [In general we don’t know ahead of time how many steps it takes to get to the right answer,](http://tinyurl.com/thinkpython2e) [but we know when we get there because the estimate stops changing:](http://en.wikipedia.org/wiki/Birthday_paradox)
 
-```
->>> x = y
->>> y = (x + a/x) / 2
->>> y
-2.0
->>> x = y
->>> y = (x + a/x) / 2
->>> y
-2.0
-```
+### >>> x = y [>>> y = (x + a/x) / 2](https://thinkpython.com/code/BadKangaroo.py) [>>> y](http://en.wikipedia.org/wiki/Letter_frequencies) [2.0](https://thinkpython.com/code/most_frequent.py) [>>> x = y](https://thinkpython.com/code/rotate_pairs.py) [>>> y = (x + a/x) / 2](https://thinkpython.com/code/Point1_soln.py) [>>> y](http://www.cartalk.com/content/puzzlers) [2.0](http://tinyurl.com/thinkpython2e)
 
 [When](http://en.wikipedia.org/wiki/Big_O_notation) [y == x](http://en.wikipedia.org/wiki/Big_O_notation) , we can stop. Here is a loop that starts with an initial estimate, x , and im- [proves it until it stops changing:](https://thinkpython.com/code/markov.py)
 
-```
-while True:
-print(x)
-y = (x + a/x) / 2
-if y == x:
-break
-x = y
-```
+### [while True:](https://thinkpython.com/code/polygon.py) [print(x)](https://thinkpython.com/code/reducible.py) [y = (x + a/x) / 2](https://thinkpython.com/code/PokerHandSoln.py) if y == x: [break](http://docs.python.org/3/library/datetime.html) [x = y](http://en.wikipedia.org/wiki/Radix_sort)
 
 For most values of a this works fine, but in general it is dangerous to test float equality. Floating-point values are only approximately right: most rational numbers, like 1/3, and [√](https://thinkpython.com/code/palindrome_soln.py) [irrational numbers, like](https://thinkpython.com/code/palindrome_soln.py) [2, can’t be represented exactly with a](https://thinkpython.com/code/palindrome_soln.py) [float](https://thinkpython.com/code/palindrome_soln.py) [.](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
 [Rather than checking whether](https://thinkpython.com/code/flower.py) [x](https://thinkpython.com/code/flower.py) [and](https://thinkpython.com/code/flower.py) [y](https://thinkpython.com/code/flower.py) are exactly equal, it is safer to use the built-in func- [tion](https://thinkpython.com/code/polygon.py) [abs](https://thinkpython.com/code/polygon.py) [to compute the absolute value, or magnitude, of the difference between them:](http://gutenberg.org/)
 
-```
-if abs(y-x) < epsilon:
-break
-```
+### [if abs(y-x) < epsilon:](https://thinkpython.com/code/koch.py) [break](https://thinkpython.com/code/pie.py)
 
 [Where](https://thinkpython.com/code/anagram_sets.py) [epsilon](https://thinkpython.com/code/anagram_sets.py) [has a value like](https://thinkpython.com/code/anagram_sets.py) [0.0000001](https://thinkpython.com/code/anagram_sets.py) [that determines how close is close enough.](http://en.wikipedia.org/wiki/Koch_snowflake)
 
@@ -3556,9 +3165,7 @@ decrement: An update that decreases the value of a variable.
 
 [The first column is a number, a; the second column is the square root of a computed with](http://docs.python.org/3/library/datetime.html) [mysqrt](http://en.wikipedia.org/wiki/Radix_sort) [;](http://en.wikipedia.org/wiki/Radix_sort) the third column is the square root computed by math.sqrt ; the fourth column is the absolute value of the difference between the two estimates. Exercise 7.2. The built-in function eval takes a string and evaluates it using the Python inter- [preter. For example:](https://thinkpython.com/code/palindrome_soln.py)
 
-```
->>> eval( ' 1 + 2 * 3 ' )
-```
+### [>>> eval(](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [1 + 2 * 3](https://thinkpython.com/code/flower.py) ['](https://thinkpython.com/code/flower.py) [)](https://thinkpython.com/code/flower.py)
 
 >>> import math [>>> eval(](https://docs.python.org/3/library/pdb.html) ['](https://docs.python.org/3/library/pdb.html) [math.sqrt(5)](https://thinkpython.com/code/koch.py) ['](https://thinkpython.com/code/koch.py) [)](https://thinkpython.com/code/koch.py) [2.2360679774997898](https://thinkpython.com/code/pie.py) [>>> eval(](https://thinkpython.com/code/inlist.py) ['](http://en.wikipedia.org/wiki/Koch_snowflake) [type(math.pi)](http://en.wikipedia.org/wiki/Koch_snowflake) ['](http://en.wikipedia.org/wiki/Koch_snowflake) [)](http://en.wikipedia.org/wiki/Koch_snowflake) [<class](https://thinkpython.com/code/cartalk3.py) ['](https://thinkpython.com/code/cartalk3.py) [float](https://thinkpython.com/code/cartalk3.py) ['](https://thinkpython.com/code/cartalk3.py) [>](https://thinkpython.com/code/cartalk3.py)
 
@@ -3572,9 +3179,7 @@ Chapter 7. Iteration
 
 [Exercise 7.3.](https://thinkpython.com/code/polygon.py) [The mathematician Srinivasa Ramanujan found an infinite series that can be used to](http://en.wikipedia.org/wiki/Zipf's_law) generate a numerical approximation of [1/](http://en.wikipedia.org/wiki/Spiral) [π](http://en.wikipedia.org/wiki/Spiral) [:](http://en.wikipedia.org/wiki/Spiral)
 
-```
-√
-```
+[√](http://en.wikipedia.org/wiki/Sorting_algorithm)
 
 ∞
 
@@ -3586,19 +3191,13 @@ Chapter 7. Iteration
 
 ##### [∑](https://thinkpython.com/code/grid.py)
 
-```
-k =
-```
+[k](https://thinkpython.com/code/Time2_soln.py) [=](https://thinkpython.com/code/Time2_soln.py)
 
-```
-( k ! ) k
-```
+[(](https://thinkpython.com/code) [k](https://thinkpython.com/code) [!](https://thinkpython.com/code) [)](https://thinkpython.com/code) [k](https://thinkpython.com/code)
 
 [Write a function called](http://creativecommons.org/licenses/by-nc/3.0/) [estimate_pi](http://creativecommons.org/licenses/by-nc/3.0/) [that uses this formula to compute and return an estimate of](http://docs.python.org/3/library/stdtypes.html#types-set) [π](https://thinkpython.com/code/emma.txt) [. It should use a](https://thinkpython.com/code/emma.txt) [while](https://thinkpython.com/code/emma.txt) [loop to compute terms of the summation until the last term is smaller than](https://thinkpython.com/code/invert_dict.py) 1e-15 [(which is Python notation for](https://thinkpython.com/code/rotate.py)
 
-```
-−
-```
+[−](https://thinkpython.com/code/rotate.py)
 
 [). You can check the result by comparing it to](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [math.pi](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [.](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting)
 
@@ -3614,10 +3213,7 @@ Solution: [https: // thinkpython. com/ code/ pi. py](http://en.wikipedia.org/wik
 
 [A string is a sequence of characters. You can access the characters one at a time with the](http://tinyurl.com/thinkpython2e) bracket operator:
 
-```
->>> fruit = ' banana '
->>> letter = fruit[1]
-```
+### >>> fruit = ' banana ' [>>> letter = fruit[1]](https://thinkpython.com/code/markov.py)
 
 [The second statement selects character number 1 from](http://wikipedia.org/wiki/Moby_Project) [fruit](http://wikipedia.org/wiki/Moby_Project) and assigns it to letter .
 
@@ -3625,15 +3221,11 @@ Solution: [https: // thinkpython. com/ code/ pi. py](http://en.wikipedia.org/wik
 
 But you might not get what you expect:
 
-[>>> letter](http://en.wikipedia.org/wiki/Radix_sort) ' a '
+### [>>> letter](http://en.wikipedia.org/wiki/Radix_sort) ' a '
 
 For most people, the first letter of ' banana ' is b , not a . But for computer scientists, the [index is an offset from the beginning of the string, and the offset of the first letter is zero.](https://thinkpython.com/code/palindrome_soln.py)
 
-```
->>> letter = fruit[0]
->>> letter
-' b '
-```
+### [>>> letter = fruit[0]](http://docs.python.org/3/library/stdtypes.html#string-methods) [>>> letter](https://thinkpython.com/code/polygon.py) ' b '
 
 [So](https://thinkpython.com/code/sed.py) [b](https://docs.python.org/3/library/pdb.html) [is the 0th letter (“zero-eth”) of](https://docs.python.org/3/library/pdb.html) ['](https://docs.python.org/3/library/pdb.html) [banana](https://docs.python.org/3/library/pdb.html) ['](https://docs.python.org/3/library/pdb.html) [,](https://docs.python.org/3/library/pdb.html) [a](https://docs.python.org/3/library/pdb.html) [is the 1th letter (“one-eth”), and](http://en.wikipedia.org/wiki/Fibonacci_number) [n](http://en.wikipedia.org/wiki/Fibonacci_number) [is the 2th](http://en.wikipedia.org/wiki/Fibonacci_number) [letter (“two-eth”).](https://thinkpython.com/code/pie.py)
 
@@ -3653,35 +3245,21 @@ Chapter 8. Strings
 
 [But the value of the index has to be an integer. Otherwise you get:](https://thinkpython.com/code/polygon.py)
 
-```
->>> letter = fruit[1.5]
-TypeError: string indices must be integers
-```
+### >>> letter = fruit[1.5] [TypeError: string indices must be integers](http://www.cartalk.com/content/puzzlers)
 
 #### 8.2 len
 
 [len](https://thinkpython.com/code/emma.txt) is a built-in function that returns the number of characters in a string:
 
-```
->>> fruit = ' banana '
->>> len(fruit)
-```
+### >>> fruit = ['](https://thinkpython.com/code/rotate.py) [banana](https://thinkpython.com/code/rotate.py) ['](https://thinkpython.com/code/rotate.py) >>> len(fruit)
 
 To get the last letter of a string, you might be tempted to try something like this:
 
-```
->>> length = len(fruit)
->>> last = fruit[length]
-IndexError: string index out of range
-```
+### [>>> length = len(fruit)](http://en.wikipedia.org/wiki/Md5) [>>> last = fruit[length]](https://thinkpython.com/code/Circle.py) [IndexError: string index out of range](http://docs.python.org/3/reference/datamodel.html#specialnames)
 
 The reason for the [IndexError](http://en.wikipedia.org/wiki/Birthday_paradox) [is that there is no letter in](http://en.wikipedia.org/wiki/Birthday_paradox) [’banana’](http://en.wikipedia.org/wiki/Birthday_paradox) with the index 6. Since we started counting at zero, the six letters are numbered 0 to 5. To get the last character, [you have to subtract 1 from](https://thinkpython.com/code/BadKangaroo.py) [length](https://thinkpython.com/code/BadKangaroo.py) [:](https://thinkpython.com/code/BadKangaroo.py)
 
-```
->>> last = fruit[length-1]
->>> last
-' a '
-```
+### [>>> last = fruit[length-1]](http://en.wikipedia.org/wiki/Letter_frequencies) >>> last ['](https://thinkpython.com/code/markov2.py) [a](https://thinkpython.com/code/markov2.py) ['](https://thinkpython.com/code/markov2.py)
 
 [Or you can use negative indices, which count backward from the end of the string. The](http://tinyurl.com/thinkpython2e) [expression](https://thinkpython.com/code/Time1_soln.py) fruit[-1] yields the last letter, fruit[-2] yields the second to last, and so on.
 
@@ -3689,13 +3267,7 @@ The reason for the [IndexError](http://en.wikipedia.org/wiki/Birthday_paradox) [
 
 [A lot of computations involve processing a string one character at a time. Often they start](https://thinkpython.com/code/PokerHandSoln.py) at the beginning, select each character in turn, do something to it, and continue until the end. This pattern of processing is called a traversal . One way to write a traversal is with a [while](http://docs.python.org/3/library/datetime.html) [loop:](http://docs.python.org/3/library/datetime.html)
 
-```
-index = 0
-while index < len(fruit):
-letter = fruit[index]
-print(letter)
-index = index + 1
-```
+### index = 0 while index < len(fruit): letter = fruit[index] print(letter) [index = index + 1](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
 [This loop traverses the string and displays each letter on a line by itself. The loop condition](https://thinkpython.com/code/polygon.py) is index < len(fruit) [, so when](https://thinkpython.com/code/koch.py) [index](https://thinkpython.com/code/koch.py) [is equal to the length of the string, the condition is](https://thinkpython.com/code/koch.py) [false, and the body of the loop doesn’t run. The last character accessed is the one with the](https://thinkpython.com/code/pie.py) index [len(fruit)-1](http://en.wikipedia.org/wiki/Fibonacci_number) [, which is the last character in the string.](https://thinkpython.com/code/anagram_sets.py)
 
@@ -3703,7 +3275,7 @@ index = index + 1
 
 [Another way to write a traversal is with a](https://thinkpython.com/code/reverse_pair.py) [for](https://thinkpython.com/code/pronounce.py) [loop:](https://thinkpython.com/code/pronounce.py)
 
-[for letter in fruit:](http://wiki.python.org/moin/BitwiseOperators) print(letter)
+### [for letter in fruit:](http://wiki.python.org/moin/BitwiseOperators) print(letter)
 
 ### 8.4. String slices
 
@@ -3719,25 +3291,13 @@ index = index + 1
 
 [The following example shows how to use concatenation (string addition) and a](http://en.wikipedia.org/wiki/Ackermann_function) for loop to generate an abecedarian series (that is, in alphabetical order). In Robert McCloskey’s [book](https://thinkpython.com/code/ackermann_memo.py) [Make Way for Ducklings](https://thinkpython.com/code/ackermann_memo.py) [, the names of the ducklings are Jack, Kack, Lack, Mack, Nack,](http://www.thinkpython.com/) Ouack, Pack, and Quack. This loop outputs these names in order:
 
-```
-prefixes = ' JKLMNOPQ '
-suffix = ' ack '
-```
+### [prefixes =](https://thinkpython.com/code/Circle.py) ['](https://thinkpython.com/code/Circle.py) [JKLMNOPQ](https://thinkpython.com/code/Circle.py) ['](https://thinkpython.com/code/Circle.py) suffix = ' ack '
 
-[for letter in prefixes:](http://en.wikipedia.org/wiki/Birthday_paradox) print(letter + suffix)
+### [for letter in prefixes:](http://en.wikipedia.org/wiki/Birthday_paradox) print(letter + suffix)
 
 [The output is:](https://thinkpython.com/code/draw.py)
 
-```
-Jack
-Kack
-Lack
-Mack
-Nack
-Oack
-Pack
-Qack
-```
+### [Jack](http://en.wikipedia.org/wiki/Letter_frequencies) [Kack](https://thinkpython.com/code/rotate_pairs.py) [Lack](https://thinkpython.com/code/Point1_soln.py) [Mack](http://www.cartalk.com/content/puzzlers) [Nack](https://thinkpython.com/code/Time1_soln.py) [Oack](http://tinyurl.com/thinkpython2e) [Pack](http://en.wikipedia.org/wiki/Big_O_notation) [Qack](https://thinkpython.com/code/polygon.py)
 
 [Of course, that’s not quite right because “Ouack” and “Quack” are misspelled.](https://thinkpython.com/code/reducible.py) As an [exercise, modify the program to fix this error.](http://www.cartalk.com/content/puzzlers)
 
@@ -3757,26 +3317,17 @@ A segment of a string is called a slice . Selecting a slice is similar to select
 
 [If you omit the first index (before the colon), the slice starts at the beginning of the string.](https://thinkpython.com/code/c06d) [If you omit the second index, the slice goes to the end of the string:](https://thinkpython.com/code/pronounce.py)
 
-```
->>> fruit = ' banana '
->>> fruit[:3]
-```
+### [>>> fruit =](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [banana](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) >>> fruit[:3]
 
 ```
 Chapter 8. Strings
 ```
 
-| '   | ban | '   |
-| --- | --- | --- |
-| '   | ana | '   |
+### ['](https://thinkpython.com/code/polygon.py) [ban](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) >>> fruit[3:] ['](https://thinkpython.com/code/Time2.py) [ana](https://thinkpython.com/code/Time2.py) ['](http://www.cartalk.com/content/puzzlers)
 
 [If the first index is greater than or equal to the second the result is an](https://thinkpython.com/code/spiral.py) empty string , repre- [sented by two quotation marks:](https://thinkpython.com/code/grid.py)
 
-```
->>> fruit = ' banana '
->>> fruit[3:3]
-''
-```
+### >>> fruit = ' banana ' [>>> fruit[3:3]](http://creativecommons.org/licenses/by-nc/3.0/) [''](https://thinkpython.com/code/emma.txt)
 
 [An empty string contains no characters and has length 0, but other than that, it is the same](https://thinkpython.com/code/analyze_book2.py) as any other string.
 
@@ -3883,15 +3434,11 @@ As it turns out, there is a string method named find that is remarkably similar 
 
 Actually, the find method is more general than our function; it can find substrings, not just characters:
 
-```
->>> word.find( ' na ' )
-```
+### >>> word.find( ['](https://thinkpython.com/code/has_duplicates.py) [na](https://thinkpython.com/code/has_duplicates.py) ['](https://thinkpython.com/code/has_duplicates.py) [)](https://thinkpython.com/code/has_duplicates.py)
 
 [By default,](https://thinkpython.com/code/markov.py) [find](https://thinkpython.com/code/draw.py) [starts at the beginning of the string, but it can take a second argument, the](https://thinkpython.com/code/draw.py) [index where it should start:](https://thinkpython.com/code/Time1.py)
 
-```
->>> word.find( ' na ' , 3)
-```
+### [>>> word.find(](https://thinkpython.com/code/markov2.py) ['](https://thinkpython.com/code/rotate_pairs.py) [na](https://thinkpython.com/code/rotate_pairs.py) ['](https://thinkpython.com/code/rotate_pairs.py) [, 3)](https://thinkpython.com/code/rotate_pairs.py)
 
 [This is an example of an](https://thinkpython.com/code/Time1_soln.py) optional argument ; find can also take a third argument, the index [where it should stop:](http://tinyurl.com/thinkpython2e)
 
@@ -3911,7 +3458,7 @@ The word in is a boolean operator that takes two strings and returns [True](http
 
 [For example, the following function prints all the letters from](http://en.wikipedia.org/wiki/Koch_snowflake) [word1](https://thinkpython.com/code/anagram_sets.py) [that also appear in](https://thinkpython.com/code/anagram_sets.py) [word2](https://thinkpython.com/code/anagram_sets.py) [:](https://thinkpython.com/code/anagram_sets.py)
 
-[def in_both(word1, word2):](https://thinkpython.com/code/pronounce.py) [for letter in word1:](https://thinkpython.com/code/double.py) [if letter in word2:](http://wiki.python.org/moin/BitwiseOperators) print(letter)
+### [def in_both(word1, word2):](https://thinkpython.com/code/pronounce.py) [for letter in word1:](https://thinkpython.com/code/double.py) [if letter in word2:](http://wiki.python.org/moin/BitwiseOperators) print(letter)
 
 ### 8.10. String comparison
 
@@ -3949,31 +3496,17 @@ Python does not handle uppercase and lowercase letters the same way people do. A
 
 When you use indices to traverse the values in a sequence, it is tricky to get the beginning [and end of the traversal right. Here is a function that is supposed to compare two words](https://thinkpython.com/code/palindrome_soln.py) [and return](http://docs.python.org/3/library/stdtypes.html#string-methods) [True](http://docs.python.org/3/library/stdtypes.html#string-methods) if one of the words is the reverse of the other, but it contains two errors:
 
-```
-def is_reverse(word1, word2):
-if len(word1) != len(word2):
-return False
-```
+### [def is_reverse(word1, word2):](https://thinkpython.com/code/polygon.py) if len(word1) != len(word2): [return False](https://thinkpython.com/code/koch.py)
 
-```
-i = 0
-j = len(word2)
-```
+### [i = 0](http://en.wikipedia.org/wiki/Koch_snowflake) [j = len(word2)](https://thinkpython.com/code/cartalk3.py)
 
-```
-while j > 0:
-if word1[i] != word2[j]:
-return False
-i = i+1
-```
+### [while j > 0:](https://thinkpython.com/code/pronounce.py) [if word1[i] != word2[j]:](https://thinkpython.com/code/metathesis.py) [return False](http://wiki.python.org/moin/BitwiseOperators) i = i+1
 
 ```
 Chapter 8. Strings
 ```
 
-```
-j = j-1
-```
+### [j = j-1](https://thinkpython.com/code/polygon.py)
 
 [return True](http://www.cartalk.com/content/puzzlers) [The first](https://thinkpython.com/code/spiral.py) [if](https://thinkpython.com/code/spiral.py) statement checks whether the words are the same length. If not, we can return False [immediately. Otherwise, for the rest of the function, we can assume that the words](https://thinkpython.com/code/grid.py) [are the same length. This is an example of the guardian pattern in Section 6.8.](https://thinkpython.com/code/Time2_soln.py)
 
@@ -4035,17 +3568,13 @@ optional argument: A function or method argument that is not required.
 Chapter 8. Strings
 ```
 
-```
->>> fruit = ' banana '
->>> fruit[0:5:2]
-' bnn '
-```
+### [>>> fruit =](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [banana](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) >>> fruit[0:5:2] ['](https://thinkpython.com/code/Time2.py) [bnn](https://thinkpython.com/code/Time2.py) ['](http://www.cartalk.com/content/puzzlers)
 
 [A step size of -1 goes through the word backwards, so the slice](https://thinkpython.com/code/spiral.py) [::-1] generates a reversed string.
 
 Use this idiom to write a one-line version of [is_palindrome](https://thinkpython.com/code/Time2_soln.py) [from Exercise 6.3.](https://thinkpython.com/code/Time2_soln.py) Exercise 8.4. The following functions are all intended to check whether a string contains any [lowercase letters, but at least some of them are wrong. For each function, describe what the function](http://docs.python.org/3/library/stdtypes.html#types-set) [actually does (assuming that the parameter is a string).](https://thinkpython.com/code/emma.txt)
 
-[def any_lowercase1(s):](https://thinkpython.com/code/analyze_book2.py) [for c in s:](https://thinkpython.com/code/pi.py) [if c.islower():](https://thinkpython.com/code/structshape.py) return True [else:](https://thinkpython.com/code/ackermann.py) [return False](https://thinkpython.com/code/Circle.py)
+### [def any_lowercase1(s):](https://thinkpython.com/code/analyze_book2.py) [for c in s:](https://thinkpython.com/code/pi.py) [if c.islower():](https://thinkpython.com/code/structshape.py) return True [else:](https://thinkpython.com/code/ackermann.py) [return False](https://thinkpython.com/code/Circle.py)
 
 ```
 def any_lowercase2(s):
@@ -4056,9 +3585,9 @@ else:
 return ' False '
 ```
 
-[def any_lowercase3(s):](https://thinkpython.com/code/Point1_soln.py) [for c in s:](http://www.cartalk.com/content/puzzlers) [flag = c.islower()](http://tinyurl.com/thinkpython2e) return flag
+### [def any_lowercase3(s):](https://thinkpython.com/code/Point1_soln.py) [for c in s:](http://www.cartalk.com/content/puzzlers) [flag = c.islower()](http://tinyurl.com/thinkpython2e) return flag
 
-[def any_lowercase4(s):](https://thinkpython.com/code/polygon.py) [flag = False](https://thinkpython.com/code/reducible.py) [for c in s:](http://www.cartalk.com/content/puzzlers) [flag = flag or c.islower()](https://thinkpython.com/code/PokerHandSoln.py) [return flag](https://thinkpython.com/code/list_exercises.py)
+### [def any_lowercase4(s):](https://thinkpython.com/code/polygon.py) [flag = False](https://thinkpython.com/code/reducible.py) [for c in s:](http://www.cartalk.com/content/puzzlers) [flag = flag or c.islower()](https://thinkpython.com/code/PokerHandSoln.py) [return flag](https://thinkpython.com/code/list_exercises.py)
 
 [def any_lowercase5(s):](http://en.wikipedia.org/wiki/Radix_sort) for c in s: if not c.islower(): return False [return True](http://docs.python.org/3/library/stdtypes.html#string-methods) Exercise 8.5. A Caesar cypher is a weak form of encryption that involves “rotating” each letter by a fixed number of places. To rotate a letter means to shift it through the alphabet, wrapping around [to the beginning if necessary, so ’A’ rotated by 3 is ’D’ and ’Z’ rotated by 1 is ’A’.](https://thinkpython.com/code/koch.py)
 
@@ -4092,29 +3621,21 @@ Chapter 8. Strings
 
 #### [9.1](http://www.cartalk.com/content/puzzlers) [Reading word lists](https://thinkpython.com/code/do_four.py)
 
-For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists [collected and contributed to the public domain by Grady Ward as part of the Moby lexi-](http://wikipedia.org/wiki/Moby_Project) [con project (see](https://thinkpython.com/code/polygon.py) http://wikipedia.org/wiki/Moby_Project [). It is a list of 113,809 official](http://www.cartalk.com/content/puzzlers) [crosswords; that is, words that are considered valid in crossword puzzles and other word](https://thinkpython.com/code/reducible.py) [games. In the Moby collection, the filename is](https://thinkpython.com/code/PokerHandSoln.py) [113809of.fic](https://thinkpython.com/code/words.txt) [; you can download a copy,](https://thinkpython.com/code/words.txt) with the simpler name words.txt , from https://thinkpython.com/code/words.txt .
+For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists [collected and contributed to the public domain by Grady Ward as part of the Moby lexi-](http://wikipedia.org/wiki/Moby_Project) [con project (see](https://thinkpython.com/code/polygon.py) [http://wikipedia.org/wiki/Moby_Project](http://wikipedia.org/wiki/Moby_Project) [). It is a list of 113,809 official](http://www.cartalk.com/content/puzzlers) [crosswords; that is, words that are considered valid in crossword puzzles and other word](https://thinkpython.com/code/reducible.py) [games. In the Moby collection, the filename is](https://thinkpython.com/code/PokerHandSoln.py) [113809of.fic](https://thinkpython.com/code/words.txt) [; you can download a copy,](https://thinkpython.com/code/words.txt) with the simpler name words.txt , from [https://thinkpython.com/code/words.txt](https://thinkpython.com/code/words.txt) .
 
 [This file is in plain text, so you can open it with a text editor, but you can also read it from](http://docs.python.org/3/library/datetime.html) Python. The built-in function open takes the name of the file as a parameter and returns a file object you can use to read the file.
 
-```
->>> fin = open( ' words.txt ' )
-```
+### [>>> fin = open(](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) [words.txt](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) [)](https://thinkpython.com/code/palindrome_soln.py)
 
 [fin](http://docs.python.org/3/library/stdtypes.html#string-methods) [is a common name for a file object used for input.](http://docs.python.org/3/library/stdtypes.html#string-methods) The file object provides several [methods for reading, including](https://thinkpython.com/code/flower.py) [readline](https://thinkpython.com/code/flower.py) , which reads characters from the file until it gets [to a newline and returns the result as a string:](https://thinkpython.com/code/polygon.py)
 
-```
->>> fin.readline()
-' aa\n '
-```
+### >>> fin.readline() ['](http://en.wikipedia.org/wiki/Fibonacci_number) [aa\n](http://en.wikipedia.org/wiki/Fibonacci_number) ['](http://en.wikipedia.org/wiki/Fibonacci_number)
 
 [The first word in this particular list is “aa”, which is a kind of lava.](https://thinkpython.com/code/inlist.py) The sequence \n [represents the newline character that separates this word from the next.](https://thinkpython.com/code/cartalk3.py)
 
 [The file object keeps track of where it is in the file, so if you call](https://thinkpython.com/code/c06d) [readline](https://thinkpython.com/code/reverse_pair.py) [again, you get](https://thinkpython.com/code/reverse_pair.py) [the next word:](https://thinkpython.com/code/reverse_pair.py)
 
-```
->>> fin.readline()
-' aah\n '
-```
+### [>>> fin.readline()](http://wiki.python.org/moin/BitwiseOperators) ' aah\n '
 
 ```
 Chapter 9. Case study: word play
@@ -4122,21 +3643,11 @@ Chapter 9. Case study: word play
 
 [The next word is “aah”, which is a perfectly legitimate word, so stop looking at me like](https://thinkpython.com/code/polygon.py) that. [Or, if it’s the newline character that’s bothering you, we can get rid of it with the](http://en.wikipedia.org/wiki/Spiral) [string method](http://www.cartalk.com/content/puzzlers) [strip](http://www.cartalk.com/content/puzzlers) [:](http://www.cartalk.com/content/puzzlers)
 
-```
->>> line = fin.readline()
->>> word = line.strip()
->>> word
-' aahed '
-```
+### [>>> line = fin.readline()](https://thinkpython.com/code/spiral.py) [>>> word = line.strip()](https://thinkpython.com/code/grid.py) >>> word ['](http://creativecommons.org/licenses/by-nc/3.0/) [aahed](http://creativecommons.org/licenses/by-nc/3.0/) ['](http://creativecommons.org/licenses/by-nc/3.0/)
 
 [You can also use a file object as part of a](https://thinkpython.com/code/emma.txt) for loop. [This program reads](https://thinkpython.com/code/invert_dict.py) [words.txt](https://thinkpython.com/code/invert_dict.py) [and](https://thinkpython.com/code/invert_dict.py) [prints each word, one per line:](https://thinkpython.com/code/rotate.py)
 
-```
-fin = open( ' words.txt ' )
-for line in fin:
-word = line.strip()
-print(word)
-```
+### fin = open( ['](http://en.wikipedia.org/wiki/Ackermann_function) [words.txt](http://en.wikipedia.org/wiki/Ackermann_function) ['](http://en.wikipedia.org/wiki/Ackermann_function) [)](http://en.wikipedia.org/wiki/Ackermann_function) [for line in fin:](https://thinkpython.com/code/structshape.py) word = line.strip() [print(word)](https://thinkpython.com/code/ackermann.py)
 
 #### 9.2 [Exercises](http://en.wikipedia.org/wiki/Birthday_paradox)
 
@@ -4172,7 +3683,7 @@ You could write this function more concisely using the in operator, but I starte
 
 [avoids](http://docs.python.org/3/reference/datamodel.html#specialnames) [is a more general version of](http://docs.python.org/3/reference/datamodel.html#specialnames) has_no_e but it has the same structure:
 
-[def avoids(word, forbidden):](http://en.wikipedia.org/wiki/Birthday_paradox) [for letter in word:](https://thinkpython.com/code/has_duplicates.py) [if letter in forbidden:](https://thinkpython.com/code/BadKangaroo.py) [return False](https://thinkpython.com/code/draw.py) [return True](http://en.wikipedia.org/wiki/Letter_frequencies)
+### [def avoids(word, forbidden):](http://en.wikipedia.org/wiki/Birthday_paradox) [for letter in word:](https://thinkpython.com/code/has_duplicates.py) [if letter in forbidden:](https://thinkpython.com/code/BadKangaroo.py) [return False](https://thinkpython.com/code/draw.py) [return True](http://en.wikipedia.org/wiki/Letter_frequencies)
 
 | We can return | False | as soon as we find a forbidden letter; if we get to the end of the loop, |
 | ------------- | ----- | ------------------------------------------------------------------------ |
@@ -4180,22 +3691,19 @@ You could write this function more concisely using the in operator, but I starte
 
 [uses_only](https://thinkpython.com/code/Time1_soln.py) is similar except that the sense of the condition is reversed:
 
-def uses_only(word, available): [for letter in word:](https://thinkpython.com/code/markov.py) [if letter not in available:](http://wikipedia.org/wiki/Moby_Project) return False [return True](http://www.cartalk.com/content/puzzlers)
+### def uses_only(word, available): [for letter in word:](https://thinkpython.com/code/markov.py) [if letter not in available:](http://wikipedia.org/wiki/Moby_Project) return False [return True](http://www.cartalk.com/content/puzzlers)
 
 [Instead of a list of forbidden letters, we have a list of available letters. If we find a letter in](https://thinkpython.com/code/words.txt) [word](https://thinkpython.com/code/list_exercises.py) that is not in available , we can return False .
 
 [uses_all](http://en.wikipedia.org/wiki/Radix_sort) is similar except that we reverse the role of the word and the string of letters:
 
-def uses_all(word, required): for letter in required: [if letter not in word:](https://thinkpython.com/code/palindrome_soln.py) [return False](http://docs.python.org/3/library/stdtypes.html#string-methods) return True
+### def uses_all(word, required): for letter in required: [if letter not in word:](https://thinkpython.com/code/palindrome_soln.py) [return False](http://docs.python.org/3/library/stdtypes.html#string-methods) return True
 
 Instead of traversing the letters in word [, the loop traverses the required letters. If any of the](https://thinkpython.com/code/sed.py) [required letters do not appear in the word, we can return](https://thinkpython.com/code/koch.py) False [.](http://en.wikipedia.org/wiki/Fibonacci_number)
 
 [If you were really thinking like a computer scientist, you would have recognized that](https://thinkpython.com/code/anagram_sets.py) [uses_all](https://thinkpython.com/code/cartalk3.py) [was an instance of a previously solved problem, and you would have written:](https://thinkpython.com/code/cartalk3.py)
 
-```
-def uses_all(word, required):
-return uses_only(required, word)
-```
+### [def uses_all(word, required):](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [return uses_only(required, word)](https://thinkpython.com/code/c06d)
 
 [This is an example of a program development plan called](https://thinkpython.com/code/metathesis.py) [reduction to a previously solved](http://en.wikipedia.org/wiki/Newline) [problem](http://wiki.python.org/moin/BitwiseOperators) [, which means that you recognize the problem you are working on as an instance](http://en.wikipedia.org/wiki/Collatz_conjecture) of a solved problem and apply an existing solution.
 
@@ -4209,15 +3717,7 @@ Chapter 9. Case study: word play
 
 For is_abecedarian [we have to compare adjacent letters, which is a little tricky with a](https://thinkpython.com/code) for loop:
 
-```
-def is_abecedarian(word):
-previous = word[0]
-for c in word:
-if c < previous:
-return False
-previous = c
-return True
-```
+### [def is_abecedarian(word):](http://creativecommons.org/licenses/by-nc/3.0/) [previous = word[0]](https://thinkpython.com/code/emma.txt) [for c in word:](https://thinkpython.com/code/rotate.py) [if c < previous:](http://en.wikipedia.org/wiki/Ackermann_function) [return False](https://thinkpython.com/code/structshape.py) [previous = c](https://thinkpython.com/code/ackermann_memo.py) [return True](https://thinkpython.com/code/ackermann.py)
 
 An alternative is to use recursion:
 
@@ -4232,15 +3732,7 @@ return is_abecedarian(word[1:])
 
 [Another option is to use a](https://thinkpython.com/code/rotate_pairs.py) [while](https://thinkpython.com/code/rotate_pairs.py) [loop:](https://thinkpython.com/code/rotate_pairs.py)
 
-```
-def is_abecedarian(word):
-i = 0
-while i < len(word)-1:
-if word[i+1] < word[i]:
-return False
-i = i+1
-return True
-```
+### [def is_abecedarian(word):](https://thinkpython.com/code/Point1_soln.py) i = 0 while i < len(word)-1: if word[i+1] < word[i]: [return False](https://thinkpython.com/code/markov.py) [i = i+1](https://thinkpython.com/code/polygon.py) [return True](https://thinkpython.com/code/polygon.py)
 
 [The loop starts at](http://www.cartalk.com/content/puzzlers) [i=0](http://www.cartalk.com/content/puzzlers) [and ends when](http://www.cartalk.com/content/puzzlers) [i=len(word)-1](https://thinkpython.com/code/PokerHandSoln.py) [. Each time through the loop, it com-](https://thinkpython.com/code/PokerHandSoln.py) pares the [i](https://thinkpython.com/code/PokerHandSoln.py) th character (which you can think of as the current character) to the [i](https://thinkpython.com/code/words.txt) [+](https://thinkpython.com/code/words.txt) [1th](https://thinkpython.com/code/words.txt) character (which you can think of as the next).
 
@@ -4250,11 +3742,7 @@ If the next character is less than (alphabetically before) the current one, then
 
 [Here is a version of](https://thinkpython.com/code/analyze_book3.py) [is_palindrome](https://thinkpython.com/code/pie.py) [(see Exercise 6.3) that uses two indices; one starts at](https://thinkpython.com/code/analyze_book3.py) [the beginning and goes up; the other starts at the end and goes down.](https://thinkpython.com/code/anagram_sets.py)
 
-```
-def is_palindrome(word):
-i = 0
-j = len(word)-1
-```
+### [def is_palindrome(word):](https://thinkpython.com/code/cartalk3.py) [i = 0](https://thinkpython.com/code/anagram_sets.py) j = len(word)-1
 
 ```
 while i<j:
@@ -4263,22 +3751,13 @@ if word[i] != word[j]:
 
 ### 9.5. Debugging
 
-```
-return False
-i = i+1
-j = j-1
-```
+### [return False](https://thinkpython.com/code/polygon.py) i = i+1 [j = j-1](http://www.cartalk.com/content/puzzlers)
 
-```
-return True
-```
+### [return True](https://thinkpython.com/code/grid.py)
 
 [Or we could reduce to a previously solved problem and write:](https://thinkpython.com/code/Time2_soln.py)
 
-```
-def is_palindrome(word):
-return is_reverse(word, word)
-```
+### [def is_palindrome(word):](http://creativecommons.org/licenses/by-nc/3.0/) [return is_reverse(word, word)](https://thinkpython.com/code/emma.txt)
 
 [Using](https://thinkpython.com/code/rotate.py) [is_reverse](https://thinkpython.com/code/rotate.py) [from Section 8.11.](https://thinkpython.com/code/rotate.py)
 
@@ -4355,9 +3834,7 @@ There are several ways to create a new list; the simplest is to enclose the elem
 
 The first example is a list of four integers. The second is a list of three strings. The elements of a list don’t have to be the same type. The following list contains a string, a float, an integer, and (lo!) another list:
 
-```
-[ ' spam ' , 2.0, 5, [10, 20]]
-```
+### [ ' spam ' , 2.0, 5, [10, 20]]
 
 A list within another list is nested .
 
@@ -4377,21 +3854,21 @@ A list within another list is nested .
 Chapter 10. Lists
 ```
 
-[list](https://thinkpython.com/code/polygon.py)
+### [list](https://thinkpython.com/code/polygon.py)
 
-cheeses [’Cheddar’](http://en.wikipedia.org/wiki/Spiral)
+### cheeses [’Cheddar’](http://en.wikipedia.org/wiki/Spiral)
 
-[’Edam’](http://www.cartalk.com/content/puzzlers)
+### [’Edam’](http://www.cartalk.com/content/puzzlers)
 
-[’Gouda’](https://thinkpython.com/code/grid.py)
+### [’Gouda’](https://thinkpython.com/code/grid.py)
 
-[list](https://thinkpython.com/code/Time2_soln.py)
+### [list](https://thinkpython.com/code/Time2_soln.py)
 
-[numbers](http://creativecommons.org/licenses/by-nc/3.0/)
+### [numbers](http://creativecommons.org/licenses/by-nc/3.0/)
 
-[list](https://thinkpython.com/code/structshape.py)
+### [list](https://thinkpython.com/code/structshape.py)
 
-[empty](https://thinkpython.com/code/ackermann_memo.py)
+### [empty](https://thinkpython.com/code/ackermann_memo.py)
 
 [Figure 10.1: State diagram.](https://thinkpython.com/code/Circle.py)
 
@@ -4419,17 +3896,17 @@ The in [operator also works on lists.](https://thinkpython.com/code/cartalk3.py)
 
 [The most common way to traverse the elements of a list is with a](http://www.cartalk.com/content/puzzlers) for [loop. The syntax is](https://thinkpython.com/code/spiral.py) [the same as for strings:](https://thinkpython.com/code/spiral.py)
 
-for cheese in cheeses: print(cheese)
+### for cheese in cheeses: print(cheese)
 
 [This works well if you only need to read the elements of the list. But if you want to write](http://docs.python.org/3/library/stdtypes.html#types-set) [or update the elements, you need the indices. A common way to do that is to combine the](https://thinkpython.com/code/invert_dict.py) [built-in functions](https://thinkpython.com/code/rotate.py) [range](https://thinkpython.com/code/rotate.py) [and](https://thinkpython.com/code/rotate.py) [len](https://thinkpython.com/code/rotate.py) [:](https://thinkpython.com/code/rotate.py)
 
-[for i in range(len(numbers)):](http://en.wikipedia.org/wiki/Ackermann_function) [numbers[i] = numbers[i] * 2](https://thinkpython.com/code/ackermann_memo.py)
+### [for i in range(len(numbers)):](http://en.wikipedia.org/wiki/Ackermann_function) [numbers[i] = numbers[i] * 2](https://thinkpython.com/code/ackermann_memo.py)
 
 This loop traverses the list and updates each element. len [returns the number of elements](http://en.wikipedia.org/wiki/Md5) [in the list.](http://en.wikipedia.org/wiki/Md5) [range](http://en.wikipedia.org/wiki/Md5) returns a list of indices from 0 to n − 1, where n is the length of the list. [Each time through the loop](https://thinkpython.com/code/Circle.py) [i](https://thinkpython.com/code/Circle.py) [gets the index of the next element. The assignment statement](http://docs.python.org/3/reference/datamodel.html#specialnames) [in the body uses](http://docs.python.org/3/reference/datamodel.html#specialnames) [i](http://docs.python.org/3/reference/datamodel.html#specialnames) to read the old value of the element and to assign the new value.
 
 [A](https://thinkpython.com/code/has_duplicates.py) [for](https://thinkpython.com/code/has_duplicates.py) [loop over an empty list never runs the body:](https://thinkpython.com/code/has_duplicates.py)
 
-[for x in []:](https://thinkpython.com/code/BadKangaroo.py) [print(](https://thinkpython.com/code/walk.py) ['](https://thinkpython.com/code/walk.py) [This never happens.](https://thinkpython.com/code/walk.py) ['](https://thinkpython.com/code/draw.py) [)](https://thinkpython.com/code/draw.py)
+### [for x in []:](https://thinkpython.com/code/BadKangaroo.py) [print(](https://thinkpython.com/code/walk.py) ['](https://thinkpython.com/code/walk.py) [This never happens.](https://thinkpython.com/code/walk.py) ['](https://thinkpython.com/code/draw.py) [)](https://thinkpython.com/code/draw.py)
 
 [Although a list can contain another list, the nested list still counts as a single element. The](https://thinkpython.com/code/GoodKangaroo.py) [length of this list is four:](https://thinkpython.com/code/rotate_pairs.py)
 
@@ -4441,22 +3918,11 @@ This loop traverses the list and updates each element. len [returns the number o
 
 [The](http://www.cartalk.com/content/puzzlers) [+](http://www.cartalk.com/content/puzzlers) [operator concatenates lists:](http://www.cartalk.com/content/puzzlers)
 
-```
->>> a = [1, 2, 3]
->>> b = [4, 5, 6]
->>> c = a + b
->>> c
-[1, 2, 3, 4, 5, 6]
-```
+### [>>> a = [1, 2, 3]](https://thinkpython.com/code/PokerHandSoln.py) [>>> b = [4, 5, 6]](https://thinkpython.com/code/list_exercises.py) [>>> c = a + b](http://docs.python.org/3/library/datetime.html) [>>> c](http://en.wikipedia.org/wiki/Radix_sort) [1, 2, 3, 4, 5, 6]
 
 The * [operator repeats a list a given number of times:](https://thinkpython.com/code/palindrome_soln.py)
 
-```
->>> [0] * 4
-[0, 0, 0, 0]
->>> [1, 2, 3] * 3
-[1, 2, 3, 1, 2, 3, 1, 2, 3]
-```
+### [>>> [0] * 4](http://docs.python.org/3/library/stdtypes.html#string-methods) [0, 0, 0, 0] [>>> [1, 2, 3] * 3](https://thinkpython.com/code/polygon.py) [[1, 2, 3, 1, 2, 3, 1, 2, 3]](https://thinkpython.com/code/koch.py)
 
 [The first example repeats](https://thinkpython.com/code/pie.py) [[0]](https://thinkpython.com/code/pie.py) [four times. The second example repeats the list](https://thinkpython.com/code/analyze_book3.py) [[1, 2, 3]](http://en.wikipedia.org/wiki/Koch_snowflake) [three times.](http://en.wikipedia.org/wiki/Koch_snowflake)
 
@@ -4536,40 +4002,27 @@ sort [arranges the elements of the list from low to high:](https://thinkpython.c
 
 [To add up all the numbers in a list, you can use a loop like this:](http://www.cartalk.com/content/puzzlers)
 
-```
-def add_all(t):
-total = 0
-for x in t:
-total += x
-return total
-```
+### [def add_all(t):](https://thinkpython.com/code/spiral.py) [total = 0](https://thinkpython.com/code/grid.py) for x in t: [total += x](http://creativecommons.org/licenses/by-nc/3.0/) [return total](https://thinkpython.com/code/emma.txt)
 
 [total](https://thinkpython.com/code/rotate.py) [is initialized to 0.](https://thinkpython.com/code/rotate.py) [Each time through the loop,](https://thinkpython.com/code/rotate.py) [x](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [gets one element from the list.](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [The](https://thinkpython.com/code/pi.py) [+=](http://en.wikipedia.org/wiki/Ackermann_function) [operator provides a short way to update a variable. This](http://en.wikipedia.org/wiki/Ackermann_function) augmented assignment [statement](https://thinkpython.com/code/structshape.py) [,](https://thinkpython.com/code/structshape.py)
 
-```
-total += x
-```
+### [total += x](https://thinkpython.com/code/ackermann_memo.py)
 
 [is equivalent to](http://en.wikipedia.org/wiki/Md5)
 
-```
-total = total + x
-```
+### total = total + x
 
 As the loop runs, [total](http://tinyurl.com/thinkpython2e) accumulates the sum of the elements; a variable used this way is [sometimes called an](http://en.wikipedia.org/wiki/Birthday_paradox) [accumulator](http://en.wikipedia.org/wiki/Birthday_paradox) [.](http://en.wikipedia.org/wiki/Birthday_paradox)
 
 [Adding up the elements of a list is such a common operation that Python provides it as a](http://en.wikipedia.org/wiki/Sexagesimal) [built-in function,](http://en.wikipedia.org/wiki/Letter_frequencies) [sum](http://en.wikipedia.org/wiki/Letter_frequencies) [:](http://en.wikipedia.org/wiki/Letter_frequencies)
 
-```
->>> t = [1, 2, 3]
->>> sum(t)
-```
+### [>>> t = [1, 2, 3]](https://thinkpython.com/code/rotate_pairs.py) [>>> sum(t)](https://thinkpython.com/code/Point2_soln.py)
 
 An operation like this that combines a sequence of elements into a single value is some- times called reduce .
 
 [Sometimes you want to traverse one list while building another. For example, the following](https://thinkpython.com/code/wordlist.py) [function takes a list of strings and returns a new list that contains capitalized strings:](http://wikipedia.org/wiki/Moby_Project)
 
-[def capitalize_all(t):](http://www.cartalk.com/content/puzzlers) [res = []](https://thinkpython.com/code/PokerHandSoln.py) for s in t: [res.append(s.capitalize())](http://docs.python.org/3/library/datetime.html) [return res](http://en.wikipedia.org/wiki/Radix_sort)
+### [def capitalize_all(t):](http://www.cartalk.com/content/puzzlers) [res = []](https://thinkpython.com/code/PokerHandSoln.py) for s in t: [res.append(s.capitalize())](http://docs.python.org/3/library/datetime.html) [return res](http://en.wikipedia.org/wiki/Radix_sort)
 
 res is initialized with an empty list; each time through the loop, we append the next ele- ment. So [res](https://thinkpython.com/code/palindrome_soln.py) [is another kind of accumulator.](https://thinkpython.com/code/palindrome_soln.py)
 
@@ -4577,14 +4030,7 @@ res is initialized with an empty list; each time through the loop, we append the
 
 [Another common operation is to select some of the elements from a list and return a sublist.](https://thinkpython.com/code/koch.py) [For example, the following function takes a list of strings and returns a list that contains](https://thinkpython.com/code/pie.py) [only the uppercase strings:](http://en.wikipedia.org/wiki/Fibonacci_number)
 
-```
-def only_upper(t):
-res = []
-for s in t:
-if s.isupper():
-res.append(s)
-return res
-```
+### [def only_upper(t):](https://thinkpython.com/code/cartalk3.py) res = [] [for s in t:](https://thinkpython.com/code/pronounce.py) [if s.isupper():](https://thinkpython.com/code/metathesis.py) [res.append(s)](http://wiki.python.org/moin/BitwiseOperators) return res
 
 ```
 Chapter 10. Lists
@@ -4617,9 +4063,7 @@ To remove more than one element, you can use del with a slice index: >>> t = [ [
 
 ### 10.10. Objects and values
 
-| a   | ’banana’ | a   |
-| --- | -------- | --- |
-| b   | ’banana’ | b   |
+### [a](https://thinkpython.com/code/polygon.py) [’banana’](https://thinkpython.com/code/polygon.py) [a](http://en.wikipedia.org/wiki/Zipf's_law) ’banana’ [b](http://en.wikipedia.org/wiki/Spiral) [’banana’](http://en.wikipedia.org/wiki/Spiral) [b](http://en.wikipedia.org/wiki/Spiral)
 
 [Figure 10.2: State diagram.](https://thinkpython.com/code/grid.py)
 
@@ -4660,9 +4104,7 @@ To remove more than one element, you can use del with a slice index: >>> t = [ [
 
 [If we run these assignment statements:](https://thinkpython.com/code/polygon.py)
 
-| a = | '   | banana | '   |
-| --- | --- | ------ | --- |
-| b = | '   | banana | '   |
+### [a =](https://thinkpython.com/code/sed.py) ['](https://docs.python.org/3/library/pdb.html) [banana](https://docs.python.org/3/library/pdb.html) ['](https://docs.python.org/3/library/pdb.html) [b =](http://en.wikipedia.org/wiki/Fibonacci_number) ['](http://en.wikipedia.org/wiki/Fibonacci_number) [banana](https://thinkpython.com/code/pie.py) ['](https://thinkpython.com/code/pie.py)
 
 [We know that](http://en.wikipedia.org/wiki/Koch_snowflake) [a](http://en.wikipedia.org/wiki/Koch_snowflake) [and](http://en.wikipedia.org/wiki/Koch_snowflake) [b](http://en.wikipedia.org/wiki/Koch_snowflake) [both refer to a string, but we don’t know whether they refer to the](https://thinkpython.com/code/anagram_sets.py) [same](https://thinkpython.com/code/anagram_sets.py) [string. There are two possible states, shown in Figure 10.2.](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 
@@ -4674,9 +4116,9 @@ To check whether two variables refer to the same object, you can use the is oper
 Chapter 10. Lists
 ```
 
-[a](https://thinkpython.com/code/polygon.py) [[ 1, 2, 3 ]](https://thinkpython.com/code/polygon.py)
+### [a](https://thinkpython.com/code/polygon.py) [[ 1, 2, 3 ]](https://thinkpython.com/code/polygon.py)
 
-[b](http://en.wikipedia.org/wiki/Spiral) [[ 1, 2, 3 ]](http://en.wikipedia.org/wiki/Spiral)
+### [b](http://en.wikipedia.org/wiki/Spiral) [[ 1, 2, 3 ]](http://en.wikipedia.org/wiki/Spiral)
 
 [Figure 10.3: State diagram.](https://thinkpython.com/code/grid.py)
 
@@ -4688,7 +4130,7 @@ a [[ 1, 2, 3 ]](http://docs.python.org/3/library/stdtypes.html#types-set) [b](ht
 
 [In this example, Python only created one string object, and both](http://tinyurl.com/thinkpython2e) a and b refer to it. But [when you create two lists, you get two objects:](http://en.wikipedia.org/wiki/Birthday_paradox)
 
-[>>> a = [1, 2, 3]](https://thinkpython.com/code/BadKangaroo.py) [>>> b = [1, 2, 3]](https://thinkpython.com/code/draw.py) [>>> a is b](https://thinkpython.com/code/walk.py) [False](https://thinkpython.com/code/markov2.py)
+### [>>> a = [1, 2, 3]](https://thinkpython.com/code/BadKangaroo.py) [>>> b = [1, 2, 3]](https://thinkpython.com/code/draw.py) [>>> a is b](https://thinkpython.com/code/walk.py) [False](https://thinkpython.com/code/markov2.py)
 
 [So the state diagram looks like Figure 10.3.](https://thinkpython.com/code/Point1_soln.py)
 
@@ -4700,7 +4142,7 @@ In this case we would say that the two lists are equivalent , because they have 
 
 If a [refers to an object and you assign](https://thinkpython.com/code/palindrome_soln.py) [b = a](https://thinkpython.com/code/palindrome_soln.py) [, then both variables refer to the same object:](https://thinkpython.com/code/palindrome_soln.py)
 
-[>>> a = [1, 2, 3]](http://docs.python.org/3/library/stdtypes.html#string-methods) >>> b = a >>> b is a True
+### [>>> a = [1, 2, 3]](http://docs.python.org/3/library/stdtypes.html#string-methods) >>> b = a >>> b is a True
 
 [The state diagram looks like Figure 10.4.](https://thinkpython.com/code/pie.py)
 
@@ -4712,25 +4154,19 @@ If the aliased object is mutable, changes made with one alias affect the other:
 
 ### 10.12. List arguments
 
-[list](https://thinkpython.com/code/letters.py) [__main__](https://thinkpython.com/code/polygon.py) [letters](http://en.wikipedia.org/wiki/Zipf's_law) [’a’](http://en.wikipedia.org/wiki/Spiral)
+### [list](https://thinkpython.com/code/letters.py) [__main__](https://thinkpython.com/code/polygon.py) [letters](http://en.wikipedia.org/wiki/Zipf's_law) [’a’](http://en.wikipedia.org/wiki/Spiral)
 
-’b’ [delete_head](http://www.cartalk.com/content/puzzlers) [t](http://www.cartalk.com/content/puzzlers) ’c’
+### ’b’ [delete_head](http://www.cartalk.com/content/puzzlers) [t](http://www.cartalk.com/content/puzzlers) ’c’
 
 Figure 10.5: Stack diagram.
 
-```
->>> b[0] = 42
->>> a
-[42, 2, 3]
-```
+### [>>> b[0] = 42](https://thinkpython.com/code/rotate.py) [>>> a](https://thinkpython.com/code/pi.py) [[42, 2, 3]](http://en.wikipedia.org/wiki/Ackermann_function)
 
 [Although this behavior can be useful, it is error-prone.](https://thinkpython.com/code/ackermann_memo.py) [In general, it is safer to avoid](https://thinkpython.com/code/ackermann.py) aliasing when you are working with mutable objects.
 
 [For immutable objects like strings, aliasing is not as much of a problem. In this example:](https://thinkpython.com/code/Circle.py)
 
-| a = | '   | banana | '   |
-| --- | --- | ------ | --- |
-| b = | '   | banana | '   |
+### [a =](http://docs.python.org/3/reference/datamodel.html#specialnames) ['](http://docs.python.org/3/reference/datamodel.html#specialnames) [banana](http://docs.python.org/3/reference/datamodel.html#specialnames) ['](http://docs.python.org/3/reference/datamodel.html#specialnames) b = ['](http://en.wikipedia.org/wiki/Birthday_paradox) [banana](http://en.wikipedia.org/wiki/Birthday_paradox) ['](http://en.wikipedia.org/wiki/Birthday_paradox)
 
 It almost never makes a difference whether a and b [refer to the same string or not.](https://thinkpython.com/code/Map.py)
 
@@ -4738,10 +4174,7 @@ It almost never makes a difference whether a and b [refer to the same string or 
 
 [When you pass a list to a function, the function gets a reference to the list. If the function](http://tinyurl.com/thinkpython2e) modifies the list, the caller sees the change. For example, delete_head removes the first [element from a list:](http://tinyurl.com/thinkpython2e)
 
-```
-def delete_head(t):
-del t[0]
-```
+### [def delete_head(t):](http://en.wikipedia.org/wiki/Big_O_notation) [del t[0]](https://thinkpython.com/code/polygon.py)
 
 [Here’s how it is used:](https://thinkpython.com/code/reducible.py)
 
@@ -4760,14 +4193,7 @@ Since the list is shared by two frames, I drew it between them.
 
 [Here’s an example using](http://en.wikipedia.org/wiki/Fibonacci_number) [append](https://thinkpython.com/code/anagram_sets.py) [:](https://thinkpython.com/code/anagram_sets.py)
 
-```
->>> t1 = [1, 2]
->>> t2 = t1.append(3)
->>> t1
-[1, 2, 3]
->>> t2
-None
-```
+### [>>> t1 = [1, 2]](https://thinkpython.com/code/cartalk3.py) >>> t2 = t1.append(3) >>> t1 [[1, 2, 3]](https://thinkpython.com/code/double.py) [>>> t2](http://wiki.python.org/moin/BitwiseOperators) None
 
 ```
 Chapter 10. Lists
@@ -4777,40 +4203,23 @@ Chapter 10. Lists
 
 Here’s an example using the + [operator:](http://en.wikipedia.org/wiki/Spiral)
 
-```
->>> t3 = t1 + [4]
->>> t1
-[1, 2, 3]
->>> t3
-[1, 2, 3, 4]
-```
+### [>>> t3 = t1 + [4]](https://thinkpython.com/code/spiral.py) >>> t1 [1, 2, 3] [>>> t3](http://creativecommons.org/licenses/by-nc/3.0/) [1, 2, 3, 4]
 
 [The result of the operator is a new list, and the original list is unchanged.](https://thinkpython.com/code/rotate.py)
 
 [This difference is important when you write functions that are supposed to modify lists.](https://thinkpython.com/code/structshape.py) [For example, this function](https://thinkpython.com/code/ackermann_memo.py) [does not](https://thinkpython.com/code/ackermann_memo.py) [delete the head of a list:](http://www.thinkpython.com/)
 
-```
-def bad_delete_head(t):
-t = t[1:] # WRONG!
-```
+### [def bad_delete_head(t):](https://thinkpython.com/code/ackermann.py) [t = t[1:]](https://thinkpython.com/code/Circle.py) [# WRONG!](https://thinkpython.com/code/Circle.py)
 
 [The slice operator creates a new list and the assignment makes](http://tinyurl.com/thinkpython2e) [t](http://tinyurl.com/thinkpython2e) refer to it, but that doesn’t affect the caller.
 
-```
->>> t4 = [1, 2, 3]
->>> bad_delete_head(t4)
->>> t4
-[1, 2, 3]
-```
+### [>>> t4 = [1, 2, 3]](https://thinkpython.com/code/Map.py) [>>> bad_delete_head(t4)](https://thinkpython.com/code/draw.py) [>>> t4](https://thinkpython.com/code/walk.py) [[1, 2, 3]](https://thinkpython.com/code/markov2.py)
 
 [At the beginning of](https://thinkpython.com/code/Point1_soln.py) [bad_delete_head](https://thinkpython.com/code/do_four.py) [,](http://tinyurl.com/thinkpython2e) [t](http://tinyurl.com/thinkpython2e) [and](http://tinyurl.com/thinkpython2e) [t4](http://tinyurl.com/thinkpython2e) [refer to the same list. At the end,](http://tinyurl.com/thinkpython2e) [t](https://thinkpython.com/code/birthday.py) [refers](https://thinkpython.com/code/birthday.py) [to a new list, but](https://thinkpython.com/code/Time1_soln.py) [t4](http://www.cartalk.com/content/puzzlers) still refers to the original, unmodified list.
 
 An alternative is to write a function that creates and returns a new list. For example, [tail](http://en.wikipedia.org/wiki/Big_O_notation) [returns all but the first element of a list:](http://en.wikipedia.org/wiki/Big_O_notation)
 
-```
-def tail(t):
-return t[1:]
-```
+### [def tail(t):](http://en.wikipedia.org/wiki/Hand_rankings) [return t[1:]](https://thinkpython.com/code/reducible.py)
 
 [This function leaves the original list unmodified. Here’s how it is used:](https://thinkpython.com/code/PokerHandSoln.py)
 
@@ -4829,17 +4238,13 @@ return t[1:]
 
 If you are used to writing string code like this:
 
-```
-word = word.strip()
-```
+### word = word.strip()
 
 It is tempting to write list code like this:
 
 ### 10.13. Debugging
 
-```
-t = t.sort() # WRONG!
-```
+### [t = t.sort()](https://thinkpython.com/code/polygon.py) [# WRONG!](https://thinkpython.com/code/polygon.py)
 
 [Because](http://www.cartalk.com/content/puzzlers) [sort](http://www.cartalk.com/content/puzzlers) [returns](http://www.cartalk.com/content/puzzlers) [None](http://www.cartalk.com/content/puzzlers) , the next operation you perform with [t](https://thinkpython.com/code/spiral.py) [is likely to fail.](https://thinkpython.com/code/spiral.py)
 
@@ -4851,19 +4256,11 @@ Before using list methods and operators, you should read the documentation care-
 
 [To add an element, you can use the](https://thinkpython.com/code/ackermann_memo.py) [append](http://www.thinkpython.com/) [method or the](http://www.thinkpython.com/) [+](https://thinkpython.com/code/ackermann.py) [operator. Assuming that](https://thinkpython.com/code/ackermann.py) t is a list and x is a list element, these are correct:
 
-```
-t.append(x)
-t = t + [x]
-t += [x]
-```
+### [t.append(x)](https://thinkpython.com/code/Circle.py) [t = t + [x]](http://docs.python.org/3/reference/datamodel.html#specialnames) [t += [x]](http://en.wikipedia.org/wiki/Birthday_paradox)
 
 And these are wrong:
 
-| t.append([x])   | # WRONG! |
-| --------------- | -------- |
-| t = t.append(x) | # WRONG! |
-| t + [x]         | # WRONG! |
-| t = t + x       | # WRONG! |
+### [t.append([x])](http://en.wikipedia.org/wiki/Letter_frequencies) [# WRONG!](http://en.wikipedia.org/wiki/Letter_frequencies) [t = t.append(x)](https://thinkpython.com/code/rotate_pairs.py) [# WRONG!](https://thinkpython.com/code/rotate_pairs.py) [t + [x]](https://thinkpython.com/code/Point1_soln.py) # WRONG! [t = t + x](https://thinkpython.com/code/do_four.py) [# WRONG!](http://tinyurl.com/thinkpython2e)
 
 Try out each of these examples in interactive mode to make sure you understand what they do. Notice that only the last one causes a runtime error; the other three are [legal, but they do the wrong thing.](https://thinkpython.com/code/wordlist.py)
 
@@ -4871,25 +4268,11 @@ Try out each of these examples in interactive mode to make sure you understand w
 
 [If you want to use a method like](https://thinkpython.com/code/PokerHandSoln.py) [sort](https://thinkpython.com/code/words.txt) [that modifies the argument, but you need to](https://thinkpython.com/code/words.txt) keep the original list as well, you can make a copy.
 
-```
->>> t = [3, 1, 2]
->>> t2 = t[:]
->>> t2.sort()
->>> t
-[3, 1, 2]
->>> t2
-[1, 2, 3]
-```
+### >>> t = [3, 1, 2] >>> t2 = t[:] >>> t2.sort() >>> t [[3, 1, 2]](http://docs.python.org/3/library/stdtypes.html#string-methods) [>>> t2](https://thinkpython.com/code/polygon.py) [1, 2, 3]
 
 [In this example you could also use the built-in function](https://thinkpython.com/code/pie.py) [sorted](http://en.wikipedia.org/wiki/Koch_snowflake) [, which returns a new,](http://en.wikipedia.org/wiki/Koch_snowflake) [sorted list and leaves the original alone.](http://en.wikipedia.org/wiki/Koch_snowflake)
 
-```
->>> t2 = sorted(t)
->>> t
-[3, 1, 2]
->>> t2
-[1, 2, 3]
-```
+### >>> t2 = sorted(t) [>>> t](https://thinkpython.com/code/pronounce.py) [[3, 1, 2]](https://thinkpython.com/code/double.py) [>>> t2](http://wiki.python.org/moin/BitwiseOperators) [1, 2, 3]
 
 ```
 Chapter 10. Lists
@@ -4929,20 +4312,13 @@ delimiter: A character or string used to indicate where a string should be split
 
 [You can download solutions to these exercises from](https://thinkpython.com/code/PokerHandSoln.py) [https://thinkpython.com/code/](https://thinkpython.com/code/words.txt) list_exercises.py . Exercise 10.1. Write a function called nested_sum that takes a list of lists of integers and adds up the elements from all of the nested lists. For example:
 
-```
->>> t = [[1, 2], [3], [4, 5, 6]]
->>> nested_sum(t)
-```
+### >>> t = [[1, 2], [3], [4, 5, 6]] >>> nested_sum(t)
 
 Exercise 10.2. [Write a function called](https://thinkpython.com/code/flower.py) [cumsum](https://thinkpython.com/code/flower.py) [that takes a list of numbers and returns the cumu-](https://thinkpython.com/code/flower.py) [lative sum; that is, a new list where the ith element is the sum of the first i](https://thinkpython.com/code/polygon.py) [+](http://gutenberg.org/) [elements from the](https://thinkpython.com/code/sed.py) original list. For example:
 
 [>>> t = [1, 2, 3]](https://thinkpython.com/code/analyze_book3.py) >>> cumsum(t) [1, 3, 6] [Exercise 10.3.](https://thinkpython.com/code/anagram_sets.py) [Write a function called](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [middle](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [that takes a list and returns a new list that contains](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) all but the first and last elements. For example:
 
-```
->>> t = [1, 2, 3, 4]
->>> middle(t)
-[2, 3]
-```
+### [>>> t = [1, 2, 3, 4]](https://thinkpython.com/code/double.py) >>> middle(t) [2, 3]
 
 ### 10.15. Exercises
 
@@ -4992,17 +4368,11 @@ Chapter 10. Lists
 
 [The function](http://en.wikipedia.org/wiki/Radix_sort) dict creates a new dictionary with no items. Because dict is the name of a built-in function, you should avoid using it as a variable name.
 
-```
->>> eng2sp = dict()
->>> eng2sp
-{}
-```
+### [>>> eng2sp = dict()](https://thinkpython.com/code/palindrome_soln.py) >>> eng2sp [{}](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
 [The squiggly-brackets,](https://thinkpython.com/code/polygon.py) [{}](https://thinkpython.com/code/polygon.py) [, represent an empty dictionary. To add items to the dictionary,](http://gutenberg.org/) you can use square brackets:
 
-```
->>> eng2sp[ ' one ' ] = ' uno '
-```
+### [>>> eng2sp[](http://en.wikipedia.org/wiki/Fibonacci_number) ['](https://thinkpython.com/code/pie.py) [one](https://thinkpython.com/code/pie.py) ['](https://thinkpython.com/code/pie.py) [] =](https://thinkpython.com/code/pie.py) ['](https://thinkpython.com/code/pie.py) [uno](https://thinkpython.com/code/pie.py) ['](https://thinkpython.com/code/pie.py)
 
 [This line creates an item that maps from the key](http://en.wikipedia.org/wiki/Koch_snowflake) ['](https://thinkpython.com/code/anagram_sets.py) [one](https://thinkpython.com/code/anagram_sets.py) ['](https://thinkpython.com/code/anagram_sets.py) [to the value](https://thinkpython.com/code/anagram_sets.py) ['](https://thinkpython.com/code/anagram_sets.py) [uno](https://thinkpython.com/code/anagram_sets.py) ['](https://thinkpython.com/code/anagram_sets.py) . If we print the [dictionary again, we see a key-value pair with a colon between the key and value:](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 
@@ -5032,10 +4402,7 @@ But if you print eng2sp [, you might be surprised:](http://en.wikipedia.org/wiki
 
 [But that’s not a problem because the elements of a dictionary are never indexed with inte-](https://thinkpython.com/code/rotate.py) [ger indices. Instead, you use the keys to look up the corresponding values:](http://en.wikipedia.org/wiki/Ackermann_function)
 
-```
->>> eng2sp[ ' two ' ]
-' dos '
-```
+### [>>> eng2sp[](https://thinkpython.com/code/structshape.py) ['](https://thinkpython.com/code/ackermann_memo.py) [two](https://thinkpython.com/code/ackermann_memo.py) ['](https://thinkpython.com/code/ackermann_memo.py) []](https://thinkpython.com/code/ackermann_memo.py) ' dos '
 
 The key ' [two](http://en.wikipedia.org/wiki/Md5) ['](http://en.wikipedia.org/wiki/Md5) always maps to the value ' dos ' so the order of the items doesn’t matter.
 
@@ -5048,9 +4415,7 @@ KeyError: ' four '
 
 The len [function works on dictionaries; it returns the number of key-value pairs:](http://en.wikipedia.org/wiki/Sexagesimal)
 
-```
->>> len(eng2sp)
-```
+### [>>> len(eng2sp)](https://thinkpython.com/code/walk.py)
 
 [The](https://thinkpython.com/code/Time1.py) [in](https://thinkpython.com/code/Time1.py) [operator works on dictionaries, too; it tells you whether something appears as a](http://tinyurl.com/thinkpython2e) [key](https://thinkpython.com/code/birthday.py) [in the dictionary (appearing as a value is not good enough).](https://thinkpython.com/code/do_four.py)
 
@@ -5063,11 +4428,7 @@ False
 
 [To see whether something appears as a value in a dictionary, you can use the method](https://thinkpython.com/code/reducible.py) values [, which returns a collection of values, and then use the](https://thinkpython.com/code/PokerHandSoln.py) [in](https://thinkpython.com/code/words.txt) [operator:](https://thinkpython.com/code/words.txt)
 
-```
->>> vals = eng2sp.values()
->>> ' uno ' in vals
-True
-```
+### [>>> vals = eng2sp.values()](https://thinkpython.com/code/list_exercises.py) [>>>](http://docs.python.org/3/library/datetime.html) ['](http://docs.python.org/3/library/datetime.html) [uno](http://docs.python.org/3/library/datetime.html) ['](http://docs.python.org/3/library/datetime.html) [in vals](http://docs.python.org/3/library/datetime.html) True
 
 The in operator uses different algorithms for lists and dictionaries. For lists, it searches the [elements of the list in order, as in Section 8.6. As the list gets longer, the search time gets](https://thinkpython.com/code/palindrome_soln.py) [longer in direct proportion.](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
@@ -5091,7 +4452,7 @@ An implementation is a way of performing a computation; some implementations are
 
 Here is what the code might look like:
 
-[def histogram(s):](https://thinkpython.com/code/walk.py) d = dict() [for c in s:](https://thinkpython.com/code/rotate_pairs.py) if c not in d: [d[c] = 1](https://thinkpython.com/code/do_four.py) [else:](http://tinyurl.com/thinkpython2e) d[c] += 1 [return d](http://en.wikipedia.org/wiki/Big_O_notation)
+### [def histogram(s):](https://thinkpython.com/code/walk.py) d = dict() [for c in s:](https://thinkpython.com/code/rotate_pairs.py) if c not in d: [d[c] = 1](https://thinkpython.com/code/do_four.py) [else:](http://tinyurl.com/thinkpython2e) d[c] += 1 [return d](http://en.wikipedia.org/wiki/Big_O_notation)
 
 [The name of the function is](https://thinkpython.com/code/wordlist.py) [histogram](http://wikipedia.org/wiki/Moby_Project) [, which is a statistical term for a collection of counters](https://thinkpython.com/code/cartalk2.py) [(or frequencies).](https://thinkpython.com/code/reducible.py)
 
@@ -5120,9 +4481,7 @@ The histogram indicates that the letters ['](http://gutenberg.org/) [a](http://g
 Chapter 11. Dictionaries
 ```
 
-```
->>> h.get( ' c ' , 0)
-```
+### >>> h.get( ' c ' , 0)
 
 [As an exercise, use](https://thinkpython.com/code/spiral.py) [get](https://thinkpython.com/code/spiral.py) [to write](https://thinkpython.com/code/spiral.py) [histogram](https://thinkpython.com/code/spiral.py) more concisely. You should be able to eliminate the if [statement.](https://thinkpython.com/code/grid.py)
 
@@ -5130,7 +4489,7 @@ Chapter 11. Dictionaries
 
 [If you use a dictionary in a](https://thinkpython.com/code/pi.py) [for](https://thinkpython.com/code/pi.py) [statement, it traverses the keys of the dictionary. For exam-](https://thinkpython.com/code/analyze_book2.py) ple, print_hist [prints each key and the corresponding value:](http://en.wikipedia.org/wiki/Ackermann_function)
 
-[def print_hist(h):](https://thinkpython.com/code/ackermann_memo.py) [for c in h:](https://thinkpython.com/code/ackermann.py) [print(c, h[c])](http://en.wikipedia.org/wiki/Md5)
+### [def print_hist(h):](https://thinkpython.com/code/ackermann_memo.py) [for c in h:](https://thinkpython.com/code/ackermann.py) [print(c, h[c])](http://en.wikipedia.org/wiki/Md5)
 
 [Here’s what the output looks like:](https://thinkpython.com/code/Circle.py)
 
@@ -5146,7 +4505,7 @@ o 1
 
 [Again, the keys are in no particular order. To traverse the keys in sorted order, you can use](http://tinyurl.com/thinkpython2e) [the built-in function](https://thinkpython.com/code/Time1_soln.py) sorted :
 
-[>>> for key in sorted(h):](http://tinyurl.com/thinkpython2e) ... [print(key, h[key])](http://en.wikipedia.org/wiki/Big_O_notation) a 1 o 1 p 1 r 2 [t 1](https://thinkpython.com/code/list_exercises.py)
+### [>>> for key in sorted(h):](http://tinyurl.com/thinkpython2e) ... [print(key, h[key])](http://en.wikipedia.org/wiki/Big_O_notation) a 1 o 1 p 1 r 2 [t 1](https://thinkpython.com/code/list_exercises.py)
 
 #### 11.4 Reverse lookup
 
@@ -5156,13 +4515,7 @@ Given a dictionary [d](https://thinkpython.com/code/palindrome_soln.py) [and a k
 
 [Here is a function that takes a value and returns the first key that maps to that value:](https://thinkpython.com/code/cartalk3.py)
 
-```
-def reverse_lookup(d, v):
-for k in d:
-if d[k] == v:
-return k
-raise LookupError()
-```
+### [def reverse_lookup(d, v):](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) for k in d: [if d[k] == v:](https://thinkpython.com/code/double.py) [return k](http://wiki.python.org/moin/BitwiseOperators) raise LookupError()
 
 ### 11.5. Dictionaries and lists
 
@@ -5209,19 +4562,19 @@ Lists can appear as values in a dictionary. For example, if you are given a dict
 Chapter 11. Dictionaries
 ```
 
-[dict](https://thinkpython.com/code/interlock.py) [dict](https://thinkpython.com/code/letters.py) [list](https://thinkpython.com/code/letters.py)
+### [dict](https://thinkpython.com/code/interlock.py) [dict](https://thinkpython.com/code/letters.py) [list](https://thinkpython.com/code/letters.py)
 
-hist ’a’ [inv](http://en.wikipedia.org/wiki/Spiral) [’a’](http://en.wikipedia.org/wiki/Spiral)
+### hist ’a’ [inv](http://en.wikipedia.org/wiki/Spiral) [’a’](http://en.wikipedia.org/wiki/Spiral)
 
-[’p’](http://www.cartalk.com/content/puzzlers) ’p’
+### [’p’](http://www.cartalk.com/content/puzzlers) ’p’
 
-[’r’](https://thinkpython.com/code/spiral.py) ’t’
+### [’r’](https://thinkpython.com/code/spiral.py) ’t’
 
-[’t’](https://thinkpython.com/code/grid.py) [’o’](https://thinkpython.com/code)
+### [’t’](https://thinkpython.com/code/grid.py) [’o’](https://thinkpython.com/code)
 
-’o’ list
+### ’o’ list
 
-[’r’](https://thinkpython.com/code/invert_dict.py)
+### [’r’](https://thinkpython.com/code/invert_dict.py)
 
 [Figure 11.1: State diagram.](http://en.wikipedia.org/wiki/Ackermann_function)
 
@@ -5291,21 +4644,11 @@ A call graph shows a set of function frames, with lines connecting each frame to
 
 One solution is to keep track of values that have already been computed by storing them [in a dictionary. A previously computed value that is stored for later use is called a](https://thinkpython.com/code/palindrome_soln.py) memo . Here is a “memoized” version of fibonacci :
 
-```
-known = {0:0, 1:1}
-```
+### known = {0:0, 1:1}
 
-```
-def fibonacci(n):
-if n in known:
-return known[n]
-```
+### def fibonacci(n): [if n in known:](https://thinkpython.com/code/pie.py) [return known[n]](http://en.wikipedia.org/wiki/Fibonacci_number)
 
-```
-res = fibonacci(n-1) + fibonacci(n-2)
-known[n] = res
-return res
-```
+### [res = fibonacci(n-1) + fibonacci(n-2)](https://en.wikipedia.org/wiki/Rubber_duck_debugging) known[n] = res [return res](https://thinkpython.com/code/reverse_pair.py)
 
 [known](http://wiki.python.org/moin/BitwiseOperators) [is a dictionary that keeps track of the Fibonacci numbers we already know. It starts](http://en.wikipedia.org/wiki/Collatz_conjecture) with two items: 0 maps to 0 and 1 maps to 1.
 
@@ -5323,88 +4666,51 @@ Chapter 11. Dictionaries
 
 [It is common to use global variables for](https://thinkpython.com/code/Circle.py) [flags](https://thinkpython.com/code/Circle.py) [; that is, boolean variables that indicate (“flag”)](http://docs.python.org/3/reference/datamodel.html#specialnames) [whether a condition is true.](http://docs.python.org/3/reference/datamodel.html#specialnames) For example, some programs use a flag named verbose to [control the level of detail in the output:](http://en.wikipedia.org/wiki/Birthday_paradox)
 
-```
-verbose = True
-```
+### verbose = True
 
-```
-def example1():
-if verbose:
-print( ' Running example1 ' )
-```
+### [def example1():](https://thinkpython.com/code/draw.py) [if verbose:](http://en.wikipedia.org/wiki/Letter_frequencies) [print(](https://thinkpython.com/code/rotate_pairs.py) ['](https://thinkpython.com/code/rotate_pairs.py) [Running example1](https://thinkpython.com/code/rotate_pairs.py) ['](https://thinkpython.com/code/rotate_pairs.py) [)](https://thinkpython.com/code/rotate_pairs.py)
 
 [If you try to reassign a global variable, you might be surprised. The following example is](http://tinyurl.com/thinkpython2e) supposed to keep track of whether the function has been called:
 
-```
-been_called = False
-```
+### [been_called = False](http://tinyurl.com/thinkpython2e)
 
-```
-def example2():
-been_called = True # WRONG
-```
+### def example2(): [been_called = True](https://thinkpython.com/code/polygon.py) [# WRONG](http://wikipedia.org/wiki/Moby_Project)
 
 [But if you run it you will see that the value of](http://www.cartalk.com/content/puzzlers) [been_called](https://thinkpython.com/code/reducible.py) [doesn’t change. The problem](https://thinkpython.com/code/PokerHandSoln.py) is that [example2](https://thinkpython.com/code/PokerHandSoln.py) [creates a new local variable named](https://thinkpython.com/code/PokerHandSoln.py) [been_called](https://thinkpython.com/code/words.txt) [. The local variable goes](https://thinkpython.com/code/words.txt) away when the function ends, and has no effect on the global variable.
 
 [To reassign a global variable inside a function you have to](http://docs.python.org/3/library/datetime.html) declare the global variable before you use it:
 
-```
-been_called = False
-```
+### been_called = False
 
-```
-def example2():
-global been_called
-been_called = True
-```
+### def example2(): global been_called [been_called = True](https://thinkpython.com/code/polygon.py)
 
 The global statement [tells the interpreter something like, “In this function, when I say](https://thinkpython.com/code/koch.py) been_called [, I mean the global variable; don’t create a local one.”](https://thinkpython.com/code/pie.py)
 
 [Here’s an example that tries to update a global variable:](http://en.wikipedia.org/wiki/Koch_snowflake)
 
-```
-count = 0
-```
+### [count = 0](https://thinkpython.com/code/anagram_sets.py)
 
-```
-def example3():
-count = count + 1 # WRONG
-```
+### [def example3():](https://thinkpython.com/code/double.py) count = count + 1 # WRONG
 
 If you run it you get:
 
 ### 11.8. Debugging
 
-```
-UnboundLocalError: local variable ' count ' referenced before assignment
-```
+### [UnboundLocalError: local variable](https://thinkpython.com/code/polygon.py) ['](http://en.wikipedia.org/wiki/Zipf's_law) [count](http://en.wikipedia.org/wiki/Zipf's_law) ['](http://en.wikipedia.org/wiki/Zipf's_law) referenced before assignment
 
 Python assumes that [count](http://en.wikipedia.org/wiki/Spiral) [is local, and under that assumption you are reading it before](http://en.wikipedia.org/wiki/Spiral) [writing it. The solution, again, is to declare](http://www.cartalk.com/content/puzzlers) count global.
 
-```
-def example3():
-global count
-count += 1
-```
+### [def example3():](https://thinkpython.com/code/grid.py) global count count += 1
 
 If a global variable refers to a mutable value, you can modify the value without declaring [the variable:](https://thinkpython.com/code/rotate.py)
 
-```
-known = {0:0, 1:1}
-```
+### [known = {0:0, 1:1}](http://en.wikipedia.org/wiki/Ackermann_function)
 
-```
-def example4():
-known[2] = 1
-```
+### [def example4():](https://thinkpython.com/code/ackermann_memo.py) [known[2] = 1](https://thinkpython.com/code/ackermann.py)
 
 [So you can add, remove and replace elements of a global list or dictionary, but if you want](https://thinkpython.com/code/Circle.py) to reassign the variable, you have to declare it:
 
-```
-def example5():
-global known
-known = dict()
-```
+### [def example5():](http://en.wikipedia.org/wiki/Birthday_paradox) [global known](https://thinkpython.com/code/has_duplicates.py) [known = dict()](https://thinkpython.com/code/Map.py)
 
 [Global variables can be useful, but if you have a lot of them, and you modify them fre-](http://en.wikipedia.org/wiki/Letter_frequencies) [quently, they can make programs hard to debug.](https://thinkpython.com/code/most_frequent.py)
 
@@ -5540,11 +4846,7 @@ To create a tuple with a single element, you have to include a final comma:
 
 [Another way to create a tuple is the built-in function](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [tuple](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [. With no argument, it creates](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [an empty tuple:](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)
 
-```
->>> t = tuple()
->>> t
-()
-```
+### [>>> t = tuple()](https://thinkpython.com/code/double.py) [>>> t](http://wiki.python.org/moin/BitwiseOperators) ()
 
 ```
 Chapter 12. Tuples
@@ -5577,10 +4879,7 @@ Because tuple is the name of a built-in function, you should avoid using it as a
 
 [But if you try to modify one of the elements of the tuple, you get an error:](http://en.wikipedia.org/wiki/Birthday_paradox)
 
-```
->>> t[0] = ' A '
-TypeError: object doesn ' t support item assignment
-```
+### >>> t[0] = ['](https://thinkpython.com/code/Map.py) [A](https://thinkpython.com/code/Map.py) ['](https://thinkpython.com/code/Map.py) [TypeError: object doesn](https://thinkpython.com/code/draw.py) ['](https://thinkpython.com/code/draw.py) [t support item assignment](https://thinkpython.com/code/draw.py)
 
 [Because tuples are immutable, you can’t modify the elements.](https://thinkpython.com/code/most_frequent.py) [But you can replace one](https://thinkpython.com/code/Point1.py) [tuple with another:](https://thinkpython.com/code/rotate_pairs.py)
 
@@ -5594,22 +4893,17 @@ TypeError: object doesn ' t support item assignment
 
 The relational operators work with tuples and other sequences; Python starts by comparing [the first element from each sequence. If they are equal, it goes on to the next elements, and](https://thinkpython.com/code/reducible.py) so on, until it finds elements that differ. Subsequent elements are not considered (even if [they are really big).](https://thinkpython.com/code/list_exercises.py)
 
-```
->>> (0, 1, 2) < (0, 3, 4)
-True
->>> (0, 1, 2000000) < (0, 3, 4)
-True
-```
+### [>>> (0, 1, 2) < (0, 3, 4)](http://docs.python.org/3/library/datetime.html) True >>> (0, 1, 2000000) < (0, 3, 4) True
 
 #### 12.2 Tuple assignment
 
 [It is often useful to swap the values of two variables. With conventional assignments, you](https://thinkpython.com/code/pie.py) [have to use a temporary variable. For example, to swap](https://thinkpython.com/code/anagram_sets.py) [a](https://thinkpython.com/code/anagram_sets.py) [and](https://thinkpython.com/code/anagram_sets.py) [b](https://thinkpython.com/code/anagram_sets.py) [:](https://thinkpython.com/code/anagram_sets.py)
 
->>> temp = a [>>> a = b](https://thinkpython.com/code/anagram_sets.py) >>> b = temp
+### >>> temp = a [>>> a = b](https://thinkpython.com/code/anagram_sets.py) >>> b = temp
 
 This solution is cumbersome; [tuple assignment](https://thinkpython.com/code/metathesis.py) [is more elegant:](https://thinkpython.com/code/metathesis.py)
 
->>> a, b = b, a
+### >>> a, b = b, a
 
 ### 12.3. Tuples as return values
 
@@ -5617,7 +4911,7 @@ This solution is cumbersome; [tuple assignment](https://thinkpython.com/code/met
 
 [The number of variables on the left and the number of values on the right have to be the](https://thinkpython.com/code/grid.py) same:
 
-[>>> a, b = 1, 2, 3](http://creativecommons.org/licenses/by-nc/3.0/) [ValueError: too many values to unpack](https://thinkpython.com/code/emma.txt)
+### [>>> a, b = 1, 2, 3](http://creativecommons.org/licenses/by-nc/3.0/) [ValueError: too many values to unpack](https://thinkpython.com/code/emma.txt)
 
 [More generally, the right side can be any kind of sequence (string, list or tuple). For exam-](https://thinkpython.com/code/rotate.py) [ple, to split an email address into a user name and a domain, you could write:](http://en.wikipedia.org/wiki/Ackermann_function)
 
@@ -5628,12 +4922,7 @@ This solution is cumbersome; [tuple assignment](https://thinkpython.com/code/met
 
 [The return value from](https://thinkpython.com/code/Circle.py) [split](https://thinkpython.com/code/Circle.py) is a list with two elements; the first element is assigned to uname , the second to domain .
 
-```
->>> uname
-' monty '
->>> domain
-' python.org '
-```
+### [>>> uname](http://en.wikipedia.org/wiki/Birthday_paradox) ['](https://thinkpython.com/code/has_duplicates.py) [monty](https://thinkpython.com/code/has_duplicates.py) ['](https://thinkpython.com/code/has_duplicates.py) [>>> domain](https://thinkpython.com/code/Map.py) ['](https://thinkpython.com/code/draw.py) [python.org](https://thinkpython.com/code/draw.py) ['](https://thinkpython.com/code/draw.py)
 
 #### [12.3](http://www.cartalk.com/content/puzzlers) [Tuples as return values](https://thinkpython.com/code/do_four.py)
 
@@ -5641,29 +4930,17 @@ Strictly speaking, a function can only return one value, but if the value is a t
 
 [The built-in function](https://thinkpython.com/code/PokerHandSoln.py) divmod [takes two arguments and returns a tuple of two values, the](https://thinkpython.com/code/words.txt) quotient and remainder. You can store the result as a tuple:
 
-```
->>> t = divmod(7, 3)
->>> t
-(2, 1)
-```
+### [>>> t = divmod(7, 3)](http://en.wikipedia.org/wiki/Radix_sort) >>> t (2, 1)
 
 [Or use tuple assignment to store the elements separately:](https://thinkpython.com/code/palindrome_soln.py)
 
-```
->>> quot, rem = divmod(7, 3)
->>> quot
-```
+### [>>> quot, rem = divmod(7, 3)](https://thinkpython.com/code/flower.py) [>>> quot](https://thinkpython.com/code/polygon.py)
 
-```
->>> rem
-```
+### [>>> rem](https://docs.python.org/3/library/pdb.html)
 
 [Here is an example of a function that returns a tuple:](https://thinkpython.com/code/cartalk3.py)
 
-```
-def min_max(t):
-return min(t), max(t)
-```
+### [def min_max(t):](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [return min(t), max(t)](https://thinkpython.com/code/reverse_pair.py)
 
 [max](http://wiki.python.org/moin/BitwiseOperators) [and](http://wiki.python.org/moin/BitwiseOperators) [min](http://wiki.python.org/moin/BitwiseOperators) [are built-in functions that find the largest and smallest elements of a sequence.](https://wiki.python.org/moin/HowTo/Sorting) min_max computes both and returns a tuple of two values.
 
@@ -5675,42 +4952,27 @@ Chapter 12. Tuples
 
 [Functions can take a variable number of arguments. A parameter name that begins with](http://www.cartalk.com/content/puzzlers) [*](https://thinkpython.com/code/spiral.py) [gathers](https://thinkpython.com/code/spiral.py) [arguments into a tuple. For example,](https://thinkpython.com/code/spiral.py) printall takes any number of arguments and prints them:
 
-```
-def printall(*args):
-print(args)
-```
+### def printall(*args): [print(args)](http://creativecommons.org/licenses/by-nc/3.0/)
 
 [The gather parameter can have any name you like, but](https://thinkpython.com/code/emma.txt) [args](https://thinkpython.com/code/invert_dict.py) [is conventional. Here’s how](https://thinkpython.com/code/invert_dict.py) [the function works:](https://thinkpython.com/code/rotate.py)
 
-```
->>> printall(1, 2.0, ' ' )
-(1, 2.0, ' ' )
-```
+### >>> printall(1, 2.0, ['](http://en.wikipedia.org/wiki/Ackermann_function) ['](http://en.wikipedia.org/wiki/Ackermann_function) [)](http://en.wikipedia.org/wiki/Ackermann_function) (1, 2.0, ['](https://thinkpython.com/code/ackermann_memo.py) ['](https://thinkpython.com/code/ackermann_memo.py) [)](https://thinkpython.com/code/ackermann_memo.py)
 
 [The complement of gather is](https://thinkpython.com/code/ackermann.py) scatter . If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the * operator. For example, divmod [takes exactly two arguments; it doesn’t work with a tuple:](https://thinkpython.com/code/Circle.py)
 
-```
->>> t = (7, 3)
->>> divmod(t)
-TypeError: divmod expected 2 arguments, got 1
-```
+### >>> t = (7, 3) >>> divmod(t) TypeError: divmod expected 2 arguments, got 1
 
 [But if you scatter the tuple, it works:](https://thinkpython.com/code/draw.py)
 
-```
->>> divmod(*t)
-(2, 1)
-```
+### >>> divmod(*t) [(2, 1)](https://thinkpython.com/code/markov2.py)
 
 [Many of the built-in functions use variable-length argument tuples. For example,](http://tinyurl.com/thinkpython2e) [max](https://thinkpython.com/code/birthday.py) [and](https://thinkpython.com/code/birthday.py) [min](https://thinkpython.com/code/Time1_soln.py) can take any number of arguments:
 
-```
->>> max(1, 2, 3)
-```
+### >>> max(1, 2, 3)
 
 But [sum](http://en.wikipedia.org/wiki/Hand_rankings) [does not.](https://thinkpython.com/code/polygon.py)
 
-[>>> sum(1, 2, 3)](http://www.cartalk.com/content/puzzlers) [TypeError: sum expected at most 2 arguments, got 3](https://thinkpython.com/code/PokerHandSoln.py)
+### [>>> sum(1, 2, 3)](http://www.cartalk.com/content/puzzlers) [TypeError: sum expected at most 2 arguments, got 3](https://thinkpython.com/code/PokerHandSoln.py)
 
 [As an exercise, write a function called](http://docs.python.org/3/library/datetime.html) [sum_all](http://docs.python.org/3/library/datetime.html) [that takes any number of arguments and](http://en.wikipedia.org/wiki/Radix_sort) returns their sum.
 
@@ -5720,12 +4982,7 @@ zip [is a built-in function that takes two or more sequences and interleaves the
 
 [This example zips a string and a list:](http://en.wikipedia.org/wiki/Fibonacci_number)
 
-```
->>> s = ' abc '
->>> t = [0, 1, 2]
->>> zip(s, t)
-<zip object at 0x7f7d0a9e7c48>
-```
+### >>> s = ['](https://thinkpython.com/code/cartalk3.py) [abc](https://thinkpython.com/code/cartalk3.py) ['](https://thinkpython.com/code/cartalk3.py) [>>> t = [0, 1, 2]](https://thinkpython.com/code/anagram_sets.py) >>> zip(s, t) [<zip object at 0x7f7d0a9e7c48>](https://thinkpython.com/code/reverse_pair.py)
 
 The result is a [zip object](http://wiki.python.org/moin/BitwiseOperators) [that knows how to iterate through the pairs. The most common](http://en.wikipedia.org/wiki/Collatz_conjecture) use of zip is in a for loop:
 
@@ -5761,25 +5018,19 @@ print(number, letter)
 
 [Each time through the loop, Python selects the next tuple in the list and assigns the ele-](https://thinkpython.com/code/do_four.py) [ments to](http://tinyurl.com/thinkpython2e) [letter](http://tinyurl.com/thinkpython2e) [and](http://tinyurl.com/thinkpython2e) [number](http://tinyurl.com/thinkpython2e) . The output of this loop is:
 
-[0 a](http://en.wikipedia.org/wiki/Big_O_notation) 1 b [2 c](https://thinkpython.com/code/polygon.py)
+### [0 a](http://en.wikipedia.org/wiki/Big_O_notation) 1 b [2 c](https://thinkpython.com/code/polygon.py)
 
 [If you combine](https://thinkpython.com/code/reducible.py) [zip](https://thinkpython.com/code/reducible.py) [,](https://thinkpython.com/code/reducible.py) [for](https://thinkpython.com/code/reducible.py) and tuple assignment, you get a useful idiom for traversing two [(or more) sequences at the same time. For example,](https://thinkpython.com/code/PokerHandSoln.py) [has_match](https://thinkpython.com/code/list_exercises.py) [takes two sequences,](https://thinkpython.com/code/list_exercises.py) [t1](https://thinkpython.com/code/PokerHandSoln.py) [and](https://thinkpython.com/code/list_exercises.py) [t2](https://thinkpython.com/code/list_exercises.py) [, and returns](https://thinkpython.com/code/PokerHandSoln.py) [True](https://thinkpython.com/code/PokerHandSoln.py) if there is an index [i](https://thinkpython.com/code/words.txt) [such that](https://thinkpython.com/code/words.txt) [t1[i] == t2[i]](https://thinkpython.com/code/words.txt) [:](https://thinkpython.com/code/words.txt)
 
-```
-def has_match(t1, t2):
-for x, y in zip(t1, t2):
-if x == y:
-return True
-return False
-```
+### [def has_match(t1, t2):](http://docs.python.org/3/library/datetime.html) for x, y in zip(t1, t2): if x == y: return True [return False](https://thinkpython.com/code/palindrome_soln.py)
 
 [If you need to traverse the elements of a sequence and their indices, you can use the built-in](https://thinkpython.com/code/flower.py) [function](https://thinkpython.com/code/polygon.py) [enumerate](https://thinkpython.com/code/polygon.py) [:](https://thinkpython.com/code/polygon.py)
 
-for index, element in enumerate( ['](http://gutenberg.org/) [abc](http://gutenberg.org/) ['](http://gutenberg.org/) [):](http://gutenberg.org/) [print(index, element)](https://docs.python.org/3/library/pdb.html)
+### for index, element in enumerate( ['](http://gutenberg.org/) [abc](http://gutenberg.org/) ['](http://gutenberg.org/) [):](http://gutenberg.org/) [print(index, element)](https://docs.python.org/3/library/pdb.html)
 
 [The result from](http://en.wikipedia.org/wiki/Fibonacci_number) [enumerate](http://en.wikipedia.org/wiki/Fibonacci_number) [is an enumerate object, which iterates a sequence of pairs; each](https://thinkpython.com/code/anagram_sets.py) [pair contains an index (starting from 0) and an element from the given sequence. In this](https://thinkpython.com/code/cartalk3.py) [example, the output is](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 
-[0 a](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [1 b](https://thinkpython.com/code/reverse_pair.py) 2 c
+### [0 a](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [1 b](https://thinkpython.com/code/reverse_pair.py) 2 c
 
 Again.
 
@@ -5800,7 +5051,7 @@ dict_items([( ' c ' , 2), ( ' a ' , 0), ( ' b ' , 1)])
 
 The result is a [dict_items](https://thinkpython.com/code/rotate.py) [object, which is an iterator that iterates the key-value pairs. You](https://thinkpython.com/code/invert_dict.py) can use it in a [for](https://thinkpython.com/code/analyze_book2.py) [loop like this:](https://thinkpython.com/code/analyze_book2.py)
 
-[>>> for key, value in d.items():](http://en.wikipedia.org/wiki/Ackermann_function) ... [print(key, value)](https://thinkpython.com/code/ackermann_memo.py) ... [c 2](http://www.cartalk.com/content/puzzlers) a 0 b 1
+### [>>> for key, value in d.items():](http://en.wikipedia.org/wiki/Ackermann_function) ... [print(key, value)](https://thinkpython.com/code/ackermann_memo.py) ... [c 2](http://www.cartalk.com/content/puzzlers) a 0 b 1
 
 [As you should expect from a dictionary, the items are in no particular order.](http://tinyurl.com/thinkpython2e)
 
@@ -5825,13 +5076,11 @@ Going in the other direction, you can use a list of tuples to initialize a new d
 
 It is common to use tuples as keys in dictionaries (primarily because you can’t use lists). For example, a telephone directory might map from last-name, first-name pairs to telephone [numbers. Assuming that we have defined](http://docs.python.org/3/library/datetime.html) [last](http://docs.python.org/3/library/datetime.html) [,](http://docs.python.org/3/library/datetime.html) [first](http://docs.python.org/3/library/datetime.html) [and](http://docs.python.org/3/library/datetime.html) number [, we could write:](http://en.wikipedia.org/wiki/Radix_sort)
 
-```
-directory[last, first] = number
-```
+### [directory[last, first] = number](http://en.wikipedia.org/wiki/Radix_sort)
 
 The expression in brackets is a tuple. We could use tuple assignment to traverse this dic- tionary.
 
-for last, first in directory: [print(first, last, directory[last,first])](https://thinkpython.com/code/flower.py)
+### for last, first in directory: [print(first, last, directory[last,first])](https://thinkpython.com/code/flower.py)
 
 [This loop traverses the keys in](https://thinkpython.com/code/polygon.py) [directory](https://thinkpython.com/code/polygon.py) [, which are tuples. It assigns the elements of each](http://gutenberg.org/) tuple to last and first [, then prints the name and corresponding telephone number.](https://thinkpython.com/code/koch.py)
 
@@ -5843,27 +5092,27 @@ for last, first in directory: [print(first, last, directory[last,first])](https:
 
 ### 12.7. Sequences of sequences
 
-[tuple](https://thinkpython.com/code/letters.py)
+### [tuple](https://thinkpython.com/code/letters.py)
 
-[’Cleese’](http://en.wikipedia.org/wiki/Spiral)
+### [’Cleese’](http://en.wikipedia.org/wiki/Spiral)
 
-’John’
+### ’John’
 
 [Figure 12.1: State diagram.](https://thinkpython.com/code)
 
-[dict](http://creativecommons.org/licenses/by-nc/3.0/)
+### [dict](http://creativecommons.org/licenses/by-nc/3.0/)
 
-(’Cleese’, ’John’) [’08700 100 222’](https://thinkpython.com/code/invert_dict.py)
+### (’Cleese’, ’John’) [’08700 100 222’](https://thinkpython.com/code/invert_dict.py)
 
-[(’Chapman’, ’Graham’)](https://thinkpython.com/code/rotate.py) [’08700 100 222’](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting)
+### [(’Chapman’, ’Graham’)](https://thinkpython.com/code/rotate.py) [’08700 100 222’](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting)
 
-[(’Idle’, ’Eric’)](http://en.wikipedia.org/wiki/Ackermann_function) [’08700 100 222’](http://en.wikipedia.org/wiki/Ackermann_function)
+### [(’Idle’, ’Eric’)](http://en.wikipedia.org/wiki/Ackermann_function) [’08700 100 222’](http://en.wikipedia.org/wiki/Ackermann_function)
 
-[(’Gilliam’, ’Terry’)](http://www.thinkpython.com/) [’08700 100 222’](http://www.thinkpython.com/)
+### [(’Gilliam’, ’Terry’)](http://www.thinkpython.com/) [’08700 100 222’](http://www.thinkpython.com/)
 
-(’Jones’, ’Terry’) [’08700 100 222’](http://www.cartalk.com/content/puzzlers)
+### (’Jones’, ’Terry’) [’08700 100 222’](http://www.cartalk.com/content/puzzlers)
 
-(’Palin’, ’Michael’) ’08700 100 222’
+### (’Palin’, ’Michael’) ’08700 100 222’
 
 [Figure 12.2: State diagram.](http://tinyurl.com/thinkpython2e)
 
@@ -5897,20 +5146,11 @@ Chapter 12. Tuples
 
 [Here’s the result for a simple list:](https://thinkpython.com/code/ackermann.py)
 
-```
->>> from structshape import structshape
->>> t = [1, 2, 3]
->>> structshape(t)
-' list of 3 int '
-```
+### [>>> from structshape import structshape](https://thinkpython.com/code/Circle.py) [>>> t = [1, 2, 3]](http://docs.python.org/3/reference/datamodel.html#specialnames) >>> structshape(t) ' list of 3 int ['](https://thinkpython.com/code/has_duplicates.py)
 
 [A fancier program might write “list of 3 int](https://thinkpython.com/code/BadKangaroo.py) [s](http://en.wikipedia.org/wiki/Sexagesimal) [”, but it was easier not to deal with plurals.](http://en.wikipedia.org/wiki/Sexagesimal) [Here’s a list of lists:](https://thinkpython.com/code/draw.py)
 
-```
->>> t2 = [[1,2], [3,4], [5,6]]
->>> structshape(t2)
-' list of 3 list of 2 int '
-```
+### [>>> t2 = [[1,2], [3,4], [5,6]]](https://thinkpython.com/code/most_frequent.py) [>>> structshape(t2)](https://thinkpython.com/code/rotate_pairs.py) ['](https://thinkpython.com/code/Time1.py) [list of 3 list of 2 int](https://thinkpython.com/code/Point1_soln.py) '
 
 If the elements of the list are not the same type, structshape groups them, in order, by type:
 
@@ -5931,11 +5171,7 @@ If the elements of the list are not the same type, structshape groups them, in o
 
 And here’s a dictionary with 3 items that map integers to strings.
 
-```
->>> d = dict(lt)
->>> structshape(d)
-' dict of 3 int->str '
-```
+### >>> d = dict(lt) [>>> structshape(d)](http://docs.python.org/3/library/stdtypes.html#string-methods) ' [dict of 3 int->str](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py)
 
 [If you are having trouble keeping track of your data structures,](https://thinkpython.com/code/koch.py) [structshape](https://thinkpython.com/code/koch.py) [can help.](https://thinkpython.com/code/sed.py)
 
@@ -6052,32 +5288,21 @@ Chapter 13. Case study: data structure selection
 | ------------------ | ------ | ----------------------------------------------------------------------- |
 | Each time you call | random | , you get the next number in a long series. To see a sample, run        |
 
-```
-import random
-```
+### import random
 
-[for i in range(10):](https://thinkpython.com/code/polygon.py) [x = random.random()](https://thinkpython.com/code/reducible.py) [print(x)](http://www.cartalk.com/content/puzzlers)
+### [for i in range(10):](https://thinkpython.com/code/polygon.py) [x = random.random()](https://thinkpython.com/code/reducible.py) [print(x)](http://www.cartalk.com/content/puzzlers)
 
 [The function](https://thinkpython.com/code/list_exercises.py) [randint](https://thinkpython.com/code/list_exercises.py) takes parameters low and high and returns an integer between low [and](http://docs.python.org/3/library/datetime.html) [high](http://docs.python.org/3/library/datetime.html) [(including both).](http://docs.python.org/3/library/datetime.html)
 
-```
->>> random.randint(5, 10)
-```
+### [>>> random.randint(5, 10)](http://en.wikipedia.org/wiki/Radix_sort)
 
-```
->>> random.randint(5, 10)
-```
+### >>> random.randint(5, 10)
 
 [To choose an element from a sequence at random, you can use](https://thinkpython.com/code/flower.py) [choice](https://thinkpython.com/code/flower.py) [:](https://thinkpython.com/code/flower.py)
 
-```
->>> t = [1, 2, 3]
->>> random.choice(t)
-```
+### [>>> t = [1, 2, 3]](https://thinkpython.com/code/polygon.py) >>> random.choice(t)
 
-```
->>> random.choice(t)
-```
+### [>>> random.choice(t)](http://en.wikipedia.org/wiki/Fibonacci_number)
 
 [The](https://thinkpython.com/code/anagram_sets.py) [random](https://thinkpython.com/code/anagram_sets.py) [module also provides functions to generate random values from continuous](https://thinkpython.com/code/c06d) [distributions including Gaussian, exponential, gamma, and a few more.](https://thinkpython.com/code/pronounce.py) Exercise 13.5. [Write a function named](https://thinkpython.com/code/double.py) [choose_from_hist](https://thinkpython.com/code/metathesis.py) [that takes a histogram as defined in](https://thinkpython.com/code/metathesis.py) [Section 11.2 and returns a random value from the histogram, chosen with probability in proportion](http://wiki.python.org/moin/BitwiseOperators) to frequency. For example, for this histogram:
 
@@ -6098,29 +5323,15 @@ import random
 
 Here is a program that reads a file and builds a histogram of the words in the file:
 
-```
-import string
-```
+### [import string](https://thinkpython.com/code/Circle.py)
 
-```
-def process_file(filename):
-hist = dict()
-fp = open(filename)
-for line in fp:
-process_line(line, hist)
-return hist
-```
+### [def process_file(filename):](http://en.wikipedia.org/wiki/Birthday_paradox) hist = dict() [fp = open(filename)](https://thinkpython.com/code/BadKangaroo.py) [for line in fp:](https://thinkpython.com/code/draw.py) [process_line(line, hist)](http://en.wikipedia.org/wiki/Letter_frequencies) [return hist](https://thinkpython.com/code/rotate_pairs.py)
 
-```
-def process_line(line, hist):
-line = line.replace( ' - ' , ' ' )
-```
+### [def process_line(line, hist):](https://thinkpython.com/code/do_four.py) line = line.replace( ' - ' , ' ' )
 
 [for word in line.split():](https://thinkpython.com/code/markov.py) [word = word.strip(string.punctuation + string.whitespace)](http://wikipedia.org/wiki/Moby_Project) word = word.lower() [hist[word] = hist.get(word, 0) + 1](https://thinkpython.com/code/reducible.py)
 
-```
-hist = process_file( ' emma.txt ' )
-```
+### hist = process_file( ' emma.txt ' )
 
 [This program reads](http://docs.python.org/3/library/datetime.html) [emma.txt](http://docs.python.org/3/library/datetime.html) [, which contains the text of](http://docs.python.org/3/library/datetime.html) [Emma](http://en.wikipedia.org/wiki/Radix_sort) [by Jane Austen.](http://en.wikipedia.org/wiki/Radix_sort)
 
@@ -6132,10 +5343,7 @@ process_line uses the string method replace [to replace hyphens with spaces befo
 
 [To count the total number of words in the file, we can add up the frequencies in the his-](https://thinkpython.com/code/c06d) [togram:](https://thinkpython.com/code/reverse_pair.py)
 
-```
-def total_words(hist):
-return sum(hist.values())
-```
+### [def total_words(hist):](http://wiki.python.org/moin/BitwiseOperators) return sum(hist.values())
 
 ```
 Chapter 13. Case study: data structure selection
@@ -6143,10 +5351,7 @@ Chapter 13. Case study: data structure selection
 
 [The number of different words is just the number of items in the dictionary:](https://thinkpython.com/code/polygon.py)
 
-```
-def different_words(hist):
-return len(hist)
-```
+### def different_words(hist): [return len(hist)](http://www.cartalk.com/content/puzzlers)
 
 [Here is some code to print the results:](https://thinkpython.com/code/grid.py)
 
@@ -6156,7 +5361,7 @@ return len(hist)
 
 [And the results:](https://thinkpython.com/code/emma.txt)
 
-[Total number of words: 161080](https://thinkpython.com/code/rotate.py) [Number of different words: 7214](http://en.wikipedia.org/wiki/Ackermann_function)
+### [Total number of words: 161080](https://thinkpython.com/code/rotate.py) [Number of different words: 7214](http://en.wikipedia.org/wiki/Ackermann_function)
 
 #### 13.4 [Most common words](https://thinkpython.com/code/Circle.py)
 
@@ -6164,12 +5369,9 @@ return len(hist)
 
 [The following function takes a histogram and returns a list of word-frequency tuples:](https://thinkpython.com/code/BadKangaroo.py)
 
-[def most_common(hist):](http://en.wikipedia.org/wiki/Letter_frequencies) t = [] [for key, value in hist.items():](https://thinkpython.com/code/rotate_pairs.py) [t.append((value, key))](https://thinkpython.com/code/Point1_soln.py)
+### [def most_common(hist):](http://en.wikipedia.org/wiki/Letter_frequencies) t = [] [for key, value in hist.items():](https://thinkpython.com/code/rotate_pairs.py) [t.append((value, key))](https://thinkpython.com/code/Point1_soln.py)
 
-```
-t.sort(reverse=True)
-return t
-```
+### [t.sort(reverse=True)](http://tinyurl.com/thinkpython2e) return t
 
 [In each tuple, the frequency appears first, so the resulting list is sorted by frequency. Here](https://thinkpython.com/code/wordlist.py) is a loop that prints the ten most common words:
 
@@ -6179,7 +5381,7 @@ I use the keyword argument sep to tell print to use a tab character as a “sepa
 
 The most common words are: to the and of i a it [her](https://thinkpython.com/code/anagram_sets.py) was she
 
-[This code can be simplified using the](http://wiki.python.org/moin/BitwiseOperators) [key](http://wiki.python.org/moin/BitwiseOperators) [parameter of the](https://thinkpython.com/code/typewriter.py) [sort](https://wiki.python.org/moin/HowTo/Sorting) [function. If you are curi-](https://wiki.python.org/moin/HowTo/Sorting) ous, you can read about it at https://wiki.python.org/moin/HowTo/Sorting .
+[This code can be simplified using the](http://wiki.python.org/moin/BitwiseOperators) [key](http://wiki.python.org/moin/BitwiseOperators) [parameter of the](https://thinkpython.com/code/typewriter.py) [sort](https://wiki.python.org/moin/HowTo/Sorting) [function. If you are curi-](https://wiki.python.org/moin/HowTo/Sorting) ous, you can read about it at [https://wiki.python.org/moin/HowTo/Sorting](https://wiki.python.org/moin/HowTo/Sorting) .
 
 ### 13.5. Optional parameters
 
@@ -6193,15 +5395,11 @@ The most common words are: to the and of i a it [her](https://thinkpython.com/co
 
 If you only provide one argument:
 
-```
-print_most_common(hist)
-```
+### [print_most_common(hist)](http://en.wikipedia.org/wiki/Md5)
 
 num gets the default value. If you provide two arguments:
 
-```
-print_most_common(hist, 20)
-```
+### [print_most_common(hist, 20)](https://thinkpython.com/code/zipf.py)
 
 num gets the value of the argument instead. In other words, the optional argument [over-](https://thinkpython.com/code/Map.py) [rides](https://thinkpython.com/code/BadKangaroo.py) [the default value.](https://thinkpython.com/code/BadKangaroo.py)
 
@@ -6213,16 +5411,13 @@ num gets the value of the argument instead. In other words, the optional argumen
 
 [subtract](https://thinkpython.com/code/PokerHandSoln.py) [takes dictionaries](https://thinkpython.com/code/PokerHandSoln.py) d1 and d2 [and returns a new dictionary that contains all the](https://thinkpython.com/code/words.txt) [keys from](https://thinkpython.com/code/list_exercises.py) d1 that are not in d2 . Since we don’t really care about the values, we set them all [to None.](http://docs.python.org/3/library/datetime.html)
 
-def subtract(d1, d2): res = dict() for key in d1: [if key not in d2:](https://thinkpython.com/code/palindrome_soln.py) [res[key] = None](https://thinkpython.com/code/flower.py) [return res](https://thinkpython.com/code/polygon.py)
+### def subtract(d1, d2): res = dict() for key in d1: [if key not in d2:](https://thinkpython.com/code/palindrome_soln.py) [res[key] = None](https://thinkpython.com/code/flower.py) [return res](https://thinkpython.com/code/polygon.py)
 
 [To find the words in the book that are not in](https://thinkpython.com/code/koch.py) [words.txt](https://thinkpython.com/code/koch.py) [, we can use](https://thinkpython.com/code/sed.py) [process_file](https://thinkpython.com/code/sed.py) [to build](https://thinkpython.com/code/sed.py) [a histogram for](https://docs.python.org/3/library/pdb.html) [words.txt](https://docs.python.org/3/library/pdb.html) [, and then subtract:](https://docs.python.org/3/library/pdb.html)
 
-```
-words = process_file( ' words.txt ' )
-diff = subtract(hist, words)
-```
+### [words = process_file(](http://en.wikipedia.org/wiki/Fibonacci_number) ['](https://thinkpython.com/code/anagram_sets.py) [words.txt](https://thinkpython.com/code/anagram_sets.py) ['](https://thinkpython.com/code/anagram_sets.py) [)](https://thinkpython.com/code/anagram_sets.py) [diff = subtract(hist, words)](http://en.wikipedia.org/wiki/Koch_snowflake)
 
-[print("Words in the book that aren](https://thinkpython.com/code/c06d) ['](https://thinkpython.com/code/c06d) [t in the word list:")](https://thinkpython.com/code/reverse_pair.py) [for word in diff:](https://thinkpython.com/code/reverse_pair.py) print(word, end= [' '](https://thinkpython.com/code/metathesis.py) [)](https://thinkpython.com/code/metathesis.py)
+### [print("Words in the book that aren](https://thinkpython.com/code/c06d) ['](https://thinkpython.com/code/c06d) [t in the word list:")](https://thinkpython.com/code/reverse_pair.py) [for word in diff:](https://thinkpython.com/code/reverse_pair.py) print(word, end= [' '](https://thinkpython.com/code/metathesis.py) [)](https://thinkpython.com/code/metathesis.py)
 
 Here are some of the results from Emma :
 
@@ -6240,11 +5435,9 @@ Some of these words are names and possessives. Others, like “rencontre”, are
 
 To choose a random word from the histogram, the simplest algorithm is to build a list with [multiple copies of each word, according to the observed frequency, and then choose from](http://tinyurl.com/thinkpython2e) the list:
 
-[def random_word(h):](https://thinkpython.com/code/BadKangaroo.py) [t = []](https://thinkpython.com/code/markov.py) [for word, freq in h.items():](http://en.wikipedia.org/wiki/Letter_frequencies) [t.extend([word] * freq)](https://thinkpython.com/code/rotate_pairs.py)
+### [def random_word(h):](https://thinkpython.com/code/BadKangaroo.py) [t = []](https://thinkpython.com/code/markov.py) [for word, freq in h.items():](http://en.wikipedia.org/wiki/Letter_frequencies) [t.extend([word] * freq)](https://thinkpython.com/code/rotate_pairs.py)
 
-```
-return random.choice(t)
-```
+### [return random.choice(t)](http://www.cartalk.com/content/puzzlers)
 
 The expression [[word] * freq](http://tinyurl.com/thinkpython2e) [creates a list with](http://tinyurl.com/thinkpython2e) freq copies of the string word . The extend method is similar to append except that the argument is a sequence.
 
@@ -6268,7 +5461,7 @@ Exercise 13.7. [Write a program that uses this algorithm to choose a random word
 
 ### 13.8. Markov analysis
 
-[this the small regard harriet which knightley](https://thinkpython.com/code/polygon.py) ' s it most things
+### [this the small regard harriet which knightley](https://thinkpython.com/code/polygon.py) ' s it most things
 
 [A series of random words seldom makes sense because there is no relationship between](http://en.wikipedia.org/wiki/Spiral) [successive words. For example, in a real sentence you would expect an article like “the” to](http://www.cartalk.com/content/puzzlers) be followed by an adjective or a noun, and probably not a verb or adverb.
 
@@ -6306,7 +5499,7 @@ Chapter 13. Case study: data structure selection
 
 [Credit: This case study is based on an example from Kernighan and Pike,](https://thinkpython.com/code/grid.py) The Practice of Pro- gramming , Addison-Wesley, 1999.
 
-[You should attempt this exercise before you go on;](http://creativecommons.org/licenses/by-nc/3.0/) then you can download my so- [lution from](https://thinkpython.com/code/emma.txt) https://thinkpython.com/code/markov.py [.](https://thinkpython.com/code/invert_dict.py) [You will also need](https://thinkpython.com/code/invert_dict.py) [https://](https://thinkpython.com/code/invert_dict.py) [thinkpython.com/code/emma.txt](https://thinkpython.com/code/rotate.py) [.](https://thinkpython.com/code/rotate.py)
+[You should attempt this exercise before you go on;](http://creativecommons.org/licenses/by-nc/3.0/) then you can download my so- [lution from](https://thinkpython.com/code/emma.txt) [https://thinkpython.com/code/markov.py](https://thinkpython.com/code/markov.py) [.](https://thinkpython.com/code/invert_dict.py) [You will also need](https://thinkpython.com/code/invert_dict.py) [https://](https://thinkpython.com/code/invert_dict.py) [thinkpython.com/code/emma.txt](https://thinkpython.com/code/rotate.py) [.](https://thinkpython.com/code/rotate.py)
 
 #### 13.9 [Data structures](https://thinkpython.com/code/ackermann_memo.py)
 
@@ -6328,10 +5521,7 @@ For the suffixes, one option is a list; another is a histogram (dictionary).
 
 [Your first choice might be a list, since it is easy to add and remove elements, but we also](http://docs.python.org/3/library/datetime.html) need to be able to use the prefixes as keys in a dictionary, so that rules out lists. With tuples, you can’t append or remove, but you can use the addition operator to form a new tuple:
 
-```
-def shift(prefix, word):
-return prefix[1:] + (word,)
-```
+### def shift(prefix, word): [return prefix[1:] + (word,)](https://thinkpython.com/code/palindrome_soln.py)
 
 shift [takes a tuple of words,](http://docs.python.org/3/library/stdtypes.html#string-methods) [prefix](https://thinkpython.com/code/flower.py) [, and a string,](https://thinkpython.com/code/flower.py) [word](https://thinkpython.com/code/flower.py) , and forms a new tuple that has all the words in [prefix](https://thinkpython.com/code/polygon.py) [except the first, and](https://thinkpython.com/code/polygon.py) [word](https://thinkpython.com/code/polygon.py) added to the end.
 
@@ -6405,13 +5595,9 @@ Exercise 13.9. [The “rank” of a word is its position in a list of words sort
 
 [Zipf’s law describes a relationship between the ranks and frequencies of words in natural languages](http://en.wikipedia.org/wiki/Zipf's_law) ( [http: // en. wikipedia. org/ wiki/ Zipf’s_ law](http://en.wikipedia.org/wiki/Spiral) [). Specifically, it predicts that the frequency,](https://thinkpython.com/code/Time2.py) [f , of the word with rank r is:](http://www.cartalk.com/content/puzzlers)
 
-```
-− s
-```
+[−](https://thinkpython.com/code) [s](https://thinkpython.com/code)
 
-```
-f = cr
-```
+[f](https://thinkpython.com/code) [=](https://thinkpython.com/code) [cr](https://thinkpython.com/code)
 
 where s and c are parameters that depend on the language and the text. If you take the logarithm of [both sides of this equation, you get:](http://creativecommons.org/licenses/by-nc/3.0/)
 
@@ -6463,17 +5649,15 @@ Chapter 14. Files
 
 [open](https://thinkpython.com/code/Time2.py) [returns a file object that provides methods for working with the file.](http://www.cartalk.com/content/puzzlers) [The](https://thinkpython.com/code/spiral.py) [write](https://thinkpython.com/code/spiral.py) [method puts data into the file.](https://thinkpython.com/code/grid.py)
 
->>> line1 = "This here ' [s the wattle,\n"](https://thinkpython.com/code/Time2_soln.py) >>> fout.write(line1)
+### >>> line1 = "This here ' [s the wattle,\n"](https://thinkpython.com/code/Time2_soln.py) >>> fout.write(line1)
 
 The return value is the number of characters that were written. The file object keeps track [of where it is, so if you call](https://thinkpython.com/code/invert_dict.py) [write](https://thinkpython.com/code/analyze_book2.py) [again, it adds the new data to the end of the file.](https://thinkpython.com/code/analyze_book2.py)
 
-[>>> line2 = "the emblem of our land.\n"](http://en.wikipedia.org/wiki/Ackermann_function) [>>> fout.write(line2)](https://thinkpython.com/code/ackermann_memo.py)
+### [>>> line2 = "the emblem of our land.\n"](http://en.wikipedia.org/wiki/Ackermann_function) [>>> fout.write(line2)](https://thinkpython.com/code/ackermann_memo.py)
 
 When you are done writing, you should close the file.
 
-```
->>> fout.close()
-```
+### >>> fout.close()
 
 [If you don’t close the file, it gets closed for you when the program ends.](http://tinyurl.com/thinkpython2e)
 
@@ -6481,10 +5665,7 @@ When you are done writing, you should close the file.
 
 [The argument of](https://thinkpython.com/code/markov2.py) [write](https://thinkpython.com/code/rotate_pairs.py) [has to be a string, so if we want to put other values in a file, we](https://thinkpython.com/code/Point2_soln.py) have to convert them to strings. The easiest way to do that is with [str](http://www.cartalk.com/content/puzzlers) [:](http://www.cartalk.com/content/puzzlers)
 
-```
->>> x = 52
->>> fout.write(str(x))
-```
+### [>>> x = 52](https://thinkpython.com/code/Time1_soln.py) [>>> fout.write(str(x))](http://tinyurl.com/thinkpython2e)
 
 An alternative is to use the format operator , % . When applied to integers, % is the modulus [operator. But when the first operand is a string,](https://thinkpython.com/code/markov.py) [%](https://thinkpython.com/code/markov.py) [is the format operator.](https://thinkpython.com/code/markov.py)
 
@@ -6492,20 +5673,13 @@ An alternative is to use the format operator , % . When applied to integers, % i
 
 [For example, the format sequence](https://thinkpython.com/code/list_exercises.py) ' %d ' [means that the second operand should be format-](https://thinkpython.com/code/words.txt) [ted as a decimal integer:](http://docs.python.org/3/library/datetime.html)
 
-```
->>> camels = 42
->>> ' %d ' % camels
-' '
-```
+### >>> camels = 42 >>> ' %d ' % camels ' '
 
 The result is the string ['](https://thinkpython.com/code/palindrome_soln.py) ['](https://thinkpython.com/code/palindrome_soln.py) [, which is not to be confused with the integer value](https://thinkpython.com/code/palindrome_soln.py) [.](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
 [A format sequence can appear anywhere in the string, so you can embed a value in a](https://thinkpython.com/code/flower.py) sentence:
 
-```
->>> ' I have spotted %d camels. ' % camels
-' I have spotted 42 camels. '
-```
+### >>> ' I have spotted %d camels. ['](https://thinkpython.com/code/koch.py) [% camels](https://thinkpython.com/code/koch.py) ' [I have spotted 42 camels.](http://en.wikipedia.org/wiki/Fibonacci_number) ['](https://thinkpython.com/code/pie.py)
 
 [If there is more than one format sequence in the string, the second argument has to be a](https://thinkpython.com/code/inlist.py) [tuple. Each format sequence is matched with an element of the tuple, in order.](https://thinkpython.com/code/cartalk3.py)
 
@@ -6521,7 +5695,7 @@ The result is the string ['](https://thinkpython.com/code/palindrome_soln.py) ['
 
 [In the first example, there aren’t enough elements; in the second, the element is the wrong](http://docs.python.org/3/library/stdtypes.html#types-set) [type.](https://thinkpython.com/code/emma.txt)
 
-[For more information on the format operator, see](https://thinkpython.com/code/analyze_book2.py) https://docs.python.org/3/library/ [stdtypes.html#printf-style-string-formatting](http://en.wikipedia.org/wiki/Ackermann_function) [.](http://en.wikipedia.org/wiki/Ackermann_function) [A more powerful alternative is](https://docs.python.org/3/library/stdtypes.html#str.format) [the string format method, which you can read about at](https://thinkpython.com/code/cartalk1.py) [https://docs.python.org/3/](https://thinkpython.com/code/cartalk1.py) [library/stdtypes.html#str.format](https://thinkpython.com/code/ackermann_memo.py) [.](https://thinkpython.com/code/ackermann_memo.py)
+[For more information on the format operator, see](https://thinkpython.com/code/analyze_book2.py) [https://docs.python.org/3/library/](https://docs.python.org/3/library/) [stdtypes.html#printf-style-string-formatting](http://en.wikipedia.org/wiki/Ackermann_function) [.](http://en.wikipedia.org/wiki/Ackermann_function) [A more powerful alternative is](https://docs.python.org/3/library/stdtypes.html#str.format) [the string format method, which you can read about at](https://thinkpython.com/code/cartalk1.py) [https://docs.python.org/3/](https://thinkpython.com/code/cartalk1.py) [library/stdtypes.html#str.format](https://thinkpython.com/code/ackermann_memo.py) [.](https://thinkpython.com/code/ackermann_memo.py)
 
 #### [14.4](http://docs.python.org/3/reference/datamodel.html#specialnames) [Filenames and paths](http://tinyurl.com/thinkpython2e)
 
@@ -6529,12 +5703,7 @@ The result is the string ['](https://thinkpython.com/code/palindrome_soln.py) ['
 
 [The](https://thinkpython.com/code/most_frequent.py) [os](https://thinkpython.com/code/most_frequent.py) [module provides functions for working with files and directories (“os” stands for](https://thinkpython.com/code/Time1_soln.py) [“operating system”).](https://thinkpython.com/code/rotate_pairs.py) [os.getcwd](https://thinkpython.com/code/rotate_pairs.py) [returns the name of the current directory:](https://thinkpython.com/code/Time1.py)
 
-```
->>> import os
->>> cwd = os.getcwd()
->>> cwd
-' /home/dinsdale '
-```
+### [>>> import os](http://www.cartalk.com/content/puzzlers) >>> cwd = os.getcwd() [>>> cwd](http://tinyurl.com/thinkpython2e) ['](http://en.wikipedia.org/wiki/Big_O_notation) [/home/dinsdale](http://en.wikipedia.org/wiki/Big_O_notation) ['](http://en.wikipedia.org/wiki/Big_O_notation)
 
 [cwd](https://thinkpython.com/code/polygon.py) [stands for “current working directory”. The result in this example is](http://wikipedia.org/wiki/Moby_Project) [/home/dinsdale](https://thinkpython.com/code/polygon.py) [,](https://thinkpython.com/code/polygon.py) which is the home directory of a user named dinsdale .
 
@@ -6544,11 +5713,11 @@ A simple filename, like memo.txt is also considered a path, but it is a relative
 
 A path that begins with / does not depend on the current directory; it is called an absolute path [. To find the absolute path to a file, you can use](https://thinkpython.com/code/palindrome_soln.py) [os.path.abspath](https://thinkpython.com/code/palindrome_soln.py) [:](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
-[>>> os.path.abspath(](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [memo.txt](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [)](http://docs.python.org/3/library/stdtypes.html#string-methods) ' [/home/dinsdale/memo.txt](https://thinkpython.com/code/flower.py) ['](https://thinkpython.com/code/flower.py)
+### [>>> os.path.abspath(](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [memo.txt](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [)](http://docs.python.org/3/library/stdtypes.html#string-methods) ' [/home/dinsdale/memo.txt](https://thinkpython.com/code/flower.py) ['](https://thinkpython.com/code/flower.py)
 
 os.path [provides other functions for working with filenames and paths.](http://gutenberg.org/) [For example,](https://thinkpython.com/code/sed.py) [os.path.exists](https://docs.python.org/3/library/pdb.html) [checks whether a file or directory exists:](https://thinkpython.com/code/koch.py)
 
-[>>> os.path.exists(](http://en.wikipedia.org/wiki/Fibonacci_number) ['](http://en.wikipedia.org/wiki/Fibonacci_number) [memo.txt](https://thinkpython.com/code/anagram_sets.py) ['](https://thinkpython.com/code/anagram_sets.py) [)](https://thinkpython.com/code/anagram_sets.py) [True](https://thinkpython.com/code/cartalk3.py)
+### [>>> os.path.exists(](http://en.wikipedia.org/wiki/Fibonacci_number) ['](http://en.wikipedia.org/wiki/Fibonacci_number) [memo.txt](https://thinkpython.com/code/anagram_sets.py) ['](https://thinkpython.com/code/anagram_sets.py) [)](https://thinkpython.com/code/anagram_sets.py) [True](https://thinkpython.com/code/cartalk3.py)
 
 [If it exists,](https://thinkpython.com/code/anagram_sets.py) [os.path.isdir](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [checks whether it’s a directory:](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 
@@ -6569,18 +5738,13 @@ os.listdir [returns a list of the files (and other directories) in the given dir
 
 [To demonstrate these functions, the following example “walks” through a directory, prints](https://thinkpython.com/code/Time2_soln.py) [the names of all the files, and calls itself recursively on all the directories.](http://creativecommons.org/licenses/by-nc/3.0/)
 
-[def walk(dirname):](https://thinkpython.com/code/emma.txt) [for name in os.listdir(dirname):](https://thinkpython.com/code/rotate.py) [path = os.path.join(dirname, name)](http://en.wikipedia.org/wiki/Ackermann_function)
+### [def walk(dirname):](https://thinkpython.com/code/emma.txt) [for name in os.listdir(dirname):](https://thinkpython.com/code/rotate.py) [path = os.path.join(dirname, name)](http://en.wikipedia.org/wiki/Ackermann_function)
 
-```
-if os.path.isfile(path):
-print(path)
-else:
-walk(path)
-```
+### [if os.path.isfile(path):](https://thinkpython.com/code/ackermann_memo.py) [print(path)](https://thinkpython.com/code/ackermann.py) [else:](http://en.wikipedia.org/wiki/Md5) [walk(path)](https://thinkpython.com/code/Circle.py)
 
 [os.path.join](http://docs.python.org/3/reference/datamodel.html#specialnames) [takes a directory and a file name and joins them into a complete path.](http://tinyurl.com/thinkpython2e)
 
-The os module provides a function called walk that is similar to this one but more ver- satile. [As an exercise, read the documentation and use it to print the names of the](http://en.wikipedia.org/wiki/Sexagesimal) [files in a given directory and its subdirectories.](https://thinkpython.com/code/walk.py) [You can download my solution from](https://thinkpython.com/code/Time1.py) https://thinkpython.com/code/walk.py .
+The os module provides a function called walk that is similar to this one but more ver- satile. [As an exercise, read the documentation and use it to print the names of the](http://en.wikipedia.org/wiki/Sexagesimal) [files in a given directory and its subdirectories.](https://thinkpython.com/code/walk.py) [You can download my solution from](https://thinkpython.com/code/Time1.py) [https://thinkpython.com/code/walk.py](https://thinkpython.com/code/walk.py) .
 
 #### 14.5 [Catching exceptions](http://tinyurl.com/thinkpython2e)
 
@@ -6639,9 +5803,7 @@ print( ' Something went wrong. ' )
 
 [When you create a new item,](https://thinkpython.com/code/markov.py) [dbm](https://thinkpython.com/code/markov.py) [updates the database file.](https://thinkpython.com/code/markov.py)
 
-```
->>> db[ ' cleese.png ' ] = ' Photo of John Cleese. '
-```
+### [>>> db[](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [cleese.png](https://thinkpython.com/code/wordlist.py) ['](http://wikipedia.org/wiki/Moby_Project) [] =](http://wikipedia.org/wiki/Moby_Project) ['](http://wikipedia.org/wiki/Moby_Project) [Photo of John Cleese.](http://wikipedia.org/wiki/Moby_Project) ['](http://wikipedia.org/wiki/Moby_Project)
 
 [When you access one of the items,](http://www.cartalk.com/content/puzzlers) [dbm](https://thinkpython.com/code/reducible.py) [reads the file:](https://thinkpython.com/code/reducible.py)
 
@@ -6658,13 +5820,11 @@ b ' Photo of John Cleese. '
 
 [Some dictionary methods, like](http://en.wikipedia.org/wiki/Fibonacci_number) [keys](https://thinkpython.com/code/anagram_sets.py) [and](https://thinkpython.com/code/anagram_sets.py) [items](https://thinkpython.com/code/anagram_sets.py) [, don’t work with database objects.](http://en.wikipedia.org/wiki/Koch_snowflake) [But](http://en.wikipedia.org/wiki/Koch_snowflake) [iteration with a](http://en.wikipedia.org/wiki/Koch_snowflake) [for](http://en.wikipedia.org/wiki/Koch_snowflake) [loop works:](http://en.wikipedia.org/wiki/Koch_snowflake)
 
-for key in db.keys(): [print(key, db[key])](https://thinkpython.com/code/reverse_pair.py)
+### for key in db.keys(): [print(key, db[key])](https://thinkpython.com/code/reverse_pair.py)
 
 [As with other files, you should close the database when you are done:](http://puzzlers.org/)
 
-```
->>> db.close()
-```
+### >>> db.close()
 
 ```
 Chapter 14. Files
@@ -6678,31 +5838,15 @@ The pickle [module can help. It translates almost any type of object into a stri
 
 pickle.dumps takes an object as a parameter and returns a string representation ( dumps is [short for “dump string”):](https://thinkpython.com/code/rotate.py)
 
-```
->>> import pickle
->>> t = [1, 2, 3]
->>> pickle.dumps(t)
-b ' \x80\x03]q\x00(K\x01K\x02K\x03e. '
-```
+### [>>> import pickle](https://thinkpython.com/code/pi.py) [>>> t = [1, 2, 3]](https://thinkpython.com/code/structshape.py) [>>> pickle.dumps(t)](https://thinkpython.com/code/ackermann_memo.py) b ' [\x80\x03]q\x00(K\x01K\x02K\x03e.](https://thinkpython.com/code/ackermann.py) '
 
 The format isn’t obvious to human readers; it is meant to be easy for pickle to interpret. pickle.loads [(“load string”) reconstitutes the object:](https://thinkpython.com/code/Circle.py)
 
-```
->>> t1 = [1, 2, 3]
->>> s = pickle.dumps(t1)
->>> t2 = pickle.loads(s)
->>> t2
-[1, 2, 3]
-```
+### [>>> t1 = [1, 2, 3]](http://docs.python.org/3/reference/datamodel.html#specialnames) [>>> s = pickle.dumps(t1)](http://en.wikipedia.org/wiki/Birthday_paradox) >>> t2 = pickle.loads(s) >>> t2 [[1, 2, 3]](https://thinkpython.com/code/walk.py)
 
 [Although the new object has the same value as the old, it is not (in general) the same object:](https://thinkpython.com/code/rotate_pairs.py)
 
-```
->>> t1 == t2
-True
->>> t1 is t2
-False
-```
+### [>>> t1 == t2](https://thinkpython.com/code/Time1.py) [True](https://thinkpython.com/code/Time1_soln.py) >>> t1 is t2 False
 
 [In other words, pickling and then unpickling has the same effect as copying the object.](https://thinkpython.com/code/markov.py)
 
@@ -6716,10 +5860,7 @@ Any program that you can launch from the shell can also be launched from Python 
 
 [For example, the Unix command](http://en.wikipedia.org/wiki/Fibonacci_number) [ls -l](https://thinkpython.com/code/anagram_sets.py) [normally displays the contents of the current di-](https://thinkpython.com/code/anagram_sets.py) [rectory in long format. You can launch](http://en.wikipedia.org/wiki/Koch_snowflake) [ls](https://thinkpython.com/code/cartalk3.py) [with](https://thinkpython.com/code/cartalk3.py) [os.popen](https://thinkpython.com/code/cartalk3.py) [:](https://thinkpython.com/code/cartalk3.py)
 
-```
->>> cmd = ' ls -l '
->>> fp = os.popen(cmd)
-```
+### [>>> cmd =](https://thinkpython.com/code/anagram_sets.py) ['](https://thinkpython.com/code/anagram_sets.py) [ls -l](https://en.wikipedia.org/wiki/Rubber_duck_debugging) ['](https://en.wikipedia.org/wiki/Rubber_duck_debugging) >>> fp = os.popen(cmd)
 
 popen [is deprecated now, which means we are supposed to stop using it and start using the](https://thinkpython.com/code/metathesis.py) [subprocess](http://en.wikipedia.org/wiki/Newline) [module. But for simple cases, I find](http://wiki.python.org/moin/BitwiseOperators) [subprocess](http://wiki.python.org/moin/BitwiseOperators) [more complicated than necessary. So I am going to keep using](https://wiki.python.org/moin/HowTo/Sorting) popen until they take it away.
 
@@ -6727,21 +5868,15 @@ popen [is deprecated now, which means we are supposed to stop using it and start
 
 [The argument is a string that contains a shell command. The return value is an object that](http://en.wikipedia.org/wiki/Zipf's_law) [behaves like an open file. You can read the output from the](http://en.wikipedia.org/wiki/Spiral) [ls](http://en.wikipedia.org/wiki/Spiral) [process one line at a time](https://thinkpython.com/code/Time2.py) [with](http://www.cartalk.com/content/puzzlers) [readline](http://www.cartalk.com/content/puzzlers) [or get the whole thing at once with](http://www.cartalk.com/content/puzzlers) read :
 
-```
->>> res = fp.read()
-```
+### [>>> res = fp.read()](https://thinkpython.com/code/spiral.py)
 
 When you are done, you close the pipe like a file:
 
-```
->>> stat = fp.close()
->>> print(stat)
-None
-```
+### >>> stat = fp.close() [>>> print(stat)](http://creativecommons.org/licenses/by-nc/3.0/) [None](https://thinkpython.com/code/emma.txt)
 
 [The return value is the final status of the](https://thinkpython.com/code/analyze_book2.py) [ls](https://thinkpython.com/code/analyze_book2.py) [process;](https://thinkpython.com/code/analyze_book2.py) None means that it ended normally [(with no errors).](http://en.wikipedia.org/wiki/Ackermann_function)
 
-[For example, most Unix systems provide a command called](https://thinkpython.com/code/ackermann_memo.py) [md5sum](https://thinkpython.com/code/ackermann.py) [that reads the contents](https://thinkpython.com/code/ackermann.py) of a file and computes a “checksum”. You can read about MD5 at http://en.wikipedia. org/wiki/Md5 . This command provides an efficient way to check whether two files have [the same contents. The probability that different contents yield the same checksum is very](http://docs.python.org/3/reference/datamodel.html#specialnames) [small (that is, unlikely to happen before the universe collapses).](http://tinyurl.com/thinkpython2e)
+[For example, most Unix systems provide a command called](https://thinkpython.com/code/ackermann_memo.py) [md5sum](https://thinkpython.com/code/ackermann.py) [that reads the contents](https://thinkpython.com/code/ackermann.py) of a file and computes a “checksum”. You can read about MD5 at [http://en.wikipedia.](http://en.wikipedia.) org/wiki/Md5 . This command provides an efficient way to check whether two files have [the same contents. The probability that different contents yield the same checksum is very](http://docs.python.org/3/reference/datamodel.html#specialnames) [small (that is, unlikely to happen before the universe collapses).](http://tinyurl.com/thinkpython2e)
 
 [You can use a pipe to run](https://thinkpython.com/code/has_duplicates.py) [md5sum](https://thinkpython.com/code/has_duplicates.py) from Python and get the result:
 
@@ -6751,23 +5886,13 @@ None
 
 [Any file that contains Python code can be imported as a module. For example, suppose](http://docs.python.org/3/library/datetime.html) [you have a file named](http://en.wikipedia.org/wiki/Radix_sort) wc.py with the following code:
 
-```
-def linecount(filename):
-count = 0
-for line in open(filename):
-count += 1
-return count
-```
+### def linecount(filename): count = 0 [for line in open(filename):](https://thinkpython.com/code/palindrome_soln.py) [count += 1](http://docs.python.org/3/library/stdtypes.html#string-methods) return count
 
-```
-print(linecount( ' wc.py ' ))
-```
+### print(linecount( ['](https://thinkpython.com/code/koch.py) [wc.py](https://thinkpython.com/code/koch.py) ['](https://thinkpython.com/code/koch.py) [))](https://thinkpython.com/code/koch.py)
 
 [If you run this program, it reads itself and prints the number of lines in the file, which is 7.](https://thinkpython.com/code/pie.py) [You can also import it like this:](http://en.wikipedia.org/wiki/Koch_snowflake)
 
-```
->>> import wc
-```
+### [>>> import wc](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 
 [Now you have a module object](https://thinkpython.com/code/reverse_pair.py) [wc](https://thinkpython.com/code/pronounce.py) [:](https://thinkpython.com/code/pronounce.py)
 
@@ -6782,9 +5907,7 @@ Chapter 14. Files
 
 [The module object provides](https://thinkpython.com/code/polygon.py) [linecount](https://thinkpython.com/code/polygon.py) [:](https://thinkpython.com/code/polygon.py)
 
-```
->>> wc.linecount( ' wc.py ' )
-```
+### >>> wc.linecount( ' wc.py ' )
 
 [So that’s how you write modules in Python.](https://thinkpython.com/code/grid.py)
 
@@ -6808,18 +5931,11 @@ __name__ is a built-in variable that is set when the program starts. If the prog
 
 When you are reading and writing files, you might run into problems with whitespace. [These errors can be hard to debug because spaces, tabs and newlines are normally invisible:](https://thinkpython.com/code/reducible.py)
 
-```
->>> s = ' 1 2\t 3\n 4 '
->>> print(s)
-1 2
-```
+### >>> s = ['](https://thinkpython.com/code/PokerHandSoln.py) [1 2\t 3\n 4](https://thinkpython.com/code/PokerHandSoln.py) ['](https://thinkpython.com/code/PokerHandSoln.py) [>>> print(s)](https://thinkpython.com/code/list_exercises.py) [1 2](http://docs.python.org/3/library/datetime.html)
 
 The built-in function repr can help. It takes any object as an argument and returns a string [representation of the object. For strings, it represents whitespace characters with backslash](https://thinkpython.com/code/palindrome_soln.py) sequences:
 
-```
->>> print(repr(s))
-' 1 2\t 3\n 4 '
-```
+### >>> print(repr(s)) ' 1 2\t 3\n 4 ['](https://thinkpython.com/code/polygon.py)
 
 This can be helpful for debugging.
 
@@ -6907,13 +6023,13 @@ Solution: [https: // thinkpython. com/ code/ find_ duplicates. py](https://think
 
 [A programmer-defined type is also called a](https://thinkpython.com/code/pronounce.py) [class](https://thinkpython.com/code/pronounce.py) . A class definition looks like this:
 
-[class Point:](http://wiki.python.org/moin/BitwiseOperators) """Represents a point in 2-D space."""
+### [class Point:](http://wiki.python.org/moin/BitwiseOperators) """Represents a point in 2-D space."""
 
 Chapter 15. Classes and objects
 
-[Point](https://thinkpython.com/code/letters.py) [blank](https://thinkpython.com/code/polygon.py) [x](http://en.wikipedia.org/wiki/Spiral) [3.0](http://en.wikipedia.org/wiki/Spiral)
+### [Point](https://thinkpython.com/code/letters.py) [blank](https://thinkpython.com/code/polygon.py) [x](http://en.wikipedia.org/wiki/Spiral) [3.0](http://en.wikipedia.org/wiki/Spiral)
 
-[y](http://www.cartalk.com/content/puzzlers) [4.0](http://www.cartalk.com/content/puzzlers)
+### [y](http://www.cartalk.com/content/puzzlers) [4.0](http://www.cartalk.com/content/puzzlers)
 
 [Figure 15.1: Object diagram.](https://thinkpython.com/code)
 
@@ -6921,20 +6037,13 @@ Chapter 15. Classes and objects
 
 [Defining a class named](https://thinkpython.com/code/structshape.py) [Point](https://thinkpython.com/code/structshape.py) [creates a](https://thinkpython.com/code/structshape.py) [class object](https://thinkpython.com/code/structshape.py) .
 
-```
->>> Point
-<class ' __main__.Point ' >
-```
+### >>> Point [<class](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) [__main__.Point](https://thinkpython.com/code/ackermann.py) ' >
 
 Because [Point](https://thinkpython.com/code/Circle.py) [is defined at the top level, its “full name” is](https://thinkpython.com/code/Circle.py) __main__.Point .
 
 [The class object is like a factory for creating objects. To create a Point, you call](http://tinyurl.com/thinkpython2e) Point as if it were a function.
 
-```
->>> blank = Point()
->>> blank
-<__main__.Point object at 0xb7e9d3ac>
-```
+### >>> blank = Point() >>> blank [<__main__.Point object at 0xb7e9d3ac>](http://en.wikipedia.org/wiki/Letter_frequencies)
 
 [The return value is a reference to a Point object, which we assign to](https://thinkpython.com/code/most_frequent.py) [blank](https://thinkpython.com/code/Point1.py) [.](https://thinkpython.com/code/Point1.py)
 
@@ -6948,7 +6057,7 @@ When you print an instance, Python tells you what class it belongs to and where 
 
 You can assign values to an instance using dot notation:
 
->>> blank.x = 3.0 >>> blank.y = 4.0
+### >>> blank.x = 3.0 >>> blank.y = 4.0
 
 [This syntax is similar to the syntax for selecting a variable from a module, such as](http://docs.python.org/3/library/stdtypes.html#string-methods) math.pi or string.whitespace [. In this case, though, we are assigning values to named elements of](https://thinkpython.com/code/flower.py) [an object. These elements are called](https://thinkpython.com/code/polygon.py) [attributes](https://thinkpython.com/code/polygon.py) [.](https://thinkpython.com/code/polygon.py)
 
@@ -6962,7 +6071,7 @@ You can read the value of an attribute using the same syntax:
 
 ### 15.3. Rectangles
 
-[>>> blank.y](https://thinkpython.com/code/polygon.py) 4.0 [>>> x = blank.x](http://www.cartalk.com/content/puzzlers) [>>> x](https://thinkpython.com/code/spiral.py) [3.0](https://thinkpython.com/code/grid.py)
+### [>>> blank.y](https://thinkpython.com/code/polygon.py) 4.0 [>>> x = blank.x](http://www.cartalk.com/content/puzzlers) [>>> x](https://thinkpython.com/code/spiral.py) [3.0](https://thinkpython.com/code/grid.py)
 
 The expression [blank.x](https://thinkpython.com/code/Time2_soln.py) [means, “Go to the object](https://thinkpython.com/code/Time2_soln.py) [blank](https://thinkpython.com/code/Time2_soln.py) [refers to and get the value of](https://thinkpython.com/code/Time2_soln.py) x .” In [the example, we assign that value to a variable named](http://creativecommons.org/licenses/by-nc/3.0/) x [. There is no conflict between the](https://thinkpython.com/code/emma.txt) [variable](https://thinkpython.com/code/emma.txt) [x](https://thinkpython.com/code/emma.txt) [and the attribute](https://thinkpython.com/code/emma.txt) x .
 
@@ -6972,17 +6081,11 @@ The expression [blank.x](https://thinkpython.com/code/Time2_soln.py) [means, “
 
 [You can pass an instance as an argument in the usual way. For example:](http://tinyurl.com/thinkpython2e)
 
-```
-def print_point(p):
-print( ' (%g, %g) ' % (p.x, p.y))
-```
+### [def print_point(p):](https://thinkpython.com/code/has_duplicates.py) print( ' (%g, %g) ' % (p.x, p.y))
 
 [print_point](https://thinkpython.com/code/draw.py) [takes a point as an argument and displays it in mathematical notation. To](http://en.wikipedia.org/wiki/Poker) [invoke it, you can pass](http://en.wikipedia.org/wiki/Letter_frequencies) [blank](http://en.wikipedia.org/wiki/Letter_frequencies) [as an argument:](http://en.wikipedia.org/wiki/Letter_frequencies)
 
-```
->>> print_point(blank)
-(3.0, 4.0)
-```
+### [>>> print_point(blank)](https://thinkpython.com/code/rotate_pairs.py) [(3.0, 4.0)](https://thinkpython.com/code/Point1_soln.py)
 
 Inside the function, p is an alias for blank , so if the function modifies p , blank changes.
 
@@ -7004,7 +6107,7 @@ Here is the class definition:
 
 Chapter 15. Classes and objects
 
-[Rectangle](https://thinkpython.com/code/letters.py)
+### [Rectangle](https://thinkpython.com/code/letters.py)
 
 box [width](http://en.wikipedia.org/wiki/Spiral) [100.0](http://en.wikipedia.org/wiki/Spiral) [Point](http://en.wikipedia.org/wiki/Spiral) [height](http://www.cartalk.com/content/puzzlers) [200.0](http://www.cartalk.com/content/puzzlers) x 0.0 [corner](https://thinkpython.com/code/spiral.py) [y](https://thinkpython.com/code/grid.py) 0.0
 
@@ -7012,16 +6115,13 @@ Figure 15.2: Object diagram.
 
 class Rectangle: ["""Represents a rectangle.](http://en.wikipedia.org/wiki/Ackermann_function)
 
-```
-attributes: width, height, corner.
-"""
-```
+### [attributes: width, height, corner.](https://thinkpython.com/code/ackermann_memo.py) """
 
 [The docstring lists the attributes:](https://thinkpython.com/code/Circle.py) [width](https://thinkpython.com/code/Circle.py) [and](https://thinkpython.com/code/Circle.py) [height](https://thinkpython.com/code/Circle.py) are numbers; corner is a Point object that specifies the lower-left corner.
 
 [To represent a rectangle, you have to instantiate a Rectangle object and assign values to the](http://en.wikipedia.org/wiki/Birthday_paradox) attributes:
 
-[box = Rectangle()](https://thinkpython.com/code/draw.py) [box.width = 100.0](http://en.wikipedia.org/wiki/Letter_frequencies) [box.height = 200.0](https://thinkpython.com/code/rotate_pairs.py) [box.corner = Point()](https://thinkpython.com/code/Point1_soln.py) [box.corner.x = 0.0](http://www.cartalk.com/content/puzzlers) [box.corner.y = 0.0](https://thinkpython.com/code/Time1_soln.py)
+### [box = Rectangle()](https://thinkpython.com/code/draw.py) [box.width = 100.0](http://en.wikipedia.org/wiki/Letter_frequencies) [box.height = 200.0](https://thinkpython.com/code/rotate_pairs.py) [box.corner = Point()](https://thinkpython.com/code/Point1_soln.py) [box.corner.x = 0.0](http://www.cartalk.com/content/puzzlers) [box.corner.y = 0.0](https://thinkpython.com/code/Time1_soln.py)
 
 The expression box.corner.x means, “Go to the object box [refers to and select the attribute](http://en.wikipedia.org/wiki/Big_O_notation) named [corner](http://en.wikipedia.org/wiki/Big_O_notation) [; then go to that object and select the attribute named](https://thinkpython.com/code/markov.py) [x](https://thinkpython.com/code/polygon.py) [.”](https://thinkpython.com/code/polygon.py)
 
@@ -7031,15 +6131,11 @@ The expression box.corner.x means, “Go to the object box [refers to and select
 
 [Functions can return instances. For example,](https://thinkpython.com/code/palindrome_soln.py) [find_center](https://thinkpython.com/code/palindrome_soln.py) [takes a](https://thinkpython.com/code/palindrome_soln.py) [Rectangle](https://thinkpython.com/code/palindrome_soln.py) as an argu- ment and returns a Point that contains the coordinates of the center of the [Rectangle](http://docs.python.org/3/library/stdtypes.html#string-methods) [:](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
-[def find_center(rect):](https://thinkpython.com/code/polygon.py) p = Point() [p.x = rect.corner.x + rect.width/2](https://thinkpython.com/code/koch.py) [p.y = rect.corner.y + rect.height/2](https://thinkpython.com/code/pie.py) return p
+### [def find_center(rect):](https://thinkpython.com/code/polygon.py) p = Point() [p.x = rect.corner.x + rect.width/2](https://thinkpython.com/code/koch.py) [p.y = rect.corner.y + rect.height/2](https://thinkpython.com/code/pie.py) return p
 
 [Here is an example that passes](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [box](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [as an argument and assigns the resulting Point to](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) center :
 
-```
->>> center = find_center(box)
->>> print_point(center)
-(50, 100)
-```
+### [>>> center = find_center(box)](https://thinkpython.com/code/double.py) [>>> print_point(center)](http://wiki.python.org/moin/BitwiseOperators) (50, 100)
 
 ### 15.5. Objects are mutable
 
@@ -7047,19 +6143,15 @@ The expression box.corner.x means, “Go to the object box [refers to and select
 
 [You can change the state of an object by making an assignment to one of its attributes. For](http://www.cartalk.com/content/puzzlers) example, to change the size of a rectangle without changing its position, you can modify [the values of](https://thinkpython.com/code/grid.py) [width](https://thinkpython.com/code/grid.py) [and](https://thinkpython.com/code/grid.py) [height](https://thinkpython.com/code/grid.py) [:](https://thinkpython.com/code/grid.py)
 
-box.width = box.width + 50 box.height = box.height + 100
+### box.width = box.width + 50 box.height = box.height + 100
 
 You can also write functions that modify objects. [For example,](https://thinkpython.com/code/invert_dict.py) [grow_rectangle](https://thinkpython.com/code/invert_dict.py) [takes a](https://thinkpython.com/code/invert_dict.py) [Rectangle object and two numbers,](https://thinkpython.com/code/rotate.py) [dwidth](https://thinkpython.com/code/rotate.py) [and](https://thinkpython.com/code/rotate.py) [dheight](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [, and adds the numbers to the](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [width and height of the rectangle:](https://thinkpython.com/code/pi.py)
 
-```
-def grow_rectangle(rect, dwidth, dheight):
-rect.width += dwidth
-rect.height += dheight
-```
+### [def grow_rectangle(rect, dwidth, dheight):](https://thinkpython.com/code/cartalk1.py) [rect.width += dwidth](https://thinkpython.com/code/ackermann_memo.py) rect.height += dheight
 
 [Here is an example that demonstrates the effect:](https://thinkpython.com/code/Circle.py)
 
->>> box.width, box.height (150.0, 300.0) [>>> grow_rectangle(box, 50, 100)](http://en.wikipedia.org/wiki/Birthday_paradox) >>> box.width, box.height [(200.0, 400.0)](https://thinkpython.com/code/draw.py)
+### >>> box.width, box.height (150.0, 300.0) [>>> grow_rectangle(box, 50, 100)](http://en.wikipedia.org/wiki/Birthday_paradox) >>> box.width, box.height [(200.0, 400.0)](https://thinkpython.com/code/draw.py)
 
 [Inside the function,](http://en.wikipedia.org/wiki/Letter_frequencies) [rect](http://en.wikipedia.org/wiki/Letter_frequencies) [is an alias for](http://en.wikipedia.org/wiki/Letter_frequencies) [box](http://en.wikipedia.org/wiki/Letter_frequencies) [, so when the function modifies](https://thinkpython.com/code/Point1.py) [rect](https://thinkpython.com/code/rotate_pairs.py) [,](https://thinkpython.com/code/rotate_pairs.py) [box](https://thinkpython.com/code/rotate_pairs.py) [changes.](https://thinkpython.com/code/rotate_pairs.py)
 
@@ -7071,44 +6163,31 @@ rect.height += dheight
 
 Copying an object is often an alternative to aliasing. The copy module contains a function called copy that can duplicate any object:
 
-[>>> p1 = Point()](https://thinkpython.com/code/palindrome_soln.py) [>>> p1.x = 3.0](http://docs.python.org/3/library/stdtypes.html#string-methods) >>> p1.y = 4.0
+### [>>> p1 = Point()](https://thinkpython.com/code/palindrome_soln.py) [>>> p1.x = 3.0](http://docs.python.org/3/library/stdtypes.html#string-methods) >>> p1.y = 4.0
 
-```
->>> import copy
->>> p2 = copy.copy(p1)
-```
+### >>> import copy [>>> p2 = copy.copy(p1)](https://thinkpython.com/code/pie.py)
 
 [p1](https://thinkpython.com/code/anagram_sets.py) [and](https://thinkpython.com/code/anagram_sets.py) [p2](https://thinkpython.com/code/anagram_sets.py) [contain the same data, but they are not the same Point.](https://thinkpython.com/code/anagram_sets.py)
 
-```
->>> print_point(p1)
-(3, 4)
->>> print_point(p2)
-(3, 4)
->>> p1 is p2
-False
-```
+### [>>> print_point(p1)](https://thinkpython.com/code/cartalk3.py) [(3, 4)](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [>>> print_point(p2)](https://thinkpython.com/code/pronounce.py) [(3, 4)](https://thinkpython.com/code/double.py) [>>> p1 is p2](http://wiki.python.org/moin/BitwiseOperators) False
 
 Chapter 15. Classes and objects
 
-[box](https://thinkpython.com/code/polygon.py) [width](https://thinkpython.com/code/polygon.py) [100.0](https://thinkpython.com/code/polygon.py) [100.0](http://en.wikipedia.org/wiki/Zipf's_law) width box2
+### [box](https://thinkpython.com/code/polygon.py) [width](https://thinkpython.com/code/polygon.py) [100.0](https://thinkpython.com/code/polygon.py) [100.0](http://en.wikipedia.org/wiki/Zipf's_law) width box2
 
-height 200.0 [x](http://en.wikipedia.org/wiki/Spiral) [0.0](http://en.wikipedia.org/wiki/Spiral) [200.0](http://en.wikipedia.org/wiki/Spiral) [height](http://en.wikipedia.org/wiki/Spiral)
+### height 200.0 [x](http://en.wikipedia.org/wiki/Spiral) [0.0](http://en.wikipedia.org/wiki/Spiral) [200.0](http://en.wikipedia.org/wiki/Spiral) [height](http://en.wikipedia.org/wiki/Spiral)
 
-[corner](http://www.cartalk.com/content/puzzlers) [y](http://www.cartalk.com/content/puzzlers) [0.0](http://www.cartalk.com/content/puzzlers) corner
+### [corner](http://www.cartalk.com/content/puzzlers) [y](http://www.cartalk.com/content/puzzlers) [0.0](http://www.cartalk.com/content/puzzlers) corner
 
 [Figure 15.3: Object diagram.](https://thinkpython.com/code/Time2_soln.py)
 
-```
->>> p1 == p2
-False
-```
+### [>>> p1 == p2](https://thinkpython.com/code/emma.txt) False
 
 The is [operator indicates that](http://en.wikipedia.org/wiki/Ackermann_function) [p1](http://en.wikipedia.org/wiki/Ackermann_function) [and](http://en.wikipedia.org/wiki/Ackermann_function) [p2](http://en.wikipedia.org/wiki/Ackermann_function) [are not the same object, which is what we ex-](http://en.wikipedia.org/wiki/Ackermann_function) [pected.](https://thinkpython.com/code/structshape.py) [But you might have expected](https://thinkpython.com/code/structshape.py) [==](https://thinkpython.com/code/cartalk1.py) [to yield](https://thinkpython.com/code/cartalk1.py) [True](https://thinkpython.com/code/cartalk1.py) [because these points contain the](https://thinkpython.com/code/cartalk1.py) [same data. In that case, you will be disappointed to learn that for instances, the default](http://www.thinkpython.com/) [behavior of the](http://www.cartalk.com/content/puzzlers) [==](https://thinkpython.com/code/ackermann.py) operator is the same as the is operator; it checks object identity, not object equivalence. That’s because for programmer-defined types, Python doesn’t know [what should be considered equivalent. At least, not yet.](https://thinkpython.com/code/Circle.py)
 
 If you use copy.copy [to duplicate a Rectangle, you will find that it copies the Rectangle](http://tinyurl.com/thinkpython2e) [object but not the embedded Point.](https://thinkpython.com/code/has_duplicates.py)
 
-[>>> box2 = copy.copy(box)](https://thinkpython.com/code/BadKangaroo.py) [>>> box2 is box](https://thinkpython.com/code/draw.py) False [>>> box2.corner is box.corner](https://thinkpython.com/code/rotate_pairs.py) True
+### [>>> box2 = copy.copy(box)](https://thinkpython.com/code/BadKangaroo.py) [>>> box2 is box](https://thinkpython.com/code/draw.py) False [>>> box2.corner is box.corner](https://thinkpython.com/code/rotate_pairs.py) True
 
 Figure 15.3 shows what the object diagram looks like. This operation is called a shallow copy because it copies the object and any references it contains, but not the embedded objects.
 
@@ -7118,7 +6197,7 @@ For most [applications,](https://thinkpython.com/code/polygon.py) [this](http://
 | --------------------------------------------------------- | --------- | --------------------------------- |
 | be surprised to learn that this operation is called a     | deep copy | .                                 |
 
->>> box3 = copy.deepcopy(box) >>> box3 is box False [>>> box3.corner is box.corner](http://docs.python.org/3/library/stdtypes.html#string-methods) False
+### >>> box3 = copy.deepcopy(box) >>> box3 is box False [>>> box3.corner is box.corner](http://docs.python.org/3/library/stdtypes.html#string-methods) False
 
 box3 and box are completely separate objects.
 
@@ -7190,14 +6269,11 @@ Solution: https: // thinkpython. com/ code/ Circle. py [.](http://docs.python.or
 
 [class Time:](https://thinkpython.com/code/PokerHandSoln.py) ["""Represents the time of day.](https://thinkpython.com/code/PokerHandSoln.py)
 
-```
-attributes: hour, minute, second
-"""
-```
+### attributes: hour, minute, second """
 
 We can create a new Time object and assign attributes for hours, minutes, and seconds:
 
-time = Time() [time.hour = 11](http://docs.python.org/3/library/stdtypes.html#string-methods) [time.minute = 59](https://thinkpython.com/code/polygon.py) time.second = 30
+### time = Time() [time.hour = 11](http://docs.python.org/3/library/stdtypes.html#string-methods) [time.minute = 59](https://thinkpython.com/code/polygon.py) time.second = 30
 
 [The state diagram for the](https://thinkpython.com/code/pie.py) [Time](https://thinkpython.com/code/pie.py) [object looks like Figure 16.1.](https://thinkpython.com/code/pie.py)
 
@@ -7207,13 +6283,13 @@ time = Time() [time.hour = 11](http://docs.python.org/3/library/stdtypes.html#st
 
 Chapter 16. Classes and functions
 
-[Time](https://thinkpython.com/code/letters.py)
+### [Time](https://thinkpython.com/code/letters.py)
 
-[time](http://en.wikipedia.org/wiki/Spiral) [hour](http://en.wikipedia.org/wiki/Spiral)
+### [time](http://en.wikipedia.org/wiki/Spiral) [hour](http://en.wikipedia.org/wiki/Spiral)
 
-[minute](http://www.cartalk.com/content/puzzlers)
+### [minute](http://www.cartalk.com/content/puzzlers)
 
-second
+### second
 
 [Figure 16.1: Object diagram.](https://thinkpython.com/code/Time2_soln.py)
 
@@ -7231,15 +6307,11 @@ second
 
 [add_time](http://www.cartalk.com/content/puzzlers) [figures out when the movie will be done.](http://www.cartalk.com/content/puzzlers)
 
-[>>> start = Time()](https://thinkpython.com/code/PokerHandSoln.py) >>> start.hour = 9 [>>> start.minute = 45](http://en.wikipedia.org/wiki/Radix_sort) >>> start.second =
+### [>>> start = Time()](https://thinkpython.com/code/PokerHandSoln.py) >>> start.hour = 9 [>>> start.minute = 45](http://en.wikipedia.org/wiki/Radix_sort) >>> start.second =
 
->>> duration = Time() >>> duration.hour = 1 [>>> duration.minute = 35](http://docs.python.org/3/library/stdtypes.html#string-methods) [>>> duration.second = 0](https://thinkpython.com/code/polygon.py)
+### >>> duration = Time() >>> duration.hour = 1 [>>> duration.minute = 35](http://docs.python.org/3/library/stdtypes.html#string-methods) [>>> duration.second = 0](https://thinkpython.com/code/polygon.py)
 
-```
->>> done = add_time(start, duration)
->>> print_time(done)
-10:80:00
-```
+### [>>> done = add_time(start, duration)](https://docs.python.org/3/library/pdb.html) [>>> print_time(done)](http://en.wikipedia.org/wiki/Fibonacci_number) 10:80:00
 
 [The result,](https://thinkpython.com/code/anagram_sets.py) [10:80:00](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [might not be what you were hoping for.](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [The problem is that this](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [function does not deal with cases where the number of seconds or minutes adds up to](https://thinkpython.com/code/c06d) [more than sixty. When that happens, we have to “carry” the extra seconds into the minute](https://thinkpython.com/code/pronounce.py) column or the extra minutes into the hour column.
 
@@ -7249,13 +6321,11 @@ Here’s an improved version:
 
 [def add_time(t1, t2):](https://thinkpython.com/code/polygon.py) sum = Time() [sum.hour = t1.hour + t2.hour](http://www.cartalk.com/content/puzzlers) [sum.minute = t1.minute + t2.minute](https://thinkpython.com/code/spiral.py) [sum.second = t1.second + t2.second](https://thinkpython.com/code/grid.py)
 
-if sum.second >= 60: [sum.second -= 60](http://creativecommons.org/licenses/by-nc/3.0/) [sum.minute += 1](https://thinkpython.com/code/emma.txt)
+### if sum.second >= 60: [sum.second -= 60](http://creativecommons.org/licenses/by-nc/3.0/) [sum.minute += 1](https://thinkpython.com/code/emma.txt)
 
-[if sum.minute >= 60:](http://en.wikipedia.org/wiki/Ackermann_function) [sum.minute -= 60](https://thinkpython.com/code/structshape.py) [sum.hour += 1](https://thinkpython.com/code/ackermann_memo.py)
+### [if sum.minute >= 60:](http://en.wikipedia.org/wiki/Ackermann_function) [sum.minute -= 60](https://thinkpython.com/code/structshape.py) [sum.hour += 1](https://thinkpython.com/code/ackermann_memo.py)
 
-```
-return sum
-```
+### return sum
 
 [Although this function is correct, it is starting to get big. We will see a shorter alternative](http://docs.python.org/3/reference/datamodel.html#specialnames) [later.](http://docs.python.org/3/reference/datamodel.html#specialnames)
 
@@ -7265,14 +6335,11 @@ return sum
 
 [increment](http://www.cartalk.com/content/puzzlers) [, which adds a given number of seconds to a](https://thinkpython.com/code/do_four.py) [Time](https://thinkpython.com/code/do_four.py) object, can be written naturally [as a modifier. Here is a rough draft:](http://tinyurl.com/thinkpython2e)
 
-```
-def increment(time, seconds):
-time.second += seconds
-```
+### def increment(time, seconds): [time.second += seconds](https://thinkpython.com/code/markov.py)
 
-[if time.second >= 60:](https://thinkpython.com/code/reducible.py) [time.second -= 60](http://www.cartalk.com/content/puzzlers) [time.minute += 1](https://thinkpython.com/code/PokerHandSoln.py)
+### [if time.second >= 60:](https://thinkpython.com/code/reducible.py) [time.second -= 60](http://www.cartalk.com/content/puzzlers) [time.minute += 1](https://thinkpython.com/code/PokerHandSoln.py)
 
-[if time.minute >= 60:](http://docs.python.org/3/library/datetime.html) time.minute -= 60 time.hour += 1
+### [if time.minute >= 60:](http://docs.python.org/3/library/datetime.html) time.minute -= 60 time.hour += 1
 
 [The first line performs the basic operation; the remainder deals with the special cases we](https://thinkpython.com/code/palindrome_soln.py) saw before.
 
@@ -7294,7 +6361,7 @@ Chapter 16. Classes and functions
 
 This approach can be effective, especially if you don’t yet have a deep understanding of the problem. [But incremental corrections can generate code that is unnecessarily](https://thinkpython.com/code/Circle.py) complicated—since it deals with many special cases—and unreliable—since it is hard to [know if you have found all the errors.](http://docs.python.org/3/reference/datamodel.html#specialnames)
 
-An alternative is designed development , in which high-level insight into the problem can [make the programming much easier. In this case, the insight is that a Time object is really](http://en.wikipedia.org/wiki/Sexagesimal) [a three-digit number in base 60 (see](https://thinkpython.com/code/draw.py) http://en.wikipedia.org/wiki/Sexagesimal [). The](https://thinkpython.com/code/Time1.py) [second](https://thinkpython.com/code/walk.py) [attribute is the “ones column”, the](http://en.wikipedia.org/wiki/Letter_frequencies) [minute](http://en.wikipedia.org/wiki/Letter_frequencies) [attribute is the “sixties column”, and the](https://thinkpython.com/code/Point1.py) [hour](https://thinkpython.com/code/markov2.py) [attribute is the “thirty-six hundreds column”.](https://thinkpython.com/code/rotate_pairs.py)
+An alternative is designed development , in which high-level insight into the problem can [make the programming much easier. In this case, the insight is that a Time object is really](http://en.wikipedia.org/wiki/Sexagesimal) [a three-digit number in base 60 (see](https://thinkpython.com/code/draw.py) [http://en.wikipedia.org/wiki/Sexagesimal](http://en.wikipedia.org/wiki/Sexagesimal) [). The](https://thinkpython.com/code/Time1.py) [second](https://thinkpython.com/code/walk.py) [attribute is the “ones column”, the](http://en.wikipedia.org/wiki/Letter_frequencies) [minute](http://en.wikipedia.org/wiki/Letter_frequencies) [attribute is the “sixties column”, and the](https://thinkpython.com/code/Point1.py) [hour](https://thinkpython.com/code/markov2.py) [attribute is the “thirty-six hundreds column”.](https://thinkpython.com/code/rotate_pairs.py)
 
 [When we wrote](https://thinkpython.com/code/Time1.py) [add_time](https://thinkpython.com/code/do_four.py) [and](https://thinkpython.com/code/do_four.py) [increment](http://tinyurl.com/thinkpython2e) [, we were effectively doing addition in base 60,](http://tinyurl.com/thinkpython2e) which is why we had to carry from one column to the next.
 
@@ -7302,7 +6369,7 @@ This observation suggests another approach to the whole problem—we can convert
 
 [Here is a function that converts Times to integers:](https://thinkpython.com/code/reducible.py)
 
-[def time_to_int(time):](https://thinkpython.com/code/PokerHandSoln.py) minutes = time.hour * 60 + time.minute [seconds = minutes * 60 + time.second](http://docs.python.org/3/library/datetime.html) [return seconds](http://en.wikipedia.org/wiki/Radix_sort)
+### [def time_to_int(time):](https://thinkpython.com/code/PokerHandSoln.py) minutes = time.hour * 60 + time.minute [seconds = minutes * 60 + time.second](http://docs.python.org/3/library/datetime.html) [return seconds](http://en.wikipedia.org/wiki/Radix_sort)
 
 And here is a function that converts an integer to a Time (recall that divmod divides the first argument by the second and returns the quotient and remainder as a tuple).
 
@@ -7312,11 +6379,7 @@ def int_to_time(seconds): [time = Time()](http://docs.python.org/3/library/stdty
 
 [Once you are convinced they are correct, you can use them to rewrite](https://thinkpython.com/code/c06d) [add_time](https://thinkpython.com/code/reverse_pair.py) [:](https://thinkpython.com/code/reverse_pair.py)
 
-```
-def add_time(t1, t2):
-seconds = time_to_int(t1) + time_to_int(t2)
-return int_to_time(seconds)
-```
+### [def add_time(t1, t2):](https://thinkpython.com/code/double.py) [seconds = time_to_int(t1) + time_to_int(t2)](http://wiki.python.org/moin/BitwiseOperators) return int_to_time(seconds)
 
 ### 16.5. Debugging
 
@@ -7375,7 +6438,7 @@ assert statement: [A statement that checks a condition and raises an exception i
 
 #### 16.7 [Exercises](https://thinkpython.com/code/most_frequent.py)
 
-Code examples from this chapter are available from [https://thinkpython.com/code/](https://thinkpython.com/code/birthday.py) Time1.py [; solutions to the exercises are available from](https://thinkpython.com/code/do_four.py) https://thinkpython.com/code/ Time1_soln.py [.](http://tinyurl.com/thinkpython2e) Exercise 16.1. Write a function called mul_time that takes a Time object and a number and returns [a new Time object that contains the product of the original Time and the number.](https://thinkpython.com/code/markov.py)
+Code examples from this chapter are available from [https://thinkpython.com/code/](https://thinkpython.com/code/birthday.py) Time1.py [; solutions to the exercises are available from](https://thinkpython.com/code/do_four.py) [https://thinkpython.com/code/](https://thinkpython.com/code/) Time1_soln.py [.](http://tinyurl.com/thinkpython2e) Exercise 16.1. Write a function called mul_time that takes a Time object and a number and returns [a new Time object that contains the product of the original Time and the number.](https://thinkpython.com/code/markov.py)
 
 Then use [mul_time](https://thinkpython.com/code/polygon.py) [to write a function that takes a Time object that represents the finishing time](http://wikipedia.org/wiki/Moby_Project) [in a race, and a number that represents the distance, and returns a Time object that represents the](https://thinkpython.com/code/reducible.py) [average pace (time per mile).](http://www.cartalk.com/content/puzzlers) [Exercise 16.2.](https://thinkpython.com/code/list_exercises.py) [The](https://thinkpython.com/code/list_exercises.py) [datetime](https://thinkpython.com/code/PokerHandSoln.py) module provides time [objects that are similar to the Time objects](https://thinkpython.com/code/words.txt) [in this chapter, but they provide a rich set of methods and operators. Read the documentation at](http://docs.python.org/3/library/datetime.html) http: // docs. python. org/ 3/ library/ datetime. html .
 
@@ -7433,33 +6496,27 @@ Chapter 17. Classes and methods
 
 [In Chapter 16, we defined a class named](https://thinkpython.com/code/Map.py) Time [and in Section 16.1, you wrote a function](https://thinkpython.com/code/markov.py) [named](https://thinkpython.com/code/markov.py) [print_time](https://thinkpython.com/code/draw.py) [:](https://thinkpython.com/code/draw.py)
 
-class Time: ["""Represents the time of day."""](https://thinkpython.com/code/rotate_pairs.py)
+### class Time: ["""Represents the time of day."""](https://thinkpython.com/code/rotate_pairs.py)
 
-[def print_time(time):](http://www.cartalk.com/content/puzzlers) print( ['](http://tinyurl.com/thinkpython2e) [%.2d:%.2d:%.2d](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) % (time.hour, time.minute, time.second))
+### [def print_time(time):](http://www.cartalk.com/content/puzzlers) print( ['](http://tinyurl.com/thinkpython2e) [%.2d:%.2d:%.2d](http://tinyurl.com/thinkpython2e) ['](http://tinyurl.com/thinkpython2e) % (time.hour, time.minute, time.second))
 
 [To call this function, you have to pass a](http://en.wikipedia.org/wiki/Big_O_notation) Time object as an argument:
 
-[>>> start = Time()](https://thinkpython.com/code/polygon.py) [>>> start.hour = 9](https://thinkpython.com/code/polygon.py) [>>> start.minute = 45](https://thinkpython.com/code/reducible.py) [>>> start.second = 00](https://thinkpython.com/code/PokerHandSoln.py) [>>> print_time(start)](https://thinkpython.com/code/list_exercises.py) [09:45:00](http://docs.python.org/3/library/datetime.html)
+### [>>> start = Time()](https://thinkpython.com/code/polygon.py) [>>> start.hour = 9](https://thinkpython.com/code/polygon.py) [>>> start.minute = 45](https://thinkpython.com/code/reducible.py) [>>> start.second = 00](https://thinkpython.com/code/PokerHandSoln.py) [>>> print_time(start)](https://thinkpython.com/code/list_exercises.py) [09:45:00](http://docs.python.org/3/library/datetime.html)
 
 To make [print_time](http://en.wikipedia.org/wiki/Radix_sort) a method, all we have to do is move the function definition inside the class definition. Notice the change in indentation.
 
-class Time: def print_time(time): [print(](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [%.2d:%.2d:%.2d](https://thinkpython.com/code/flower.py) ['](https://thinkpython.com/code/flower.py) [% (time.hour, time.minute, time.second))](https://thinkpython.com/code/flower.py)
+### class Time: def print_time(time): [print(](http://docs.python.org/3/library/stdtypes.html#string-methods) ['](http://docs.python.org/3/library/stdtypes.html#string-methods) [%.2d:%.2d:%.2d](https://thinkpython.com/code/flower.py) ['](https://thinkpython.com/code/flower.py) [% (time.hour, time.minute, time.second))](https://thinkpython.com/code/flower.py)
 
 [Now there are two ways to call](https://thinkpython.com/code/polygon.py) [print_time](https://thinkpython.com/code/polygon.py) [. The first (and less common) way is to use](http://gutenberg.org/) function syntax:
 
-```
->>> Time.print_time(start)
-09:45:00
-```
+### [>>> Time.print_time(start)](https://thinkpython.com/code/analyze_book3.py) 09:45:00
 
 [In this use of dot notation,](https://thinkpython.com/code/cartalk3.py) [Time](https://thinkpython.com/code/cartalk3.py) [is the name of the class, and](https://thinkpython.com/code/cartalk3.py) [print_time](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [is the name of the](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [method.](https://thinkpython.com/code/anagram_sets.py) [start](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) is passed as a parameter.
 
 [The second (and more concise) way is to use method syntax:](https://thinkpython.com/code/pronounce.py)
 
-```
->>> start.print_time()
-09:45:00
-```
+### [>>> start.print_time()](http://wiki.python.org/moin/BitwiseOperators) 09:45:00
 
 ### 17.3. Another example
 
@@ -7469,7 +6526,7 @@ class Time: def print_time(time): [print(](http://docs.python.org/3/library/stdt
 
 By convention, the first parameter of a method is called [self](https://thinkpython.com/code/invert_dict.py) [, so it would be more common](https://thinkpython.com/code/invert_dict.py) [to write](https://thinkpython.com/code/rotate.py) [print_time](https://thinkpython.com/code/rotate.py) [like this:](https://thinkpython.com/code/rotate.py)
 
-[class Time:](http://en.wikipedia.org/wiki/Ackermann_function) [def print_time(self):](https://thinkpython.com/code/structshape.py) [print(](https://thinkpython.com/code/ackermann_memo.py) ['](https://thinkpython.com/code/ackermann_memo.py) [%.2d:%.2d:%.2d](https://thinkpython.com/code/ackermann_memo.py) ['](http://www.thinkpython.com/) [% (self.hour, self.minute, self.second))](http://www.thinkpython.com/)
+### [class Time:](http://en.wikipedia.org/wiki/Ackermann_function) [def print_time(self):](https://thinkpython.com/code/structshape.py) [print(](https://thinkpython.com/code/ackermann_memo.py) ['](https://thinkpython.com/code/ackermann_memo.py) [%.2d:%.2d:%.2d](https://thinkpython.com/code/ackermann_memo.py) ['](http://www.thinkpython.com/) [% (self.hour, self.minute, self.second))](http://www.thinkpython.com/)
 
 The reason for this convention is an implicit metaphor:
 
@@ -7489,17 +6546,13 @@ Here’s a version of increment (from Section 16.3) rewritten as a method:
 # inside class Time:
 ```
 
-```
-def increment(self, seconds):
-seconds += self.time_to_int()
-return int_to_time(seconds)
-```
+### [def increment(self, seconds):](http://docs.python.org/3/library/stdtypes.html#string-methods) [seconds += self.time_to_int()](https://thinkpython.com/code/flower.py) [return int_to_time(seconds)](https://thinkpython.com/code/polygon.py)
 
 This version assumes that [time_to_int](https://thinkpython.com/code/koch.py) [is written as a method. Also, note that it is a pure](http://en.wikipedia.org/wiki/Fibonacci_number) [function, not a modifier.](https://thinkpython.com/code/pie.py)
 
 [Here’s how you would invoke](http://en.wikipedia.org/wiki/Koch_snowflake) [increment](https://thinkpython.com/code/cartalk3.py) [:](https://thinkpython.com/code/cartalk3.py)
 
->>> start.print_time() [09:45:00](https://thinkpython.com/code/pronounce.py) [>>> end = start.increment(1337)](https://thinkpython.com/code/metathesis.py) [>>> end.print_time()](http://wiki.python.org/moin/BitwiseOperators) 10:07:17
+### >>> start.print_time() [09:45:00](https://thinkpython.com/code/pronounce.py) [>>> end = start.increment(1337)](https://thinkpython.com/code/metathesis.py) [>>> end.print_time()](http://wiki.python.org/moin/BitwiseOperators) 10:07:17
 
 Chapter 17. Classes and methods
 
@@ -7507,18 +6560,13 @@ Chapter 17. Classes and methods
 
 [This mechanism can be confusing, especially if you make an error.](http://www.cartalk.com/content/puzzlers) [For example, if you](https://thinkpython.com/code/spiral.py) [invoke](https://thinkpython.com/code/spiral.py) [increment](https://thinkpython.com/code/grid.py) [with two arguments, you get:](https://thinkpython.com/code/grid.py)
 
-```
->>> end = start.increment(1337, 460)
-TypeError: increment() takes 2 positional arguments but 3 were given
-```
+### >>> end = start.increment(1337, 460) TypeError: increment() takes 2 positional arguments but 3 were given
 
 The error message is initially confusing, because there are only two arguments in paren- [theses. But the subject is also considered an argument, so all together that’s three.](https://thinkpython.com/code/rotate.py)
 
 By the way, a [positional argument](http://en.wikipedia.org/wiki/Ackermann_function) [is an argument that doesn’t have a parameter name;](http://en.wikipedia.org/wiki/Ackermann_function) [that is, it is not a keyword argument. In this function call:](https://thinkpython.com/code/structshape.py)
 
-```
-sketch(parrot, cage, dead=True)
-```
+### sketch(parrot, cage, dead=True)
 
 parrot [and](http://en.wikipedia.org/wiki/Md5) [cage](http://en.wikipedia.org/wiki/Md5) are positional, and dead is a keyword argument.
 
@@ -7530,14 +6578,11 @@ Rewriting [is_after](https://thinkpython.com/code/BadKangaroo.py) [(from Section
 # inside class Time:
 ```
 
-def is_after(self, other): [return self.time_to_int() > other.time_to_int()](http://tinyurl.com/thinkpython2e)
+### def is_after(self, other): [return self.time_to_int() > other.time_to_int()](http://tinyurl.com/thinkpython2e)
 
 [To use this method, you have to invoke it on one object and pass the other as an argument:](https://thinkpython.com/code/markov.py)
 
-```
->>> end.is_after(start)
-True
-```
+### [>>> end.is_after(start)](https://thinkpython.com/code/polygon.py) True
 
 [One nice thing about this syntax is that it almost reads like English: “end is after start?”](https://thinkpython.com/code/PokerHandSoln.py)
 
@@ -7549,13 +6594,11 @@ The init method (short for “initialization”) is a special method that gets i
 # inside class Time:
 ```
 
-[def __init__(self, hour=0, minute=0, second=0):](https://thinkpython.com/code/pie.py) [self.hour = hour](http://en.wikipedia.org/wiki/Koch_snowflake) [self.minute = minute](https://en.wikipedia.org/wiki/Rubber_duck_debugging) self.second = second
+### [def __init__(self, hour=0, minute=0, second=0):](https://thinkpython.com/code/pie.py) [self.hour = hour](http://en.wikipedia.org/wiki/Koch_snowflake) [self.minute = minute](https://en.wikipedia.org/wiki/Rubber_duck_debugging) self.second = second
 
 [It is common for the parameters of](https://thinkpython.com/code/reverse_pair.py) [__init__](https://thinkpython.com/code/pronounce.py) to have the same names as the attributes. The statement
 
-```
-self.hour = hour
-```
+### self.hour = hour
 
 ### 17.6. The __str__ method
 
@@ -7563,27 +6606,15 @@ self.hour = hour
 
 The parameters are optional, so if you call [Time](http://en.wikipedia.org/wiki/Spiral) [with no arguments, you get the default](https://thinkpython.com/code/Time2.py) [values.](http://www.cartalk.com/content/puzzlers)
 
-```
->>> time = Time()
->>> time.print_time()
-00:00:00
-```
+### [>>> time = Time()](https://thinkpython.com/code/grid.py) >>> time.print_time() 00:00:00
 
 If you provide one argument, it overrides hour :
 
-```
->>> time = Time (9)
->>> time.print_time()
-09:00:00
-```
+### [>>> time = Time (9)](https://thinkpython.com/code/rotate.py) [>>> time.print_time()](http://en.wikipedia.org/wiki/Ackermann_function) [09:00:00](https://thinkpython.com/code/structshape.py)
 
 [If you provide two arguments, they override](https://thinkpython.com/code/ackermann_memo.py) [hour](http://www.thinkpython.com/) [and](http://www.thinkpython.com/) [minute](http://www.thinkpython.com/) [.](https://thinkpython.com/code/ackermann.py)
 
-```
->>> time = Time(9, 45)
->>> time.print_time()
-09:45:00
-```
+### [>>> time = Time(9, 45)](https://thinkpython.com/code/ackermann.py) [>>> time.print_time()](https://thinkpython.com/code/Circle.py) 09:45:00
 
 [And if you provide three arguments, they override all three default values.](http://tinyurl.com/thinkpython2e)
 
@@ -7599,15 +6630,11 @@ As an exercise, write an init method for the Point class that takes [x](https://
 # inside class Time:
 ```
 
-[def __str__(self):](http://www.cartalk.com/content/puzzlers) [return](https://thinkpython.com/code/PokerHandSoln.py) ['](https://thinkpython.com/code/PokerHandSoln.py) %.2d:%.2d:%.2d ' [% (self.hour, self.minute, self.second)](https://thinkpython.com/code/words.txt)
+### [def __str__(self):](http://www.cartalk.com/content/puzzlers) [return](https://thinkpython.com/code/PokerHandSoln.py) ['](https://thinkpython.com/code/PokerHandSoln.py) %.2d:%.2d:%.2d ' [% (self.hour, self.minute, self.second)](https://thinkpython.com/code/words.txt)
 
 [When you](http://docs.python.org/3/library/datetime.html) [print](http://docs.python.org/3/library/datetime.html) [an object, Python invokes the](http://docs.python.org/3/library/datetime.html) str [method:](http://en.wikipedia.org/wiki/Radix_sort)
 
-```
->>> time = Time(9, 45)
->>> print(time)
-09:45:00
-```
+### >>> time = Time(9, 45) >>> print(time) 09:45:00
 
 When I write a new class, I almost always start by writing [__init__](http://docs.python.org/3/library/stdtypes.html#string-methods) [, which makes it easier](http://docs.python.org/3/library/stdtypes.html#string-methods) [to instantiate objects, and](http://docs.python.org/3/library/stdtypes.html#string-methods) [__str__](https://thinkpython.com/code/flower.py) [, which is useful for debugging.](https://thinkpython.com/code/flower.py)
 
@@ -7625,20 +6652,15 @@ Chapter 17. Classes and methods
 # inside class Time:
 ```
 
-[def __add__(self, other):](http://www.cartalk.com/content/puzzlers) seconds = self.time_to_int() + other.time_to_int() [return int_to_time(seconds)](https://thinkpython.com/code/grid.py)
+### [def __add__(self, other):](http://www.cartalk.com/content/puzzlers) seconds = self.time_to_int() + other.time_to_int() [return int_to_time(seconds)](https://thinkpython.com/code/grid.py)
 
 And here is how you could use it:
 
-```
->>> start = Time(9, 45)
->>> duration = Time(1, 35)
->>> print(start + duration)
-11:20:00
-```
+### [>>> start = Time(9, 45)](http://creativecommons.org/licenses/by-nc/3.0/) [>>> duration = Time(1, 35)](https://thinkpython.com/code/emma.txt) [>>> print(start + duration)](https://thinkpython.com/code/rotate.py) 11:20:00
 
 [When you apply the](https://thinkpython.com/code/structshape.py) [+](https://thinkpython.com/code/structshape.py) [operator to Time objects, Python invokes](https://thinkpython.com/code/cartalk1.py) [__add__](https://thinkpython.com/code/cartalk1.py) [. When you print](https://thinkpython.com/code/cartalk1.py) [the result, Python invokes](https://thinkpython.com/code/ackermann_memo.py) [__str__](https://thinkpython.com/code/ackermann_memo.py) [. So there is a lot happening behind the scenes!](http://www.thinkpython.com/)
 
-Changing the behavior of an operator so that it works with programmer-defined types is called [operator overloading](https://thinkpython.com/code/Circle.py) [. For every operator in Python there is a corresponding spe-](http://docs.python.org/3/reference/datamodel.html#specialnames) cial method, like __add__ . For more details, see http://docs.python.org/3/reference/ datamodel.html#specialnames [.](http://tinyurl.com/thinkpython2e)
+Changing the behavior of an operator so that it works with programmer-defined types is called [operator overloading](https://thinkpython.com/code/Circle.py) [. For every operator in Python there is a corresponding spe-](http://docs.python.org/3/reference/datamodel.html#specialnames) cial method, like __add__ . For more details, see [http://docs.python.org/3/reference/](http://docs.python.org/3/reference/) datamodel.html#specialnames [.](http://tinyurl.com/thinkpython2e)
 
 As an exercise, write an add method for the Point class.
 
@@ -7650,15 +6672,11 @@ As an exercise, write an add method for the Point class.
 # inside class Time:
 ```
 
-[def __add__(self, other):](https://thinkpython.com/code/polygon.py) [if isinstance(other, Time):](http://www.cartalk.com/content/puzzlers) [return self.add_time(other)](https://thinkpython.com/code/PokerHandSoln.py) [else:](https://thinkpython.com/code/list_exercises.py) [return self.increment(other)](http://docs.python.org/3/library/datetime.html)
+### [def __add__(self, other):](https://thinkpython.com/code/polygon.py) [if isinstance(other, Time):](http://www.cartalk.com/content/puzzlers) [return self.add_time(other)](https://thinkpython.com/code/PokerHandSoln.py) [else:](https://thinkpython.com/code/list_exercises.py) [return self.increment(other)](http://docs.python.org/3/library/datetime.html)
 
-def add_time(self, other): seconds = self.time_to_int() + other.time_to_int() [return int_to_time(seconds)](https://thinkpython.com/code/palindrome_soln.py)
+### def add_time(self, other): seconds = self.time_to_int() + other.time_to_int() [return int_to_time(seconds)](https://thinkpython.com/code/palindrome_soln.py)
 
-```
-def increment(self, seconds):
-seconds += self.time_to_int()
-return int_to_time(seconds)
-```
+### def increment(self, seconds): [seconds += self.time_to_int()](https://thinkpython.com/code/polygon.py) [return int_to_time(seconds)](https://thinkpython.com/code/koch.py)
 
 [The built-in function](https://thinkpython.com/code/analyze_book3.py) [isinstance](https://thinkpython.com/code/pie.py) [takes a value and a class object, and returns](https://thinkpython.com/code/pie.py) [True](http://en.wikipedia.org/wiki/Fibonacci_number) [if the](http://en.wikipedia.org/wiki/Fibonacci_number) [value is an instance of the class.](https://thinkpython.com/code/anagram_sets.py)
 
@@ -7690,14 +6708,11 @@ TypeError: unsupported operand type(s) for +: ' int ' and ' instance '
 # inside class Time:
 ```
 
-def __radd__(self, other): [return self.__add__(other)](https://thinkpython.com/code/BadKangaroo.py)
+### def __radd__(self, other): [return self.__add__(other)](https://thinkpython.com/code/BadKangaroo.py)
 
 [And here’s how it’s used:](http://en.wikipedia.org/wiki/Letter_frequencies)
 
-```
->>> print(1337 + start)
-10:07:17
-```
+### [>>> print(1337 + start)](https://thinkpython.com/code/rotate_pairs.py) [10:07:17](https://thinkpython.com/code/Point1_soln.py)
 
 As an exercise, write an add method for Points that works with either a Point object or a [tuple:](http://tinyurl.com/thinkpython2e)
 
@@ -7711,15 +6726,11 @@ As an exercise, write an add method for Points that works with either a Point ob
 
 [Many of the functions we wrote for strings also work for other sequence types. For exam-](https://thinkpython.com/code/pie.py) [ple, in Section 11.2 we used](http://en.wikipedia.org/wiki/Fibonacci_number) [histogram](https://thinkpython.com/code/anagram_sets.py) [to count the number of times each letter appears in](http://en.wikipedia.org/wiki/Koch_snowflake) [a word.](https://thinkpython.com/code/cartalk3.py)
 
-def histogram(s): [d = dict()](https://thinkpython.com/code/pronounce.py) [for c in s:](https://thinkpython.com/code/double.py) [if c not in d:](http://wiki.python.org/moin/BitwiseOperators) d[c] = 1
+### def histogram(s): [d = dict()](https://thinkpython.com/code/pronounce.py) [for c in s:](https://thinkpython.com/code/double.py) [if c not in d:](http://wiki.python.org/moin/BitwiseOperators) d[c] = 1
 
 Chapter 17. Classes and methods
 
-```
-else:
-d[c] = d[c]+1
-return d
-```
+### [else:](https://thinkpython.com/code/polygon.py) d[c] = d[c]+1 [return d](http://www.cartalk.com/content/puzzlers)
 
 This function also works for lists, tuples, and even dictionaries, as long as the elements of s [are hashable, so they can be used as keys in](https://thinkpython.com/code/grid.py) [d](https://thinkpython.com/code/grid.py) [.](https://thinkpython.com/code/grid.py)
 
@@ -7733,14 +6744,7 @@ This function also works for lists, tuples, and even dictionaries, as long as th
 
 Since Time objects provide an add method, they work with [sum](http://www.cartalk.com/content/puzzlers) [:](http://www.cartalk.com/content/puzzlers)
 
-```
->>> t1 = Time(7, 43)
->>> t2 = Time(7, 41)
->>> t3 = Time(7, 37)
->>> total = sum([t1, t2, t3])
->>> print(total)
-23:01:00
-```
+### [>>> t1 = Time(7, 43)](http://en.wikipedia.org/wiki/Md5) [>>> t2 = Time(7, 41)](https://thinkpython.com/code/Circle.py) [>>> t3 = Time(7, 37)](http://docs.python.org/3/reference/datamodel.html#specialnames) >>> total = sum([t1, t2, t3]) >>> print(total) 23:01:00
 
 [In general, if all of the operations inside a function work with a given type, the function](https://thinkpython.com/code/draw.py) [works with that type.](http://en.wikipedia.org/wiki/Letter_frequencies)
 
@@ -7762,7 +6766,7 @@ Another way to access attributes is the built-in function vars , which takes an 
 
 [For purposes of debugging, you might find it useful to keep this function handy:](https://thinkpython.com/code/koch.py)
 
-[def print_attributes(obj):](http://en.wikipedia.org/wiki/Fibonacci_number) [for attr in vars(obj):](http://en.wikipedia.org/wiki/Koch_snowflake) [print(attr, getattr(obj, attr))](https://thinkpython.com/code/cartalk3.py)
+### [def print_attributes(obj):](http://en.wikipedia.org/wiki/Fibonacci_number) [for attr in vars(obj):](http://en.wikipedia.org/wiki/Koch_snowflake) [print(attr, getattr(obj, attr))](https://thinkpython.com/code/cartalk3.py)
 
 print_attributes [traverses the dictionary and prints each attribute name and its corre-](https://thinkpython.com/code/c06d) sponding value.
 
@@ -7865,24 +6869,15 @@ I am using the [→](https://thinkpython.com/code/rotate.py) [symbol to make it 
 
 [The class definition for](https://thinkpython.com/code/ackermann_memo.py) [Card](https://thinkpython.com/code/ackermann_memo.py) [looks like this:](https://thinkpython.com/code/ackermann_memo.py)
 
-```
-class Card:
-"""Represents a standard playing card."""
-```
+### [class Card:](http://www.cartalk.com/content/puzzlers) ["""Represents a standard playing card."""](https://thinkpython.com/code/Circle.py)
 
-```
-def __init__(self, suit=0, rank=2):
-self.suit = suit
-self.rank = rank
-```
+### def __init__(self, suit=0, rank=2): [self.suit = suit](http://en.wikipedia.org/wiki/Birthday_paradox) self.rank = rank
 
 [As usual, the init method takes an optional parameter for each attribute. The default card](https://thinkpython.com/code/draw.py) [is the 2 of Clubs.](https://thinkpython.com/code/walk.py)
 
 [To create a Card, you call](https://thinkpython.com/code/rotate_pairs.py) [Card](https://thinkpython.com/code/rotate_pairs.py) [with the suit and rank of the card you want.](https://thinkpython.com/code/rotate_pairs.py)
 
-```
-queen_of_diamonds = Card(1, 12)
-```
+### [queen_of_diamonds = Card(1, 12)](http://www.cartalk.com/content/puzzlers)
 
 #### 18.2 [Class attributes](https://thinkpython.com/code/markov.py)
 
@@ -7898,7 +6893,7 @@ rank_names = [None, ' Ace ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' ,
 ' ' , ' ' , ' ' , ' Jack ' , ' Queen ' , ' King ' ]
 ```
 
-[def __str__(self):](http://docs.python.org/3/library/stdtypes.html#string-methods) return ' [%s of %s](https://thinkpython.com/code/flower.py) ['](https://thinkpython.com/code/flower.py) [% (Card.rank_names[self.rank],](https://thinkpython.com/code/flower.py) [Card.suit_names[self.suit])](https://thinkpython.com/code/polygon.py)
+### [def __str__(self):](http://docs.python.org/3/library/stdtypes.html#string-methods) return ' [%s of %s](https://thinkpython.com/code/flower.py) ['](https://thinkpython.com/code/flower.py) [% (Card.rank_names[self.rank],](https://thinkpython.com/code/flower.py) [Card.suit_names[self.suit])](https://thinkpython.com/code/polygon.py)
 
 Variables like suit_names [and](https://thinkpython.com/code/koch.py) [rank_names](https://thinkpython.com/code/koch.py) [, which are defined inside a class but outside](https://thinkpython.com/code/koch.py) [of any method, are called class attributes because they are associated with the class object](https://thinkpython.com/code/pie.py) Card .
 
@@ -7908,19 +6903,19 @@ Variables like suit_names [and](https://thinkpython.com/code/koch.py) [rank_name
 
 ### 18.3. Comparing cards
 
-[type](https://thinkpython.com/code/letters.py) [list](https://thinkpython.com/code/letters.py)
+### [type](https://thinkpython.com/code/letters.py) [list](https://thinkpython.com/code/letters.py)
 
-[Card](http://en.wikipedia.org/wiki/Spiral) [suit_names](http://en.wikipedia.org/wiki/Spiral)
+### [Card](http://en.wikipedia.org/wiki/Spiral) [suit_names](http://en.wikipedia.org/wiki/Spiral)
 
-list
+### list
 
-[rank_names](https://thinkpython.com/code)
+### [rank_names](https://thinkpython.com/code)
 
-[Card](http://docs.python.org/3/library/stdtypes.html#types-set)
+### [Card](http://docs.python.org/3/library/stdtypes.html#types-set)
 
-card1 suit
+### card1 suit
 
-[rank](https://thinkpython.com/code/rotate.py)
+### [rank](https://thinkpython.com/code/rotate.py)
 
 [Figure 18.1: Object diagram.](https://thinkpython.com/code/cartalk1.py)
 
@@ -7932,11 +6927,7 @@ card1 suit
 
 With the methods we have so far, we can create and print cards:
 
-```
->>> card1 = Card(2, 11)
->>> print(card1)
-Jack of Hearts
-```
+### >>> card1 = Card(2, 11) [>>> print(card1)](http://en.wikipedia.org/wiki/Big_O_notation) [Jack of Hearts](https://thinkpython.com/code/polygon.py)
 
 [Figure 18.1 is a diagram of the](https://thinkpython.com/code/reducible.py) [Card](https://thinkpython.com/code/reducible.py) class object and one Card instance. [Card](http://www.cartalk.com/content/puzzlers) is a class [object; its type is](http://www.cartalk.com/content/puzzlers) [type](http://www.cartalk.com/content/puzzlers) [.](http://www.cartalk.com/content/puzzlers) [card1](https://thinkpython.com/code/PokerHandSoln.py) [is an instance of](https://thinkpython.com/code/PokerHandSoln.py) [Card](https://thinkpython.com/code/PokerHandSoln.py) [, so its type is](http://www.youtube.com/watch?v=k4RRi_ntQc8) [Card](https://thinkpython.com/code/PokerHandSoln.py) [. To save space, I](https://thinkpython.com/code/PokerHandSoln.py) [didn’t draw the contents of](https://thinkpython.com/code/PokerHandSoln.py) suit_names [and](https://thinkpython.com/code/words.txt) [rank_names](https://thinkpython.com/code/words.txt) [.](https://thinkpython.com/code/words.txt)
 
@@ -7962,7 +6953,7 @@ Chapter 18. Inheritance
 
 [def __lt__(self, other):](https://thinkpython.com/code/spiral.py) [# check the suits](https://thinkpython.com/code/grid.py) [if self.suit < other.suit: return True](https://thinkpython.com/code/Time2_soln.py) [if self.suit > other.suit: return False](http://docs.python.org/3/library/stdtypes.html#types-set)
 
-[# suits are the same... check ranks](https://thinkpython.com/code/rotate.py) [return self.rank < other.rank](https://thinkpython.com/code/analyze_book2.py)
+### [# suits are the same... check ranks](https://thinkpython.com/code/rotate.py) [return self.rank < other.rank](https://thinkpython.com/code/analyze_book2.py)
 
 [You can write this more concisely using tuple comparison:](https://thinkpython.com/code/structshape.py)
 
@@ -7970,7 +6961,7 @@ Chapter 18. Inheritance
 # inside class Card:
 ```
 
-[def __lt__(self, other):](http://en.wikipedia.org/wiki/Md5) [t1 = self.suit, self.rank](https://thinkpython.com/code/Circle.py) [t2 = other.suit, other.rank](http://docs.python.org/3/reference/datamodel.html#specialnames) [return t1 < t2](http://en.wikipedia.org/wiki/Birthday_paradox)
+### [def __lt__(self, other):](http://en.wikipedia.org/wiki/Md5) [t1 = self.suit, self.rank](https://thinkpython.com/code/Circle.py) [t2 = other.suit, other.rank](http://docs.python.org/3/reference/datamodel.html#specialnames) [return t1 < t2](http://en.wikipedia.org/wiki/Birthday_paradox)
 
 As an exercise, write an __lt__ method for Time objects. You can use tuple comparison, [but you also might consider comparing integers.](https://thinkpython.com/code/BadKangaroo.py)
 
@@ -7996,14 +6987,11 @@ class Deck:
 # inside class Deck:
 ```
 
-```
-def __str__(self):
-res = []
-```
+### [def __str__(self):](http://wiki.python.org/moin/BitwiseOperators) res = []
 
 ### 18.6. Add, remove, shuffle and sort
 
-[for card in self.cards:](https://thinkpython.com/code/polygon.py) [res.append(str(card))](http://en.wikipedia.org/wiki/Spiral) [return](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) [\n](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) [.join(res)](http://www.cartalk.com/content/puzzlers)
+### [for card in self.cards:](https://thinkpython.com/code/polygon.py) [res.append(str(card))](http://en.wikipedia.org/wiki/Spiral) [return](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) [\n](http://www.cartalk.com/content/puzzlers) ['](http://www.cartalk.com/content/puzzlers) [.join(res)](http://www.cartalk.com/content/puzzlers)
 
 This method demonstrates an efficient way to accumulate a large string: building a list [of strings and then using the string method](https://thinkpython.com/code/grid.py) [join](https://thinkpython.com/code) [. The built-in function](https://thinkpython.com/code) str invokes the __str__ [method on each card and returns the string representation.](https://thinkpython.com/code/Time2_soln.py)
 
@@ -8021,10 +7009,7 @@ To deal cards, we would like a method that removes a card from the deck and retu
 # inside class Deck:
 ```
 
-```
-def pop_card(self):
-return self.cards.pop()
-```
+### [def pop_card(self):](http://wikipedia.org/wiki/Moby_Project) [return self.cards.pop()](https://thinkpython.com/code/reducible.py)
 
 [Since](https://thinkpython.com/code/PokerHandSoln.py) [pop](https://thinkpython.com/code/PokerHandSoln.py) [removes the](https://thinkpython.com/code/PokerHandSoln.py) [last](https://thinkpython.com/code/PokerHandSoln.py) [card in the list, we are dealing from the bottom of the deck.](https://thinkpython.com/code/words.txt)
 
@@ -8034,10 +7019,7 @@ To add a card, we can use the list method append :
 # inside class Deck:
 ```
 
-```
-def add_card(self, card):
-self.cards.append(card)
-```
+### def add_card(self, card): [self.cards.append(card)](https://thinkpython.com/code/palindrome_soln.py)
 
 A method like this that uses another method without doing much work is sometimes called a veneer [. The metaphor comes from woodworking, where a veneer is a thin layer of good](https://thinkpython.com/code/flower.py) [quality wood glued to the surface of a cheaper piece of wood to improve the appearance.](http://gutenberg.org/)
 
@@ -8049,10 +7031,7 @@ A method like this that uses another method without doing much work is sometimes
 # inside class Deck:
 ```
 
-```
-def shuffle(self):
-random.shuffle(self.cards)
-```
+### [def shuffle(self):](http://wiki.python.org/moin/BitwiseOperators) random.shuffle(self.cards)
 
 ```
 Chapter 18. Inheritance
@@ -8070,7 +7049,7 @@ A hand is also different from a deck; there are operations we want for hands tha
 
 [This relationship between classes—similar, but different—lends itself to inheritance.](http://tinyurl.com/thinkpython2e) To [define a new class that inherits from an existing class, you put the name of the existing](http://en.wikipedia.org/wiki/Birthday_paradox) class in parentheses:
 
-[class Hand(Deck):](https://thinkpython.com/code/BadKangaroo.py) ["""Represents a hand of playing cards."""](http://en.wikipedia.org/wiki/Letter_frequencies)
+### [class Hand(Deck):](https://thinkpython.com/code/BadKangaroo.py) ["""Represents a hand of playing cards."""](http://en.wikipedia.org/wiki/Letter_frequencies)
 
 [This definition indicates that](https://thinkpython.com/code/most_frequent.py) [Hand](https://thinkpython.com/code/most_frequent.py) [inherits from](https://thinkpython.com/code/most_frequent.py) [Deck](https://thinkpython.com/code/GoodKangaroo.py) [; that means we can use methods like](https://thinkpython.com/code/Point1.py) [pop_card](https://thinkpython.com/code/markov2.py) [and](https://thinkpython.com/code/rotate_pairs.py) [add_card](https://thinkpython.com/code/rotate_pairs.py) [for Hands as well as Decks.](https://thinkpython.com/code/rotate_pairs.py)
 
@@ -8084,11 +7063,7 @@ In this example, [Hand](http://en.wikipedia.org/wiki/Big_O_notation) [inherits](
 # inside class Hand:
 ```
 
-```
-def __init__(self, label= '' ):
-self.cards = []
-self.label = label
-```
+### [def __init__(self, label=](http://docs.python.org/3/library/datetime.html) [''](http://docs.python.org/3/library/datetime.html) [):](http://docs.python.org/3/library/datetime.html) self.cards = [] self.label = label
 
 [When you create a Hand, Python invokes this init method, not the one in](https://thinkpython.com/code/palindrome_soln.py) [Deck](https://thinkpython.com/code/palindrome_soln.py) .
 
@@ -8102,13 +7077,7 @@ self.label = label
 
 [The other methods are inherited from](https://thinkpython.com/code/anagram_sets.py) [Deck](https://thinkpython.com/code/anagram_sets.py) [, so we can use](https://thinkpython.com/code/anagram_sets.py) [pop_card](https://thinkpython.com/code/anagram_sets.py) [and](http://en.wikipedia.org/wiki/Koch_snowflake) [add_card](http://en.wikipedia.org/wiki/Koch_snowflake) [to deal](http://en.wikipedia.org/wiki/Koch_snowflake) a card:
 
-```
->>> deck = Deck()
->>> card = deck.pop_card()
->>> hand.add_card(card)
->>> print(hand)
-King of Spades
-```
+### [>>> deck = Deck()](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [>>> card = deck.pop_card()](https://thinkpython.com/code/pronounce.py) [>>> hand.add_card(card)](https://thinkpython.com/code/double.py) >>> print(hand) King of Spades
 
 ### 18.8. Class diagrams
 
@@ -8118,7 +7087,7 @@ King of Spades
 # inside class Deck:
 ```
 
-[def move_cards(self, hand, num):](https://thinkpython.com/code/spiral.py) [for i in range(num):](https://thinkpython.com/code/grid.py) [hand.add_card(self.pop_card())](https://thinkpython.com/code/Time2_soln.py)
+### [def move_cards(self, hand, num):](https://thinkpython.com/code/spiral.py) [for i in range(num):](https://thinkpython.com/code/grid.py) [hand.add_card(self.pop_card())](https://thinkpython.com/code/Time2_soln.py)
 
 [move_cards](http://creativecommons.org/licenses/by-nc/3.0/) [takes two arguments, a Hand object and the number of cards to deal. It modi-](http://docs.python.org/3/library/stdtypes.html#types-set) [fies both](https://thinkpython.com/code/emma.txt) [self](https://thinkpython.com/code/emma.txt) [and](https://thinkpython.com/code/emma.txt) [hand](https://thinkpython.com/code/emma.txt) , and returns None .
 
@@ -8178,7 +7147,7 @@ Any time you are unsure about the flow of execution through your program, the si
 
 [As an alternative, you could use this function, which takes an object and a method name](https://thinkpython.com/code/polygon.py) [(as a string) and returns the class that provides the definition of the method:](https://thinkpython.com/code/koch.py)
 
-[def find_defining_class(obj, meth_name):](https://thinkpython.com/code/pie.py) [for ty in type(obj).mro():](http://en.wikipedia.org/wiki/Fibonacci_number) [if meth_name in ty.__dict__:](http://en.wikipedia.org/wiki/Koch_snowflake) [return ty](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
+### [def find_defining_class(obj, meth_name):](https://thinkpython.com/code/pie.py) [for ty in type(obj).mro():](http://en.wikipedia.org/wiki/Fibonacci_number) [if meth_name in ty.__dict__:](http://en.wikipedia.org/wiki/Koch_snowflake) [return ty](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 
 Here’s an example:
 
@@ -8206,10 +7175,7 @@ find_defining_class [uses the](http://en.wikipedia.org/wiki/Spiral) [mro](http:/
 
 [Markov analysis, from Section 13.8, provides a good example.](https://thinkpython.com/code/markov.py) [If you download my](https://thinkpython.com/code/polygon.py) [code from](https://thinkpython.com/code/polygon.py) [https://thinkpython.com/code/markov.py](http://wikipedia.org/wiki/Moby_Project) [, you’ll see that it uses two global](https://thinkpython.com/code/polygon.py) [variables—](https://thinkpython.com/code/polygon.py) suffix_map and prefix —that are read and written from several functions.
 
-```
-suffix_map = {}
-prefix = ()
-```
+### [suffix_map = {}](http://www.cartalk.com/content/puzzlers) [prefix = ()](https://thinkpython.com/code/PokerHandSoln.py)
 
 [Because these variables are global, we can only run one analysis at a time. If we read two](http://docs.python.org/3/library/datetime.html) texts, their prefixes and suffixes would be added to the same data structures (which makes for some interesting generated text).
 
@@ -8219,20 +7185,11 @@ To run multiple analyses, and keep them separate, we can encapsulate the state o
 class Markov:
 ```
 
-```
-def __init__(self):
-self.suffix_map = {}
-self.prefix = ()
-```
+### [def __init__(self):](https://thinkpython.com/code/koch.py) [self.suffix_map = {}](https://docs.python.org/3/library/pdb.html) [self.prefix = ()](https://thinkpython.com/code/pie.py)
 
 [Next, we transform the functions into methods. For example, here’s](https://thinkpython.com/code/cartalk3.py) [process_word](https://thinkpython.com/code/anagram_sets.py) :
 
-```
-def process_word(self, word, order=2):
-if len(self.prefix) < order:
-self.prefix += (word,)
-return
-```
+### [def process_word(self, word, order=2):](https://thinkpython.com/code/c06d) [if len(self.prefix) < order:](https://thinkpython.com/code/pronounce.py) [self.prefix += (word,)](https://thinkpython.com/code/metathesis.py) [return](http://wiki.python.org/moin/BitwiseOperators)
 
 ```
 Chapter 18. Inheritance
@@ -8240,9 +7197,7 @@ Chapter 18. Inheritance
 
 [try:](https://thinkpython.com/code/polygon.py) [self.suffix_map[self.prefix].append(word)](http://en.wikipedia.org/wiki/Spiral) [except KeyError:](http://www.cartalk.com/content/puzzlers) # if there is no entry for this prefix, make one [self.suffix_map[self.prefix] = [word]](https://thinkpython.com/code/grid.py)
 
-```
-self.prefix = shift(self.prefix, word)
-```
+### self.prefix = shift(self.prefix, word)
 
 Transforming a program like this—changing the design without changing the behavior—is [another example of refactoring (see Section 4.7).](https://thinkpython.com/code/rotate.py)
 
@@ -8292,30 +7247,13 @@ data encapsulation: [A program development plan that involves a prototype using 
 
 [Exercise 18.1.](https://thinkpython.com/code/ackermann_memo.py) [For the following program, draw a UML class diagram that shows these classes and](http://www.thinkpython.com/) [the relationships among them.](https://thinkpython.com/code/ackermann.py)
 
-```
-class PingPongParent:
-pass
-```
+### [class PingPongParent:](https://thinkpython.com/code/Circle.py) pass
 
-```
-class Ping(PingPongParent):
-def __init__(self, pong):
-self.pong = pong
-```
+### [class Ping(PingPongParent):](http://en.wikipedia.org/wiki/Birthday_paradox) def __init__(self, pong): [self.pong = pong](https://thinkpython.com/code/BadKangaroo.py)
 
-```
-class Pong(PingPongParent):
-def __init__(self, pings=None):
-if pings is None:
-self.pings = []
-else:
-self.pings = pings
-```
+### [class Pong(PingPongParent):](https://thinkpython.com/code/rotate_pairs.py) [def __init__(self, pings=None):](https://thinkpython.com/code/do_four.py) if pings is None: [self.pings = []](http://tinyurl.com/thinkpython2e) [else:](http://en.wikipedia.org/wiki/Big_O_notation) [self.pings = pings](https://thinkpython.com/code/markov.py)
 
-```
-def add_ping(self, ping):
-self.pings.append(ping)
-```
+### [def add_ping(self, ping):](https://thinkpython.com/code/reducible.py) [self.pings.append(ping)](http://www.cartalk.com/content/puzzlers)
 
 [pong = Pong()](https://thinkpython.com/code/list_exercises.py) [ping = Ping(pong)](http://docs.python.org/3/library/datetime.html) pong.add_ping(ping) Exercise 18.2. Write a Deck method called deal_hands that takes two parameters, the number of [hands and the number of cards per hand. It should create the appropriate number of Hand objects,](https://thinkpython.com/code/palindrome_soln.py) deal the appropriate number of cards per hand, and return a list of Hands. [Exercise 18.3.](http://docs.python.org/3/library/stdtypes.html#string-methods) [The following are the possible hands in poker, in increasing order of value and](https://thinkpython.com/code/flower.py) [decreasing order of probability:](https://thinkpython.com/code/polygon.py)
 
@@ -8371,32 +7309,19 @@ Solution: https: // thinkpython. com/ code/ PokerHandSoln. py [.](https://thinkp
 
 [We saw conditional statements in Section 5.4.](http://wikipedia.org/wiki/Moby_Project) [Conditional statements are often used to](https://thinkpython.com/code/polygon.py) choose one of two values; for example:
 
-```
-if x > 0:
-y = math.log(x)
-else:
-y = float( ' nan ' )
-```
+### [if x > 0:](http://www.cartalk.com/content/puzzlers) [y = math.log(x)](https://thinkpython.com/code/PokerHandSoln.py) [else:](https://thinkpython.com/code/list_exercises.py) [y = float(](http://docs.python.org/3/library/datetime.html) ['](http://docs.python.org/3/library/datetime.html) [nan](http://docs.python.org/3/library/datetime.html) ['](http://docs.python.org/3/library/datetime.html) [)](http://docs.python.org/3/library/datetime.html)
 
 This statement checks whether x is positive. If so, it computes math.log . If not, math.log would raise a ValueError. To avoid stopping the program, we generate a “NaN”, which is [a special floating-point value that represents “Not a Number”.](https://thinkpython.com/code/palindrome_soln.py)
 
 [We can write this statement more concisely using a](http://docs.python.org/3/library/stdtypes.html#string-methods) conditional expression :
 
-```
-y = math.log(x) if x > 0 else float( ' nan ' )
-```
+### [y = math.log(x) if x > 0 else float(](https://thinkpython.com/code/polygon.py) ' nan ' )
 
 [You can almost read this line like English: “](https://thinkpython.com/code/koch.py) [y](https://thinkpython.com/code/koch.py) [gets log-](https://thinkpython.com/code/koch.py) [x](https://thinkpython.com/code/koch.py) [if](https://thinkpython.com/code/koch.py) [x](https://thinkpython.com/code/koch.py) [is greater than 0; otherwise it](https://thinkpython.com/code/sed.py) [gets NaN”.](https://docs.python.org/3/library/pdb.html)
 
 [Recursive functions can sometimes be rewritten using conditional expressions. For exam-](https://thinkpython.com/code/anagram_sets.py) [ple, here is a recursive version of](http://en.wikipedia.org/wiki/Koch_snowflake) [factorial](https://thinkpython.com/code/cartalk3.py) [:](https://thinkpython.com/code/cartalk3.py)
 
-```
-def factorial(n):
-if n == 0:
-return 1
-else:
-return n * factorial(n-1)
-```
+### def factorial(n): [if n == 0:](https://thinkpython.com/code/pronounce.py) [return 1](https://thinkpython.com/code/double.py) [else:](http://wiki.python.org/moin/BitwiseOperators) return n * factorial(n-1)
 
 ```
 Chapter 19. The Goodies
@@ -8404,10 +7329,7 @@ Chapter 19. The Goodies
 
 [We can rewrite it like this:](https://thinkpython.com/code/polygon.py)
 
-```
-def factorial(n):
-return 1 if n == 0 else n * factorial(n-1)
-```
+### def factorial(n): [return 1 if n == 0 else n * factorial(n-1)](http://www.cartalk.com/content/puzzlers)
 
 [Another use of conditional expressions is handling optional arguments. For example, here](https://thinkpython.com/code/grid.py) is the init method from GoodKangaroo [(see Exercise 17.2):](https://thinkpython.com/code)
 
@@ -8421,11 +7343,7 @@ self.pouch_contents = contents
 
 [We can rewrite this one like this:](https://thinkpython.com/code/structshape.py)
 
-```
-def __init__(self, name, contents=None):
-self.name = name
-self.pouch_contents = [] if contents == None else contents
-```
+### def __init__(self, name, contents=None): [self.name = name](http://en.wikipedia.org/wiki/Md5) [self.pouch_contents = [] if contents == None else contents](https://thinkpython.com/code/Circle.py)
 
 [In general, you can replace a conditional statement with a conditional expression if both](http://tinyurl.com/thinkpython2e) [branches contain simple expressions that are either returned or assigned to the same vari-](http://en.wikipedia.org/wiki/Birthday_paradox) able.
 
@@ -8433,11 +7351,11 @@ self.pouch_contents = [] if contents == None else contents
 
 [In Section 10.7 we saw the map and filter patterns. For example, this function takes a list](http://tinyurl.com/thinkpython2e) [of strings, maps the string method](http://www.cartalk.com/content/puzzlers) capitalize to the elements, and returns a new list of strings:
 
-[def capitalize_all(t):](http://en.wikipedia.org/wiki/Big_O_notation) res = [] [for s in t:](https://thinkpython.com/code/polygon.py) [res.append(s.capitalize())](https://thinkpython.com/code/reducible.py) [return res](https://thinkpython.com/code/PokerHandSoln.py)
+### [def capitalize_all(t):](http://en.wikipedia.org/wiki/Big_O_notation) res = [] [for s in t:](https://thinkpython.com/code/polygon.py) [res.append(s.capitalize())](https://thinkpython.com/code/reducible.py) [return res](https://thinkpython.com/code/PokerHandSoln.py)
 
 [We can write this more concisely using a](https://thinkpython.com/code/list_exercises.py) list comprehension :
 
-[def capitalize_all(t):](http://docs.python.org/3/library/datetime.html) return [s.capitalize() for s in t]
+### [def capitalize_all(t):](http://docs.python.org/3/library/datetime.html) return [s.capitalize() for s in t]
 
 The bracket operators indicate that we are constructing a new list. The expression inside [the brackets specifies the elements of the list, and the](https://thinkpython.com/code/palindrome_soln.py) [for](https://thinkpython.com/code/palindrome_soln.py) [clause indicates what sequence](https://thinkpython.com/code/palindrome_soln.py) we are traversing.
 
@@ -8445,20 +7363,13 @@ The bracket operators indicate that we are constructing a new list. The expressi
 
 [List comprehensions can also be used for filtering. For example, this function selects only](https://thinkpython.com/code/pie.py) the elements of [t](http://en.wikipedia.org/wiki/Fibonacci_number) [that are upper case, and returns a new list:](https://thinkpython.com/code/anagram_sets.py)
 
-```
-def only_upper(t):
-res = []
-for s in t:
-if s.isupper():
-res.append(s)
-return res
-```
+### [def only_upper(t):](https://thinkpython.com/code/cartalk3.py) [res = []](https://thinkpython.com/code/anagram_sets.py) for s in t: [if s.isupper():](https://thinkpython.com/code/double.py) [res.append(s)](http://wiki.python.org/moin/BitwiseOperators) return res
 
 ### 19.3. Generator expressions
 
 [We can rewrite it using a list comprehension](https://thinkpython.com/code/polygon.py)
 
-def only_upper(t): [return [s for s in t if s.isupper()]](http://www.cartalk.com/content/puzzlers)
+### def only_upper(t): [return [s for s in t if s.isupper()]](http://www.cartalk.com/content/puzzlers)
 
 [List comprehensions are concise and easy to read, at least for simple expressions. And they](https://thinkpython.com/code/grid.py) [are usually faster than the equivalent for loops, sometimes much faster. So if you are mad](https://thinkpython.com/code) [at me for not mentioning them earlier, I understand.](https://thinkpython.com/code/Time2_soln.py)
 
@@ -8468,32 +7379,25 @@ def only_upper(t): [return [s for s in t if s.isupper()]](http://www.cartalk.com
 
 Generator expressions are similar to list comprehensions, but with parentheses instead of square brackets:
 
-[>>> g = (x**2 for x in range(5))](https://thinkpython.com/code/has_duplicates.py) [>>> g](https://thinkpython.com/code/BadKangaroo.py) [<generator object <genexpr> at 0x7f4c45a786c0>](https://thinkpython.com/code/draw.py)
+### [>>> g = (x2 for x in range(5))](https://thinkpython.com/code/has_duplicates.py) [>>> g](https://thinkpython.com/code/BadKangaroo.py) [<generator object <genexpr> at 0x7f4c45a786c0>](https://thinkpython.com/code/draw.py)
 
 [The result is a generator object that knows how to iterate through a sequence of values. But](https://thinkpython.com/code/Time1_soln.py) [unlike a list comprehension, it does not compute the values all at once; it waits to be asked.](https://thinkpython.com/code/rotate_pairs.py) [The built-in function](https://thinkpython.com/code/Point1_soln.py) [next](http://tinyurl.com/thinkpython2e) [gets the next value from the generator:](http://tinyurl.com/thinkpython2e)
 
-```
->>> next(g)
-```
+### [>>> next(g)](http://www.cartalk.com/content/puzzlers)
 
-```
->>> next(g)
-```
+### >>> next(g)
 
 [When you get to the end of the sequence,](http://wikipedia.org/wiki/Moby_Project) [next](http://wikipedia.org/wiki/Moby_Project) raises a StopIteration exception. You can [also use a](https://thinkpython.com/code/reducible.py) [for](https://thinkpython.com/code/reducible.py) [loop to iterate through the values:](https://thinkpython.com/code/reducible.py)
 
-[>>> for val in g:](https://thinkpython.com/code/PokerHandSoln.py) [...](https://thinkpython.com/code/list_exercises.py) print(val)
+### [>>> for val in g:](https://thinkpython.com/code/PokerHandSoln.py) [...](https://thinkpython.com/code/list_exercises.py) print(val)
 
 The generator object keeps track of where it is in the sequence, so the for loop picks up where [next](https://thinkpython.com/code/palindrome_soln.py) [left off. Once the generator is exhausted, it continues to raise](https://thinkpython.com/code/palindrome_soln.py) [StopIteration](http://docs.python.org/3/library/stdtypes.html#string-methods) [:](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
-```
->>> next(g)
-StopIteration
-```
+### [>>> next(g)](http://docs.python.org/3/library/stdtypes.html#string-methods) [StopIteration](https://thinkpython.com/code/polygon.py)
 
 [Generator expressions are often used with functions like](https://thinkpython.com/code/koch.py) [sum](https://thinkpython.com/code/koch.py) , max , and min :
 
-[>>> sum(x**2 for x in range(5))](https://thinkpython.com/code/pie.py)
+### [>>> sum(x2 for x in range(5))](https://thinkpython.com/code/pie.py)
 
 #### [19.4](https://thinkpython.com/code/reverse_pair.py) [any](https://thinkpython.com/code/reverse_pair.py) [and](https://thinkpython.com/code/reverse_pair.py) [all](https://thinkpython.com/code/pronounce.py)
 
@@ -8503,7 +7407,7 @@ StopIteration
 Chapter 19. The Goodies
 ```
 
-[>>> any([False, False, True])](https://thinkpython.com/code/polygon.py) True
+### [>>> any([False, False, True])](https://thinkpython.com/code/polygon.py) True
 
 [But it is often used with generator expressions:](http://www.cartalk.com/content/puzzlers)
 
@@ -8511,7 +7415,7 @@ Chapter 19. The Goodies
 
 That example isn’t very useful because it does the same thing as the in operator. But we [could use](http://creativecommons.org/licenses/by-nc/3.0/) [any](http://creativecommons.org/licenses/by-nc/3.0/) [to rewrite some of the search functions we wrote in Section 9.3. For example,](http://docs.python.org/3/library/stdtypes.html#types-set) [we could write](https://thinkpython.com/code/emma.txt) [avoids](https://thinkpython.com/code/emma.txt) [like this:](https://thinkpython.com/code/emma.txt)
 
-[def avoids(word, forbidden):](https://thinkpython.com/code/pi.py) [return not any(letter in forbidden for letter in word)](http://en.wikipedia.org/wiki/Ackermann_function)
+### [def avoids(word, forbidden):](https://thinkpython.com/code/pi.py) [return not any(letter in forbidden for letter in word)](http://en.wikipedia.org/wiki/Ackermann_function)
 
 [The function almost reads like English, “](https://thinkpython.com/code/ackermann_memo.py) [word](http://www.thinkpython.com/) [avoids](http://www.thinkpython.com/) [forbidden](http://www.thinkpython.com/) [if there are not any forbid-](https://thinkpython.com/code/ackermann.py) [den letters in](http://www.cartalk.com/content/puzzlers) [word](https://thinkpython.com/code/ackermann.py) [.”](https://thinkpython.com/code/ackermann.py)
 
@@ -8523,7 +7427,7 @@ Using any [with a generator expression is efficient because it stops immediately
 
 [In Section 13.6 I use dictionaries to find the words that appear in a document but not in a](http://tinyurl.com/thinkpython2e) word list. The function I wrote takes d1 , which contains the words from the document as keys, and [d2](http://tinyurl.com/thinkpython2e) , which contains the list of words. It returns a dictionary that contains the keys from d1 [that are not in](http://en.wikipedia.org/wiki/Big_O_notation) [d2](http://en.wikipedia.org/wiki/Big_O_notation) [.](http://en.wikipedia.org/wiki/Big_O_notation)
 
-[def subtract(d1, d2):](https://thinkpython.com/code/polygon.py) [res = dict()](https://thinkpython.com/code/reducible.py) [for key in d1:](http://www.cartalk.com/content/puzzlers) [if key not in d2:](https://thinkpython.com/code/PokerHandSoln.py) res[key] = None [return res](http://docs.python.org/3/library/datetime.html)
+### [def subtract(d1, d2):](https://thinkpython.com/code/polygon.py) [res = dict()](https://thinkpython.com/code/reducible.py) [for key in d1:](http://www.cartalk.com/content/puzzlers) [if key not in d2:](https://thinkpython.com/code/PokerHandSoln.py) res[key] = None [return res](http://docs.python.org/3/library/datetime.html)
 
 In all of these dictionaries, the values are None because we never use them. As a result, we waste some storage space.
 
@@ -8531,10 +7435,7 @@ In all of these dictionaries, the values are None because we never use them. As 
 
 [For example, set subtraction is available as a method called](https://thinkpython.com/code/koch.py) [difference](https://thinkpython.com/code/koch.py) or as an operator, - [. So we can rewrite](https://thinkpython.com/code/analyze_book3.py) [subtract](https://thinkpython.com/code/pie.py) [like this:](https://thinkpython.com/code/pie.py)
 
-```
-def subtract(d1, d2):
-return set(d1) - set(d2)
-```
+### [def subtract(d1, d2):](https://thinkpython.com/code/anagram_sets.py) [return set(d1) - set(d2)](https://thinkpython.com/code/cartalk3.py)
 
 [The result is a set instead of a dictionary, but for operations like iteration, the behavior is](https://thinkpython.com/code/c06d) the same.
 
@@ -8542,37 +7443,23 @@ return set(d1) - set(d2)
 
 ### 19.6. Counters
 
-```
-def has_duplicates(t):
-d = {}
-for x in t:
-if x in d:
-return True
-d[x] = True
-return False
-```
+### [def has_duplicates(t):](https://thinkpython.com/code/polygon.py) d = {} [for x in t:](http://www.cartalk.com/content/puzzlers) [if x in d:](https://thinkpython.com/code/spiral.py) [return True](https://thinkpython.com/code/grid.py) d[x] = True return False
 
 When an element appears for the first time, it is added to the dictionary. If the same element [appears again, the function returns](https://thinkpython.com/code/rotate.py) [True](https://thinkpython.com/code/rotate.py) [.](https://thinkpython.com/code/rotate.py)
 
 [Using sets, we can write the same function like this:](http://en.wikipedia.org/wiki/Ackermann_function)
 
-```
-def has_duplicates(t):
-return len(set(t)) < len(t)
-```
+### [def has_duplicates(t):](https://thinkpython.com/code/structshape.py) [return len(set(t)) < len(t)](https://thinkpython.com/code/ackermann_memo.py)
 
 An element can only appear in a set once, so if an element in t appears more than once, the [set will be smaller than](https://thinkpython.com/code/Circle.py) [t](https://thinkpython.com/code/Circle.py) [. If there are no duplicates, the set will be the same size as](http://docs.python.org/3/reference/datamodel.html#specialnames) t .
 
 [We can also use sets to do some of the exercises in Chapter 9. For example, here’s a version](http://tinyurl.com/thinkpython2e) [of](https://thinkpython.com/code/has_duplicates.py) [uses_only](http://en.wikipedia.org/wiki/Birthday_paradox) [with a loop:](http://en.wikipedia.org/wiki/Birthday_paradox)
 
-def uses_only(word, available): [for letter in word:](https://thinkpython.com/code/draw.py) [if letter not in available:](http://en.wikipedia.org/wiki/Letter_frequencies) [return False](https://thinkpython.com/code/most_frequent.py) return True
+### def uses_only(word, available): [for letter in word:](https://thinkpython.com/code/draw.py) [if letter not in available:](http://en.wikipedia.org/wiki/Letter_frequencies) [return False](https://thinkpython.com/code/most_frequent.py) return True
 
 [uses_only](http://www.cartalk.com/content/puzzlers) [checks whether all letters in](http://tinyurl.com/thinkpython2e) [word](http://tinyurl.com/thinkpython2e) [are in](http://tinyurl.com/thinkpython2e) [available](http://tinyurl.com/thinkpython2e) [. We can rewrite it like this:](https://thinkpython.com/code/birthday.py)
 
-```
-def uses_only(word, available):
-return set(word) <= set(available)
-```
+### [def uses_only(word, available):](http://tinyurl.com/thinkpython2e) return set(word) <= set(available)
 
 The <= [operator checks whether one set is a subset of another, including the possibility that](https://thinkpython.com/code/markov.py) [they are equal, which is true if all the letters in](http://wikipedia.org/wiki/Moby_Project) [word](http://wikipedia.org/wiki/Moby_Project) [appear in](http://wikipedia.org/wiki/Moby_Project) [available](https://thinkpython.com/code/cartalk2.py) .
 
@@ -8599,16 +7486,11 @@ Counter({ ' r ' : 2, ' t ' : 1, ' o ' : 1, ' p ' : 1, ' a ' : 1})
 Chapter 19. The Goodies
 ```
 
-```
->>> count[ ' d ' ]
-```
+### [>>> count[](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [d](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) []](https://thinkpython.com/code/polygon.py)
 
 [We can use Counters to rewrite](http://www.cartalk.com/content/puzzlers) [is_anagram](http://www.cartalk.com/content/puzzlers) [from Exercise 10.6:](http://www.cartalk.com/content/puzzlers)
 
-```
-def is_anagram(word1, word2):
-return Counter(word1) == Counter(word2)
-```
+### [def is_anagram(word1, word2):](https://thinkpython.com/code/grid.py) return Counter(word1) == Counter(word2)
 
 If two words are anagrams, they contain the same letters with the same counts, so their [Counters are equivalent.](http://creativecommons.org/licenses/by-nc/3.0/)
 
@@ -8622,18 +7504,11 @@ If two words are anagrams, they contain the same letters with the same counts, s
 
 When you create a defaultdict, you provide a function that’s used to create new values. A [function used to create objects is sometimes called a](https://thinkpython.com/code/markov.py) [factory](https://thinkpython.com/code/markov.py) [. The built-in functions that](https://thinkpython.com/code/polygon.py) [create lists, sets, and other types can be used as factories:](http://wikipedia.org/wiki/Moby_Project)
 
-```
->>> from collections import defaultdict
->>> d = defaultdict(list)
-```
+### [>>> from collections import defaultdict](http://www.cartalk.com/content/puzzlers) [>>> d = defaultdict(list)](https://thinkpython.com/code/PokerHandSoln.py)
 
 [Notice that the argument is](https://thinkpython.com/code/list_exercises.py) list , which is a class object, not list() , which is a new list. [The function you provide doesn’t get called unless you access a key that doesn’t exist.](http://docs.python.org/3/library/datetime.html)
 
-```
->>> t = d[ ' new key ' ]
->>> t
-[]
-```
+### >>> t = d[ ' new key ' ] >>> t []
 
 [The new list, which we’re calling](http://docs.python.org/3/library/stdtypes.html#string-methods) [t](http://docs.python.org/3/library/stdtypes.html#string-methods) , is also added to the dictionary. So if we modify t , the change appears in d :
 
@@ -8671,16 +7546,9 @@ My solution to Exercise 18.3, which you can download from [https://thinkpython.c
 class Point:
 ```
 
-```
-def __init__(self, x=0, y=0):
-self.x = x
-self.y = y
-```
+### [def __init__(self, x=0, y=0):](https://thinkpython.com/code/cartalk3.py) self.x = x [self.y = y](https://thinkpython.com/code/pronounce.py)
 
-```
-def __str__(self):
-return ' (%g, %g) ' % (self.x, self.y)
-```
+### [def __str__(self):](http://wiki.python.org/moin/BitwiseOperators) return ' (%g, %g) ' % (self.x, self.y)
 
 ```
 Chapter 19. The Goodies
@@ -8695,49 +7563,29 @@ Point = namedtuple( ' Point ' , [ ' x ' , ' y ' ])
 
 [The first argument is the name of the class you want to create. The second is a list of the](https://thinkpython.com/code) [attributes Point objects should have, as strings. The return value from](https://thinkpython.com/code/Time2_soln.py) [namedtuple](https://thinkpython.com/code/Time2_soln.py) [is a class](http://creativecommons.org/licenses/by-nc/3.0/) [object:](http://creativecommons.org/licenses/by-nc/3.0/)
 
-```
->>> Point
-<class ' __main__.Point ' >
-```
+### [>>> Point](https://thinkpython.com/code/emma.txt) <class ['](https://thinkpython.com/code/analyze_book2.py) [__main__.Point](https://thinkpython.com/code/rotate.py) ['](https://thinkpython.com/code/rotate.py) [>](https://thinkpython.com/code/rotate.py)
 
 Point [automatically provides methods like](http://en.wikipedia.org/wiki/Ackermann_function) [__init__](http://en.wikipedia.org/wiki/Ackermann_function) [and](http://en.wikipedia.org/wiki/Ackermann_function) [__str__](http://en.wikipedia.org/wiki/Ackermann_function) [so you don’t have to](https://docs.python.org/3/library/stdtypes.html#str.format) write them.
 
 To create a Point object, you use the Point class as a function:
 
-```
->>> p = Point(1, 2)
->>> p
-Point(x=1, y=2)
-```
+### [>>> p = Point(1, 2)](https://thinkpython.com/code/Circle.py) [>>> p](http://docs.python.org/3/reference/datamodel.html#specialnames) Point(x=1, y=2)
 
 The init method assigns the arguments to attributes using the names you provided. The [str method prints a representation of the Point object and its attributes.](https://thinkpython.com/code/BadKangaroo.py)
 
 [You can access the elements of the named tuple by name:](http://en.wikipedia.org/wiki/Letter_frequencies)
 
-```
->>> p.x, p.y
-(1, 2)
-```
+### [>>> p.x, p.y](https://thinkpython.com/code/markov2.py) [(1, 2)](https://thinkpython.com/code/Time1.py)
 
 But you can also treat a named tuple as a tuple:
 
-```
->>> p[0], p[1]
-(1, 2)
-```
+### >>> p[0], p[1] (1, 2)
 
-```
->>> x, y = p
->>> x, y
-(1, 2)
-```
+### >>> x, y = p [>>> x, y](http://www.cartalk.com/content/puzzlers) (1, 2)
 
 Named tuples provide a quick way to define simple classes. The drawback is that simple [classes don’t always stay simple. You might decide later that you want to add methods](http://docs.python.org/3/library/datetime.html) to a named tuple. In that case, you could define a new class that inherits from the named tuple:
 
-```
-class Pointier(Point):
-# add more methods here
-```
+### class Pointier(Point): # add more methods here
 
 [Or you could switch to a conventional class definition.](https://thinkpython.com/code/flower.py)
 
@@ -8745,33 +7593,21 @@ class Pointier(Point):
 
 [In Section 12.4, we saw how to write a function that gathers its arguments into a tuple:](https://thinkpython.com/code/cartalk3.py)
 
-```
-def printall(*args):
-print(args)
-```
+### [def printall(*args):](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [print(args)](https://thinkpython.com/code/reverse_pair.py)
 
 [You can call this function with any number of positional arguments (that is, arguments that](http://wiki.python.org/moin/BitwiseOperators) don’t have keywords):
 
 ### 19.10. Glossary
 
-```
->>> printall(1, 2.0, ' ' )
-(1, 2.0, ' ' )
-```
+### [>>> printall(1, 2.0,](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [)](https://thinkpython.com/code/polygon.py) (1, 2.0, ' ' )
 
 [But the](http://www.cartalk.com/content/puzzlers) [*](http://www.cartalk.com/content/puzzlers) [operator doesn’t gather keyword arguments:](http://www.cartalk.com/content/puzzlers)
 
-```
->>> printall(1, 2.0, third= ' ' )
-TypeError: printall() got an unexpected keyword argument ' third '
-```
+### [>>> printall(1, 2.0, third=](https://thinkpython.com/code/grid.py) ['](https://thinkpython.com/code/grid.py) ['](https://thinkpython.com/code/grid.py) [)](https://thinkpython.com/code/grid.py) [TypeError: printall() got an unexpected keyword argument](https://thinkpython.com/code/Time2_soln.py) ['](https://thinkpython.com/code/Time2_soln.py) [third](https://thinkpython.com/code/Time2_soln.py) '
 
 [To gather keyword arguments, you can use the](http://creativecommons.org/licenses/by-nc/3.0/) [**](http://docs.python.org/3/library/stdtypes.html#types-set) operator:
 
-```
-def printall(*args, **kwargs):
-print(args, kwargs)
-```
+### [def printall(*args, kwargs):](https://thinkpython.com/code/emma.txt) [print(args, kwargs)](https://thinkpython.com/code/analyze_book2.py)
 
 [You can call the keyword gathering parameter anything you want, but](https://thinkpython.com/code/structshape.py) [kwargs](https://docs.python.org/3/library/stdtypes.html#str.format) [is a common](https://thinkpython.com/code/ackermann_memo.py) [choice. The result is a dictionary that maps from keywords to values:](http://www.thinkpython.com/)
 
@@ -8782,11 +7618,7 @@ print(args, kwargs)
 
 [If you have a dictionary of keywords and values, you can use the scatter operator,](http://tinyurl.com/thinkpython2e) ** to [call a function:](http://en.wikipedia.org/wiki/Birthday_paradox)
 
-```
->>> d = dict(x=1, y=2)
->>> Point(**d)
-Point(x=1, y=2)
-```
+### >>> d = dict(x=1, y=2) [>>> Point(d)](https://thinkpython.com/code/draw.py) [Point(x=1, y=2)](http://en.wikipedia.org/wiki/Letter_frequencies)
 
 [Without the scatter operator, the function would treat](https://thinkpython.com/code/rotate_pairs.py) [d](https://thinkpython.com/code/Time1.py) [as a single positional argument, so](https://thinkpython.com/code/Point1_soln.py) [it would assign](https://thinkpython.com/code/Point1_soln.py) [d](https://thinkpython.com/code/Point1_soln.py) to x [and complain because there’s nothing to assign to](http://tinyurl.com/thinkpython2e) [y](https://thinkpython.com/code/birthday.py) [:](https://thinkpython.com/code/birthday.py)
 
@@ -8825,21 +7657,11 @@ def binomial_coeff(n, k):
 """Compute the binomial coefficient "n choose k".
 ```
 
-n: number of trials [k: number of successes](https://thinkpython.com/code/markov.py)
+### n: number of trials [k: number of successes](https://thinkpython.com/code/markov.py)
 
-```
-returns: int
-"""
-if k == 0:
-return 1
-if n == 0:
-return 0
-```
+### [returns: int](https://thinkpython.com/code/invert_dict.py) """ [if k == 0:](https://thinkpython.com/code/structshape.py) [return 1](https://thinkpython.com/code/ackermann_memo.py) [if n == 0:](https://thinkpython.com/code/ackermann.py) [return 0](https://thinkpython.com/code/Circle.py)
 
-```
-res = binomial_coeff(n-1, k) + binomial_coeff(n-1, k-1)
-return res
-```
+### [res = binomial_coeff(n-1, k) + binomial_coeff(n-1, k-1)](http://tinyurl.com/thinkpython2e) [return res](https://thinkpython.com/code/has_duplicates.py)
 
 Rewrite the body of the function using nested conditional expressions.
 
@@ -8955,7 +7777,7 @@ Infinite Loop
 
 For example:
 
-[while x > 0 and y < 0 :](http://creativecommons.org/licenses/by-nc/3.0/) [# do something to x](https://thinkpython.com/code/emma.txt) [# do something to y](https://thinkpython.com/code/rotate.py)
+### [while x > 0 and y < 0 :](http://creativecommons.org/licenses/by-nc/3.0/) [# do something to x](https://thinkpython.com/code/emma.txt) [# do something to y](https://thinkpython.com/code/rotate.py)
 
 | print( | '   | x:  | '   | , x) |
 | ------ | --- | --- | --- | ---- |
@@ -9069,21 +7891,17 @@ Writing complex expressions is fine as long as they are readable, but they can b
 
 [For example:](https://thinkpython.com/code/has_duplicates.py)
 
-```
-self.hands[i].addCard(self.hands[self.findNeighbor(i)].popCard())
-```
+### [self.hands[i].addCard(self.hands[self.findNeighbor(i)].popCard())](http://en.wikipedia.org/wiki/Sexagesimal)
 
 [This can be rewritten as:](http://en.wikipedia.org/wiki/Letter_frequencies)
 
-[neighbor = self.findNeighbor(i)](https://thinkpython.com/code/most_frequent.py) pickedCard = self.hands[neighbor].popCard() [self.hands[i].addCard(pickedCard)](https://thinkpython.com/code/do_four.py)
+### [neighbor = self.findNeighbor(i)](https://thinkpython.com/code/most_frequent.py) pickedCard = self.hands[neighbor].popCard() [self.hands[i].addCard(pickedCard)](https://thinkpython.com/code/do_four.py)
 
 The explicit version is easier to read because the variable names provide additional docu- mentation, and it is easier to debug because you can check the types of the intermediate [variables and display their values.](https://thinkpython.com/code/markov.py)
 
 [Another problem that can occur with big expressions is that the order of evaluation may](http://wikipedia.org/wiki/Moby_Project)
 
-```
-x
-```
+[x](http://www.cartalk.com/content/puzzlers)
 
 [not be what you expect. For example, if you are translating the expression](https://thinkpython.com/code/reducible.py)
 
@@ -9091,17 +7909,13 @@ x
 
 into Python, [you might write:](http://www.cartalk.com/content/puzzlers)
 
-```
-y = x / 2 * math.pi
-```
+### y = x / 2 * math.pi
 
 [That is not correct because multiplication and division have the same precedence and are](http://docs.python.org/3/library/datetime.html) evaluated from left to right. So this expression computes x π /2.
 
 A good way to debug expressions is to add parentheses to make the order of evaluation explicit:
 
-```
-y = x / (2 * math.pi)
-```
+### [y = x / (2 * math.pi)](http://docs.python.org/3/library/stdtypes.html#string-methods)
 
 Whenever you are not sure of the order of evaluation, use parentheses. Not only will the [program be correct (in the sense of doing what you intended), it will also be more readable](http://gutenberg.org/) [for other people who haven’t memorized the order of operations.](https://thinkpython.com/code/koch.py)
 
@@ -9109,9 +7923,7 @@ Whenever you are not sure of the order of evaluation, use parentheses. Not only 
 
 [If you have a](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) return [statement with a complex expression, you don’t have a chance to](https://thinkpython.com/code/reverse_pair.py) [print the result before returning. Again, you can use a temporary variable. For example,](https://thinkpython.com/code/pronounce.py) instead of:
 
-```
-return self.hands[i].removeMatches()
-```
+### return self.hands[i].removeMatches()
 
 ```
 Appendix A. Debugging
@@ -9119,10 +7931,7 @@ Appendix A. Debugging
 
 [you could write:](https://thinkpython.com/code/polygon.py)
 
-```
-count = self.hands[i].removeMatches()
-return count
-```
+### count = self.hands[i].removeMatches() [return count](http://www.cartalk.com/content/puzzlers)
 
 [Now you have the opportunity to display the value of](https://thinkpython.com/code/grid.py) count before returning.
 
@@ -9170,7 +7979,7 @@ The practical goal of algorithm analysis is to predict the performance of differ
 
 [During the 2008 United States Presidential Campaign, candidate Barack Obama was asked](https://thinkpython.com/code/markov.py) [to perform an impromptu analysis when he visited Google. Chief executive Eric Schmidt](http://wikipedia.org/wiki/Moby_Project) jokingly asked him for “the most efficient way to sort a million 32-bit integers.” Obama [had apparently been tipped off, because he quickly replied, “I think the bubble sort would](https://thinkpython.com/code/reducible.py) [be the wrong way to go.” See](https://thinkpython.com/code/PokerHandSoln.py) [http://www.youtube.com/watch?v=k4RRi_ntQc8](https://thinkpython.com/code/words.txt) [.](https://thinkpython.com/code/words.txt)
 
-This is true: bubble sort is conceptually simple but slow for large datasets. [The an-](http://en.wikipedia.org/wiki/Radix_sort) [swer Schmidt was probably looking for is “radix sort” (](http://docs.python.org/3/library/datetime.html) http://en.wikipedia.org/wiki/ Radix_sort ) .
+This is true: bubble sort is conceptually simple but slow for large datasets. [The an-](http://en.wikipedia.org/wiki/Radix_sort) [swer Schmidt was probably looking for is “radix sort” (](http://docs.python.org/3/library/datetime.html) [http://en.wikipedia.org/wiki/](http://en.wikipedia.org/wiki/) Radix_sort ) .
 
 The goal of algorithm analysis is to make meaningful comparisons between algorithms, [but there are some problems:](https://thinkpython.com/code/palindrome_soln.py)
 
@@ -9226,21 +8035,15 @@ B.1. Order of growth
 
 [Order of](https://thinkpython.com/code/ackermann_memo.py) [Name](http://www.thinkpython.com/) [growth](https://thinkpython.com/code/ackermann.py) [O](http://en.wikipedia.org/wiki/Md5) [(](http://en.wikipedia.org/wiki/Md5) [)](http://en.wikipedia.org/wiki/Md5) constant [O](https://thinkpython.com/code/Circle.py) [(](https://thinkpython.com/code/Circle.py) [log](https://thinkpython.com/code/Circle.py)
 
-```
 b
-```
 
 [n](https://thinkpython.com/code/Circle.py) [)](https://thinkpython.com/code/Circle.py) [logarithmic (for any](https://thinkpython.com/code/Circle.py) [b](https://thinkpython.com/code/Circle.py) [)](https://thinkpython.com/code/Circle.py) [O](http://docs.python.org/3/reference/datamodel.html#specialnames) [(](http://docs.python.org/3/reference/datamodel.html#specialnames) [n](http://docs.python.org/3/reference/datamodel.html#specialnames) [)](http://docs.python.org/3/reference/datamodel.html#specialnames) [linear](http://tinyurl.com/thinkpython2e) [O](http://en.wikipedia.org/wiki/Birthday_paradox) [(](http://en.wikipedia.org/wiki/Birthday_paradox) [n](http://en.wikipedia.org/wiki/Birthday_paradox) [log](http://en.wikipedia.org/wiki/Birthday_paradox)
 
-```
-b
-```
+[b](http://en.wikipedia.org/wiki/Birthday_paradox)
 
 [n](http://en.wikipedia.org/wiki/Birthday_paradox) [)](http://en.wikipedia.org/wiki/Birthday_paradox) [linearithmic](http://en.wikipedia.org/wiki/Birthday_paradox) O ( n ) quadratic [O](https://thinkpython.com/code/BadKangaroo.py) [(](https://thinkpython.com/code/BadKangaroo.py) [n](https://thinkpython.com/code/BadKangaroo.py) [)](https://thinkpython.com/code/BadKangaroo.py) [cubic](http://en.wikipedia.org/wiki/Sexagesimal) [O](https://thinkpython.com/code/draw.py) [(](https://thinkpython.com/code/draw.py) [c](https://thinkpython.com/code/draw.py)
 
-```
-n
-```
+[n](https://thinkpython.com/code/draw.py)
 
 [)](https://thinkpython.com/code/draw.py) [exponential (for any](https://thinkpython.com/code/draw.py) [c](https://thinkpython.com/code/draw.py) [)](https://thinkpython.com/code/draw.py)
 
@@ -9272,41 +8075,31 @@ Appendix B. Analysis of Algorithms
 
 A for [loop that traverses a sequence or dictionary is usually linear, as long as all of the](https://thinkpython.com/code/rotate.py) [operations in the body of the loop are constant time. For example, adding up the elements](http://en.wikipedia.org/wiki/Ackermann_function) [of a list is linear:](https://thinkpython.com/code/structshape.py)
 
-total = 0 [for x in t:](https://thinkpython.com/code/ackermann.py) [total += x](https://thinkpython.com/code/Circle.py)
+### total = 0 [for x in t:](https://thinkpython.com/code/ackermann.py) [total += x](https://thinkpython.com/code/Circle.py)
 
 [The built-in function](http://docs.python.org/3/reference/datamodel.html#specialnames) [sum](http://docs.python.org/3/reference/datamodel.html#specialnames) is also linear because it does the same thing, but it tends to be [faster because it is a more efficient implementation; in the language of algorithmic analysis,](http://tinyurl.com/thinkpython2e) [it has a smaller leading coefficient.](https://thinkpython.com/code/has_duplicates.py)
 
 [As a rule of thumb, if the body of a loop is in](https://thinkpython.com/code/BadKangaroo.py) [O](http://en.wikipedia.org/wiki/Sexagesimal) [(](http://en.wikipedia.org/wiki/Sexagesimal) [n](http://en.wikipedia.org/wiki/Sexagesimal)
 
-```
-a
-```
+[a](https://thinkpython.com/code/BadKangaroo.py)
 
 [)](http://en.wikipedia.org/wiki/Sexagesimal) [then the whole loop is in](http://en.wikipedia.org/wiki/Sexagesimal) [O](http://en.wikipedia.org/wiki/Sexagesimal) [(](http://en.wikipedia.org/wiki/Sexagesimal) [n](http://en.wikipedia.org/wiki/Sexagesimal)
 
-```
-a +
-```
+[a](https://thinkpython.com/code/markov.py) [+](https://thinkpython.com/code/markov.py)
 
 [)](https://thinkpython.com/code/markov.py) [. The](https://thinkpython.com/code/markov.py) [exception is if you can show that the loop exits after a constant number of iterations. If a](http://en.wikipedia.org/wiki/Letter_frequencies) loop runs [k](https://thinkpython.com/code/most_frequent.py) [times regardless of](https://thinkpython.com/code/most_frequent.py) [n](https://thinkpython.com/code/most_frequent.py) , then the loop is in [O](https://thinkpython.com/code/Time1_soln.py) [(](https://thinkpython.com/code/Time1_soln.py) [n](https://thinkpython.com/code/Time1_soln.py)
 
-```
-a
-```
+[a](http://en.wikipedia.org/wiki/Letter_frequencies)
 
 [)](https://thinkpython.com/code/Time1_soln.py) [, even for large](https://thinkpython.com/code/Point1.py) [k](https://thinkpython.com/code/Point1.py) [.](https://thinkpython.com/code/Point1.py)
 
 Multiplying by [k](https://thinkpython.com/code/Point1_soln.py) doesn’t change the order of growth, but neither does dividing. So if the [body of a loop is in](https://thinkpython.com/code/Time1.py) [O](https://thinkpython.com/code/do_four.py) [(](https://thinkpython.com/code/do_four.py) [n](https://thinkpython.com/code/do_four.py)
 
-```
-a
-```
+[a](https://thinkpython.com/code/do_four.py)
 
 [)](https://thinkpython.com/code/do_four.py) [and it runs](https://thinkpython.com/code/do_four.py) [n](http://tinyurl.com/thinkpython2e) [/](http://tinyurl.com/thinkpython2e) [k](http://tinyurl.com/thinkpython2e) [times, the loop is in](http://tinyurl.com/thinkpython2e) [O](http://tinyurl.com/thinkpython2e) [(](http://tinyurl.com/thinkpython2e) [n](http://tinyurl.com/thinkpython2e)
 
-```
-a +
-```
+[a](http://tinyurl.com/thinkpython2e) [+](http://tinyurl.com/thinkpython2e)
 
 [)](http://tinyurl.com/thinkpython2e) [, even for large](https://thinkpython.com/code/birthday.py) [k](https://thinkpython.com/code/birthday.py) [.](https://thinkpython.com/code/birthday.py)
 
@@ -9382,23 +8175,11 @@ For now, I assume that each key only appears once. The simplest implementation o
 class LinearMap:
 ```
 
-```
-def __init__(self):
-self.items = []
-```
+### [def __init__(self):](https://thinkpython.com/code/draw.py) [self.items = []](http://en.wikipedia.org/wiki/Letter_frequencies)
 
-```
-def add(self, k, v):
-self.items.append((k, v))
-```
+### [def add(self, k, v):](https://thinkpython.com/code/Point1_soln.py) [self.items.append((k, v))](https://thinkpython.com/code/do_four.py)
 
-```
-def get(self, k):
-for key, val in self.items:
-if key == k:
-return val
-raise KeyError
-```
+### [def get(self, k):](http://tinyurl.com/thinkpython2e) [for key, val in self.items:](http://en.wikipedia.org/wiki/Big_O_notation) [if key == k:](https://thinkpython.com/code/wordlist.py) return val [raise KeyError](https://thinkpython.com/code/reducible.py)
 
 add appends a key-value tuple to the list of items, which takes constant time.
 
@@ -9412,29 +8193,17 @@ An alternative is to keep the list sorted by key. Then get could use a bisection
 class BetterMap:
 ```
 
-[def __init__(self, n=100):](https://thinkpython.com/code/pronounce.py) [self.maps = []](https://thinkpython.com/code/double.py) [for i in range(n):](http://wiki.python.org/moin/BitwiseOperators) self.maps.append(LinearMap())
+### [def __init__(self, n=100):](https://thinkpython.com/code/pronounce.py) [self.maps = []](https://thinkpython.com/code/double.py) [for i in range(n):](http://wiki.python.org/moin/BitwiseOperators) self.maps.append(LinearMap())
 
 ```
 B.4. Hashtables
 ```
 
-```
-def find_map(self, k):
-index = hash(k) % len(self.maps)
-return self.maps[index]
-```
+### def find_map(self, k): [index = hash(k) % len(self.maps)](http://www.cartalk.com/content/puzzlers) [return self.maps[index]](https://thinkpython.com/code/spiral.py)
 
-```
-def add(self, k, v):
-m = self.find_map(k)
-m.add(k, v)
-```
+### def add(self, k, v): m = self.find_map(k) [m.add(k, v)](http://creativecommons.org/licenses/by-nc/3.0/)
 
-```
-def get(self, k):
-m = self.find_map(k)
-return m.get(k)
-```
+### [def get(self, k):](https://thinkpython.com/code/rotate.py) [m = self.find_map(k)](http://en.wikipedia.org/wiki/Ackermann_function) [return m.get(k)](https://thinkpython.com/code/structshape.py)
 
 __init__ makes a list of n LinearMap s.
 
@@ -9456,37 +8225,23 @@ find_map is used by add and get to figure out which map to put the new item in, 
 class HashMap:
 ```
 
-```
-def __init__(self):
-self.maps = BetterMap(2)
-self.num = 0
-```
+### [def __init__(self):](https://thinkpython.com/code/koch.py) [self.maps = BetterMap(2)](https://thinkpython.com/code/pie.py) [self.num = 0](http://en.wikipedia.org/wiki/Koch_snowflake)
 
-```
-def get(self, k):
-return self.maps.get(k)
-```
+### def get(self, k): [return self.maps.get(k)](https://thinkpython.com/code/pronounce.py)
 
 [def add(self, k, v):](http://wiki.python.org/moin/BitwiseOperators) if self.num == len(self.maps.maps):
 
 Appendix B. Analysis of Algorithms
 
-```
-self.resize()
-```
+### [self.resize()](https://thinkpython.com/code/polygon.py)
 
-[self.maps.add(k, v)](http://www.cartalk.com/content/puzzlers) [self.num += 1](https://thinkpython.com/code/spiral.py)
+### [self.maps.add(k, v)](http://www.cartalk.com/content/puzzlers) [self.num += 1](https://thinkpython.com/code/spiral.py)
 
-```
-def resize(self):
-new_maps = BetterMap(self.num * 2)
-```
+### def resize(self): new_maps = BetterMap(self.num * 2)
 
-[for m in self.maps.maps:](https://thinkpython.com/code/emma.txt) [for k, v in m.items:](https://thinkpython.com/code/rotate.py) [new_maps.add(k, v)](http://en.wikipedia.org/wiki/Ackermann_function)
+### [for m in self.maps.maps:](https://thinkpython.com/code/emma.txt) [for k, v in m.items:](https://thinkpython.com/code/rotate.py) [new_maps.add(k, v)](http://en.wikipedia.org/wiki/Ackermann_function)
 
-```
-self.maps = new_maps
-```
+### [self.maps = new_maps](https://thinkpython.com/code/ackermann_memo.py)
 
 [__init__](http://www.cartalk.com/content/puzzlers) [creates a](https://thinkpython.com/code/ackermann.py) [BetterMap](https://thinkpython.com/code/ackermann.py) and initializes num , which keeps track of the number of items.
 
@@ -9591,21 +8346,15 @@ Appendix B. Analysis of Algorithms
 | assert statement, 159, 160           | bracket operator, 71, 90, 116        |
 | assignment, 14, 63, 89               | branch, 41, 47                       |
 
-```
 Index
-```
 
 [break statement, 66](https://thinkpython.com/code/polygon.py) [compound statement, 41, 47](http://en.wikipedia.org/wiki/Zipf's_law) bubble sort, 201 [concatenation, 12, 14, 22, 73, 74, 95](http://en.wikipedia.org/wiki/Spiral) [bug, 6, 7, 13](http://www.cartalk.com/content/puzzlers) list, 91, 97, 101 [worst, 170](https://thinkpython.com/code/spiral.py) condition, 41, 47, 65, 196 built-in function [conditional, 194](https://thinkpython.com/code/grid.py) any, 185, 186 [chained, 41, 47](https://thinkpython.com/code/Time2_soln.py) bytes object, 141, 145 nested, 42, 47 [conditional execution, 41](http://docs.python.org/3/library/stdtypes.html#types-set) [calculator, 8, 15](https://thinkpython.com/code/emma.txt) [conditional expression, 183, 191](https://thinkpython.com/code/invert_dict.py) [call graph, 109, 112](https://thinkpython.com/code/analyze_book2.py) [conditional statement, 41, 47, 55, 184](https://thinkpython.com/code/analyze_book2.py) [Car Talk, 88, 113, 124](https://thinkpython.com/code/pi.py) [consistency check, 111, 158](http://en.wikipedia.org/wiki/Ackermann_function) [Card class, 172](https://thinkpython.com/code/structshape.py) [constant time, 208](https://thinkpython.com/code/cartalk1.py) card, playing, 171 [contributors, vii](http://www.thinkpython.com/) [carrying, addition with, 68, 156, 158](https://thinkpython.com/code/ackermann.py) conversion catch, 145 [type, 17](https://thinkpython.com/code/Circle.py) chained conditional, 41, 47 [copy](http://docs.python.org/3/reference/datamodel.html#specialnames) [character, 71](http://docs.python.org/3/reference/datamodel.html#specialnames) [deep, 152](http://tinyurl.com/thinkpython2e) checksum, 143, 146 [shallow, 152](http://en.wikipedia.org/wiki/Birthday_paradox) child class, 176, 180 slice, 74, 92 [choice function, 126](https://thinkpython.com/code/BadKangaroo.py) [to avoid aliasing, 99](http://en.wikipedia.org/wiki/Sexagesimal) [circle function, 31](https://thinkpython.com/code/walk.py) [copy module, 151](http://en.wikipedia.org/wiki/Letter_frequencies) [circular definition, 55](https://thinkpython.com/code/most_frequent.py) [copying objects, 151](https://thinkpython.com/code/Time1_soln.py) [class, 4, 147, 153](https://thinkpython.com/code/markov2.py) [count method, 79](https://thinkpython.com/code/rotate_pairs.py) [Card, 172](https://thinkpython.com/code/Time1.py) [Counter, 187](http://tinyurl.com/thinkpython2e) [child, 176, 180](http://www.cartalk.com/content/puzzlers) counter, 75, 79, 104, 111 Deck, 174 counting and looping, 75 Hand, 176 Creative Commons, vi [Kangaroo, 170](http://en.wikipedia.org/wiki/Big_O_notation) [crossover point, 202, 209](https://thinkpython.com/code/markov.py) [parent, 176](https://thinkpython.com/code/polygon.py) [crosswords, 83](http://wikipedia.org/wiki/Moby_Project) [Point, 148, 165](https://thinkpython.com/code/reducible.py) [cumulative sum, 100](https://thinkpython.com/code/reducible.py) [Rectangle, 149](http://www.cartalk.com/content/puzzlers) Time, 155 [data encapsulation, 179, 181](https://thinkpython.com/code/words.txt) [class attribute, 172, 180](https://thinkpython.com/code/list_exercises.py) data structure, 122, 123, 132 [class definition, 147](http://docs.python.org/3/library/datetime.html) [database, 141, 145](http://docs.python.org/3/library/datetime.html) [class diagram, 177, 181](http://en.wikipedia.org/wiki/Radix_sort) database object, 141 class object, 148, 153, 190 datetime module, 160 close method, 138, 141, 143 dbm module, 141 __cmp__ method, 173 [dead code, 52, 60, 198](https://thinkpython.com/code/palindrome_soln.py) [Collatz conjecture, 65](http://docs.python.org/3/library/stdtypes.html#string-methods) [debugger (pdb), 197](https://thinkpython.com/code/flower.py) [collections, 187, 188, 190](https://thinkpython.com/code/polygon.py) debugging, 6, 7, 13, 36, 46, 59, 77, 87, 98, 111, colon, 19, 194 [122, 133, 144, 152, 159, 168, 178,](http://gutenberg.org/) comment, 12, 14 [185, 193](https://thinkpython.com/code/koch.py) [commutativity, 12, 167](http://en.wikipedia.org/wiki/Fibonacci_number) [by bisection, 68](https://thinkpython.com/code/pie.py) [compare function, 52](https://thinkpython.com/code/inlist.py) [emotional response, 6, 200](https://thinkpython.com/code/anagram_sets.py) [comparing algorithms, 201](https://thinkpython.com/code/cartalk3.py) [experimental, 25](https://thinkpython.com/code/cartalk3.py) [comparison](https://thinkpython.com/code/anagram_sets.py) [rubber duck, 134](https://thinkpython.com/code/c06d) string, 77 [superstition, 200](https://thinkpython.com/code/pronounce.py) [tuple, 116, 174](https://thinkpython.com/code/double.py) [deck, 171](https://thinkpython.com/code/metathesis.py) [comparison sort, 205](http://wiki.python.org/moin/BitwiseOperators) [Deck class, 174](https://thinkpython.com/code/typewriter.py) composition, 19, 22, 26, 54, 174 deck, playing cards, 174
 
-```
 Index
-```
 
 [declaration, 110, 112](https://thinkpython.com/code/polygon.py) walk, 140 decrement, 64, 69 [working, 139](http://en.wikipedia.org/wiki/Spiral) [deep copy, 152, 153](http://www.cartalk.com/content/puzzlers) dispatch [deepcopy function, 152](https://thinkpython.com/code/spiral.py) type-based, 167 [def keyword, 19](https://thinkpython.com/code/grid.py) [dispatch, type-based, 166](https://thinkpython.com/code) default value, 129, 134, 165 [divisibility, 39](https://thinkpython.com/code/Time2_soln.py) avoiding mutable, 170 division [defaultdict, 188](http://creativecommons.org/licenses/by-nc/3.0/) floating-point, 39 [definition](https://thinkpython.com/code/emma.txt) [floor, 39, 46, 47](https://thinkpython.com/code/invert_dict.py) [circular, 55](https://thinkpython.com/code/rotate.py) [divmod, 117, 158](https://thinkpython.com/code/analyze_book2.py) [class, 147](http://en.wikipedia.org/wiki/Ackermann_function) [docstring, 35, 37, 148](http://en.wikipedia.org/wiki/Ackermann_function) [function, 19](https://thinkpython.com/code/structshape.py) [dot notation, 18, 26, 76, 148, 162, 172](https://thinkpython.com/code/cartalk1.py) [recursive, 124](https://thinkpython.com/code/ackermann_memo.py) [Double Day, 160](http://www.thinkpython.com/) [del operator, 94](https://thinkpython.com/code/ackermann.py) double letters, 88 [deletion, element of list, 94](https://thinkpython.com/code/Circle.py) Doyle, Arthur Conan, 25 delimiter, 95, 100 [duplicate, 101, 113, 146, 187](http://docs.python.org/3/reference/datamodel.html#specialnames) [designed development, 160](http://docs.python.org/3/reference/datamodel.html#specialnames) [deterministic, 126, 134](http://en.wikipedia.org/wiki/Birthday_paradox) [element, 89, 100](http://en.wikipedia.org/wiki/Birthday_paradox) development plan, 36 element deletion, 94 [data encapsulation, 179, 181](https://thinkpython.com/code/BadKangaroo.py) [elif keyword, 42](http://en.wikipedia.org/wiki/Sexagesimal) [designed, 158](http://en.wikipedia.org/wiki/Letter_frequencies) [Elkner, Jeff, v, vi](http://en.wikipedia.org/wiki/Poker) [encapsulation and generalization, 35](https://thinkpython.com/code/most_frequent.py) [ellipses, 19](https://thinkpython.com/code/Time1_soln.py) [incremental, 52, 193](https://thinkpython.com/code/rotate_pairs.py) [else keyword, 41](https://thinkpython.com/code/Time1.py) prototype and patch, 156, 158 [email address, 117](http://tinyurl.com/thinkpython2e) [random walk programming, 134, 200](https://thinkpython.com/code/do_four.py) embedded object, 150, 153, 170 [reduction, 85, 87](http://tinyurl.com/thinkpython2e) copying, 152 diagram [emotional debugging, 6, 200](http://en.wikipedia.org/wiki/Big_O_notation) [call graph, 112](https://thinkpython.com/code/markov.py) [empty list, 89](https://thinkpython.com/code/markov.py) [class, 177, 181](https://thinkpython.com/code/polygon.py) [empty string, 79, 95](http://wikipedia.org/wiki/Moby_Project) [object, 148, 150, 152, 153, 155, 173](https://thinkpython.com/code/reducible.py) encapsulation, 32, 36, 54, 69, 75, 177 [stack, 23, 97](http://www.cartalk.com/content/puzzlers) [encode, 171, 180](https://thinkpython.com/code/PokerHandSoln.py) [state, 9, 63, 78, 90, 96, 108, 120, 148, 150,](https://thinkpython.com/code/PokerHandSoln.py) [encrypt, 171](https://thinkpython.com/code/words.txt) 152, 155, 173 end of line character, 144 [__dict__ attribute, 168](http://docs.python.org/3/library/datetime.html) [enumerate function, 119](http://en.wikipedia.org/wiki/Radix_sort) [dict function, 103](http://en.wikipedia.org/wiki/Radix_sort) enumerate object, 119 dictionary, 103, 112, 120, 197 epsilon, 67 initialize, 120 equality and assignment, 63 [invert, 107](https://thinkpython.com/code/palindrome_soln.py) [equivalence, 96, 152](https://thinkpython.com/code/palindrome_soln.py) [lookup, 106](http://docs.python.org/3/library/stdtypes.html#string-methods) [equivalent, 100](https://thinkpython.com/code/flower.py) [looping with, 106](https://thinkpython.com/code/polygon.py) error reverse lookup, 106 [runtime, 13, 44, 46, 193](http://gutenberg.org/) subtraction, 129 [semantic, 13, 193, 198](http://en.wikipedia.org/wiki/Fibonacci_number) [traversal, 120, 168](https://thinkpython.com/code/pie.py) [shape, 122](https://thinkpython.com/code/analyze_book3.py) [dictionary methods, 204](http://en.wikipedia.org/wiki/Koch_snowflake) [syntax, 13, 193](https://thinkpython.com/code/anagram_sets.py) [dbm module, 141](https://thinkpython.com/code/cartalk3.py) [error checking, 58](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) dictionary subtraction, 186 [error message, 7, 13, 193](https://thinkpython.com/code/reverse_pair.py) diff, 146 [eval function, 69](https://thinkpython.com/code/pronounce.py) [Dijkstra, Edsger, 87](https://thinkpython.com/code/double.py) [evaluate, 10](https://thinkpython.com/code/metathesis.py) [dir function, 197](http://wiki.python.org/moin/BitwiseOperators) [exception, 13, 14, 193, 196](https://wiki.python.org/moin/HowTo/Sorting) directory, 139, 145 AttributeError, 152, 197
 
-```
 Index
-```
 
 | FileNotFoundError, 140                          | for loop, 30, 44, 72, 91, 119, 184     |
 | ----------------------------------------------- | -------------------------------------- |
@@ -9657,9 +8406,7 @@ Index
 | flower, 37                                      | reasons for, 24                        |
 | folder, 139                                     | recursive, 43                          |
 
-```
 Index
-```
 
 | reload, 144, 195                       | hashable, 108, 112, 120                  |
 | -------------------------------------- | ---------------------------------------- |
@@ -9709,9 +8456,7 @@ Index
 | hasattr function, 153, 168             | integer, 4, 7                            |
 | hash function, 108, 112, 207           | interactive mode, 11, 14, 24             |
 
-```
 Index
-```
 
 | interface, 33, 36, 169, 179       | Liskov substitution principle, 179 |
 | --------------------------------- | ---------------------------------- |
@@ -9770,9 +8515,7 @@ else, 41 [loop, 31, 36, 65, 119](https://thinkpython.com/code/reducible.py)
 | Linux, 25                 | map pattern, 93, 100     |
 | lipogram, 84              | map to, 171              |
 
-```
 Index
-```
 
 | mapping, 112, 131                | method, list, 92                               |
 | -------------------------------- | ---------------------------------------------- |
@@ -9824,9 +8567,7 @@ Index
 | void, 92                         | number, random, 126                            |
 | method syntax, 162               | Obama, Barack, 201                             |
 
-```
 Index
-```
 
 | object, 74, 79, 95, 96, 100                  | or operator, 40                        |
 | -------------------------------------------- | -------------------------------------- |
@@ -9878,27 +8619,19 @@ Index
 | optional argument, 76, 79, 95, 107, 184      | point, mathematical, 147               |
 | optional parameter, 129, 165                 | poker, 171, 181                        |
 
-```
 Index
-```
 
 [polygon function, 31](https://thinkpython.com/code/polygon.py) random walk programming, 134, 200 polymorphism, 168, 169 [rank, 171](http://en.wikipedia.org/wiki/Spiral) [pop method, 94, 175](http://www.cartalk.com/content/puzzlers) read method, 143 [popen function, 142](https://thinkpython.com/code/spiral.py) readline method, 83, 143 [portability, 6](https://thinkpython.com/code/grid.py) [reassignment, 63, 68, 90, 110](https://thinkpython.com/code) positional argument, 164, 169, 190 [Rectangle class, 149](https://thinkpython.com/code/Time2_soln.py) postcondition, 36, 59, 179 recursion, 43, 47, 55, 57 [pprint module, 112](http://creativecommons.org/licenses/by-nc/3.0/) base case, 44 [precedence, 199](https://thinkpython.com/code/emma.txt) [infinite, 44, 58, 196](https://thinkpython.com/code/invert_dict.py) [precondition, 36, 37, 59, 179](https://thinkpython.com/code/rotate.py) [recursive definition, 56, 124](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [prefix, 131](http://en.wikipedia.org/wiki/Ackermann_function) [red-black tree, 206](http://en.wikipedia.org/wiki/Ackermann_function) [pretty print, 112](https://thinkpython.com/code/structshape.py) [reduce pattern, 93, 100](https://thinkpython.com/code/cartalk1.py) [print function, 3](https://thinkpython.com/code/ackermann_memo.py) [reducible word, 113, 124](http://www.thinkpython.com/) [print statement, 3, 7, 165, 197](https://thinkpython.com/code/ackermann.py) reduction to a previously solved problem, [problem solving, 1, 6](https://thinkpython.com/code/Circle.py) profile module, 133 [reduction to a previously solved problem,](http://docs.python.org/3/reference/datamodel.html#specialnames) [program, 1, 6](http://docs.python.org/3/reference/datamodel.html#specialnames) [program testing, 87](http://en.wikipedia.org/wiki/Birthday_paradox) [redundancy, 5](http://en.wikipedia.org/wiki/Birthday_paradox) programmer-defined function, 22, 129 refactoring, 34–36, 180 [programmer-defined type,](https://thinkpython.com/code/BadKangaroo.py) [147,](http://en.wikipedia.org/wiki/Sexagesimal) [153,](http://en.wikipedia.org/wiki/Sexagesimal) [155,](http://en.wikipedia.org/wiki/Sexagesimal) [reference, 96, 97, 100](http://en.wikipedia.org/wiki/Sexagesimal) [162, 165, 173](http://en.wikipedia.org/wiki/Letter_frequencies) [aliasing, 96](https://thinkpython.com/code/Time1.py) [Project Gutenberg, 125](https://thinkpython.com/code/most_frequent.py) [rehashing, 208](https://thinkpython.com/code/Time1_soln.py) [prompt, 2, 6, 45](https://thinkpython.com/code/rotate_pairs.py) [relational operator, 40, 173](https://thinkpython.com/code/Point1_soln.py) [prose, 5](https://thinkpython.com/code/Point1_soln.py) [relative path, 139, 145](http://tinyurl.com/thinkpython2e) prototype and patch, 156, 158, 160 [reload function, 144, 195](https://thinkpython.com/code/do_four.py) [pseudorandom, 126, 134](http://tinyurl.com/thinkpython2e) remove method, 94 pure function, 156, 160 repetition, 30 [Puzzler, 88, 113, 124](http://en.wikipedia.org/wiki/Big_O_notation) [list, 91](https://thinkpython.com/code/polygon.py) [Pythagorean theorem, 52](https://thinkpython.com/code/polygon.py) [replace method, 125](http://wikipedia.org/wiki/Moby_Project) [Python](https://thinkpython.com/code/reducible.py) repr function, 144 [running, 2](http://www.cartalk.com/content/puzzlers) [representation, 147, 149, 171](http://www.youtube.com/watch?v=k4RRi_ntQc8) [Python 2, 2, 3, 33, 40, 45](https://thinkpython.com/code/PokerHandSoln.py) [return statement, 44, 51, 199](https://thinkpython.com/code/words.txt) Python in a browser, 2 return value, 17, 26, 51, 150 [PythonAnywhere, 2](http://docs.python.org/3/library/datetime.html) [tuple, 117](http://en.wikipedia.org/wiki/Radix_sort) reverse lookup, 112 quadratic, 209 reverse lookup, dictionary, 106 quadratic growth, 203 reverse word pair, 101 [quotation mark, 3, 4, 35, 74, 194](https://thinkpython.com/code/palindrome_soln.py) [reversed function, 121](https://thinkpython.com/code/palindrome_soln.py) [rotation](https://thinkpython.com/code/flower.py) [radd method, 167](https://thinkpython.com/code/polygon.py) letters, 113 radian, 18 [rotation, letter, 80](http://gutenberg.org/) radix sort, 201 [rubber duck debugging, 134](https://thinkpython.com/code/koch.py) [rage, 200](http://en.wikipedia.org/wiki/Fibonacci_number) running pace, 8, 15, 160 [raise statement, 107, 112, 159](http://en.wikipedia.org/wiki/Koch_snowflake) [running Python, 2](https://thinkpython.com/code/anagram_sets.py) [Ramanujan, Srinivasa, 70](https://thinkpython.com/code/cartalk3.py) [runtime error, 13, 44, 46, 193, 196](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) randint function, 101, 126 [RuntimeError, 45, 58](https://thinkpython.com/code/reverse_pair.py) [random function, 126](https://thinkpython.com/code/pronounce.py) [random module, 101, 126, 175](https://thinkpython.com/code/double.py) [safe language, 13](https://thinkpython.com/code/metathesis.py) [random number, 126](http://wiki.python.org/moin/BitwiseOperators) [sanity check, 111](https://wiki.python.org/moin/HowTo/Sorting) random text, 131 scaffolding, 53, 60, 112
 
-```
 Index
-```
 
 [scatter, 118, 123, 191](https://thinkpython.com/code/polygon.py) [squiggly bracket, 103](http://en.wikipedia.org/wiki/Zipf's_law) Schmidt, Eric, 201 [stable sort, 205](http://en.wikipedia.org/wiki/Spiral) [Scrabble, 123](http://www.cartalk.com/content/puzzlers) stack diagram, 23, 26, 37, 44, 56, 60, 97 [script, 11, 14](https://thinkpython.com/code/spiral.py) state diagram, 9, 14, 63, 78, 90, 96, 108, 120, [script mode, 11, 14, 24](https://thinkpython.com/code/grid.py) [148, 150, 152, 155, 173](https://thinkpython.com/code) search, 107, 205, 209 [statement, 10, 14](https://thinkpython.com/code/Time2_soln.py) search pattern, 75, 79, 85, 186 assert, 159, 160 [search, binary, 101](http://creativecommons.org/licenses/by-nc/3.0/) [assignment, 9, 63](http://docs.python.org/3/library/stdtypes.html#types-set) [search, bisection, 101](https://thinkpython.com/code/emma.txt) [break, 66](https://thinkpython.com/code/invert_dict.py) [self (parameter name), 163](https://thinkpython.com/code/rotate.py) [compound, 41](https://thinkpython.com/code/rotate.py) [semantic error, 13, 14, 193, 198](http://en.wikipedia.org/wiki/Ackermann_function) [conditional, 41, 47, 55, 184](http://en.wikipedia.org/wiki/Ackermann_function) [semantics, 14, 162](https://thinkpython.com/code/structshape.py) [for, 30, 72, 91](https://thinkpython.com/code/cartalk1.py) [sequence, 4, 71, 79, 89, 94, 115, 121](https://thinkpython.com/code/ackermann_memo.py) [global, 110, 112](http://www.thinkpython.com/) [set, 130, 186](http://www.cartalk.com/content/puzzlers) if, 41 [anagram, 123, 145](https://thinkpython.com/code/Circle.py) import, 26, 144 set membership, 113 [pass, 41](http://docs.python.org/3/reference/datamodel.html#specialnames) [set subtraction, 186](http://docs.python.org/3/reference/datamodel.html#specialnames) [print, 3, 7, 165, 197](http://tinyurl.com/thinkpython2e) setdefault, 189 [raise, 107, 112, 159](http://en.wikipedia.org/wiki/Birthday_paradox) setdefault method, 113 return, 44, 51, 199 sexagesimal, 158 [try, 140, 153](http://en.wikipedia.org/wiki/Sexagesimal) [shallow copy, 152, 153](http://en.wikipedia.org/wiki/Letter_frequencies) [while, 64](http://en.wikipedia.org/wiki/Letter_frequencies) shape, 123 [step size, 79](https://thinkpython.com/code/Time1_soln.py) [shape error, 122](https://thinkpython.com/code/markov2.py) [StopIteration, 185](https://thinkpython.com/code/rotate_pairs.py) [shell, 142, 145](https://thinkpython.com/code/Time1.py) [str function, 18](http://tinyurl.com/thinkpython2e) [shelve module, 142](http://www.cartalk.com/content/puzzlers) [__str__ method, 165, 174](https://thinkpython.com/code/do_four.py) [shuffle function, 175](http://tinyurl.com/thinkpython2e) string, 4, 7, 94, 121 sine function, 18 accumulator, 175 [singleton, 108, 112, 115](http://en.wikipedia.org/wiki/Big_O_notation) [comparison, 77](https://thinkpython.com/code/markov.py) slice, 79 [empty, 95](http://wikipedia.org/wiki/Moby_Project) [copy, 74, 92](https://thinkpython.com/code/reducible.py) [immutable, 74](https://thinkpython.com/code/reducible.py) [list, 91](http://www.cartalk.com/content/puzzlers) [method, 75](https://thinkpython.com/code/PokerHandSoln.py) string, 73 [multiline, 35, 194](https://thinkpython.com/code/words.txt) [tuple, 116](https://thinkpython.com/code/list_exercises.py) operation, 12 [update, 92](http://docs.python.org/3/library/datetime.html) [slice, 73](http://docs.python.org/3/library/datetime.html) [slice operator, 73, 79, 91, 98, 116](http://en.wikipedia.org/wiki/Radix_sort) triple-quoted, 35 sort method, 92, 99, 176 string concatenation, 204 sorted string method, 79 function, 99, 106 [string methods, 204](https://thinkpython.com/code/palindrome_soln.py) [sorted function, 121](http://docs.python.org/3/library/stdtypes.html#string-methods) [string module, 125](https://thinkpython.com/code/flower.py) sorting, 204, 205 string representation, 144, 165 special case, 87, 157 [string type, 4](http://gutenberg.org/) special value [strip method, 84, 125](https://thinkpython.com/code/koch.py) False, 40 [structshape module, 122](https://thinkpython.com/code/pie.py) [None, 24, 26, 52, 92, 94](http://en.wikipedia.org/wiki/Koch_snowflake) [structure, 5](https://thinkpython.com/code/anagram_sets.py) True, 40 [subject, 163, 169](https://thinkpython.com/code/cartalk3.py) [spiral, 38](https://thinkpython.com/code/anagram_sets.py) [subset, 187](https://thinkpython.com/code/c06d) split method, 95, 117 [subtraction](https://thinkpython.com/code/pronounce.py) sqrt, 53 [dictionary, 129](https://thinkpython.com/code/metathesis.py) sqrt function, 18 [with borrowing, 68](https://wiki.python.org/moin/HowTo/Sorting) square root, 66 subtraction with borrowing, 159
 
-```
 Index
-```
 
 [suffix, 131](https://thinkpython.com/code/polygon.py) Turing Thesis, 55 suit, 171 [Turing, Alan, 55](http://en.wikipedia.org/wiki/Spiral) [sum, 185](http://www.cartalk.com/content/puzzlers) turtle module, 48 [sum function, 118](https://thinkpython.com/code/spiral.py) turtle typewriter, 37 [superstitious debugging, 200](https://thinkpython.com/code/grid.py) [type, 4, 7](https://thinkpython.com/code) swap pattern, 116 [bool, 40](https://thinkpython.com/code/Time2_soln.py) syntax, 5, 7, 13, 162, 194 dict, 103 [syntax error, 13, 14, 193](http://creativecommons.org/licenses/by-nc/3.0/) [file, 137](http://docs.python.org/3/library/stdtypes.html#types-set) [SyntaxError, 19](https://thinkpython.com/code/emma.txt) [float, 4](https://thinkpython.com/code/invert_dict.py) [function, 20](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) [temporary variable, 51, 60, 199](http://en.wikipedia.org/wiki/Ackermann_function) [int, 4](http://en.wikipedia.org/wiki/Ackermann_function) [test case, minimal, 198](https://thinkpython.com/code/structshape.py) [list, 89](https://thinkpython.com/code/cartalk1.py) [testing](https://thinkpython.com/code/ackermann_memo.py) [NoneType, 24](http://www.thinkpython.com/) and absence of bugs, 87 programmer-defined, 147, 153, 155, 162, incremental development, 52 165, 173 is hard, 87 [set, 130](http://docs.python.org/3/reference/datamodel.html#specialnames) [knowing the answer, 53](http://docs.python.org/3/reference/datamodel.html#specialnames) [str, 4](http://tinyurl.com/thinkpython2e) [leap of faith, 57](http://en.wikipedia.org/wiki/Birthday_paradox) [tuple, 115](http://en.wikipedia.org/wiki/Birthday_paradox) minimal test case, 198 type checking, 58 [text](https://thinkpython.com/code/BadKangaroo.py) [type conversion, 17](http://en.wikipedia.org/wiki/Sexagesimal) [plain, 83, 125](http://en.wikipedia.org/wiki/Letter_frequencies) [type function, 153](http://en.wikipedia.org/wiki/Poker) [random, 131](https://thinkpython.com/code/most_frequent.py) [type-based dispatch, 166, 167, 169](https://thinkpython.com/code/Point1.py) [text file, 145](https://thinkpython.com/code/rotate_pairs.py) [TypeError, 72, 74, 108, 116, 118, 139, 164, 197](https://thinkpython.com/code/Point1_soln.py) [Time class, 155](https://thinkpython.com/code/Point1_soln.py) [typewriter, turtle, 37](http://tinyurl.com/thinkpython2e) [time module, 101](http://www.cartalk.com/content/puzzlers) typographical error, 134 [token, 5, 7](http://tinyurl.com/thinkpython2e) traceback, 24, 26, 44, 46, 107, 196 UnboundLocalError, 110 [translate method, 125](https://thinkpython.com/code/markov.py) [underscore character, 10](https://thinkpython.com/code/polygon.py) [traversal, 72, 75, 77, 79, 85, 93, 100, 105, 106,](http://wikipedia.org/wiki/Moby_Project) [uniqueness, 101](http://wikipedia.org/wiki/Moby_Project) [119, 127](https://thinkpython.com/code/reducible.py) Unix command [dictionary, 168](http://www.cartalk.com/content/puzzlers) [ls, 142](https://thinkpython.com/code/PokerHandSoln.py) [list, 91](https://thinkpython.com/code/PokerHandSoln.py) [update, 64, 67, 69](https://thinkpython.com/code/words.txt) [traverse](https://thinkpython.com/code/list_exercises.py) database, 141 [dictionary, 120](http://docs.python.org/3/library/datetime.html) [global variable, 110](http://en.wikipedia.org/wiki/Radix_sort) [triangle, 48](http://en.wikipedia.org/wiki/Radix_sort) histogram, 127 trigonometric function, 18 item, 91 triple-quoted string, 35 slice, 92 [True special value, 40](https://thinkpython.com/code/palindrome_soln.py) [update method, 120](https://thinkpython.com/code/palindrome_soln.py) [try statement, 140, 153](http://docs.python.org/3/library/stdtypes.html#string-methods) [update operator, 93](https://thinkpython.com/code/flower.py) [tuple, 115, 117, 121, 122](https://thinkpython.com/code/polygon.py) use before def, 20 as key in dictionary, 120, 132 assignment, 116 [value, 4, 7, 95, 96, 112](https://thinkpython.com/code/koch.py) [comparison, 116, 174](https://thinkpython.com/code/pie.py) default, 129 [in brackets, 120](http://en.wikipedia.org/wiki/Koch_snowflake) [tuple, 117](https://thinkpython.com/code/anagram_sets.py) [singleton, 115](https://thinkpython.com/code/cartalk3.py) [ValueError, 46, 117](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) slice, 116 [values method, 104](https://thinkpython.com/code/reverse_pair.py) [tuple assignment, 117, 119, 122](https://thinkpython.com/code/pronounce.py) [variable, 9, 14](https://thinkpython.com/code/pronounce.py) [tuple function, 115](https://thinkpython.com/code/double.py) [global, 110](https://thinkpython.com/code/metathesis.py) [tuple methods, 204](http://wiki.python.org/moin/BitwiseOperators) [local, 22](https://wiki.python.org/moin/HowTo/Sorting) Turing complete language, 55 temporary, 51, 60, 199
 
-```
 Index
-```
 
 [updating, 64](https://thinkpython.com/code/polygon.py) variable-length argument tuple, 118 [veneer, 175, 180](http://www.cartalk.com/content/puzzlers) [void function, 24, 26](https://thinkpython.com/code/spiral.py) void method, 92 vorpal, 55
 
