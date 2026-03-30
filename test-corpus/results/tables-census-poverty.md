@@ -271,27 +271,21 @@ Updating thresholds Consumer Price Index for All Urban Most recent 5-year moving
 
 #### [design, sampling, and instrument](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
 
-#### Figure  Number in Poverty and Poverty Rate Using the Official Poverty Measure  to 
+#### Figure  Number in Poverty and Poverty Rate Using the Official Poverty Measure to
 
-### [Numbers in millions](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Recession](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+### [Numbers in millions](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Recession](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-###  Number in poverty [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)  million [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
+### Number in poverty [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) –— million [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-### [](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)
+[](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)
 
-### 
+### Percent [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
 
-
+### [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) Poverty rate [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### Percent [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
+### [ percent](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) Poverty rate [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-### [ percent](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-
-
-   [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html)  [](https://stats.bls.gov/pir/spmhome.htm) [](https://stats.bls.gov/pir/spmhome.htm) [](https://stats.bls.gov/pir/spmhome.htm) [](https://stats.bls.gov/pir/spmhome.htm)  [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html)  
+– [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) — [—](https://stats.bls.gov/pir/spmhome.htm) [](https://stats.bls.gov/pir/spmhome.htm) [](https://stats.bls.gov/pir/spmhome.htm) [](https://stats.bls.gov/pir/spmhome.htm)  [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html)
 
 Note: Population as of March of the following year. The data for 2017 and beyond reflect the implementation of an updated processing system. The data for 2013 and beyond reflect the implementation of the redesigned income questions. Refer to Table A-3 for historical footnotes. The data points are placed at the midpoints of the respective years. Information on recessions is available in Appendix C. Information on confidentially protection, sampling error, nonsampling error, and definitions is available at <[https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)>. Source: U.S. Census Bureau, Current Population Survey, 1960 to 2024 Annual Social and Economic Supplements (CPS ASEC).
 
@@ -333,101 +327,99 @@ Note: Population as of March of the following year. The data for 2017 and beyond
 
 #### [Figure 2.](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [People in Poverty Using the Official Poverty Measure: 2022 to 2023](https://www.census.gov/library/working-papers/2021/demo/SEHSD-WP2021-20.html)
 
-  [ALL PEOPLE](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)  [](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html) [Change](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
+[ALL PEOPLE](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)  [](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html) [Change](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
 
-### Total  [](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [*–](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html)
+### Total  [](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [*–](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html)
 
 ### Sex
 
-### [Male](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html)   –
+### [Male](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html)   –
 
-### [Female](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833)  [](http://www.census.gov/programs-surveys/sipp/library/publications.html) [*–](http://www.census.gov/programs-surveys/sipp/library/publications.html)
+### [Female](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833)  [](http://www.census.gov/programs-surveys/sipp/library/publications.html) [*–](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
 ### Age
 
-### [Under  years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
+### [Under years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
 
-### [ to  years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [*–](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
+### [ to years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [*–](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
 
-### [ years and older](http://www.census.gov/topics/income-poverty/poverty.html)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [–](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
+### [ years and older](http://www.census.gov/topics/income-poverty/poverty.html)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [–](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
 
 ### [Type of Unit](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)
 
-### [In primary families](http://www.census.gov/library/publications/2024/demo/p60-282.html)   –
+### [In primary families](http://www.census.gov/library/publications/2024/demo/p60-282.html)   –
 
-### [In married-couple families](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)   –
+### [In married-couple families](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)   –
 
-### In female-householder families  [ ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [–](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+### In female-householder families  [ ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [–](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### In male-householder families   
+### In male-householder families
 
-### [Unrelated individuals](http://www.census.gov/library/publications/2024/demo/p60-284.html)    *–
+### [Unrelated individuals](http://www.census.gov/library/publications/2024/demo/p60-284.html)    *–
 
 ### Race and Hispanic Origin
 
-### White  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [*–](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
+### White  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [*–](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
 
-### White not Hispanic  [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [*–](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html)
+### White not Hispanic  [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html) [*–](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html)
 
-### Black   
+### Black
 
-### Asian   
+### Asian
 
-### American Indian and Alaska Native   – 
+### American Indian and Alaska Native   –
 
-### [Two or More Races](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   *
+### [Two or More Races](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   *
 
-### [Hispanic (any race)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   –
-
-
+### [Hispanic (any race)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   –
 
 ### Educational Attainment
 
-### No high school diploma   –
+### No high school diploma   –
 
-### [High school no college](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [ ](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)   -
+### [High school no college](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [ ](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)   -
 
-### [Some college](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)  *–
+### [Some college](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)  *–
 
-### [Bachelors degree or higher](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)   –
+### [Bachelor‘s degree or higher](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)   –
 
-[](mailto:demo.asec.modernization@census.gov)
+[](mailto:demo.asec.modernization@census.gov)
 
 ### [Work Experience](mailto:demo.asec.modernization@census.gov)
 
-### All workers   *-
+### All workers   *-
 
-### Worked full-time year-round   –
+### Worked full-time year-round   –
 
-### [Less than full-time year-round](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)   *–
+### [Less than full-time year-round](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)   *–
 
-### [Did not work](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)    –
+### [Did not work](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)    –
 
-###     [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+[](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
 ### [Percent](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
 * An asterisk preceding an estimate indicates change is statistically different from zero at the 90 percent confidence level. Population limited to individuals 25 years and older. In 2023, the overall poverty rate for this group was 9.5 percent. Population limited to 18- to 64-year-olds. In 2023, the overall poverty rate for this group was 10.0 percent. [Note: Population as of March of the following year. Details may not sum to totals due to rounding. More details available in Tables A-1 and A-2.](https://stats.bls.gov/pir/spmhome.htm) [More information on confidentiality protection, sampling error, nonsampling error, and definitions is available at](https://stats.bls.gov/pir/spmhome.htm) <[https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)>. Source: U.S. Census Bureau, Current Population Survey, 2023 and 2024 Annual Social and Economic Supplements (CPS ASEC).
 
-[As the SPM demonstrates, these](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [factors can have a significant effect](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) Figure 3. [on poverty rates. The rest of this](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [Distribution of Total Population and Poverty by Race and](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [report explores poverty using the](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Hispanic Origin Using the Official Poverty Measure: 2023](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [SPM. The SPM provides an addi](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [-](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Total population](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) tional perspective on economic [Poverty population](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) well-being by expanding the defini - Percent tion of official poverty to include  [noncash benefits, account for](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) White, not Hispanic  [income and payroll taxes, subtract](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833)  other necessary expenses, use a [Hispanic (any race)](http://www.census.gov/programs-surveys/sipp/library/publications.html)  [more inclusive resource sharing](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [unit, and account for geographic](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) Black  [differences in housing costs.](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [Asian](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)  [The remainder of this report uses](http://www.census.gov/library/publications/2024/demo/p60-282.html)
+[As the SPM demonstrates, these](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [factors can have a significant effect](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) Figure 3. [on poverty rates. The rest of this](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [Distribution of Total Population and Poverty by Race and](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [report explores poverty using the](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Hispanic Origin Using the Official Poverty Measure: 2023](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [SPM. The SPM provides an addi](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [-](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Total population](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) tional perspective on economic [Poverty population](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) well-being by expanding the defini - Percent tion of official poverty to include  [noncash benefits, account for](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) White, not Hispanic  [income and payroll taxes, subtract](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833)  other necessary expenses, use a [Hispanic (any race)](http://www.census.gov/programs-surveys/sipp/library/publications.html)  [more inclusive resource sharing](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [unit, and account for geographic](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) Black  [differences in housing costs.](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [Asian](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)  [The remainder of this report uses](http://www.census.gov/library/publications/2024/demo/p60-282.html)
 
 [+](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)
 
-#### [official](http://www.census.gov/library/publications/2024/demo/p60-282.html) [when drawing comparisons](http://www.census.gov/library/publications/2024/demo/p60-282.html) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Two or More Races](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) between the SPM and the official
+#### [official](http://www.census.gov/library/publications/2024/demo/p60-282.html) [when drawing comparisons](http://www.census.gov/library/publications/2024/demo/p60-282.html) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Two or More Races](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) between the SPM and the official
 
 +
 
-[American Indian and](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) poverty measure. Official denotes [Alaska Native](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) the official poverty measure using [the same universe as the SPM,](http://www.census.gov/library/publications/2024/demo/p60-284.html) [Ratio of poverty population](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) which includes unrelated individu - [to total population](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
+[American Indian and](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) poverty measure. Official denotes [Alaska Native](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) the official poverty measure using [the same universe as the SPM,](http://www.census.gov/library/publications/2024/demo/p60-284.html) [Ratio of poverty population](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) which includes unrelated individu - [to total population](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
 
 #### als under the age of 15. Using offi - [Ratio](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html)
 
 +
 
-#### cial allows for direct comparisons [White, not Hispanic](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [*](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) of the two concepts with the same Hispanic (any race) * reference universe.
+#### cial allows for direct comparisons [White, not Hispanic](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [*](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line) of the two concepts with the same Hispanic (any race) * reference universe.
 
-### Black [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+Black [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-SPM by Selected Characteristics Asian [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [In 2023, the overall SPM rate was](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) Two or More Races [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 12.9 percent, 0.5 percentage points American Indian and [higher than in 2022. This was](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) * Alaska Native [the second consecutive annual](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)  [increase in the SPM rate (Table](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
+SPM by Selected Characteristics Asian [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [In 2023, the overall SPM rate was](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) Two or More Races [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 12.9 percent, 0.5 percentage points American Indian and [higher than in 2022. This was](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) * Alaska Native [the second consecutive annual](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) ‘’“ [increase in the SPM rate (Table](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
 ### * An asterisk denotes that the ratio is different from 1.0 at the 90 percent
 
@@ -453,71 +445,67 @@ SPM rates increased by 0.5 per - [SPM thresholds are adjusted sepa](http://www.c
 
 ### [Decrease](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html) Increase [ALL PEOPLE](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-### Total  [](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) *
+### Total  [](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) *
 
 ### Sex
 
-### [Male](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html)  [](http://www.census.gov/programs-surveys/sipp/library/publications.html) [*](http://www.census.gov/programs-surveys/sipp/library/publications.html)
+### [Male](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html)  [](http://www.census.gov/programs-surveys/sipp/library/publications.html) [*](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
-### [Female](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html)  [](http://www.census.gov/programs-surveys/sipp/library/publications.html) *
+### [Female](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html)  [](http://www.census.gov/programs-surveys/sipp/library/publications.html) *
 
 ### [Age](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### [Under  years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)    *
+### [Under years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)    *
 
-### [ to  years](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.4](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
+### [ to years](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [0.4](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
 
-### [ years and older](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) Z
+### [ years and older](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) Z
 
 ### [Housing Tenure](http://www.census.gov/library/publications/2024/demo/p60-282.html)
 
-### [Ownermortgage](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)   
+### [Ownermortgage](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)
 
-### Ownerno mortgagerent-free  [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) -
+### Ownerno mortgagerent-free  [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) -
 
-### Renter   [¡*](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
+### Renter   [¡*](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
 
 ### Race and Hispanic Origin
 
-### White  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html)
+### White  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-25.html)
 
-### White not Hispanic  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [–](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
+### White not Hispanic  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [–](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
 
-### Black    
+### Black
 
-### Asian   *
+### Asian   *
 
-### American Indian and Alaska Native   [–](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
+### American Indian and Alaska Native   [–](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
 
-### [Two or More Races](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   [*](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
+### [Two or More Races](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   [*](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
 
-### [Hispanic (any race)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   [¢*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-
+### [Hispanic (any race)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   [¢*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
 ### Educational Attainment
 
-### [No high school diploma](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)    *
+### [No high school diploma](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)    *
 
-### [High school no college](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)   
+### [High school no college](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-### [Some college no degree](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)   
+### [Some college no degree](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)
 
-### [Bachelors degree or higher](mailto:demo.asec.modernization@census.gov)   
-
-
+### [Bachelors degree or higher](mailto:demo.asec.modernization@census.gov)
 
 ### Work Experience
 
-### All workers   *
+### All workers   *
 
-### [Worked full-time year-round](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)   *
+### [Worked full-time year-round](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)   *
 
-### [Less than full-time year-round](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)   –
+### [Less than full-time year-round](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)   –
 
-### [Did not work](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   [*](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+### [Did not work](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   [*](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
-###     [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) 
+[](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
 ### Percent
 
@@ -537,13 +525,13 @@ Z Rounds to zero. * An asterisk indicates change is statistically different from
 
 #### Figure 5. Child Supplemental Poverty Rates by Race and Hispanic Origin: 2009 to 2023
 
-### [Recession](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Percent](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 
+### [Recession](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Percent](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-[Hispanic (any race)](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)  [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [Black](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)   [](http://www.census.gov/programs-surveys/cps/technical-documentation/subject-definitions.html) Asian   
+[Hispanic (any race)](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)  [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [Black](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)   [](http://www.census.gov/programs-surveys/cps/technical-documentation/subject-definitions.html) Asian
 
-###   [Non-Hispanic White](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)  
+### [Non-Hispanic White](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
 
- [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)         [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)         [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
 Note: Population as of March of the following year. The Supplemental Poverty Measure (SPM) estimates for 2019 and beyond reflect the implementation of revised SPM methodology. More information is available in the SPM technical documenation at <[https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)>. The data for 2017 and beyond reflect the implementation of an updated processing system. The data for 2013 and beyond reflect the implementation of the redesigned income questions. Refer to Table B-2 for historical footnotes. The data points are placed at the midpoints of the respective years. [Information on recessions is available in Appendix C. More information on confidentiality protection, sampling error, nonsampling error, and](https://stats.bls.gov/pir/spmhome.htm) definitions is available at <[https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)>. [Source: U.S. Census Bureau, Current Population Survey, 2010 to 2024 Annual Social and Economic Supplements (CPS ASEC).](https://stats.bls.gov/pir/spmhome.htm)
 
@@ -579,23 +567,21 @@ Note: Population as of March of the following year. The Supplemental Poverty Mea
 
 ### [Poverty Rates Using the Official](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) and Supplemental Poverty Measures: 2009 to 2023
 
-### Recession [Percent](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
+### Recession [Percent](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-## [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) SPM [](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html) [](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html) [](http://www.census.gov/programs-surveys/cps/technical-documentation/subject-definitions.html) [](mailto:demo.asec.modernization@census.gov)
+## [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) SPM [](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html) [](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html) [](http://www.census.gov/programs-surveys/cps/technical-documentation/subject-definitions.html) [](mailto:demo.asec.modernization@census.gov)
 
 +
 
-### Official  
+### Official
 
-
+[](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
 
-[](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
+[](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
 
-[](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
+[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
-
-[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)            [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)            [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
 +
 
@@ -615,75 +601,73 @@ Note: Official includes unrelated individuals under the age of 15. Population as
 
 ### [(SPM - Official](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html) [)](https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-15.html)
 
-### Total   *
+### Total   *
 
 ### Sex
 
-### Male   *
+### Male   *
 
-### [Female](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) [](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html) [](http://www.census.gov/programs-surveys/sipp/library/publications.html) [*](http://www.census.gov/programs-surveys/sipp/library/publications.html)
+### [Female](https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.21833) [](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html) [](http://www.census.gov/programs-surveys/sipp/library/publications.html) [*](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
 ### Age
 
-### [Under  years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)   [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [*–](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
+### [Under years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)   [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [*–](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
 
-### [ to  years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [*](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
+### [ to years](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)  [](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf) [*](https://www2.census.gov/programs-surveys/cps/methodology/improving-disclosure-avoidance-puf-v2.pdf)
 
-### [](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html) [years and older](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html) [](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)  *
+### [](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html) [years and older](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html) [](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)  *
 
 ### [Type of Unit](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)
 
-### [Married couple](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)  [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+### [Married couple](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)  [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [*](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### Cohabiting partners   *–
+### Cohabiting partners   *–
 
-### Female reference person [](http://www.census.gov/library/publications/2024/demo/p60-284.html)  *
+### Female reference person [](http://www.census.gov/library/publications/2024/demo/p60-284.html)  *
 
-### [Male reference person](http://www.census.gov/library/publications/2024/demo/p60-284.html)   *
+### [Male reference person](http://www.census.gov/library/publications/2024/demo/p60-284.html)   *
 
-### Unrelated individuals  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [*](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
+### Unrelated individuals  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [*](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
 
 ### Race and Hispanic Origin
 
-### White   *
+### White   *
 
-### White not Hispanic   *
+### White not Hispanic   *
 
-### Black   
+### Black
 
-### [Asian](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   *
+### [Asian](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   *
 
-### [American Indian and Alaska Native ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  –
+### [American Indian and Alaska Native ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  –
 
-### Two or More Races   –
+### Two or More Races   –
 
-### [Hispanic (any race)](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)   *
+### [Hispanic (any race)](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)   *
 
-[](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
+[](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
 ### [Educational Attainment](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-### [No high school diploma](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)    * 
+### [No high school diploma](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)    *
 
-### [High school no college](mailto:demo.asec.modernization@census.gov)   *
+### [High school no college](mailto:demo.asec.modernization@census.gov)   *
 
-### Some college   *
+### Some college   *
 
-### Bachelors degree or higher   *
-
-
+### Bachelor‘s degree or higher   *
 
 ### [Work Experience](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
 
-### [All workers](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)   *
+### [All workers](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)   *
 
-### Worked full-time year-round   *
+### Worked full-time year-round   *
 
-### [Less than full-time year-round](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   *
+### [Less than full-time year-round](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)   *
 
-### Did not work   *
+### Did not work   *
 
-   [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html) [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html) [Percent](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html)
+[](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html) [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html) [Percent](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html)
 
 [* ](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html)
 
@@ -705,61 +689,43 @@ Note: Official includes unrelated individuals under age 15. Population as of Mar
 
 [+ ](https://www.census.gov/library/working-papers/2021/demo/SEHSD-WP2021-20.html)
 
-### [Poverty Rates Using the Official](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [and Supplemental Poverty Measures by Age Group:](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [2009 to 2023](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) Under 18 Years [Recession](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Percent](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
+### [Poverty Rates Using the Official](http://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html) [and Supplemental Poverty Measures by Age Group:](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [2009 to 2023](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) Under 18 Years [Recession](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Percent](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-###  [+ ](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html)
+[+ ](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html)
 
-### [Official](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [children](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) 
+### [Official](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [children](https://www.census.gov/library/working-papers/2023/demo/SEHSD-WP-2023-20.html) [](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-###  [](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html) [SPM children](http://www.census.gov/programs-surveys/sipp/library/publications.html) 
+### [](http://www.census.gov/library/working-papers/1997/demo/fisher-02.html) [SPM children](http://www.census.gov/programs-surveys/sipp/library/publications.html)
 
-### [](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
+[](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-[](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)
+[](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)
 
-```
-
-
-             
-```
+[](http://www.census.gov/topics/income-poverty/supplemental-poverty-measure.html)      [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](https://data.census.gov/) [](https://data.census.gov/)
 
-#### [18 to 64 Years](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) Percent [](http://www.census.gov/library/publications/2024/demo/p60-284.html)
+#### [18 to 64 Years](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) Percent [](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
-### 
+## SPM 18–64
 
-##  SPM 18–64 
+[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-###  [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
++
 
-###  +
+### Official 18–64 [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### Official 18–64 [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+[](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html)
 
-```
-
-
-             
-```
+#### 65 Years and Older [Percent](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html) [](mailto:demo.asec.modernization@census.gov)
 
-#### 65 Years and Older [Percent](http://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html) [](mailto:demo.asec.modernization@census.gov)
+## [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) SPM 65+ [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html)
 
-### 
-
-## [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) SPM 65+ [](http://www.census.gov/topics/income-poverty/income/guidance/tax-model.html) 
-
-### [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) +
+[](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) +
 
 ### Official 65+
 
-
-
-```
-
-
-             
-```
+[](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html)   [](https://stats.bls.gov/pir/spmhome.htm) [](https://stats.bls.gov/pir/spmhome.htm)
 
 [+ ](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html)
 
@@ -783,52 +749,49 @@ Note: Official includes unrelated individuals under age 15. Population as of Mar
 
 ### (In percent)
 
-[ ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+[ ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### Official [Poverty Measure](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [Supplemental Poverty Measure](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) TOTAL POPULATION [Less than ](http://www.census.gov/library/publications/2024/demo/p60-284.html) [](http://www.census.gov/library/publications/2024/demo/p60-284.html)  
+### Official [Poverty Measure](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) [Supplemental Poverty Measure](https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions) TOTAL POPULATION [Less than ](http://www.census.gov/library/publications/2024/demo/p60-284.html) [](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
-###   to  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
+### to  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](https://nap.nationalacademies.org/catalog/26825/an-updated-measure-of-poverty-redrawing-the-line)
 
-###  to  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) 
+### to  [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html) [](http://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)
 
-###  to    
+### to
 
-###  or more   [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+### or more   [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### Under  Years [Less than ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
+### Under Years [Less than ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
 
-### [  to ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+### [ to ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-### [ to ](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)   
+### [ to ](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-### [ to](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)   
+### [ to](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html) [](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-### [ or more](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)    
+### [ or more](http://www.census.gov/programs-surveys/cps/about/modernization/asecmodernization.html)
 
-### [ to](mailto:demo.asec.modernization@census.gov) [Years](mailto:demo.asec.modernization@census.gov) Less than    
+### [ to](mailto:demo.asec.modernization@census.gov) [Years](mailto:demo.asec.modernization@census.gov) Less than
 
-###   to   
+### to
 
-###  to    
+### to
 
-###  to    
+### to
 
-###  or more    
+### or more
 
-### [Years and Older](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Less than ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)  
+### [Years and Older](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Less than ](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-###   to   [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+### to   [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
-###  to     [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html)
+### to     [](http://www.census.gov/library/working-papers/2023/demo/SEHSD-WP2023-02.html)
 
-### [ to](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html)   
+### [ to](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html)
 
-### [ or more](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html)  [](https://www.nber.org/research/business-cycle-dating)
+### [ or more](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) [](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html)  [](https://www.nber.org/research/business-cycle-dating)
 
-```
-     
-    
-```
+[](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html)       [](https://www.nber.org/research/business-cycle-dating) [](https://www.nber.org/research/business-cycle-dating) [](http://www.census.gov/programs-surveys/saipe.html)
 
 [+ ](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html)
 
@@ -856,33 +819,33 @@ Note: Official includes unrelated individuals under age 15. Population as of Mar
 
 ### Under 18 years old 18 to 64 years old 65 years and older
 
--  [Social Security](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
+- ‘’ [Social Security](http://www.census.gov/programs-surveys/metro-micro/about/glossary.html)
 
--  [Refundable tax credits](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
+- ’‘” [Refundable tax credits](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
--  SNAP
+- –‘” SNAP
 
--  Housing subsidies
+- ‘“ Housing subsidies
 
--  SSI
+- ‘ SSI
 
--  Child Tax Credit
+- ‘” Child Tax Credit
 
--  [Other noncash benefits](http://www.census.gov/programs-surveys/cps/technical-documentation/subject-definitions.html)
+- ‘ [Other noncash benefits](http://www.census.gov/programs-surveys/cps/technical-documentation/subject-definitions.html)
 
--  Other cash benefits
+- ‘– Other cash benefits
 
--  Unemployment insurance
+- —‘– Unemployment insurance
 
-### Child support paid 
+### Child support paid —‘
 
-### Federal income tax 
+### Federal income tax ‘
 
-### Work expenses [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+### Work expenses [”‘—](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
-## FICA [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+## FICA [”‘’](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
-### Medical expenses [](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
+### Medical expenses [‘”](http://www.census.gov/newsroom/blogs/research-matters/2024/09/administrative-data-nonresponse-bias-cps-asec.html)
 
 [Refundable tax credits include the Earned Income Tax Credit and the refundable portion of the Child Tax Credit.](https://stats.bls.gov/pir/spmhome.htm) [Includes only the refundable portion of the Child Tax Credit.](http://www.census.gov/library/working-papers/2017/demo/SEHSD-WP2017-42.html) Other noncash benefits include energy and broadband benefits, Special Supplemental Nutrition Program for Women, Infants, and [Children (WIC), and school lunch.](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html) Other cash benefits include workers compensation, Temporary Assistance for Needy Families (TANF), and child support received. Note: SNAP is the Supplemental Nutrition Assistance Program; SSI is Supplemental Security Income; FICA is the Federal Insurance Contributions Act. Population as of March of the following year. More details are available in Table B-7. More information on confidentiality protection, sampling error, nonsampling error, and definitions is available at <[https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)>. Source: U.S. Census Bureau, Current Population Survey, 2024 Annual Social and Economic Supplement (CPS ASEC).
 
@@ -2791,4 +2754,4 @@ household. By collecting monthly [(toll-free) or search your topic of](https://w
 
 ## P60-283
 
-Current Population Reports
+### Current Population Reports

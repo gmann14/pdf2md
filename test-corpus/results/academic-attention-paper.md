@@ -239,7 +239,7 @@ We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base model
 
 −
 
-[We used the Adam optimizer [20] with](http://arxiv.org/abs/1703.10722) β = 0 . , β = 0 . and  = 10 . We varied the learning rate over the course of training, according to the formula:
+[We used the Adam optimizer [20] with](http://arxiv.org/abs/1703.10722) β = 0 . , β = 0 . and  = 10 . We varied the learning rate over the course of training, according to the formula:
 
 − . − . − .
 
@@ -259,7 +259,7 @@ Table 2: The Transformer achieves better BLEU scores than previous state-of-the-
 
 BLEU Training Cost (FLOPs) Model [EN-DE](http://arxiv.org/abs/1705.04304) EN-FR EN-DE EN-FR ByteNet [18] 23.75 Deep-Att + PosUnk [39] [39.2](http://arxiv.org/abs/1705.03122) . · GNMT + RL [38] 24.6 39.92 . · . · ConvS2S [9] 25.16 40.46 . · . · [MoE [32]](http://arxiv.org/abs/1308.0850) 26.03 40.56 . · . · Deep-Att + PosUnk Ensemble [39] 40.4 . · GNMT + RL Ensemble [38] 26.30 41.16 . · . · ConvS2S Ensemble [9] 26.36 41.29 . · . · [Transformer (base model)](http://arxiv.org/abs/1608.05859) 27.3 38.1 . · Transformer (big) 28.4 41.8 . ·
 
-Label Smoothing During training, we employed label smoothing of value  ls = 0 . [36]. This hurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.
+Label Smoothing During training, we employed label smoothing of value  ls = 0 . [36]. This hurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.
 
 ##### Results
 
@@ -283,7 +283,7 @@ We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respe
 
 Table 3: Variations on the Transformer architecture. Unlisted values are identical to those of the base model. All metrics are on the English-to-German translation development set, newstest2013. Listed perplexities are per-wordpiece, according to our byte-pair encoding, and should not be compared to per-word perplexities.
 
-train PPL BLEU params N d model d ff h d k d v P drop [](http://arxiv.org/abs/1705.03122) [ls](http://arxiv.org/abs/1705.03122)
+train PPL BLEU params N d model d ff h d k d v P drop [](http://arxiv.org/abs/1705.03122) [ls](http://arxiv.org/abs/1705.03122)
 
 [steps](http://arxiv.org/abs/1705.03122) [(dev)](http://arxiv.org/abs/1705.03122) (dev) × base 0.1 0.1 100K 4.92 25.8 5.29 24.9 5.00 25.5 (A) 4.91 25.8 5.01 25.4 5.16 25.1 (B) 5.01 25.4 6.11 23.7 5.19 25.3 4.88 25.5 (C) 5.75 24.5 4.66 26.0 5.12 25.4 4.75 26.2 0.0 5.77 24.6 0.2 4.95 25.5 (D) 0.0 4.67 25.3 [0.2](http://arxiv.org/abs/1602.02410) 5.47 25.7 (E) positional embedding instead of sinusoids 4.92 25.7 big 0.3 300K 4.33 26.4
 

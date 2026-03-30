@@ -474,7 +474,7 @@ When faced with a regression problem, why might linear regression, and specifica
 ( i ) T ( i ) ( i )
 ```
 
-y = θ x +  ,
+y = θ x +  ,
 
 T
 
@@ -486,19 +486,19 @@ are not linearly independent, then X X will not be invertible. Even in such case
 
 ( i )
 
-where  is an error term that captures either unmodeled effects (such as if there are some features very pertinent to predicting housing price, but that we’d left out of the regression), or random noise. Let us further assume
+where  is an error term that captures either unmodeled effects (such as if there are some features very pertinent to predicting housing price, but that we’d left out of the regression), or random noise. Let us further assume
 
 ( i )
 
-that the  are distributed IID (independently and identically distributed) according to a Gaussian distribution (also called a Normal distribution) with
+that the  are distributed IID (independently and identically distributed) according to a Gaussian distribution (also called a Normal distribution) with
 
 ( i )
 
-mean zero and some variance σ . We can write this assumption as “  ∼
+mean zero and some variance σ . We can write this assumption as “  ∼
 
 ( i )
 
-N (0 , σ ).” I.e., the density of  is given by (
+N (0 , σ ).” I.e., the density of  is given by (
 
 ( i )
 
@@ -506,7 +506,7 @@ N (0 , σ ).” I.e., the density of  is given by (
 
 ( i )
 
-(  ) p (  ) = √ exp − . πσ σ
+(  ) p (  ) = √ exp − . πσ σ
 
 This implies that (
 
@@ -550,7 +550,7 @@ L ( θ ) = L ( θ ; X, ~ y ) = p ( ~ y | X ; θ ) .
 
 ( i )
 
-Note that by the independence assumption on the  ’s (and hence also the
+Note that by the independence assumption on the  ’s (and hence also the
 
 ( i ) ( i )
 
@@ -2599,17 +2599,17 @@ training example ( y = 1). The larger θ x is, the larger also is h θ ( x ) = p
 
 T
 
-y = 1 if θ x  0. Similarly, we think of logistic regression as confidently
+y = 1 if θ x  0. Similarly, we think of logistic regression as confidently
 
 T
 
-predicting y = 0, if θ x  0. Given a training set, again informally it seems that we’d have found a good fit to the training data if we can find θ so that
+predicting y = 0, if θ x  0. Given a training set, again informally it seems that we’d have found a good fit to the training data if we can find θ so that
 
 ```
 T ( i ) ( i ) T ( i ) ( i )
 ```
 
-θ x  0 whenever y = 1, and θ x  0 whenever y = 0, since this would reflect a very confident (and correct) set of classifications for all the
+θ x  0 whenever y = 1, and θ x  0 whenever y = 0, since this would reflect a very confident (and correct) set of classifications for all the
 
 training examples. This seems to be a nice goal to aim for, and we’ll soon formalize this idea using the notion of functional margins. For a different type of intuition, consider the following figure, in which x’s represent positive training examples, o’s denote negative training examples,
 
@@ -2617,11 +2617,11 @@ T
 
 a decision boundary (this is the line given by the equation θ x = 0, and is also called the separating hyperplane ) is also shown, and three points have also been labeled A, B and C.
 
-## A   
+A
 
-## B   
+B
 
-## C   
+C
 
 Notice that the point A is very far from the decision boundary. If we are asked to make a prediction for the value of y at A, it seems we should be quite confident that y = 1 there. Conversely, the point C is very close to the decision boundary, and while it’s on the side of the decision boundary on which we would predict y = 1, it seems likely that just a small change to the decision boundary could easily have caused out prediction to be y = 0. Hence, we’re much more confident about our prediction at A than at C. The point B lies in-between these two cases, and more broadly, we see that if a point is far from the separating hyperplane, then we may be significantly more confident in our predictions. Again, informally we think it would be nice if, given a training set, we manage to find a decision boundary that allows us to make all correct and confident (meaning far from the decision boundary) predictions on the training examples. We’ll formalize this later using the notion of geometric margins.
 
@@ -5307,7 +5307,7 @@ The discovery of the phenomenon perhaps dates back to Opper [1995, 2001], and ha
 
 Sample-wise double descent. A priori, we would expect that more training examples always lead to smaller test errors—more samples give strictly more information for the algorithm to learn from. However, recent work [Nakkiran, 2019] observes that the test error is not monotonically de- creasing as we increase the sample size. Instead, as shown in Figure 8.11, the test error decreases, and then increases and peaks around when the number of examples (denoted by n ) is similar to the number of parameters (denoted by d ), and then decreases again. We refer to this as the sample-wise dou- ble descent phenomenon. To some extent, sample-wise double descent and model-wise double descent are essentially describing similar phenomena—the test error is peaked when n ≈ d .
 
-Explanation and mitigation strategy. The sample-wise double descent, or, in particular, the peak of test error at n ≈ d , suggests that the existing training algorithms evaluated in these experiments are far from optimal when n ≈ d . We will be better off by tossing away some examples and run the algorithms with a smaller sample size to steer clear of the peak. In other words, in principle, there are other algorithms that can achieve smaller test error when n ≈ d , but the algorithms evaluated in these experiments fail to do so. The sub-optimality of the learning procedure appears to be the culprit of the peak in both sample-wise and model-wise double descent. Indeed, with an optimally-tuned regularization (which will be discussed more in Section 9), the test error in the n ≈ d regime can be dramatically improved, and the model-wise and sample-wise double descent are both mit- igated. See Figure 8.11. The intuition above only explains the peak in the model-wise and sample- wise double descent, but does not explain the second descent in the model- wise double descent—why overparameterized models are able to generalize so well. The theoretical understanding of overparameterized models is an ac- tive research area with many recent advances. A typical explanation is that the commonly-used optimizers such as gradient descent provide an implicit regularization effect (which will be discussed in more detail in Section 9.2). In other words, even in the overparameterized regime and with an unregular- ized loss function, the model is still implicitly regularized, and thus exhibits a better test performance than an arbitrary solution that fits the data. For example, for linear models, when n  d , the gradient descent optimizer with zero initialization finds the minimum norm solution that fits the data (in- stead of an arbitrary solution that fits the data), and the minimum norm reg- ularizer turns out to be a sufficiently good for the overparameterized regime (but it’s not a good regularizer when n ≈ d , resulting in the peak of test
+Explanation and mitigation strategy. The sample-wise double descent, or, in particular, the peak of test error at n ≈ d , suggests that the existing training algorithms evaluated in these experiments are far from optimal when n ≈ d . We will be better off by tossing away some examples and run the algorithms with a smaller sample size to steer clear of the peak. In other words, in principle, there are other algorithms that can achieve smaller test error when n ≈ d , but the algorithms evaluated in these experiments fail to do so. The sub-optimality of the learning procedure appears to be the culprit of the peak in both sample-wise and model-wise double descent. Indeed, with an optimally-tuned regularization (which will be discussed more in Section 9), the test error in the n ≈ d regime can be dramatically improved, and the model-wise and sample-wise double descent are both mit- igated. See Figure 8.11. The intuition above only explains the peak in the model-wise and sample- wise double descent, but does not explain the second descent in the model- wise double descent—why overparameterized models are able to generalize so well. The theoretical understanding of overparameterized models is an ac- tive research area with many recent advances. A typical explanation is that the commonly-used optimizers such as gradient descent provide an implicit regularization effect (which will be discussed in more detail in Section 9.2). In other words, even in the overparameterized regime and with an unregular- ized loss function, the model is still implicitly regularized, and thus exhibits a better test performance than an arbitrary solution that fits the data. For example, for linear models, when n  d , the gradient descent optimizer with zero initialization finds the minimum norm solution that fits the data (in- stead of an arbitrary solution that fits the data), and the minimum norm reg- ularizer turns out to be a sufficiently good for the overparameterized regime (but it’s not a good regularizer when n ≈ d , resulting in the peak of test
 
 error).
 
@@ -5629,13 +5629,7 @@ I.e., if for any set of labels { y , . . . , y } , there exists some h ∈ H so 
 
 h ( x ) = y for all i = 1 , . . . D . Given a hypothesis class H , we then define its Vapnik-Chervonenkis dimension , written VC( H ), to be the size of the largest set that is shattered by H . (If H can shatter arbitrarily large sets, then VC( H ) = ∞ .) For instance, consider the following set of three points:
 
-  
-
-  
-
 ## x
-
-  
 
 ## x
 
@@ -5651,15 +5645,9 @@ Can the set H of linear classifiers in two dimensions ( h ( x ) = 1 { θ + θ x 
 
 Moreover, it is possible to show that there is no set of 4 points that this hypothesis class can shatter. Thus, the largest set that H can shatter is of size 3, and hence VC( H ) = 3. Note that the VC dimension of H here is 3 even though there may be sets of size 3 that it cannot shatter. For instance, if we had a set of three points lying in a straight line (left figure), then there is no way to find a linear separator for the labeling of the three points shown below (right figure):
 
-  
-
 ### x
 
-  
-
 ### x
-
-  
 
 ### x x
 
@@ -5867,7 +5855,7 @@ n ( i ) ( i )
 
 θ i =1
 
-Note that this is the same formulas as for the MLE (maximum likelihood) estimate for θ , except for the prior p ( θ ) term at the end. In practical applications, a common choice for the prior p ( θ ) is to assume that θ ∼ N (0 , τ I ). Using this choice of prior, the fitted parameters θ MAP will have smaller norm than that selected by maximum likelihood. In practice, this causes the Bayesian MAP estimate to be less susceptible to overfitting than the ML estimate of the parameters. For example, Bayesian logistic regression turns out to be an effective algorithm for text classification, even though in text classification we usually have d  n .
+Note that this is the same formulas as for the MLE (maximum likelihood) estimate for θ , except for the prior p ( θ ) term at the end. In practical applications, a common choice for the prior p ( θ ) is to assume that θ ∼ N (0 , τ I ). Using this choice of prior, the fitted parameters θ MAP will have smaller norm than that selected by maximum likelihood. In practice, this causes the Bayesian MAP estimate to be less susceptible to overfitting than the ML estimate of the parameters. For example, Bayesian logistic regression turns out to be an effective algorithm for text classification, even though in text classification we usually have d  n .
 
 Since we are now viewing θ as a random variable, it is okay to condition on it value, and write “ p ( y | x, θ )” instead of “ p ( y | x ; θ ).” The integral below would be replaced by a summation if y is discrete-valued.
 
@@ -7249,7 +7237,7 @@ Suppose we are given a dataset { x ; i = 1 , . . . , n } of attributes of n dif-
 
 ( i ) d
 
-so on. Let x ∈ R for each i ( d  n ). But unknown to us, two different attributes—some x i and x j —respectively give a car’s maximum speed mea- sured in miles per hour, and the maximum speed measured in kilometers per hour. These two attributes are therefore almost linearly dependent, up to only small differences introduced by rounding off to the nearest mph or kph. Thus, the data really lies approximately on an n − 1 dimensional subspace. How can we automatically detect, and perhaps remove, this redundancy? For a less contrived example, consider a dataset resulting from a survey of
+so on. Let x ∈ R for each i ( d  n ). But unknown to us, two different attributes—some x i and x j —respectively give a car’s maximum speed mea- sured in miles per hour, and the maximum speed measured in kilometers per hour. These two attributes are therefore almost linearly dependent, up to only small differences introduced by rounding off to the nearest mph or kph. Thus, the data really lies approximately on an n − 1 dimensional subspace. How can we automatically detect, and perhaps remove, this redundancy? For a less contrived example, consider a dataset resulting from a survey of
 
 ( i )
 
@@ -7309,17 +7297,7 @@ the data is projected onto the direction corresponding to u , the variance of th
 
 Now, suppose we pick u to correspond the the direction shown in the figure below. The circles denote the projections of the original data onto this line.
 
-                                                                
-
-            
-
-       
-
-                                            
-
 We see that the projected data still has a fairly large variance, and the points tend to be far from zero. In contrast, suppose had instead picked the following direction:
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 
 Here, the projections have a significantly smaller variance, and are much closer to the origin. We would like to automatically select the direction u corresponding to the first of the two figures shown above. To formalize this, note that given a
 
@@ -8627,10 +8605,10 @@ A,B i =1 t =0
 We could also potentially use other loss functions for learning the model. For example, it has been found in recent work Luo et al. [2018] that using ‖ · ‖ norm (without the square) may be helpful in certain cases. Having learned A and B , one option is to build a deterministic model, in which given an input s t and a t , the output s t +1 is exactly determined. Specifically, we always compute s t +1 according to Equation (15.6). Alter- natively, we may also build a stochastic model, in which s t +1 is a random function of the inputs, by modeling it as
 
 ```
-s t +1 = As t + Ba t +  t ,
+s t +1 = As t + Ba t +  t ,
 ```
 
-where here  t is a noise term, usually modeled as  t ∼ N (0 , Σ). (The covari- ance matrix Σ can also be estimated from data in a straightforward way.) Here, we’ve written the next-state s t +1 as a linear function of the current state and action; but of course, non-linear functions are also possible. Specif- ically, one can learn a model s t +1 = Aφ s ( s t ) + Bφ a ( a t ), where φ s and φ a are some non-linear feature mappings of the states and actions. Alternatively, one can also use non-linear learning algorithms, such as locally weighted lin- ear regression, to learn to estimate s t +1 as a function of s t and a t . These approaches can also be used to build either deterministic or stochastic sim- ulators of an MDP.
+where here  t is a noise term, usually modeled as  t ∼ N (0 , Σ). (The covari- ance matrix Σ can also be estimated from data in a straightforward way.) Here, we’ve written the next-state s t +1 as a linear function of the current state and action; but of course, non-linear functions are also possible. Specif- ically, one can learn a model s t +1 = Aφ s ( s t ) + Bφ a ( a t ), where φ s and φ a are some non-linear feature mappings of the states and actions. Alternatively, one can also use non-linear learning algorithms, such as locally weighted lin- ear regression, to learn to estimate s t +1 as a function of s t and a t . These approaches can also be used to build either deterministic or stochastic sim- ulators of an MDP.
 
 ```
 Fitted value iteration
@@ -8820,13 +8798,13 @@ The process for computing/approximating this is similar to the inner-loop of
 
 fitted value iteration, where for each action, we sample s , . . . , s k
 
-∼ P sa to approximate the expectation. (And again, if the simulator is deterministic, we can set k = 1.) In practice, there are often other ways to approximate this step as well. For example, one very common case is if the simulator is of the form s t +1 = f ( s t , a t ) +  t , where f is some deterministic function of the states (such as f ( s t , a t ) = As t + Ba t ), and  is zero-mean Gaussian noise. In this case, we can pick the action given by
+∼ P sa to approximate the expectation. (And again, if the simulator is deterministic, we can set k = 1.) In practice, there are often other ways to approximate this step as well. For example, one very common case is if the simulator is of the form s t +1 = f ( s t , a t ) +  t , where f is some deterministic function of the states (such as f ( s t , a t ) = As t + Ba t ), and  is zero-mean Gaussian noise. In this case, we can pick the action given by
 
 arg max V ( f ( s, a )) .
 
 a
 
-In other words, here we are just setting  t = 0 (i.e., ignoring the noise in the simulator), and setting k = 1. Equivalent, this can be derived from Equation (15.9) using the approximation
+In other words, here we are just setting  t = 0 (i.e., ignoring the noise in the simulator), and setting k = 1. Equivalent, this can be derived from Equation (15.9) using the approximation
 
 ′ ′
 
@@ -8834,7 +8812,7 @@ E s ′ [ V ( s )] ≈ V (E s ′ [ s ]) (15.10) = V ( f ( s, a )) , (15.11)
 
 ′
 
-where here the expectation is over the random s ∼ P sa . So long as the noise terms  t are small, this will usually be a reasonable approximation. However, for problems that don’t lend themselves to such approximations, having to sample k | A | states using the model, in order to approximate the expectation above, can be computationally expensive.
+where here the expectation is over the random s ∼ P sa . So long as the noise terms  t are small, this will usually be a reasonable approximation. However, for problems that don’t lend themselves to such approximations, having to sample k | A | states using the model, in order to approximate the expectation above, can be computationally expensive.
 
 ##### 15.5 Connections between Policy and Value Iteration (Optional)
 

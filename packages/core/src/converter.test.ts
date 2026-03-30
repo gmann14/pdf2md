@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   isMonospace,
+  cleanText,
   detectTable,
   isCodeBlock,
   detectCodeFont,
@@ -72,6 +73,56 @@ describe("isMonospace", () => {
     expect(isMonospace("TimesNewRoman")).toBe(false);
     expect(isMonospace("Georgia")).toBe(false);
     expect(isMonospace("Verdana")).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// cleanText
+// ---------------------------------------------------------------------------
+describe("cleanText", () => {
+  it("replaces common ligatures", () => {
+    expect(cleanText("ﬁnd the ﬂow of ﬀects")).toBe("find the flow of ffects");
+    expect(cleanText("oﬃce and aﬄuent")).toBe("office and affluent");
+  });
+
+  it("maps Windows-1252 C1 control chars to Unicode equivalents", () => {
+    // \x93 and \x94 → left/right double quotes
+    expect(cleanText("\x93hello\x94")).toBe("\u201Chello\u201D");
+    // \x91 and \x92 → left/right single quotes
+    expect(cleanText("\x91it\x92s")).toBe("\u2018it\u2019s");
+    // \x97 → em dash
+    expect(cleanText("word\x97word")).toBe("word\u2014word");
+    // \x96 → en dash
+    expect(cleanText("1\x962")).toBe("1\u20132");
+  });
+
+  it("strips C0 control characters (except tab/newline/CR)", () => {
+    expect(cleanText("hello\x00world")).toBe("helloworld");
+    expect(cleanText("a\x01b\x02c\x03d")).toBe("abcd");
+    expect(cleanText("keep\ttabs")).toBe("keep\ttabs");
+  });
+
+  it("strips remaining C1 control characters", () => {
+    expect(cleanText("text\x80\x81\x82more")).toBe("textmore");
+    expect(cleanText("a\x9Fb")).toBe("ab");
+  });
+
+  it("normalizes special spaces", () => {
+    expect(cleanText("hello\u00A0world")).toBe("hello world");
+    expect(cleanText("thin\u2009space")).toBe("thin space");
+  });
+
+  it("removes zero-width characters", () => {
+    expect(cleanText("he\u200Bllo")).toBe("hello");
+    expect(cleanText("te\uFEFFst")).toBe("test");
+  });
+
+  it("strips soft hyphens", () => {
+    expect(cleanText("hy\u00ADphen")).toBe("hyphen");
+  });
+
+  it("collapses multiple spaces", () => {
+    expect(cleanText("too   many    spaces")).toBe("too many spaces");
   });
 });
 

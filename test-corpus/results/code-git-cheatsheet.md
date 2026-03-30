@@ -8,13 +8,13 @@ Git is the free and open source distributed version control system that's respon
 
 #### INSTALLATION & GUIS STAGE & SNAPSHOT
 
-With platform specific installers for Git, GitHub also provides the Working with snapshots and the Git staging area ease of staying up-to-date with the latest releases of the command line tool while providing a graphical user interface for day-to-day git status interaction, review, and repository synchronization. show modified files in working directory, staged for your next commit GitHub for Windows git add [file] h tt ps://windows.github.com add a file as it looks now to your next commit (stage) GitHub for Mac h tt ps://mac.github.com git reset [file]
+With platform specific installers for Git, GitHub also provides the Working with snapshots and the Git staging area ease of staying up-to-date with the latest releases of the command line tool while providing a graphical user interface for day-to-day git status interaction, review, and repository synchronization. show modified files in working directory, staged for your next commit GitHub for Windows git add [file] https://windows.github.com add a file as it looks now to your next commit (stage) GitHub for Mac https://mac.github.com git reset [file]
 
-unstage a file while retaining the changes in working directory For Linux and Solaris platforms, the latest release is available on the o ffi cial Git web site. git diff
+unstage a file while retaining the changes in working directory For Linux and Solaris platforms, the latest release is available on the official Git web site. git diff
 
-Git for All Platforms di ff of what is changed but not staged h tt p://git-scm.com git diff --staged
+Git for All Platforms diff of what is changed but not staged http://git-scm.com git diff --staged
 
-di ff of what is staged but not yet commi tt ed
+diff of what is staged but not yet committed
 
 #### SETUP git commit -m “[descriptive message]”
 
@@ -48,7 +48,7 @@ retrieve an entire repository from a hosted location via URL show all commits in
 
 #### INSPECT & COMPARE SHARE & UPDATE
 
-Examining logs, di ff s and object information Retrieving updates from another repository and updating local repos
+Examining logs, diff s and object information Retrieving updates from another repository and updating local repos
 
 ### git log git remote add [alias] [url]
 
@@ -64,7 +64,7 @@ show the commits that changed file, even across renames merge a remote branch in
 
 ### git diff branchB...branchA git push [alias] [branch]
 
-show the di ff of what is in branchA that is not in branchB Transmit local branch commits to the remote repository branch
+show the diff of what is in branchA that is not in branchB Transmit local branch commits to the remote repository branch
 
 ### git show [SHA] git pull
 
@@ -94,14 +94,14 @@ Preventing unintentional staging or commiting of files Save modified and staged 
 
 logs/ git stash list *.notes pattern*/ list stack-order of stashed file changes
 
-git stash pop Save a file with desired pa tt erns as .gitignore with either direct string matches or wildcard globs. write working from top of stash stack
+git stash pop Save a file with desired patterns as .gitignore with either direct string matches or wildcard globs. write working from top of stash stack
 
 ### git config --global core.excludesfile [file] git stash drop
 
-system wide ignore pa tt ern for all local repositories discard the changes from top of stash stack
+system wide ignore pattern for all local repositories discard the changes from top of stash stack
 
 ## Education
 
-Teach and learn be tt er, together. GitHub is free for students and teach- education@github.com
+Teach and learn better, together. GitHub is free for students and teach- education@github.com
 
 ers. Discounts available for other educational uses. education.github.com

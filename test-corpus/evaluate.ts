@@ -297,16 +297,19 @@ function scoreNoGarbage(md: string): number {
   else if (controlChars > 0) score -= 1;
 
   // Check for excessive special characters that suggest encoding issues
-  const weirdChars = (md.match(/[^\x20-\x7E\n\r\t\u00A0-\u024F\u2000-\u206F\u2190-\u27FF\u2900-\u2BFF]/g) ?? []).length;
+  // Include Greek/Cyrillic/CJK as acceptable ranges
+  const weirdChars = (md.match(/[^\x20-\x7E\n\r\t\u00A0-\u024F\u0370-\u03FF\u0400-\u04FF\u2000-\u206F\u2190-\u27FF\u2900-\u2BFF\u3000-\u9FFF\uF900-\uFAFF]/g) ?? []).length;
   const charRatio = md.length > 0 ? weirdChars / md.length : 0;
   if (charRatio > 0.1) score -= 3;
   else if (charRatio > 0.05) score -= 1;
 
   // Check for runs of repeated characters (garbled output)
-  if (/(.)\1{20,}/.test(md)) score -= 3;
+  // Exclude dashes (table separators), spaces, dots (TOC leaders), and equals signs
+  if (/([^\-\s.=])\1{20,}/.test(md)) score -= 3;
 
   // Check for extremely long "words" (possible binary data)
-  const longWords = md.split(/\s+/).filter((w) => w.length > 100);
+  // Exclude markdown links [text](url) which legitimately contain no spaces
+  const longWords = md.split(/\s+/).filter((w) => w.length > 100 && !/\]\(https?:/.test(w));
   if (longWords.length > 3) score -= 2;
 
   return Math.max(1, score);

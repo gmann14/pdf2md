@@ -285,6 +285,45 @@ export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): bo
 }
 
 // ---------------------------------------------------------------------------
+// Text cleaning (ligatures, control chars, encoding artifacts)
+// ---------------------------------------------------------------------------
+
+/**
+ * Clean PDF-extracted text: replace ligatures, strip control characters,
+ * normalize special spaces, and collapse whitespace.
+ */
+export function cleanText(s: string): string {
+  return s
+    // Replace common ligatures
+    .replace(/\uFB00/g, "ff")
+    .replace(/\uFB01/g, "fi")
+    .replace(/\uFB02/g, "fl")
+    .replace(/\uFB03/g, "ffi")
+    .replace(/\uFB04/g, "ffl")
+    // Map Windows-1252 C1 control chars to their intended characters
+    // (PDF.js sometimes emits these from fonts with non-standard encodings)
+    .replace(/\u0091/g, "\u2018") // left single quote
+    .replace(/\u0092/g, "\u2019") // right single quote
+    .replace(/\u0093/g, "\u201C") // left double quote
+    .replace(/\u0094/g, "\u201D") // right double quote
+    .replace(/\u0096/g, "\u2013") // en dash
+    .replace(/\u0097/g, "\u2014") // em dash
+    .replace(/\u0085/g, "\u2026") // ellipsis
+    // Strip remaining C0 control chars (except tab, newline, carriage return)
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "")
+    // Strip remaining C1 control chars (U+0080-U+009F) that weren't mapped above
+    .replace(/[\x80-\x84\x86-\x90\x95\x98-\x9F]/g, "")
+    // Normalize special spaces to regular space
+    .replace(/[\u00A0\u2000-\u200A\u202F\u205F\u3000]/g, " ")
+    // Remove zero-width characters
+    .replace(/[\u200B\u200C\u200D\uFEFF]/g, "")
+    // Strip soft hyphens
+    .replace(/\u00AD/g, "")
+    // Collapse multiple spaces
+    .replace(/ {2,}/g, " ");
+}
+
+// ---------------------------------------------------------------------------
 // YAML front matter
 // ---------------------------------------------------------------------------
 

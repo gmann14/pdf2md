@@ -3747,11 +3747,11 @@ The ceiling , floor , truncate , and round functions each take a real fractional
 
 The function properFraction takes a real fractional number x and returns a pair ( n , f ) such that x = n + f , and: n is an integral number with the same sign as x ; and f is a fraction f with the same type and sign as x , and with absolute value less than 1. The ceiling , floor , truncate , and round functions can be defined in terms of properFraction .
 
-Two functions convert numbers to type Rational : toRational returns the rational equivalent of its real argument with full precision; approxRational takes two real fractional arguments x and  and returns
+Two functions convert numbers to type Rational : toRational returns the rational equivalent of its real argument with full precision; approxRational takes two real fractional arguments x and  and returns
 
 ′ ′
 
-the simplest rational number within  of x , where a rational p/q in reduced form is simpler than another p /q
+the simplest rational number within  of x , where a rational p/q in reduced form is simpler than another p /q
 
 ′ ′
 

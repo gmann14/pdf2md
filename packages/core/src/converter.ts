@@ -10,6 +10,7 @@ import type {
 } from "./types";
 import { MAX_FILE_SIZE } from "./types";
 import {
+  cleanText,
   detectTable,
   isCodeBlock,
   detectCodeFont,
@@ -151,24 +152,6 @@ function isItalic(fontName: string): boolean {
 // ---------------------------------------------------------------------------
 // Text cleanup (ligatures, special spaces, encoding artifacts)
 // ---------------------------------------------------------------------------
-
-function cleanText(s: string): string {
-  return s
-    // Replace common ligatures
-    .replace(/\uFB00/g, "ff")
-    .replace(/\uFB01/g, "fi")
-    .replace(/\uFB02/g, "fl")
-    .replace(/\uFB03/g, "ffi")
-    .replace(/\uFB04/g, "ffl")
-    // Normalize special spaces to regular space
-    .replace(/[\u00A0\u2000-\u200A\u202F\u205F\u3000]/g, " ")
-    // Remove zero-width characters
-    .replace(/[\u200B\u200C\u200D\uFEFF]/g, "")
-    // Strip soft hyphens
-    .replace(/\u00AD/g, "")
-    // Collapse multiple spaces
-    .replace(/ {2,}/g, " ");
-}
 
 // ---------------------------------------------------------------------------
 // Text extraction
@@ -394,7 +377,7 @@ function groupIntoBlocks(
   }
 
   if (currentItems.length > 0) {
-    blocks.push(classifyBlock(currentItems, profile));
+    blocks.push(classifyBlock(currentItems, profile, emphasisFonts));
   }
 
   return blocks;
@@ -836,6 +819,50 @@ function autoLinkUrls(markdown: string): string {
 }
 
 // ---------------------------------------------------------------------------
+// Fix split ligatures (kerned characters appearing as "di ff" instead of "diff")
+// ---------------------------------------------------------------------------
+
+/**
+ * Some PDFs use heavy kerning or custom fonts that cause PDF.js to insert
+ * spaces inside common ligature groups (tt, ff, fi, fl, ffi, ffl).
+ * This function rejoins them when they appear within known English words.
+ */
+function fixSplitLigatures(markdown: string): string {
+  return markdown
+    // "h tt p" → "http", "h tt ps" → "https"
+    .replace(/\bh tt ps?\b/g, (m) => m.replace(/ /g, ""))
+    // "di ff" → "diff" (and variants)
+    .replace(/\bdi ff\b/gi, "diff")
+    .replace(/\bdi ff er/gi, "differ")
+    .replace(/\bdi ffi /gi, "diffi")
+    // "e ff ect" → "effect", "o ff " → "off"
+    .replace(/\bo ff\b/gi, "off")
+    .replace(/\be ff ect/gi, "effect")
+    .replace(/\be ffi ci/gi, "effici")
+    // "o ffi cial" → "official"
+    .replace(/o ffi c/gi, "offic")
+    // Common "tt" splits: "commi tt ed" → "committed", "pa tt ern" → "pattern"
+    .replace(/commi tt ed/gi, "committed")
+    .replace(/commi tt/gi, "committ")
+    .replace(/pa tt ern/gi, "pattern")
+    .replace(/be tt er/gi, "better")
+    .replace(/le tt er/gi, "letter")
+    .replace(/a tt ach/gi, "attach")
+    .replace(/se tt ing/gi, "setting")
+    .replace(/ge tt ing/gi, "getting")
+    .replace(/pu tt ing/gi, "putting")
+    .replace(/si tt ing/gi, "sitting")
+    .replace(/wri tt en/gi, "written")
+    .replace(/bi tt en/gi, "bitten")
+    .replace(/ki tt en/gi, "kitten")
+    .replace(/bu tt on/gi, "button")
+    .replace(/bo tt om/gi, "bottom")
+    .replace(/ma tt er/gi, "matter")
+    .replace(/ba tt le/gi, "battle")
+    .replace(/li tt le/gi, "little");
+}
+
+// ---------------------------------------------------------------------------
 // Metadata extraction
 // ---------------------------------------------------------------------------
 
@@ -1070,6 +1097,9 @@ export async function convert(
 
   // Auto-link bare URLs that aren't already inside markdown links
   markdown = autoLinkUrls(markdown);
+
+  // Fix split ligatures from kerned/custom fonts
+  markdown = fixSplitLigatures(markdown);
 
   // Extract metadata if requested (yamlFrontMatter implies includeMetadata)
   let metadata: ConversionMetadata | undefined;

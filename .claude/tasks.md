@@ -62,6 +62,14 @@
   - Expanded test corpus: 21→28 PDFs (legal contract, census tables, infographic, landscape Gantt, footnote-heavy academic, CJK Chinese, filled form)
   - Improved scoring: penalizes false code blocks, adjusted expectations for new categories
   - Key improvements: Berkshire 7.8→8.5, RL survey 7.7→8.0, legal contract 8.2→9.0, scanned declaration 7.6→8.4
+- [x] **Quality round 3** — DONE 2026-03-30. Text cleanup + scoring refinements:
+  - Bug fix: emphasisFonts not passed to final classifyBlock call (last block of every doc missed emphasis heading detection)
+  - Moved cleanText() to detection.ts as exported function (testable)
+  - Enhanced cleanText: Windows-1252 C1 control char mapping (quotes, dashes, ellipsis), C0/C1 control char stripping
+  - Split ligature repair: "h tt ps"→"https", "di ff"→"diff", "commi tt ed"→"committed", etc. (kerned PDFs)
+  - Fixed noGarbage scoring: exclude markdown links from "long word" check, exclude table separators/spaces from "repeated char" check, added Greek/CJK as acceptable Unicode ranges
+  - 8 new tests for cleanText (ligatures, control chars, special spaces, zero-width chars)
+  - Results: **8.4→8.9/10 avg** (+0.5). noGarbage 6.8→9.9, IEEE paper 8.3→9.6, census 8.3→9.6, slides 8.0→9.0, form 7.4→8.4
 
 ## Phase 3: SEO & Launch — IN PROGRESS
 - [x] SEO: meta tags, schema markup, OG image (layout.tsx + og-image.png + JSON-LD)
@@ -81,11 +89,11 @@
 - **Production URL:** https://pdf2md-five.vercel.app
 - Vercel project: `prj_78nJRUrC3YGVgBbkjhLoqgeX6LUi` (root: `apps/web`)
 - Test corpus: `test-corpus/` — 28 real-world PDFs, evaluation script, quality report
-  - Overall quality: 8.4/10 automated (28/28 PDFs pass)
-  - Quality round 2 landed Mar 30 (emphasis fonts, URL linking, math denoising, expanded corpus)
-  - Remaining weak dimensions: noGarbage (6.5, PDF.js/Type3 font artifacts), some regressions on code detection scoring
+  - Overall quality: **8.9/10** automated (28/28 PDFs pass, 64 unit tests)
+  - Quality round 3 landed Mar 30 (text cleanup, ligature repair, scoring fixes)
+  - Remaining weak dimensions: linkExtraction (7.3, many PDFs lack link annotations), listDetection (8.0), metadataExtraction (7.9)
   - See `test-corpus/QUALITY-REPORT.md` for full analysis
 
 ## Blockers
 - No critical blockers. Ready for launch activities.
-- Remaining quality gaps (noGarbage, column interleaving on short docs) are PDF.js limitations or require per-section column detection.
+- Remaining quality gaps (column interleaving on cheatsheets/forms, CJK spacing) are PDF.js limitations or inherently hard layout problems.
