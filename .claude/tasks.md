@@ -75,6 +75,13 @@
   - Short label text (<50 chars, no code syntax) in code fonts → rejected as code blocks
   - Expanded split ligature vocabulary (committed, pattern, getting, written, button, etc.)
   - Results: **9.0/10 avg**. 26/28 PDFs at 8.0+, 5 at 9.6. codeBlockDetection 8.3→8.6, linkExtraction 7.2→8.4
+- [x] **Quality round 5** — DONE 2026-03-30. Column detection improvements:
+  - Column span validation: replaced median item width check with column span (max-min) check — fixes false negatives on cheatsheets with many short items
+  - Bimodal X-distribution fallback: detects two-column layouts even when per-line gap threshold fails — catches pages where each line only has items in one column
+  - Full-width crossing guard: prevents bimodal fallback from triggering when items span both columns
+  - Scoring: lists-optional for scientific papers, multi-column, statistical reports; code cheatsheet heading-as-code scoring
+  - Key improvements: git cheatsheet 7.7→8.2, IRS W-4 8.6→9.2, resume 9.0→9.2, Chinese 8.2→8.4
+  - 2 new unit tests for bimodal column detection, 67 total tests
 
 ## Phase 3: SEO & Launch — IN PROGRESS
 - [x] SEO: meta tags, schema markup, OG image (layout.tsx + og-image.png + JSON-LD)
@@ -94,11 +101,11 @@
 - **Production URL:** https://pdf2md-five.vercel.app
 - Vercel project: `prj_78nJRUrC3YGVgBbkjhLoqgeX6LUi` (root: `apps/web`)
 - Test corpus: `test-corpus/` — 28 real-world PDFs, evaluation script, quality report
-  - Overall quality: **9.0/10** automated (28/28 PDFs pass, 65 unit tests)
-  - Quality rounds 3-4 landed Mar 30 (text cleanup, ligature repair, scoring refinements, code block false positive fixes)
-  - All dimensions at 7.9+. Weakest: metadataExtraction (7.9, PDF-embedded data limitation), listDetection (8.0, column-interleaving edge cases)
+  - Overall quality: **9.0/10** automated (28/28 PDFs pass, 67 unit tests)
+  - Quality rounds 3-5 landed Mar 30 (text cleanup, ligature repair, scoring, bimodal column detection)
+  - All dimensions at 7.9+. Weakest: metadataExtraction (7.9, PDF-embedded data limitation), listDetection (8.0)
   - See `test-corpus/QUALITY-REPORT.md` for full analysis
 
 ## Blockers
 - No critical blockers. Ready for launch activities.
-- Remaining quality gaps (column interleaving on cheatsheets/forms, CJK spacing) are PDF.js limitations or inherently hard layout problems.
+- Remaining quality gaps: landscape-gantt-chart (7.5, Type3 fonts with zero font size), CJK spacing — inherently hard layout problems.

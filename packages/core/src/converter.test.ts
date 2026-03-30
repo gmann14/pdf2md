@@ -597,6 +597,35 @@ describe("detectColumnLayout (hardened)", () => {
     }
     expect(detectColumnLayout(items).type).toBe("two-column");
   });
+
+  it("bimodal fallback: detects two-column when items cluster in two X-zones", () => {
+    // Simulate a cheatsheet-like layout: items in left zone (x=30-250)
+    // and right zone (x=310-560), but each line only has items in one zone.
+    // Per-line gap detection will fail (<40%) but bimodal clustering should catch it.
+    const items: ReturnType<typeof makeColItem>[] = [];
+    // Left column: 15 lines of varying widths
+    for (let i = 0; i < 15; i++) {
+      items.push(makeColItem(36, 100 + i * 14, 100 + Math.random() * 100));
+    }
+    // Right column: 15 lines (no overlap with left lines' Y positions)
+    for (let i = 0; i < 15; i++) {
+      items.push(makeColItem(315, 120 + i * 14, 80 + Math.random() * 150));
+    }
+    const result = detectColumnLayout(items);
+    expect(result.type).toBe("two-column");
+  });
+
+  it("bimodal fallback: rejects when left items span full width", () => {
+    // Body text (wide items spanning both zones) + some short labels on right
+    const items: ReturnType<typeof makeColItem>[] = [];
+    for (let i = 0; i < 20; i++) {
+      items.push(makeColItem(72, 100 + i * 14, 400)); // Full-width
+    }
+    for (let i = 0; i < 12; i++) {
+      items.push(makeColItem(350, 400 + i * 14, 120)); // Right-side labels
+    }
+    expect(detectColumnLayout(items).type).toBe("single");
+  });
 });
 
 // ---------------------------------------------------------------------------

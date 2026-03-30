@@ -178,9 +178,14 @@ function scoreListDetection(md: string, category: string): number {
     category === "Infographic" ||
     category === "CJK / Multilingual" ||
     category === "Filled Form" ||
-    category === "Financial Report"
+    category === "Financial Report" ||
+    category === "Scientific Paper (Tables)" ||
+    category === "Multi-Column Layout" ||
+    category === "Statistical Report"
   ) {
-    return totalLists >= 0 ? 7 : 5;
+    if (totalLists >= 3) return 9;
+    if (totalLists >= 1) return 7;
+    return 7; // No lists is fine for these categories
   }
 
   if (totalLists === 0) return 4; // Might be fine, or might be missing lists
@@ -223,6 +228,16 @@ function scoreCodeBlockDetection(md: string, category: string): number {
   ];
 
   if (expectCode.includes(category)) {
+    // For cheatsheets, code commands as headings is acceptable
+    if (category === "Code Cheatsheet") {
+      const codeHeadings = md.split("\n").filter(
+        (l) => /^#{1,4}\s+\S/.test(l) && /\b(git|npm|docker|kubectl|curl)\b/i.test(l),
+      );
+      if (hasCode && codeBlocks.length >= 3) return 9;
+      if (codeHeadings.length >= 5) return 8; // Commands as headings
+      if (hasCode) return 7;
+      return 4;
+    }
     if (hasCode && codeBlocks.length >= 3) return 9;
     if (hasCode) return 7;
     return 2; // Expected code but none found

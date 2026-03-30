@@ -36,32 +36,54 @@ National Notifiable Diseases Surveillance System
 
 Patient
 
-# 1 CDC provides INFORMATION: A person feels ill and goes to the doctor. ► Websites ► Fact sheets ► Toolkits ► Brochures and pamphlets
+# 1 A person feels ill and goes to the doctor.
 
 Healthcare Team
 
-2 Doctor diagnoses or laboratory tests CDC provides GUIDANCE: confrm a disease that is reportable by ► Clinical guidance state law to the local or state public health ► Research department. ► Publications REPORTABLE
+# 2 Doctor diagnoses or laboratory tests confrm a disease that is reportable by state law to the local or state public health department. REPORTABLE
 
-- Morbidity and Mortality Doctor or lab sends information about this Weekly Report disease to the local or state public health • Vital Signs department. • Community Guide
+Doctor or lab sends information about this disease to the local or state public health department.
 
 Public Health Department
 
-# 3 The public health department receives CDC provides SUPPORT: disease data and uses them to: • identify and control disease outbreaks ► Guidance
+3 The public health department receives disease data and uses them to: • identify and control disease outbreaks • ensure that the patient is effectively treated so disease is not spread NOTIFIABLE
 
-- ensure that the patient is effectively ► Data collection and reporting
+- provide testing and preventive care to those exposed to the disease • control sources of exposure.
 
-treated so disease is not spread NOTIFIABLE
-
-► Alerts • provide testing and preventive care to • Health Alert Network [HAN] those exposed to the disease • Epidemic Information Exchange • control sources of exposure. [Epi-X] Network ► Large-scale outbreak assistance The state public health department sends ► Small-scale outbreak assistance information about national notifable ► Funding diseases to CDC.
+The state public health department sends information about national notifable diseases to CDC.
 
 CDC National Notifable Diseases
 
 # 4 Surveillance System Team NNDSS collects national notifable disease data on behalf of CDC.
 
-The NNDSS team receives, secures, processes, and provides these data to disease-specifc programs across CDC. For more information about notifable disease surveillance, please access the NNDSS website at
+The NNDSS team receives, secures, processes, and provides these data to disease-specifc programs across CDC.
 
 CDC Disease Program
 
-### cdc.gov/nndss/
-
 5 CDC programs use disease-specifc data to: • support recognition of disease outbreaks • monitor shifts in disease patterns • evaluate and fund disease control activities.
+
+CDC provides INFORMATION:
+
+| ►   | Websites                |
+| --- | ----------------------- |
+| ►   | Fact sheets             |
+| ►   | Toolkits                |
+| ►   | Brochures and pamphlets |
+
+CDC provides GUIDANCE:
+
+► Clinical guidance ► Research ► Publications • Morbidity and Mortality Weekly Report • Vital Signs • Community Guide
+
+CDC provides SUPPORT:
+
+| ►   | Guidance                        |
+| --- | ------------------------------- |
+| ►   | Data collection and reporting   |
+| ►   | Alerts                          |
+| ►   | Large-scale outbreak assistance |
+| ►   | Small-scale outbreak assistance |
+| ►   | Funding                         |
+
+For more information about notifable disease surveillance, please access the NNDSS website at
+
+### cdc.gov/nndss/

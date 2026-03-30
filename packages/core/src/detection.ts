@@ -492,8 +492,94 @@ export function detectColumnLayout(items: DetectionItem[]): ColumnLayout {
     }
   }
 
+  // Minimum column span for validation (used in both primary and fallback paths)
+  const MIN_COLUMN_SPAN = 100;
+
   // Require gap in at least 40% of lines (raised from 30% to reduce false positives)
-  if (lineCenters.length < lines.length * 0.4) return { type: "single" };
+  // Fallback: if per-line gaps are sparse but items show bimodal X-distribution
+  // (clear left and right clusters with an empty gap), still detect two-column.
+  // This catches layouts where each line has items in only one column.
+  if (lineCenters.length < lines.length * 0.4) {
+    // Collect item left-edge X positions, sorted
+    const leftEdges = filteredItems
+      .filter((it) => it.width > 0)
+      .map((it) => it.x)
+      .sort((a, b) => a - b);
+
+    // Find the largest gap between consecutive left-edge positions
+    // in the search window — a large gap indicates two clusters of items
+    let bestBimodalGapStart = 0;
+    let bestBimodalGapEnd = 0;
+    let bestBimodalGapWidth = 0;
+    for (let i = 0; i + 1 < leftEdges.length; i++) {
+      const gW = leftEdges[i + 1] - leftEdges[i];
+      const gC = (leftEdges[i] + leftEdges[i + 1]) / 2;
+      if (
+        gW > bestBimodalGapWidth &&
+        gC >= searchMin &&
+        gC <= searchMax
+      ) {
+        bestBimodalGapWidth = gW;
+        bestBimodalGapStart = leftEdges[i];
+        bestBimodalGapEnd = leftEdges[i + 1];
+      }
+    }
+
+    // Require a substantial gap between clusters (≥60pt)
+    const MIN_BIMODAL_GAP = 60;
+    if (bestBimodalGapWidth >= MIN_BIMODAL_GAP) {
+      const bimodalCenter = (bestBimodalGapStart + bestBimodalGapEnd) / 2;
+      let leftN = 0;
+      let rightN = 0;
+      for (const item of filteredItems) {
+        if (item.x <= bestBimodalGapStart) leftN++;
+        else if (item.x >= bestBimodalGapEnd) rightN++;
+      }
+      // Reject if many left-side items extend past the gap (full-width text)
+      let leftCrossing = 0;
+      for (const item of filteredItems) {
+        if (
+          item.x <= bestBimodalGapStart &&
+          item.x + item.width > bestBimodalGapEnd
+        ) {
+          leftCrossing++;
+        }
+      }
+      const bimodalRatio = leftN / (leftN + rightN);
+      if (
+        leftN >= 10 &&
+        rightN >= 10 &&
+        bimodalRatio >= 0.2 &&
+        bimodalRatio <= 0.8 &&
+        leftCrossing < leftN * 0.3 // <30% of left items cross the gap
+      ) {
+        // Verify column spans are substantial
+        let lMin = Infinity, lMax = -Infinity;
+        let rMin = Infinity, rMax = -Infinity;
+        for (const item of filteredItems) {
+          if (item.x <= bestBimodalGapStart) {
+            lMin = Math.min(lMin, item.x);
+            lMax = Math.max(lMax, item.x + item.width);
+          } else if (item.x >= bestBimodalGapEnd) {
+            rMin = Math.min(rMin, item.x);
+            rMax = Math.max(rMax, item.x + item.width);
+          }
+        }
+        if (lMax - lMin >= MIN_COLUMN_SPAN && rMax - rMin >= MIN_COLUMN_SPAN) {
+          const splitY = findColumnSplitY(lines, bimodalCenter);
+          return {
+            type: "two-column",
+            gapStart: bestBimodalGapStart,
+            gapEnd: bestBimodalGapEnd,
+            gapCenter: bimodalCenter,
+            splitY,
+          };
+        }
+      }
+    }
+
+    return { type: "single" };
+  }
 
   // Find the consensus gap center (median, then filter within ±30pt)
   lineCenters.sort((a, b) => a - b);
@@ -534,24 +620,25 @@ export function detectColumnLayout(items: DetectionItem[]): ColumnLayout {
     boundCount > 0 ? sumGapStart / boundCount : gapCenter - 15;
   const gapEnd = boundCount > 0 ? sumGapEnd / boundCount : gapCenter + 15;
 
-  // Require each column to have substantial text width (not just short labels)
-  const MIN_COLUMN_TEXT_WIDTH = 100;
-  const leftWidths: number[] = [];
-  const rightWidths: number[] = [];
+  // Require each column to span a substantial width (not just short labels)
+  // Uses column span (max right edge - min left edge) rather than individual
+  // item widths, so columns with many short items (e.g., git commands) pass.
+  let leftMin = Infinity, leftMax = -Infinity, leftItemCount = 0;
+  let rightMin = Infinity, rightMax = -Infinity, rightItemCount = 0;
   for (const item of filteredItems) {
     if (item.x + item.width <= gapStart) {
-      leftWidths.push(item.width);
+      leftMin = Math.min(leftMin, item.x);
+      leftMax = Math.max(leftMax, item.x + item.width);
+      leftItemCount++;
     } else if (item.x >= gapEnd) {
-      rightWidths.push(item.width);
+      rightMin = Math.min(rightMin, item.x);
+      rightMax = Math.max(rightMax, item.x + item.width);
+      rightItemCount++;
     }
   }
-  const median = (arr: number[]): number => {
-    if (arr.length === 0) return 0;
-    const s = [...arr].sort((a, b) => a - b);
-    const mid = Math.floor(s.length / 2);
-    return s.length % 2 === 0 ? (s[mid - 1] + s[mid]) / 2 : s[mid];
-  };
-  if (median(leftWidths) < MIN_COLUMN_TEXT_WIDTH || median(rightWidths) < MIN_COLUMN_TEXT_WIDTH) {
+  const leftSpan = leftItemCount > 0 ? leftMax - leftMin : 0;
+  const rightSpan = rightItemCount > 0 ? rightMax - rightMin : 0;
+  if (leftSpan < MIN_COLUMN_SPAN || rightSpan < MIN_COLUMN_SPAN) {
     return { type: "single" };
   }
 

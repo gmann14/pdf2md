@@ -1,22 +1,70 @@
 ---
-title: "Future Developments"
+title: "General Instructions"
 ---
 
-Form W-4 (2026) Page 2
+Form W-4 (2026)
 
-General Instructions Nonresident alien. If you’re a nonresident alien, see Notice 1392, Supplemental Form W-4 Instructions for Nonresident Section references are to the Internal Revenue Code unless Aliens, before completing this form. otherwise noted.
+### General Instructions
+
+Section references are to the Internal Revenue Code unless otherwise noted.
 
 #### Future Developments
 
+For the latest information about developments related to Form W-4, such as legislation enacted after it was published, go to www.irs.gov/FormW4 .
+
+#### Purpose of Form
+
+Complete Form W-4 so that your employer can withhold the correct federal income tax from your pay. If too little is withheld, you will generally owe tax when you file your tax return and may owe a penalty. If too much is withheld, you will generally be due a refund. Complete a new Form W-4 when changes to your personal or financial situation would change the entries on the form. For more information on withholding and when you must furnish a new Form W-4, see Pub. 505, Tax Withholding and Estimated Tax.
+
+Exemption from withholding. You may claim exemption from withholding for 2026 if you meet both of the following conditions: you had no federal income tax liability in 2025 and you expect to have no federal income tax liability in 2026. You had no federal income tax liability in 2025 if (1) your total tax on line 24 on your 2025 Form 1040 or 1040-SR is zero (or less than the sum of lines 27a, 28, 29, and 30), or (2) you were not required to file a return because your income was below the filing threshold for your correct filing status. If you claim exemption, you will have no income tax withheld from your paycheck and may owe taxes and penalties when you file your 2026 tax return. To claim exemption from withholding, certify that you meet both of the conditions by checking the box in the Exempt from withholding section. Then, complete Steps 1(a), 1(b), and 5. Do not complete any other steps. You will need to submit a new Form W-4 by February 16, 2027.
+
+Your privacy. Steps 2(c) and 4(a) ask for information regarding income you received from sources other than the job associated with this Form W-4. If you have concerns with providing the information asked for in Step 2(c), you may choose Step 2(b) as an alternative; if you have concerns with providing the information asked for in Step 4(a), you may enter an additional amount you want withheld per pay period in Step 4(c) as an alternative.
+
+When to use the estimator. Consider using the estimator at www.irs.gov/W4App if you:
+
+1. Are submitting this form after the beginning of the year;
+
+2. Expect to work only part of the year;
+
+3. Have changes during the year in your marital status, number of jobs for you (and/or your spouse if married filing jointly), or number of dependents, or changes in your deductions or credits;
+
+4. Receive dividends, capital gains, social security, bonuses, or business income, or are subject to the Additional Medicare Tax or Net Investment Income Tax; or
+
+5. Prefer the most accurate withholding for multiple job situations.
+
+TIP: Have your most recent pay stub(s) from this year available when using the estimator to account for federal income tax that has already been withheld this year. At the beginning of next year, use the estimator again to recheck your withholding.
+
+Self-employment. Generally, you will owe both income and self-employment taxes on any self-employment income you receive separate from the wages you receive as an employee. If you want to pay these taxes through withholding from your wages, use the estimator at www.irs.gov/W4App to figure the amount to have withheld.
+
+Page 2
+
+Nonresident alien. If you’re a nonresident alien, see Notice 1392, Supplemental Form W-4 Instructions for Nonresident Aliens, before completing this form.
+
 ### Specific Instructions
 
-For the latest information about developments related to Form Step 1(c). Check your anticipated filing status. This will W-4, such as legislation enacted after it was published, go to determine the standard deduction and tax rates used to www.irs.gov/FormW4 . compute your withholding. Step 2. Use this step if you (1) have more than one job at the
+Step 1(c). Check your anticipated filing status. This will determine the standard deduction and tax rates used to compute your withholding. Step 2. Use this step if you (1) have more than one job at the same time, or (2) are married filing jointly and you and your spouse both work. Submit a separate Form W-4 for each job.
 
-Purpose of Form same time, or (2) are married filing jointly and you and your Complete Form W-4 so that your employer can withhold the spouse both work. Submit a separate Form W-4 for each job. correct federal income tax from your pay. If too little is withheld, Option (a) most accurately calculates the additional tax you you will generally owe tax when you file your tax return and may need to have withheld, while option (b) does so with a little less owe a penalty. If too much is withheld, you will generally be due accuracy. a refund. Complete a new Form W-4 when changes to your personal or financial situation would change the entries on the Instead, if you (and your spouse) have a total of only two jobs, form. For more information on withholding and when you must you may check the box in option (c) . The box must also be furnish a new Form W-4, see Pub. 505, Tax Withholding and checked on the Form W-4 for the other job. If the box is Estimated Tax. checked, the standard deduction and tax brackets will be cut in half for each job to calculate withholding. This option is accurate Exemption from withholding. You may claim exemption from for jobs with similar pay; otherwise, more tax than necessary withholding for 2026 if you meet both of the following may be withheld, and this extra amount of tax withheld will be conditions: you had no federal income tax liability in 2025 and larger the greater the difference in pay is between the two jobs. you expect to have no federal income tax liability in 2026. You had no federal income tax liability in 2025 if (1) your total tax on Multiple jobs. Complete Steps 3 through 4(b) on only line 24 on your 2025 Form 1040 or 1040-SR is zero (or less than ▲ ! one Form W-4. Withholding will be most accurate if you
+Option (a) most accurately calculates the additional tax you need to have withheld, while option (b) does so with a little less accuracy.
+
+Instead, if you (and your spouse) have a total of only two jobs, you may check the box in option (c) . The box must also be checked on the Form W-4 for the other job. If the box is checked, the standard deduction and tax brackets will be cut in half for each job to calculate withholding. This option is accurate for jobs with similar pay; otherwise, more tax than necessary may be withheld, and this extra amount of tax withheld will be larger the greater the difference in pay is between the two jobs.
+
+### Multiple jobs. Complete Steps 3 through 4(b) on only
+
+# ▲ ! one Form W-4. Withholding will be most accurate if you
 
 ## CAUTION
 
-the sum of lines 27a, 28, 29, and 30), or (2) you were not do this on the Form W-4 for the highest paying job. required to file a return because your income was below the Step 3. This step provides instructions for determining the filing threshold for your correct filing status. If you claim amount of the child tax credit and the credit for other dependents exemption, you will have no income tax withheld from your that you may be able to claim when you file your tax return. To paycheck and may owe taxes and penalties when you file your qualify for the child tax credit, the child must be under age 17 as 2026 tax return. To claim exemption from withholding, certify of December 31, must be your dependent who generally lives that you meet both of the conditions by checking the box in the with you for more than half the year, and must have the required Exempt from withholding section. Then, complete Steps 1(a), social security number. You (and/or your spouse if married filing 1(b), and 5. Do not complete any other steps. You will need to jointly) must have the required social security number to claim submit a new Form W-4 by February 16, 2027. certain credits. You may be able to claim a credit for other Your privacy. Steps 2(c) and 4(a) ask for information regarding dependents for whom a child tax credit can’t be claimed, such income you received from sources other than the job associated as an older child or a qualifying relative. For additional eligibility with this Form W-4. If you have concerns with providing the requirements for these credits, see Pub. 501, Dependents, information asked for in Step 2(c), you may choose Step 2(b) as Standard Deduction, and Filing Information. You can also an alternative; if you have concerns with providing the include other tax credits for which you are eligible in this step, information asked for in Step 4(a), you may enter an additional such as the foreign tax credit and the education tax credits. To amount you want withheld per pay period in Step 4(c) as an do so, add an estimate of the amount for the year to your credits alternative. for dependents and enter the total amount in Step 3. Including these credits will increase your paycheck and reduce the amount When to use the estimator. Consider using the estimator at of any refund you may receive when you file your tax return. www.irs.gov/W4App if you: Step 4. 1. Are submitting this form after the beginning of the year; Step 4(a). Enter in this step the total of your other estimated 2. Expect to work only part of the year; income for the year, if any. You shouldn’t include income from 3. Have changes during the year in your marital status, number any jobs or self-employment. If you complete Step 4(a), you of jobs for you (and/or your spouse if married filing jointly), or likely won’t have to make estimated tax payments for that number of dependents, or changes in your deductions or income. If you prefer to pay estimated tax rather than having tax credits; on other income withheld from your paycheck, see Form 1040-ES, Estimated Tax for Individuals. 4. Receive dividends, capital gains, social security, bonuses, or business income, or are subject to the Additional Medicare Tax Step 4(b). Enter in this step the amount from the Deductions or Net Investment Income Tax; or Worksheet, line 15, if you expect to claim deductions other than the basic standard deduction on your 2026 tax return and want 5. Prefer the most accurate withholding for multiple job to reduce your withholding to account for these deductions. situations. This includes both itemized deductions and other deductions TIP: Have your most recent pay stub(s) from this year available such as for qualified tips, overtime compensation, and when using the estimator to account for federal income tax that passenger vehicle loan interest; student loan interest; IRAs; and has already been withheld this year. At the beginning of next seniors. You (and/or your spouse if married filing jointly) must year, use the estimator again to recheck your withholding. have the required social security number to claim certain Self-employment. Generally, you will owe both income and deductions. For additional eligibility requirements, see Pub. 501. self-employment taxes on any self-employment income you Step 4(c). Enter in this step any additional tax you want receive separate from the wages you receive as an employee. If withheld from your pay each pay period , including any amounts you want to pay these taxes through withholding from your from the Multiple Jobs Worksheet, line 4. Entering an amount wages, use the estimator at www.irs.gov/W4App to figure the here will reduce your paycheck and will either increase your amount to have withheld. refund or reduce any amount of tax that you owe when you file your tax return.
+do this on the Form W-4 for the highest paying job.
+
+Step 3. This step provides instructions for determining the amount of the child tax credit and the credit for other dependents that you may be able to claim when you file your tax return. To qualify for the child tax credit, the child must be under age 17 as of December 31, must be your dependent who generally lives with you for more than half the year, and must have the required social security number. You (and/or your spouse if married filing jointly) must have the required social security number to claim certain credits. You may be able to claim a credit for other dependents for whom a child tax credit can’t be claimed, such as an older child or a qualifying relative. For additional eligibility requirements for these credits, see Pub. 501, Dependents, Standard Deduction, and Filing Information. You can also include other tax credits for which you are eligible in this step, such as the foreign tax credit and the education tax credits. To do so, add an estimate of the amount for the year to your credits for dependents and enter the total amount in Step 3. Including these credits will increase your paycheck and reduce the amount of any refund you may receive when you file your tax return.
+
+Step 4.
+
+Step 4(a). Enter in this step the total of your other estimated income for the year, if any. You shouldn’t include income from any jobs or self-employment. If you complete Step 4(a), you likely won’t have to make estimated tax payments for that income. If you prefer to pay estimated tax rather than having tax on other income withheld from your paycheck, see Form 1040-ES, Estimated Tax for Individuals.
+
+Step 4(b). Enter in this step the amount from the Deductions Worksheet, line 15, if you expect to claim deductions other than the basic standard deduction on your 2026 tax return and want to reduce your withholding to account for these deductions. This includes both itemized deductions and other deductions such as for qualified tips, overtime compensation, and passenger vehicle loan interest; student loan interest; IRAs; and seniors. You (and/or your spouse if married filing jointly) must have the required social security number to claim certain deductions. For additional eligibility requirements, see Pub. 501.
+
+Step 4(c). Enter in this step any additional tax you want withheld from your pay each pay period , including any amounts from the Multiple Jobs Worksheet, line 4. Entering an amount here will reduce your paycheck and will either increase your refund or reduce any amount of tax that you owe when you file your tax return.
 
 Form W-4 (2026) Page 5
 
