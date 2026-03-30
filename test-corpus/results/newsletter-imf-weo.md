@@ -188,11 +188,7 @@ advanced economies will ease in the coming quarters. 2.5 Euro area Oct.
 
 The resulting momentous decline in interest rate
 
-```
-Other AEs
-GFSR
-1.5
-```
+Other AEs GFSR 1.5
 
 expectations in December has driven a broad-based rally in EMs excl. China 1.0
 

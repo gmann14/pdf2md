@@ -724,6 +724,27 @@ describe("isCodeBlock (enhanced)", () => {
     expect(isCodeBlock(items3)).toBe(false);
   });
 
+  it("rejects short label text in code font without code syntax", () => {
+    const codeFonts = new Set(["g_d0_f3"]);
+    // Short title-like text in a code font — should NOT be code
+    const items = [
+      makeItem({ str: "Healthcare Team", x: 100, y: 100, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items, codeFonts)).toBe(false);
+
+    // Another short label
+    const items2 = [
+      makeItem({ str: "Public Health Department", x: 100, y: 100, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items2, codeFonts)).toBe(false);
+
+    // Short text WITH code syntax should still be detected
+    const items3 = [
+      makeItem({ str: "if (x > 0) {", x: 100, y: 100, fontName: "g_d0_f3" }),
+    ];
+    expect(isCodeBlock(items3, codeFonts)).toBe(true);
+  });
+
   it("still detects code blocks with sufficient content", () => {
     const codeFonts = new Set(["g_d0_f3"]);
     const items = [

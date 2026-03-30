@@ -116,9 +116,7 @@ Masked Sentence A Masked Sentence B Question Paragraph
 
 Unlabeled Sentence A and B Pair Question Answer Pair
 
-```
-Pre-training Fine-Tuning
-```
+Pre-training [Fine-Tuning](https://www.aclweb.org/anthology/D17-1070)
 
 Figure 1: Overall pre-training and fine-tuning procedures for BERT. Apart from output layers, the same architec- tures are used in both pre-training and fine-tuning. The same pre-trained model parameters are used to initialize models for different down-stream tasks. During fine-tuning, all parameters are fine-tuned. [CLS] is a special symbol added in front of every input example, and [SEP] is a special separator token (e.g. separating ques- tions/answers).
 
@@ -646,9 +644,7 @@ to converge. In Section C.1 we demonstrate that epochs over the 3.3 billion word
 
 likelihood.
 
-```
 he bought a gallon [MASK] milk [SEP]
-```
 
 [Training of BERT](https://gluebenchmark.com/leaderboard) BASE [was performed on 4](https://blog.openai.com/language-unsupervised) Label = IsNext [Cloud TPUs in Pod configuration (16 TPU chips](https://blog.openai.com/language-unsupervised) total).
 
@@ -764,10 +760,7 @@ Tok Tok Tok Tok [CLS] ... [SEP] ... [CLS] [CLS] Tok 1 Tok 1 Tok 2 ... Tok N
 
 ## 1 N 1 M
 
-```
-Sentence 1
-Sentence 2 Single Sentence
-```
+Sentence 1 Sentence 2 Single Sentence
 
 Start/End Span O B-PER ... O
 
@@ -833,14 +826,7 @@ E
 
 ## 2 N
 
-```
-Tok
-Tok
-Tok
-Tok
-[CLS] [SEP]
-1
-```
+Tok Tok Tok Tok [CLS] [SEP] 1
 
 ...
 
@@ -850,9 +836,7 @@ Tok
 
 M
 
-```
 Question Paragraph Single Sentence
-```
 
 Figure 4: Illustrations of Fine-tuning BERT on Different Tasks.
 

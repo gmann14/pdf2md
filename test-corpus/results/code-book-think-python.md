@@ -58,9 +58,7 @@ I needed a title, so on a whim I chose How to Think Like a Computer Scientist .
 
 [In 2003 I started teaching at Olin College and I got to teach Python for the first time. The](https://thinkpython.com/code/metathesis.py) [contrast with Java was striking. Students struggled less, learned more, worked on more](https://thinkpython.com/code/typewriter.py) interesting projects, and generally had a lot more fun.
 
-```
 vi Chapter 0. Preface
-```
 
 [Since then I’ve continued to develop the book, correcting errors, improving some of the](https://thinkpython.com/code/polygon.py) examples and adding material, especially exercises.
 
@@ -146,9 +144,7 @@ If you have a suggestion or correction, please send email to feedback@thinkpytho
 
 - [• Matthew J. Moelter has been a long-time contributor who sent in numerous corrections and](http://en.wikipedia.org/wiki/Collatz_conjecture) suggestions to the book.
 
-```
 viii Chapter 0. Preface
-```
 
 - [• Simon Dicon Montford reported a missing function definition and several typos in Chapter 3.](https://thinkpython.com/code/polygon.py) [He also found errors in the](http://en.wikipedia.org/wiki/Zipf's_law) [increment](http://en.wikipedia.org/wiki/Zipf's_law) [function in Chapter 13.](http://en.wikipedia.org/wiki/Zipf's_law)
 
@@ -258,9 +254,7 @@ ix
 
 - Arne Babenhauserheide sent several helpful corrections.
 
-```
 x Chapter 0. Preface
-```
 
 - [• Mark E. Casida is is good at spotting repeated words.](https://thinkpython.com/code/polygon.py)
 
@@ -380,15 +374,11 @@ xi
 
 [In addition, people who spotted typos or made corrections include Czeslaw Czapla, Dale Wil-](https://thinkpython.com/code/pronounce.py) [son, Francesco Carlo Cimini, Richard Fursa, Brian McGhie, Lokesh Kumar Makani, Matthew](https://thinkpython.com/code/metathesis.py) [Shultz, Viet Le, Victor Simeone, Lars O.D. Christensen, Swarup Sahoo, Alix Etienne, Kuang](http://puzzlers.org/) [He, Wei Huang, Karen Barber, and Eric Ransom.](http://wiki.python.org/moin/BitwiseOperators)
 
-```
 xii Chapter 0. Preface
-```
 
 # [Contents](https://thinkpython.com/code/emma.txt)
 
-```
-Preface v
-```
+[Preface](https://thinkpython.com/code/ackermann.py) v
 
 The way of the program
 
@@ -410,9 +400,7 @@ The way of the program
 
 [1.9](http://www.cartalk.com/content/puzzlers) [Exercises](http://www.cartalk.com/content/puzzlers) [. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](https://thinkpython.com/code/PokerHandSoln.py)
 
-```
-Variables, expressions and statements
-```
+[Variables, expressions and statements](http://docs.python.org/3/library/datetime.html)
 
 2.1 Assignment statements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -434,13 +422,9 @@ Variables, expressions and statements
 
 2.10 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 xiv Contents
-```
 
-```
-Functions
-```
+[Functions](https://thinkpython.com/code/polygon.py)
 
 3.1 Function calls [. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](http://en.wikipedia.org/wiki/Spiral)
 
@@ -498,13 +482,9 @@ Case study: interface design
 
 4.12 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Contents xv
-```
 
-```
-Conditionals and recursion
-```
+[Conditionals and recursion](https://thinkpython.com/code/polygon.py)
 
 [5.1](http://www.cartalk.com/content/puzzlers) [Floor division and modulus](http://www.cartalk.com/content/puzzlers) [. . . . . . . . . . . . . . . . . . . . . . . . . . .](http://en.wikipedia.org/wiki/Spiral)
 
@@ -534,9 +514,7 @@ Conditionals and recursion
 
 5.14 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
-Fruitful functions
-```
+[Fruitful functions](https://thinkpython.com/code/polygon.py)
 
 [6.1](https://thinkpython.com/code/PokerHandSoln.py) [Return values](https://thinkpython.com/code/PokerHandSoln.py) [. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](https://thinkpython.com/code/list_exercises.py)
 
@@ -560,13 +538,9 @@ Fruitful functions
 
 6.11 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 xvi Contents
-```
 
-```
-Iteration
-```
+[Iteration](https://thinkpython.com/code/polygon.py)
 
 7.1 Reassignment [. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](http://en.wikipedia.org/wiki/Spiral)
 
@@ -632,9 +606,7 @@ Case study: word play
 
 9.7 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Contents xvii
-```
 
 ## [10 Lists](https://thinkpython.com/code/polygon.py)
 
@@ -690,9 +662,7 @@ Contents xvii
 
 11.10 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 xviii Contents
-```
 
 ## [12 Tuples](https://thinkpython.com/code/polygon.py)
 
@@ -754,9 +724,7 @@ xviii Contents
 
 14.5 Catching exceptions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Contents xix
-```
 
 [14.6](https://thinkpython.com/code/polygon.py) [Databases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](http://en.wikipedia.org/wiki/Zipf's_law)
 
@@ -816,9 +784,7 @@ Contents xix
 
 17.3 Another example . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 xx Contents
-```
 
 [17.4](https://thinkpython.com/code/polygon.py) [A more complicated example](https://thinkpython.com/code/polygon.py) . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -880,9 +846,7 @@ xx Contents
 
 19.6 Counters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Contents xxi
-```
 
 [19.7](https://thinkpython.com/code/polygon.py) [defaultdict](https://thinkpython.com/code/polygon.py) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -894,9 +858,7 @@ Contents xxi
 
 [19.11](http://creativecommons.org/licenses/by-nc/3.0/) [Exercises](http://creativecommons.org/licenses/by-nc/3.0/) [. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](http://docs.python.org/3/library/stdtypes.html#types-set)
 
-```
-A Debugging
-```
+[A](https://thinkpython.com/code/rotate.py) [Debugging](https://thinkpython.com/code/rotate.py)
 
 [A.1](https://thinkpython.com/code/structshape.py) [Syntax errors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .](https://thinkpython.com/code/analyze_book1.py)
 
@@ -904,9 +866,7 @@ A.2 [Runtime errors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 
 A.3 Semantic errors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 B Analysis of Algorithms
-```
 
 B.1 Order of growth . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -918,9 +878,7 @@ B.1 Order of growth . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 
 [B.5](https://thinkpython.com/code/Time1_soln.py) Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 xxii Contents
-```
 
 ## [Chapter 1](https://thinkpython.com/code/markov.py)
 
@@ -1461,9 +1419,7 @@ Python provides functions that convert values from one type to another. The int 
 
 ### [>>> float(32)](https://thinkpython.com/code/pronounce.py) [32.0](https://thinkpython.com/code/double.py) [>>> float(](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [3.14159](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [)](http://wiki.python.org/moin/BitwiseOperators) 3.14159
 
-```
 Chapter 3. Functions
-```
 
 [Finally,](https://thinkpython.com/code/polygon.py) [str](https://thinkpython.com/code/polygon.py) [converts its argument to a string:](https://thinkpython.com/code/polygon.py)
 
@@ -1537,9 +1493,7 @@ The first line of the function definition is called the header [; the rest is ca
 
 [If you type a function definition in interactive mode, the interpreter prints dots (](https://thinkpython.com/code/typewriter.py) [...](https://thinkpython.com/code/interlock.py) [) to let](https://thinkpython.com/code/interlock.py) you know that the definition isn’t complete:
 
-```
 Chapter 3. Functions
-```
 
 [>>> def print_lyrics():](https://thinkpython.com/code/polygon.py) ... print("I ' m a lumberjack, and I ['](http://en.wikipedia.org/wiki/Spiral) [m okay.")](http://en.wikipedia.org/wiki/Spiral) [...](https://thinkpython.com/code/Time2.py) [print("I sleep all night and I work all day.")](http://www.cartalk.com/content/puzzlers) [...](https://thinkpython.com/code/spiral.py)
 
@@ -1611,9 +1565,7 @@ Some of the functions we have seen require arguments. [For example, when you cal
 
 This function works with any value that can be printed.
 
-```
 Chapter 3. Functions
-```
 
 ### [>>> print_twice(](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [Spam](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [)](https://thinkpython.com/code/polygon.py) Spam [Spam](https://thinkpython.com/code/Time2.py) [>>> print_twice(42)](https://thinkpython.com/code/spiral.py)
 
@@ -1677,9 +1629,7 @@ If an error occurs during a function call, Python prints the name of the functio
 
 [Traceback (innermost last):](https://thinkpython.com/code/pie.py) [File "test.py", line 13, in __main__](http://en.wikipedia.org/wiki/Koch_snowflake) [cat_twice(line1, line2)](https://thinkpython.com/code/cartalk3.py) [File "test.py", line 5, in cat_twice](https://thinkpython.com/code/c06d) [print_twice(cat)](https://thinkpython.com/code/pronounce.py) [File "test.py", line 9, in print_twice](https://thinkpython.com/code/metathesis.py) [print(cat)](http://wiki.python.org/moin/BitwiseOperators) NameError: name ' cat ' is not defined
 
-```
 Chapter 3. Functions
-```
 
 [This list of functions is called a](https://thinkpython.com/code/polygon.py) [traceback](https://thinkpython.com/code/polygon.py) . It tells you what program file the error occurred [in, and what line, and what functions were executing at the time. It also shows the line of](http://en.wikipedia.org/wiki/Spiral) [code that caused the error.](http://www.cartalk.com/content/puzzlers)
 
@@ -1755,9 +1705,7 @@ For example, Linux is an operating system that contains millions of lines of cod
 
 header: The first line of a function definition.
 
-```
 Chapter 3. Functions
-```
 
 [body:](https://thinkpython.com/code/polygon.py) [The sequence of statements inside a function definition.](https://thinkpython.com/code/polygon.py)
 
@@ -1852,9 +1800,7 @@ print( ' + ' , end= ' ' )
 print( ' - ' )
 ```
 
-```
 Chapter 3. Functions
-```
 
 [The output of these statements is](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [+ -](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) on the same line. The output from the next print statement would begin on the next line.
 
@@ -2590,9 +2536,7 @@ In this chapter, we are (finally) going to write fruitful functions. The first e
 
 [Sometimes it is useful to have multiple return statements, one in each branch of a condi-](https://thinkpython.com/code/typewriter.py) tional:
 
-```
 Chapter 6. Fruitful functions
-```
 
 ### [def absolute_value(x):](https://thinkpython.com/code/polygon.py) if x < 0: [return -x](http://www.cartalk.com/content/puzzlers) [else:](https://thinkpython.com/code/spiral.py) [return x](https://thinkpython.com/code/grid.py)
 
@@ -2651,9 +2595,7 @@ Next we compute the sum of squares of [dx](http://tinyurl.com/thinkpython2e) [an
 
 The key aspects of the process are:
 
-```
 Chapter 6. Fruitful functions
-```
 
 1. [1. Start with a working program and make small incremental changes. At any point, if](https://thinkpython.com/code/polygon.py) there is an error, you should have a good idea where it is.
 
@@ -2711,9 +2653,7 @@ To give you an idea of what you can do with the tools you have learned so far, w
 
 [0!](http://puzzlers.org/) [=](http://puzzlers.org/) n ! = n ( n − ) !
 
-```
 Chapter 6. Fruitful functions
-```
 
 [This definition says that the factorial of 0 is 1, and the factorial of any other value,](https://thinkpython.com/code/polygon.py) n , is n multiplied by the factorial of n − 1.
 
@@ -2791,9 +2731,7 @@ Of course, it’s a bit strange to assume that the function works correctly when
 
 Translated into Python, it looks like this:
 
-```
 Chapter 6. Fruitful functions
-```
 
 ### [def fibonacci(n):](https://thinkpython.com/code/polygon.py) if n == 0: [return 0](http://www.cartalk.com/content/puzzlers) [elif](https://thinkpython.com/code/spiral.py) [n == 1:](https://thinkpython.com/code/spiral.py) [return 1](https://thinkpython.com/code/grid.py) else: return fibonacci(n-1) + fibonacci(n-2)
 
@@ -2861,9 +2799,7 @@ return result
 
 [space](http://wiki.python.org/moin/BitwiseOperators) [is a string of space characters that controls the indentation of the output. Here is the](http://en.wikipedia.org/wiki/Collatz_conjecture) result of factorial(4) :
 
-```
 Chapter 6. Fruitful functions
-```
 
 ```
 factorial 4
@@ -2937,9 +2873,7 @@ Solution: https: // thinkpython. com/ code/ palindrome_ soln. py [.](http://docs
 
 [Credit: This exercise is based on an example from Abelson and Sussman’s](http://wiki.python.org/moin/BitwiseOperators) [Structure and Interpre-](https://thinkpython.com/code/anagram_db.py) tation of Computer Programs .
 
-```
 Chapter 6. Fruitful functions
-```
 
 ## Chapter 7
 
@@ -2965,9 +2899,7 @@ The first time we display x , its value is 5; the second time, its value is 7.
 
 [Also, in mathematics, a proposition of equality is either true or false for all time. If](https://thinkpython.com/code/metathesis.py) [a](http://wiki.python.org/moin/BitwiseOperators) [=](http://wiki.python.org/moin/BitwiseOperators) [b](http://wiki.python.org/moin/BitwiseOperators) [now, then](http://wiki.python.org/moin/BitwiseOperators) [a](http://wiki.python.org/moin/BitwiseOperators) [will always equal](http://wiki.python.org/moin/BitwiseOperators) [b](http://wiki.python.org/moin/BitwiseOperators) [.](http://wiki.python.org/moin/BitwiseOperators) [In Python, an assignment statement can make two](https://wiki.python.org/moin/HowTo/Sorting) variables equal, but they don’t have to stay that way:
 
-```
 Chapter 7. Iteration
-```
 
 [x](https://thinkpython.com/code/polygon.py)
 
@@ -3051,9 +2983,7 @@ The condition for this loop is n != 1 , so the loop will continue until n is , w
 
 [The hard question is whether we can prove that this program terminates for](https://thinkpython.com/code/metathesis.py) [all](http://wiki.python.org/moin/BitwiseOperators) [posi-](http://wiki.python.org/moin/BitwiseOperators) [tive values of](http://wiki.python.org/moin/BitwiseOperators) [n](http://wiki.python.org/moin/BitwiseOperators) [.](http://wiki.python.org/moin/BitwiseOperators) [So far, no one has been able to prove it](https://thinkpython.com/code/typewriter.py) [or](https://wiki.python.org/moin/HowTo/Sorting) [disprove it!](https://thinkpython.com/code/anagram_db.py) [(See](https://thinkpython.com/code/interlock.py) [http:](https://thinkpython.com/code/interlock.py) //en.wikipedia.org/wiki/Collatz_conjecture .)
 
-```
 Chapter 7. Iteration
-```
 
 [As an exercise, rewrite the function](https://thinkpython.com/code/polygon.py) [print_n](https://thinkpython.com/code/polygon.py) from Section 5.8 using iteration instead of recursion.
 
@@ -3107,9 +3037,7 @@ For most values of a this works fine, but in general it is dangerous to test flo
 
 [Newton’s method is an example of an](http://wiki.python.org/moin/BitwiseOperators) [algorithm](https://thinkpython.com/code/typewriter.py) [: it is a mechanical process for solving a](https://thinkpython.com/code/anagram_db.py) category of problems (in this case, computing square roots).
 
-```
 Chapter 7. Iteration
-```
 
 [To understand what an algorithm is, it might help to start with something that is not an](https://thinkpython.com/code/polygon.py) [algorithm. When you learned to multiply single-digit numbers, you probably memorized](http://en.wikipedia.org/wiki/Spiral) [the multiplication table.](http://www.cartalk.com/content/puzzlers) [In effect, you memorized 100 specific solutions.](http://www.cartalk.com/content/puzzlers) [That kind of](https://thinkpython.com/code/spiral.py) [knowledge is not algorithmic.](https://thinkpython.com/code/spiral.py)
 
@@ -3173,9 +3101,7 @@ Write a function called [eval_loop](https://thinkpython.com/code/c06d) [that ite
 
 [It should continue until the user enters](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [done](https://thinkpython.com/code/typewriter.py) ['](https://thinkpython.com/code/typewriter.py) [, and then return the value of the last expression it](https://wiki.python.org/moin/HowTo/Sorting) evaluated.
 
-```
 Chapter 7. Iteration
-```
 
 [Exercise 7.3.](https://thinkpython.com/code/polygon.py) [The mathematician Srinivasa Ramanujan found an infinite series that can be used to](http://en.wikipedia.org/wiki/Zipf's_law) generate a numerical approximation of [1/](http://en.wikipedia.org/wiki/Spiral) [π](http://en.wikipedia.org/wiki/Spiral) [:](http://en.wikipedia.org/wiki/Spiral)
 
@@ -3239,9 +3165,7 @@ For most people, the first letter of ' banana ' is b , not a . But for computer 
 ' n '
 ```
 
-```
 Chapter 8. Strings
-```
 
 [But the value of the index has to be an integer. Otherwise you get:](https://thinkpython.com/code/polygon.py)
 
@@ -3319,9 +3243,7 @@ A segment of a string is called a slice . Selecting a slice is similar to select
 
 ### [>>> fruit =](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [banana](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) >>> fruit[:3]
 
-```
 Chapter 8. Strings
-```
 
 ### ['](https://thinkpython.com/code/polygon.py) [ban](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) >>> fruit[3:] ['](https://thinkpython.com/code/Time2.py) [ana](https://thinkpython.com/code/Time2.py) ['](http://www.cartalk.com/content/puzzlers)
 
@@ -3414,9 +3336,7 @@ This program demonstrates another pattern of computation called a [counter](http
 ' BANANA '
 ```
 
-```
 Chapter 8. Strings
-```
 
 [This form of dot notation specifies the name of the method,](https://thinkpython.com/code/polygon.py) upper , and the name of the string to apply the method to, [word](http://en.wikipedia.org/wiki/Spiral) [.](http://en.wikipedia.org/wiki/Spiral) [The empty parentheses indicate that this method](http://en.wikipedia.org/wiki/Spiral) [takes no arguments.](http://www.cartalk.com/content/puzzlers)
 
@@ -3502,9 +3422,7 @@ When you use indices to traverse the values in a sequence, it is tricky to get t
 
 ### [while j > 0:](https://thinkpython.com/code/pronounce.py) [if word1[i] != word2[j]:](https://thinkpython.com/code/metathesis.py) [return False](http://wiki.python.org/moin/BitwiseOperators) i = i+1
 
-```
 Chapter 8. Strings
-```
 
 ### [j = j-1](https://thinkpython.com/code/polygon.py)
 
@@ -3564,9 +3482,7 @@ optional argument: A function or method argument that is not required.
 
 [The](https://thinkpython.com/code/sed.py) [documentation](https://docs.python.org/3/library/pdb.html) [uses](https://thinkpython.com/code/koch.py) [a](https://thinkpython.com/code/koch.py) [syntax](https://thinkpython.com/code/koch.py) [that](https://thinkpython.com/code/koch.py) [might](https://thinkpython.com/code/koch.py) [be](https://thinkpython.com/code/koch.py) [confusing.](http://en.wikipedia.org/wiki/Fibonacci_number) [For](http://en.wikipedia.org/wiki/Fibonacci_number) [example,](http://en.wikipedia.org/wiki/Fibonacci_number) [in](http://en.wikipedia.org/wiki/Fibonacci_number) [find(sub[, start[, end]])](https://thinkpython.com/code/pie.py) [, the brackets indicate optional arguments. So](https://thinkpython.com/code/pie.py) [sub](http://en.wikipedia.org/wiki/Koch_snowflake) [is required, but](http://en.wikipedia.org/wiki/Koch_snowflake) [start](https://thinkpython.com/code/inlist.py) [is optional, and if you include](http://en.wikipedia.org/wiki/Koch_snowflake) [start](https://thinkpython.com/code/inlist.py) [, then](https://thinkpython.com/code/anagram_sets.py) [end](https://thinkpython.com/code/anagram_sets.py) [is optional.](https://thinkpython.com/code/anagram_sets.py) [Exercise 8.2.](https://thinkpython.com/code/cartalk3.py) [There is a string method called](https://thinkpython.com/code/cartalk3.py) [count](https://thinkpython.com/code/cartalk3.py) [that is similar to the function in Section 8.7.](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [Read the documentation of this method and write an invocation that counts the number of](https://thinkpython.com/code/c06d) [a](https://thinkpython.com/code/reverse_pair.py) [’s in](https://thinkpython.com/code/reverse_pair.py) ' [banana](https://thinkpython.com/code/pronounce.py) ['](https://thinkpython.com/code/pronounce.py) [.](https://thinkpython.com/code/pronounce.py) [Exercise 8.3.](https://thinkpython.com/code/double.py) [A string slice can take a third index that specifies the “step size”; that is, the number](https://thinkpython.com/code/metathesis.py) [of spaces between successive characters. A step size of 2 means every other character; 3 means every](https://thinkpython.com/code/typewriter.py) third, etc.
 
-```
 Chapter 8. Strings
-```
 
 ### [>>> fruit =](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [banana](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) >>> fruit[0:5:2] ['](https://thinkpython.com/code/Time2.py) [bnn](https://thinkpython.com/code/Time2.py) ['](http://www.cartalk.com/content/puzzlers)
 
@@ -3609,9 +3525,7 @@ Because ' c ' [is the two-eth letter of the alphabet.](https://thinkpython.com/c
 
 Potentially offensive jokes on the Internet are sometimes encoded in ROT13, which is a Caesar [cypher with rotation 13. If you are not easily offended, find and decode some of them. Solution:](https://thinkpython.com/code/rotate.py) [https: // thinkpython. com/ code/ rotate. py](https://thinkpython.com/code/analyze_book2.py) [.](https://thinkpython.com/code/analyze_book2.py)
 
-```
 Chapter 8. Strings
-```
 
 ## [Chapter 9](https://thinkpython.com/code/markov.py)
 
@@ -3850,9 +3764,7 @@ A list within another list is nested .
 [ ' Cheddar ' , ' Edam ' , ' Gouda ' ] [42, 123] []
 ```
 
-```
 Chapter 10. Lists
-```
 
 ### [list](https://thinkpython.com/code/polygon.py)
 
@@ -3930,9 +3842,7 @@ The * [operator repeats a list a given number of times:](https://thinkpython.com
 
 The slice operator also works on lists:
 
-```
 Chapter 10. Lists
-```
 
 ```
 >>> t = [ ' a ' , ' b ' , ' c ' , ' d ' , ' e ' , ' f ' ]
@@ -4032,9 +3942,7 @@ res is initialized with an empty list; each time through the loop, we append the
 
 ### [def only_upper(t):](https://thinkpython.com/code/cartalk3.py) res = [] [for s in t:](https://thinkpython.com/code/pronounce.py) [if s.isupper():](https://thinkpython.com/code/metathesis.py) [res.append(s)](http://wiki.python.org/moin/BitwiseOperators) return res
 
-```
 Chapter 10. Lists
-```
 
 [isupper](https://thinkpython.com/code/polygon.py) [is a string method that returns](https://thinkpython.com/code/polygon.py) [True](https://thinkpython.com/code/polygon.py) if the string contains only upper case letters.
 
@@ -4112,9 +4020,7 @@ To remove more than one element, you can use del with a slice index: >>> t = [ [
 
 To check whether two variables refer to the same object, you can use the is operator.
 
-```
 Chapter 10. Lists
-```
 
 ### [a](https://thinkpython.com/code/polygon.py) [[ 1, 2, 3 ]](https://thinkpython.com/code/polygon.py)
 
@@ -4195,9 +4101,7 @@ Since the list is shared by two frames, I drew it between them.
 
 ### [>>> t1 = [1, 2]](https://thinkpython.com/code/cartalk3.py) >>> t2 = t1.append(3) >>> t1 [[1, 2, 3]](https://thinkpython.com/code/double.py) [>>> t2](http://wiki.python.org/moin/BitwiseOperators) None
 
-```
 Chapter 10. Lists
-```
 
 [The return value from](https://thinkpython.com/code/polygon.py) [append](https://thinkpython.com/code/polygon.py) [is](https://thinkpython.com/code/polygon.py) [None](https://thinkpython.com/code/polygon.py) [.](https://thinkpython.com/code/polygon.py)
 
@@ -4274,9 +4178,7 @@ Try out each of these examples in interactive mode to make sure you understand w
 
 ### >>> t2 = sorted(t) [>>> t](https://thinkpython.com/code/pronounce.py) [[3, 1, 2]](https://thinkpython.com/code/double.py) [>>> t2](http://wiki.python.org/moin/BitwiseOperators) [1, 2, 3]
 
-```
 Chapter 10. Lists
-```
 
 #### [10.14](https://thinkpython.com/code/polygon.py) [Glossary](https://thinkpython.com/code/polygon.py)
 
@@ -4342,9 +4244,7 @@ Write a function called [in_bisect](https://thinkpython.com/code/koch.py) [that 
 
 [Or you could read the documentation of the](http://en.wikipedia.org/wiki/Koch_snowflake) [bisect](https://thinkpython.com/code/anagram_sets.py) [module and use that!](https://thinkpython.com/code/anagram_sets.py) Solution: https: [// thinkpython. com/ code/ inlist. py](https://thinkpython.com/code/cartalk3.py) [.](https://thinkpython.com/code/cartalk3.py) [Exercise 10.11.](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [Two words are a “reverse pair” if each is the reverse of the other. Write a program](https://thinkpython.com/code/c06d) [that finds all the reverse pairs in the word list. Solution:](https://thinkpython.com/code/pronounce.py) https: // thinkpython. com/ code/ [reverse_ pair. py](https://thinkpython.com/code/double.py) [.](https://thinkpython.com/code/metathesis.py) [Exercise 10.12.](http://wiki.python.org/moin/BitwiseOperators) [Two words “interlock” if taking alternating letters from each forms a new](https://wiki.python.org/moin/HowTo/Sorting) word. For example, “shoe” and “cold” interlock to form “schooled”. Solution: https: //
 
-```
 Chapter 10. Lists
-```
 
 [thinkpython. com/ code/ interlock. py](https://thinkpython.com/code/polygon.py) [.](https://thinkpython.com/code/polygon.py) Credit: This exercise is inspired by an example at http: // puzzlers. org .
 
@@ -4383,9 +4283,7 @@ Chapter 10. Lists
 
 [This output format is also an input format. For example, you can create a new dictionary](https://thinkpython.com/code/typewriter.py) with three items:
 
-```
 Chapter 11. Dictionaries
-```
 
 ```
 >>> eng2sp = { ' one ' : ' uno ' , ' two ' : ' dos ' , ' three ' : ' tres ' }
@@ -4477,9 +4375,7 @@ The histogram indicates that the letters ['](http://gutenberg.org/) [a](http://g
 >>> h.get( ' a ' , 0)
 ```
 
-```
 Chapter 11. Dictionaries
-```
 
 ### >>> h.get( ' c ' , 0)
 
@@ -4558,9 +4454,7 @@ Lists can appear as values in a dictionary. For example, if you are given a dict
 
 [def invert_dict(d):](https://docs.python.org/3/library/pdb.html) [inverse = dict()](https://thinkpython.com/code/pie.py) [for key in d:](http://en.wikipedia.org/wiki/Koch_snowflake) [val = d[key]](https://thinkpython.com/code/cartalk3.py) [if val not in inverse:](https://thinkpython.com/code/c06d) [inverse[val] = [key]](https://thinkpython.com/code/pronounce.py) [else:](https://thinkpython.com/code/double.py) [inverse[val].append(key)](http://wiki.python.org/moin/BitwiseOperators) return inverse
 
-```
 Chapter 11. Dictionaries
-```
 
 ### [dict](https://thinkpython.com/code/interlock.py) [dict](https://thinkpython.com/code/letters.py) [list](https://thinkpython.com/code/letters.py)
 
@@ -4652,9 +4546,7 @@ One solution is to keep track of values that have already been computed by stori
 
 [known](http://wiki.python.org/moin/BitwiseOperators) [is a dictionary that keeps track of the Fibonacci numbers we already know. It starts](http://en.wikipedia.org/wiki/Collatz_conjecture) with two items: 0 maps to 0 and 1 maps to 1.
 
-```
 Chapter 11. Dictionaries
-```
 
 [Whenever](https://thinkpython.com/code/polygon.py) [fibonacci](https://thinkpython.com/code/polygon.py) [is called, it checks](https://thinkpython.com/code/polygon.py) [known](https://thinkpython.com/code/polygon.py) . If the result is already there, it can return immediately. [Otherwise it has to compute the new value, add it to the dictionary, and](http://en.wikipedia.org/wiki/Spiral) [return it.](https://thinkpython.com/code/Time2.py)
 
@@ -4730,9 +4622,7 @@ Check summaries and types: [Instead of printing and checking the entire dataset,
 
 [Another kind of check compares the results of two different computations to see if](http://en.wikipedia.org/wiki/Collatz_conjecture) they are consistent. This is called a “consistency check”.
 
-```
 Chapter 11. Dictionaries
-```
 
 [Format the output:](https://thinkpython.com/code/polygon.py) [Formatting debugging output can make it easier to spot an error. We](http://en.wikipedia.org/wiki/Zipf's_law) [saw an example in Section 6.9. Another tool you might find useful is the](http://en.wikipedia.org/wiki/Spiral) [pprint](https://thinkpython.com/code/Time2.py) [mod-](https://thinkpython.com/code/Time2.py) [ule, which provides a](http://www.cartalk.com/content/puzzlers) [pprint](http://www.cartalk.com/content/puzzlers) function that displays built-in types in a more human- [readable format (](https://thinkpython.com/code/spiral.py) [pprint](https://thinkpython.com/code/spiral.py) stands for “pretty print”).
 
@@ -4802,9 +4692,7 @@ This was sent in by a fellow named Dan O’Leary. He came upon a common one-syll
 
 [To](https://thinkpython.com/code/cartalk3.py) [check](https://thinkpython.com/code/cartalk3.py) [whether](https://thinkpython.com/code/cartalk3.py) [two](https://thinkpython.com/code/cartalk3.py) [words](https://thinkpython.com/code/cartalk3.py) [are](https://thinkpython.com/code/cartalk3.py) [homophones,](https://thinkpython.com/code/cartalk3.py) [you](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [can](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [use](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [the](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [CMU](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [Pronouncing](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [Dictionary.](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) You [can](https://thinkpython.com/code/c06d) [download](https://thinkpython.com/code/c06d) [it](https://thinkpython.com/code/c06d) [from](https://thinkpython.com/code/c06d) [http: // www. speech. cs. cmu. edu/ cgi-bin/](https://thinkpython.com/code/reverse_pair.py) cmudict [or](https://thinkpython.com/code/pronounce.py) [from](https://thinkpython.com/code/pronounce.py) [https: // thinkpython. com/ code/ c06d](https://thinkpython.com/code/pronounce.py) and you can also down- [load](https://thinkpython.com/code/double.py) [https: // thinkpython. com/ code/ pronounce. py](https://thinkpython.com/code/metathesis.py) [, which provides a function named](http://en.wikipedia.org/wiki/Newline) [read_dictionary](http://wiki.python.org/moin/BitwiseOperators) [that reads the pronouncing dictionary and returns a Python dictionary that](https://wiki.python.org/moin/HowTo/Sorting) maps from each word to a string that describes its primary pronunciation.
 
-```
 Chapter 11. Dictionaries
-```
 
 [Write a program that lists all the words that solve the Puzzler. Solution:](https://thinkpython.com/code/polygon.py) https: // thinkpython. com/ code/ homophone. py .
 
@@ -4848,9 +4736,7 @@ To create a tuple with a single element, you have to include a final comma:
 
 ### [>>> t = tuple()](https://thinkpython.com/code/double.py) [>>> t](http://wiki.python.org/moin/BitwiseOperators) ()
 
-```
 Chapter 12. Tuples
-```
 
 [If the argument is a sequence (string, list or tuple), the result is a tuple with the elements of](https://thinkpython.com/code/polygon.py) the sequence:
 
@@ -4944,9 +4830,7 @@ Strictly speaking, a function can only return one value, but if the value is a t
 
 [max](http://wiki.python.org/moin/BitwiseOperators) [and](http://wiki.python.org/moin/BitwiseOperators) [min](http://wiki.python.org/moin/BitwiseOperators) [are built-in functions that find the largest and smallest elements of a sequence.](https://wiki.python.org/moin/HowTo/Sorting) min_max computes both and returns a tuple of two values.
 
-```
 Chapter 12. Tuples
-```
 
 #### [12.4](https://thinkpython.com/code/polygon.py) [Variable-length argument tuples](https://thinkpython.com/code/polygon.py)
 
@@ -5034,9 +4918,7 @@ print(number, letter)
 
 Again.
 
-```
 Chapter 12. Tuples
-```
 
 #### [12.6](https://thinkpython.com/code/polygon.py) [Dictionaries and tuples](https://thinkpython.com/code/polygon.py)
 
@@ -5134,9 +5016,7 @@ In many contexts, the different kinds of sequences (strings, lists and tuples) c
 
 [Because tuples are immutable, they don’t provide methods like](https://thinkpython.com/code/pronounce.py) sort and reverse , which [modify existing lists. But Python provides the built-in function](https://thinkpython.com/code/metathesis.py) [sorted](https://thinkpython.com/code/metathesis.py) [, which takes any](http://wiki.python.org/moin/BitwiseOperators) [sequence and returns a new list with the same elements in sorted order, and](https://thinkpython.com/code/typewriter.py) [reversed](https://thinkpython.com/code/interlock.py) [,](https://thinkpython.com/code/interlock.py) which takes a sequence and returns an iterator that traverses the list in reverse order.
 
-```
 Chapter 12. Tuples
-```
 
 #### [12.8](https://thinkpython.com/code/polygon.py) [Debugging](https://thinkpython.com/code/polygon.py)
 
@@ -5220,9 +5100,7 @@ Hint: you might want to build a dictionary that maps from a collection of letter
 
 [Exercise 12.3.](https://en.wikipedia.org/wiki/Rubber_duck_debugging) [Two words form a “metathesis pair” if you can transform one into the other by](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) [swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of](https://thinkpython.com/code/c06d) [the metathesis pairs in the dictionary. Hint: don’t test all pairs of words, and don’t test all possible](https://thinkpython.com/code/pronounce.py) swaps. Solution: [https: // thinkpython. com/ code/ metathesis. py](http://puzzlers.org/) [. Credit: This exercise](http://wiki.python.org/moin/BitwiseOperators) [is inspired by an example at](http://wiki.python.org/moin/BitwiseOperators) [http: // puzzlers. org](http://wiki.python.org/moin/BitwiseOperators) [.](https://wiki.python.org/moin/HowTo/Sorting)
 
-```
 Chapter 12. Tuples
-```
 
 [Exercise](https://thinkpython.com/code/polygon.py) [12.4.](https://thinkpython.com/code/polygon.py) [Here’s](https://thinkpython.com/code/polygon.py) [another](https://thinkpython.com/code/polygon.py) [Car](https://thinkpython.com/code/polygon.py) [Talk](https://thinkpython.com/code/polygon.py) [Puzzler](https://thinkpython.com/code/polygon.py) [(](http://en.wikipedia.org/wiki/Zipf's_law) http: // www. cartalk. com/ content/ puzzlers ):
 
@@ -5641,9 +5519,7 @@ One of the simplest ways for programs to maintain their data is by reading and w
 >>> fout = open( ' output.txt ' , ' w ' )
 ```
 
-```
 Chapter 14. Files
-```
 
 [If the file already exists, opening it in write mode clears out the old data and starts fresh,](https://thinkpython.com/code/polygon.py) so be careful! If the file doesn’t exist, a new one is created.
 
@@ -5723,9 +5599,7 @@ os.path [provides other functions for working with filenames and paths.](http://
 
 [>>> os.path.isdir(](https://thinkpython.com/code/pronounce.py) ['](https://thinkpython.com/code/pronounce.py) [memo.txt](https://thinkpython.com/code/pronounce.py) ['](https://thinkpython.com/code/pronounce.py) [)](https://thinkpython.com/code/pronounce.py) [False](https://thinkpython.com/code/double.py) [>>> os.path.isdir(](http://wiki.python.org/moin/BitwiseOperators) ['](http://wiki.python.org/moin/BitwiseOperators) [/home/dinsdale](http://wiki.python.org/moin/BitwiseOperators) ['](https://thinkpython.com/code/typewriter.py) [)](https://thinkpython.com/code/typewriter.py) True
 
-```
 Chapter 14. Files
-```
 
 [Similarly,](https://thinkpython.com/code/polygon.py) [os.path.isfile](https://thinkpython.com/code/polygon.py) [checks whether it’s a file.](https://thinkpython.com/code/polygon.py)
 
@@ -5826,9 +5700,7 @@ b ' Photo of John Cleese. '
 
 ### >>> db.close()
 
-```
 Chapter 14. Files
-```
 
 #### [14.7](https://thinkpython.com/code/polygon.py) [Pickling](https://thinkpython.com/code/polygon.py)
 
@@ -5901,9 +5773,7 @@ When you are done, you close the pipe like a file:
 <module ' wc ' from ' wc.py ' >
 ```
 
-```
 Chapter 14. Files
-```
 
 [The module object provides](https://thinkpython.com/code/polygon.py) [linecount](https://thinkpython.com/code/polygon.py) [:](https://thinkpython.com/code/polygon.py)
 
@@ -5983,9 +5853,7 @@ Exercise 14.1. Write a function called sed that takes as arguments a pattern str
 
 [Write a module that imports](https://thinkpython.com/code/double.py) [anagram_sets](https://thinkpython.com/code/metathesis.py) [and provides two new functions:](https://thinkpython.com/code/metathesis.py) [store_anagrams](http://wiki.python.org/moin/BitwiseOperators) [should store the anagram dictionary in a “shelf”;](http://wiki.python.org/moin/BitwiseOperators) [read_anagrams](https://wiki.python.org/moin/HowTo/Sorting) [should look up a word and return](https://thinkpython.com/code/anagram_db.py) a list of its anagrams. Solution: https: // thinkpython. com/ code/ anagram_ db. py .
 
-```
 Chapter 14. Files
-```
 
 [Exercise 14.3.](https://thinkpython.com/code/polygon.py) [In a large collection of MP3 files, there may be more than one copy of the same song,](http://en.wikipedia.org/wiki/Zipf's_law) [stored in different directories or with different file names. The goal of this exercise is to search for](http://en.wikipedia.org/wiki/Spiral) [duplicates.](https://thinkpython.com/code/Time2.py)
 
@@ -6852,9 +6720,7 @@ An alternative is to use integers to [encode](http://gutenberg.org/) [the ranks 
 | Diamonds | →   |
 | Clubs    | →   |
 
-```
 Chapter 18. Inheritance
-```
 
 [This code makes it easy to compare cards; because higher suits map to higher numbers, we](https://thinkpython.com/code/polygon.py) can compare suits by comparing their codes.
 
@@ -6941,9 +6807,7 @@ __lt__ [takes two parameters,](https://thinkpython.com/code/koch.py) [self](http
 
 [The answer might depend on what game you are playing, but to keep things simple, we’ll](https://thinkpython.com/code/metathesis.py) [make the arbitrary choice that suit is more important, so all of the Spades outrank all of the](https://thinkpython.com/code/typewriter.py) Diamonds, and so on.
 
-```
 Chapter 18. Inheritance
-```
 
 [With that decided, we can write](https://thinkpython.com/code/polygon.py) [__lt__](https://thinkpython.com/code/polygon.py) [:](https://thinkpython.com/code/polygon.py)
 
@@ -7033,9 +6897,7 @@ A method like this that uses another method without doing much work is sometimes
 
 ### [def shuffle(self):](http://wiki.python.org/moin/BitwiseOperators) random.shuffle(self.cards)
 
-```
 Chapter 18. Inheritance
-```
 
 [Don’t forget to import](https://thinkpython.com/code/polygon.py) [random](https://thinkpython.com/code/polygon.py) [.](https://thinkpython.com/code/polygon.py)
 
@@ -7113,9 +6975,7 @@ There are several kinds of relationship between classes:
 
 [A](http://wiki.python.org/moin/BitwiseOperators) [class diagram](http://wiki.python.org/moin/BitwiseOperators) [is a graphical representation of these relationships.](https://thinkpython.com/code/typewriter.py) [For example, Fig-](https://thinkpython.com/code/interlock.py) ure 18.2 shows the relationships between Card , Deck and Hand .
 
-```
 Chapter 18. Inheritance
-```
 
 [Deck](https://thinkpython.com/code/polygon.py)
 
@@ -7191,9 +7051,7 @@ class Markov:
 
 ### [def process_word(self, word, order=2):](https://thinkpython.com/code/c06d) [if len(self.prefix) < order:](https://thinkpython.com/code/pronounce.py) [self.prefix += (word,)](https://thinkpython.com/code/metathesis.py) [return](http://wiki.python.org/moin/BitwiseOperators)
 
-```
 Chapter 18. Inheritance
-```
 
 [try:](https://thinkpython.com/code/polygon.py) [self.suffix_map[self.prefix].append(word)](http://en.wikipedia.org/wiki/Spiral) [except KeyError:](http://www.cartalk.com/content/puzzlers) # if there is no entry for this prefix, make one [self.suffix_map[self.prefix] = [word]](https://thinkpython.com/code/grid.py)
 
@@ -7269,9 +7127,7 @@ flush: five cards with the same suit
 
 full house: three cards with one rank, two cards with another
 
-```
 Chapter 18. Inheritance
-```
 
 [four of a kind:](https://thinkpython.com/code/polygon.py) [four cards with the same rank](https://thinkpython.com/code/polygon.py)
 
@@ -7323,9 +7179,7 @@ This statement checks whether x is positive. If so, it computes math.log . If no
 
 ### def factorial(n): [if n == 0:](https://thinkpython.com/code/pronounce.py) [return 1](https://thinkpython.com/code/double.py) [else:](http://wiki.python.org/moin/BitwiseOperators) return n * factorial(n-1)
 
-```
 Chapter 19. The Goodies
-```
 
 [We can rewrite it like this:](https://thinkpython.com/code/polygon.py)
 
@@ -7403,9 +7257,7 @@ The generator object keeps track of where it is in the sequence, so the for loop
 
 [Python provides a built-in function,](http://wiki.python.org/moin/BitwiseOperators) [any](https://thinkpython.com/code/typewriter.py) [, that takes a sequence of boolean values and re-](https://wiki.python.org/moin/HowTo/Sorting) turns True if any of the values are True . It works on lists:
 
-```
 Chapter 19. The Goodies
-```
 
 ### [>>> any([False, False, True])](https://thinkpython.com/code/polygon.py) True
 
@@ -7482,9 +7334,7 @@ Counter({ ' r ' : 2, ' t ' : 1, ' o ' : 1, ' p ' : 1, ' a ' : 1})
 
 [Unlike dictionaries, Counters don’t raise an exception if you access an element that doesn’t](https://thinkpython.com/code/typewriter.py) appear. Instead, they return 0:
 
-```
 Chapter 19. The Goodies
-```
 
 ### [>>> count[](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) [d](https://thinkpython.com/code/polygon.py) ['](https://thinkpython.com/code/polygon.py) []](https://thinkpython.com/code/polygon.py)
 
@@ -7550,9 +7400,7 @@ class Point:
 
 ### [def __str__(self):](http://wiki.python.org/moin/BitwiseOperators) return ' (%g, %g) ' % (self.x, self.y)
 
-```
 Chapter 19. The Goodies
-```
 
 [This is a lot of code to convey a small amount of information.](https://thinkpython.com/code/polygon.py) Python provides a more concise way to say the same thing:
 
@@ -7644,9 +7492,7 @@ multiset: [A mathematical entity that represents a mapping between the elements 
 
 factory: A function, usually passed as a parameter, used to create objects.
 
-```
 Chapter 19. The Goodies
-```
 
 #### [19.11](https://thinkpython.com/code/polygon.py) [Exercises](https://thinkpython.com/code/polygon.py)
 
@@ -7687,9 +7533,7 @@ The first step in debugging is to figure out which kind of error you are dealing
 
 [On the other hand, the message does tell you where in the program the problem occurred.](https://thinkpython.com/code/pronounce.py) [Actually, it tells you where Python noticed a problem, which is not necessarily where the](https://thinkpython.com/code/metathesis.py) [error is.](http://wiki.python.org/moin/BitwiseOperators) [Sometimes the error is prior to the location of the error message, often on the](http://en.wikipedia.org/wiki/Collatz_conjecture) preceding line.
 
-```
 Appendix A. Debugging
-```
 
 [If you are building the program incrementally, you should have a good idea about where](https://thinkpython.com/code/polygon.py) the error is. It will be in the last line you added.
 
@@ -7725,9 +7569,7 @@ If nothing works, move on to the next section...
 
 - [• You edited the file and forgot to save the changes before running it again.](http://wiki.python.org/moin/BitwiseOperators) [Some](https://thinkpython.com/code/anagram_db.py) programming environments do this for you, but some don’t.
 
-```
 A.2. Runtime errors
-```
 
 - [• You changed the name of the file, but you are still running the old name.](http://en.wikipedia.org/wiki/Zipf's_law)
 
@@ -7765,13 +7607,9 @@ If it is not intentional, make sure there is a function call in the program, and
 
 - [• If that doesn’t work, then it is possible that you don’t understand the flow of execu-](http://en.wikipedia.org/wiki/Collatz_conjecture) tion in your program. Go to the “Flow of Execution” section below.
 
-```
 Appendix A. Debugging
-```
 
-```
-Infinite Loop
-```
+[Infinite Loop](https://thinkpython.com/code/polygon.py)
 
 [If you think you have an infinite loop and you think you know what loop is causing the](http://en.wikipedia.org/wiki/Spiral) [problem, add a](https://thinkpython.com/code/Time2.py) [print](http://en.wikipedia.org/wiki/Sorting_algorithm) statement at the end of the loop that prints the values of the variables [in the condition and the value of the condition.](https://thinkpython.com/code/grid.py)
 
@@ -7785,9 +7623,7 @@ For example:
 
 [Now when you run the program, you will see three lines of output for each time through](https://thinkpython.com/code/Circle.py) the loop. The last time through the loop, the condition should be [False](http://docs.python.org/3/reference/datamodel.html#specialnames) [. If the loop keeps](http://docs.python.org/3/reference/datamodel.html#specialnames) [going, you will be able to see the values of](http://docs.python.org/3/reference/datamodel.html#specialnames) [x](http://tinyurl.com/thinkpython2e) [and](http://tinyurl.com/thinkpython2e) [y](http://tinyurl.com/thinkpython2e) , and you might figure out why they are [not being updated correctly.](http://en.wikipedia.org/wiki/Birthday_paradox)
 
-```
-Infinite Recursion
-```
+[Infinite Recursion](https://thinkpython.com/code/walk.py)
 
 [Most of the time, infinite recursion causes the program to run for a while and then produce](https://thinkpython.com/code/rotate_pairs.py) [a](https://thinkpython.com/code/Time1.py) [Maximum recursion depth exceeded](https://thinkpython.com/code/Point1_soln.py) [error.](http://tinyurl.com/thinkpython2e)
 
@@ -7795,9 +7631,7 @@ If you suspect that a function is causing an infinite recursion, make sure that 
 
 [If there is a base case but the program doesn’t seem to be reaching it, add a](http://wikipedia.org/wiki/Moby_Project) print state- [ment at the beginning of the function that prints the parameters. Now when you run the](https://thinkpython.com/code/reducible.py) [program, you will see a few lines of output every time the function is invoked, and you](https://thinkpython.com/code/PokerHandSoln.py) will see the parameter values. If the parameters are not moving toward the base case, you [will get some ideas about why not.](https://thinkpython.com/code/list_exercises.py)
 
-```
 Flow of Execution
-```
 
 [If you are not sure how the flow of execution is moving through your program, add](https://thinkpython.com/code/palindrome_soln.py) [print](http://docs.python.org/3/library/stdtypes.html#string-methods) [statements to the beginning of each function with a message like “entering function](http://docs.python.org/3/library/stdtypes.html#string-methods) foo ”, where foo [is the name of the function.](https://thinkpython.com/code/flower.py)
 
@@ -7809,9 +7643,7 @@ Flow of Execution
 
 [The traceback identifies the function that is currently running, and then the function that](http://wiki.python.org/moin/BitwiseOperators) called it, and then the function that called that , and so on. In other words, it traces the
 
-```
 A.2. Runtime errors
-```
 
 [sequence of function calls that got you to where you are, including the line number in your](http://en.wikipedia.org/wiki/Zipf's_law) file where each call occurred.
 
@@ -7843,9 +7675,7 @@ The Python debugger ( pdb [) is useful for tracking down exceptions because it a
 
 [One of the problems with using](https://thinkpython.com/code/double.py) [print](https://thinkpython.com/code/metathesis.py) [statements for debugging is that you can end up](https://thinkpython.com/code/metathesis.py) [buried in output.](http://wiki.python.org/moin/BitwiseOperators) [There are two ways to proceed: simplify the output or simplify the](https://wiki.python.org/moin/HowTo/Sorting) program.
 
-```
 Appendix A. Debugging
-```
 
 [To simplify the output, you can remove or comment out](https://thinkpython.com/code/polygon.py) [print](http://en.wikipedia.org/wiki/Zipf's_law) statements that aren’t help- [ing, or combine them, or format the output so it is easier to understand.](http://en.wikipedia.org/wiki/Spiral)
 
@@ -7875,9 +7705,7 @@ You should ask yourself these questions:
 
 - [• Is a section of code producing an effect that is not what you expected? Make sure that](https://thinkpython.com/code/pronounce.py) [you understand the code in question, especially if it involves functions or methods in](https://thinkpython.com/code/metathesis.py) [other Python modules. Read the documentation for the functions you call. Try them](http://wiki.python.org/moin/BitwiseOperators) out by writing simple test cases and checking the results.
 
-```
 A.3. Semantic errors
-```
 
 [In order to program, you need a mental model of how programs work.](https://thinkpython.com/code/polygon.py) If you write a [program that doesn’t do what you expect, often the problem is not in the program; it’s in](http://en.wikipedia.org/wiki/Spiral) [your mental model.](http://www.cartalk.com/content/puzzlers)
 
@@ -7925,9 +7753,7 @@ Whenever you are not sure of the order of evaluation, use parentheses. Not only 
 
 ### return self.hands[i].removeMatches()
 
-```
 Appendix A. Debugging
-```
 
 [you could write:](https://thinkpython.com/code/polygon.py)
 
@@ -8021,9 +7847,7 @@ The fundamental reason is that for large values of n , any function that contain
 
 [In general, we expect an algorithm with a smaller leading term to be a better algorithm for](https://thinkpython.com/code/c06d) [large problems, but for smaller problems, there may be a](https://thinkpython.com/code/pronounce.py) crossover point where another [algorithm is better. The location of the crossover point depends on the details of the algo-](https://thinkpython.com/code/metathesis.py) [rithms, the inputs, and the hardware, so it is usually ignored for purposes of algorithmic](http://wiki.python.org/moin/BitwiseOperators) analysis. But that doesn’t mean you can forget about it.
 
-```
 B.1. Order of growth
-```
 
 [If two algorithms have the same leading order term, it is hard to say which is better; again,](http://en.wikipedia.org/wiki/Zipf's_law) [the answer depends on the details. So for algorithmic analysis, functions with the same](http://en.wikipedia.org/wiki/Spiral) [leading term are considered equivalent, even if they have different coefficients.](http://www.cartalk.com/content/puzzlers)
 
@@ -8195,9 +8019,7 @@ class BetterMap:
 
 ### [def __init__(self, n=100):](https://thinkpython.com/code/pronounce.py) [self.maps = []](https://thinkpython.com/code/double.py) [for i in range(n):](http://wiki.python.org/moin/BitwiseOperators) self.maps.append(LinearMap())
 
-```
 B.4. Hashtables
-```
 
 ### def find_map(self, k): [index = hash(k) % len(self.maps)](http://www.cartalk.com/content/puzzlers) [return self.maps[index]](https://thinkpython.com/code/spiral.py)
 
@@ -8265,9 +8087,7 @@ The next add [costs 9 units, but then we can add 7 more before the next resize, 
 
 [Figure B.1 shows how this works graphically. Each block represents a unit of work. The](https://thinkpython.com/code/metathesis.py) [columns show the total work for each add in order from left to right: the first two](http://wiki.python.org/moin/BitwiseOperators) [adds](https://thinkpython.com/code/anagram_db.py) [cost](https://thinkpython.com/code/anagram_db.py) 1 unit each, the third costs 3 units, etc.
 
-```
 B.5. Glossary
-```
 
 [Figure B.1: The cost of a hashtable add.](https://thinkpython.com/code/rotate.py)
 

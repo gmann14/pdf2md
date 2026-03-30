@@ -112,10 +112,7 @@ TABLE 1. Number of topical antifungal prescriptions, prescriptions per 1,000 ben
 
 No. of prescriptions [Prescriptions per 1,000](https://doi.org/10.1128/jcm.00562-23) [Aggregate cost, all](https://doi.org/10.1128/jcm.00562-23) [Avg. cost per](https://pubmed.ncbi.nlm.nih.gov/37432126) Characteristic (% of all prescriptions) [beneficiaries](https://doi.org/10.1128/jcm.00562-23) [prescriptions, USD*](https://doi.org/10.1128/jcm.00562-23) prescription, USD*
 
-```
-Antifungal drug
-Ketoconazole †
-```
+Antifungal drug Ketoconazole †
 
 | Nystatin                                | 1,871,368 (29.0) | 38.9 | 48,025,095.10 | 25.66    |
 | --------------------------------------- | ---------------- | ---- | ------------- | -------- |
@@ -178,15 +175,11 @@ Bottom 90% of topical antifungal providers, by volume.
 
 §
 
-```
 Column percentage.
-```
 
 ¶
 
-```
 Row percentage.
-```
 
 one prescription to more than one eighth of all beneficiaries) with superficial fungal infections more frequently than do other were written for Medicare Part D beneficiaries in 2021, at a cost provider types. In contrast to systemic antibiotic prescribing, of $231 million. The actual volume of topical antifungal use [which is highest in the South (](https://doi.org/10.1007/s40257-020-00580-6) ), topical antifungal prescribing among the study population is likely considerably higher than rates were highest in the Northeast. Reasons for this finding that identified in this study because most topical antifungals are unclear but could reflect a higher prevalence of superficial [can be purchased over the counter without a prescription; such](https://www.medicare.gov/what-medicare-covers/your-medicare-coverage-choices/whats-medicare) [fungal infections, more ready access to medical care, or less](https://data.cms.gov/resources/medicare-part-d-prescribers-by-provider-and-drug-data-dictionary) [topical antifungal use is not recorded in CMS data and is an](https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/cms-program-statistics-medicare-part-d-enrollment) [frequent use of over-the-counter topical antifungal medications](https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/medicare-monthly-enrollment) [important consideration for potential antifungal stewardship](https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/cms-program-statistics-medicare-part-d-enrollment) [in the Northeast compared with that in other regions.](https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/medicare-monthly-enrollment) [efforts. The large volume of topical antifungals used in the](https://data.cms.gov/provider-summary-by-type-of-service/medicare-part-d-prescribers/medicare-part-d-prescribers-by-provider-and-drug) United States warrants increased attention given the infrequent High Volume Prescribers and Prescriptions
 

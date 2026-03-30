@@ -6,9 +6,7 @@ title: "Haskell 2010 Language Report"
 
 ##### Simon Marlow (editor)
 
-```
 Copyright notice.
-```
 
 The authors and publisher intend this Report to belong to the entire Haskell community, and grant permission to copy and distribute it for any purpose, provided that it is reproduced in its entirety, including this Notice. Modified versions of this Report may also be copied and distributed for any purpose, provided that the mod- ified version is clearly presented as such, and that it does not claim to be a definition of the language Haskell 2010.
 
@@ -16,9 +14,7 @@ The authors and publisher intend this Report to belong to the entire Haskell com
 
 ##### I The Haskell 2010 Language
 
-```
 Introduction
-```
 
 1.1 Program Structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -28,9 +24,7 @@ Introduction
 
 1.4 Namespaces . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Lexical Structure
-```
 
 2.1 Notational Conventions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -46,9 +40,7 @@ Lexical Structure
 
 2.7 Layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Expressions
-```
 
 3.1 Errors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -100,9 +92,7 @@ ii CONTENTS
 
 3.17.3 Formal Semantics of Pattern Matching . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Declarations and Bindings
-```
 
 4.1 Overview of Types and Classes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -198,9 +188,7 @@ iv CONTENTS
 
 5.8 Abstract Datatypes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Predefined Types and Classes
-```
 
 6.1 Standard Haskell Types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -264,9 +252,7 @@ Basic Input/Output
 
 7.3 Exception Handling in the I/O Monad . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Foreign Function Interface
-```
 
 8.1 Foreign Languages . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -296,9 +282,7 @@ Foreign Function Interface
 
 8.7 The External C Interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-```
 Standard Prelude
-```
 
 9.1 Prelude PreludeList . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -1339,9 +1323,7 @@ Translation: ( e ) is equivalent to e .
 
 #### 3.10 Arithmetic Sequences
 
-```
 aexp → [ exp [ , exp ] .. [ exp ] ]
-```
 
 The arithmetic sequence [ e , e .. e ] denotes a list of values of type t , where each of the e i has type t , and t is an instance of class Enum .
 
@@ -1436,9 +1418,7 @@ where each match i is of the general form
 
 - > e im i
 
-```
 where decls i
-```
 
 (Notice that in the syntax rule for guards , the “ | ” is a terminal symbol, not the syntactic metasymbol for [alternation.) Each alternative](http://haskell.org/) [p](http://haskell.org/) [i](http://haskell.org/) [match](http://haskell.org/) [i](http://haskell.org/) consists of a pattern p i and its matches, match i . Each match in turn consists of a sequence of pairs of guards gs ij and bodies e ij (expressions), followed by optional bindings ( decls i ) that scope over all of the guards and expressions of the alternative.
 
@@ -2799,9 +2779,7 @@ The following two rules define the monomorphism restriction:
 
 ### 4.5. STATIC SEMANTICS OF FUNCTION AND PATTERN BINDINGS
 
-```
 The monomorphism restriction
-```
 
 Rule 1. We say that a given declaration group is unrestricted if and only if:
 
@@ -3407,21 +3385,15 @@ Double
 
 ###### Integral RealFrac Floating
 
-```
 Int, Integer Float, Double Float, Double
-```
 
 ###### RealFloat
 
-```
 Float, Double
-```
 
 ###### Monad Functor
 
-```
 IO, [], Maybe IO, [], Maybe
-```
 
 Figure 6.1: Standard Haskell Classes
 
@@ -10838,9 +10810,7 @@ This operation may fail with:
 
 ### = ReadMode | WriteMode | AppendMode | ReadWriteMode
 
-```
 See System.IO.openFile
-```
 
 | instance | Enum | IOMode |
 | -------- | ---- | ------ |

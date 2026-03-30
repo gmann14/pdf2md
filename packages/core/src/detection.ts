@@ -275,9 +275,13 @@ export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): bo
   }
 
   // Signal 2: Detected code font (subset fonts like g_d0_f3)
-  // More conservative: also reject if text looks like prose
+  // More conservative: also reject if text looks like prose or a short label
   if (totalChars > 0 && codeFonts && codeFontChars / totalChars >= 0.8) {
     if (looksLikeProse(items)) return false;
+    // Reject short blocks that look like labels/titles (no code syntax)
+    if (totalChars < 50 && !/[{}()=;:<>\/\\|&!@#$%^*+~`]/.test(items.map((i) => i.str).join(""))) {
+      return false;
+    }
     return true;
   }
 

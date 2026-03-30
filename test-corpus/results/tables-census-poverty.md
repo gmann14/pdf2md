@@ -1835,14 +1835,9 @@ of (±) 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.5 0.4 0.3 0.3 0.3 0.3 
 
 [of](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [(±)](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-Below poverty error
-Margin
-```
+[Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
 18 to 64 years
-```
 
 ```
 Number 24,500 23,730 15,750 17,710 22,070 22,070 24,150 24,580 26,240 26,300 27,720 29,980 29,470 29,990 29,950 29,970 29,260 27,510 16,810 16,570 10,450 12,040 14,820 14,910 16,250 16,500 17,660 18,000 18,740 20,840 20,520 20,690 20,530 20,770 20,370 19,250
@@ -1879,9 +1874,7 @@ Total
 
 7.8 9.2 6.9 8.1 12.9 12.4 11.8 11.7 12.8 13.0 13.9 14.0 14.5 15.6 15.9 15.5 16.0 16.1 15.9 15.1 11.7 11.4 [10.5](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [10.5](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [11.2](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [11.5](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [12.3](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [12.5](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [12.8](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [13.9](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [14.3](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [13.7](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [14.0](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 14.2 14.1 13.4 Percent —Con. [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Below poverty](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 1,003 1,004 1,493 1,051 [1,131](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-All people
-```
+[All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
 ```
 Number 42,840 40,900 25,580 30,040 38,300 38,160 41,420 42,080 44,970 44,750 46,250 49,240 49,850 48,670 49,730 49,570 48,840 45,990 29,170 28,520 17,270 20,290 26,030 26,090 27,820 28,380 30,430 30,720 31,490 33,970 34,910 33,450 34,000 34,340 33,860 32,050
@@ -1923,10 +1916,7 @@ of (±) 0.4 0.4 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.5 0.4 0.3 0.3 0.4 0.3 
 
 [of](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [(±)](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-Below poverty error
-Margin
-```
+[Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
 ```
 18 to 64 years
@@ -1965,9 +1955,7 @@ Total
 
 8.8 9.1 5.7 6.5 8.2 8.2 8.7 9.0 9.8 9.9 10.3 10.9 11.1 10.7 10.7 11.0 11.0 10.3 [18.1](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [16.9](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [10.9](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [14.3](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [18.6](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [18.1](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [20.1](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [20.4](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [21.7](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [21.1](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [22.5](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [23.4](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 24.2 24.4 Percent —Con. [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Below poverty](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-All people
-```
+[All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
 ```
 9,096 8,318 5,279 6,915 8,838 8,585 9,416 9,476 9,659
@@ -2006,10 +1994,7 @@ of (±) 1.0 0.9 0.9 0.9 0.9 1.0 0.8 0.8 1.0 1.0 1.0 0.9 1.0 0.9 1.0 0.8 1.6 1.3 
 
 [of](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [(±)](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-Below poverty error
-Margin
-```
+[Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
 ```
 18 to 64 years
@@ -2047,9 +2032,7 @@ Total
 
 25.5 25.3 25.1 22.8 18.5 17.2 11.3 14.7 18.9 18.3 20.4 20.6 22.1 21.6 22.8 23.6 24.0 24.7 25.8 25.6 25.3 23.1 [18.6](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [17.2](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [11.2](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [14.8](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [18.8](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [18.2](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [20.4](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [20.2](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [21.9](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 21.5 22.8 23.3 Percent —Con. [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Below poverty](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-All people
-```
+[All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
 ```
 9,540 8,312 7,671 4,998 6,435 8,144 7,907 8,727 8,775 9,394 9,086 9,527 9,746 9,729 9,939 8,979 7,711 7,104 4,596 6,017 7,555 7,330 8,109 8,025 8,680 8,433 8,966 8,994
@@ -2073,9 +2056,7 @@ of (±) 3.3 2.0 1.7 1.7 1.7 1.7 2.1 2.4 1.9 2.1 2.4 2.4 2.2 2.4 2.3 2.5 2.6 2.8 
 | ------------- | ------ | ----- |
 | Below poverty | Margin | error |
 
-```
 65 years and over
-```
 
 Number
 
@@ -2089,10 +2070,7 @@ of (±) 1.6 1.3 1.0 1.0 1.0 0.9 1.1 1.1 0.9 1.0 0.9 1.0 1.0 1.0 1.0 1.2 1.2 [1.3
 
 [of](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [(±)](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-Below poverty error
-Margin
-```
+[Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
 ```
 18 to 64 years
@@ -2130,9 +2108,7 @@ Total 5,749 5,690 5,641 5,568 5,254 5,254 5,183 5,182 5,142 4,939 4,738 4,800 4,
 
 8.9 8.5 9.5 8.8 24.0 24.6 25.5 25.2 25.0 22.7 13.2 11.1 10.7 11.1 13.3 13.6 14.5 14.3 15.5 16.5 15.5 15.9 [16.1](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [16.5](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [16.1](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [17.8](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [13.6](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [11.6](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [11.3](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [11.7](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 13.9 Percent —Con. [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Below poverty](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-All people
-```
+[All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
 ```
 9,130 9,306 9,601 9,356 9,172 8,292 3,254 2,700 2,098 1,952 2,410 2,489 2,938 2,930 3,127 2,976 3,108 3,249 2,974 3,022 2,928 2,948 2,772 2,973 2,979 2,502 1,956 1,788 2,257 2,327 2,749
@@ -2164,10 +2140,7 @@ of (±) 1.1 1.0 1.2 1.2 1.4 2.0 1.5 1.2 1.4 1.3 1.3 2.1 2.7 2.1 1.6 1.9 1.9 2.0 
 
 [of](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [(±)](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-Below poverty error
-Margin
-```
+[Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
 ```
 18 to 64 years
@@ -2190,9 +2163,7 @@ Total 4,231 4,224 4,111 4,079 3,926 3,926 4,072 4,193 4,210 4,090 4,281 3,937 3,
 | ------------- | ------ |
 | Below poverty | Margin |
 
-```
 Under 18 years
-```
 
 [Number](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
@@ -2204,9 +2175,7 @@ Total 4,069 4,028 3,892 3,794 3,755 3,770 3,658 3,611 3,665 3,439 3,480 2,013 2,
 
 14.0 15.1 14.7 16.1 17.3 15.9 16.4 16.7 16.9 16.6 18.3 17.2 18.0 11.8 12.3 14.9 14.3 [17.8](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [17.7](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [18.0](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [18.2](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [19.4](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [20.6](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [21.7](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [21.3](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [25.6](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [22.8](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [24.0](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [21.0](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) Percent —Con. [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Below poverty](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-All people
-```
+[All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
 ```
 2,743 2,948 2,774 2,929 3,075 2,747 2,800 2,737 2,715 2,590 2,782 1,222 1,280 1,217 1,227 1,251 1,249 1,389 1,379 1,263 1,359 1,615 1,419 1,466 1,321
@@ -2236,14 +2205,9 @@ of (±) 3.2 4.1 3.0 2.5 2.5 2.4 2.8 2.7 2.7 2.9 2.3 3.0 5.9 4.0 4.1 3.4 4.7 [4.0
 
 [of](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [(±)](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-Below poverty error
-Margin
-```
+[Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
 18 to 64 years
-```
 
 Number
 
@@ -2261,9 +2225,7 @@ Total 2,486 2,509 2,539 2,466 2,301 2,301 2,325 2,323 2,335 2,326 2,649 2,317 1,
 | ------------- | ------ |
 | Below poverty | Margin |
 
-```
 Under 18 years
-```
 
 [Number](http://www.census.gov/library/publications/2024/demo/p60-284.html)
 
@@ -2275,9 +2237,7 @@ Total 1,085 1,061 1,172 1,107 1,045 1,045 1,008 1,059 1,329 1,187 1,064 1,043 4,
 
 7.3 9.0 19.0 23.2 12.4 15.5 16.6 15.8 20.0 18.3 18.5 20.4 20.4 23.1 21.0 23.4 30.3 26.5 26.1 24.7 [13.4](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [11.4](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [12.0](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [11.9](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [13.6](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [15.5](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [15.4](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [14.0](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [16.4](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) 16.8 Percent —Con. [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Below poverty](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-All people
-```
+[All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
 ```
 1,052 1,375 1,106 1,080 1,065 1,197 1,313 1,317 1,135 1,255 1,257
@@ -2295,10 +2255,7 @@ of (±) 8.3 6.0 5.1 4.9 4.9 4.8 1.8 1.8 1.6 1.6 1.7 1.7 1.7 1.9 1.9 1.8 1.8 1.9 
 
 19.6 17.4 16.5 21.8 21.2 13.7 27.3 24.4 18.8 17.4 25.1 24.5 25.5 24.2 25.7 26.2 24.7 27.4 29.5 28.3 29.6 27.4 27.1 26.7 Percent >) of (±)
 
-```
-Below poverty error
-Margin
-```
+Below poverty error Margin
 
 ```
 65 years and over
@@ -2316,10 +2273,7 @@ of (±) 4.0 2.1 2.1 2.1 2.4 1.8 0.8 0.8 0.6 0.7 0.8 0.8 0.8 0.9 0.8 0.7 0.8 0.8 
 
 [of](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [(±)](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
-```
-Below poverty error
-Margin
-```
+[Below poverty](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [error](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf) [Margin](https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar24.pdf)
 
 ```
 18 to 64 years
@@ -2357,9 +2311,7 @@ Total 3,775 3,813 3,629 3,498 3,565 3,386
 
 21.1 17.2 18.8 17.7 19.4 16.8 20.9 19.3 11.2 14.0 18.8 18.9 20.3 20.5 21.4 22.0 22.6 25.9 27.0 26.0 27.8 [27.9](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [27.7](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [27.1](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) Percent —Con. [of](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [(±)](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [error](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Below poverty](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf) [Margin](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
-```
-All people
-```
+[All people](https://www2.census.gov/programs-surveys/supplemental-poverty-measure/datasets/spm/spm_techdoc.pdf)
 
 ```
 1,636 1,335 1,387 1,269 1,399 1,153 7,022 8,672

@@ -1133,18 +1133,7 @@ k −
 
 define T ( y ) ∈ R as follows:
 
-```
-
-
-
-
-
-
-
-
-
-
-```
+         
 
                               T (1) =   , T (2) =   , T (3) =   , · · · , T ( k − 1) =   , T ( k ) =   ,  .   .  . .   .   .  .   .  . . .   .   .   .  . 
 
@@ -2966,9 +2955,7 @@ Under our above assumptions, there must exist w , α , β so that w is the
 
 solution to the primal problem, α , β are the solution to the dual problem,
 
-```
 ∗ ∗ ∗ ∗ ∗ ∗ ∗ ∗
-```
 
 and moreover p = d = L ( w , α , β ). Moreover, w , α and β satisfy the Karush-Kuhn-Tucker (KKT) conditions , which are as follows:
 
@@ -3452,29 +3439,21 @@ W ( α , α , . . . , α n ) = W (( ζ − α y ) y , α , . . . , α n ) .
 
 Treating α , . . . , α n as constants, you should be able to verify that this is just some quadratic function in α . I.e., this can also be expressed in the form aα + bα + c for some appropriate a , b , and c . If we ignore the “box” constraints (6.20) (or, equivalently, that L ≤ α ≤ H ), then we can easily maximize this quadratic function by setting its derivative to zero and solving.
 
-```
 n ew,unclipped
-```
 
 We’ll let α denote the resulting value of α . You should also be able to convince yourself that if we had instead wanted to maximize W with respect to α but subject to the box constraint, then we can find the resulting
 
-```
 n ew,unclipped
-```
 
 value optimal simply by taking α and “clipping” it to lie in the
 
 [ L, H ] interval, to get 
 
-```
 n ew,unclipped
-```
 
  H if α > H
 
-```
 n ew n ew,unclipped n ew,unclipped
-```
 
 ```
 α = α if L ≤ α ≤ H
@@ -3736,9 +3715,7 @@ d
 
 Note that by default the vectors in R are viewed as column vectors, and in particular a is a column vector with components a , a , ..., a m . The indices
 
-```
 [1] [2] [1]
-```
 
 and are used to distinguish two sets of parameters: the w j
 
@@ -3810,19 +3787,13 @@ x [1]
 
 z m d
 
-```
 ︸ ︷︷ ︸ — w m — b m
-```
 
-```
 ︸ ︷︷ ︸ ︸ ︷︷ ︸ ︸ ︷︷ ︸
-```
 
 m × d ×
 
-```
 z ∈ R [1] m × d x ∈ R [1] m ×
-```
 
 ### W ∈ R b ∈ R
 
@@ -3864,9 +3835,7 @@ h θ ( x ) = W a + b (7.16)
 
 Here θ consists of W , W (often referred to as the weight matrices) and
 
-```
 [1] [2] [1] [1]
-```
 
 b , b (referred to as the biases). The collection of W , b is referred to as
 
@@ -3876,33 +3845,23 @@ the first layer, and W , b the second layer. The activation a is referred to as 
 
 Multi-layer fully-connected neural networks. With this succinct no- tations, we can stack more layers to get a deeper fully-connected neu- ral network. Let r be the number of layers (weight matrices). Let
 
-```
 [1] [ r ] [1] [ r ]
-```
 
 W , . . . , W , b , . . . , b be the weight matrices and biases of all the layers. Then a multi-layer neural network can be written as
 
-```
 [1] [1] [1]
-```
 
 a = ReLU( W x + b )
 
-```
 [2] [2] [1] [2]
-```
 
 a = ReLU( W a + b ) · · ·
 
-```
 [ r − 1] [ r − 1] [ r − 2] [ r − 1]
-```
 
 a = ReLU( W a + b )
 
-```
 [ r ] [ r − 1] [ r ]
-```
 
 h θ ( x ) = W a + b (7.17)
 
@@ -3916,9 +3875,7 @@ dimensions for the equations above to make sense. If a has dimension m k ,
 
 then the weight matrix W should be of dimension m k × m k − , and the bias
 
-```
 [ k ] m [1] m × d [ r ] × r
-```
 
 b ∈ R k m −
 
@@ -3928,9 +3885,7 @@ b ∈ R k m −
 
 Sometimes for notational consistency we also write a = x , and a = h θ ( x ). Then we have simple recursion that
 
-```
 [ k ] [ k ] [ k − 1] [ k ]
-```
 
 a = ReLU( W a + b ) , ∀ k = 1 , . . . , r − (7.18)
 
@@ -4092,22 +4047,11 @@ Invoking the chain rule with o as the output variable, z as the intermediate var
 
 Combining the equation above with equation (7.33), we have
 
-```
-∂J
-∂J
-∂o
-∂z
-′
-```
+∂J ∂J ∂o ∂z ′
 
 = · · = ( o − y ) · ReLU ( z ) · x i
 
-```
-∂w i ∂o ∂z ∂w i
-∂J
-∂o
-′ ∂z
-```
+∂w i ∂o ∂z ∂w i ∂J ∂o ′ ∂z
 
 (because
 
@@ -4153,13 +4097,7 @@ tion of three simpler more “local” objects
 
 Similarly, we compute the gradient w.r.t b by
 
-```
-∂J
-∂J
-∂o
-∂z
-′
-```
+∂J ∂J ∂o ∂z ′
 
 = · · = ( o − y ) · ReLU ( z ) ∂b ∂o ∂z ∂b
 
@@ -4209,9 +4147,7 @@ o = w a + b where w ∈ R , b ∈ R
 
 J =  ( y − o ) (7.34)
 
-```
 [2] [2] [1]
-```
 
 We will use ( w ) ` to denote the ` -th coordinate of w , and ( w j
 
@@ -4262,12 +4198,7 @@ variable, and ( w j
 
 ) ` as the input variable.
 
-```
-∂J
-∂J
-∂z j
-[1]
-```
+∂J ∂J ∂z j [1]
 
 = ·
 
@@ -4400,13 +4331,7 @@ Algorithm 3 Backpropagation for two-layer neural networks
 
 for j = 1 , . . . , m by
 
-```
-∂J
-∂J
-∂o
-∂a j ∂J
-[2] ′
-```
+∂J ∂J ∂o ∂a j ∂J [2] ′
 
 = = · ( w ) j · ReLU ( z j ) (7.35) ∂z j ∂o ∂a j ∂z j ∂o
 
@@ -4436,11 +4361,7 @@ j
 
 j
 
-```
-∂J
-∂J
-∂z j ∂J
-```
+∂J ∂J ∂z j ∂J
 
 [1]
 
@@ -4460,11 +4381,7 @@ j
 
 ∂z j
 
-```
-∂J
-∂J
-∂z j ∂J
-```
+∂J ∂J ∂z j ∂J
 
 [1]
 
@@ -4512,11 +4429,7 @@ As we have done before in the definition of neural networks, the equations for b
 
 [2]
 
-```
-∂J
-δ , ∈ R
-∂o
-```
+∂J δ , ∈ R ∂o
 
 [1]
 
@@ -4688,15 +4601,11 @@ where σ ( · ) is the element-wise derivative of the activation function σ , a
 
 = ( o − y ) W ReLU ( z ) (
 
-```
 J ← J , z ← o , W ← W
-```
 
 [2]
 
-```
 , u ← a , b ← b
-```
 
 [2] )
 
@@ -4714,15 +4623,11 @@ Therefore, δ =
 
 - ( ∂z
 
-```
 J ← J , z ← z , W ← W
-```
 
 [1]
 
-```
 , u ← x , b ← b
-```
 
 [1] )
 
@@ -4738,27 +4643,19 @@ J ← J , z ← z , W ← W
 
 In this section, we will derive the backpropagation algorithms for the model defined in (7.17). Recall that we have
 
-```
 [1] [1] [1]
-```
 
 a = ReLU( W x + b )
 
-```
 [2] [2] [1] [2]
-```
 
 a = ReLU( W a + b ) · · ·
 
-```
 [ r − 1] [ r − 1] [ r − 2] [ r − 1]
-```
 
 a = ReLU( W a + b )
 
-```
 [ r ] [ r ] [ r ] [ r − 1] [ r ]
-```
 
 a = z = W a + b
 
@@ -4812,10 +4709,7 @@ Algorithm 5 Back-propagation for multi-layer neural networks. .
 
 1: Compute and store the values of a ’s and z ’s for k = 1 , . . . , r − 1, and J . . This is often called the “forward pass”
 
-```
-[ r ] ∂J
-[ r ]
-```
+[ r ] ∂J [ r ]
 
 2: Compute δ =
 
@@ -4923,9 +4817,7 @@ b =  [1] [1] [1]
 
 b b b  (7.45) | | |
 
-```
 [1] [1] [1]
-```
 
 We can then perform the computation: Z = W X +  ˜ b . Often times, it
 
@@ -4933,9 +4825,7 @@ We can then perform the computation: Z = W X +  ˜ b . Often times, it
 
 is not necessary to explicitly construct  ˜ b . By inspecting the dimensions in
 
-```
 [1] × [1] ×
-```
 
 (7.44), you can assume b ∈ R is correctly broadcast to W X ∈ R . The matricization approach as above can easily generalize to multiple layers, with one subtlety though, as discussed below.
 
@@ -4949,9 +4839,7 @@ jor convention, the data matrix is X ∈ R , the first layer weight matrix has d
 
 section), and the bias vector b ∈ R . The computation for the hidden activation becomes
 
-```
 [1] [1] [1] × m
-```
 
 Z = XW + b ∈ R (7.46)
 
@@ -5270,10 +5158,7 @@ MSE( x ) = σ + E [( h ( x ) − h S ( x )) ] (8.5)
 
 = ︸︷︷︸ σ + ( h ( x ) − h avg ( x )) + var( h S ( x )) (8.7) ︸ ︷︷ ︸ ︸ ︷︷ ︸
 
-```
-unavoidable
-, bias , variance
-```
+unavoidable , bias , variance
 
 We call the second term the bias (square) and the third term the variance. As discussed before, the bias captures the part of the error that are introduced due to the lack of expressivity of the model. Recall that h avg can be thought of as the best possible model learned even with infinite data. Thus, the bias is not due to the lack of data, but is rather caused by that the family of models
 
@@ -5371,23 +5256,15 @@ norm
 
 0.4 0.4
 
-```
 test test
-```
 
-```
 parameters
-```
 
 0.2 0.2
 
 0.0 0.0
 
-```
-parameters
-parameters
-norm
-```
+parameters parameters norm
 
 Figure 8.12: Left: The double descent phenomenon, where the number of pa- rameters is used as the model complexity. Middle: The norm of the learned model is peaked around n ≈ d . Right: The test error against the norm of the learnt model. The color bar indicate the number of parameters and the arrows indicates the direction of increasing model size. Their relationship are closer to the convention wisdom than to a double descent. Setup: We consider a linear regression with a fixed dataset of size n = 500 . The input x is a random ReLU feature on Fashion-MNIST, and output y ∈ R is the one-hot label. This is the same setting as in Section 5.2 of Nakkiran et al. [2020].
 
@@ -5691,9 +5568,7 @@ model complexity (a small R ( θ )). The balance between the two objectives is c
 
 θ ← θ − η ∇ J λ ( θ ) = θ − ηλθ − η ∇ J ( θ ) = (1 − λη ) θ − η ∇ J ( θ ) (9.2) ︸ ︷︷ ︸
 
-```
 decaying weights
-```
 
 Besides encouraging simpler models, regularization can also impose in- ductive biases or structures on the model parameters. For example, suppose we had a prior belief that the number of non-zeros in the ground-truth model parameters is small, —which is oftentimes called sparsity of the model—, we can impose a regularization on the number of non-zeros in θ , denoted by ‖ θ ‖ , to leverage such a prior belief. Imposing additional structure of the parameters narrows our search space and makes the complexity of the model family smaller,—e.g., the family of sparse models can be thought of as having lower complexity than the family of all models—, and thus tends to lead to a better generalization. On the other hand, imposing additional structure may risk increasing the bias. For example, if we regularize the sparsity strongly but no sparse models can predict the label accurately, we will suffer from large bias (analogously to the situation when we use linear models to learn data than can only be represented by quadratic functions in Section 8.1.) The sparsity of the parameters is not a continuous function of the param- eters, and thus we cannot optimize it with (stochastic) gradient descent. A common relaxation is to use R ( θ ) = ‖ θ ‖ as a continuous surrogate.
 
@@ -6113,9 +5988,7 @@ There are other minor differences in the formulas here from what we’d obtained
 
 PS1 with Gaussian discriminant analysis, first because we’ve generalized the z ’s to be multinomial rather than Bernoulli, and second because here we are using a different Σ j
 
-```
 for each Gaussian.
-```
 
 (M-step) Update the parameters:
 
@@ -7582,9 +7455,7 @@ been mixed according to A instead of A , we would have instead observed
 
 x = A s . The distribution of x is also Gaussian, x ∼ N (0 , AA ), since
 
-```
 ′ ′ T ′ T ′ T T T T T T
-```
 
 E s ∼N (0 ,I ) [ x ( x ) ] = E[ A ss ( A ) ] = E[ ARss ( AR ) ] = ARR A = AA .
 
@@ -8544,9 +8415,7 @@ choosing actions. We would then observe n state sequences like the following:
 
 ## T − (1)
 
-```
 s −→ s −→ s −→ · · · −→ s T
-```
 
 ```
 (2)
@@ -8559,9 +8428,7 @@ s −→ s −→ s −→ · · · −→ s T
 
 ## T − (2)
 
-```
 s −→ s −→ s −→ · · · −→ s T
-```
 
 - · ·
 
@@ -8576,9 +8443,7 @@ s −→ s −→ s −→ · · · −→ s T
 
 T − ( n )
 
-```
 s −→ s −→ s −→ · · · −→ s T
-```
 
 We can then apply a learning algorithm to predict s t +1 as a function of s t
 
@@ -8610,9 +8475,7 @@ s t +1 = As t + Ba t +  t ,
 
 where here  t is a noise term, usually modeled as  t ∼ N (0 , Σ). (The covari- ance matrix Σ can also be estimated from data in a straightforward way.) Here, we’ve written the next-state s t +1 as a linear function of the current state and action; but of course, non-linear functions are also possible. Specif- ically, one can learn a model s t +1 = Aφ s ( s t ) + Bφ a ( a t ), where φ s and φ a are some non-linear feature mappings of the states and actions. Alternatively, one can also use non-linear learning algorithms, such as locally weighted lin- ear regression, to learn to estimate s t +1 as a function of s t and a t . These approaches can also be used to build either deterministic or stochastic sim- ulators of an MDP.
 
-```
 Fitted value iteration
-```
 
 We now describe the fitted value iteration algorithm for approximating the value function of a continuous state MDP. In the sequel, we will assume
 
@@ -9398,10 +9261,7 @@ where [
 
 >
 
-```
-]
-Use the identity E w t
-```
+] Use the identity E w t
 
 ```
 Φ t +1 w t = Tr(Σ t Φ t +1 ) with w t ∼ N (0 , Σ t )
@@ -9469,16 +9329,7 @@ It turns out that a lot of problems can be reduced to LQR, even if dynamics are 
 
  = θ t +1
 
-```
- F 
-
-x ˙ 
-
-
-
-
-  , a t
-```
+ F   x ˙        , a t
 
 θ t
 
@@ -9532,9 +9383,7 @@ step 2 linearize the dynamics around each trajectory point s t
 
 , in other words
 
-```
 ∗ ∗ ∗ ∗ ∗ ∗ ∗ ∗
-```
 
 ```
 s t +1 ≈ F ( s t
@@ -9568,9 +9417,7 @@ s t +1 = A t · s t + B t · a t
 
 Note We can apply a similar derivation for the reward R , with a second-order Taylor expansion.
 
-```
 ∗ ∗ ∗ ∗ ∗ ∗ ∗ ∗
-```
 
 R ( s t , a t ) ≈ R ( s t
 
@@ -9722,9 +9569,7 @@ update step compute s t +1 | y , . . . , y t +1
 
 and iterate over time steps! The combination of the predict and update steps updates our belief states. In other words, the process looks like
 
-```
 predict update predict
-```
 
 ( s t | y , . . . , y t ) − − − − → ( s t +1 | y , . . . , y t ) − − − − → ( s t +1 | y , . . . , y t +1 ) − − − − → . . .
 

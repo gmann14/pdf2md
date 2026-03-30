@@ -272,9 +272,7 @@ Proposition 2. If G and D have enough capacity, and at each step of Algorithm 1,
 
 ∗ ∗
 
-```
 E x ∼ p data
-```
 
 [log D G
 

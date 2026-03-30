@@ -1150,9 +1150,7 @@ model, 2021.
 
 ### A Exam Benchmark Methodology
 
-```
 A.1 Sourcing.
-```
 
 We sourced either the most recent publicly-available official past exams, or practice exams in published third-party 2022-2023 study material which we purchased. [We cross-checked these](https://openai.com/research/gpt-4) materials against the model’s training data to determine the extent to which the training data was not [contaminated with any exam questions, which we also report in this paper.](https://cdn.openai.com/blocksparse/blocksparsepaper.pdf)
 
@@ -1274,9 +1272,7 @@ To test the impact of RLHF on the capability of our base model, we ran the multi
 
 For free-response questions, it is difficult to compare the base and RLHF models on an even footing, as our methodology for sampling free-response answers likely benefits from the model’s ability to do [instruction following.](https://aclanthology.org/2022.acl-long.229)
 
-```
 Exam Base model RLHF model
-```
 
 LSAT (MCQ) 67.0 % 72.0 % SAT EBRW - Reading Portion 92.3 % 90.4 % SAT EBRW - Writing Portion 90.9 % 84.1 % SAT Math (MCQ) 91.4 % 86.2 % Graduate Record Examination 57.5 % 67.5 % [(GRE) Quantitative](https://aclanthology.org/P19-1472) Graduate Record Examination 87.5 % 90.0 % (GRE) Verbal [USNCO Local Section Exam 2022](https://openai.com/blog/our-approach-to-alignment-research) [51.7 %](https://openai.com/blog/our-approach-to-alignment-research) [63.3 %](https://openai.com/blog/our-approach-to-alignment-research) AP Art History (MCQ) 72.5 % 66.2 % [AP Biology (MCQ)](https://openreview.net/forum?id=HyzdRiR9Y7) [98.3 %](https://openreview.net/forum?id=HyzdRiR9Y7) 96.7 % AP Calculus BC (MCQ) 66.7 % 57.8 % AP Chemistry (MCQ) 58.3 % 71.7 % AP English Language and 55.6 % 51.1 % Composition (MCQ) AP English Literature and 63.6 % 69.1 % Composition (MCQ) AP Environmental Science (MCQ) 72.5 % 67.5 % AP Macroeconomics (MCQ) 83.3 % 76.7 % [AP Microeconomics (MCQ)](https://www.reddit.com/r/hmmm/comments/ubab5v/hmmm/) [90.0 %](https://www.reddit.com/r/hmmm/comments/ubab5v/hmmm/) 76.7 % AP Physics 2 (MCQ) 62.2 % 71.1 % [AP Psychology (MCQ)](https://www.barnorama.com/wp-content/uploads/2016/12/03-Confusing-Pictures.jpg) [98.0 %](https://www.barnorama.com/wp-content/uploads/2016/12/03-Confusing-Pictures.jpg) [96.0 %](https://www.barnorama.com/wp-content/uploads/2016/12/03-Confusing-Pictures.jpg) AP Statistics (MCQ) 60.0 % 62.5 % AP US Government (MCQ) 85.5 % 83.6 % AP US History (MCQ) 89.1 % 87.3 % AP World History (MCQ) 94.5 % 98.2 % MKSAP Questions (MCQ) 77.9 % 74.7 % AMC 10 28.0 % 24.0 % AMC 12 20.0 % 32.0 % Introductory Sommelier (theory 90.5 % 92.2 % knowledge) Certified Sommelier (theory 83.2 % 86.2 % [knowledge)](https://blog.prepscholar.com/how-to-calculate-sat-score) [Advanced Sommelier (theory](https://blog.prepscholar.com/how-to-calculate-sat-score) [74.8 %](https://blog.prepscholar.com/how-to-calculate-sat-score) 77.1 % knowledge)
 
@@ -1384,9 +1380,7 @@ DROP (F1) 80.9 64.1 ~21% 82.8 (subsample)
 
 Table 11. Contamination between GPT-4 pre-training data and academic benchmarks. We report the approximate contamination between the GPT-4 pre-training data and the academic benchmarks we evaluate on. For datasets other than HumanEval, we estimated contamination based on 1000 randomly chosen examples against our training data. For HellaSwag, results are computed on a privately held [secret holdout, so we did not check it for contamination against our pre-training dataset; however](https://openai.com/blog/how-should-ai-systems-behave) GPT-4’s holdout results are close to the results on the validation set (95.6%) which was explicitly masked out during training. For DROP, GPT-4’s score on the entire subsample was 82.5. We used the [base GPT-4 model (without RLHF) for these evals.](https://openai.com/blog/our-approach-to-alignment-research)
 
-```
-English Swahili
-```
+English [Swahili](https://www.barnorama.com/wp-content/uploads/2016/12/03-Confusing-Pictures.jpg)
 
 ```
 Muundo wa akili bandia wenye ujuzi
@@ -1409,9 +1403,7 @@ Answer:
 
 Table 12. MMLU Example prompt, presented in two different languages. Note we do not translate the choice (A-D) or ‘Answer’ tokens for prompt format consistency.
 
-```
 Language Example
-```
 
 Why is the sky blue?
 

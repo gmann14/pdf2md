@@ -406,9 +406,7 @@ To address privacy implications, organizations may consider how their cybersecur
 
 As organizations assess the Framework Core in Appendix A , the following processes and activities may be considered as a means to address the above-referenced privacy and civil liberties implications:
 
-```
 Governance of cybersecurity risk
-```
 
  An organization’s assessment of cybersecurity risk and potential risk responses considers the privacy implications of its cybersecurity program. [](https://www.federalregister.gov/articles/2015/12/11/2015-31217/views-on-the-framework-for-improving-critical-infrastructure-cybersecurity) [Individuals with cybersecurity-related privacy responsibilities report to appropriate](https://www.federalregister.gov/articles/2015/12/11/2015-31217/views-on-the-framework-for-improving-critical-infrastructure-cybersecurity) management and are appropriately trained.  [Process is in place to support compliance of cybersecurity activities with applicable](https://www.isa.org/templates/one-column.aspx?pageid=111294&productId=116731) [privacy laws, regulations, and Constitutional requirements.](https://www.isa.org/templates/one-column.aspx?pageid=111294&productId=116731)  Process is in place to assess implementation of the above organizational measures and controls.
 
@@ -416,9 +414,7 @@ Governance of cybersecurity risk
 
  Steps are taken to identify and address the privacy implications of identity management and access control measures to the extent that they involve collection, disclosure, or use of personal information.
 
-```
 Awareness and training measures
-```
 
  Applicable information from organizational privacy policies is included in cybersecurity workforce training and awareness activities.  Service providers that provide cybersecurity-related services for the organization are informed about the organization’s applicable privacy policies .
 
@@ -512,9 +508,7 @@ RC.CO Communications
 
 Table 2: Framework Core
 
-```
 Function Category Subcategory Informative References
-```
 
 IDENTIFY Asset Management (ID.AM): ID.AM-1: Physical devices and systems C I S CSC (ID) The data, personnel, devices, within the organization are inventoried COBIT 5 BAI09.01, BAI09.02 systems, and facilities that enable ISA 62443 - - 1:2009 4.2.3.4 the organization to achieve ISA 62443 - - 3:2013 SR 7.8 business purposes are identified and managed consistent with their ISO/IEC 27001:2013 A.8.1.1, A.8.1.2
 
@@ -531,9 +525,7 @@ ID.AM-5: Resources (e.g., hardware, [CIS CSC](https://doi.org/10.6028/NIST.SP.80
 
 ID.AM-6: Cybersecurity roles and CIS CSC 17, 19 responsibilities for the entire workforce and COBIT 5 APO01.02, APO07.06, APO13.01, DSS06.03
 
-```
 Function Category Subcategory Informative References
-```
 
 | third-party stakeholders (e.g., suppliers, | ISA 62443-2-1:2009 | 4.3.2.3.3 |
 | ------------------------------------------ | ------------------ | --------- |
@@ -549,9 +541,7 @@ ID.BE-4: [Dependencies and critical](https://www.nist.gov/news-events/news/2017/
 
 Governance (ID.GV): The ID.GV-1: Organizational cybersecurity [CIS CSC](https://doi.org/10.6028/NIST.SP.800-53r4) policies, procedures, and policy is established and communicated COBIT 5 APO01.03, APO13.01, EDM01.01, processes to manage and monitor EDM01.02 the organization’s regulatory, ISA 62443-2-1:2009 4.3.2.6 legal, risk, environmental, and ISO/IEC 27001:2013 A.5.1.1 [operational requirements are](http://www.nist.gov/cyberframework/) understood and inform the NIST SP 800-53 Rev. 4 -1 controls from all security control families
 
-```
 Function Category Subcategory Informative References
-```
 
 management of cybersecurity ID.GV-2: Cybersecurity roles and CIS CSC risk. responsibilities are coordinated and aligned COBIT 5 APO01.02, APO10.03, APO13.02, with internal roles and external partners DSS05.04 ISA 62443-2-1:2009 4.3.2.3.3 ISO/IEC 27001:2013 A.6.1.1, A.7.2.1, A.15.1.1 NIST SP 800-53 Rev. 4 PS-7, PM-1, PM-2
 
@@ -563,9 +553,7 @@ Risk Assessment (ID.RA): The ID.RA-1: Asset vulnerabilities are CIS CSC [organiz
 
 [ID.RA-2:](http://www.nist.gov/cyberframework/) [Cyber threat intelligence is](http://www.nist.gov/cyberframework/) CIS CSC received from information sharing forums COBIT 5 BAI08.01 and sources ISA 62443-2-1:2009 4.2.3, 4.2.3.9, 4.2.3.12 ISO/IEC 27001:2013 A.6.1.4 NIST SP 800-53 Rev. 4 SI-5, PM-15, PM-16
 
-```
 Function Category Subcategory Informative References
-```
 
 ID.RA-3: Threats, both internal and CIS CSC external, are identified and documented COBIT 5 APO12.01, APO12.02, APO12.03, APO12.04 ISA 62443-2-1:2009 4.2.3, 4.2.3.9, 4.2.3.12 ISO/IEC 27001:2013 Clause 6.1.2 NIST SP 800-53 Rev. 4 RA-3, SI-5, PM-12, PM-
 
@@ -579,9 +567,7 @@ Risk Management Strategy ID.RM-1: Risk management processes are CIS CSC (ID.RM):
 
 ID.RM-2: Organizational risk tolerance is COBIT 5 APO12.06 determined and clearly expressed ISA 62443-2-1:2009 4.3.2.6.5 ISO/IEC 27001:2013 Clause 6.1.3, Clause 8.3 NIST SP 800-53 Rev. 4 PM-9
 
-```
 Function Category Subcategory Informative References
-```
 
 ID.RM-3: The organization’s COBIT 5 APO12.02 determination of risk tolerance is informed ISO/IEC 27001:2013 Clause 6.1.3, Clause 8.3 by its role in critical infrastructure and NIST SP 800-53 Rev. 4 SA-14, PM-8, PM-9, PM- sector specific risk analysis
 
@@ -591,9 +577,7 @@ ID.SC-3: Contracts with suppliers and COBIT 5 APO10.01, APO10.02, APO10.03, thir
 
 [ID.SC](http://www.nist.gov/cyberframework/) [-](http://www.nist.gov/cyberframework/) [4:](http://www.nist.gov/cyberframework/) [Suppliers and third](http://www.nist.gov/cyberframework/) - party partners COBIT 5 APO10.01, APO10.03, APO10.04, [are routinely assessed using audits, test](http://www.nist.gov/cyberframework/) APO10.05, MEA01.01, MEA01.02, MEA01.03, results, or other forms of evaluations to MEA01.04, MEA01.05 confirm they are meeting their contractual ISA 62443-2-1:2009 4.3.2.6.7 obligations. ISA 62443-3-3:2013 SR 6.1 ISO/IEC 27001:2013 A.15.2.1, A.15.2.2
 
-```
 Function Category Subcategory Informative References
-```
 
 NIST SP 800-53 Rev. 4 AU-2, AU-6, AU-12, AU- 16, PS-7, SA-9, SA-12
 
@@ -611,9 +595,7 @@ PROTECT (PR) Identity Management, PR.AC-1: Identities and credentials are CIS CS
 
 PR.AC-3: Remote access is managed CIS CSC COBIT 5 APO13.01, DSS01.04, DSS05.03 ISA 62443-2-1:2009 4.3.3.6.6 ISA 62443-3-3:2013 SR 1.13, SR 2.6 ISO/IEC 27001:2013 A.6.2.1, A.6.2.2, A.11.2.6, A.13.1.1, A.13.2.1
 
-```
 Function Category Subcategory Informative References
-```
 
 NIST SP 800-53 Rev. 4 AC-1, AC-17, AC-19, AC-20, SC-15
 
@@ -625,9 +607,7 @@ PR.AC-6: Identities are proofed and bound CIS CSC , 16 to credentials and assert
 
 PR.AC - 7: Users , devices , and other assets CIS CSC 1, 12, 15, 16 [are authenticated (e.g., single](http://www.nist.gov/cyberframework/) - factor, multi - COBIT 5 DSS05.04, DSS05.10, DSS06.10 factor) commensurate with the risk of the ISA 62443-2-1:2009 4.3.3.6.1, 4.3.3.6.2, 4.3.3.6.3, transaction (e.g., individuals’ security and 4.3.3.6.4, 4.3.3.6.5, 4.3.3.6.6, 4.3.3.6.7, 4.3.3.6.8, privacy risks and other organizational 4.3.3.6.9 risks )
 
-```
 Function Category Subcategory Informative References
-```
 
 ISA 62443-3-3:2013 SR 1.1, SR 1.2, SR 1.5, SR 1.7, SR 1.8, SR 1.9, SR 1.10 ISO/IEC 27001:2013 A.9.2.1, A.9.2.4, A.9.3.1, A.9.4.2, A.9.4.3, A.18.1.4 NIST SP 800-53 Rev. 4 AC-7, AC-8, AC-9, AC- 11, AC-12, AC-14, IA-1, IA-2, IA-3, IA-4, IA-5, IA-8, IA-9, IA-10, IA-11
 
@@ -641,9 +621,7 @@ PR.AT-4: Senior executives understand [CIS](https://doi.org/10.6028/NIST.SP.800-
 
 [PR.AT-5:](http://www.nist.gov/cyberframework/) [Physical and cybersecurity](http://www.nist.gov/cyberframework/) CIS CSC personnel understand their roles and COBIT 5 APO07.03 responsibilities ISA 62443-2-1:2009 4.3.2.4.2 ISO/IEC 27001:2013 A.6.1.1, A.7.2.2
 
-```
 Function Category Subcategory Informative References
-```
 
 NIST SP 800-53 Rev. 4 AT-3, IR-2, PM-13
 
@@ -660,9 +638,7 @@ PR.DS-3: [Assets are formally managed](https://www.nist.gov/news-events/news/201
 
 PR.DS-5: Protections against data leaks CIS CSC [are implemented](http://www.nist.gov/cyberframework/) COBIT 5 APO01.06, DSS05.04, DSS05.07, DSS06.02 ISA 62443-3-3:2013 SR 5.2 ISO/IEC 27001:2013 A.6.1.2, A.7.1.1, A.7.1.2, A.7.3.1, A.8.2.2, A.8.2.3, A.9.1.1, A.9.1.2, A.9.2.3, A.9.4.1, A.9.4.4, A.9.4.5, A.10.1.1, A.11.1.4,
 
-```
 Function Category Subcategory Informative References
-```
 
 A.11.1.5, A.11.2.1, A.13.1.1, A.13.1.3, A.13.2.1, A.13.2.3, A.13.2.4, A.14.1.2, A.14.1.3 NIST SP 800-53 Rev. 4 AC-4, AC-5, AC-6, PE- 19, PS-3, PS-6, SC-7, SC-8, SC-13, SC-31, SI-4
 
@@ -678,9 +654,7 @@ processes, and procedures are A.12.6.2, A.14.2.2, A.14.2.3, A.14.2.4
 
 maintained and used to manage NIST SP 800-53 Rev. 4 CM-2, CM-3, CM-4, CM- protection of information systems 5, CM-6, CM-7, CM-9, SA-10 [and assets.](http://www.nist.gov/cyberframework/) [PR.IP-2:](http://www.nist.gov/cyberframework/) [A System Development Life](http://www.nist.gov/cyberframework/) CIS CSC Cycle to manage systems is implemented COBIT 5 APO13.01, BAI03.01, BAI03.02, BAI03.03 ISA 62443-2-1:2009 4.3.4.3.3
 
-```
 Function Category Subcategory Informative References
-```
 
 ISO/IEC 27001:2013 A.6.1.5, A.14.1.1, A.14.2.1, A.14.2.5 NIST SP 800-53 Rev. 4 PL-8, SA-3, SA-4, SA-8, SA-10, SA-11, SA-12, SA-15, SA-17, SI-12, SI- 13, SI-14, SI-16, SI-17
 
@@ -692,9 +666,7 @@ PR.IP-4: Backups of information are [CIS](http://www.isaca.org/COBIT/Pages/defau
 
 PR.IP-6: Data is destroyed according to COBIT 5 BAI09.03, DSS05.06 policy ISA 62443-2-1:2009 4.3.4.4.4 ISA 62443-3-3:2013 SR 4.2 ISO/IEC 27001:2013 A.8.2.3, A.8.3.1, A.8.3.2, A.11.2.7 NIST SP 800-53 Rev. 4 MP-6
 
-```
 Function Category Subcategory Informative References
-```
 
 PR.IP-7: Protection processes are COBIT 5 APO11.06, APO12.06, DSS04.05 improved ISA 62443-2-1:2009 4.4.3.1, 4.4.3.2, 4.4.3.3, 4.4.3.4, 4.4.3.5, 4.4.3.6, 4.4.3.7, 4.4.3.8 ISO/IEC 27001:2013 A.16.1.6, Clause 9, Clause
 
@@ -712,9 +684,7 @@ PR.IP-9: Response plans (Incident CIS CSC Response and Business Continuity) and 
 
 PR.IP-11: Cybersecurity is included in [CIS](https://doi.org/10.6028/NIST.SP.800-53r4) [CSC](https://doi.org/10.6028/NIST.SP.800-53r4) [5, 16](https://doi.org/10.6028/NIST.SP.800-53r4) human resources practices (e.g., COBIT 5 APO07.01, APO07.02, APO07.03, deprovisioning, personnel screening) APO07.04, APO07.05 ISA 62443-2-1:2009 4.3.3.2.1, 4.3.3.2.2, 4.3.3.2.3 ISO/IEC 27001:2013 A.7.1.1, A.7.1.2, A.7.2.1, A.7.2.2, A.7.2.3, A.7.3.1, A.8.1.4 NIST SP 800-53 Rev. 4 PS-1, PS-2, PS-3, PS-4, PS-5, PS-6, PS-7, PS-8, SA-21
 
-```
 Function Category Subcategory Informative References
-```
 
 PR.IP-12: A vulnerability management CIS CSC 4, 18, 20 plan is developed and implemented COBIT 5 BAI03.10, DSS05.01, DSS05.02 ISO/IEC 27001:2013 A.12.6.1, A.14.2.3, A.16.1.3, A.18.2.2, A.18.2.3 NIST SP 800-53 Rev. 4 RA-3, RA-5, SI-2
 
@@ -726,9 +696,7 @@ PR.MA-2: Remote maintenance of [CIS](https://www.federalregister.gov/articles/20
 
 [PR.PT-2:](http://www.nist.gov/cyberframework/) Removable media is protected CIS CSC 8, 13 and its use restricted according to policy COBIT 5 APO13.01, DSS05.02, DSS05.06 ISA 62443-3-3:2013 SR 2.3 ISO/IEC 27001:2013 A.8.2.1, A.8.2.2, A.8.2.3, A.8.3.1, A.8.3.3, A.11.2.9
 
-```
 Function Category Subcategory Informative References
-```
 
 NIST SP 800-53 Rev. 4 MP-2, MP-3, MP-4, MP- 5, MP-7, MP-8
 
@@ -740,9 +708,7 @@ PR.PT-5: Mechanisms (e.g., failsafe, load [COBIT 5](https://doi.org/10.6028/NIST
 
 DETECT (DE) Anomalies and Events (DE.AE): DE.AE-1: A baseline of network CIS CSC 1, 4, 6, 12, 13, 15, 16 Anomalous activity is detected operations and expected data flows for COBIT 5 DSS03.01 ISA 62443-2-1:2009 4.4.3.3
 
-```
 Function Category Subcategory Informative References
-```
 
 and the potential impact of events users and systems is established and ISO/IEC 27001:2013 A.12.1.1, A.12.1.2, is understood. managed A.13.1.1, A.13.1.2 NIST SP 800-53 Rev. 4 AC-4, CA-3, CM-2, SI-4
 
@@ -756,9 +722,7 @@ DE.AE-5: Incident alert thresholds are CIS CSC 6, 19 established COBIT 5 APO12.0
 
 Security Continuous DE.CM-1: The network is monitored to CIS CSC 1, 7, 8, 12, 13, 15, 16 Monitoring (DE.CM): The detect potential cybersecurity events COBIT 5 DSS01.03, DSS03.05, DSS05.07 [information system and assets are](http://www.nist.gov/cyberframework/) ISA 62443-3-3:2013 SR 6.2 [monitored to identify](http://www.nist.gov/cyberframework/) NIST SP 800-53 Rev. 4 AC-2, AU-12, CA-7, CM- cybersecurity events and verify 3, SC-5, SC-7, SI-4
 
-```
 Function Category Subcategory Informative References
-```
 
 the effectiveness of protective DE.CM-2: The physical environment is COBIT 5 DSS01.04, DSS01.05 measures. monitored to detect potential cybersecurity ISA 62443-2-1:2009 4.3.3.3.8 events ISO/IEC 27001:2013 A.11.1.1, A.11.1.2 NIST SP 800-53 Rev. 4 CA-7, PE-3, PE-6, PE-20
 
@@ -777,9 +741,7 @@ DE.CM-7: Monitoring for unauthorized CIS CSC 1, 2, 3, 5, 9, 12, 13, 15, 16 perso
 
 DE.CM-8: Vulnerability scans are CIS CSC 4, 20 performed
 
-```
 Function Category Subcategory Informative References
-```
 
 COBIT 5 BAI03.10, DSS05.01 ISA 62443-2-1:2009 4.2.3.1, 4.2.3.7 ISO/IEC 27001:2013 A.12.6.1 NIST SP 800-53 Rev. 4 RA-5
 
@@ -797,9 +759,7 @@ DE.DP-4: Event detection information is CIS CSC communicated COBIT 5 APO08.04, A
 
 [DE.DP-5:](http://www.nist.gov/cyberframework/) [Detection processes are](http://www.nist.gov/cyberframework/) COBIT 5 APO11.06, APO12.06, DSS04.05 continuously improved ISA 62443-2-1:2009 4.4.3.4 ISO/IEC 27001:2013 A.16.1.6 NIST SP 800-53 Rev. 4 , CA-2, CA-7, PL-2, RA- 5, SI-4, PM-14
 
-```
 Function Category Subcategory Informative References
-```
 
 RESPOND (RS) Response Planning (RS.RP): RS.RP-1: Response plan is executed CIS CSC Response processes and during or after an incident COBIT 5 APO12.06, BAI01.10 procedures are executed and ISA 62443-2-1:2009 4.3.4.5.1 maintained, to ensure response to ISO/IEC 27001:2013 A.16.1.5 detected cybersecurity incidents. NIST SP 800-53 Rev. 4 CP-2, CP-10, IR-4, IR-8
 
@@ -813,9 +773,7 @@ RS.CO-4: Coordination with stakeholders [CIS](https://doi.org/10.6028/NIST.SP.80
 
 [RS.CO-5:](http://www.nist.gov/cyberframework/) Voluntary information sharing CIS CSC occurs with external stakeholders to COBIT 5 BAI08.04 achieve broader cybersecurity situational ISO/IEC 27001:2013 A.6.1.4 awareness NIST SP 800-53 Rev. 4 SI-5, PM-15
 
-```
 Function Category Subcategory Informative References
-```
 
 Analysis (RS.AN): Analysis is RS.AN-1: Notifications from detection CIS CSC 4, 6, 8, 19 conducted to ensure effective systems are investigated COBIT 5 DSS02.04, DSS02.07 response and support recovery ISA 62443-2-1:2009 4.3.4.5.6, 4.3.4.5.7, 4.3.4.5.8 activities. ISA 62443-3-3:2013 SR 6.1 ISO/IEC 27001:2013 A.12.4.1, A.12.4.3, A.16.1.5 NIST SP 800-53 Rev. 4 AU-6, CA-7, IR-4, IR-5, PE-6, SI-4
 
@@ -827,13 +785,9 @@ RS.AN-3: Forensics are performed [COBIT 5](http://www.isaca.org/COBIT/Pages/defa
 
 Mitigation (RS.MI): [Activities](http://www.nist.gov/cyberframework/) [RS.MI-1:](http://www.nist.gov/cyberframework/) [Incidents are contained](http://www.nist.gov/cyberframework/) CIS CSC are performed to prevent COBIT 5 APO12.06 expansion of an event, mitigate its ISA 62443-2-1:2009 4.3.4.5.6 effects, and resolve the incident. ISA 62443-3-3:2013 SR 5.1, SR 5.2, SR 5.4 ISO/IEC 27001:2013 A.12.2.1, A.16.1.5
 
-```
 Function Category Subcategory Informative References
-```
 
-```
 NIST SP 800-53 Rev. 4 IR-4
-```
 
 RS.MI-2: Incidents are mitigated CIS CSC 4, 19 COBIT 5 APO12.06 ISA 62443-2-1:2009 4.3.4.5.6, 4.3.4.5.10 ISO/IEC 27001:2013 A.12.2.1, A.16.1.5 NIST SP 800-53 Rev. 4 IR-4
 
@@ -843,9 +797,7 @@ Improvements (RS.IM): RS.IM-1: Response plans incorporate COBIT 5 BAI01.13 Organ
 
 Improvements (RC.IM): RC.IM-1: Recovery plans incorporate [COBIT 5](https://doi.org/10.6028/NIST.SP.800-53r4) [APO12.06,](https://doi.org/10.6028/NIST.SP.800-53r4) [BAI05.07, DSS04.08](https://doi.org/10.6028/NIST.SP.800-53r4) Recovery planning and processes lessons learned ISA 62443-2-1:2009 4.4.3.4 are improved by incorporating ISO/IEC 27001:2013 A.16.1.6, Clause 10 lessons learned into future NIST SP 800-53 Rev. 4 CP-2, IR-4, IR-8 activities. [RC.IM-2:](http://www.nist.gov/cyberframework/) Recovery strategies are updated COBIT 5 APO12.06, BAI07.08 ISO/IEC 27001:2013 A.16.1.6, Clause 10 NIST SP 800-53 Rev. 4 CP-2, IR-4, IR-8
 
-```
 Function Category Subcategory Informative References
-```
 
 Communications (RC.CO): RC.CO-1: Public relations are managed COBIT 5 EDM03.02 Restoration activities are ISO/IEC 27001:2013 A.6.1.4, Clause 7.4 coordinated with internal and external parties (e.g. coordinating RC.CO-2: Reputation is repaired after an COBIT 5 MEA03.02 centers, Internet Service incident ISO/IEC 27001:2013 Clause 7.4 Providers, owners of attacking RC.CO-3: Recovery activities are COBIT 5 APO12.06 systems, victims, other CSIRTs, communicated to internal and external and vendors). ISO/IEC 27001:2013 Clause 7.4 stakeholders as well as executive and NIST SP 800-53 Rev. 4 CP-2, IR-4 management teams
 

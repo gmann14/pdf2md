@@ -16,35 +16,21 @@ Commerce on the Internet has come to rely almost exclusively on financial instit
 
 We define an electronic coin as a chain of digital signatures. Each owner transfers the coin to the next by digitally signing a hash of the previous transaction and the public key of the next owner and adding these to the end of the coin. A payee can verify the signatures to verify the chain of ownership.
 
-```
-Transaction
-Transaction
-Transaction
-```
+Transaction Transaction Transaction
 
 | Owner 1's  | Owner 2's  | Owner 3's  |
 | ---------- | ---------- | ---------- |
 | Public Key | Public Key | Public Key |
 
-```
-Hash
-Hash
-Hash
-```
+Hash Hash Hash
 
-```
-Verify
-Verify
-```
+Verify Verify
 
 | Owner 0's | Owner 1's | Owner 2's |
 | --------- | --------- | --------- |
 | Signature | Signature | Signature |
 
-```
-Sign
-Sign
-```
+Sign Sign
 
 | Owner 1's   | Owner 2's   | Owner 3's   |
 | ----------- | ----------- | ----------- |
@@ -56,14 +42,9 @@ The problem of course is the payee can't verify that one of the owners did not d
 
 The solution we propose begins with a timestamp server. A timestamp server works by taking a hash of a block of items to be timestamped and widely publishing the hash, such as in a newspaper or Usenet post [2-5]. The timestamp proves that the data must have existed at the time, obviously, in order to get into the hash. Each timestamp includes the previous timestamp in its hash, forming a chain, with each additional timestamp reinforcing the ones before it.
 
-```
 Hash Hash
-```
 
-```
-Block
-Block
-```
+Block Block
 
 Item Item ... Item Item ...
 
@@ -71,15 +52,9 @@ Item Item ... Item Item ...
 
 To implement a distributed timestamp server on a peer-to-peer basis, we will need to use a proof- of-work system similar to Adam Back's Hashcash [6], rather than newspaper or Usenet posts. The proof-of-work involves scanning for a value that when hashed, such as with SHA-256, the hash begins with a number of zero bits. The average work required is exponential in the number of zero bits required and can be verified by executing a single hash. For our timestamp network, we implement the proof-of-work by incrementing a nonce in the block until a value is found that gives the block's hash the required zero bits. Once the CPU effort has been expended to make it satisfy the proof-of-work, the block cannot be changed without redoing the work. As later blocks are chained after it, the work to change the block would include redoing all the blocks after it.
 
-```
-Block
-Block
-```
+Block Block
 
-```
-Prev Hash Nonce
-Prev Hash Nonce
-```
+Prev Hash Nonce Prev Hash Nonce
 
 Tx Tx ... Tx Tx ...
 
@@ -113,32 +88,15 @@ Once the latest transaction in a coin is buried under enough blocks, the spent t
 | ------------------------- | ------------------------- |
 | Block Header (Block Hash) | Block Header (Block Hash) |
 
-```
-Prev Hash Nonce
-Prev Hash Nonce
-```
+Prev Hash Nonce Prev Hash Nonce
 
-```
-Root Hash
-Root Hash
-```
+Root Hash Root Hash
 
-```
-Hash01
-Hash23
-Hash01
-Hash23
-```
+Hash01 Hash23 Hash01 Hash23
 
-```
-Hash0 Hash1 Hash2 Hash3
-Hash2
-Hash3
-```
+Hash0 Hash1 Hash2 Hash3 Hash2 Hash3
 
-```
 Tx0 Tx1 Tx2 Tx3 Tx3
-```
 
 Transactions Hashed in a Merkle Tree After Pruning Tx0-2 from the Block
 
@@ -148,40 +106,19 @@ A block header with no transactions would be about 80 bytes. If we suppose block
 
 It is possible to verify payments without running a full network node. A user only needs to keep a copy of the block headers of the longest proof-of-work chain, which he can get by querying network nodes until he's convinced he has the longest chain, and obtain the Merkle branch linking the transaction to the block it's timestamped in. He can't check the transaction for himself, but by linking it to a place in the chain, he can see that a network node has accepted it, and blocks added after it further confirm the network has accepted it.
 
-```
 Longest Proof-of-Work Chain
-```
 
-```
-Block Header
-Block Header
-Block Header
-```
+Block Header Block Header Block Header
 
-```
-Prev Hash Nonce
-Prev Hash Nonce
-Prev Hash Nonce
-```
+Prev Hash Nonce Prev Hash Nonce Prev Hash Nonce
 
-```
-Merkle Root
-Merkle Root
-Merkle Root
-```
+Merkle Root Merkle Root Merkle Root
 
-```
-Hash01
-Hash23
-```
+Hash01 Hash23
 
-```
 Merkle Branch for Tx3
-```
 
-```
 Hash2 Hash3
-```
 
 Tx3
 
@@ -191,9 +128,7 @@ As such, the verification is reliable as long as honest nodes control the networ
 
 Although it would be possible to handle coins individually, it would be unwieldy to make a separate transaction for every cent in a transfer. To allow value to be split and combined, transactions contain multiple inputs and outputs. Normally there will be either a single input from a larger previous transaction or multiple inputs combining smaller amounts, and at most two outputs: one for the payment, and one returning the change, if any, back to the sender.
 
-```
 Transaction
-```
 
 In Out
 
@@ -207,9 +142,7 @@ It should be noted that fan-out, where a transaction depends on several transact
 
 The traditional banking model achieves a level of privacy by limiting access to information to the parties involved and the trusted third party. The necessity to announce all transactions publicly precludes this method, but privacy can still be maintained by breaking the flow of information in another place: by keeping public keys anonymous. The public can see that someone is sending an amount to someone else, but without information linking the transaction to anyone. This is similar to the level of information released by stock exchanges, where the time and size of individual trades, the "tape", is made public, but without telling who the parties were.
 
-```
 Traditional Privacy Model
-```
 
 ```
 Identities Transactions Trusted
@@ -217,13 +150,9 @@ Counterparty Public
 Third Party
 ```
 
-```
 New Privacy Model
-```
 
-```
 Identities Transactions Public
-```
 
 As an additional firewall, a new key pair should be used for each transaction to keep them from being linked to a common owner. Some linking is still unavoidable with multi-input transactions, which necessarily reveal that their inputs were owned by the same owner. The risk is that if the owner of a key is revealed, linking could reveal other transactions that belonged to the same owner.
 
@@ -235,10 +164,7 @@ We consider the scenario of an attacker trying to generate an alternate chain fa
 | --- | ------------------------------------------------- |
 | q   | = probability the attacker finds the next block   |
 
-```
-if p ≤ q
-q z
-```
+if p ≤ q q z
 
 = z
 

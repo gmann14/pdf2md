@@ -106,10 +106,7 @@ VGG-19 34-layer plain 34-layer residual Residual Network. Based on the above pla
 
 image image image insert shortcut connections (Fig. 3, right) which turn the
 
-```
-output
-3x3 conv, 64
-```
+output 3x3 conv, 64
 
 network into its counterpart residual version. The identity
 
@@ -117,9 +114,7 @@ network into its counterpart residual version. The identity
 size: 224
 ```
 
-```
 3x3 conv, 64
-```
 
 shortcuts (Eqn.(1)) can be directly used when the input and
 
@@ -155,47 +150,25 @@ size: 56
 
 for increasing dimensions. This option introduces no extra
 
-```
-3x3 conv, 256
-3x3 conv, 64
-3x3 conv, 64
-```
+3x3 conv, 256 3x3 conv, 64 3x3 conv, 64
 
 parameter; (B) The projection shortcut in Eqn.(2) is used to
 
-```
-3x3 conv, 256
-3x3 conv, 64
-3x3 conv, 64
-```
+3x3 conv, 256 3x3 conv, 64 3x3 conv, 64
 
 match dimensions (done by 1 × 1 convolutions). For both
 
-```
-3x3 conv, 256
-3x3 conv, 64
-3x3 conv, 64
-```
+3x3 conv, 256 3x3 conv, 64 3x3 conv, 64
 
 options, when the shortcuts go across feature maps of two
 
-```
-3x3 conv, 256
-3x3 conv, 64
-3x3 conv, 64
-```
+3x3 conv, 256 3x3 conv, 64 3x3 conv, 64
 
 sizes, they are performed with a stride of 2.
 
-```
-3x3 conv, 64
-3x3 conv, 64
-```
+3x3 conv, 64 3x3 conv, 64
 
-```
-3x3 conv, 64
-3x3 conv, 64
-```
+3x3 conv, 64 3x3 conv, 64
 
 ### 3.4. Implementation
 
@@ -225,17 +198,11 @@ in [21, 41]. The image is resized with its shorter side ran-
 
 3x3 conv, 128 3x3 conv, 128 standard color augmentation in [21] is used. We adopt batch
 
-```
-3x3 conv, 128
-3x3 conv, 128
-```
+3x3 conv, 128 3x3 conv, 128
 
 normalization (BN) [16] right after each convolution and
 
-```
-3x3 conv, 128
-3x3 conv, 128
-```
+3x3 conv, 128 3x3 conv, 128
 
 before activation, following [16]. We initialize the weights
 
@@ -252,83 +219,45 @@ as in [13] and train all plain/residual nets from scratch. We
 size: 14
 ```
 
-```
-3x3 conv, 512
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 512 3x3 conv, 256 3x3 conv, 256
 
 use SGD with a mini-batch size of 256. The learning rate
 
-```
-3x3 conv, 512
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 512 3x3 conv, 256 3x3 conv, 256
 
 starts from 0.1 and is divided by 10 when the error plateaus, and the models are trained for up to × iterations. We
 
-```
-3x3 conv, 512
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 512 3x3 conv, 256 3x3 conv, 256
 
 use a weight decay of 0.0001 and a momentum of 0.9. We
 
-```
-3x3 conv, 512
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 512 3x3 conv, 256 3x3 conv, 256
 
 do not use dropout [14], following the practice in [16].
 
-```
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 256 3x3 conv, 256
 
 In testing, for comparison studies we adopt the standard
 
-```
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 256 3x3 conv, 256
 
 10-crop testing [21]. For best results, we adopt the fully-
 
-```
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 256 3x3 conv, 256
 
 convolutional form as in [41, 13], and average the scores
 
-```
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 256 3x3 conv, 256
 
 at multiple scales (images are resized such that the shorter
 
-```
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 256 3x3 conv, 256
 
 side is in { , , , , } ).
 
-```
-3x3 conv, 256
-3x3 conv, 256
-```
+3x3 conv, 256 3x3 conv, 256
 
-```
-3x3 conv, 256
-3x3 conv, 256
-4. Experiments
-```
+3x3 conv, 256 3x3 conv, 256 4. Experiments
 
 ```
 output
@@ -340,40 +269,23 @@ size: 7
 
 ### 4.1. ImageNet Classification
 
-```
-3x3 conv, 512
-3x3 conv, 512
-```
+3x3 conv, 512 3x3 conv, 512
 
 3x3 conv, 512 3x3 conv, 512 We evaluate our method on the ImageNet 2012 classifi-
 
-```
-3x3 conv, 512
-3x3 conv, 512
-```
+3x3 conv, 512 3x3 conv, 512
 
 cation dataset [36] that consists of 1000 classes. The models
 
-```
-3x3 conv, 512
-3x3 conv, 512
-```
+3x3 conv, 512 3x3 conv, 512
 
 are trained on the 1.28 million training images, and evalu-
 
-```
-3x3 conv, 512
-3x3 conv, 512
-```
+3x3 conv, 512 3x3 conv, 512
 
 ated on the 50k validation images. We also obtain a final
 
-```
-output
-fc 4096
-avg pool
-avg pool
-```
+output fc 4096 avg pool avg pool
 
 result on the 100k test images, reported by the test server.
 
@@ -381,11 +293,7 @@ size: 1
 
 We evaluate both top-1 and top-5 error rates.
 
-```
-fc 4096
-fc 1000
-fc 1000
-```
+fc 4096 fc 1000 fc 1000
 
 fc 1000 Plain Networks. We first evaluate 18-layer and 34-layer plain nets. The 34-layer plain net is in Fig. 3 (middle). The Figure 3. Example network architectures for ImageNet. Left : the 18-layer plain net is of a similar form. See Table 1 for de- VGG-19 model [41] (19.6 billion FLOPs) as a reference. Mid- tailed architectures. dle : a plain network with 34 parameter layers (3.6 billion FLOPs). The results in Table 2 show that the deeper 34-layer plain Right : a residual network with 34 parameter layers (3.6 billion net has higher validation error than the shallower 18-layer FLOPs). The dotted shortcuts increase dimensions. Table 1 shows plain net. To reveal the reasons, in Fig. 4 (left) we com- [more details and other variants.](http://image-net.org/challenges/LSVRC/2015/) [pare their training/validation errors during the training pro-](http://host.robots.ox.ac.uk:8080/anonymous/3OJ4OJ.html) cedure. We have observed the degradation problem - the
 

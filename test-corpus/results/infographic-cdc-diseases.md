@@ -10,9 +10,7 @@ Accessible version: [https://www.cdc.gov/nndss/about/index.html](https://www.cdc
 
 ### NNDSS BY THE NUMBERS
 
-```
 120 diseases under surveillance
-```
 
 ### 2.7M
 
@@ -40,17 +38,13 @@ Patient
 
 # 1 CDC provides INFORMATION: A person feels ill and goes to the doctor. ► Websites ► Fact sheets ► Toolkits ► Brochures and pamphlets
 
-```
 Healthcare Team
-```
 
 2 Doctor diagnoses or laboratory tests CDC provides GUIDANCE: confrm a disease that is reportable by ► Clinical guidance state law to the local or state public health ► Research department. ► Publications REPORTABLE
 
 - Morbidity and Mortality Doctor or lab sends information about this Weekly Report disease to the local or state public health • Vital Signs department. • Community Guide
 
-```
 Public Health Department
-```
 
 # 3 The public health department receives CDC provides SUPPORT: disease data and uses them to: • identify and control disease outbreaks ► Guidance
 
@@ -60,17 +54,13 @@ treated so disease is not spread NOTIFIABLE
 
 ► Alerts • provide testing and preventive care to • Health Alert Network [HAN] those exposed to the disease • Epidemic Information Exchange • control sources of exposure. [Epi-X] Network ► Large-scale outbreak assistance The state public health department sends ► Small-scale outbreak assistance information about national notifable ► Funding diseases to CDC.
 
-```
 CDC National Notifable Diseases
-```
 
 # 4 Surveillance System Team NNDSS collects national notifable disease data on behalf of CDC.
 
 The NNDSS team receives, secures, processes, and provides these data to disease-specifc programs across CDC. For more information about notifable disease surveillance, please access the NNDSS website at
 
-```
 CDC Disease Program
-```
 
 ### cdc.gov/nndss/
 
