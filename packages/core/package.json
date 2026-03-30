@@ -1,6 +1,6 @@
 {
   "name": "@pdf2md/core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Convert PDF files to Markdown — client-side and Node.js",
   "license": "MIT",
   "type": "module",
