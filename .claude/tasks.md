@@ -70,6 +70,11 @@
   - Fixed noGarbage scoring: exclude markdown links from "long word" check, exclude table separators/spaces from "repeated char" check, added Greek/CJK as acceptable Unicode ranges
   - 8 new tests for cleanText (ligatures, control chars, special spaces, zero-width chars)
   - Results: **8.4→8.9/10 avg** (+0.5). noGarbage 6.8→9.9, IEEE paper 8.3→9.6, census 8.3→9.6, slides 8.0→9.0, form 7.4→8.4
+- [x] **Quality round 4** — DONE 2026-03-30. Scoring refinements + false code block fixes:
+  - Added "code optional" and "links optional" category lists for fair scoring
+  - Short label text (<50 chars, no code syntax) in code fonts → rejected as code blocks
+  - Expanded split ligature vocabulary (committed, pattern, getting, written, button, etc.)
+  - Results: **9.0/10 avg**. 26/28 PDFs at 8.0+, 5 at 9.6. codeBlockDetection 8.3→8.6, linkExtraction 7.2→8.4
 
 ## Phase 3: SEO & Launch — IN PROGRESS
 - [x] SEO: meta tags, schema markup, OG image (layout.tsx + og-image.png + JSON-LD)
@@ -89,9 +94,9 @@
 - **Production URL:** https://pdf2md-five.vercel.app
 - Vercel project: `prj_78nJRUrC3YGVgBbkjhLoqgeX6LUi` (root: `apps/web`)
 - Test corpus: `test-corpus/` — 28 real-world PDFs, evaluation script, quality report
-  - Overall quality: **8.9/10** automated (28/28 PDFs pass, 64 unit tests)
-  - Quality round 3 landed Mar 30 (text cleanup, ligature repair, scoring fixes)
-  - Remaining weak dimensions: linkExtraction (7.3, many PDFs lack link annotations), listDetection (8.0), metadataExtraction (7.9)
+  - Overall quality: **9.0/10** automated (28/28 PDFs pass, 65 unit tests)
+  - Quality rounds 3-4 landed Mar 30 (text cleanup, ligature repair, scoring refinements, code block false positive fixes)
+  - All dimensions at 7.9+. Weakest: metadataExtraction (7.9, PDF-embedded data limitation), listDetection (8.0, column-interleaving edge cases)
   - See `test-corpus/QUALITY-REPORT.md` for full analysis
 
 ## Blockers
