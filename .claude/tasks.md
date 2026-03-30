@@ -54,6 +54,14 @@
   - Text cleanup: ligatures, special spaces, zero-width chars
   - Fallback metadata title extraction from first heading when PDF metadata is empty
   - Results: 8.3→8.4/10 avg, metadataExtraction 5.0→8.0/10, headingDetection 8.4→8.4/10 (same score but much cleaner output)
+- [x] **Quality round 2** — DONE 2026-03-30. Four improvements + expanded corpus:
+  - Font-pair emphasis detection for bold headings in subset-font PDFs (Berkshire headings 4→9)
+  - Roman numeral section headers (I., II., III.) detected as headings (RL survey headings 4→8)
+  - Bare URL auto-linking in markdown output
+  - Min 8-char code block threshold (eliminates isolated math symbols)
+  - Expanded test corpus: 21→28 PDFs (legal contract, census tables, infographic, landscape Gantt, footnote-heavy academic, CJK Chinese, filled form)
+  - Improved scoring: penalizes false code blocks, adjusted expectations for new categories
+  - Key improvements: Berkshire 7.8→8.5, RL survey 7.7→8.0, legal contract 8.2→9.0, scanned declaration 7.6→8.4
 
 ## Phase 3: SEO & Launch — IN PROGRESS
 - [x] SEO: meta tags, schema markup, OG image (layout.tsx + og-image.png + JSON-LD)
@@ -72,12 +80,12 @@
 - Build works (static export)
 - **Production URL:** https://pdf2md-five.vercel.app
 - Vercel project: `prj_78nJRUrC3YGVgBbkjhLoqgeX6LUi` (root: `apps/web`)
-- Test corpus: `test-corpus/` — 21 real-world PDFs, evaluation script, quality report
-  - Overall quality: 8.4/10 automated (21/21 PDFs pass, all scored "Good")
-  - Quality polish landed Mar 30 (false code blocks, false tables, heading detection, metadata, text cleanup)
-  - Remaining weak dimensions: noGarbage (6.9, mostly PDF.js/Type3 font artifacts), linkExtraction (7.3)
+- Test corpus: `test-corpus/` — 28 real-world PDFs, evaluation script, quality report
+  - Overall quality: 8.4/10 automated (28/28 PDFs pass)
+  - Quality round 2 landed Mar 30 (emphasis fonts, URL linking, math denoising, expanded corpus)
+  - Remaining weak dimensions: noGarbage (6.5, PDF.js/Type3 font artifacts), some regressions on code detection scoring
   - See `test-corpus/QUALITY-REPORT.md` for full analysis
 
 ## Blockers
 - No critical blockers. Ready for launch activities.
-- Remaining quality gaps (noGarbage, linkExtraction) are PDF.js limitations, not easily fixable client-side.
+- Remaining quality gaps (noGarbage, column interleaving on short docs) are PDF.js limitations or require per-section column detection.
