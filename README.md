@@ -2,6 +2,7 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/v/@pdf2md/core)](https://www.npmjs.com/package/@pdf2md/core)
+[![npm](https://img.shields.io/npm/v/@pdf2md/mcp)](https://www.npmjs.com/package/@pdf2md/mcp)
 
 Free, fast PDF to Markdown converter. Runs entirely client-side — files never leave your browser.
 
@@ -90,6 +91,7 @@ Converts a PDF buffer to Markdown.
 | `pdfBuffer` | `ArrayBuffer` | The PDF file contents |
 | `options.maxPages` | `number` | Limit number of pages to convert |
 | `options.includeMetadata` | `boolean` | Extract title, author, etc. |
+| `options.yamlFrontMatter` | `boolean` | Prepend YAML front matter with metadata |
 | `options.signal` | `AbortSignal` | Cancel in-progress conversion |
 | `options.onProgress` | `function` | Progress callback |
 

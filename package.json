@@ -2,7 +2,11 @@
   "name": "pdf2md",
   "private": true,
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp", "unrs-resolver"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
   },
   "scripts": {
     "dev": "pnpm --filter @pdf2md/web dev",
@@ -10,5 +14,6 @@
     "test": "pnpm -r test",
     "lint": "pnpm --filter @pdf2md/web lint",
     "typecheck": "pnpm --filter @pdf2md/core typecheck && pnpm --filter @pdf2md/web typecheck"
-  }
+  },
+  "version": ""
 }

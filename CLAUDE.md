@@ -22,14 +22,20 @@ apps/web/          — Next.js web app
     app/           — Next.js App Router pages
     components/    — React components (Converter, DropZone, OutputPane, etc.)
     lib/           — Thin wrappers; core logic lives in packages/core
-packages/core/     — @pdf2md/core npm package (published v0.1.0)
+packages/core/     — @pdf2md/core npm package (published v0.2.0)
   src/
     converter.ts   — Main conversion pipeline
     detection.ts   — Table, code block, column layout detection
     types.ts       — Shared types + constants
+    pdf-compat.ts  — Node.js/browser PDF.js loader (legacy build for Node)
     pdf-worker.ts  — PDF.js worker initialization
     bin/pdf2md.ts  — CLI entry point
-test-corpus/       — 21 real-world PDFs + evaluation framework + quality report
+packages/mcp/      — @pdf2md/mcp MCP server (published v0.1.0)
+  src/
+    index.ts       — MCP server exposing convert_pdf tool
+  bin/
+    pdf2md-mcp.js  — CLI entry point
+test-corpus/       — 28 real-world PDFs + evaluation framework + quality report
 docs/              — Product spec, launch plan
 research/          — Competitor analysis, tech research, stress test
 ```
@@ -80,7 +86,7 @@ pnpm typecheck     # TypeScript type check
 - `packages/core/src/converter.ts` — Core conversion pipeline
 - `packages/core/src/detection.ts` — Table, code block, column detection algorithms
 - `packages/core/src/types.ts` — Shared types (ConversionResult, etc.)
-- `test-corpus/QUALITY-REPORT.md` — Quality scores across 21 real-world PDFs
+- `test-corpus/QUALITY-REPORT.md` — Quality scores across 28 real-world PDFs
 - `.claude/tasks.md` — Project status tracker
 
 ## Conventions

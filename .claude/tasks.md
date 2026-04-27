@@ -31,10 +31,19 @@
 ## Phase 1.5: Extract npm Package ✅ DONE (2026-03-24)
 - [x] Extract conversion pipeline to `packages/core/`
 - [x] Clean public API: `convert(pdfBuffer, options) => Promise<ConversionResult>`
-- [x] CLI wrapper: `npx @pdf2md/core file.pdf` (bin entry needs fix — npm stripped invalid script name)
+- [x] CLI wrapper: `npx @pdf2md/core file.pdf`
 - [x] Website imports from `@pdf2md/core` via workspace protocol
 - [x] Subpath export `@pdf2md/core/types` for SSG-safe imports
-- [x] Publish to npm — **PUBLISHED** `@pdf2md/core@0.1.0` (Mar 25, 2026)
+- [x] Publish to npm — `@pdf2md/core@0.1.0` (Mar 25), **v0.2.0** (Mar 30 — Node.js ESM compat, .js extensions)
+
+## Phase 1.6: MCP Server + Distribution ✅ DONE (2026-03-30)
+- [x] MCP server package (`packages/mcp/`) — exposes `convert_pdf` tool
+- [x] Node.js compatibility: `pdf-compat.ts` conditionally loads legacy pdfjs-dist build
+- [x] All relative imports use `.js` extensions for Node.js ESM resolution
+- [x] Publish to npm — **PUBLISHED** `@pdf2md/mcp@0.1.0` (Mar 30)
+- [x] Claude Code skill (`.claude/skills/pdf2md/SKILL.md`)
+- [x] README updated with MCP + skill instructions
+- [x] End-to-end verified: MCP init → tool list → convert PDF → clean markdown
 
 ## Phase 2: Quality + Differentiation — IN PROGRESS
 - [x] Limited table detection (column alignment analysis → markdown tables)
@@ -83,6 +92,10 @@
   - Key improvements: git cheatsheet 7.7→8.2, IRS W-4 8.6→9.2, resume 9.0→9.2, Chinese 8.2→8.4
   - 2 new unit tests for bimodal column detection, 67 total tests
 
+## Phase 2.5: Autoresearch — PLANNED
+- [x] Draft Autoresearch implementation plan (`docs/autoresearch-plan.md`) — safe overnight loop spec: branch workflow, allowed files, acceptance criteria, quality gates, experiment logging, and agent prompt.
+- [ ] Run first overnight Autoresearch pass on branch `autoresearch/pdf-quality-YYYY-MM-DD` targeting code block detection and link extraction.
+
 ## Phase 3: SEO & Launch — IN PROGRESS
 - [x] SEO: meta tags, schema markup, OG image (layout.tsx + og-image.png + JSON-LD)
 - [x] "How to Convert PDF to Markdown" content below fold (~700 words)
@@ -95,8 +108,10 @@
 ## Infra / Config
 - GitHub: `gmann14/pdf2md`
 - Stack: Next.js 15, TypeScript, Tailwind, PDF.js v5, pnpm monorepo
-- 15 git commits (latest: heading detection + code block detection improvements)
-- **npm package:** `@pdf2md/core@0.1.0` published (npmjs.com/package/@pdf2md/core)
+- 20+ git commits (latest: MCP server, npm v0.2.0, quality rounds 3-5)
+- **npm packages:** `@pdf2md/core@0.2.0` and `@pdf2md/mcp@0.1.0` published on npmjs.com
+- **MCP server:** `@pdf2md/mcp` — works with Claude Code, Cursor, Windsurf
+- **Claude Code skill:** `.claude/skills/pdf2md/SKILL.md` — converts PDFs via CLI
 - Build works (static export)
 - **Production URL:** https://pdf2md-five.vercel.app
 - Vercel project: `prj_78nJRUrC3YGVgBbkjhLoqgeX6LUi` (root: `apps/web`)

@@ -56,16 +56,20 @@ Prints Markdown to stdout. Warnings and errors go to stderr.
 
 ## Conversion Pipeline
 
-1. Parse PDF via PDF.js
-2. Extract text items with position/font metadata
-3. Extract link annotations
+1. Parse PDF via PDF.js (Web Worker in browser, legacy build in Node.js)
+2. Extract text items with position/font metadata per page
+3. Extract link annotations per page
 4. Detect and strip repeated headers/footers
-5. Build font size histogram for heading detection (H1-H6)
-6. Group text into blocks by vertical proximity
-7. Classify blocks: heading, list-item, or paragraph
-8. Match link annotations to text by bounding box overlap
-9. Apply bold/italic from font name heuristics
-10. Assemble Markdown output
+5. Detect and fix multi-column reading order (per-page gap analysis)
+6. Build font size histogram → heading detection (H1-H6)
+7. Detect code fonts via subset font behavior analysis
+8. Group text into blocks by vertical proximity
+9. Classify blocks: heading (font size + bold + section numbers + ALL CAPS), list-item, paragraph
+10. Detect tables (column alignment) and code blocks (monospace + syntax patterns)
+11. Match link annotations to text by bounding box overlap
+12. Apply bold/italic from font name heuristics
+13. Text cleanup: ligature repair, control chars, special spaces
+14. Assemble Markdown output with proper formatting
 
 ## Limits
 

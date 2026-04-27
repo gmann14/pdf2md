@@ -6,8 +6,8 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "pdf2md-mcp": "./bin/pdf2md-mcp.js",
-    "mcp": "./bin/pdf2md-mcp.js"
+    "pdf2md-mcp": "bin/pdf2md-mcp.js",
+    "mcp": "bin/pdf2md-mcp.js"
   },
   "files": [
     "dist",
