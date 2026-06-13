@@ -1,0 +1,16 @@
+project: pdf2md-forge
+discord_channel: pdf2md
+priority: 5
+merge_policy: branch-pr        # commit-main | branch-pr | branch-pr-automerge | ask
+specs_dir: docs         # directory the plan pass reads specs from
+plan_file: IMPLEMENTATION_PLAN.md
+gates:                         # commands that must ALL exit 0 before an iteration counts
+  - pnpm typecheck
+  - pnpm test
+live_proof: none               # none | curl | playwright
+caps:
+  iterations_per_day: 20
+  max_diff_lines: 800          # soft warn; hard stop at 2x
+feedback_adapters:
+  - discord
+lanes: {}                      # per-repo routing overrides (forge specs/01)

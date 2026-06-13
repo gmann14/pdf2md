@@ -13,3 +13,6 @@ test-corpus/blind-pdfs-3/
 
 # Internal marketing strategy (not for public repo)
 docs/marketing-ideas.md
+# forge runtime state (guidance files stay tracked)
+.forge/*
+!.forge/guidance/
