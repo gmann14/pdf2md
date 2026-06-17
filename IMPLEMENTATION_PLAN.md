@@ -29,7 +29,7 @@ project. Each "not implemented" claim was confirmed by code search, not assumed.
   - `pnpm build` static export still succeeds; no analytics/Sentry code runs during SSG.
 - **Complexity:** med
 - **Spec:** `docs/spec.md` §Analytics & Observability (Day 1); Phase 1 checklist "Plausible analytics + Sentry error tracking" (open).
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#2 — CI pipeline: gate lint/typecheck/tests + corpus smoke test on every PR
 - **Description:** Add `.github/workflows` running lint, typecheck, unit tests, and a conversion smoke test against the launch corpus on every PR. No workflow dir exists today.
