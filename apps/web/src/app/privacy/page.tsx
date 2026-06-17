@@ -20,7 +20,7 @@ export default function PrivacyPage() {
       <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
         Privacy Policy
       </h1>
-      <p className="mt-2 text-sm text-gray-500">Last updated: March 2026</p>
+      <p className="mt-2 text-sm text-gray-500">Last updated: June 2026</p>
 
       <div className="mt-8 space-y-6 text-gray-700 leading-relaxed">
         <section>
@@ -52,9 +52,9 @@ export default function PrivacyPage() {
             No Tracking or Cookies
           </h2>
           <p className="mt-2">
-            pdf2md does not use cookies, tracking pixels, fingerprinting, or any
-            form of user tracking. We do not use Google Analytics or any
-            third-party analytics service that tracks individual users.
+            pdf2md does not use cookies, fingerprinting, Google Analytics, or
+            any analytics service that tracks individual users. We use
+            cookie-free aggregate analytics only.
           </p>
         </section>
 
@@ -73,11 +73,13 @@ export default function PrivacyPage() {
             What We May Collect
           </h2>
           <p className="mt-2">
-            If we add privacy-friendly analytics in the future (such as
-            Plausible or Fathom), we will only collect anonymous, aggregate page
-            view data — never file contents, filenames, or extracted text. Any
-            analytics will be cookie-free and fully compliant with GDPR and CCPA
-            without requiring consent banners.
+            We collect anonymous aggregate conversion events through Plausible:
+            conversion count, success or failure, page-count bucket, file-size
+            bucket, stable error code, and whether the Markdown was copied or
+            downloaded. We also use Sentry for client-side error reports when
+            PDF parsing throws unexpectedly. Telemetry never includes PDF file
+            bytes, filenames, extracted text, generated Markdown, or raw PDF
+            metadata.
           </p>
         </section>
 
@@ -108,7 +110,9 @@ export default function PrivacyPage() {
           <p className="mt-2">
             This site is hosted on Vercel. Vercel may collect standard web
             server logs (IP address, user agent, request URL) as part of their
-            hosting infrastructure. This data is subject to{" "}
+            hosting infrastructure. Aggregate analytics are handled by Plausible,
+            and sanitized client error reports are handled by Sentry. This data
+            is subject to{" "}
             <a
               href="https://vercel.com/legal/privacy-policy"
               className="text-blue-600 underline hover:text-blue-800"
@@ -116,6 +120,24 @@ export default function PrivacyPage() {
               rel="noopener noreferrer"
             >
               Vercel&apos;s privacy policy
+            </a>
+            ,{" "}
+            <a
+              href="https://plausible.io/data-policy"
+              className="text-blue-600 underline hover:text-blue-800"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Plausible&apos;s data policy
+            </a>
+            , and{" "}
+            <a
+              href="https://sentry.io/privacy/"
+              className="text-blue-600 underline hover:text-blue-800"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sentry&apos;s privacy policy
             </a>
             . No PDF file data is ever transmitted to Vercel or any other third
             party.

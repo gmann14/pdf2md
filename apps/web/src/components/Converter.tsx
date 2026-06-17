@@ -6,6 +6,11 @@ import { DropZone } from "./DropZone";
 import { ProgressBar } from "./ProgressBar";
 import { OutputPane } from "./OutputPane";
 import { ErrorDisplay } from "./ErrorDisplay";
+import {
+  reportClientParseFailure,
+  reportClientConversionException,
+  trackConversion,
+} from "@/lib/telemetry";
 
 interface FileConversion {
   fileName: string;
@@ -77,6 +82,9 @@ export function Converter() {
 
         if (controller.signal.aborted) break;
 
+        trackConversion({ result, fileSizeBytes: files[i].size });
+        reportClientParseFailure({ result, fileSizeBytes: files[i].size });
+
         setState((prev) => {
           if (prev.phase !== "converting") return prev;
           const updated = [...prev.files];
@@ -86,24 +94,34 @@ export function Converter() {
       } catch (err) {
         if (controller.signal.aborted) break;
 
+        const result: ConversionResult = {
+          status: "failed",
+          markdown: "",
+          messages: [
+            {
+              code: "worker_failed",
+              severity: "error",
+              message: `Unexpected error: ${err instanceof Error ? err.message : "Unknown error"}`,
+            },
+          ],
+          stats: { pageCount: 0, wordCount: 0, processingMs: 0 },
+        };
+
+        trackConversion({ result, fileSizeBytes: files[i].size });
+        reportClientConversionException({
+          error: err,
+          code: "worker_failed",
+          result,
+          fileSizeBytes: files[i].size,
+        });
+
         setState((prev) => {
           if (prev.phase !== "converting") return prev;
           const updated = [...prev.files];
           updated[i] = {
             ...updated[i],
             status: "done",
-            result: {
-              status: "failed",
-              markdown: "",
-              messages: [
-                {
-                  code: "worker_failed",
-                  severity: "error",
-                  message: `Unexpected error: ${err instanceof Error ? err.message : "Unknown error"}`,
-                },
-              ],
-              stats: { pageCount: 0, wordCount: 0, processingMs: 0 },
-            },
+            result,
           };
           return { ...prev, files: updated };
         });

@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import type { ConversionResult } from "@pdf2md/core/types";
+import { trackOutputAction } from "@/lib/telemetry";
 
 interface OutputPaneProps {
   result: ConversionResult;
@@ -36,14 +37,19 @@ export function OutputPane({ result, fileName, onReset }: OutputPaneProps) {
     [],
   );
 
-  const handleCopy = () => copyToClipboard(result.markdown, "copy");
+  const handleCopy = () => {
+    trackOutputAction("copy");
+    copyToClipboard(result.markdown, "copy");
+  };
 
   const handleCopyForAI = () => {
     const prefix = `The following is Markdown extracted from a PDF document "${fileName}":\n\n---\n\n`;
+    trackOutputAction("copy");
     copyToClipboard(prefix + result.markdown, "ai");
   };
 
   const handleDownload = () => {
+    trackOutputAction("download");
     const blob = new Blob([result.markdown], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
