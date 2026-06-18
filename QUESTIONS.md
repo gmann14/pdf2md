@@ -17,3 +17,12 @@ The question, with enough context to answer from a phone.
 ```
 
 (no open questions)
+
+## q-2026-06-18-001  [default]  item: pdf2md#1
+pdf2md#1 shipped observability using a hand-rolled Sentry *envelope* POST (gated by `NEXT_PUBLIC_SENTRY_DSN`) instead of the official `@sentry/nextjs` SDK — chosen to keep the bundle small and protect the <1s LCP target. Keep the lightweight approach or switch to the SDK (breadcrumbs/release tracking, but heavier)?
+1. Keep the hand-rolled lightweight envelope
+2. Switch to @sentry/nextjs SDK
+- type: default
+- default: keep hand-rolled
+- deadline: 48h
+- status: open
