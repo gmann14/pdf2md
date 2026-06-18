@@ -1,5 +1,6 @@
 project: pdf2md
 discord_channel: forge
+discord_thread: pdf2md
 priority: 5
 merge_policy: branch-pr        # commit-main | branch-pr | branch-pr-automerge | ask
 specs_dir: docs         # directory the plan pass reads specs from
