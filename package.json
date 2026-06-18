@@ -12,6 +12,7 @@
     "dev": "pnpm --filter @pdf2md/web dev",
     "build": "pnpm --filter @pdf2md/core build && pnpm --filter @pdf2md/web build",
     "test": "pnpm -r test",
+    "test:corpus-smoke": "pnpm --filter @pdf2md/core exec vitest run src/corpus-smoke.test.ts",
     "lint": "pnpm --filter @pdf2md/web lint",
     "typecheck": "pnpm --filter @pdf2md/core typecheck && pnpm --filter @pdf2md/web typecheck"
   },

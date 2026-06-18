@@ -40,7 +40,7 @@ project. Each "not implemented" claim was confirmed by code search, not assumed.
   - Caches pnpm store for reasonable run time.
 - **Complexity:** med
 - **Spec:** `docs/spec.md` §Regression & CI; Phase 1.5 checklist "Add CI pipeline for lint, typecheck, tests, and corpus smoke tests" (open).
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#3 — Autoresearch runner scaffold + first overnight quality pass
 - **Description:** Create the `autoresearch/` runner (baseline snapshot, experiment log, compare-vs-baseline PASS/FAIL) described in `docs/autoresearch-plan.md`, then run the first pass on a branch targeting code-block detection and link extraction. No `autoresearch/` dir exists; the four `test-corpus/evaluate*.ts` scripts it wraps do exist.
