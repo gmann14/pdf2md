@@ -103,6 +103,18 @@ project. Each "not implemented" claim was confirmed by code search, not assumed.
 - **Spec:** `docs/spec.md` Phase 3; `docs/launch-plan.md` Launch Week; Phase 3 checklist (open).
 - **Status:** open
 
+## pdf2md#9 — Dark mode toggle
+- **Description:** Add a light/dark theme toggle to the web app. Confirmed absent: `globals.css` is a bare `@import "tailwindcss"`, and there is zero `dark`/`theme`/`prefers-color-scheme` usage anywhere in `apps/web/src`. Not in `docs/spec.md` — this is user feedback (`fb-2026-06-18-001`).
+- **Acceptance criteria:**
+  - A visible, keyboard-reachable, labeled toggle switches between light and dark; choice persists across reloads (localStorage).
+  - Initial paint respects the stored choice (falling back to `prefers-color-scheme`) with no flash of the wrong theme and no hydration mismatch in the static export.
+  - Dark variants are defined for all surfaces (drop zone, output pane, progress bar, error display, privacy/how-to pages); text/contrast stays WCAG-AA legible.
+  - No telemetry/privacy regression; `pnpm build` static export still succeeds.
+- **Complexity:** low
+- **Spec:** Not in spec — from feedback `fb-2026-06-18-001` (Discord). If kept long-term, fold into `docs/spec.md` UI section.
+- **Inbox:** `feedback/archive/fb-2026-06-18-001.md`
+- **Status:** open
+
 ---
 
 ## Verified-present (no action — do not re-plan as gaps)
