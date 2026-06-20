@@ -8,6 +8,7 @@ plan_file: IMPLEMENTATION_PLAN.md
 gates:                         # commands that must ALL exit 0 before an iteration counts
   - pnpm typecheck
   - pnpm test
+  - pnpm --filter @pdf2md/web test:e2e   # Playwright happy-path + edge cases (prod build)
 live_proof: none               # none | curl | playwright
 caps:
   iterations_per_day: 20
