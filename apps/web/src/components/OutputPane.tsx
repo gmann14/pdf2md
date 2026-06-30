@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import type { ConversionResult } from "@pdf2md/core/types";
 import { trackOutputAction } from "@/lib/telemetry";
+import { markdownFileNameFromPdf } from "@/lib/zip";
 import { PdfPreview } from "./PdfPreview";
 
 interface OutputPaneProps {
@@ -57,7 +58,7 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = fileName.replace(/\.pdf$/i, ".md");
+    a.download = markdownFileNameFromPdf(fileName);
     a.click();
     URL.revokeObjectURL(url);
   };

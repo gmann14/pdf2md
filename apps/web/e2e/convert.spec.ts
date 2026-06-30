@@ -13,6 +13,44 @@ async function uploadAs(page: Page, fileName: string, mimeType: string, srcPath?
   await page.locator('input[type="file"]').setInputFiles({ name: fileName, mimeType, buffer });
 }
 
+async function uploadManyAs(
+  page: Page,
+  files: Array<{ fileName: string; mimeType: string; srcPath?: string }>,
+) {
+  await page.locator('input[type="file"]').setInputFiles(
+    files.map(({ fileName, mimeType, srcPath }) => ({
+      name: fileName,
+      mimeType,
+      buffer: fs.readFileSync(srcPath ?? path.join(CORPUS, fileName)),
+    })),
+  );
+}
+
+function readStoredZip(filePath: string): Record<string, string> {
+  const bytes = fs.readFileSync(filePath);
+  const entries: Record<string, string> = {};
+  let offset = 0;
+
+  while (bytes.readUInt32LE(offset) === 0x04034b50) {
+    const compressionMethod = bytes.readUInt16LE(offset + 8);
+    const compressedSize = bytes.readUInt32LE(offset + 18);
+    const fileNameLength = bytes.readUInt16LE(offset + 26);
+    const extraLength = bytes.readUInt16LE(offset + 28);
+    const nameStart = offset + 30;
+    const contentStart = nameStart + fileNameLength + extraLength;
+    const contentEnd = contentStart + compressedSize;
+
+    expect(compressionMethod).toBe(0);
+    entries[bytes.subarray(nameStart, nameStart + fileNameLength).toString("utf8")] =
+      bytes.subarray(contentStart, contentEnd).toString("utf8");
+
+    offset = contentEnd;
+  }
+
+  expect(bytes.readUInt32LE(offset)).toBe(0x02014b50);
+  return entries;
+}
+
 test.describe("pdf2md — core conversion workflow", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
@@ -41,6 +79,54 @@ test.describe("pdf2md — core conversion workflow", () => {
 
     // download button is offered
     await expect(page.getByRole("button", { name: /download/i })).toBeVisible();
+  });
+
+  // The Phase 2 multi-file workflow is incomplete unless users can collect the
+  // converted Markdown files as one archive instead of downloading each tab.
+  test("happy path: multiple PDFs download as one ZIP of Markdown files", async ({ page }) => {
+    await uploadManyAs(page, [
+      { fileName: "simple-report.pdf", mimeType: "application/pdf" },
+      {
+        fileName: "multicolumn-ieee-paper.pdf",
+        mimeType: "application/pdf",
+        srcPath: path.join(CORPUS, "real-pdfs/multicolumn-ieee-paper.pdf"),
+      },
+    ]);
+
+    await expect(page.getByText(/2 of 2 converted files ready for bulk download/i)).toBeVisible({ timeout: 60_000 });
+
+    const downloadPromise = page.waitForEvent("download");
+    await page.getByRole("button", { name: /download all converted markdown files as a zip/i }).click();
+    const download = await downloadPromise;
+    expect(download.suggestedFilename()).toBe("pdf2md-markdown.zip");
+
+    const zipPath = await download.path();
+    expect(zipPath).toBeTruthy();
+    const entries = readStoredZip(zipPath!);
+    expect(Object.keys(entries).sort()).toEqual(["multicolumn-ieee-paper.md", "simple-report.md"]);
+    expect(entries["simple-report.md"].trim().length).toBeGreaterThan(20);
+    expect(entries["multicolumn-ieee-paper.md"].trim().length).toBeGreaterThan(20);
+  });
+
+  // Edge: failed tabs must stay visible for diagnosis, but their empty/error
+  // outputs should not be silently packaged into the bulk ZIP.
+  test("edge: ZIP excludes failed files while keeping their tab visible", async ({ page }) => {
+    await uploadManyAs(page, [
+      { fileName: "simple-report.pdf", mimeType: "application/pdf" },
+      { fileName: "invalid-not-a-pdf.pdf", mimeType: "application/pdf" },
+    ]);
+
+    await expect(page.getByText(/1 of 2 converted files ready for bulk download/i)).toBeVisible({ timeout: 60_000 });
+    await expect(page.getByRole("tab", { name: /invalid-not-a-pdf/i })).toBeVisible();
+    await expect(page.getByText(/failed files are excluded/i)).toBeVisible();
+
+    const downloadPromise = page.waitForEvent("download");
+    await page.getByRole("button", { name: /download all converted markdown files as a zip/i }).click();
+    const download = await downloadPromise;
+    const zipPath = await download.path();
+    expect(zipPath).toBeTruthy();
+    const entries = readStoredZip(zipPath!);
+    expect(Object.keys(entries)).toEqual(["simple-report.md"]);
   });
 
   // The comparison view is the Phase 2 spot-check workflow: users need the

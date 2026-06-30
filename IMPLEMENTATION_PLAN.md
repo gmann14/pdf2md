@@ -77,7 +77,7 @@ confirmed by code search before being added.
   - Covered by focused component/unit tests where practical; `pnpm test` and `pnpm typecheck` pass.
 - **Complexity:** low
 - **Spec:** `docs/spec.md` Phase 2 feature 9 "Multi-file drop — Drop up to 5 PDFs, get a zip of `.md` files"; "Use It Ourselves" feature 2.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#6 — JSON structured-output mode + configurable chunking
 - **Description:** Add an output mode returning structured sections (hierarchy, page numbers per chunk) and chunking by page/heading/token count for RAG workflows. Confirmed absent in core: no `outputFormat`, structured section result, or chunking option exists.
