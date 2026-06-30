@@ -168,7 +168,7 @@ structured-output/chunking work already captured above.
 - **Acceptance criteria:** README covers every checklist item above; comparison table claims are accurate (verified against what's actually shipped, not aspirational); a "Try it online" link is present but uses a placeholder/TODO marker until the domain is decided (`q-2026-06-30-001`).
 - **Complexity:** med
 - **Spec:** `docs/launch-plan.md` Pre-Launch → GitHub Repo Setup.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#14 — GitHub repo metadata + npm package discoverability
 - **Description:** Set repo description ("Convert PDF to Markdown — browser, CLI, and library. Free, fast, private.") and topics (`pdf`, `markdown`, `pdf-to-markdown`, `converter`, `typescript`, `pdf-parser`, `cli`, `npm-package`) via `gh repo edit`. Audit `@pdf2md/core`/`@pdf2md/mcp` `package.json` keywords against the same list; confirm TS types ship; confirm npm-rendered README looks right.
