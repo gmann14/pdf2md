@@ -72,6 +72,7 @@ function readStoredZip(filePath: string): Record<string, string> {
 
 test.describe("pdf2md — core conversion workflow", () => {
   test.beforeEach(async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "light" });
     await page.goto("/");
     // DropZone is interactive immediately (SSG); no hydration wait needed.
     await expect(page.getByText(/drag & drop pdfs/i)).toBeVisible();
@@ -98,6 +99,40 @@ test.describe("pdf2md — core conversion workflow", () => {
 
     // download button is offered
     await expect(page.getByRole("button", { name: /download/i })).toBeVisible();
+  });
+
+  // The theme toggle is a persistent accessibility preference. This verifies
+  // the visible control changes the app-wide class, survives reload, and can be
+  // reversed without touching the conversion workflow or telemetry.
+  test("happy path: theme toggle switches to dark mode and persists across reloads", async ({ page }) => {
+    await expect(page.locator("html")).not.toHaveClass(/\bdark\b/);
+
+    await page.getByRole("button", { name: /switch to dark theme/i }).click();
+    await expect(page.locator("html")).toHaveClass(/\bdark\b/);
+    await expect
+      .poll(() => page.evaluate(() => window.localStorage.getItem("pdf2md-theme")))
+      .toBe("dark");
+
+    await page.reload();
+    await expect(page.locator("html")).toHaveClass(/\bdark\b/);
+    await expect(page.getByRole("button", { name: /switch to light theme/i })).toBeVisible();
+
+    await page.getByRole("button", { name: /switch to light theme/i }).click();
+    await expect(page.locator("html")).not.toHaveClass(/\bdark\b/);
+    await expect
+      .poll(() => page.evaluate(() => window.localStorage.getItem("pdf2md-theme")))
+      .toBe("light");
+  });
+
+  // Edge: first paint must respect OS dark preference when there is no stored
+  // choice, otherwise static export users see a light flash or hydration drift
+  // before the client component mounts.
+  test("edge: initial theme falls back to prefers-color-scheme before hydration", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto("/");
+
+    await expect(page.locator("html")).toHaveClass(/\bdark\b/);
+    await expect(page.getByRole("button", { name: /switch to light theme/i })).toBeVisible();
   });
 
   // Pasting a PDF is a keyboard-first intake path. It must enter the same

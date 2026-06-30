@@ -73,10 +73,10 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
           <span
             className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
               result.status === "success"
-                ? "bg-green-100 text-green-800"
+                ? "bg-green-100 text-green-800 dark:bg-green-950/70 dark:text-green-200"
                 : result.status === "partial"
-                  ? "bg-yellow-100 text-yellow-800"
-                  : "bg-red-100 text-red-800"
+                  ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-950/70 dark:text-yellow-200"
+                  : "bg-red-100 text-red-800 dark:bg-red-950/70 dark:text-red-200"
             }`}
             role="status"
           >
@@ -86,7 +86,7 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
                 ? "Converted with warnings"
                 : "Failed"}
           </span>
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-gray-500 dark:text-slate-400">
             {result.stats.pageCount} page{result.stats.pageCount !== 1 ? "s" : ""} &middot;{" "}
             {result.stats.wordCount.toLocaleString()} words &middot;{" "}
             {(result.stats.processingMs / 1000).toFixed(1)}s
@@ -94,7 +94,7 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
         </div>
         <button
           onClick={onReset}
-          className="text-sm text-gray-500 hover:text-gray-700"
+          className="text-sm text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200"
         >
           Convert another
         </button>
@@ -102,11 +102,11 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
 
       {/* Warnings */}
       {hasWarnings && (
-        <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-3">
+        <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-3 dark:border-yellow-900/70 dark:bg-yellow-950/40">
           {result.messages
             .filter((m) => m.severity === "warning")
             .map((m, i) => (
-              <p key={i} className="text-sm text-yellow-800">
+              <p key={i} className="text-sm text-yellow-800 dark:text-yellow-200">
                 {m.message}
               </p>
             ))}
@@ -119,7 +119,7 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
           <button
             onClick={handleCopy}
             aria-label="Copy Markdown to clipboard"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950"
           >
             {copied === "copy" ? (
               <>
@@ -133,7 +133,7 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
           <button
             onClick={handleCopyForAI}
             aria-label="Copy with AI context prefix"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-offset-slate-950"
           >
             {copied === "ai" ? (
               <>
@@ -147,19 +147,19 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
           <button
             onClick={handleDownload}
             aria-label="Download as Markdown file"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-offset-slate-950"
           >
             Download .md
           </button>
         </div>
 
         <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap lg:justify-end">
-          <div className="inline-flex rounded-lg border border-gray-300 bg-white p-1" role="group" aria-label="Output layout">
+          <div className="inline-flex rounded-lg border border-gray-300 bg-white p-1 dark:border-slate-700 dark:bg-slate-900" role="group" aria-label="Output layout">
             <button
               type="button"
               onClick={() => setShowComparison(false)}
               className={`rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                showComparison ? "text-gray-600 hover:bg-gray-50" : "bg-blue-600 text-white"
+                showComparison ? "text-gray-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800" : "bg-blue-600 text-white"
               }`}
               aria-pressed={!showComparison}
             >
@@ -169,7 +169,7 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
               type="button"
               onClick={() => setShowComparison(true)}
               className={`rounded-md px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                showComparison ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-gray-50"
+                showComparison ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800"
               }`}
               aria-pressed={showComparison}
             >
@@ -178,7 +178,7 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
           </div>
           <button
             onClick={() => setShowPreview(!showPreview)}
-            className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:focus:ring-offset-slate-950"
             aria-pressed={showPreview}
           >
             {showPreview ? "Raw" : "Preview"}
@@ -190,16 +190,16 @@ export function OutputPane({ result, fileName, file, onReset }: OutputPaneProps)
       <div className={showComparison ? "grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" : ""}>
         {showComparison && <PdfPreview file={file} />}
 
-        <section aria-label="Markdown output" className="overflow-hidden rounded-xl border border-gray-200 bg-white">
+        <section aria-label="Markdown output" className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-900">
           {showPreview ? (
             <div
-              className="prose prose-sm max-w-none p-6"
+              className="prose prose-sm max-w-none p-6 dark:prose-invert"
               dangerouslySetInnerHTML={{
                 __html: markdownToHtml(result.markdown),
               }}
             />
           ) : (
-            <pre className="max-h-[60vh] overflow-auto overflow-x-auto p-6 text-sm leading-relaxed text-gray-800">
+            <pre className="max-h-[60vh] overflow-auto overflow-x-auto p-6 text-sm leading-relaxed text-gray-800 dark:text-slate-200">
               <code>{result.markdown}</code>
             </pre>
           )}

@@ -130,12 +130,12 @@ export function PdfPreview({ file }: PdfPreviewProps) {
   return (
     <section
       aria-label="Original PDF preview"
-      className="flex min-h-[24rem] flex-col overflow-hidden rounded-xl border border-gray-200 bg-gray-50"
+      className="flex min-h-[24rem] flex-col overflow-hidden rounded-xl border border-gray-200 bg-gray-50 dark:border-slate-800 dark:bg-slate-900"
     >
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 bg-white px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-950">
         <div>
-          <h2 className="text-sm font-semibold text-gray-900">Original PDF</h2>
-          <p className="text-xs text-gray-500">{file.name}</p>
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100">Original PDF</h2>
+          <p className="text-xs text-gray-500 dark:text-slate-400">{file.name}</p>
         </div>
 
         {state.phase === "ready" && (
@@ -144,19 +144,19 @@ export function PdfPreview({ file }: PdfPreviewProps) {
               type="button"
               onClick={() => setPageNumber((current) => Math.max(1, current - 1))}
               disabled={pageNumber <= 1}
-              className="rounded-md border border-gray-300 bg-white px-2.5 py-1.5 text-sm text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="rounded-md border border-gray-300 bg-white px-2.5 py-1.5 text-sm text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-offset-slate-950"
               aria-label="Previous PDF page"
             >
               Previous
             </button>
-            <span className="min-w-20 text-center text-xs text-gray-600" aria-live="polite">
+            <span className="min-w-20 text-center text-xs text-gray-600 dark:text-slate-300" aria-live="polite">
               Page {pageNumber} of {pageCount}
             </span>
             <button
               type="button"
               onClick={() => setPageNumber((current) => Math.min(pageCount, current + 1))}
               disabled={pageNumber >= pageCount}
-              className="rounded-md border border-gray-300 bg-white px-2.5 py-1.5 text-sm text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="rounded-md border border-gray-300 bg-white px-2.5 py-1.5 text-sm text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-offset-slate-950"
               aria-label="Next PDF page"
             >
               Next
@@ -167,13 +167,13 @@ export function PdfPreview({ file }: PdfPreviewProps) {
 
       <div className="flex flex-1 items-start justify-center overflow-auto p-4">
         {state.phase === "loading" && (
-          <p className="self-center text-sm text-gray-500" role="status">
+          <p className="self-center text-sm text-gray-500 dark:text-slate-400" role="status">
             Loading PDF preview...
           </p>
         )}
 
         {state.phase === "failed" && (
-          <div className="self-center rounded-lg border border-yellow-200 bg-yellow-50 p-4 text-sm text-yellow-900" role="status">
+          <div className="self-center rounded-lg border border-yellow-200 bg-yellow-50 p-4 text-sm text-yellow-900 dark:border-yellow-900/70 dark:bg-yellow-950/40 dark:text-yellow-200" role="status">
             PDF preview unavailable. Markdown output and downloads are still available.
             <span className="sr-only"> {state.message}</span>
           </div>

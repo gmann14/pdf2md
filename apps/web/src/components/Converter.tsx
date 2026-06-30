@@ -212,7 +212,7 @@ export function Converter() {
         {state.phase === "converting" && (
           <div>
             {state.files.length > 1 && (
-              <div className="mb-3 text-sm text-gray-600">
+              <div className="mb-3 text-sm text-gray-600 dark:text-slate-300">
                 Converting file {state.currentIndex + 1} of {state.files.length}:{" "}
                 <span className="font-medium">{state.files[state.currentIndex]?.fileName}</span>
               </div>
@@ -235,14 +235,14 @@ export function Converter() {
             {/* Tabs for multiple files */}
             {state.files.length > 1 && (
               <div className="mb-4 space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3">
-                  <div className="text-sm text-gray-600">
-                    <span className="font-medium text-gray-900">
+                <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-slate-800 dark:bg-slate-900">
+                  <div className="text-sm text-gray-600 dark:text-slate-300">
+                    <span className="font-medium text-gray-900 dark:text-slate-100">
                       {state.files.filter((file) => file.result?.status !== "failed").length}
                     </span>{" "}
                     of {state.files.length} converted files ready for bulk download.
                     {state.files.some((file) => file.result?.status === "failed") && (
-                      <span className="ml-1 text-red-700">Failed files are excluded.</span>
+                      <span className="ml-1 text-red-700 dark:text-red-300">Failed files are excluded.</span>
                     )}
                   </div>
                   <button
@@ -250,21 +250,21 @@ export function Converter() {
                     onClick={() => handleDownloadZip(state.files)}
                     disabled={!state.files.some((file) => file.result && file.result.status !== "failed")}
                     aria-label="Download all converted Markdown files as a ZIP"
-                    className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:disabled:bg-slate-800 dark:disabled:text-slate-500 dark:focus:ring-offset-slate-950"
                   >
                     Download all .zip
                   </button>
                 </div>
 
-                <div className="flex gap-1 overflow-x-auto border-b border-gray-200">
+                <div className="flex gap-1 overflow-x-auto border-b border-gray-200 dark:border-slate-800">
                   {state.files.map((file, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveTab(idx)}
                       className={`shrink-0 px-3 py-2 text-sm font-medium transition-colors ${
                         idx === activeTab
-                          ? "border-b-2 border-blue-500 text-blue-600"
-                          : "text-gray-500 hover:text-gray-700"
+                          ? "border-b-2 border-blue-500 text-blue-600 dark:text-blue-400"
+                          : "text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200"
                       }`}
                       aria-selected={idx === activeTab}
                       role="tab"

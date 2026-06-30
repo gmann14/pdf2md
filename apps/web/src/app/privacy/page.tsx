@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — pdf2md",
@@ -10,21 +11,24 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
-      <Link
-        href="/"
-        className="mb-6 inline-block text-sm text-blue-600 hover:text-blue-800"
-      >
-        &larr; Back to converter
-      </Link>
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <Link
+          href="/"
+          className="inline-block text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+        >
+          &larr; Back to converter
+        </Link>
+        <ThemeToggle />
+      </div>
 
       <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
         Privacy Policy
       </h1>
-      <p className="mt-2 text-sm text-gray-500">Last updated: June 2026</p>
+      <p className="mt-2 text-sm text-gray-500 dark:text-slate-400">Last updated: June 2026</p>
 
-      <div className="mt-8 space-y-6 text-gray-700 leading-relaxed">
+      <div className="mt-8 space-y-6 text-gray-700 leading-relaxed dark:text-slate-300">
         <section>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             The Short Version
           </h2>
           <p className="mt-2">
@@ -36,7 +40,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             No File Uploads
           </h2>
           <p className="mt-2">
@@ -48,7 +52,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             No Tracking or Cookies
           </h2>
           <p className="mt-2">
@@ -59,7 +63,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             No Accounts or Personal Data
           </h2>
           <p className="mt-2">
@@ -69,7 +73,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             What We May Collect
           </h2>
           <p className="mt-2">
@@ -84,7 +88,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             Open Source
           </h2>
           <p className="mt-2">
@@ -92,7 +96,7 @@ export default function PrivacyPage() {
             the above by inspecting the{" "}
             <a
               href="https://github.com/gmann14/pdf2md"
-              className="text-blue-600 underline hover:text-blue-800"
+              className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -104,7 +108,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             Third-Party Services
           </h2>
           <p className="mt-2">
@@ -115,7 +119,7 @@ export default function PrivacyPage() {
             is subject to{" "}
             <a
               href="https://vercel.com/legal/privacy-policy"
-              className="text-blue-600 underline hover:text-blue-800"
+              className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -124,7 +128,7 @@ export default function PrivacyPage() {
             ,{" "}
             <a
               href="https://plausible.io/data-policy"
-              className="text-blue-600 underline hover:text-blue-800"
+              className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -133,7 +137,7 @@ export default function PrivacyPage() {
             , and{" "}
             <a
               href="https://sentry.io/privacy/"
-              className="text-blue-600 underline hover:text-blue-800"
+              className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -145,12 +149,12 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-gray-900">Contact</h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100">Contact</h2>
           <p className="mt-2">
             If you have questions about this privacy policy, please{" "}
             <a
               href="https://github.com/gmann14/pdf2md/issues"
-              className="text-blue-600 underline hover:text-blue-800"
+              className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
               target="_blank"
               rel="noopener noreferrer"
             >

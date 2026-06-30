@@ -24,10 +24,10 @@ export function ErrorDisplay({ result, onReset }: ErrorDisplayProps) {
   const title = errorTitles[error.code] ?? "Conversion Failed";
 
   return (
-    <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-center" role="alert">
-      <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
+    <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-center dark:border-red-900/70 dark:bg-red-950/40" role="alert">
+      <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-red-100 dark:bg-red-950">
         <svg
-          className="h-6 w-6 text-red-600"
+          className="h-6 w-6 text-red-600 dark:text-red-300"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -41,11 +41,11 @@ export function ErrorDisplay({ result, onReset }: ErrorDisplayProps) {
           />
         </svg>
       </div>
-      <h3 className="text-lg font-semibold text-red-800">{title}</h3>
-      <p className="mt-1 text-sm text-red-700">{error.message}</p>
+      <h3 className="text-lg font-semibold text-red-800 dark:text-red-200">{title}</h3>
+      <p className="mt-1 text-sm text-red-700 dark:text-red-300">{error.message}</p>
       <button
         onClick={onReset}
-        className="mt-4 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+        className="mt-4 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950"
       >
         Try Another File
       </button>

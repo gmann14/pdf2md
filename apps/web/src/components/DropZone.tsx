@@ -85,15 +85,15 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
         px-6 py-10 sm:py-16 text-center transition-colors
         ${
           disabled
-            ? "cursor-not-allowed border-gray-200 bg-gray-50 opacity-60"
+            ? "cursor-not-allowed border-gray-200 bg-gray-50 opacity-60 dark:border-slate-800 dark:bg-slate-900"
             : dragActive
-              ? "border-blue-500 bg-blue-50"
-              : "border-gray-300 bg-white hover:border-blue-400 hover:bg-gray-50"
+              ? "border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-950/40"
+              : "border-gray-300 bg-white hover:border-blue-400 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-blue-500 dark:hover:bg-slate-800"
         }
       `}
     >
       <svg
-        className="mb-4 h-8 w-8 sm:h-10 sm:w-10 text-gray-400"
+        className="mb-4 h-8 w-8 text-gray-400 sm:h-10 sm:w-10 dark:text-slate-500"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -112,10 +112,10 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
           points="14 4 14 9 19 9"
         />
       </svg>
-      <p className="text-sm font-medium text-gray-700">
+      <p className="text-sm font-medium text-gray-700 dark:text-slate-200">
         {dragActive ? "Drop your PDFs here" : "Drag & drop PDFs, or click to select"}
       </p>
-      <p className="mt-1 text-xs text-gray-500">
+      <p className="mt-1 text-xs text-gray-500 dark:text-slate-400">
         Up to {MAX_FILES} files, max {MAX_FILE_SIZE / 1024 / 1024}MB each — files never leave your browser
       </p>
       <input

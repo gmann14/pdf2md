@@ -122,7 +122,7 @@ confirmed by code search before being added.
 - **Complexity:** low
 - **Spec:** Not in `docs/spec.md`; accepted feedback `fb-2026-06-18-001`. If kept long-term, fold into the spec's UI/accessibility section.
 - **Inbox:** `feedback/archive/fb-2026-06-18-001.md`
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#12 — PWA/offline app-shell feasibility pass
 - **Description:** Explore offline caching of the app shell and PDF.js bundle only if service-worker complexity stays reasonable. Confirmed absent: no service worker, manifest, Workbox, or cache logic exists.

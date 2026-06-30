@@ -21,23 +21,23 @@ export function ProgressBar({ progress, onCancel }: ProgressBarProps) {
       : 0;
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-6" aria-live="polite" role="status">
+    <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900" aria-live="polite" role="status">
       <div className="mb-2 flex items-center justify-between text-sm">
         <span
-          className="font-medium text-gray-700"
+          className="font-medium text-gray-700 dark:text-slate-200"
           role="status"
           aria-live="polite"
         >
           {stageLabels[progress.stage] ?? "Processing..."}
         </span>
-        <span className="text-gray-500">
+        <span className="text-gray-500 dark:text-slate-400">
           {progress.stage === "parsing"
             ? `Page ${progress.currentPage} of ${progress.totalPages}`
             : `${percent}%`}
         </span>
       </div>
       <div
-        className="h-2 overflow-hidden rounded-full bg-gray-100"
+        className="h-2 overflow-hidden rounded-full bg-gray-100 dark:bg-slate-800"
         role="progressbar"
         aria-valuenow={percent}
         aria-valuemin={0}
@@ -50,7 +50,7 @@ export function ProgressBar({ progress, onCancel }: ProgressBarProps) {
       </div>
       <button
         onClick={onCancel}
-        className="mt-3 text-sm text-gray-500 hover:text-gray-700"
+        className="mt-3 text-sm text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200"
       >
         Cancel
       </button>

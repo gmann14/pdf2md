@@ -1,33 +1,38 @@
 import { Converter } from "@/components/Converter";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
+      <div className="mb-8 flex justify-end">
+        <ThemeToggle />
+      </div>
+
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           Convert PDF to Markdown
         </h1>
-        <p className="mt-2 text-gray-600">
+        <p className="mt-2 text-gray-600 dark:text-slate-300">
           Free, fast, and private. File contents never leave your browser.
         </p>
       </div>
       <Converter />
 
       {/* SEO content section */}
-      <section className="mt-16 border-t border-gray-200 pt-12">
+      <section className="mt-16 border-t border-gray-200 pt-12 dark:border-slate-800">
         <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
           How to Convert PDF to Markdown
         </h2>
 
-        <div className="mt-6 space-y-6 text-gray-700 leading-relaxed">
+        <div className="mt-6 space-y-6 text-gray-700 leading-relaxed dark:text-slate-300">
           <p>
             Converting PDF files to Markdown is straightforward with pdf2md. Drop your PDF onto the
             converter above (or click to browse), and get clean Markdown output in seconds. The
             entire conversion happens in your browser — your files are never uploaded to a server.
           </p>
 
-          <h3 className="text-xl font-semibold text-gray-900">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             Three Steps to Convert Any PDF
           </h3>
           <ol className="list-decimal space-y-2 pl-6">
@@ -42,13 +47,13 @@ export default function Home() {
             </li>
             <li>
               <strong>Copy or download</strong> — Copy the Markdown to your clipboard with one
-              click, download it as a <code className="rounded bg-gray-100 px-1.5 py-0.5 text-sm">.md</code> file,
+              click, download it as a <code className="rounded bg-gray-100 px-1.5 py-0.5 text-sm dark:bg-slate-800 dark:text-slate-100">.md</code> file,
               or use the &ldquo;Copy for AI&rdquo; button to paste directly into ChatGPT, Claude,
               or other LLM tools.
             </li>
           </ol>
 
-          <h3 className="text-xl font-semibold text-gray-900">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             What Gets Converted
           </h3>
           <p>
@@ -90,7 +95,7 @@ export default function Home() {
             </li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-900">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             Why Convert PDF to Markdown?
           </h3>
           <p>
@@ -121,18 +126,18 @@ export default function Home() {
             </li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-900">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             Privacy First
           </h3>
           <p>
             Unlike most online converters, pdf2md processes everything locally in your browser using
             Web Workers. Your PDF files are never sent to a server. There are no accounts, no usage
             limits, and no data collection. Read
-            our <Link href="/privacy" className="text-blue-600 underline hover:text-blue-800">privacy policy</Link> for
+            our <Link href="/privacy" className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">privacy policy</Link> for
             details.
           </p>
 
-          <h3 className="text-xl font-semibold text-gray-900">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             Use the npm Package
           </h3>
           <p>
@@ -153,7 +158,7 @@ console.log(result.markdown);`}</code>
             <code>{`npx @pdf2md/core document.pdf > output.md`}</code>
           </pre>
 
-          <h3 className="text-xl font-semibold text-gray-900">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             Limitations
           </h3>
           <p>
@@ -179,7 +184,7 @@ console.log(result.markdown);`}</code>
             </li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-900">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
             Open Source
           </h3>
           <p>
@@ -187,7 +192,7 @@ console.log(result.markdown);`}</code>
             contribute on{" "}
             <a
               href="https://github.com/gmann14/pdf2md"
-              className="text-blue-600 underline hover:text-blue-800"
+              className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -198,15 +203,15 @@ console.log(result.markdown);`}</code>
         </div>
       </section>
 
-      <footer className="mt-12 border-t border-gray-200 pt-6 pb-8 text-center text-sm text-gray-500">
+      <footer className="mt-12 border-t border-gray-200 pt-6 pb-8 text-center text-sm text-gray-500 dark:border-slate-800 dark:text-slate-400">
         <p>
-          <Link href="/privacy" className="hover:text-gray-700 underline">
+          <Link href="/privacy" className="hover:text-gray-700 underline dark:hover:text-slate-200">
             Privacy Policy
           </Link>
           {" · "}
           <a
             href="https://github.com/gmann14/pdf2md"
-            className="hover:text-gray-700 underline"
+            className="hover:text-gray-700 underline dark:hover:text-slate-200"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -215,7 +220,7 @@ console.log(result.markdown);`}</code>
           {" · "}
           <a
             href="https://www.npmjs.com/package/@pdf2md/core"
-            className="hover:text-gray-700 underline"
+            className="hover:text-gray-700 underline dark:hover:text-slate-200"
             target="_blank"
             rel="noopener noreferrer"
           >
