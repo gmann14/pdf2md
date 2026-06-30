@@ -110,7 +110,7 @@ confirmed by code search before being added.
   - Launch execution assets for Product Hunt, HN, Reddit, and Dev.to are tracked as non-code launch tasks, not CI blockers.
 - **Complexity:** low
 - **Spec:** `docs/spec.md` Phase 3; `docs/launch-plan.md` Pre-Launch and Launch Week.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#9 — Dark mode toggle
 - **Description:** Add a light/dark theme toggle to the web app. Confirmed absent: no `dark`, `theme`, `prefers-color-scheme`, or `localStorage` theme logic exists in `apps/web/src`. This is user feedback, not a current product-spec requirement.
