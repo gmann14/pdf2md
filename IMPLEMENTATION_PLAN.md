@@ -55,7 +55,7 @@ confirmed by code search before being added.
   - Core tests cover tagged and fallback cases; `pnpm test` and `pnpm typecheck` pass.
 - **Complexity:** high
 - **Spec:** `docs/spec.md` Phase 2 feature 8 "Tagged PDF fast path"; Phase 2 checklist.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#5 — Comparison view: original PDF render beside Markdown
 - **Description:** Render the source PDF beside the Markdown output for spot-checking. Confirmed absent in the web app: no `page.render`/PDF canvas rendering path exists; the only `getViewport` usage is in core extraction math.

@@ -17,6 +17,10 @@ export default defineConfig({
   },
   webServer: {
     command: "pnpm dev -p 3001",
+    env: {
+      ...process.env,
+      WATCHPACK_POLLING: "true",
+    },
     url: "http://localhost:3001",
     reuseExistingServer: false,
     timeout: 120_000,

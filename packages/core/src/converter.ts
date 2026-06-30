@@ -1,5 +1,10 @@
 import type { PDFDocumentProxy, PDFPageProxy } from "pdfjs-dist";
-import type { TextItem, TextMarkedContent } from "pdfjs-dist/types/src/display/api";
+import type {
+  StructTreeContent,
+  StructTreeNode,
+  TextItem,
+  TextMarkedContent,
+} from "pdfjs-dist/types/src/display/api";
 import { getPdfjs } from "./pdf-compat.js";
 import { initPdfWorker } from "./pdf-worker.js";
 import type {
@@ -37,6 +42,8 @@ interface ExtractedItem {
   page: number;
   /** Set by column reordering; used as sort key in groupIntoBlocks. */
   columnOrder?: number;
+  /** PDF.js marked-content ids used to map tagged PDF structure nodes to text. */
+  structIds?: string[];
 }
 
 interface AnnotationLink {
@@ -50,6 +57,12 @@ interface Block {
   headingLevel?: number;
   listMarker?: string;
   tableRows?: string[][];
+}
+
+interface ExtractedPage {
+  items: ExtractedItem[];
+  links: AnnotationLink[];
+  structTree?: StructTreeNode | null;
 }
 
 // ---------------------------------------------------------------------------
@@ -165,17 +178,30 @@ function isTextItem(item: TextItem | TextMarkedContent): item is TextItem {
 async function extractPageItems(
   page: PDFPageProxy,
   pageNum: number,
-): Promise<{ items: ExtractedItem[]; links: AnnotationLink[] }> {
-  const [textContent, annotations] = await Promise.all([
+): Promise<ExtractedPage> {
+  const [textContent, annotations, structTree] = await Promise.all([
     page.getTextContent(),
     page.getAnnotations(),
+    page.getStructTree().catch(() => null),
   ]);
 
   const viewport = page.getViewport({ scale: 1 });
 
   const items: ExtractedItem[] = [];
+  const markedContentStack: string[] = [];
   for (const item of textContent.items) {
-    if (!isTextItem(item) || item.str.trim() === "") continue;
+    if (!isTextItem(item)) {
+      if (item.type === "beginMarkedContentProps" && item.id) {
+        markedContentStack.push(item.id);
+      } else if (item.type === "beginMarkedContent") {
+        markedContentStack.push("");
+      } else if (item.type === "endMarkedContent") {
+        markedContentStack.pop();
+      }
+      continue;
+    }
+
+    if (item.str.trim() === "") continue;
 
     // transform: [scaleX, skewX, skewY, scaleY, translateX, translateY]
     const fontSize = Math.abs(item.transform[3]);
@@ -193,6 +219,7 @@ async function extractPageItems(
       fontName: item.fontName,
       hasEOL: item.hasEOL,
       page: pageNum,
+      structIds: markedContentStack.filter(Boolean),
     });
   }
 
@@ -207,7 +234,7 @@ async function extractPageItems(
     }
   }
 
-  return { items, links };
+  return { items, links, structTree };
 }
 
 // ---------------------------------------------------------------------------
@@ -382,6 +409,156 @@ function groupIntoBlocks(
   if (currentItems.length > 0) {
     blocks.push(classifyBlock(currentItems, profile, emphasisFonts));
   }
+
+  return blocks;
+}
+
+// ---------------------------------------------------------------------------
+// Tagged PDF semantic block building
+// ---------------------------------------------------------------------------
+
+function isStructTreeContent(
+  node: StructTreeNode | StructTreeContent,
+): node is StructTreeContent {
+  return "type" in node;
+}
+
+function normalizeStructRole(role: string): string {
+  return role.replace(/^\/+/, "").toUpperCase();
+}
+
+function headingLevelFromRole(role: string): number | undefined {
+  const normalized = normalizeStructRole(role);
+  const match = normalized.match(/^H([1-6])$/);
+  if (match) return Number(match[1]);
+  if (normalized === "TITLE") return 1;
+  if (normalized === "H") return 2;
+  return undefined;
+}
+
+function collectStructContentIds(node: StructTreeNode | StructTreeContent): string[] {
+  if (isStructTreeContent(node)) {
+    return node.type === "content" && node.id ? [node.id] : [];
+  }
+
+  const ids: string[] = [];
+  for (const child of node.children ?? []) {
+    ids.push(...collectStructContentIds(child));
+  }
+  return ids;
+}
+
+function itemsForStructIds(
+  ids: string[],
+  itemsByStructId: Map<string, ExtractedItem[]>,
+): ExtractedItem[] {
+  const result: ExtractedItem[] = [];
+  const seen = new Set<ExtractedItem>();
+
+  for (const id of ids) {
+    const items = itemsByStructId.get(id);
+    if (!items) continue;
+    for (const item of items) {
+      if (seen.has(item)) continue;
+      seen.add(item);
+      result.push(item);
+    }
+  }
+
+  return result;
+}
+
+function blocksFromStructNode(
+  node: StructTreeNode | StructTreeContent,
+  itemsByStructId: Map<string, ExtractedItem[]>,
+  profile: FontProfile,
+): Block[] {
+  if (isStructTreeContent(node)) return [];
+
+  const role = normalizeStructRole(node.role);
+  const headingLevel = headingLevelFromRole(role);
+
+  if (headingLevel !== undefined) {
+    const items = itemsForStructIds(collectStructContentIds(node), itemsByStructId);
+    return items.length > 0 ? [{ items, type: "heading", headingLevel }] : [];
+  }
+
+  if (role === "P" || role === "PARA" || role === "PARAGRAPH") {
+    const items = itemsForStructIds(collectStructContentIds(node), itemsByStructId);
+    return items.length > 0 ? [{ items, type: "paragraph" }] : [];
+  }
+
+  if (role === "LI") {
+    const items = itemsForStructIds(collectStructContentIds(node), itemsByStructId);
+    if (items.length === 0) return [];
+
+    const text = items.map((item) => item.str).join(" ").trimStart();
+    const numberedMatch = text.match(NUMBERED_PATTERN);
+    return [{
+      items,
+      type: "list-item",
+      listMarker: numberedMatch ? `${numberedMatch[1]}.` : "-",
+    }];
+  }
+
+  if (role === "TABLE" || role === "TR" || role === "TH" || role === "TD") {
+    const items = itemsForStructIds(collectStructContentIds(node), itemsByStructId);
+    return items.length > 0
+      ? detectTablesAndCode([{ items, type: "paragraph" }], new Set())
+      : [];
+  }
+
+  const blocks: Block[] = [];
+  for (const child of node.children ?? []) {
+    blocks.push(...blocksFromStructNode(child, itemsByStructId, profile));
+  }
+
+  // Some producers use generic StructElem/H tags while the content itself still
+  // carries enough font information to classify; this keeps tagged output useful
+  // without accepting an empty or all-container tree as semantic structure.
+  if (blocks.length === 0 && role === "STRUCTELEM") {
+    const items = itemsForStructIds(collectStructContentIds(node), itemsByStructId);
+    if (items.length > 0) blocks.push(classifyBlock(items, profile));
+  }
+
+  return blocks;
+}
+
+function buildTaggedBlocks(
+  items: ExtractedItem[],
+  structTrees: Array<StructTreeNode | null | undefined>,
+  profile: FontProfile,
+): Block[] | null {
+  const usableTrees = structTrees.filter((tree): tree is StructTreeNode => Boolean(tree));
+  if (usableTrees.length === 0) return null;
+
+  const itemsByStructId = new Map<string, ExtractedItem[]>();
+  let totalChars = 0;
+  for (const item of items) {
+    totalChars += item.str.trim().length;
+    for (const id of item.structIds ?? []) {
+      const existing = itemsByStructId.get(id);
+      if (existing) existing.push(item);
+      else itemsByStructId.set(id, [item]);
+    }
+  }
+  if (itemsByStructId.size === 0 || totalChars === 0) return null;
+
+  const blocks = usableTrees.flatMap((tree) =>
+    blocksFromStructNode(tree, itemsByStructId, profile),
+  );
+  if (blocks.length === 0) return null;
+
+  const taggedItems = new Set<ExtractedItem>();
+  for (const block of blocks) {
+    for (const item of block.items) taggedItems.add(item);
+  }
+
+  const taggedChars = [...taggedItems].reduce(
+    (sum, item) => sum + item.str.trim().length,
+    0,
+  );
+  if (taggedChars / totalChars < 0.25) return null;
 
   return blocks;
 }
@@ -1144,6 +1321,7 @@ export async function convert(
   // Extract text and links from all pages
   const allItems: ExtractedItem[] = [];
   const allLinks: AnnotationLink[] = [];
+  const structTrees: Array<StructTreeNode | null | undefined> = [];
 
   for (let i = 1; i <= maxPages; i++) {
     if (options?.signal?.aborted) {
@@ -1174,9 +1352,10 @@ export async function convert(
 
     try {
       const page = await doc.getPage(i);
-      const { items, links } = await extractPageItems(page, i);
+      const { items, links, structTree } = await extractPageItems(page, i);
       allItems.push(...items);
       allLinks.push(...links);
+      structTrees.push(structTree);
     } catch (err) {
       messages.push({
         code: "parse_failed",
@@ -1231,8 +1410,12 @@ export async function convert(
   // Detect emphasis fonts (subset fonts used for bold/emphasis on short lines)
   const emphasisFonts = detectEmphasisFonts(reordered, profile.bodySize);
 
+  // Prefer tagged PDF semantics when a usable structure tree maps to text.
+  // Empty/malformed trees fall back to the established visual heuristics.
+  const taggedBlocks = buildTaggedBlocks(reordered, structTrees, profile);
+
   // Group into blocks (paragraphs, headings, list items)
-  const rawBlocks = groupIntoBlocks(reordered, profile, emphasisFonts);
+  const rawBlocks = taggedBlocks ?? groupIntoBlocks(reordered, profile, emphasisFonts);
 
   // Merge consecutive very short blocks (diagram labels, formula fragments)
   const blocks = mergeShortBlocks(rawBlocks);
