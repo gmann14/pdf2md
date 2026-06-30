@@ -154,3 +154,124 @@ Phase 4 enhanced backend/OCR/API work remains conditional on user demand per
 `docs/spec.md`; no current feedback or docs update makes it a launch-blocking
 item. Phase 5 CLI polish/Homebrew/folder mode is lower priority than the
 structured-output/chunking work already captured above.
+
+## Marketing & launch (from `docs/launch-plan.md`, converted to tracked items 2026-06-30)
+
+`docs/launch-plan.md` (written 2026-03-23) is a real, sensible plan — GitHub/npm ecosystem first, then content, then community launches — but only the npm-publish step had actually been executed three months later. These items put the rest of it through the same loop that ships code.
+
+**Autonomy policy for this batch:** repo/package mechanics and on-site content (blog posts) run autonomously like any other item — they're reversible and low-stakes. Anything that publishes a post under Graham's identity on a third-party platform (Product Hunt, Hacker News, Reddit, StackOverflow/GitHub-issue answers) is **drafted only** — the deliverable is a reviewable file, never an actual submission. Awesome-list PRs are autonomous (low-stakes, normal OSS practice, easily closed if wrong) but still open under Graham's GitHub identity — worth knowing, not asking permission for each one.
+
+### GitHub & npm (channel 1 — highest priority per the plan; not domain-blocked)
+
+## pdf2md#13 — README as a sales page
+- **Description:** Rewrite the root README per `docs/launch-plan.md`'s "GitHub Repo Setup" checklist: hero tagline, npm/license/build badges, 3-line quick start, screenshot or GIF of the web tool, feature table, comparison table vs. `pdf2md.morethan.io` and `marker`/`Docling` (honest about our limitations too), "How it works" section linking to docs, contributing guide link. The repo IS the marketing — treat it like a landing page.
+- **Acceptance criteria:** README covers every checklist item above; comparison table claims are accurate (verified against what's actually shipped, not aspirational); a "Try it online" link is present but uses a placeholder/TODO marker until the domain is decided (`q-2026-06-30-001`).
+- **Complexity:** med
+- **Spec:** `docs/launch-plan.md` Pre-Launch → GitHub Repo Setup.
+- **Status:** open
+
+## pdf2md#14 — GitHub repo metadata + npm package discoverability
+- **Description:** Set repo description ("Convert PDF to Markdown — browser, CLI, and library. Free, fast, private.") and topics (`pdf`, `markdown`, `pdf-to-markdown`, `converter`, `typescript`, `pdf-parser`, `cli`, `npm-package`) via `gh repo edit`. Audit `@pdf2md/core`/`@pdf2md/mcp` `package.json` keywords against the same list; confirm TS types ship; confirm npm-rendered README looks right.
+- **Acceptance criteria:** `gh repo view` shows the new description + topics; both packages' keywords match; no broken links in the npm-rendered README.
+- **Complexity:** low
+- **Spec:** `docs/launch-plan.md` Pre-Launch → GitHub Repo Setup, npm Package.
+- **Status:** open
+
+### Content (channel 2)
+
+## pdf2md#15 — Blog infrastructure: add `/blog` to the Next.js site
+- **Description:** Add a statically-generated `/blog` section (markdown-file-driven, no CMS needed at this scale) with a listing page and post template, matching the existing site's design system. This is a prerequisite for the content-calendar items below — `docs/launch-plan.md` calls on-site the best option for SEO passthrough vs. Dev.to/Medium.
+- **Acceptance criteria:** `/blog` lists posts, individual post pages render from markdown with proper meta tags/OG image, included in the sitemap, passes the existing E2E/typecheck/test gates.
+- **Complexity:** med
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content.
+- **Status:** open
+
+## pdf2md#16 — Blog post: "How to Convert PDF to Markdown" (target: pdf to markdown)
+- **Description:** On-site how-to guide, genuinely useful (not thin filler) — the spec's whole competitive thesis is being better than the incumbent's zero-content approach.
+- **Acceptance criteria:** Published at `/blog`, targets the keyword naturally in title/H1/meta, links back to the converter, technically accurate to what's actually shipped.
+- **Complexity:** low
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content (week 1).
+- **Status:** open
+
+## pdf2md#17 — Blog post: "Best PDF to Markdown Converters in 2026" (target: best pdf to markdown converter)
+- **Description:** Honest comparison piece — pdf2md, `pdf2md.morethan.io`, `marker`, `Docling`, paid options. Per `docs/launch-plan.md`, honesty about our own limitations (no OCR, table edge cases) builds more trust than oversell.
+- **Acceptance criteria:** Published at `/blog`; comparison claims about competitors are verifiable, not invented; pdf2md's own listed limitations match `docs/spec.md`'s quality tables.
+- **Complexity:** med
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content (week 2).
+- **Status:** open
+
+## pdf2md#18 — Blog post: "PDF to Markdown for AI Workflows" (target: pdf to markdown ai)
+- **Description:** Developer-audience piece on the RAG/LLM-context-prep use case — the MCP server and "Copy for AI" button are the differentiated angle vs. the incumbent, which has neither.
+- **Acceptance criteria:** Published at `/blog`; covers the npm library, CLI, and MCP server usage with real code snippets that actually run.
+- **Complexity:** med
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content (week 3).
+- **Status:** open
+
+## pdf2md#19 — Blog post: "Convert PDF Tables to Markdown" (target: pdf table to markdown)
+- **Description:** Table detection already shipped (column-alignment heuristic) — this is no longer gated on a future phase like the original plan assumed.
+- **Acceptance criteria:** Published at `/blog`; demonstrates real table conversion with before/after examples; honest about the known failure modes (borderless/merged-cell tables per `docs/spec.md`'s quality tables).
+- **Complexity:** low
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content (week 4).
+- **Status:** open
+
+## pdf2md#20 — Blog post: "PDF to Markdown: Python vs. JavaScript" (target: pdf to markdown python)
+- **Description:** Comparison/analysis piece — doesn't require new product features, draws traffic from the Python-ecosystem audience.
+- **Acceptance criteria:** Published at `/blog`; technically accurate comparison of approaches (PyMuPDF/pdfplumber/marker vs. PDF.js-based pdf2md); not a thinly-veiled ad.
+- **Complexity:** low
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content (week 6).
+- **Status:** open
+
+## pdf2md#21 — Blog post: "How PDF Text Extraction Actually Works" (target: pdf text extraction)
+- **Description:** Technical deep-dive on the real shipped pipeline (font-size histograms for headings, subset-font detection for code blocks, multi-column reordering) — draws on `CLAUDE.md`'s architecture section, genuinely substantive.
+- **Acceptance criteria:** Published at `/blog`; technically accurate to `packages/core/src/converter.ts`/`detection.ts`; includes real examples, not hand-waving.
+- **Complexity:** med
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content (week 7).
+- **Status:** open
+
+## pdf2md#22 — Blog post: "Building an npm Package from a Side Project" (developer-audience narrative)
+- **Description:** Builder-story piece — the `@pdf2md/core` extraction, monorepo structure, CI setup. Less keyword-targeted, more for Dev.to/HN credibility and backlinks.
+- **Acceptance criteria:** Published at `/blog` (and noted as a Dev.to cross-post candidate in pdf2md#25); honest narrative, not generic AI-blog filler.
+- **Complexity:** low
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content (week 8).
+- **Status:** open
+
+*(Deferred: "PDF to Markdown API" post — gated on the Phase 4 backend, which `docs/spec.md` keeps conditional on demand. Add when/if that ships.)*
+
+### Community launches — DRAFT ONLY, human submits (channel 3)
+
+## pdf2md#23 — Draft Product Hunt launch assets
+- **Description:** Draft (do not submit) tagline, description, maker's first comment, and a screenshot list per `docs/launch-plan.md`'s Day-1 checklist. Output to `docs/launch-assets/product-hunt.md`.
+- **Acceptance criteria:** A complete, ready-to-paste draft exists; explicitly flagged in the file and in a filed question that it is NOT submitted and needs Graham to click submit, choose timing (Tue/Wed 12:01 AM PT), and review the maker profile links.
+- **Complexity:** low
+- **Spec:** `docs/launch-plan.md` Launch Week → Day 1.
+- **Status:** open
+
+## pdf2md#24 — Draft Show HN post + Reddit launch posts (5 subreddit variants)
+- **Description:** Draft (do not submit) the "Show HN" post and one tailored post each for r/webdev, r/programming, r/ChatGPT or r/LocalLLaMA, r/markdown, r/SideProject — per `docs/launch-plan.md`'s differing angles per audience. Output to `docs/launch-assets/`.
+- **Acceptance criteria:** Each draft uses the audience-appropriate angle from the plan; none are spammy/copy-pasted across subreddits; explicitly flagged as not submitted, needs Graham's review + manual posting (one per day, per the plan's own anti-spam rule).
+- **Complexity:** med
+- **Spec:** `docs/launch-plan.md` Launch Week → Day 2-5.
+- **Status:** open
+
+## pdf2md#25 — Draft Dev.to / Hashnode launch articles
+- **Description:** Draft (do not submit) the Dev.to technical deep-dive (PDF.js, font heuristics, the pipeline — can reuse/adapt pdf2md#21's content) and a Hashnode cross-post angle.
+- **Acceptance criteria:** Drafts exist with code snippets that actually run; flagged as not submitted, needs Graham's review.
+- **Complexity:** low
+- **Spec:** `docs/launch-plan.md` Launch Week → Day 5-7.
+- **Status:** open
+
+### Ongoing growth — autonomous (low-stakes/reversible)
+
+## pdf2md#26 — Submit PRs to relevant awesome-list repos
+- **Description:** Find and PR pdf2md into awesome-markdown, awesome-typescript, and any genuinely-fitting awesome-pdf/awesome-ai-tools/awesome-llm lists, following each repo's own contribution format.
+- **Acceptance criteria:** PRs opened (under Graham's GitHub identity — low-stakes, normal OSS practice, easily closed if a maintainer objects), each following that list's contribution guidelines exactly; no PR to a list pdf2md doesn't genuinely fit.
+- **Complexity:** low
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → GitHub Star Accumulation.
+- **Status:** open
+
+## pdf2md#27 — Draft helpful answers to real PDF-to-Markdown questions (StackOverflow, GitHub issues)
+- **Description:** Search StackOverflow and GitHub issues across LangChain/LlamaIndex/Haystack for genuine "pdf to markdown" questions; draft (do not post) a helpful, non-spammy answer that actually solves the asker's problem, mentioning pdf2md where it's genuinely the right tool. Output to `docs/launch-assets/qa-drafts.md`.
+- **Acceptance criteria:** Each draft answers a REAL, currently-open question (linked); answers solve the problem first, mention pdf2md second; flagged as not posted, needs Graham's review before posting (community-reputation-sensitive — gets this one wrong once and it's spammy forever).
+- **Complexity:** med
+- **Spec:** `docs/launch-plan.md` Ongoing Growth → Answer questions on GitHub/StackOverflow.
+- **Status:** open
