@@ -16,3 +16,5 @@ docs/marketing-ideas.md
 # forge runtime state (guidance files stay tracked)
 .forge/*
 !.forge/guidance/
+
+.playwright-mcp/
