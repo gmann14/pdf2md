@@ -519,7 +519,7 @@ These are implementation checklists for the scope above, not a second source of 
 - [ ] Metadata extraction → YAML front matter
 - [ ] Comparison view: original PDF vs Markdown
 - [ ] Mobile polish/performance improvements
-- [ ] Explore PWA/offline caching of app shell + PDF.js bundle if service-worker complexity stays reasonable
+- [x] Explore PWA/offline caching of app shell + PDF.js bundle if service-worker complexity stays reasonable
 
 ### Phase 3: SEO & Launch (week 3-4)
 

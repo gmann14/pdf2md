@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistration";
 import "./globals.css";
 
 const siteUrl = "https://pdf2md-five.vercel.app";
@@ -19,6 +20,8 @@ export const metadata: Metadata = {
     "free pdf converter",
   ],
   authors: [{ name: "pdf2md" }],
+  applicationName: "pdf2md",
+  manifest: "/manifest.webmanifest",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
@@ -125,6 +128,7 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         ) : null}
+        <ServiceWorkerRegistration />
         {children}
       </body>
     </html>

@@ -132,7 +132,7 @@ confirmed by code search before being added.
   - If deferred, the plan/spec is updated with a concrete reason and revisit trigger.
 - **Complexity:** med
 - **Spec:** `docs/spec.md` Phase 2 checklist "Explore PWA/offline caching of app shell + PDF.js bundle if service-worker complexity stays reasonable."
-- **Status:** open
+- **Status:** done
 
 ---
 
