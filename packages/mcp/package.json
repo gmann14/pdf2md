@@ -5,6 +5,13 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "bin": {
     "pdf2md-mcp": "bin/pdf2md-mcp.js",
     "mcp": "bin/pdf2md-mcp.js"
@@ -31,11 +38,17 @@
     "node": ">=18"
   },
   "keywords": [
-    "mcp",
     "pdf",
     "markdown",
-    "converter",
     "pdf-to-markdown",
+    "converter",
+    "typescript",
+    "pdf-parser",
+    "cli",
+    "npm-package",
+    "parser",
+    "text-extraction",
+    "mcp",
     "claude",
     "ai-agent",
     "model-context-protocol"

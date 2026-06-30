@@ -175,7 +175,7 @@ structured-output/chunking work already captured above.
 - **Acceptance criteria:** `gh repo view` shows the new description + topics; both packages' keywords match; no broken links in the npm-rendered README.
 - **Complexity:** low
 - **Spec:** `docs/launch-plan.md` Pre-Launch → GitHub Repo Setup, npm Package.
-- **Status:** open
+- **Status:** done
 
 ### Content (channel 2)
 

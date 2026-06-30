@@ -4,6 +4,18 @@
   "description": "Convert PDF files to Markdown — client-side and Node.js",
   "license": "MIT",
   "type": "module",
+  "keywords": [
+    "pdf",
+    "markdown",
+    "pdf-to-markdown",
+    "converter",
+    "typescript",
+    "pdf-parser",
+    "cli",
+    "npm-package",
+    "parser",
+    "text-extraction"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
