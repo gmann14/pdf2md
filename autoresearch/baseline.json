@@ -1,0 +1,127 @@
+{
+  "timestamp": "2026-06-30T00:00:00.000Z",
+  "gitSha": "captured-from-committed-reports",
+  "branch": "bootstrap",
+  "diffSummary": "Baseline parsed from committed quality reports.",
+  "datasets": {
+    "training": {
+      "average": 9.2,
+      "documentScores": {
+        "academic-footnotes-philosophy.pdf": 9.6,
+        "code-book-think-python.pdf": 9.6,
+        "code-haskell-report.pdf": 9.6,
+        "multicolumn-ieee-paper.pdf": 9.6,
+        "tables-census-poverty.pdf": 9.6,
+        "financial-berkshire-letter.pdf": 9.5,
+        "slides-stanford-ml.pdf": 9.5,
+        "academic-attention-paper.pdf": 9.4,
+        "legal-contract-clauses.pdf": 9.4,
+        "legal-us-copyright-circular.pdf": 9.4,
+        "scientific-resnet.pdf": 9.4,
+        "tables-cdc-report.pdf": 9.4,
+        "form-filled-1040.pdf": 9.2,
+        "government-irs-w4.pdf": 9.2,
+        "government-irs-w9.pdf": 9.2,
+        "manual-arduino-guide.pdf": 9.2,
+        "newsletter-imf-weo.pdf": 9.2,
+        "resume-sample.pdf": 9.2,
+        "government-nist-cybersecurity.pdf": 9.1,
+        "infographic-cdc-diseases.pdf": 9.1,
+        "whitepaper-bitcoin.pdf": 9.1,
+        "multicolumn-gan-paper.pdf": 9,
+        "scientific-bert-paper.pdf": 8.9,
+        "scientific-rl-survey.pdf": 8.8,
+        "scanned-declaration.pdf": 8.7,
+        "code-git-cheatsheet.pdf": 8.6,
+        "multilingual-udhr-chinese.pdf": 8.5,
+        "landscape-gantt-chart.pdf": 8
+      },
+      "dimensions": {
+        "noGarbage": 9.9,
+        "overallReadability": 9.8,
+        "paragraphIntegrity": 9.5,
+        "headingDetection": 9,
+        "codeBlockDetection": 9,
+        "listDetection": 8.7,
+        "tableDetection": 8.6,
+        "linkExtraction": 8.4,
+        "metadataExtraction": 7.9
+      }
+    },
+    "blind1": {
+      "average": 9.2,
+      "documentScores": {
+        "cookbook-tsu-recipes.pdf": 9.6,
+        "spec-rfc9293-tcp.pdf": 9.6,
+        "who-tb-report-2024.pdf": 9.6,
+        "thesis-mit-ir-2024.pdf": 9.4,
+        "medical-cdc-sti-report.pdf": 9.2,
+        "poster-exanest-hipeac.pdf": 9.1,
+        "taxform-uk-sa100.pdf": 9,
+        "textbook-mit-calculus-ch15.pdf": 8.9,
+        "annual-report-amazon-2023.pdf": 8.8,
+        "brochure-nps-grand-canyon.pdf": 8.7,
+        "patent-waymo-autonomous.pdf": 6
+      },
+      "dimensions": {
+        "headingDetection": 9.4,
+        "paragraphIntegrity": 9.5,
+        "listDetection": 8.6,
+        "tableDetection": 8.8,
+        "codeBlockDetection": 8.7,
+        "linkExtraction": 8.3,
+        "metadataExtraction": 8,
+        "noGarbage": 9.7,
+        "overallReadability": 9.7
+      }
+    },
+    "blind2": {
+      "average": 9,
+      "documentScores": {
+        "manual-raspberry-pi-guide.pdf": 9.6,
+        "datasheet-ti-msp430g2553.pdf": 9.3,
+        "clinical-lancet-diabetes-meta.pdf": 9.2,
+        "eu-ai-act-regulation.pdf": 9.2,
+        "philosophy-open-science.pdf": 9,
+        "handbook-nwmissouri-employee.pdf": 8.9,
+        "council-lakewood-ca-agenda-2024.pdf": 8.8,
+        "math-periodic-tiling-tao.pdf": 8.6,
+        "fomc-minutes-jan2025.pdf": 8.4
+      },
+      "dimensions": {
+        "headingDetection": 9.2,
+        "paragraphIntegrity": 9.7,
+        "listDetection": 8.8,
+        "tableDetection": 7.9,
+        "codeBlockDetection": 8.2,
+        "linkExtraction": 8.8,
+        "metadataExtraction": 8,
+        "noGarbage": 8.6,
+        "overallReadability": 9.9
+      }
+    },
+    "blind3": {
+      "average": 9.1,
+      "documentScores": {
+        "stress-icc-amicus-brief.pdf": 9.6,
+        "stress-scotus-loper-bright.pdf": 9.3,
+        "stress-irs-pub17-tax-guide.pdf": 9.2,
+        "stress-neurips-2023-paper.pdf": 9.1,
+        "stress-njtransit-northeast-corridor.pdf": 8.8,
+        "stress-gpo-style-manual-2016.pdf": 8.5
+      },
+      "dimensions": {
+        "headingDetection": 9.5,
+        "paragraphIntegrity": 9.5,
+        "listDetection": 8.7,
+        "tableDetection": 8.7,
+        "codeBlockDetection": 7.3,
+        "linkExtraction": 7.8,
+        "metadataExtraction": 8,
+        "noGarbage": 9.7,
+        "overallReadability": 10
+      }
+    }
+  },
+  "combined": 9.125
+}

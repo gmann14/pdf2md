@@ -44,7 +44,7 @@ confirmed by code search before being added.
   - First accepted experiment improves combined score >=0.05 or a target dimension >=0.3 with no document dropping >0.3; logged to `experiments.jsonl`.
 - **Complexity:** med
 - **Spec:** `docs/autoresearch-plan.md` §6 Implementation Shape and §8 Tonight's Proposed Run; `docs/quality-testing.md` §Dimension Averages Across All Sets.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#4 — Tagged-PDF fast path via `getStructTree()`
 - **Description:** When a PDF exposes a structure tree (`page.getStructTree()`), use it for semantic-accurate conversion instead of pure heuristics. Confirmed absent: no `getStructTree`/`StructTree` reference in core or web code.
