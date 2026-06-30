@@ -6,7 +6,7 @@ survive only until the next plan pass; durable direction belongs in `docs/`.
 This pass keeps only open work. Previously shipped work is summarized in
 "Verified-present" so it does not get re-planned as a gap.
 
-Item statuses: `open`
+Item statuses: `done`
 
 ## Context
 
