@@ -2,8 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import { MAX_FILE_SIZE } from "@pdf2md/core/types";
-
-const MAX_FILES = 5;
+import { MAX_FILES, validatePdfFiles } from "@/lib/files";
 
 interface DropZoneProps {
   onFiles: (files: File[]) => void;
@@ -16,27 +15,9 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
 
   const handleFiles = useCallback(
     (fileList: FileList | File[]) => {
-      const files = Array.from(fileList);
-      const valid: File[] = [];
-
-      for (const file of files) {
-        if (file.type !== "application/pdf") {
-          alert(`"${file.name}" is not a PDF file.`);
-          continue;
-        }
-        if (file.size > MAX_FILE_SIZE) {
-          alert(
-            `"${file.name}" is too large (${Math.round(file.size / 1024 / 1024)}MB). Maximum size is ${MAX_FILE_SIZE / 1024 / 1024}MB.`,
-          );
-          continue;
-        }
-        valid.push(file);
-      }
-
-      if (valid.length > MAX_FILES) {
-        alert(`Maximum ${MAX_FILES} files at once. Only the first ${MAX_FILES} will be converted.`);
-        valid.splice(MAX_FILES);
-      }
+      const valid = validatePdfFiles(fileList, {
+        onRejected: ({ message }) => alert(message),
+      });
 
       if (valid.length > 0) {
         onFiles(valid);

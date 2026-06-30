@@ -26,6 +26,25 @@ async function uploadManyAs(
   );
 }
 
+async function pasteAs(page: Page, fileName: string, mimeType: string, srcPath?: string) {
+  const buffer = fs.readFileSync(srcPath ?? path.join(CORPUS, fileName));
+  await page.locator("[aria-label='Upload PDF files']").evaluate(
+    (element, payload) => {
+      const file = new File([new Uint8Array(payload.bytes)], payload.fileName, {
+        type: payload.mimeType,
+      });
+      const event = new Event("paste", { bubbles: true, cancelable: true });
+      Object.defineProperty(event, "clipboardData", {
+        value: {
+          files: [file],
+        },
+      });
+      element.dispatchEvent(event);
+    },
+    { fileName, mimeType, bytes: Array.from(buffer) },
+  );
+}
+
 function readStoredZip(filePath: string): Record<string, string> {
   const bytes = fs.readFileSync(filePath);
   const entries: Record<string, string> = {};
@@ -79,6 +98,23 @@ test.describe("pdf2md — core conversion workflow", () => {
 
     // download button is offered
     await expect(page.getByRole("button", { name: /download/i })).toBeVisible();
+  });
+
+  // Pasting a PDF is a keyboard-first intake path. It must enter the same
+  // conversion workflow as drag/drop and file picker uploads, then leave the
+  // existing output copy action intact.
+  test("happy path: paste a PDF from the clipboard → markdown output → copy", async ({ page }) => {
+    await pasteAs(page, "simple-report.pdf", "application/pdf");
+
+    await expect(page.getByRole("status").filter({ hasText: /pasted 1 pdf/i })).toBeVisible();
+    await expect(page.getByRole("status").filter({ hasText: "Converted" })).toBeVisible({ timeout: 30_000 });
+
+    const output = page.locator("pre code").first();
+    await expect(output).toBeVisible();
+    expect((await output.innerText()).trim().length).toBeGreaterThan(20);
+
+    await page.getByRole("button", { name: /copy markdown/i }).click();
+    await expect(page.getByText("Copied!")).toBeVisible();
   });
 
   // The Phase 2 multi-file workflow is incomplete unless users can collect the
@@ -183,6 +219,21 @@ test.describe("pdf2md — core conversion workflow", () => {
       buffer: Buffer.from("this is not a pdf"),
     });
     await expect.poll(() => dialogMessage, { timeout: 10_000 }).toContain("is not a PDF file");
+  });
+
+  // Clipboard paste often contains text or images from unrelated apps. Those
+  // should be ignored without alert loops or accidental parser work.
+  test("edge: non-PDF clipboard contents are ignored without repeated error spam", async ({ page }) => {
+    let dialogCount = 0;
+    page.on("dialog", async (d) => {
+      dialogCount += 1;
+      await d.dismiss();
+    });
+
+    await pasteAs(page, "notes.txt", "text/plain", path.join(CORPUS, "invalid-not-a-pdf.pdf"));
+    await expect(page.getByRole("status").filter({ hasText: /clipboard did not contain a pdf/i })).toBeVisible();
+    await expect(page.getByText(/drag & drop pdfs/i)).toBeVisible();
+    expect(dialogCount).toBe(0);
   });
 
   // Edge: a corrupt file that passes the MIME gate must surface an explicit error

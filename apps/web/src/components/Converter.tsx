@@ -7,6 +7,7 @@ import { ProgressBar } from "./ProgressBar";
 import { OutputPane } from "./OutputPane";
 import { ErrorDisplay } from "./ErrorDisplay";
 import { createMarkdownZip, uniqueZipEntryName } from "@/lib/zip";
+import { validatePdfFiles } from "@/lib/files";
 import {
   reportClientParseFailure,
   reportClientConversionException,
@@ -30,6 +31,7 @@ type State =
 export function Converter() {
   const [state, setState] = useState<State>({ phase: "idle" });
   const [activeTab, setActiveTab] = useState(0);
+  const [pasteStatus, setPasteStatus] = useState("");
   const abortRef = useRef<AbortController | null>(null);
   const outputRef = useRef<HTMLDivElement>(null);
 
@@ -40,6 +42,7 @@ export function Converter() {
   }, [state.phase]);
 
   const convertFiles = useCallback(async (files: File[]) => {
+    setPasteStatus("");
     const fileConversions: FileConversion[] = files.map((f) => ({
       fileName: f.name,
       file: f,
@@ -149,8 +152,31 @@ export function Converter() {
 
   const handleReset = useCallback(() => {
     setActiveTab(0);
+    setPasteStatus("");
     setState({ phase: "idle" });
   }, []);
+
+  const handlePaste = useCallback(
+    (event: React.ClipboardEvent<HTMLDivElement>) => {
+      if (state.phase === "converting") return;
+
+      const clipboardFiles = event.clipboardData?.files;
+      if (!clipboardFiles || clipboardFiles.length === 0) return;
+
+      const valid = validatePdfFiles(clipboardFiles);
+      if (valid.length === 0) {
+        setPasteStatus("Clipboard did not contain a PDF.");
+        return;
+      }
+
+      event.preventDefault();
+      const countLabel = valid.length === 1 ? "1 PDF" : `${valid.length} PDFs`;
+      setActiveTab(0);
+      void convertFiles(valid);
+      setPasteStatus(`Pasted ${countLabel}. Starting conversion.`);
+    },
+    [convertFiles, state.phase],
+  );
 
   const handleDownloadZip = useCallback((files: FileConversion[]) => {
     const usedNames = new Set<string>();
@@ -174,7 +200,10 @@ export function Converter() {
   }, []);
 
   return (
-    <div>
+    <div onPaste={handlePaste}>
+      <p className="sr-only" role="status" aria-live="polite">
+        {pasteStatus}
+      </p>
       <div aria-live="polite">
         {state.phase === "idle" && (
           <DropZone onFiles={convertFiles} />

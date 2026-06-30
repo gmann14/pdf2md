@@ -99,7 +99,7 @@ confirmed by code search before being added.
   - Existing copy-to-clipboard output behavior is not regressed.
 - **Complexity:** low
 - **Spec:** `docs/spec.md` "Use It Ourselves" feature 5 keyboard shortcuts.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#8 — Launch readiness: domain, Search Console, sitemap, and launch assets
 - **Description:** Finish launch prerequisites that are not covered by the shipped SEO metadata. Confirmed partial: app metadata/JSON-LD/OG image exist, but there is no local sitemap route/file or Google verification token; the configured canonical site URL is still the Vercel preview domain.
