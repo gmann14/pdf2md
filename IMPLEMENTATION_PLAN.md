@@ -33,7 +33,7 @@ confirmed by code search before being added.
 - **Spec:** `docs/spec.md` §PDF.js Worker setup; §MVP Acceptance Criteria "Zero browser crashes or frozen UI"; §Regression & CI.
 - **Inbox:** `feedback/archive/fb-2026-06-20-001.md`
 - **Escalated:** frontier lane + `--browser` debugging, uncapped. Dev-E2E gate verifies the fix.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#3 — Autoresearch runner scaffold + first overnight quality pass
 - **Description:** Create the `autoresearch/` runner (baseline snapshot, experiment log, compare-vs-baseline PASS/FAIL) described in `docs/autoresearch-plan.md`, then run the first pass on a branch targeting code-block detection and link extraction. Confirmed absent: no `autoresearch/` directory exists.
