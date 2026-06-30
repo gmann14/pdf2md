@@ -5,11 +5,14 @@ priority: 5
 merge_policy: branch-pr        # commit-main | branch-pr | branch-pr-automerge | ask
 specs_dir: docs         # directory the plan pass reads specs from
 plan_file: IMPLEMENTATION_PLAN.md
-gates:                         # commands that must ALL exit 0 before an iteration counts
-  - pnpm typecheck
-  - pnpm test
-  - pnpm --filter @pdf2md/web test:e2e   # Playwright happy-path + edge cases (prod build)
-  - pnpm --filter @pdf2md/web test:e2e:dev   # same suite vs `next dev` (where #10 lives)
+gates:                         # commands that must ALL exit 0 (in order, fail-fast)
+  - pnpm typecheck             # ~4s, always
+  - pnpm test                  # ~10s, always
+  # E2E only when the UI or conversion core actually changes (skips most builds).
+  # Dev-mode suite (no Next build) is the fast loop gate; prod E2E (test:e2e,
+  # builds the static export) moves to a pre-publish gate, not every iteration.
+  - cmd: pnpm --filter @pdf2md/web test:e2e:dev
+    when: ["apps/web/**", "packages/core/**"]
 live_proof: none               # none | curl | playwright
 caps:
   iterations_per_day: 20
