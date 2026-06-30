@@ -9,6 +9,7 @@ gates:                         # commands that must ALL exit 0 before an iterati
   - pnpm typecheck
   - pnpm test
   - pnpm --filter @pdf2md/web test:e2e   # Playwright happy-path + edge cases (prod build)
+  - pnpm --filter @pdf2md/web test:e2e:dev   # same suite vs `next dev` (where #10 lives)
 live_proof: none               # none | curl | playwright
 caps:
   iterations_per_day: 20
