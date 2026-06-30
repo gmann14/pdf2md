@@ -37,6 +37,8 @@ export interface ConversionResult {
   messages: ConversionMessage[];
   stats: ConversionStats;
   metadata?: ConversionMetadata;
+  structured?: StructuredOutput;
+  chunks?: ConversionChunk[];
 }
 
 export type ConversionStage =
@@ -54,10 +56,40 @@ export interface ConversionProgress {
 export interface ConvertOptions {
   maxPages?: number;
   includeMetadata?: boolean;
+  /** Request structured JSON-friendly output alongside the markdown contract */
+  outputFormat?: "markdown" | "json";
+  /** Split structured output into RAG-friendly chunks */
+  chunkBy?: "page" | "heading" | "token";
+  /** Approximate token budget for chunkBy: "token"; defaults to 800 */
+  maxTokensPerChunk?: number;
   /** Prepend PDF metadata as YAML front matter to the markdown output */
   yamlFrontMatter?: boolean;
   signal?: AbortSignal;
   onProgress?: (progress: ConversionProgress) => void;
+}
+
+export interface StructuredSection {
+  id: string;
+  title: string;
+  level: number;
+  markdown: string;
+  pageStart: number;
+  pageEnd: number;
+  children: StructuredSection[];
+}
+
+export interface StructuredOutput {
+  sections: StructuredSection[];
+}
+
+export interface ConversionChunk {
+  id: string;
+  markdown: string;
+  pageStart: number;
+  pageEnd: number;
+  sectionPath: string[];
+  wordCount: number;
+  tokenEstimate: number;
 }
 
 /** Maximum file size in bytes (15MB) */

@@ -88,7 +88,7 @@ confirmed by code search before being added.
   - Covered by core tests; `pnpm test` and `pnpm typecheck` pass.
 - **Complexity:** med
 - **Spec:** `docs/spec.md` Phase 5 "JSON structured output option" + "Configurable chunking"; "Use It Ourselves" features 3 and 4.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#7 — Paste-PDF-from-clipboard keyboard shortcut
 - **Description:** Support Ctrl/Cmd+V to paste a PDF from the clipboard into the converter. Confirmed absent: no paste handler, clipboard file intake, or `onPaste` path exists in the web components; output copy already exists in `OutputPane`.

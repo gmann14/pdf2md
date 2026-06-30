@@ -27,6 +27,9 @@ console.log(result.stats); // { pageCount, wordCount, processingMs }
 const result = await convert(buffer.buffer, {
   maxPages: 10,           // Limit number of pages to convert
   includeMetadata: true,  // Extract title, author, etc.
+  outputFormat: "json",   // Include structured sections
+  chunkBy: "heading",     // Optional: "page", "heading", or "token"
+  maxTokensPerChunk: 800, // Used with chunkBy: "token"
   signal: controller.signal, // AbortSignal for cancellation
   onProgress: (progress) => {
     console.log(`${progress.stage}: page ${progress.currentPage}/${progress.totalPages}`);
@@ -43,6 +46,8 @@ interface ConversionResult {
   messages: ConversionMessage[];  // Errors and warnings
   stats: { pageCount: number; wordCount: number; processingMs: number };
   metadata?: { title?: string; author?: string; subject?: string; keywords?: string[]; creationDate?: string };
+  structured?: { sections: StructuredSection[] };
+  chunks?: ConversionChunk[];
 }
 ```
 
@@ -50,9 +55,13 @@ interface ConversionResult {
 
 ```sh
 npx @pdf2md/core document.pdf > output.md
+npx @pdf2md/core --output json --chunk-by heading document.pdf > output.json
+npx @pdf2md/core --output json --chunk-by token --max-tokens 800 document.pdf > chunks.json
 ```
 
-Prints Markdown to stdout. Warnings and errors go to stderr.
+Prints Markdown to stdout by default. JSON mode prints the full conversion
+result, including `markdown`, `structured.sections`, and optional `chunks`.
+Warnings and errors go to stderr.
 
 ## Conversion Pipeline
 

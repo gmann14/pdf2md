@@ -12,6 +12,7 @@ export {
 } from "./detection.js";
 export type {
   ConversionCode,
+  ConversionChunk,
   ConversionMessage,
   ConversionMetadata,
   ConversionProgress,
@@ -20,4 +21,6 @@ export type {
   ConversionStats,
   ConversionStatus,
   ConvertOptions,
+  StructuredOutput,
+  StructuredSection,
 } from "./types.js";

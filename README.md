@@ -42,12 +42,21 @@ const result = await convert(buffer.buffer);
 
 console.log(result.markdown);
 console.log(result.stats); // { pageCount, wordCount, processingMs }
+
+const ragResult = await convert(buffer.buffer, {
+  outputFormat: "json",
+  chunkBy: "heading", // also supports "page" and "token"
+});
+
+console.log(ragResult.structured?.sections);
+console.log(ragResult.chunks);
 ```
 
 ### CLI
 
 ```bash
 npx @pdf2md/core document.pdf > output.md
+npx @pdf2md/core --output json --chunk-by heading document.pdf > output.json
 ```
 
 ### MCP Server (AI Agents)
@@ -92,6 +101,9 @@ Converts a PDF buffer to Markdown.
 | `options.maxPages` | `number` | Limit number of pages to convert |
 | `options.includeMetadata` | `boolean` | Extract title, author, etc. |
 | `options.yamlFrontMatter` | `boolean` | Prepend YAML front matter with metadata |
+| `options.outputFormat` | `"markdown" \| "json"` | Include structured JSON-friendly sections |
+| `options.chunkBy` | `"page" \| "heading" \| "token"` | Add RAG-friendly chunks with source-page metadata |
+| `options.maxTokensPerChunk` | `number` | Approximate token budget for token chunking |
 | `options.signal` | `AbortSignal` | Cancel in-progress conversion |
 | `options.onProgress` | `function` | Progress callback |
 
@@ -114,6 +126,8 @@ interface ConversionResult {
     keywords?: string[];
     creationDate?: string;
   };
+  structured?: { sections: StructuredSection[] };
+  chunks?: ConversionChunk[];
 }
 ```
 

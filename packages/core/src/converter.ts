@@ -11,7 +11,10 @@ import type {
   ConversionResult,
   ConversionMessage,
   ConversionMetadata,
+  ConversionChunk,
   ConvertOptions,
+  StructuredOutput,
+  StructuredSection,
 } from "./types.js";
 import { MAX_FILE_SIZE } from "./types.js";
 import {
@@ -1081,6 +1084,262 @@ function blocksToMarkdown(
   return parts.join("\n\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
+function blockToMarkdown(
+  block: Block,
+  linkMap: Map<ExtractedItem, string>,
+): string {
+  if (block.type === "table") {
+    return block.tableRows && block.tableRows.length > 0
+      ? normalizeMarkdownFragment(tableToMarkdown(block.tableRows))
+      : "";
+  }
+
+  if (block.type === "code-block") {
+    return normalizeMarkdownFragment(codeBlockToMarkdown(block, linkMap));
+  }
+
+  const text = assembleBlockText(block, linkMap);
+  if (text.length === 0) return "";
+
+  if (block.type === "heading") {
+    const prefix = "#".repeat(block.headingLevel ?? 1);
+    return normalizeMarkdownFragment(`${prefix} ${text.replace(/\*\*/g, "")}`);
+  }
+
+  if (block.type === "list-item") {
+    const cleaned = text
+      .replace(BULLET_PATTERN, "")
+      .replace(NUMBERED_PATTERN, "")
+      .replace(LETTER_LIST_PATTERN, "")
+      .replace(BRACKET_NUM_PATTERN, "")
+      .trim();
+    return normalizeMarkdownFragment(`${block.listMarker} ${cleaned}`);
+  }
+
+  return normalizeMarkdownFragment(splitInlineBullets(text) ?? text);
+}
+
+function pageRangeForBlocks(blocks: Block[]): { pageStart: number; pageEnd: number } {
+  let pageStart = Infinity;
+  let pageEnd = -Infinity;
+
+  for (const block of blocks) {
+    for (const item of block.items) {
+      pageStart = Math.min(pageStart, item.page);
+      pageEnd = Math.max(pageEnd, item.page);
+    }
+  }
+
+  return {
+    pageStart: pageStart === Infinity ? 1 : pageStart,
+    pageEnd: pageEnd === -Infinity ? 1 : pageEnd,
+  };
+}
+
+function estimateTokens(markdown: string): number {
+  const wordCount = markdown.split(/\s+/).filter(Boolean).length;
+  return Math.ceil(wordCount * 1.33);
+}
+
+function slugifyId(text: string, fallback: string): string {
+  const slug = text
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug || fallback;
+}
+
+function createSection(
+  title: string,
+  level: number,
+  blocks: Block[],
+  linkMap: Map<ExtractedItem, string>,
+  index: number,
+): StructuredSection {
+  const { pageStart, pageEnd } = pageRangeForBlocks(blocks);
+  return {
+    id: slugifyId(title, `section-${index}`),
+    title,
+    level,
+    markdown: blocks
+      .map((block) => blockToMarkdown(block, linkMap))
+      .filter(Boolean)
+      .join("\n\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim(),
+    pageStart,
+    pageEnd,
+    children: [],
+  };
+}
+
+function buildStructuredOutput(
+  blocks: Block[],
+  linkMap: Map<ExtractedItem, string>,
+): StructuredOutput {
+  const rootSections: StructuredSection[] = [];
+  const stack: StructuredSection[] = [];
+  let pendingBlocks: Block[] = [];
+  let sectionIndex = 1;
+
+  const flushPending = () => {
+    if (pendingBlocks.length === 0) return;
+    const section = createSection(
+      sectionIndex === 1 ? "Document" : `Section ${sectionIndex}`,
+      0,
+      pendingBlocks,
+      linkMap,
+      sectionIndex,
+    );
+    rootSections.push(section);
+    sectionIndex++;
+    pendingBlocks = [];
+  };
+
+  for (const block of blocks) {
+    if (block.type === "heading") {
+      if (stack.length === 0) flushPending();
+
+      const headingText = assembleBlockText(block, linkMap).replace(/\*\*/g, "").trim();
+      const level = block.headingLevel ?? 1;
+      const section = createSection(
+        headingText || `Section ${sectionIndex}`,
+        level,
+        [block],
+        linkMap,
+        sectionIndex,
+      );
+      sectionIndex++;
+
+      while (stack.length > 0 && stack[stack.length - 1].level >= level) {
+        stack.pop();
+      }
+
+      if (stack.length === 0) rootSections.push(section);
+      else stack[stack.length - 1].children.push(section);
+
+      stack.push(section);
+      continue;
+    }
+
+    if (stack.length === 0) {
+      pendingBlocks.push(block);
+      continue;
+    }
+
+    const current = stack[stack.length - 1];
+    const blockMarkdown = blockToMarkdown(block, linkMap);
+    if (blockMarkdown.length === 0) continue;
+    current.markdown = [current.markdown, blockMarkdown].filter(Boolean).join("\n\n");
+    const { pageStart, pageEnd } = pageRangeForBlocks([block]);
+    current.pageStart = Math.min(current.pageStart, pageStart);
+    current.pageEnd = Math.max(current.pageEnd, pageEnd);
+  }
+
+  flushPending();
+  return { sections: rootSections };
+}
+
+function flattenSections(
+  sections: StructuredSection[],
+  parents: string[] = [],
+): Array<{ section: StructuredSection; path: string[] }> {
+  return sections.flatMap((section) => {
+    const path = [...parents, section.title];
+    return [
+      { section, path },
+      ...flattenSections(section.children, path),
+    ];
+  });
+}
+
+function makeChunk(
+  id: string,
+  markdown: string,
+  pageStart: number,
+  pageEnd: number,
+  sectionPath: string[],
+): ConversionChunk {
+  const wordCount = markdown.split(/\s+/).filter(Boolean).length;
+  return {
+    id,
+    markdown,
+    pageStart,
+    pageEnd,
+    sectionPath,
+    wordCount,
+    tokenEstimate: estimateTokens(markdown),
+  };
+}
+
+function buildChunks(
+  blocks: Block[],
+  linkMap: Map<ExtractedItem, string>,
+  structured: StructuredOutput,
+  options?: ConvertOptions,
+): ConversionChunk[] | undefined {
+  if (!options?.chunkBy) return undefined;
+
+  if (options.chunkBy === "heading") {
+    return flattenSections(structured.sections).map(({ section, path }, index) =>
+      makeChunk(`heading-${index + 1}`, section.markdown, section.pageStart, section.pageEnd, path),
+    );
+  }
+
+  if (options.chunkBy === "page") {
+    const pages = new Map<number, string[]>();
+    for (const block of blocks) {
+      const page = block.items[0]?.page ?? 1;
+      const markdown = blockToMarkdown(block, linkMap);
+      if (markdown.length === 0) continue;
+      const pageBlocks = pages.get(page) ?? [];
+      pageBlocks.push(markdown);
+      pages.set(page, pageBlocks);
+    }
+
+    return [...pages.entries()]
+      .sort((a, b) => a[0] - b[0])
+      .map(([page, parts]) =>
+        makeChunk(`page-${page}`, parts.join("\n\n"), page, page, [`Page ${page}`]),
+      );
+  }
+
+  const maxTokens = Math.max(1, options.maxTokensPerChunk ?? 800);
+  const chunks: ConversionChunk[] = [];
+  let currentParts: string[] = [];
+  let currentStart = 1;
+  let currentEnd = 1;
+  let currentPath: string[] = [];
+
+  const flush = () => {
+    const markdown = currentParts.join("\n\n").trim();
+    if (markdown.length === 0) return;
+    chunks.push(makeChunk(`token-${chunks.length + 1}`, markdown, currentStart, currentEnd, currentPath));
+    currentParts = [];
+  };
+
+  for (const { section, path } of flattenSections(structured.sections)) {
+    const parts = section.markdown.split(/\n{2,}/).filter(Boolean);
+    for (const part of parts) {
+      const nextMarkdown = [...currentParts, part].join("\n\n");
+      if (currentParts.length > 0 && estimateTokens(nextMarkdown) > maxTokens) {
+        flush();
+      }
+      if (currentParts.length === 0) {
+        currentStart = section.pageStart;
+        currentPath = path;
+      }
+      currentEnd = section.pageEnd;
+      currentParts.push(part);
+    }
+  }
+
+  flush();
+  return chunks;
+}
+
 /**
  * Detect and split paragraphs that contain inline bullet characters (•, ►, etc.)
  * into markdown list items. Returns formatted list string, or null if no split.
@@ -1190,6 +1449,10 @@ function fixSplitLigatures(markdown: string): string {
     .replace(/ma tt er/gi, "matter")
     .replace(/ba tt le/gi, "battle")
     .replace(/li tt le/gi, "little");
+}
+
+function normalizeMarkdownFragment(markdown: string): string {
+  return rejoinHyphenatedWords(fixSplitLigatures(autoLinkUrls(markdown)));
 }
 
 // ---------------------------------------------------------------------------
@@ -1439,14 +1702,9 @@ export async function convert(
   // Assemble markdown
   let markdown = blocksToMarkdown(enrichedBlocks, linkMap);
 
-  // Auto-link bare URLs that aren't already inside markdown links
-  markdown = autoLinkUrls(markdown);
-
-  // Fix split ligatures from kerned/custom fonts
-  markdown = fixSplitLigatures(markdown);
-
-  // Rejoin hyphenated line breaks (e.g., "repre-\nsentation" → "representation")
-  markdown = rejoinHyphenatedWords(markdown);
+  // Apply final Markdown cleanup, including URL links, ligature repair, and
+  // hyphenated line-break repair.
+  markdown = normalizeMarkdownFragment(markdown);
 
   // Extract metadata if requested (yamlFrontMatter implies includeMetadata)
   let metadata: ConversionMetadata | undefined;
@@ -1477,6 +1735,15 @@ export async function convert(
     }
   }
 
+  const wantsStructured =
+    options?.outputFormat === "json" || options?.chunkBy !== undefined;
+  const structured = wantsStructured
+    ? buildStructuredOutput(enrichedBlocks, linkMap)
+    : undefined;
+  const chunks = structured
+    ? buildChunks(enrichedBlocks, linkMap, structured, options)
+    : undefined;
+
   doc.destroy();
 
   const wordCount = markdown.split(/\s+/).filter(Boolean).length;
@@ -1488,5 +1755,7 @@ export async function convert(
     messages,
     stats: { pageCount: totalPages, wordCount, processingMs },
     metadata,
+    structured,
+    chunks,
   };
 }
