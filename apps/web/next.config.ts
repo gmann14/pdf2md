@@ -43,6 +43,7 @@ try {
 
 const nextConfig: NextConfig = {
   output: "export",
+  trailingSlash: true,
   webpack: (config, { isServer }) => {
     // Ensure pdf.js worker can be loaded; drop the Node-only native-canvas
     // bindings the browser never needs (kept for the worker bundle, which

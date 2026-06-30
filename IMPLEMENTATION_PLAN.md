@@ -184,7 +184,7 @@ structured-output/chunking work already captured above.
 - **Acceptance criteria:** `/blog` lists posts, individual post pages render from markdown with proper meta tags/OG image, included in the sitemap, passes the existing E2E/typecheck/test gates.
 - **Complexity:** med
 - **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#16 — Blog post: "How to Convert PDF to Markdown" (target: pdf to markdown)
 - **Description:** On-site how-to guide, genuinely useful (not thin filler) — the spec's whole competitive thesis is being better than the incumbent's zero-content approach.

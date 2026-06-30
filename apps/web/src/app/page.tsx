@@ -209,6 +209,10 @@ console.log(result.markdown);`}</code>
             Privacy Policy
           </Link>
           {" · "}
+          <Link href="/blog" className="hover:text-gray-700 underline dark:hover:text-slate-200">
+            Blog
+          </Link>
+          {" · "}
           <a
             href="https://github.com/gmann14/pdf2md"
             className="hover:text-gray-700 underline dark:hover:text-slate-200"

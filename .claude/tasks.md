@@ -109,6 +109,7 @@
 - [x] SEO: meta tags, schema markup, OG image (layout.tsx + og-image.png + JSON-LD)
 - [x] "How to Convert PDF to Markdown" content below fold (~700 words)
 - [x] Privacy policy page (`/privacy`)
+- [x] Static `/blog` infrastructure — markdown-backed index + article template, seed post, metadata, and sitemap entries (2026-06-30)
 - [x] Open-source repo with README.md, CONTRIBUTING.md, LICENSE (MIT)
 - [x] Footer with privacy/github/npm links
 - [ ] Google Search Console setup

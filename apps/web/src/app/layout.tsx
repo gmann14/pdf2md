@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistration";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const siteUrl = "https://pdf2md-five.vercel.app";
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: "pdf2md" }],
   applicationName: "pdf2md",
   manifest: "/manifest.webmanifest",
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "PDF to Markdown Converter — Free Online Tool",
     description:
       "Convert PDF files to clean Markdown. Headings, tables, lists, links, code blocks. Free, private, no signup. Files never leave your browser.",
-    url: siteUrl,
+    url: SITE_URL,
     siteName: "pdf2md",
     images: [
       {
@@ -67,7 +67,7 @@ const jsonLd = {
   alternateName: "PDF to Markdown Converter",
   description:
     "Free online PDF to Markdown converter. Handles headings, tables, lists, links, code blocks, and formatting. Files never leave your browser.",
-  url: siteUrl,
+  url: SITE_URL,
   applicationCategory: "UtilitiesApplication",
   operatingSystem: "Any",
   browserRequirements: "Requires a modern web browser with JavaScript enabled",
