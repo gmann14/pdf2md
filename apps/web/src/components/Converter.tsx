@@ -14,6 +14,7 @@ import {
 
 interface FileConversion {
   fileName: string;
+  file: File;
   status: "pending" | "converting" | "done";
   result?: ConversionResult;
   progress?: ConversionProgress;
@@ -39,6 +40,7 @@ export function Converter() {
   const convertFiles = useCallback(async (files: File[]) => {
     const fileConversions: FileConversion[] = files.map((f) => ({
       fileName: f.name,
+      file: f,
       status: "pending" as const,
     }));
 
@@ -220,6 +222,7 @@ export function Converter() {
               <OutputPane
                 result={state.files[activeTab].result!}
                 fileName={state.files[activeTab].fileName}
+                file={state.files[activeTab].file}
                 onReset={handleReset}
               />
             ) : null}

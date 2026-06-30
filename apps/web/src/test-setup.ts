@@ -1,4 +1,9 @@
+// React 19 uses this flag to confirm that jsdom tests intentionally wrap
+// updates in act(), keeping component regression tests free of false warnings.
+(globalThis as typeof globalThis & { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
+
 // Polyfill DOMMatrix for PDF.js in jsdom
+
 if (typeof globalThis.DOMMatrix === "undefined") {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (globalThis as any).DOMMatrix = class DOMMatrix {

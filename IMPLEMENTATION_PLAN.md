@@ -66,7 +66,7 @@ confirmed by code search before being added.
   - Rendering failures do not block Markdown conversion or copy/download actions.
 - **Complexity:** med
 - **Spec:** `docs/spec.md` Phase 2 feature 11 "Comparison view"; "Use It Ourselves" feature 6.
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#11 — Multi-file ZIP download
 - **Description:** Complete the Phase 2 multi-file workflow by offering a ZIP of generated `.md` files. Confirmed partial: `DropZone` accepts up to 5 PDFs and `Converter` shows tabs, but no `zip`/`JSZip`/download-all path exists.

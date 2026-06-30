@@ -43,6 +43,47 @@ test.describe("pdf2md — core conversion workflow", () => {
     await expect(page.getByRole("button", { name: /download/i })).toBeVisible();
   });
 
+  // The comparison view is the Phase 2 spot-check workflow: users need the
+  // original PDF rendered beside Markdown, without re-uploading or losing output
+  // actions after conversion has already succeeded.
+  test("happy path: comparison view renders the source PDF beside Markdown", async ({ page }) => {
+    await uploadAs(page, "simple-report.pdf", "application/pdf");
+    await expect(page.getByRole("status").filter({ hasText: "Converted" })).toBeVisible({ timeout: 30_000 });
+
+    await page.getByRole("button", { name: "Compare" }).click();
+
+    await expect(page.getByRole("region", { name: /original pdf preview/i })).toBeVisible();
+    await expect(page.getByRole("region", { name: /markdown output/i })).toBeVisible();
+    const canvas = page.locator("canvas[aria-label^='Rendered PDF page']").first();
+    await expect(canvas).toBeVisible({ timeout: 30_000 });
+    const box = await canvas.boundingBox();
+    expect(box?.width).toBeGreaterThan(100);
+    expect(box?.height).toBeGreaterThan(100);
+
+    await expect(page.getByText(/page 1 of \d+/i)).toBeVisible();
+    await expect(page.getByRole("button", { name: /copy markdown/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /download/i })).toBeVisible();
+  });
+
+  // Edge: PDF rendering is an aid for visual QA, not the conversion result. A
+  // canvas/rendering failure must leave Markdown, copy, and download available.
+  test("edge: preview failure does not block Markdown actions", async ({ page }) => {
+    await uploadAs(page, "simple-report.pdf", "application/pdf");
+    await expect(page.getByRole("status").filter({ hasText: "Converted" })).toBeVisible({ timeout: 30_000 });
+
+    await page.evaluate(() => {
+      HTMLCanvasElement.prototype.getContext = () => {
+        throw new Error("forced canvas failure");
+      };
+    });
+    await page.getByRole("button", { name: "Compare" }).click();
+
+    await expect(page.getByText(/pdf preview unavailable/i)).toBeVisible({ timeout: 30_000 });
+    await expect(page.getByRole("region", { name: /markdown output/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /copy markdown/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /download/i })).toBeVisible();
+  });
+
   // Edge: a non-PDF must be rejected up front (MIME check), not sent to the parser.
   test("edge: non-PDF file is rejected with a clear message", async ({ page }) => {
     let dialogMessage = "";
