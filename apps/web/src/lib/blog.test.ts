@@ -54,19 +54,44 @@ const value = "ok";
     ]);
   });
 
-  // The seed post is part of the infrastructure acceptance criteria: it proves
-  // the route can be generated from a markdown file before keyword articles are
-  // added by later implementation-plan items.
-  test("loads the markdown-backed seed post and sorts the blog index", () => {
+  // The seed post is part of the infrastructure acceptance criteria, and the
+  // first keyword guide proves launch posts are now real markdown content with
+  // metadata, not hard-coded route text.
+  test("loads markdown-backed posts and sorts the blog index", () => {
     const post = getBlogPost("introducing-the-pdf2md-blog");
     expect(post?.title).toBe("Introducing the pdf2md Blog");
     expect(post?.blocks.some((block) => block.type === "heading")).toBe(true);
 
-    const posts = getAllBlogPosts();
-    expect(posts[0]).toMatchObject({
-      slug: "introducing-the-pdf2md-blog",
-      title: "Introducing the pdf2md Blog",
+    const guide = getBlogPost("how-to-convert-pdf-to-markdown");
+    expect(guide).toMatchObject({
+      slug: "how-to-convert-pdf-to-markdown",
+      title: "How to Convert PDF to Markdown",
+      description:
+        "A practical guide to turning text-based PDFs into clean Markdown with the pdf2md web app, CLI, and npm package.",
+      tags: ["pdf to markdown", "tutorial", "markdown"],
     });
+    expect(
+      guide?.blocks.some(
+        (block) => block.type === "heading" && block.text === "Step-by-step web workflow",
+      ),
+    ).toBe(true);
+    expect(
+      guide?.blocks.some((block) => block.type === "code" && block.language === "ts"),
+    ).toBe(true);
+
+    const posts = getAllBlogPosts();
+    expect(posts).toHaveLength(2);
+    expect(posts).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "introducing-the-pdf2md-blog",
+          title: "Introducing the pdf2md Blog",
+        }),
+        expect.objectContaining({
+          slug: "how-to-convert-pdf-to-markdown",
+          title: "How to Convert PDF to Markdown",
+        }),
+      ]),
+    );
   });
 });
-

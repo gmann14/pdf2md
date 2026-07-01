@@ -191,7 +191,7 @@ structured-output/chunking work already captured above.
 - **Acceptance criteria:** Published at `/blog`, targets the keyword naturally in title/H1/meta, links back to the converter, technically accurate to what's actually shipped.
 - **Complexity:** low
 - **Spec:** `docs/launch-plan.md` Ongoing Growth → SEO Content (week 1).
-- **Status:** open
+- **Status:** done
 
 ## pdf2md#17 — Blog post: "Best PDF to Markdown Converters in 2026" (target: best pdf to markdown converter)
 - **Description:** Honest comparison piece — pdf2md, `pdf2md.morethan.io`, `marker`, `Docling`, paid options. Per `docs/launch-plan.md`, honesty about our own limitations (no OCR, table edge cases) builds more trust than oversell.

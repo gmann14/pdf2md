@@ -8,6 +8,7 @@ test.describe("pdf2md blog", () => {
     await page.goto("/blog");
 
     await expect(page.getByRole("heading", { name: "PDF to Markdown guides" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "How to Convert PDF to Markdown" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Introducing the pdf2md Blog" })).toBeVisible();
     await expect(page.getByRole("link", { name: /back to converter/i })).toHaveAttribute("href", "/");
   });
@@ -24,6 +25,23 @@ test.describe("pdf2md blog", () => {
     await expect(page.getByRole("link", { name: "PDF to Markdown converter" })).toHaveAttribute("href", "/");
   });
 
+  // The first SEO guide is the launch-plan happy path: search visitors should
+  // land on a useful article, get a direct route back to the converter, and see
+  // actual CLI/library usage instead of thin placeholder copy.
+  test("happy path: how-to guide renders practical conversion steps", async ({ page }) => {
+    await page.goto("/blog/how-to-convert-pdf-to-markdown");
+
+    await expect(page).toHaveTitle(/How to Convert PDF to Markdown/);
+    await expect(page.getByRole("heading", { name: "How to Convert PDF to Markdown" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Step-by-step web workflow" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "PDF to Markdown converter" }).first()).toHaveAttribute(
+      "href",
+      "/",
+    );
+    await expect(page.getByText("npx @pdf2md/core document.pdf > document.md")).toBeVisible();
+    await expect(page.getByText('import { convert } from "@pdf2md/core";')).toBeVisible();
+  });
+
   // The launch plan depends on search crawlers finding the on-site content.
   // Checking sitemap output in the browser gate proves /blog and post URLs are
   // emitted in both static export and next-dev modes.
@@ -33,6 +51,6 @@ test.describe("pdf2md blog", () => {
 
     expect(sitemap).toContain("https://pdf2md-five.vercel.app/blog");
     expect(sitemap).toContain("https://pdf2md-five.vercel.app/blog/introducing-the-pdf2md-blog");
+    expect(sitemap).toContain("https://pdf2md-five.vercel.app/blog/how-to-convert-pdf-to-markdown");
   });
 });
-
