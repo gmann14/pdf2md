@@ -1,0 +1,31 @@
+[
+  {
+    "id": "proof_pdf2md_conversion_quality",
+    "scope": ["pdf2md"],
+    "status": "approved",
+    "source_type": "quality_report",
+    "source_files": ["test-corpus/QUALITY-REPORT.md"],
+    "property_label": "@pdf2md/core conversion quality",
+    "identity_policy": "named",
+    "customer_permission": "not_needed",
+    "metric_window": "as-of 2026-03-30",
+    "metrics": {
+      "pdfs_tested": 28,
+      "successful_conversions": 28,
+      "overall_average_score": 9.2,
+      "score_scale": "0-10, scored per-PDF against category-specific rubric",
+      "top_category_examples": "academic footnotes, programming books, multi-column IEEE layout, statistical tables — all 9.6/10"
+    },
+    "approved_claims": [
+      "@pdf2md/core converts PDFs to Markdown at 9.2/10 average quality across 28 real-world test documents (academic papers, legal contracts, financial reports, government forms, resumes) — 28/28 successful conversions, entirely client-side, nothing leaves the browser.",
+      "Multi-column layouts, tagged-PDF structure, and heavily tabular documents (census data, financial statements) all scored 9.4+."
+    ],
+    "allowed_use_cases": ["social_post", "product_page", "npm_readme", "directory_listing", "hn_show_post"],
+    "risk_notes": [
+      "Re-run the quality suite before reuse if @pdf2md/core has shipped since 2026-03-30 — the score is tied to that version.",
+      "Don't claim 'AI-powered' — this is explicitly a non-AI, deterministic conversion tool; that's part of the trust pitch."
+    ],
+    "last_verified_at": "2026-07-05",
+    "supersedes": null
+  }
+]
