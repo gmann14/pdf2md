@@ -8,7 +8,7 @@
 
 pdf2md is a free, MIT-licensed PDF-to-Markdown converter for people who need clean Markdown from PDFs without uploading private documents. Use the web app for one-off conversions, the CLI for local files, the TypeScript API in your own tools, or the MCP server from AI agents.
 
-**Try it online:** TODO: replace with the production domain after `q-2026-06-30-001` is answered. Current preview: [pdf2md-five.vercel.app](https://pdf2md-five.vercel.app).
+**Try the web app:** [pdf2md-five.vercel.app](https://pdf2md-five.vercel.app).
 
 ![pdf2md web converter showing a private client-side PDF upload drop zone](test-initial-page.png)
 
