@@ -275,3 +275,19 @@ structured-output/chunking work already captured above.
 - **Complexity:** med
 - **Spec:** `docs/launch-plan.md` Ongoing Growth → Answer questions on GitHub/StackOverflow.
 - **Status:** open
+
+---
+
+## Output-quality fixes from the 2026-11 improvement spec (branch `fix/output-quality-2026-11`)
+- **Description:** Top items of `docs/improvement-spec-2026-11.md` (spec file is untracked in `main`). Local branch only: not pushed, merged or published. Measured on `real-pdfs/` plus the three local blind sets with `test-corpus/evaluate-blind*.ts` and the new fidelity checks.
+- **Landed on the branch (one commit each):**
+  - `54ee65b` Red `readme.test.ts` fixed to match c4b11e4 (web-app link, no TODO).
+  - `c87961e` Text-fidelity checks (`test-corpus/fidelity.ts`): word/numeric recall vs the PDF.js text layer, link precision, space-before-punctuation rate, bold/italic/code counts; reports in every evaluate script; autoresearch compare FAILs on fidelity drops; `pnpm test:fidelity` ratchet (CI step, not in `pnpm test`).
+  - `688fc20` Page-scoped link matching. Blind link precision 57% → 99%; 31,403 output links (mostly malformed nested links) → 895.
+  - `08695df` Header/footer stripping limited to the 8% page bands. Blind numeric recall 83.4% → 94.7%.
+  - `bc1e781` `convert()` accepts Buffer/Uint8Array/ArrayBuffer without detaching it; dual ESM/CJS build so `require("@pdf2md/core")` works.
+  - `c6655e2` Gap-aware joining of touching runs. Blind `[a-z] [.,;:)]` 6,289 → 2,717 (the rest is mostly TOC dot leaders, code and math). Fidelity word recall now rejoins line-break hyphens in the reference.
+  - `c0d05ae` Inline bold/italic from real font names, `emphasis` option (default on). Blind output: 5,391 bold and 6,577 italic spans. Conversion CPU time +11.5% to +19% across 3 passes on a loaded machine (budget is 15%).
+- **Left from the spec:** table cell cleanup (currency, split tables, lost rows; W-4 loses the $100,000+ rows once item 3 restores numbers), real-monospace code detection, TOC/dot-leader lines (main remaining source of space-before-punctuation), performance budget and `pnpm bench`, hand-checked reference set, olmOCR-bench runner, head-to-head harness, page selection, opendocsg-compatible entry point, PDF.js version policy, install footprint, zero-config browser bundling, size limit/timeout as options, output stability contract, migration guide, MCP 0.2, CLI parity. OCR and the 15 MB limit were out of scope by instruction.
+- **Check before merging:** re-time `emphasis` on a quiet machine; `pnpm --filter @pdf2md/web test:e2e:dev` was not run (Playwright Chromium not installed); add `pnpm test:fidelity` to the Forge gates if wanted; PDF.js log level is now errors only.
+- **Status:** in progress (branch ready for review)
