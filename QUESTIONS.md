@@ -23,7 +23,8 @@ Launch readiness requires an actual production domain and Google Search Console 
 1. Use the current Vercel preview domain as canonical for now and provide a Search Console HTML/meta verification token to add.
 2. Use a custom production domain; provide the exact domain and either a Search Console HTML/meta verification token or confirm DNS verification will be handled outside the repo.
 - type: blocking
-- status: open
+- status: answered
+- answer: 2. Canonical domain is `getpdf2md.com` (bought at Cloudflare 2026-11-06; `www` redirects to it). Search Console uses DNS verification, handled outside the repo (a TXT record in Cloudflare), so no token goes in the code. Answered by Claude on Graham's delegation of pdf2md questions.
 
 ## q-2026-06-18-001  [default]  item: pdf2md#1
 pdf2md#1 shipped observability using a hand-rolled Sentry *envelope* POST (gated by `NEXT_PUBLIC_SENTRY_DSN`) instead of the official `@sentry/nextjs` SDK — chosen to keep the bundle small and protect the <1s LCP target. Keep the lightweight approach or switch to the SDK (breadcrumbs/release tracking, but heavier)?
