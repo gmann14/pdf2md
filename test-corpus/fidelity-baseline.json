@@ -1,0 +1,170 @@
+{
+  "academic-attention-paper.pdf": {
+    "wordRecall": 0.9526,
+    "numericRecall": 0.7003,
+    "linkPrecision": 0.2,
+    "spaceBeforePunctPer10k": 125.5
+  },
+  "academic-footnotes-philosophy.pdf": {
+    "wordRecall": 0.9916,
+    "numericRecall": 0.5536,
+    "linkPrecision": 0.0199,
+    "spaceBeforePunctPer10k": 24.6
+  },
+  "code-book-think-python.pdf": {
+    "wordRecall": 0.988,
+    "numericRecall": 0.8803,
+    "linkPrecision": 0.0211,
+    "spaceBeforePunctPer10k": 40.5
+  },
+  "code-git-cheatsheet.pdf": {
+    "wordRecall": 0.9959,
+    "numericRecall": 1,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 14
+  },
+  "code-haskell-report.pdf": {
+    "wordRecall": 0.9697,
+    "numericRecall": 0.7367,
+    "linkPrecision": 0.009,
+    "spaceBeforePunctPer10k": 349
+  },
+  "financial-berkshire-letter.pdf": {
+    "wordRecall": 0.9919,
+    "numericRecall": 0.9571,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 11.5
+  },
+  "form-filled-1040.pdf": {
+    "wordRecall": 0.9819,
+    "numericRecall": 0.9784,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 0
+  },
+  "government-irs-w4.pdf": {
+    "wordRecall": 0.9863,
+    "numericRecall": 0.945,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 57.4
+  },
+  "government-irs-w9.pdf": {
+    "wordRecall": 0.99,
+    "numericRecall": 0.9053,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 28.8
+  },
+  "government-nist-cybersecurity.pdf": {
+    "wordRecall": 0.9239,
+    "numericRecall": 0.8799,
+    "linkPrecision": 0.0795,
+    "spaceBeforePunctPer10k": 28.3
+  },
+  "infographic-cdc-diseases.pdf": {
+    "wordRecall": 0.9825,
+    "numericRecall": 1,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 21.6
+  },
+  "landscape-gantt-chart.pdf": {
+    "wordRecall": 1,
+    "numericRecall": 1,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 0
+  },
+  "legal-contract-clauses.pdf": {
+    "wordRecall": 0.9767,
+    "numericRecall": 0.8651,
+    "linkPrecision": 0.25,
+    "spaceBeforePunctPer10k": 9.2
+  },
+  "legal-us-copyright-circular.pdf": {
+    "wordRecall": 0.9913,
+    "numericRecall": 0.9271,
+    "linkPrecision": 0.2955,
+    "spaceBeforePunctPer10k": 19.8
+  },
+  "manual-arduino-guide.pdf": {
+    "wordRecall": 0.8062,
+    "numericRecall": 0.7877,
+    "linkPrecision": 0.0787,
+    "spaceBeforePunctPer10k": 3.9
+  },
+  "multicolumn-gan-paper.pdf": {
+    "wordRecall": 0.9453,
+    "numericRecall": 0.7014,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 220.9
+  },
+  "multicolumn-ieee-paper.pdf": {
+    "wordRecall": 0.9877,
+    "numericRecall": 0.8974,
+    "linkPrecision": 0.0491,
+    "spaceBeforePunctPer10k": 32
+  },
+  "multilingual-udhr-chinese.pdf": {
+    "wordRecall": 0.7574,
+    "numericRecall": 1,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 0
+  },
+  "newsletter-imf-weo.pdf": {
+    "wordRecall": 0.9688,
+    "numericRecall": 0.9027,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 19
+  },
+  "resume-sample.pdf": {
+    "wordRecall": 1,
+    "numericRecall": 1,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 0
+  },
+  "scanned-declaration.pdf": {
+    "wordRecall": 0.9121,
+    "numericRecall": 0.25,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 0
+  },
+  "scientific-bert-paper.pdf": {
+    "wordRecall": 0.9558,
+    "numericRecall": 0.9954,
+    "linkPrecision": 0.1026,
+    "spaceBeforePunctPer10k": 44.2
+  },
+  "scientific-resnet.pdf": {
+    "wordRecall": 0.9419,
+    "numericRecall": 0.8515,
+    "linkPrecision": 0.1429,
+    "spaceBeforePunctPer10k": 70
+  },
+  "scientific-rl-survey.pdf": {
+    "wordRecall": 0.9657,
+    "numericRecall": 0.9659,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 68.4
+  },
+  "slides-stanford-ml.pdf": {
+    "wordRecall": 0.9222,
+    "numericRecall": 0.5286,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 383.7
+  },
+  "tables-cdc-report.pdf": {
+    "wordRecall": 0.9527,
+    "numericRecall": 0.8708,
+    "linkPrecision": 0.4804,
+    "spaceBeforePunctPer10k": 3.1
+  },
+  "tables-census-poverty.pdf": {
+    "wordRecall": 0.8893,
+    "numericRecall": 0.7582,
+    "linkPrecision": 0.0614,
+    "spaceBeforePunctPer10k": 17.1
+  },
+  "whitepaper-bitcoin.pdf": {
+    "wordRecall": 0.9843,
+    "numericRecall": 0.8641,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 30.9
+  }
+}

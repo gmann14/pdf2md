@@ -4,10 +4,21 @@ export const DATASET_KEYS = ["training", "blind1", "blind2", "blind3"] as const;
 
 export type DatasetKey = (typeof DATASET_KEYS)[number];
 
+export interface DocumentFidelity {
+  /** Percent (0–100) of text-layer word tokens present in the output. */
+  wordRecall: number;
+  /** Percent (0–100) of text-layer numeric tokens present in the output. */
+  numericRecall: number;
+  /** Percent (0–100) of output links backed by an annotation or bare URL. */
+  linkPrecision: number;
+}
+
 export interface DatasetMetrics {
   average: number;
   documentScores: Record<string, number>;
   dimensions: Record<string, number>;
+  /** Per-document text-fidelity metrics, when the report has a "Text Fidelity" section. */
+  fidelity?: Record<string, DocumentFidelity>;
 }
 
 export interface QualitySnapshot {
@@ -83,11 +94,68 @@ export function parseQualityReport(content: string, dataset: DatasetKey): Datase
   if (Object.keys(documentScores).length === 0) {
     throw new Error(`Could not parse ${dataset} document score table`);
   }
+
+  const fidelity = parseFidelitySection(content);
   if (Object.keys(dimensions).length === 0) {
     throw new Error(`Could not parse ${dataset} dimension averages`);
   }
 
-  return { average, documentScores, dimensions };
+  return fidelity ? { average, documentScores, dimensions, fidelity } : { average, documentScores, dimensions };
+}
+
+/** Parse the "## Text Fidelity" table written by test-corpus/fidelity.ts. */
+export function parseFidelitySection(content: string): Record<string, DocumentFidelity> | undefined {
+  const start = content.indexOf("## Text Fidelity");
+  if (start === -1) return undefined;
+  const section = content.slice(start);
+  const rows: Record<string, DocumentFidelity> = {};
+  const rowPattern = /^\|\s*([^|\s][^|]*?\.pdf)\s*\|\s*([\d.]+)\s*\|\s*([\d.]+)\s*\|[^|]*\|\s*([\d.]+)\s*\|/gm;
+  for (const match of section.matchAll(rowPattern)) {
+    rows[match[1].trim()] = {
+      wordRecall: Number(match[2]),
+      numericRecall: Number(match[3]),
+      linkPrecision: Number(match[4]),
+    };
+  }
+  return Object.keys(rows).length > 0 ? rows : undefined;
+}
+
+/** Fidelity acceptance limits (percentage points). */
+export const FIDELITY_RULES = {
+  maxWordRecallDrop: 0.5,
+  maxNumericRecallDrop: 0,
+  minLinkPrecision: 95,
+} as const;
+
+/**
+ * Fidelity part of the acceptance rule: a document fails if its word recall
+ * drops by more than 0.5 points, its numeric recall drops at all, or its link
+ * precision falls below 95% (or below its baseline, if that is already lower).
+ */
+export function fidelityFailures(current: QualitySnapshot, baseline: QualitySnapshot): string[] {
+  const failures: string[] = [];
+  for (const dataset of DATASET_KEYS) {
+    const before = baseline.datasets[dataset]?.fidelity;
+    const after = current.datasets[dataset]?.fidelity;
+    if (!before || !after) continue;
+    for (const [doc, base] of Object.entries(before)) {
+      const now = after[doc];
+      if (!now) continue;
+      const wordDrop = roundScore(base.wordRecall - now.wordRecall);
+      if (wordDrop > FIDELITY_RULES.maxWordRecallDrop) {
+        failures.push(`${dataset}.${doc} word recall dropped ${wordDrop.toFixed(1)} points`);
+      }
+      const numericDrop = roundScore(base.numericRecall - now.numericRecall);
+      if (numericDrop > FIDELITY_RULES.maxNumericRecallDrop) {
+        failures.push(`${dataset}.${doc} numeric recall dropped ${numericDrop.toFixed(1)} points`);
+      }
+      const floor = Math.min(FIDELITY_RULES.minLinkPrecision, base.linkPrecision);
+      if (now.linkPrecision < floor) {
+        failures.push(`${dataset}.${doc} link precision ${now.linkPrecision.toFixed(1)}% is below ${floor.toFixed(1)}%`);
+      }
+    }
+  }
+  return failures;
 }
 
 export async function loadSnapshotFromReports(
@@ -150,8 +218,11 @@ export function compareSnapshots(current: QualitySnapshot, baseline: QualitySnap
     reasons.push(`largest individual document drop is ${maxDocumentDrop.toFixed(3)}`);
   }
 
+  const fidelityProblems = fidelityFailures(current, baseline);
+  reasons.push(...fidelityProblems);
+
   const improvedEnough = combinedDelta >= 0.05 || (bestDimensionDelta >= 0.3 && combinedDelta >= 0);
-  const status = improvedEnough && maxDocumentDrop <= 0.3 ? "PASS" : "FAIL";
+  const status = improvedEnough && maxDocumentDrop <= 0.3 && fidelityProblems.length === 0 ? "PASS" : "FAIL";
 
   if (status === "FAIL" && reasons.length === 0) {
     reasons.push("no acceptance threshold was met");

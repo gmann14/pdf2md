@@ -10,6 +10,7 @@ import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import { resolve, basename, join } from "node:path";
 import { convert } from "../packages/core/src/converter";
 import { initPdfWorker } from "../packages/core/src/pdf-worker";
+import { computeFidelity, extractTextLayer, fidelityReportSection, type FidelityRow } from "./fidelity";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -389,6 +390,7 @@ async function main(): Promise<void> {
   initPdfWorker();
 
   const evaluations: PdfEvaluation[] = [];
+  const fidelityRows: FidelityRow[] = [];
 
   for (const file of files) {
     const filePath = join(corpusDir, file);
@@ -407,6 +409,8 @@ async function main(): Promise<void> {
     }
 
     try {
+      // Read the raw text layer first, from a copy: PDF.js may detach the buffer it gets.
+      const textLayer = await extractTextLayer(new Uint8Array(buffer.slice(0)));
       const result = await convert(buffer, {
         includeMetadata: true,
         yamlFrontMatter: true,
@@ -421,6 +425,7 @@ async function main(): Promise<void> {
       console.log(`  Status: ${result.status} | Score: ${evaluation.overallScore}/10 | ${result.stats.wordCount} words | ${Math.round(result.stats.processingMs)}ms`);
 
       evaluations.push(evaluation);
+      fidelityRows.push({ file, status: result.status, ...computeFidelity(textLayer, result.markdown) });
     } catch (err) {
       console.error(`  ERROR converting: ${err}`);
     }
@@ -503,6 +508,7 @@ async function main(): Promise<void> {
     reportLines.push(`| ${key} | ${avg}/10 | ${trainingAvgs[key] ?? "?"}/10 | ${blind1Avgs[key] ?? "?"}/10 |`);
   }
 
+  reportLines.push("", fidelityReportSection(fidelityRows));
   await writeFile(reportPath, reportLines.join("\n"), "utf-8");
   console.log(`\nReport saved to: ${reportPath}`);
   console.log(`Results saved to: ${resultsDir}/`);

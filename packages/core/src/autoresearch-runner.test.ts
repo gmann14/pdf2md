@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { compareSnapshots, computeCombined, parseQualityReport, type QualitySnapshot } from "../../../autoresearch/compare-results";
+import {
+  compareSnapshots,
+  computeCombined,
+  parseFidelitySection,
+  parseQualityReport,
+  type QualitySnapshot,
+} from "../../../autoresearch/compare-results";
 
 const trainingReport = `
 **Overall Average Score:** 9.2/10
@@ -126,5 +132,73 @@ describe("autoresearch acceptance comparison", () => {
     expect(result.status).toBe("FAIL");
     expect(result.combinedDelta).toBeGreaterThanOrEqual(0.05);
     expect(result.maxDocumentDrop).toBeCloseTo(0.5);
+  });
+});
+
+const fidelitySection = `
+## Text Fidelity
+
+Compared with the raw PDF.js text layer.
+
+| PDF | Word recall % | Numeric recall % | Links out / annot / bare | Link precision % | Space-before-punct /10k | Bold | Italic | Code fences |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| stress.pdf | 95.6 | 88.5 | 12 / 10 / 2 | 100.0 | 3.1 | 0 | 0 | 1 |
+`;
+
+describe("autoresearch fidelity acceptance", () => {
+  it("parses the Text Fidelity section without confusing it with the score tables", () => {
+    const metrics = parseQualityReport(blind3Report + fidelitySection, "blind3");
+    expect(metrics.documentScores).toEqual({ "stress.pdf": 8.8 });
+    expect(metrics.fidelity).toEqual({
+      "stress.pdf": { wordRecall: 95.6, numericRecall: 88.5, linkPrecision: 100 },
+    });
+    expect(parseFidelitySection(blind3Report)).toBeUndefined();
+  });
+
+  function withFidelity(wordRecall: number, numericRecall: number, linkPrecision: number): QualitySnapshot {
+    const base = snapshot();
+    const current = snapshot({
+      datasets: {
+        ...base.datasets,
+        blind3: {
+          ...base.datasets.blind3,
+          dimensions: { codeBlockDetection: 7.6, linkExtraction: 7.8 },
+          fidelity: { "stress.pdf": { wordRecall, numericRecall, linkPrecision } },
+        },
+      },
+    });
+    current.combined = computeCombined(current.datasets);
+    return current;
+  }
+
+  const fidelityBaseline = (): QualitySnapshot => {
+    const base = snapshot();
+    base.datasets.blind3 = {
+      ...base.datasets.blind3,
+      fidelity: { "stress.pdf": { wordRecall: 95.6, numericRecall: 88.5, linkPrecision: 97 } },
+    };
+    return base;
+  };
+
+  it("keeps passing when fidelity holds", () => {
+    expect(compareSnapshots(withFidelity(95.2, 88.5, 96), fidelityBaseline()).status).toBe("PASS");
+  });
+
+  it("fails on a word-recall drop above 0.5 points", () => {
+    const result = compareSnapshots(withFidelity(95.0, 88.5, 97), fidelityBaseline());
+    expect(result.status).toBe("FAIL");
+    expect(result.reasons.join("\n")).toContain("word recall dropped 0.6");
+  });
+
+  it("fails on any numeric-recall drop", () => {
+    const result = compareSnapshots(withFidelity(95.6, 88.4, 97), fidelityBaseline());
+    expect(result.status).toBe("FAIL");
+    expect(result.reasons.join("\n")).toContain("numeric recall dropped");
+  });
+
+  it("fails when link precision falls below 95%", () => {
+    const result = compareSnapshots(withFidelity(95.6, 88.5, 94.9), fidelityBaseline());
+    expect(result.status).toBe("FAIL");
+    expect(result.reasons.join("\n")).toContain("link precision 94.9%");
   });
 });

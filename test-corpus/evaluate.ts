@@ -12,6 +12,7 @@ import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import { resolve, basename, join } from "node:path";
 import { convert } from "../packages/core/src/converter";
 import { initPdfWorker } from "../packages/core/src/pdf-worker";
+import { computeFidelity, extractTextLayer, fidelityReportSection, type FidelityRow } from "./fidelity";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -752,6 +753,7 @@ async function main(): Promise<void> {
   initPdfWorker();
 
   const evaluations: PdfEvaluation[] = [];
+  const fidelityRows: FidelityRow[] = [];
 
   for (const file of files) {
     const filePath = join(corpusDir, file);
@@ -794,6 +796,8 @@ async function main(): Promise<void> {
     }
 
     try {
+      // Read the raw text layer first, from a copy: PDF.js may detach the buffer it gets.
+      const textLayer = await extractTextLayer(new Uint8Array(buffer.slice(0)));
       const result = await convert(buffer, {
         includeMetadata: true,
         yamlFrontMatter: true,
@@ -815,6 +819,7 @@ async function main(): Promise<void> {
       }
 
       evaluations.push(evaluation);
+      fidelityRows.push({ file, status: result.status, ...computeFidelity(textLayer, result.markdown) });
     } catch (err) {
       console.error(`  ERROR converting: ${err}`);
       evaluations.push({
@@ -847,7 +852,7 @@ async function main(): Promise<void> {
   // Generate and save report
   const report = generateReport(evaluations);
   const reportPath = resolve(scriptDir, "QUALITY-REPORT.md");
-  await writeFile(reportPath, report, "utf-8");
+  await writeFile(reportPath, `${report.trimEnd()}\n\n${fidelityReportSection(fidelityRows)}\n`, "utf-8");
 
   console.log(`\n${"=".repeat(60)}`);
   console.log(`Quality report saved to: ${reportPath}`);

@@ -32,6 +32,23 @@ An experiment passes only when it improves the combined score by at least `0.05`
 or improves a target dimension by at least `0.3` without combined-score
 regression. In both cases, no individual document may drop by more than `0.3`.
 
+The evaluate reports also carry a "Text Fidelity" section (`test-corpus/fidelity.ts`):
+word recall, numeric-token recall and link precision against the raw PDF.js text
+layer. When both snapshots have it, an experiment also fails if any document's
+word recall drops by more than `0.5` points, its numeric recall drops at all, or
+its link precision falls below `95%` (or below its baseline, if that is already
+lower). These metrics are not folded into the 9-dimension score.
+
+Run the fidelity checks on their own (all sets, or the dirs given):
+
+```bash
+npx tsx --require ./test-corpus/node-polyfills.cjs test-corpus/fidelity.ts [dir ...] [--json out.json] [--save-md outDir]
+```
+
+`pnpm test` runs a ratchet over `test-corpus/real-pdfs/` against
+`test-corpus/fidelity-baseline.json`. After an intended improvement, refresh it with
+`... test-corpus/fidelity.ts test-corpus/real-pdfs --update-baseline`.
+
 The four datasets are weighted equally:
 
 ```text
