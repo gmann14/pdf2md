@@ -62,3 +62,37 @@ describe("header/footer stripping stays in the header and footer bands", () => {
     expect(markdown.split("\n").filter((line) => /^\s*\d\s*$/.test(line))).toEqual([]);
   });
 });
+
+describe("binary input types", () => {
+  const fixture = () => readFile(resolve(fixturesDir, "links-same-position.pdf"));
+
+  it("accepts a Node Buffer as returned by fs.readFile", async () => {
+    const buffer = await fixture();
+    const result = await convert(buffer);
+    expect(result.status).toBe("success");
+    expect(result.markdown).toContain("Project homepage");
+    expect(buffer.byteLength).toBeGreaterThan(0);
+  });
+
+  it("accepts a Uint8Array view and leaves the caller's buffer attached", async () => {
+    const bytes = new Uint8Array(await fixture());
+    const length = bytes.buffer.byteLength;
+    const result = await convert(bytes);
+    expect(result.status).toBe("success");
+    expect(bytes.buffer.byteLength).toBe(length);
+  });
+
+  it("accepts an ArrayBuffer and leaves it attached", async () => {
+    const arrayBuffer = new Uint8Array(await fixture()).buffer;
+    const length = arrayBuffer.byteLength;
+    const result = await convert(arrayBuffer);
+    expect(result.status).toBe("success");
+    expect(arrayBuffer.byteLength).toBe(length);
+  });
+
+  it("returns parse_failed, not a throw, for non-PDF bytes in a Buffer", async () => {
+    const result = await convert(Buffer.from("not a pdf"));
+    expect(result.status).toBe("failed");
+    expect(result.messages[0]?.code).toBe("parse_failed");
+  });
+});

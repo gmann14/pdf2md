@@ -24,7 +24,7 @@ async function readPackageJson(packageDir: string) {
     name: string;
     keywords?: string[];
     types?: string;
-    exports?: Record<string, { types?: string }>;
+    exports?: Record<string, Record<string, unknown>>;
   };
 }
 
@@ -37,11 +37,12 @@ describe("npm package metadata", () => {
     expect(pkg.name).toBe("@pdf2md/core");
     expect(pkg.keywords).toEqual(expect.arrayContaining(launchKeywords));
     expect(pkg.types).toBe("./dist/index.d.ts");
-    expect(pkg.exports?.["."]).toEqual(
-      expect.objectContaining({
-        types: "./dist/index.d.ts",
-      }),
-    );
+    // ESM and CommonJS each get their own types so `require()` and `import`
+    // both type-check (agent tools load the package with a sync require()).
+    expect(pkg.exports?.["."]).toEqual({
+      import: { types: "./dist/index.d.ts", default: "./dist/index.js" },
+      require: { types: "./dist/cjs/index.d.ts", default: "./dist/cjs/index.js" },
+    });
   });
 
   it("keeps @pdf2md/mcp aligned with the shared pdf2md discovery keywords", async () => {

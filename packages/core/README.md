@@ -14,17 +14,26 @@ npm install @pdf2md/core
 import { convert } from "@pdf2md/core";
 import { readFile } from "node:fs/promises";
 
-const buffer = await readFile("document.pdf");
-const result = await convert(buffer.buffer);
+const buffer = await readFile("document.pdf"); // a Node Buffer works as-is
+const result = await convert(buffer);
 
 console.log(result.markdown);
 console.log(result.stats); // { pageCount, wordCount, processingMs }
 ```
 
+`convert()` accepts an `ArrayBuffer` or any `Uint8Array` (including a Node `Buffer`).
+It copies the bytes before handing them to PDF.js, so your buffer is never detached.
+
+CommonJS works too:
+
+```js
+const { convert } = require("@pdf2md/core");
+```
+
 ### Options
 
 ```ts
-const result = await convert(buffer.buffer, {
+const result = await convert(buffer, {
   maxPages: 10,           // Limit number of pages to convert
   includeMetadata: true,  // Extract title, author, etc.
   outputFormat: "json",   // Include structured sections

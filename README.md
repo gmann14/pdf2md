@@ -27,7 +27,7 @@ import { convert } from "@pdf2md/core";
 import { readFile } from "node:fs/promises";
 
 const buffer = await readFile("document.pdf");
-const result = await convert(buffer.buffer);
+const result = await convert(buffer); // ArrayBuffer, Uint8Array or Node Buffer
 
 console.log(result.markdown);
 ```
@@ -95,7 +95,7 @@ if (result.status !== "failed") {
 }
 ```
 
-`convert(pdfBuffer, options?)` returns a `ConversionResult`:
+`convert(pdfBuffer, options?)` takes an `ArrayBuffer` or `Uint8Array` (a Node `Buffer` works) and returns a `ConversionResult`. Both `import` and `require()` are supported.
 
 | Field | Description |
 | --- | --- |

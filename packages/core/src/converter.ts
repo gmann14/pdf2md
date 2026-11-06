@@ -1556,8 +1556,15 @@ async function extractMetadata(
 // Main conversion function
 // ---------------------------------------------------------------------------
 
+/**
+ * Convert a PDF to Markdown.
+ *
+ * @param pdfBuffer The PDF bytes: an `ArrayBuffer` or any `Uint8Array`,
+ *   including a Node `Buffer` (e.g. from `fs.readFile`). The bytes are copied
+ *   before PDF.js sees them, so the caller's buffer is never detached.
+ */
 export async function convert(
-  pdfBuffer: ArrayBuffer,
+  pdfBuffer: ArrayBuffer | Uint8Array,
   options?: ConvertOptions,
 ): Promise<ConversionResult> {
   const startTime = performance.now();
@@ -1586,8 +1593,14 @@ export async function convert(
   const { getDocument } = await getPdfjs();
   let doc: PDFDocumentProxy;
   try {
+    // PDF.js rejects Node Buffers and may transfer (detach) the buffer it is
+    // given, so always hand it a fresh plain Uint8Array copy.
+    const data =
+      pdfBuffer instanceof Uint8Array
+        ? new Uint8Array(pdfBuffer)
+        : new Uint8Array(pdfBuffer.slice(0));
     const loadingTask = getDocument({
-      data: pdfBuffer,
+      data,
       useSystemFonts: true,
     });
 
