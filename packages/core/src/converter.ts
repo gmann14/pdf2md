@@ -1825,10 +1825,17 @@ function splitInlineBullets(text: string): string | null {
 // ---------------------------------------------------------------------------
 
 /**
+ * An existing Markdown link `[text](url)`. Neither part may contain `[`, so
+ * each match attempt stops at the next `[`: with an unbounded `[^\]]*` a line
+ * of many `[` and no `]` (or many `[a](b`) took quadratic time.
+ */
+const MARKDOWN_LINK_SPLIT = /(\[[^[\]]*\]\([^)\s[]*\))/;
+
+/**
  * Convert bare URLs in text to markdown links, but only if they're not
  * already inside a markdown link `[text](url)` or code block.
  */
-function autoLinkUrls(markdown: string): string {
+export function autoLinkUrls(markdown: string): string {
   // Process line by line, skip code blocks
   const lines = markdown.split("\n");
   let inCodeBlock = false;
@@ -1843,7 +1850,7 @@ function autoLinkUrls(markdown: string): string {
       // Link bare URLs only outside existing Markdown links, so a URL inside
       // link text (`[see https://x](https://x)`) is not wrapped a second time.
       return line
-        .split(/(\[[^\]]*\]\([^)\s]*\))/)
+        .split(MARKDOWN_LINK_SPLIT)
         .map((segment, index) =>
           index % 2 === 1
             ? segment

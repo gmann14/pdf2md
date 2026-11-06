@@ -12,6 +12,8 @@ import {
   literalMarkerProblems,
   joinRawItems,
   multisetRecall,
+  normalizeUrl,
+  extractMarkdownLinks,
   numericTokens,
   ratchetFailures,
   renderedEmphasis,
@@ -117,6 +119,26 @@ describe("emphasisMarkerProblems", () => {
       "** followed by whitespace",
       "** in heading",
     ]);
+  });
+});
+
+describe("link helpers run in linear time", () => {
+  it("normalizes URLs as before", () => {
+    expect(normalizeUrl(" HTTPS://Example.com/Path/). ")).toBe("https://example.com/path");
+    expect(extractMarkdownLinks("[a [1]](https://x.org/a_(b)) [c](d)")).toEqual([
+      { text: "a [1]", url: "https://x.org/a_(b)" },
+      { text: "c", url: "d" },
+    ]);
+  });
+
+  // Both were unanchored or nested unbounded patterns: trailing-punctuation
+  // `[...]+$` on a long run of dots, and the link pattern on many `[` with no
+  // `]`, each took about 2.5 s at 40,000 characters. They must stay linear.
+  it("handles long punctuation and bracket runs", () => {
+    const start = performance.now();
+    expect(normalizeUrl(`http://a${".".repeat(200_000)}x`)).toHaveLength(200_009);
+    expect(extractMarkdownLinks("[".repeat(200_000))).toEqual([]);
+    expect(performance.now() - start).toBeLessThan(1000);
   });
 });
 

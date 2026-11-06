@@ -100,7 +100,13 @@ export function numericTokens(text: string): string[] {
 }
 
 export function normalizeUrl(url: string): string {
-  return url.trim().replace(/[.,;:!?'")\]]+$/, "").replace(/\/+$/, "").toLowerCase();
+  // Backward scans: an unanchored `[...]+$` regex is quadratic on a long run
+  // of those characters followed by something else.
+  const trimmed = url.trim();
+  let end = trimmed.length;
+  while (end > 0 && `.,;:!?'")]`.includes(trimmed[end - 1] ?? "")) end--;
+  while (end > 0 && trimmed[end - 1] === "/") end--;
+  return trimmed.slice(0, end).toLowerCase();
 }
 
 function counts(tokens: string[]): Map<string, number> {
@@ -124,7 +130,9 @@ export function multisetRecall(source: string[], output: string[]): number {
 // Markdown handling
 // ---------------------------------------------------------------------------
 
-const MD_LINK_RE = /\[((?:[^\][]|\[[^\]]*\])*)\]\(([^()\s]*(?:\([^()\s]*\)[^()\s]*)*)\)/g;
+// One level of nested brackets in the text; the nested part excludes `[` so a
+// line of many `[` and no `]` is not rescanned from every `[` (quadratic).
+const MD_LINK_RE = /\[((?:[^\][]|\[[^\][]*\])*)\]\(([^()\s]*(?:\([^()\s]*\)[^()\s]*)*)\)/g;
 
 export function extractMarkdownLinks(markdown: string): { text: string; url: string }[] {
   const links: { text: string; url: string }[] = [];
