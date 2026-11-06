@@ -49,6 +49,15 @@ interface ExtractedItem {
   structIds?: string[];
   /** The PDF drew a whitespace-only run right after this item: a word break. */
   spaceAfter?: boolean;
+  /** Bold or italic, from the real font name. Unset when emphasis is off. */
+  bold?: boolean;
+  italic?: boolean;
+}
+
+/** Bold/italic style of a PDF font. */
+export interface FontStyle {
+  bold: boolean;
+  italic: boolean;
 }
 
 interface AnnotationLink {
@@ -170,6 +179,37 @@ function isItalic(fontName: string): boolean {
   return /italic|oblique|\bit\b/.test(lower);
 }
 
+const BOLD_FONT_NAME =
+  /bold|black|heavy|demi|-medi(?:ital)?$|^(?:cm|sf)(?:bx|b\d)/i;
+const ITALIC_FONT_NAME =
+  /italic|oblique|kursiv|(?:^|[-,_ ]|regu|medi|bold|light|book)ital$|(?:-|,|bold|semibold|light|medium|regular|book|black|demi|heavy|cn|cond)it$|^(?:cm|sf)(?:ti|sl|bxti|bxsl)\d/i;
+
+/**
+ * Bold/italic from a real PDF font name such as "ABCDEF+Helvetica-BoldOblique",
+ * "Arial,Italic", "NimbusRomNo9L-Medi" or TeX's "CMTI10". The six-letter subset
+ * prefix is ignored.
+ */
+export function fontStyleFromName(name: string): FontStyle {
+  const base = name.replace(/^[A-Z]{6}\+/, "");
+  return { bold: BOLD_FONT_NAME.test(base), italic: ITALIC_FONT_NAME.test(base) };
+}
+
+/**
+ * Resolve a PDF.js font id (e.g. "g_d0_f3") to its style. The font object is
+ * only on `commonObjs` once the page's operator list has been built.
+ */
+function resolveFontStyle(page: PDFPageProxy, fontId: string): FontStyle {
+  if (!page.commonObjs.has(fontId)) return { bold: false, italic: false };
+  const font: unknown = page.commonObjs.get(fontId);
+  if (typeof font !== "object" || font === null) return { bold: false, italic: false };
+  const { name, bold, italic } = font as { name?: unknown; bold?: unknown; italic?: unknown };
+  const fromName = typeof name === "string" ? fontStyleFromName(name) : { bold: false, italic: false };
+  return {
+    bold: fromName.bold || bold === true,
+    italic: fromName.italic || italic === true,
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Text cleanup (ligatures, special spaces, encoding artifacts)
 // ---------------------------------------------------------------------------
@@ -247,6 +287,76 @@ async function extractPageItems(
   }
 
   return { items, links, structTree };
+}
+
+/**
+ * Set `bold`/`italic` on items from their real font names.
+ *
+ * Font names are only on `commonObjs` after a page's operator list is built,
+ * which costs about as much as the text extraction itself. So only the fonts
+ * that can produce inline emphasis are resolved (fonts of lettered items in
+ * paragraph and list blocks, except the dominant body font, which is taken as
+ * regular), using as few pages as possible (greedy cover). Returns one
+ * message per page whose operator list failed.
+ */
+async function applyFontStyles(doc: PDFDocumentProxy, blocks: Block[]): Promise<string[]> {
+  const candidates = blocks
+    .filter((b) => b.type === "paragraph" || b.type === "list-item")
+    .flatMap((b) => b.items)
+    .filter(hasLetter);
+  const chars = new Map<string, number>();
+  for (const item of candidates) {
+    chars.set(item.fontName, (chars.get(item.fontName) ?? 0) + item.str.length);
+  }
+  const bodyFont = [...chars].sort((a, b) => b[1] - a[1])[0]?.[0];
+  const needed = new Set([...chars.keys()].filter((id) => id !== bodyFont));
+  if (needed.size === 0) return [];
+
+  const fontsByPage = new Map<number, Set<string>>();
+  for (const item of blocks.flatMap((b) => b.items)) {
+    if (!needed.has(item.fontName)) continue;
+    const fonts = fontsByPage.get(item.page) ?? new Set<string>();
+    fonts.add(item.fontName);
+    fontsByPage.set(item.page, fonts);
+  }
+
+  const styles = new Map<string, FontStyle>();
+  const errors: string[] = [];
+  while (needed.size > 0) {
+    // The page that uses the most still-unresolved fonts (earliest on a tie).
+    let bestPage = -1;
+    let bestCount = 0;
+    for (const [pageNum, fonts] of fontsByPage) {
+      let count = 0;
+      for (const id of fonts) if (needed.has(id)) count++;
+      if (count > bestCount || (count === bestCount && count > 0 && pageNum < bestPage)) {
+        bestPage = pageNum;
+        bestCount = count;
+      }
+    }
+    if (bestPage < 0) break;
+
+    const fonts = [...(fontsByPage.get(bestPage) ?? [])].filter((id) => needed.has(id));
+    try {
+      const page = await doc.getPage(bestPage);
+      await page.getOperatorList();
+      for (const id of fonts) styles.set(id, resolveFontStyle(page, id));
+    } catch (err) {
+      errors.push(
+        `Could not read fonts on page ${bestPage}; some bold and italic omitted: ${err instanceof Error ? err.message : "Unknown error"}`,
+      );
+    }
+    for (const id of fonts) needed.delete(id);
+  }
+
+  for (const block of blocks) {
+    for (const item of block.items) {
+      const style = styles.get(item.fontName);
+      item.bold = style?.bold ?? false;
+      item.italic = style?.italic ?? false;
+    }
+  }
+  return errors;
 }
 
 // ---------------------------------------------------------------------------
@@ -1023,14 +1133,96 @@ function matchLinksToText(
 // Inline formatting (bold/italic)
 // ---------------------------------------------------------------------------
 
-function applyInlineFormatting(text: string, fontName: string): string {
-  const bold = isBold(fontName);
-  const italic = isItalic(fontName);
+/**
+ * Leading text kept outside emphasis markers: list markers, punctuation and
+ * dashes left over from the previous text, opening brackets and quotes. A
+ * marker next to punctuation can fail to open (`2*-group*`), so it goes after.
+ */
+const EMPHASIS_LEAD =
+  /^\s*(?:(?:[-\u2013\u2014\u2022\u00B7\u25AA\u25A0\u25E6\u25BA\u25B8\u25B6\u25C6\u25C7\u25A1\u25CF\u25CB]|\d{1,3}[.)]|\[\d{1,3}\]|[a-zA-Z][.)])\s+)?[.,;:!?)\]\u2013\u2014-]*\s*[(\[\u201C\u2018"']*/;
+/**
+ * Trailing text kept outside emphasis markers: punctuation, dashes, brackets
+ * and quotes (an opening bracket at the end of a run belongs to what follows).
+ */
+const EMPHASIS_TRAIL = /[\s.,;:!?()[\]\u201C\u201D\u2018\u2019"'\u2013\u2014-]*$/;
+const INLINE_BULLET_CHAR = /[•\u2022\u2023\u25E6\u2043\u2219\u25CF\u25CB\u25B6\u25B8\u25BA►▸▶]/;
 
-  if (bold && italic) return `***${text}***`;
-  if (bold) return `**${text}**`;
-  if (italic) return `*${text}*`;
-  return text;
+/**
+ * Wrap a run of same-style text in `marker`, keeping surrounding whitespace,
+ * list markers, opening brackets and trailing punctuation outside, so the
+ * result is `(**primitive services**).`, never `**primitive services.**`.
+ * Runs with fewer than two letters, or that contain `*` or an inline bullet,
+ * are left plain.
+ */
+export function emphasize(text: string, marker: string): string {
+  const lead = text.match(EMPHASIS_LEAD)?.[0] ?? "";
+  const rest = text.slice(lead.length);
+  const trail = rest.match(EMPHASIS_TRAIL)?.[0] ?? "";
+  const core = rest.slice(0, rest.length - trail.length);
+  if (!/\p{L}[\s\S]*\p{L}/u.test(core) || INLINE_BULLET_CHAR.test(core)) {
+    return text;
+  }
+  return `${lead}${marker}${core}${marker}${trail}`;
+}
+
+/** Items count toward a block's style only if they contain a letter. */
+function hasLetter(item: ExtractedItem): boolean {
+  return /\p{L}/u.test(item.str);
+}
+
+interface StyledRun {
+  text: string;
+  bold: boolean;
+  italic: boolean;
+  url?: string;
+  /** Separator before this run. */
+  sep: string;
+}
+
+/**
+ * Render consecutive runs (one link or none) with nested emphasis. A stretch
+ * of bold runs is one `**…**` and a stretch of italic runs one `*…*`; where
+ * they overlap, the longer stretch is the outer span, so the output is
+ * `**Key *term* here**` or `*Rules (**ICC Rules**)*`, never a span closed and
+ * reopened (`***term*** **here**`). Partly overlapping stretches split where
+ * the inner style continues: `*Amount* ***E-file* options**`. Stretches
+ * containing a literal `*` are left plain.
+ */
+function renderRuns(runs: StyledRun[]): string {
+  let out = "";
+  for (let i = 0; i < runs.length; ) {
+    const run = runs[i];
+    if (!run.bold && !run.italic) {
+      out += run.sep + run.text;
+      i++;
+      continue;
+    }
+    let boldEnd = i;
+    while (boldEnd < runs.length && runs[boldEnd].bold) boldEnd++;
+    let italicEnd = i;
+    while (italicEnd < runs.length && runs[italicEnd].italic) italicEnd++;
+    const outerBold = boldEnd - i >= italicEnd - i;
+    let end = outerBold ? boldEnd : italicEnd;
+    // If the inner style runs on past the outer stretch, end the outer span
+    // before it, so the inner style can be one span of its own.
+    const isInner = (r: StyledRun) => (outerBold ? r.italic : r.bold);
+    if (end < runs.length && isInner(runs[end])) {
+      while (end - 1 > i && isInner(runs[end - 1])) end--;
+    }
+    const stretch = runs.slice(i, end);
+    const inner = renderRuns(
+      stretch.map((r, k) => ({
+        ...r,
+        sep: k === 0 ? "" : r.sep,
+        bold: outerBold ? false : r.bold,
+        italic: outerBold ? r.italic : false,
+      })),
+    );
+    const literalStar = stretch.some((r) => r.text.includes("*"));
+    out += run.sep + (literalStar ? inner : emphasize(inner, outerBold ? "**" : "*"));
+    i = end;
+  }
+  return out;
 }
 
 // ---------------------------------------------------------------------------
@@ -1062,28 +1254,52 @@ function assembleBlockText(
   linkMap: Map<ExtractedItem, string>,
 ): string {
   // Items are joined with a space unless they touch on the same line.
-  // Consecutive items that share a link URL are merged into one `[text](url)`
-  // so a multi-word link is not split per item.
-  const pieces: Array<{ text: string; url?: string; sep: string }> = [];
-  let prevItem: ExtractedItem | null = null;
+  // Consecutive items with the same style form one emphasis run, and
+  // consecutive runs that share a link URL form one `[text](url)`, so the
+  // output is `**primitive services**`, never `**primitive** **services**`.
+  // Headings get no emphasis, and a block that is bold throughout (a bold
+  // line that is not a heading) gets no bold.
+  const allowEmphasis = block.type !== "heading";
+  const lettered = block.items.filter(hasLetter);
+  const allowBold = allowEmphasis && !lettered.every((item) => item.bold === true);
 
+  const runs: StyledRun[] = [];
+  let prevItem: ExtractedItem | null = null;
   for (const item of block.items) {
-    const text = applyInlineFormatting(item.str, item.fontName);
+    const bold = allowBold && item.bold === true;
+    const italic = allowEmphasis && item.italic === true;
     const url = linkMap.get(item);
     const sep = prevItem ? separatorBetween(prevItem, item) : "";
     prevItem = item;
-    const last = pieces[pieces.length - 1];
-    if (url && last?.url === url) {
-      last.text = `${last.text}${sep}${text}`;
+    const last = runs[runs.length - 1];
+    // Punctuation and symbols join the current run rather than splitting it.
+    const sameRun =
+      last &&
+      last.url === url &&
+      ((last.bold === bold && last.italic === italic) || !/[\p{L}\p{N}]/u.test(item.str));
+    if (sameRun) {
+      last.text += sep + item.str;
     } else {
-      pieces.push({ text, url, sep });
+      runs.push({ text: item.str, bold, italic, url, sep });
     }
   }
 
-  return pieces
-    .map((piece) => piece.sep + (piece.url ? `[${piece.text.trim()}](${piece.url})` : piece.text))
-    .join("")
-    .trim();
+  // Group runs by link, then render each group with nested emphasis.
+  let out = "";
+  for (let i = 0; i < runs.length; ) {
+    let j = i + 1;
+    while (j < runs.length && runs[j].url === runs[i].url) j++;
+    const group = runs.slice(i, j);
+    const url = runs[i].url;
+    if (url) {
+      const text = renderRuns([{ ...group[0], sep: "" }, ...group.slice(1)]);
+      out += runs[i].sep + `[${text.trim()}](${url})`;
+    } else {
+      out += renderRuns(group);
+    }
+    i = j;
+  }
+  return out.trim();
 }
 
 function codeBlockToMarkdown(
@@ -1496,7 +1712,7 @@ function autoLinkUrls(markdown: string): string {
           index % 2 === 1
             ? segment
             : segment.replace(
-                /(?<!\]\()(?<!\[)(https?:\/\/[^\s\])<>]+)/g,
+                /(?<!\]\()(?<!\[)(https?:\/\/[^\s\])<>*]+)/g,
                 (match) => `[${match}](${match})`,
               ),
         )
@@ -1600,6 +1816,7 @@ export async function convert(
 ): Promise<ConversionResult> {
   const startTime = performance.now();
   const messages: ConversionMessage[] = [];
+  const emphasis = options?.emphasis !== false;
 
   // Check file size
   if (pdfBuffer.byteLength > MAX_FILE_SIZE) {
@@ -1621,7 +1838,7 @@ export async function convert(
   await initPdfWorker();
 
   // Load document
-  const { getDocument } = await getPdfjs();
+  const { getDocument, VerbosityLevel } = await getPdfjs();
   let doc: PDFDocumentProxy;
   try {
     // PDF.js rejects Node Buffers and may transfer (detach) the buffer it is
@@ -1633,6 +1850,14 @@ export async function convert(
     const loadingTask = getDocument({
       data,
       useSystemFonts: true,
+      // Keeps font names on the font objects in PDF.js >= 6.4 (needed for emphasis).
+      fontExtraProperties: emphasis,
+      // pdf2md never renders, so building an operator list (for font names)
+      // must not decode images: skip every image larger than one pixel.
+      maxImageSize: 1,
+      // Skipped images and font quirks are logged as warnings on stdout, which
+      // would corrupt the CLI's Markdown output; log errors only.
+      verbosity: VerbosityLevel.ERRORS,
     });
 
     if (options?.signal) {
@@ -1809,6 +2034,13 @@ export async function convert(
     currentPage: maxPages,
     totalPages: maxPages,
   });
+
+  // Inline bold/italic from real font names
+  if (emphasis) {
+    for (const message of await applyFontStyles(doc, enrichedBlocks)) {
+      messages.push({ code: "parse_failed", severity: "warning", message });
+    }
+  }
 
   // Assemble markdown
   let markdown = blocksToMarkdown(enrichedBlocks, linkMap);

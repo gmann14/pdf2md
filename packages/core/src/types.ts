@@ -64,6 +64,11 @@ export interface ConvertOptions {
   maxTokensPerChunk?: number;
   /** Prepend PDF metadata as YAML front matter to the markdown output */
   yamlFrontMatter?: boolean;
+  /**
+   * Emit inline **bold** and *italic* from the PDF's font names. Defaults to
+   * true. Turning it off skips reading each page's operator list, which is faster.
+   */
+  emphasis?: boolean;
   signal?: AbortSignal;
   onProgress?: (progress: ConversionProgress) => void;
 }

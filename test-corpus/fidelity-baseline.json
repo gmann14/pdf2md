@@ -9,13 +9,13 @@
     "wordRecall": 0.9963,
     "numericRecall": 0.8857,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 2.0
+    "spaceBeforePunctPer10k": 1.8
   },
   "code-book-think-python.pdf": {
     "wordRecall": 0.9943,
     "numericRecall": 0.9527,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 27.4
+    "spaceBeforePunctPer10k": 27.3
   },
   "code-git-cheatsheet.pdf": {
     "wordRecall": 1,
@@ -27,7 +27,7 @@
     "wordRecall": 0.9906,
     "numericRecall": 0.9349,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 142.5
+    "spaceBeforePunctPer10k": 132.3
   },
   "financial-berkshire-letter.pdf": {
     "wordRecall": 0.9931,
@@ -90,7 +90,7 @@
     "spaceBeforePunctPer10k": 6.8
   },
   "multicolumn-gan-paper.pdf": {
-    "wordRecall": 0.9866,
+    "wordRecall": 0.9856,
     "numericRecall": 0.8889,
     "linkPrecision": 1,
     "spaceBeforePunctPer10k": 40.7
@@ -111,7 +111,7 @@
     "wordRecall": 0.9752,
     "numericRecall": 0.9582,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 3.2
+    "spaceBeforePunctPer10k": 0.0
   },
   "resume-sample.pdf": {
     "wordRecall": 1,
@@ -126,19 +126,19 @@
     "spaceBeforePunctPer10k": 0.0
   },
   "scientific-bert-paper.pdf": {
-    "wordRecall": 0.9571,
+    "wordRecall": 0.9576,
     "numericRecall": 1,
     "linkPrecision": 1,
     "spaceBeforePunctPer10k": 9.9
   },
   "scientific-resnet.pdf": {
-    "wordRecall": 0.9882,
+    "wordRecall": 0.9883,
     "numericRecall": 0.9686,
     "linkPrecision": 1,
     "spaceBeforePunctPer10k": 5.2
   },
   "scientific-rl-survey.pdf": {
-    "wordRecall": 0.9699,
+    "wordRecall": 0.9703,
     "numericRecall": 0.9808,
     "linkPrecision": 1,
     "spaceBeforePunctPer10k": 0.0
@@ -159,7 +159,7 @@
     "wordRecall": 0.966,
     "numericRecall": 0.9633,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 20.7
+    "spaceBeforePunctPer10k": 19.8
   },
   "whitepaper-bitcoin.pdf": {
     "wordRecall": 0.9875,

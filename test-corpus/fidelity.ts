@@ -12,6 +12,7 @@
  *   annotation or a bare URL in the text layer with the same URL (multiset match)
  * - space-before-punctuation rate: `[a-z] [.,;:)]` per 10,000 output words
  * - counts: bold spans, italic spans, code fences
+ * - malformed emphasis (`****`, `** **`, `** ` opening a span); the ratchet requires none
  *
  * These are reported separately from the 9-dimension heuristic score so the
  * score history stays comparable.
@@ -151,6 +152,37 @@ export function countItalicSpans(markdown: string): number {
   const star = withoutBold.match(/(?<![\w*])\*(?=\S)[^*\n]*?\S\*(?![\w*])|(?<![\w*])\*[^*\s]\*(?![\w*])/g) ?? [];
   const underscore = withoutBold.match(/(?<![\w_])_(?=\S)[^_\n]*?\S_(?![\w_])/g) ?? [];
   return star.length + underscore.length;
+}
+
+/**
+ * Malformed emphasis outside code: `****`, `** **` (a span closed and
+ * reopened), an opening `**` followed by whitespace, or `**` in a heading.
+ * Returns one short description per hit.
+ */
+export function emphasisMarkerProblems(markdown: string): string[] {
+  const problems: string[] = [];
+  let inFence = false;
+  for (const line of markdown.split("\n")) {
+    if (/^```/.test(line)) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue;
+    const text = line.replace(/`[^`]*`/g, "");
+    const checks: Array<[RegExp, string]> = [
+      [/\*\*\*\*/, "****"],
+      [/\*\* \*\*/, "** **"],
+      [/(?:^|\s)\*\*\s/, "** followed by whitespace"],
+    ];
+    if (/^#{1,6} /.test(text)) checks.push([/\*\*/, "** in heading"]);
+    for (const [re, label] of checks) {
+      const m = text.match(re);
+      if (m?.index !== undefined) {
+        problems.push(`${label}: "${text.slice(Math.max(0, m.index - 20), m.index + 24)}"`);
+      }
+    }
+  }
+  return problems;
 }
 
 export function countCodeFences(markdown: string): number {
@@ -343,7 +375,7 @@ export interface FidelityRow extends FidelityMetrics {
 export async function fidelityForFile(
   path: string,
   convertOptions: Parameters<typeof convert>[1] = { includeMetadata: true, yamlFrontMatter: true },
-): Promise<{ row: FidelityRow; markdown: string }> {
+): Promise<{ row: FidelityRow; markdown: string; layer: TextLayer }> {
   const bytes = new Uint8Array(await readFile(path));
   const layer = await extractTextLayer(bytes);
   const copy = bytes.slice();
@@ -351,6 +383,7 @@ export async function fidelityForFile(
   return {
     row: { file: basename(path), status: result.status, ...computeFidelity(layer, result.markdown) },
     markdown: result.markdown,
+    layer,
   };
 }
 
@@ -489,7 +522,7 @@ export async function ratchetShard(
   const files = (await listPdfs(corpusDir)).filter((_, i) => i % shardCount === shard);
   const problems: string[] = [];
   for (const file of files) {
-    const { row } = await fidelityForFile(file);
+    const { row, markdown, layer } = await fidelityForFile(file);
     const base = baseline[row.file];
     if (row.status === "failed") {
       // Scanned PDFs have no text layer; a baseline entry would mean conversion regressed.
@@ -501,6 +534,11 @@ export async function ratchetShard(
       continue;
     }
     for (const failure of ratchetFailures(row, base)) problems.push(`${row.file}: ${failure}`);
+    // PDFs that print "**" themselves (Python/Haskell operators, footnote marks)
+    // would trip the marker check on their own text, so it is skipped for them.
+    if (!layer.pages.some((page) => page.text.includes("**"))) {
+      for (const problem of emphasisMarkerProblems(markdown)) problems.push(`${row.file}: ${problem}`);
+    }
   }
   return { checked: files.length, problems };
 }

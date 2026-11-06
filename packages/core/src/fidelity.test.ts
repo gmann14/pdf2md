@@ -8,6 +8,7 @@ import {
   countItalicSpans,
   countSpaceBeforePunct,
   dehyphenateLineBreaks,
+  emphasisMarkerProblems,
   joinRawItems,
   multisetRecall,
   numericTokens,
@@ -98,6 +99,22 @@ describe("computeFidelity", () => {
 
   it("reports full link precision when there are no links", () => {
     expect(computeFidelity(layer([{ text: "plain" }]), "plain").linkPrecision).toBe(1);
+  });
+});
+
+describe("emphasisMarkerProblems", () => {
+  it("accepts well-formed nested emphasis", () => {
+    expect(emphasisMarkerProblems("A **Key *term* here** and *x*.\n\n```\nx ** 2 ****\n```")).toEqual([]);
+  });
+
+  it("flags closed-and-reopened spans, empty-looking markers and bold in headings", () => {
+    const problems = emphasisMarkerProblems("***a*** **b**\n\n***x*****y**\n\nSee ** this\n\n## **Title**");
+    expect(problems.map((p) => p.split(":")[0])).toEqual([
+      "** **",
+      "****",
+      "** followed by whitespace",
+      "** in heading",
+    ]);
   });
 });
 

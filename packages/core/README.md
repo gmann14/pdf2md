@@ -39,6 +39,7 @@ const result = await convert(buffer, {
   outputFormat: "json",   // Include structured sections
   chunkBy: "heading",     // Optional: "page", "heading", or "token"
   maxTokensPerChunk: 800, // Used with chunkBy: "token"
+  emphasis: false,        // Skip inline **bold**/*italic* (on by default; off is faster)
   signal: controller.signal, // AbortSignal for cancellation
   onProgress: (progress) => {
     console.log(`${progress.stage}: page ${progress.currentPage}/${progress.totalPages}`);

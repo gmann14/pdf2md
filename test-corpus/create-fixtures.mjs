@@ -151,11 +151,86 @@ async function touchingRuns() {
   return doc.save({ useObjectStreams: false });
 }
 
+/**
+ * Body text in Helvetica with spans in Helvetica-Bold, Helvetica-Oblique and
+ * Helvetica-BoldOblique, a bold run that wraps onto the next line, a bold
+ * heading, and a line that is bold throughout.
+ */
+async function inlineEmphasis() {
+  const doc = await PDFDocument.create();
+  fixDates(doc);
+  const regular = await doc.embedFont(StandardFonts.Helvetica);
+  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+  const italic = await doc.embedFont(StandardFonts.HelveticaOblique);
+  const boldItalic = await doc.embedFont(StandardFonts.HelveticaBoldOblique);
+  const page = doc.addPage([612, 792]);
+  const size = 11;
+
+  /** Draw runs left to right, each directly after the previous one. */
+  const drawRuns = (y, runs) => {
+    let x = 72;
+    for (const [text, font] of runs) {
+      page.drawText(text, { x, y, size, font });
+      x += font.widthOfTextAtSize(text, size);
+    }
+  };
+
+  page.drawText("Results", { x: 72, y: 740, size: 18, font: bold });
+  drawRuns(712, [
+    ["The platform offers ", regular],
+    ["primitive services", bold],
+    [". It also has an ", regular],
+    ["italic span", italic],
+    [", then ", regular],
+    ["both styles", boldItalic],
+    [" in one line.", regular],
+  ]);
+  drawRuns(698, [
+    ["This sentence has ", regular],
+    ["a bold phrase that", bold],
+  ]);
+  drawRuns(684, [
+    ["wraps onto the next line", bold],
+    [" and then ends normally here.", regular],
+  ]);
+  page.drawText("Ordinary body text keeps the paragraph long enough to read as body text.", {
+    x: 72, y: 670, size, font: regular,
+  });
+  drawRuns(656, [
+    ["Key ", bold],
+    ["term", boldItalic],
+    [" and its definition", bold],
+    [": explained.", regular],
+  ]);
+  drawRuns(642, [
+    ["See the ", regular],
+    ["Rules of Arbitration (", italic],
+    ["ICC Rules", boldItalic],
+    [")", italic],
+    [" for details.", regular],
+  ]);
+  drawRuns(628, [
+    ["Choose the ", regular],
+    ["Amount ", italic],
+    ["E-file", boldItalic],
+    [" options", bold],
+    [" that apply.", regular],
+  ]);
+  page.drawText("Note: this whole line is set in bold type and ends with a full stop.", {
+    x: 72, y: 596, size, font: bold,
+  });
+  page.drawText("A closing paragraph in the regular body font finishes the page.", {
+    x: 72, y: 566, size, font: regular,
+  });
+  return doc.save({ useObjectStreams: false });
+}
+
 mkdirSync(OUT_DIR, { recursive: true });
 const fixtures = {
   "links-same-position.pdf": linksSamePosition,
   "header-footer-numbers.pdf": headerFooterNumbers,
   "touching-runs.pdf": touchingRuns,
+  "inline-emphasis.pdf": inlineEmphasis,
 };
 for (const [name, build] of Object.entries(fixtures)) {
   writeFileSync(new URL(name, OUT_DIR), await build());

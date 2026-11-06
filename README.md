@@ -107,7 +107,7 @@ if (result.status !== "failed") {
 | `structured` | Optional hierarchy for JSON/RAG workflows |
 | `chunks` | Optional page-, heading-, or token-based chunks with source metadata |
 
-Options include `maxPages`, `includeMetadata`, `yamlFrontMatter`, `outputFormat`, `chunkBy`, `maxTokensPerChunk`, `signal`, and `onProgress`.
+Options include `maxPages`, `includeMetadata`, `yamlFrontMatter`, `outputFormat`, `chunkBy`, `maxTokensPerChunk`, `emphasis` (inline bold/italic from font names, on by default), `signal`, and `onProgress`.
 
 See [packages/core/README.md](packages/core/README.md) for package-specific API notes.
 

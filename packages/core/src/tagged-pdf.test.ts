@@ -11,6 +11,7 @@ vi.mock("./pdf-worker.js", () => ({
 
 vi.mock("./pdf-compat.js", () => ({
   getPdfjs: vi.fn().mockResolvedValue({
+    VerbosityLevel: { ERRORS: 0 },
     getDocument: vi.fn(() => ({
       promise: Promise.resolve(mocks.doc),
       destroy: vi.fn(),
