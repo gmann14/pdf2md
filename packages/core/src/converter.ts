@@ -1165,19 +1165,116 @@ function trailLength(text: string): number {
 }
 const INLINE_BULLET_CHAR = /[•\u2022\u2023\u25E6\u2043\u2219\u25CF\u25CB\u25B6\u25B8\u25BA►▸▶]/;
 
+// CommonMark's delimiter-run rules decide whether a `*` run can open or close
+// emphasis from the characters on either side of it. "Punctuation" there is
+// ASCII punctuation plus Unicode P (spec <= 0.30) or P and S (0.31+, e.g.
+// markdown-it 14). To render under either reading, a neighbour counts as
+// punctuation when it would block a marker under some version (`LOOSE`), and
+// as punctuation when it would rescue a marker only under every version (`STRICT`).
+const STRICT_PUNCT = /[\p{P}!-/:-@[-`{-~]/u;
+const LOOSE_PUNCT = /[\p{P}\p{S}]/u;
+const LETTER_OR_DIGIT = /[\p{L}\p{N}]/u;
+
+/** Whitespace for flanking purposes; "" stands for the start or end of the line. */
+function isFlankSpace(ch: string): boolean {
+  return ch === "" || /\s/u.test(ch);
+}
+
+/** A `*` run with `prev` before it and `next` after it can open emphasis (is left-flanking). */
+function canOpen(prev: string, next: string): boolean {
+  return !isFlankSpace(next) && (!LOOSE_PUNCT.test(next) || isFlankSpace(prev) || STRICT_PUNCT.test(prev));
+}
+
+/** A `*` run with `prev` before it and `next` after it can close emphasis (is right-flanking). */
+function canClose(prev: string, next: string): boolean {
+  return !isFlankSpace(prev) && (!LOOSE_PUNCT.test(prev) || isFlankSpace(next) || STRICT_PUNCT.test(next));
+}
+
+/**
+ * The character before `end` in `text`, skipping `*`: adjacent markers merge
+ * into one delimiter run, whose flanking depends on what lies outside it.
+ */
+function charBefore(text: string, end = text.length): string {
+  let i = end;
+  while (i > 0 && text[i - 1] === "*") i--;
+  return i > 0 ? (text[i - 1] ?? "") : "";
+}
+
+/**
+ * Whether a marker placed at `end` in `text` follows a `\`, which can escape
+ * it. (Only an odd run of `\` escapes, but checking one character keeps the
+ * scans in `emphasize` linear.)
+ */
+function afterBackslash(text: string, end = text.length): boolean {
+  return end > 0 && text[end - 1] === "\\";
+}
+
+/** The character at or after `start` in `text`, skipping `*`. */
+function charAfter(text: string, start = 0): string {
+  let i = start;
+  while (i < text.length && text[i] === "*") i++;
+  return text[i] ?? "";
+}
+
 /**
  * Wrap a run of same-style text in `marker`, keeping surrounding whitespace,
  * list markers, opening brackets and trailing punctuation outside, so the
  * result is `(**primitive services**).`, never `**primitive services.**`.
- * Runs with fewer than two letters, or that contain `*` or an inline bullet,
- * are left plain.
+ *
+ * `before` and `after` are the text just outside the run on its line ("" at
+ * the line's start or end). Each marker must be able to open or close
+ * emphasis under CommonMark's flanking rules given its neighbours, or a
+ * renderer shows it as a literal `*` (`z**’s are**`, `*let {*a`). A marker
+ * that cannot is moved inward past punctuation and spaces (`z’**s are**`,
+ * `*let* {a`); if the run then has fewer than two letters, it is left plain.
+ * A marker right after a literal `\` would be escaped, so it moves the same way.
+ * Runs that contain an inline bullet are also left plain.
  */
-export function emphasize(text: string, marker: string): string {
-  const lead = text.match(EMPHASIS_LEAD)?.[0] ?? "";
+export function emphasize(text: string, marker: string, before = "", after = ""): string {
+  let lead = text.match(EMPHASIS_LEAD)?.[0] ?? "";
   const rest = text.slice(lead.length);
-  const trail = rest.slice(rest.length - trailLength(rest));
-  const core = rest.slice(0, rest.length - trail.length);
+  let trail = rest.slice(rest.length - trailLength(rest));
+  let core = rest.slice(0, rest.length - trail.length);
+
+  // Move the opener right past non-alphanumerics until it is left-flanking.
+  let start = 0;
+  while (
+    start < core.length &&
+    core[start] !== "*" &&
+    !LETTER_OR_DIGIT.test(core[start] ?? "") &&
+    !(
+      canOpen(start > 0 ? (core[start - 1] ?? "") : charBefore(before + lead), charAfter(core, start)) &&
+      !(start > 0 ? afterBackslash(core, start) : afterBackslash(before + lead))
+    )
+  ) {
+    start++;
+  }
+  // Move the closer left past non-alphanumerics until it is right-flanking.
+  let end = core.length;
+  while (
+    end > start &&
+    core[end - 1] !== "*" &&
+    !LETTER_OR_DIGIT.test(core[end - 1] ?? "") &&
+    !(
+      canClose(charBefore(core, end), end < core.length ? (core[end] ?? "") : charAfter(trail + after)) &&
+      !afterBackslash(core, end)
+    )
+  ) {
+    end--;
+  }
+  lead += core.slice(0, start);
+  trail = core.slice(end) + trail;
+  core = core.slice(start, end);
+
   if (!/\p{L}[\s\S]*\p{L}/u.test(core) || INLINE_BULLET_CHAR.test(core)) {
+    return text;
+  }
+  if (
+    !canOpen(charBefore(before + lead), charAfter(core)) ||
+    !canClose(charBefore(core), charAfter(trail + after)) ||
+    afterBackslash(before + lead) ||
+    afterBackslash(core)
+  ) {
     return text;
   }
   return `${lead}${marker}${core}${marker}${trail}`;
@@ -1206,7 +1303,7 @@ interface StyledRun {
  * the inner style continues: `*Amount* ***E-file* options**`. Stretches
  * containing a literal `*` are left plain.
  */
-function renderRuns(runs: StyledRun[]): string {
+function renderRuns(runs: StyledRun[], before = "", after = ""): string {
   let out = "";
   for (let i = 0; i < runs.length; ) {
     const run = runs[i];
@@ -1228,6 +1325,10 @@ function renderRuns(runs: StyledRun[]): string {
       while (end - 1 > i && isInner(runs[end - 1])) end--;
     }
     const stretch = runs.slice(i, end);
+    // The text on either side of the stretch, which decides whether its
+    // markers can open and close (see `emphasize`).
+    const stretchBefore = (before + out + run.sep).slice(-8);
+    const stretchAfter = textAfter(runs, end, after);
     const inner = renderRuns(
       stretch.map((r, k) => ({
         ...r,
@@ -1235,12 +1336,25 @@ function renderRuns(runs: StyledRun[]): string {
         bold: outerBold ? false : r.bold,
         italic: outerBold ? r.italic : false,
       })),
+      stretchBefore,
+      stretchAfter,
     );
     const literalStar = stretch.some((r) => r.text.includes("*"));
-    out += run.sep + (literalStar ? inner : emphasize(inner, outerBold ? "**" : "*"));
+    out +=
+      run.sep +
+      (literalStar ? inner : emphasize(inner, outerBold ? "**" : "*", stretchBefore, stretchAfter));
     i = end;
   }
   return out;
+}
+
+/** The first few characters of raw text from `runs[from]` on, then `after`. */
+function textAfter(runs: StyledRun[], from: number, after: string): string {
+  let text = "";
+  for (let k = from; k < runs.length && text.replace(/\*/g, "").length < 8; k++) {
+    text += runs[k].sep + runs[k].text;
+  }
+  return (text + after).slice(0, 64);
 }
 
 // ---------------------------------------------------------------------------
@@ -1310,10 +1424,14 @@ function assembleBlockText(
     const group = runs.slice(i, j);
     const url = runs[i].url;
     if (url) {
-      const text = renderRuns([{ ...group[0], sep: "" }, ...group.slice(1)]);
+      // Inside a link, the markers' outer neighbours are its brackets.
+      const text = renderRuns([{ ...group[0], sep: "" }, ...group.slice(1)], "[", "]");
       out += runs[i].sep + `[${text.trim()}](${url})`;
     } else {
-      out += renderRuns(group);
+      // A following link starts with "[" (its separator comes first).
+      const next = runs[j];
+      const after = next ? (next.url ? next.sep + "[" : textAfter(runs, j, "")) : "";
+      out += renderRuns(group, out.slice(-8), after);
     }
     i = j;
   }

@@ -9,10 +9,12 @@ import {
   countSpaceBeforePunct,
   dehyphenateLineBreaks,
   emphasisMarkerProblems,
+  literalMarkerProblems,
   joinRawItems,
   multisetRecall,
   numericTokens,
   ratchetFailures,
+  renderedEmphasis,
   stripMarkdown,
   wordTokens,
   type FidelityRow,
@@ -115,6 +117,25 @@ describe("emphasisMarkerProblems", () => {
       "** followed by whitespace",
       "** in heading",
     ]);
+  });
+});
+
+describe("renderedEmphasis", () => {
+  // The literal-marker ratchet relies on a real CommonMark parse: markers
+  // that fail the flanking rules must show up as literal `*`, and markers in
+  // code or front matter must not.
+  it("counts rendered spans and literal stars with their neighbourhood", () => {
+    const md = "---\ntitle: a*b\n---\n\n**Bold** and *it*, but z**’s are** and `x*y`.";
+    const r = renderedEmphasis(md);
+    expect(r.bold).toBe(1);
+    expect(r.italic).toBe(1);
+    expect(r.literalStars).toHaveLength(4);
+    expect(r.literalStars[0]?.context).toContain("z**’s are**");
+    expect(literalMarkerProblems(md)).toHaveLength(4);
+  });
+
+  it("reports nothing for valid nested emphasis", () => {
+    expect(literalMarkerProblems("**Key *term* here** and *Rules (**ICC Rules***) end.")).toEqual([]);
   });
 });
 

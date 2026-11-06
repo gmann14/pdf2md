@@ -17,5 +17,9 @@
     "lint": "pnpm --filter @pdf2md/web lint",
     "typecheck": "pnpm --filter @pdf2md/core typecheck && pnpm --filter @pdf2md/web typecheck"
   },
-  "version": ""
+  "version": "",
+  "devDependencies": {
+    "@types/markdown-it": "^14.2.0",
+    "markdown-it": "^14.3.3"
+  }
 }

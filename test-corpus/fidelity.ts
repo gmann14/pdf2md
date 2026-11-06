@@ -13,6 +13,8 @@
  * - space-before-punctuation rate: `[a-z] [.,;:)]` per 10,000 output words
  * - counts: bold spans, italic spans, code fences
  * - malformed emphasis (`****`, `** **`, `** ` opening a span); the ratchet requires none
+ * - emphasis markers a CommonMark renderer (markdown-it) shows as a literal `*`,
+ *   beyond the `*` the PDF prints itself; the ratchet requires none
  *
  * These are reported separately from the 9-dimension heuristic score so the
  * score history stays comparable.
@@ -28,6 +30,7 @@
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import MarkdownIt from "markdown-it";
 import { convert } from "../packages/core/src/converter";
 import { getPdfjs } from "../packages/core/src/pdf-compat";
 
@@ -183,6 +186,63 @@ export function emphasisMarkerProblems(markdown: string): string[] {
     }
   }
   return problems;
+}
+
+const commonmark = new MarkdownIt();
+
+interface InlineToken {
+  type: string;
+  content: string;
+  children: InlineToken[] | null;
+}
+
+/**
+ * Render with markdown-it (CommonMark) and report what actually became
+ * emphasis: the number of `<strong>` and `<em>` spans, and every `*` left as
+ * literal text outside code. Each literal `*` comes with `key`, up to 2
+ * non-space characters on each side in the rendered plain text, and a wider
+ * `context`. YAML front matter is skipped.
+ */
+export function renderedEmphasis(markdown: string): {
+  bold: number;
+  italic: number;
+  literalStars: Array<{ key: string; context: string }>;
+} {
+  const body = markdown.replace(/^---\n[\s\S]*?\n---\n/, "");
+  let bold = 0;
+  let italic = 0;
+  const literalStars: Array<{ key: string; context: string }> = [];
+  for (const block of commonmark.parse(body, {}) as unknown as InlineToken[]) {
+    if (block.type !== "inline" || !block.children) continue;
+    // Plain text of the inline content, and where its literal `*` are.
+    let plain = "";
+    const stars: number[] = [];
+    for (const token of block.children) {
+      if (token.type === "strong_open") bold++;
+      else if (token.type === "em_open") italic++;
+      if (token.type === "text") {
+        for (let i = token.content.indexOf("*"); i >= 0; i = token.content.indexOf("*", i + 1)) {
+          stars.push(plain.length + i);
+        }
+      }
+      if (token.type === "text" || token.type === "code_inline") plain += token.content;
+      else if (token.type === "softbreak" || token.type === "hardbreak") plain += " ";
+    }
+    for (const at of stars) {
+      const left = plain.slice(0, at).replace(/\s+/g, "").slice(-2);
+      const right = plain.slice(at + 1).replace(/\s+/g, "").slice(0, 2);
+      literalStars.push({ key: `${left}*${right}`, context: plain.slice(Math.max(0, at - 20), at + 20) });
+    }
+  }
+  return { bold, italic, literalStars };
+}
+
+/**
+ * Every `*` that renders literally (CommonMark, outside code). For a PDF that
+ * prints no `*` itself, each one is an emphasis marker that failed to render.
+ */
+export function literalMarkerProblems(markdown: string): string[] {
+  return renderedEmphasis(markdown).literalStars.map(({ context }) => `literal emphasis marker: "${context}"`);
 }
 
 export function countCodeFences(markdown: string): number {
@@ -538,6 +598,11 @@ export async function ratchetShard(
     // would trip the marker check on their own text, so it is skipped for them.
     if (!layer.pages.some((page) => page.text.includes("**"))) {
       for (const problem of emphasisMarkerProblems(markdown)) problems.push(`${row.file}: ${problem}`);
+    }
+    // Likewise, a literal `*` in the rendered output is a failed emphasis
+    // marker only when the PDF prints no `*` of its own.
+    if (!layer.pages.some((page) => page.text.includes("*"))) {
+      for (const problem of literalMarkerProblems(markdown)) problems.push(`${row.file}: ${problem}`);
     }
   }
   return { checked: files.length, problems };
