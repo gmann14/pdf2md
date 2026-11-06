@@ -1144,7 +1144,18 @@ const EMPHASIS_LEAD =
  * Trailing text kept outside emphasis markers: punctuation, dashes, brackets
  * and quotes (an opening bracket at the end of a run belongs to what follows).
  */
-const EMPHASIS_TRAIL = /[\s.,;:!?()[\]\u201C\u201D\u2018\u2019"'\u2013\u2014-]*$/;
+const EMPHASIS_TRAIL_CHAR = /[\s.,;:!?()[\]\u201C\u201D\u2018\u2019"'\u2013\u2014-]/;
+
+/**
+ * Length of the trailing run of EMPHASIS_TRAIL_CHAR characters. A backward
+ * scan, because an unanchored `[...]*$` regex is quadratic on long runs of
+ * punctuation followed by a letter (a crafted PDF could stall conversion).
+ */
+function trailLength(text: string): number {
+  let i = text.length;
+  while (i > 0 && EMPHASIS_TRAIL_CHAR.test(text[i - 1] ?? "")) i--;
+  return text.length - i;
+}
 const INLINE_BULLET_CHAR = /[•\u2022\u2023\u25E6\u2043\u2219\u25CF\u25CB\u25B6\u25B8\u25BA►▸▶]/;
 
 /**
@@ -1157,7 +1168,7 @@ const INLINE_BULLET_CHAR = /[•\u2022\u2023\u25E6\u2043\u2219\u25CF\u25CB\u25B6
 export function emphasize(text: string, marker: string): string {
   const lead = text.match(EMPHASIS_LEAD)?.[0] ?? "";
   const rest = text.slice(lead.length);
-  const trail = rest.match(EMPHASIS_TRAIL)?.[0] ?? "";
+  const trail = rest.slice(rest.length - trailLength(rest));
   const core = rest.slice(0, rest.length - trail.length);
   if (!/\p{L}[\s\S]*\p{L}/u.test(core) || INLINE_BULLET_CHAR.test(core)) {
     return text;

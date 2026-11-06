@@ -119,8 +119,20 @@ describe("emphasize", () => {
     ["NEIL (", "**", "**NEIL** ("],
     ["x", "**", "x"],
     ["(12)", "*", "(12)"],
+    ["word...", "*", "*word*..."],
+    ["\u201Cquoted\u201D", "*", "\u201C*quoted*\u201D"],
   ])("%j with %s → %j", (text, marker, expected) => {
     expect(emphasize(text, marker)).toBe(expected);
+  });
+
+  // A long run of punctuation before a letter used to take quadratic time in
+  // the trailing-punctuation regex (40k dots ≈ 3 s), so a crafted PDF could
+  // stall conversion. The backward scan keeps it linear.
+  it("handles long punctuation runs in linear time", () => {
+    const text = `ab${".".repeat(200_000)}x`;
+    const start = performance.now();
+    expect(emphasize(text, "*")).toBe(`*${text}*`);
+    expect(performance.now() - start).toBeLessThan(500);
   });
 });
 
