@@ -44,3 +44,21 @@ describe("page-scoped link matching", () => {
     expect(markdown).toContain("[see appendix](https://example.com/appendix)");
   });
 });
+
+describe("header/footer stripping stays in the header and footer bands", () => {
+  it("removes footer page numbers but keeps standalone numbers in the body", async () => {
+    const markdown = await convertFixture("header-footer-numbers.pdf");
+
+    // Running header is stripped.
+    expect(markdown).not.toContain("Example Annual Report");
+
+    // Body numbers survive: TOC page numbers and table cells.
+    for (const n of ["17", "23", "2022", "2023", "19"]) {
+      expect(markdown).toMatch(new RegExp(`(^|[^\\d])${n}([^\\d]|$)`));
+    }
+    expect(markdown.match(/(^|[^\d])17([^\d]|$)/g)?.length).toBe(2);
+
+    // Footer page numbers 1–5 are gone: no line is just a number.
+    expect(markdown.split("\n").filter((line) => /^\s*\d\s*$/.test(line))).toEqual([]);
+  });
+});

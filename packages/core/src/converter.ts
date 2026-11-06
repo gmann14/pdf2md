@@ -691,79 +691,138 @@ function classifyBlock(
 // Header/footer stripping (repeated text detection)
 // ---------------------------------------------------------------------------
 
+/** Where a repeated header/footer string was seen: x positions per band. */
+interface RepeatedPlacement {
+  top: number[];
+  bottom: number[];
+}
+
+/** Share of a page's text extent treated as its header band and its footer band. */
+const HEADER_FOOTER_BAND = 0.08;
+/** Max x distance (pt) between a candidate and a recorded header/footer position. */
+const HEADER_FOOTER_X_TOLERANCE = 36;
+
+function normalizeRepeatedText(text: string): string {
+  // Page numbers and dates vary per page, so compare with digits folded.
+  return text.trim().replace(/\d+/g, "#");
+}
+
+function groupByPage(items: ExtractedItem[]): Map<number, ExtractedItem[]> {
+  const byPage = new Map<number, ExtractedItem[]>();
+  for (const item of items) {
+    const pageItems = byPage.get(item.page);
+    if (pageItems) pageItems.push(item);
+    else byPage.set(item.page, [item]);
+  }
+  return byPage;
+}
+
+/** Header and footer band limits for one page, from the extent of its text. */
+function pageBands(pageItems: ExtractedItem[]): { top: number; bottom: number } | null {
+  if (pageItems.length === 0) return null;
+  let minY = Infinity;
+  let maxY = -Infinity;
+  for (const item of pageItems) {
+    minY = Math.min(minY, item.y);
+    maxY = Math.max(maxY, item.y);
+  }
+  const extent = maxY - minY;
+  if (extent <= 0) return null;
+  return {
+    top: minY + extent * HEADER_FOOTER_BAND,
+    bottom: maxY - extent * HEADER_FOOTER_BAND,
+  };
+}
+
+/**
+ * Find text that repeats in the header band or footer band on at least half
+ * the pages. Returns, per digit-normalised string, the x positions where it
+ * was seen in each band where it repeats, so stripping can stay inside that band.
+ */
 function detectRepeatedText(
   items: ExtractedItem[],
   totalPages: number,
-): Set<string> {
-  if (totalPages < 3) return new Set();
+): Map<string, RepeatedPlacement> {
+  const repeated = new Map<string, RepeatedPlacement>();
+  if (totalPages < 3) return repeated;
 
-  // Collect text from top and bottom regions of each page
-  const topTexts = new Map<string, number>(); // text → page count
-  const bottomTexts = new Map<string, number>();
+  const topSeen = new Map<string, { pages: number; xs: number[] }>();
+  const bottomSeen = new Map<string, { pages: number; xs: number[] }>();
 
-  // Group items by page
-  const byPage = new Map<number, ExtractedItem[]>();
-  for (const item of items) {
-    const pageItems = byPage.get(item.page) ?? [];
-    pageItems.push(item);
-    byPage.set(item.page, pageItems);
-  }
+  for (const [, pageItems] of groupByPage(items)) {
+    const bands = pageBands(pageItems);
+    if (!bands) continue;
 
-  for (const [, pageItems] of byPage) {
-    if (pageItems.length === 0) continue;
-
-    // Sort by Y position
-    const sorted = [...pageItems].sort((a, b) => a.y - b.y);
-    const pageHeight = sorted[sorted.length - 1].y - sorted[0].y;
-    if (pageHeight <= 0) continue;
-
-    const topThreshold = sorted[0].y + pageHeight * 0.08;
-    const bottomThreshold = sorted[sorted.length - 1].y - pageHeight * 0.08;
-
-    const topStrings = new Set<string>();
-    const bottomStrings = new Set<string>();
-
-    for (const item of sorted) {
-      const trimmed = item.str.trim();
-      if (trimmed.length === 0) continue;
-      // Strip page numbers for comparison
-      const normalized = trimmed.replace(/\d+/g, "#");
-
-      if (item.y <= topThreshold) topStrings.add(normalized);
-      if (item.y >= bottomThreshold) bottomStrings.add(normalized);
+    const topOnPage = new Map<string, number[]>();
+    const bottomOnPage = new Map<string, number[]>();
+    for (const item of pageItems) {
+      const normalized = normalizeRepeatedText(item.str);
+      if (normalized.length === 0) continue;
+      if (item.y <= bands.top) {
+        const xs = topOnPage.get(normalized) ?? [];
+        xs.push(item.x);
+        topOnPage.set(normalized, xs);
+      }
+      if (item.y >= bands.bottom) {
+        const xs = bottomOnPage.get(normalized) ?? [];
+        xs.push(item.x);
+        bottomOnPage.set(normalized, xs);
+      }
     }
 
-    for (const s of topStrings) {
-      topTexts.set(s, (topTexts.get(s) ?? 0) + 1);
-    }
-    for (const s of bottomStrings) {
-      bottomTexts.set(s, (bottomTexts.get(s) ?? 0) + 1);
+    for (const [onPage, seen] of [[topOnPage, topSeen], [bottomOnPage, bottomSeen]] as const) {
+      for (const [text, xs] of onPage) {
+        const entry = seen.get(text) ?? { pages: 0, xs: [] };
+        entry.pages++;
+        entry.xs.push(...xs);
+        seen.set(text, entry);
+      }
     }
   }
 
-  // Text appearing on >50% of pages is likely a header/footer
+  // Text in the same band on >= 50% of pages is a running header/footer.
   const threshold = totalPages * 0.5;
-  const repeated = new Set<string>();
-
-  for (const [text, count] of topTexts) {
-    if (count >= threshold) repeated.add(text);
-  }
-  for (const [text, count] of bottomTexts) {
-    if (count >= threshold) repeated.add(text);
+  for (const [band, seen] of [["top", topSeen], ["bottom", bottomSeen]] as const) {
+    for (const [text, entry] of seen) {
+      if (entry.pages < threshold) continue;
+      const placement = repeated.get(text) ?? { top: [], bottom: [] };
+      placement[band] = [...new Set(entry.xs.map((x) => Math.round(x)))];
+      repeated.set(text, placement);
+    }
   }
 
   return repeated;
 }
 
+/**
+ * Remove running headers and footers: an item goes only if its digit-normalised
+ * text repeats in that band, it lies inside the band on its own page, and its x
+ * is near a position where the repeated text was seen. A standalone number in
+ * the body (a year in a table, a TOC page number) therefore survives even
+ * though page numbers normalise to the same "#".
+ */
 function filterHeadersFooters(
   items: ExtractedItem[],
-  repeated: Set<string>,
+  repeated: Map<string, RepeatedPlacement>,
 ): ExtractedItem[] {
   if (repeated.size === 0) return items;
 
+  const bandsByPage = new Map<number, { top: number; bottom: number } | null>();
+  for (const [page, pageItems] of groupByPage(items)) {
+    bandsByPage.set(page, pageBands(pageItems));
+  }
+
+  const near = (xs: number[], x: number) =>
+    xs.some((x0) => Math.abs(x0 - x) <= HEADER_FOOTER_X_TOLERANCE);
+
   return items.filter((item) => {
-    const normalized = item.str.trim().replace(/\d+/g, "#");
-    return !repeated.has(normalized);
+    const placement = repeated.get(normalizeRepeatedText(item.str));
+    if (!placement) return true;
+    const bands = bandsByPage.get(item.page);
+    if (!bands) return true;
+    if (item.y <= bands.top && near(placement.top, item.x)) return false;
+    if (item.y >= bands.bottom && near(placement.bottom, item.x)) return false;
+    return true;
   });
 }
 

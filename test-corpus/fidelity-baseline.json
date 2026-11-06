@@ -1,21 +1,21 @@
 {
   "academic-attention-paper.pdf": {
-    "wordRecall": 0.9521,
-    "numericRecall": 0.6952,
+    "wordRecall": 0.9724,
+    "numericRecall": 0.8784,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 133.5
+    "spaceBeforePunctPer10k": 109.9
   },
   "academic-footnotes-philosophy.pdf": {
-    "wordRecall": 0.9914,
-    "numericRecall": 0.5518,
+    "wordRecall": 0.9957,
+    "numericRecall": 0.8857,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 25.9
+    "spaceBeforePunctPer10k": 25.8
   },
   "code-book-think-python.pdf": {
-    "wordRecall": 0.9804,
-    "numericRecall": 0.8586,
+    "wordRecall": 0.9867,
+    "numericRecall": 0.9527,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 108.4
+    "spaceBeforePunctPer10k": 105.1
   },
   "code-git-cheatsheet.pdf": {
     "wordRecall": 0.9959,
@@ -24,14 +24,14 @@
     "spaceBeforePunctPer10k": 14.0
   },
   "code-haskell-report.pdf": {
-    "wordRecall": 0.9696,
-    "numericRecall": 0.7365,
+    "wordRecall": 0.9791,
+    "numericRecall": 0.9349,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 355.7
+    "spaceBeforePunctPer10k": 328.8
   },
   "financial-berkshire-letter.pdf": {
-    "wordRecall": 0.9919,
-    "numericRecall": 0.9571,
+    "wordRecall": 0.9928,
+    "numericRecall": 0.9743,
     "linkPrecision": 1,
     "spaceBeforePunctPer10k": 11.5
   },
@@ -42,22 +42,22 @@
     "spaceBeforePunctPer10k": 0
   },
   "government-irs-w4.pdf": {
-    "wordRecall": 0.9863,
-    "numericRecall": 0.945,
+    "wordRecall": 0.961,
+    "numericRecall": 0.9069,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 57.4
+    "spaceBeforePunctPer10k": 58.0
   },
   "government-irs-w9.pdf": {
-    "wordRecall": 0.99,
-    "numericRecall": 0.9053,
+    "wordRecall": 0.9926,
+    "numericRecall": 0.9526,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 28.8
+    "spaceBeforePunctPer10k": 28.7
   },
   "government-nist-cybersecurity.pdf": {
-    "wordRecall": 0.9234,
-    "numericRecall": 0.8799,
+    "wordRecall": 0.9274,
+    "numericRecall": 0.9034,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 32.7
+    "spaceBeforePunctPer10k": 32.5
   },
   "infographic-cdc-diseases.pdf": {
     "wordRecall": 0.9825,
@@ -78,8 +78,8 @@
     "spaceBeforePunctPer10k": 9.2
   },
   "legal-us-copyright-circular.pdf": {
-    "wordRecall": 0.9908,
-    "numericRecall": 0.9271,
+    "wordRecall": 0.993,
+    "numericRecall": 1,
     "linkPrecision": 1,
     "spaceBeforePunctPer10k": 19.8
   },
@@ -90,28 +90,28 @@
     "spaceBeforePunctPer10k": 3.9
   },
   "multicolumn-gan-paper.pdf": {
-    "wordRecall": 0.9453,
-    "numericRecall": 0.7014,
+    "wordRecall": 0.9579,
+    "numericRecall": 0.8924,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 220.9
+    "spaceBeforePunctPer10k": 218.1
   },
   "multicolumn-ieee-paper.pdf": {
-    "wordRecall": 0.9857,
-    "numericRecall": 0.8822,
+    "wordRecall": 0.9882,
+    "numericRecall": 0.9565,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 35.8
+    "spaceBeforePunctPer10k": 34.3
   },
   "multilingual-udhr-chinese.pdf": {
-    "wordRecall": 0.7574,
+    "wordRecall": 0.9503,
     "numericRecall": 1,
     "linkPrecision": 1,
     "spaceBeforePunctPer10k": 0
   },
   "newsletter-imf-weo.pdf": {
-    "wordRecall": 0.9688,
-    "numericRecall": 0.9027,
+    "wordRecall": 0.9728,
+    "numericRecall": 0.9571,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 19.0
+    "spaceBeforePunctPer10k": 18.9
   },
   "resume-sample.pdf": {
     "wordRecall": 1,
@@ -132,38 +132,38 @@
     "spaceBeforePunctPer10k": 43.5
   },
   "scientific-resnet.pdf": {
-    "wordRecall": 0.9396,
-    "numericRecall": 0.8515,
+    "wordRecall": 0.961,
+    "numericRecall": 0.9686,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 73.1
+    "spaceBeforePunctPer10k": 71.4
   },
   "scientific-rl-survey.pdf": {
-    "wordRecall": 0.9657,
-    "numericRecall": 0.9659,
+    "wordRecall": 0.9665,
+    "numericRecall": 0.9808,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 68.4
+    "spaceBeforePunctPer10k": 66.5
   },
   "slides-stanford-ml.pdf": {
-    "wordRecall": 0.9222,
-    "numericRecall": 0.5286,
+    "wordRecall": 0.9428,
+    "numericRecall": 0.903,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 383.7
+    "spaceBeforePunctPer10k": 354.0
   },
   "tables-cdc-report.pdf": {
-    "wordRecall": 0.9496,
-    "numericRecall": 0.8708,
+    "wordRecall": 0.9599,
+    "numericRecall": 0.9426,
     "linkPrecision": 1,
     "spaceBeforePunctPer10k": 6.1
   },
   "tables-census-poverty.pdf": {
-    "wordRecall": 0.8886,
-    "numericRecall": 0.7581,
+    "wordRecall": 0.9673,
+    "numericRecall": 0.9632,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 42.1
+    "spaceBeforePunctPer10k": 37.4
   },
   "whitepaper-bitcoin.pdf": {
-    "wordRecall": 0.9843,
-    "numericRecall": 0.8641,
+    "wordRecall": 0.9859,
+    "numericRecall": 0.8967,
     "linkPrecision": 1,
     "spaceBeforePunctPer10k": 30.9
   }
