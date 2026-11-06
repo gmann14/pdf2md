@@ -4,7 +4,8 @@
  *
  * Compares pdf2md's Markdown with the raw PDF.js text layer of the same PDF:
  *
- * - word recall: multiset overlap of word tokens (letters/digits, NFKC, lowercased)
+ * - word recall: multiset overlap of word tokens (letters/digits, NFKC, lowercased);
+ *   words hyphenated across a line break in the text layer count as one word
  * - numeric-token recall: tokens like `2022`, `46,752`, `3.5`; standalone
  *   numbers in the top/bottom page bands (page numbers) are excluded
  * - link precision: each output `](http…)` link must be paid for by a URL
@@ -165,11 +166,20 @@ export function countSpaceBeforePunct(markdown: string): number {
 // Metrics
 // ---------------------------------------------------------------------------
 
+/**
+ * Join words the PDF hyphenated across a line break ("con-\ngress" → "congress"),
+ * as the converter's own hyphen repair does, so a correctly rejoined word in the
+ * output is not counted as two missing fragments.
+ */
+export function dehyphenateLineBreaks(text: string): string {
+  return text.replace(/(\p{Ll})-[ \t]*\n\s*(\p{Ll})/gu, "$1$2");
+}
+
 export function computeFidelity(layer: TextLayer, markdown: string): FidelityMetrics {
   const sourceText = layer.pages.map((p) => p.text).join("\n");
   const bodyText = stripMarkdown(markdown);
 
-  const sourceWordTokens = wordTokens(sourceText);
+  const sourceWordTokens = wordTokens(dehyphenateLineBreaks(sourceText));
   const outputWordTokens = wordTokens(bodyText);
 
   // Numbers: remove one occurrence per page-band number (page numbers, running dates).

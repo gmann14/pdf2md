@@ -63,6 +63,16 @@ describe("header/footer stripping stays in the header and footer bands", () => {
   });
 });
 
+describe("gap-aware joining of text runs", () => {
+  it("joins touching runs without a space and keeps word gaps", async () => {
+    const markdown = await convertFixture("touching-runs.pdf");
+    expect(markdown).toContain("primitive services.");
+    expect(markdown).not.toContain("services .");
+    expect(markdown).toContain("Revenue grew to (46,752) last year.");
+    expect(markdown).toContain("separate words stay apart.");
+  });
+});
+
 describe("binary input types", () => {
   const fixture = () => readFile(resolve(fixturesDir, "links-same-position.pdf"));
 

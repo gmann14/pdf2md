@@ -1,170 +1,170 @@
 {
   "academic-attention-paper.pdf": {
-    "wordRecall": 0.9724,
-    "numericRecall": 0.8784,
+    "wordRecall": 0.9873,
+    "numericRecall": 0.9058,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 109.9
+    "spaceBeforePunctPer10k": 39.2
   },
   "academic-footnotes-philosophy.pdf": {
-    "wordRecall": 0.9957,
+    "wordRecall": 0.9963,
     "numericRecall": 0.8857,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 25.8
+    "spaceBeforePunctPer10k": 2.0
   },
   "code-book-think-python.pdf": {
-    "wordRecall": 0.9867,
+    "wordRecall": 0.9943,
     "numericRecall": 0.9527,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 105.1
+    "spaceBeforePunctPer10k": 27.4
   },
   "code-git-cheatsheet.pdf": {
-    "wordRecall": 0.9959,
+    "wordRecall": 1,
     "numericRecall": 1,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 14.0
+    "spaceBeforePunctPer10k": 14.1
   },
   "code-haskell-report.pdf": {
-    "wordRecall": 0.9791,
+    "wordRecall": 0.9906,
     "numericRecall": 0.9349,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 328.8
+    "spaceBeforePunctPer10k": 142.5
   },
   "financial-berkshire-letter.pdf": {
-    "wordRecall": 0.9928,
+    "wordRecall": 0.9931,
     "numericRecall": 0.9743,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 11.5
+    "spaceBeforePunctPer10k": 8.0
   },
   "form-filled-1040.pdf": {
     "wordRecall": 0.9819,
     "numericRecall": 0.9784,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 0
+    "spaceBeforePunctPer10k": 0.0
   },
   "government-irs-w4.pdf": {
     "wordRecall": 0.961,
     "numericRecall": 0.9069,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 58.0
+    "spaceBeforePunctPer10k": 49.4
   },
   "government-irs-w9.pdf": {
-    "wordRecall": 0.9926,
+    "wordRecall": 0.9933,
     "numericRecall": 0.9526,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 28.7
+    "spaceBeforePunctPer10k": 6.4
   },
   "government-nist-cybersecurity.pdf": {
-    "wordRecall": 0.9274,
+    "wordRecall": 0.9284,
     "numericRecall": 0.9034,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 32.5
+    "spaceBeforePunctPer10k": 8.8
   },
   "infographic-cdc-diseases.pdf": {
     "wordRecall": 0.9825,
     "numericRecall": 1,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 21.6
+    "spaceBeforePunctPer10k": 0.0
   },
   "landscape-gantt-chart.pdf": {
     "wordRecall": 1,
     "numericRecall": 1,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 0
+    "spaceBeforePunctPer10k": 0.0
   },
   "legal-contract-clauses.pdf": {
     "wordRecall": 0.9767,
     "numericRecall": 0.8651,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 9.2
+    "spaceBeforePunctPer10k": 0.0
   },
   "legal-us-copyright-circular.pdf": {
-    "wordRecall": 0.993,
+    "wordRecall": 0.9935,
     "numericRecall": 1,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 19.8
+    "spaceBeforePunctPer10k": 0.0
   },
   "manual-arduino-guide.pdf": {
-    "wordRecall": 0.8062,
+    "wordRecall": 0.9167,
     "numericRecall": 0.7854,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 3.9
+    "spaceBeforePunctPer10k": 6.8
   },
   "multicolumn-gan-paper.pdf": {
-    "wordRecall": 0.9579,
-    "numericRecall": 0.8924,
+    "wordRecall": 0.9866,
+    "numericRecall": 0.8889,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 218.1
+    "spaceBeforePunctPer10k": 40.7
   },
   "multicolumn-ieee-paper.pdf": {
-    "wordRecall": 0.9882,
-    "numericRecall": 0.9565,
+    "wordRecall": 0.99,
+    "numericRecall": 0.9559,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 34.3
+    "spaceBeforePunctPer10k": 22.6
   },
   "multilingual-udhr-chinese.pdf": {
-    "wordRecall": 0.9503,
+    "wordRecall": 0.9507,
     "numericRecall": 1,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 0
+    "spaceBeforePunctPer10k": 0.0
   },
   "newsletter-imf-weo.pdf": {
-    "wordRecall": 0.9728,
-    "numericRecall": 0.9571,
+    "wordRecall": 0.9752,
+    "numericRecall": 0.9582,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 18.9
+    "spaceBeforePunctPer10k": 3.2
   },
   "resume-sample.pdf": {
     "wordRecall": 1,
     "numericRecall": 1,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 0
+    "spaceBeforePunctPer10k": 0.0
   },
   "scanned-declaration.pdf": {
     "wordRecall": 0.9121,
     "numericRecall": 0.25,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 0
+    "spaceBeforePunctPer10k": 0.0
   },
   "scientific-bert-paper.pdf": {
-    "wordRecall": 0.9473,
-    "numericRecall": 0.9954,
+    "wordRecall": 0.9571,
+    "numericRecall": 1,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 43.5
+    "spaceBeforePunctPer10k": 9.9
   },
   "scientific-resnet.pdf": {
-    "wordRecall": 0.961,
+    "wordRecall": 0.9882,
     "numericRecall": 0.9686,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 71.4
+    "spaceBeforePunctPer10k": 5.2
   },
   "scientific-rl-survey.pdf": {
-    "wordRecall": 0.9665,
+    "wordRecall": 0.9699,
     "numericRecall": 0.9808,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 66.5
+    "spaceBeforePunctPer10k": 0.0
   },
   "slides-stanford-ml.pdf": {
-    "wordRecall": 0.9428,
-    "numericRecall": 0.903,
+    "wordRecall": 0.9799,
+    "numericRecall": 0.9015,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 354.0
+    "spaceBeforePunctPer10k": 97.0
   },
   "tables-cdc-report.pdf": {
-    "wordRecall": 0.9599,
-    "numericRecall": 0.9426,
+    "wordRecall": 0.9634,
+    "numericRecall": 0.9474,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 6.1
+    "spaceBeforePunctPer10k": 0.0
   },
   "tables-census-poverty.pdf": {
-    "wordRecall": 0.9673,
-    "numericRecall": 0.9632,
+    "wordRecall": 0.966,
+    "numericRecall": 0.9633,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 37.4
+    "spaceBeforePunctPer10k": 20.7
   },
   "whitepaper-bitcoin.pdf": {
-    "wordRecall": 0.9859,
+    "wordRecall": 0.9875,
     "numericRecall": 0.8967,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 30.9
+    "spaceBeforePunctPer10k": 14.2
   }
 }

@@ -47,6 +47,8 @@ interface ExtractedItem {
   columnOrder?: number;
   /** PDF.js marked-content ids used to map tagged PDF structure nodes to text. */
   structIds?: string[];
+  /** The PDF drew a whitespace-only run right after this item: a word break. */
+  spaceAfter?: boolean;
 }
 
 interface AnnotationLink {
@@ -206,7 +208,12 @@ async function extractPageItems(
       continue;
     }
 
-    if (item.str.trim() === "") continue;
+    if (item.str.trim() === "") {
+      // Whitespace-only runs are dropped, but they mark a word break.
+      const prev = items[items.length - 1];
+      if (prev && item.str.length > 0) prev.spaceAfter = true;
+      continue;
+    }
 
     // transform: [scaleX, skewX, skewY, scaleY, translateX, translateY]
     const fontSize = Math.abs(item.transform[3]);
@@ -1030,28 +1037,52 @@ function applyInlineFormatting(text: string, fontName: string): string {
 // Markdown assembly
 // ---------------------------------------------------------------------------
 
+/** Horizontal gap, as a share of font size, below which two runs on a line touch. */
+const TOUCHING_GAP = 0.15;
+/** Overlap, as a share of font size, still treated as touching (kerning, overprint). */
+const TOUCHING_OVERLAP = 0.25;
+
+/**
+ * The separator to put between two consecutive items of a block. Runs on the
+ * same line that touch (e.g. "services" and "." drawn separately, or a word
+ * split by a font change) are joined with nothing; everything else gets a space.
+ */
+function separatorBetween(prev: ExtractedItem, next: ExtractedItem): string {
+  if (/\s$/.test(prev.str) || /^\s/.test(next.str)) return "";
+  if (prev.hasEOL || prev.spaceAfter || prev.width <= 0) return " ";
+  const sameLine = Math.abs(next.y - prev.y) < Math.max(prev.height, 1) * 0.5;
+  if (!sameLine) return " ";
+  const size = Math.max(Math.min(prev.fontSize, next.fontSize), 1);
+  const gap = next.x - (prev.x + prev.width);
+  return gap > -size * TOUCHING_OVERLAP && gap < size * TOUCHING_GAP ? "" : " ";
+}
+
 function assembleBlockText(
   block: Block,
   linkMap: Map<ExtractedItem, string>,
 ): string {
-  // Items are joined with a space. Consecutive items that share a link URL are
-  // merged into one `[text](url)` so a multi-word link is not split per item.
-  const pieces: Array<{ text: string; url?: string }> = [];
+  // Items are joined with a space unless they touch on the same line.
+  // Consecutive items that share a link URL are merged into one `[text](url)`
+  // so a multi-word link is not split per item.
+  const pieces: Array<{ text: string; url?: string; sep: string }> = [];
+  let prevItem: ExtractedItem | null = null;
 
   for (const item of block.items) {
     const text = applyInlineFormatting(item.str, item.fontName);
     const url = linkMap.get(item);
+    const sep = prevItem ? separatorBetween(prevItem, item) : "";
+    prevItem = item;
     const last = pieces[pieces.length - 1];
     if (url && last?.url === url) {
-      last.text = `${last.text} ${text}`;
+      last.text = `${last.text}${sep}${text}`;
     } else {
-      pieces.push({ text, url });
+      pieces.push({ text, url, sep });
     }
   }
 
   return pieces
-    .map((piece) => (piece.url ? `[${piece.text.trim()}](${piece.url})` : piece.text))
-    .join(" ")
+    .map((piece) => piece.sep + (piece.url ? `[${piece.text.trim()}](${piece.url})` : piece.text))
+    .join("")
     .trim();
 }
 
@@ -1061,7 +1092,7 @@ function codeBlockToMarkdown(
 ): string {
   // Assemble raw text preserving line breaks, without inline formatting
   const lines: string[] = [];
-  let currentLine: string[] = [];
+  let currentLine = "";
   let prevItem: ExtractedItem | null = null;
 
   for (const item of block.items) {
@@ -1069,18 +1100,18 @@ function codeBlockToMarkdown(
       const yGap = Math.abs(item.y - prevItem.y);
       const isNewLine = yGap > prevItem.height * 0.5 || prevItem.hasEOL;
       if (isNewLine) {
-        lines.push(currentLine.join(" "));
-        currentLine = [item.str];
+        lines.push(currentLine);
+        currentLine = item.str;
       } else {
-        currentLine.push(item.str);
+        currentLine += separatorBetween(prevItem, item) + item.str;
       }
     } else {
-      currentLine.push(item.str);
+      currentLine = item.str;
     }
     prevItem = item;
   }
-  if (currentLine.length > 0) {
-    lines.push(currentLine.join(" "));
+  if (prevItem) {
+    lines.push(currentLine);
   }
 
   return "```\n" + lines.join("\n") + "\n```";

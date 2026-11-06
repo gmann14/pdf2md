@@ -7,6 +7,7 @@ import {
   countCodeFences,
   countItalicSpans,
   countSpaceBeforePunct,
+  dehyphenateLineBreaks,
   joinRawItems,
   multisetRecall,
   numericTokens,
@@ -84,6 +85,15 @@ describe("computeFidelity", () => {
     expect(m.linkPrecision).toBeCloseTo(2 / 3);
     expect(m.spaceBeforePunct).toBe(1);
     expect(m.wordRecall).toBeLessThan(1);
+  });
+
+  it("counts a word hyphenated across a line break as one word", () => {
+    expect(dehyphenateLineBreaks("the con-\ngress met\nCon-\n\ngress\nNon-\nProfit")).toBe(
+      "the congress met\nCongress\nNon-\nProfit",
+    );
+    const m = computeFidelity(layer([{ text: "the con-\ngress met" }]), "the congress met");
+    expect(m.sourceWords).toBe(3);
+    expect(m.wordRecall).toBe(1);
   });
 
   it("reports full link precision when there are no links", () => {

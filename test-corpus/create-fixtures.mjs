@@ -122,10 +122,40 @@ async function headerFooterNumbers() {
   return doc.save({ useObjectStreams: false });
 }
 
+/**
+ * One page whose body text is drawn as separate runs: a word and the full stop
+ * after it with no gap, a bracketed number drawn as three touching runs, and
+ * two words drawn as separate runs with a normal word gap and no space glyph.
+ */
+async function touchingRuns() {
+  const doc = await PDFDocument.create();
+  fixDates(doc);
+  const helvetica = await doc.embedFont(StandardFonts.Helvetica);
+  const page = doc.addPage([612, 792]);
+  const size = 11;
+
+  /** Draw runs left to right; `gap` is the space before each run, in points. */
+  const drawRuns = (y, runs) => {
+    let x = 72;
+    for (const [text, gap] of runs) {
+      x += gap;
+      page.drawText(text, { x, y, size, font: helvetica });
+      x += helvetica.widthOfTextAtSize(text, size);
+    }
+  };
+
+  const wordGap = helvetica.widthOfTextAtSize(" ", size);
+  drawRuns(720, [["The platform offers primitive services", 0], [".", 0]]);
+  drawRuns(700, [["Revenue grew to", 0], ["(", wordGap], ["46,752", 0], [")", 0], ["last year.", wordGap]]);
+  drawRuns(680, [["separate", 0], ["words", wordGap], ["stay apart.", wordGap]]);
+  return doc.save({ useObjectStreams: false });
+}
+
 mkdirSync(OUT_DIR, { recursive: true });
 const fixtures = {
   "links-same-position.pdf": linksSamePosition,
   "header-footer-numbers.pdf": headerFooterNumbers,
+  "touching-runs.pdf": touchingRuns,
 };
 for (const [name, build] of Object.entries(fixtures)) {
   writeFileSync(new URL(name, OUT_DIR), await build());
