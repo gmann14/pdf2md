@@ -24,13 +24,14 @@ describe("root README launch contract", () => {
     expect(readme).toContain("[CONTRIBUTING.md](CONTRIBUTING.md)");
   });
 
-  it("keeps domain and competitor claims explicit until the production-domain question is answered", async () => {
-    // pdf2md#13 depends on q-2026-06-30-001, so the README must not silently
-    // present the preview deployment as the final canonical launch domain.
+  it("links the web app and keeps competitor claims explicit", async () => {
+    // c4b11e4 replaced the "Try it online: TODO" placeholder with a plain link to
+    // the current deployment. The README links it as "the web app", not as a
+    // canonical launch domain, so q-2026-06-30-001 can still change it later.
     const readme = await readFile(readmePath, "utf8");
 
-    expect(readme).toContain("Try it online:");
-    expect(readme).toContain("TODO: replace with the production domain after `q-2026-06-30-001` is answered");
+    expect(readme).toMatch(/\*\*Try the web app:\*\* \[[^\]]+\]\(https:\/\/[^)]+\)/);
+    expect(readme).not.toContain("TODO:");
     expect(readme).toContain("pdf2md.morethan.io");
     expect(readme).toContain("jzillmann/pdf-to-markdown");
     expect(readme).toContain("Marker");
