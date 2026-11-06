@@ -288,6 +288,11 @@ structured-output/chunking work already captured above.
   - `bc1e781` `convert()` accepts Buffer/Uint8Array/ArrayBuffer without detaching it; dual ESM/CJS build so `require("@pdf2md/core")` works.
   - `c6655e2` Gap-aware joining of touching runs. Blind `[a-z] [.,;:)]` 6,289 → 2,717 (the rest is mostly TOC dot leaders, code and math). Fidelity word recall now rejoins line-break hyphens in the reference.
   - `c0d05ae` Inline bold/italic from real font names, `emphasis` option (default on). Blind output: 5,391 bold and 6,577 italic spans. Conversion CPU time +11.5% to +19% across 3 passes on a loaded machine (budget is 15%).
+- **Review fixes (2026-11-06):**
+  - `28034e4` A cancel after the last page (e.g. at `assembling`) no longer leaves `convert()` pending on the destroyed PDF.js document; every stage returns the `cancelled` result. Web Cancel no longer loses a newer run's abort controller.
+  - `1d2c07a` Emphasis markers follow CommonMark flanking rules (markdown-it check in the fidelity ratchet). Corpus (54 PDFs): failed markers 90 → 0; rendered bold 7,725 → 7,730, italic 9,963 → 9,998.
+  - `18a9aba` Link-skipping and URL-trimming regexes made linear (40k `[` took 2.3 s).
+  - `@pdf2md/core` 0.4.0 with `packages/core/CHANGELOG.md` (not published).
 - **Left from the spec:** table cell cleanup (currency, split tables, lost rows; W-4 loses the $100,000+ rows once item 3 restores numbers), real-monospace code detection, TOC/dot-leader lines (main remaining source of space-before-punctuation), performance budget and `pnpm bench`, hand-checked reference set, olmOCR-bench runner, head-to-head harness, page selection, opendocsg-compatible entry point, PDF.js version policy, install footprint, zero-config browser bundling, size limit/timeout as options, output stability contract, migration guide, MCP 0.2, CLI parity. OCR and the 15 MB limit were out of scope by instruction.
 - **Check before merging:** re-time `emphasis` on a quiet machine; `pnpm --filter @pdf2md/web test:e2e:dev` was not run (Playwright Chromium not installed); add `pnpm test:fidelity` to the Forge gates if wanted; PDF.js log level is now errors only.
 - **Status:** in progress (branch ready for review)

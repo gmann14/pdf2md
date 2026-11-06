@@ -22,6 +22,7 @@ async function readPackageJson(packageDir: string) {
   const packageJson = await readFile(path.join(rootDir, packageDir, "package.json"), "utf8");
   return JSON.parse(packageJson) as {
     name: string;
+    version: string;
     keywords?: string[];
     types?: string;
     exports?: Record<string, Record<string, unknown>>;
@@ -43,6 +44,17 @@ describe("npm package metadata", () => {
       import: { types: "./dist/index.d.ts", default: "./dist/index.js" },
       require: { types: "./dist/cjs/index.d.ts", default: "./dist/cjs/index.js" },
     });
+  });
+
+  it("has a changelog entry for the current @pdf2md/core version", async () => {
+    // Inline bold/italic changed the default Markdown output, so the version
+    // moved to 0.4.0. Every version bump must come with a changelog section
+    // that tells users what changed in their output.
+    const pkg = await readPackageJson("packages/core");
+    const changelog = await readFile(path.join(rootDir, "packages/core/CHANGELOG.md"), "utf8");
+
+    expect(pkg.version).toBe("0.4.0");
+    expect(changelog).toMatch(new RegExp(`^## ${pkg.version.replace(/\./g, "\\.")}\\b`, "m"));
   });
 
   it("keeps @pdf2md/mcp aligned with the shared pdf2md discovery keywords", async () => {
