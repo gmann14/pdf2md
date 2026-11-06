@@ -142,7 +142,9 @@ export function Converter() {
       });
     }
 
-    abortRef.current = null;
+    // A cancelled run can settle after a newer run has started; only clear
+    // the ref if it still points at this run, or the newer run's Cancel is lost.
+    if (abortRef.current === controller) abortRef.current = null;
   }, []);
 
   const handleCancel = useCallback(() => {

@@ -299,7 +299,11 @@ async function extractPageItems(
  * regular), using as few pages as possible (greedy cover). Returns one
  * message per page whose operator list failed.
  */
-async function applyFontStyles(doc: PDFDocumentProxy, blocks: Block[]): Promise<string[]> {
+async function applyFontStyles(
+  doc: PDFDocumentProxy,
+  blocks: Block[],
+  signal?: AbortSignal,
+): Promise<string[]> {
   const candidates = blocks
     .filter((b) => b.type === "paragraph" || b.type === "list-item")
     .flatMap((b) => b.items)
@@ -337,11 +341,14 @@ async function applyFontStyles(doc: PDFDocumentProxy, blocks: Block[]): Promise<
     if (bestPage < 0) break;
 
     const fonts = [...(fontsByPage.get(bestPage) ?? [])].filter((id) => needed.has(id));
+    // A cancel destroys the document, after which PDF.js calls may never settle.
+    throwIfCancelled(signal);
     try {
-      const page = await doc.getPage(bestPage);
-      await page.getOperatorList();
+      const page = await abortable(doc.getPage(bestPage), signal);
+      await abortable(page.getOperatorList(), signal);
       for (const id of fonts) styles.set(id, resolveFontStyle(page, id));
     } catch (err) {
+      throwIfCancelled(signal);
       errors.push(
         `Could not read fonts on page ${bestPage}; some bold and italic omitted: ${err instanceof Error ? err.message : "Unknown error"}`,
       );
@@ -1786,9 +1793,10 @@ function normalizeMarkdownFragment(markdown: string): string {
 
 async function extractMetadata(
   doc: PDFDocumentProxy,
+  signal?: AbortSignal,
 ): Promise<ConversionMetadata | undefined> {
   try {
-    const meta = await doc.getMetadata();
+    const meta = await abortable(doc.getMetadata(), signal);
     const info = meta?.info as Record<string, unknown> | undefined;
     if (!info) return undefined;
 
@@ -1808,6 +1816,69 @@ async function extractMetadata(
   } catch {
     return undefined;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Cancellation
+// ---------------------------------------------------------------------------
+
+/** Thrown inside a conversion once its AbortSignal fires; `convert` turns it into the cancelled result. */
+class ConversionCancelled extends Error {
+  constructor() {
+    super("Conversion was cancelled.");
+    this.name = "ConversionCancelled";
+  }
+}
+
+function throwIfCancelled(signal: AbortSignal | undefined): void {
+  if (signal?.aborted) throw new ConversionCancelled();
+}
+
+/**
+ * Settle with `promise`, or reject with `ConversionCancelled` as soon as
+ * `signal` fires. Aborting destroys the PDF.js document, and calls on a
+ * destroyed document can stay pending forever, so every PDF.js call made
+ * while a signal is live goes through this.
+ */
+function abortable<T>(promise: Promise<T>, signal: AbortSignal | undefined): Promise<T> {
+  if (!signal) return promise;
+  if (signal.aborted) {
+    promise.catch(() => {}); // the abandoned call may still reject later
+    return Promise.reject(new ConversionCancelled());
+  }
+  return new Promise<T>((resolve, reject) => {
+    const onAbort = () => reject(new ConversionCancelled());
+    signal.addEventListener("abort", onAbort, { once: true });
+    promise.then(
+      (value) => {
+        signal.removeEventListener("abort", onAbort);
+        resolve(value);
+      },
+      (err: unknown) => {
+        signal.removeEventListener("abort", onAbort);
+        reject(err);
+      },
+    );
+  });
+}
+
+function cancelledResult(startTime: number): ConversionResult {
+  return {
+    status: "failed",
+    markdown: "",
+    messages: [
+      {
+        code: "cancelled",
+        severity: "error",
+        message: "Conversion was cancelled.",
+      },
+    ],
+    stats: {
+      pageCount: 0,
+      wordCount: 0,
+      processingMs: performance.now() - startTime,
+    },
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -1879,6 +1950,8 @@ export async function convert(
 
     doc = await loadingTask.promise;
   } catch (err: unknown) {
+    if (options?.signal?.aborted) return cancelledResult(startTime);
+
     // Check for password-protected PDFs
     if (
       err instanceof Error &&
@@ -1917,6 +1990,29 @@ export async function convert(
     };
   }
 
+  // Every path below settles: a cancel at any stage (even after the last page
+  // is read) becomes the cancelled result, and the document is always freed.
+  try {
+    return await convertDocument(doc, startTime, messages, emphasis, options);
+  } catch (err: unknown) {
+    if (err instanceof ConversionCancelled || options?.signal?.aborted) {
+      return cancelledResult(startTime);
+    }
+    throw err;
+  } finally {
+    void doc.destroy();
+  }
+}
+
+/** The pipeline after the document has loaded; `convert` handles cleanup and cancellation. */
+async function convertDocument(
+  doc: PDFDocumentProxy,
+  startTime: number,
+  messages: ConversionMessage[],
+  emphasis: boolean,
+  options: ConvertOptions | undefined,
+): Promise<ConversionResult> {
+  const signal = options?.signal;
   const totalPages = doc.numPages;
   const maxPages = options?.maxPages
     ? Math.min(options.maxPages, totalPages)
@@ -1934,25 +2030,7 @@ export async function convert(
   const structTrees: Array<StructTreeNode | null | undefined> = [];
 
   for (let i = 1; i <= maxPages; i++) {
-    if (options?.signal?.aborted) {
-      doc.destroy();
-      return {
-        status: "failed",
-        markdown: "",
-        messages: [
-          {
-            code: "cancelled",
-            severity: "error",
-            message: "Conversion was cancelled.",
-          },
-        ],
-        stats: {
-          pageCount: 0,
-          wordCount: 0,
-          processingMs: performance.now() - startTime,
-        },
-      };
-    }
+    throwIfCancelled(signal);
 
     options?.onProgress?.({
       stage: "parsing",
@@ -1961,12 +2039,14 @@ export async function convert(
     });
 
     try {
-      const page = await doc.getPage(i);
-      const { items, links, structTree } = await extractPageItems(page, i);
+      const page = await abortable(doc.getPage(i), signal);
+      const { items, links, structTree } = await abortable(extractPageItems(page, i), signal);
       allItems.push(...items);
       allLinks.push(...links);
       structTrees.push(structTree);
     } catch (err) {
+      // A page that failed because of a cancel is not a parse warning.
+      throwIfCancelled(signal);
       messages.push({
         code: "parse_failed",
         severity: "warning",
@@ -1975,9 +2055,10 @@ export async function convert(
     }
   }
 
+  throwIfCancelled(signal);
+
   // Check if there's any extractable text
   if (allItems.length === 0) {
-    doc.destroy();
     return {
       status: "failed",
       markdown: "",
@@ -2047,8 +2128,9 @@ export async function convert(
   });
 
   // Inline bold/italic from real font names
+  throwIfCancelled(signal);
   if (emphasis) {
-    for (const message of await applyFontStyles(doc, enrichedBlocks)) {
+    for (const message of await applyFontStyles(doc, enrichedBlocks, signal)) {
       messages.push({ code: "parse_failed", severity: "warning", message });
     }
   }
@@ -2063,7 +2145,8 @@ export async function convert(
   // Extract metadata if requested (yamlFrontMatter implies includeMetadata)
   let metadata: ConversionMetadata | undefined;
   if (options?.includeMetadata || options?.yamlFrontMatter) {
-    metadata = await extractMetadata(doc);
+    metadata = await extractMetadata(doc, signal);
+    throwIfCancelled(signal);
 
     // Fallback: infer title from first heading if PDF metadata is empty
     if (!metadata?.title || metadata.title.trim().length === 0) {
@@ -2098,7 +2181,8 @@ export async function convert(
     ? buildChunks(enrichedBlocks, linkMap, structured, options)
     : undefined;
 
-  doc.destroy();
+  // A cancel that lands after the last PDF.js call still wins over the result.
+  throwIfCancelled(signal);
 
   const wordCount = markdown.split(/\s+/).filter(Boolean).length;
   const processingMs = performance.now() - startTime;
