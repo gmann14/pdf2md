@@ -1,33 +1,33 @@
 {
   "academic-attention-paper.pdf": {
-    "wordRecall": 0.9526,
-    "numericRecall": 0.7003,
-    "linkPrecision": 0.2,
-    "spaceBeforePunctPer10k": 125.5
+    "wordRecall": 0.9521,
+    "numericRecall": 0.6952,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 133.5
   },
   "academic-footnotes-philosophy.pdf": {
-    "wordRecall": 0.9916,
-    "numericRecall": 0.5536,
-    "linkPrecision": 0.0199,
-    "spaceBeforePunctPer10k": 24.6
+    "wordRecall": 0.9914,
+    "numericRecall": 0.5518,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 25.9
   },
   "code-book-think-python.pdf": {
-    "wordRecall": 0.988,
-    "numericRecall": 0.8803,
-    "linkPrecision": 0.0211,
-    "spaceBeforePunctPer10k": 40.5
+    "wordRecall": 0.9804,
+    "numericRecall": 0.8586,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 108.4
   },
   "code-git-cheatsheet.pdf": {
     "wordRecall": 0.9959,
     "numericRecall": 1,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 14
+    "spaceBeforePunctPer10k": 14.0
   },
   "code-haskell-report.pdf": {
-    "wordRecall": 0.9697,
-    "numericRecall": 0.7367,
-    "linkPrecision": 0.009,
-    "spaceBeforePunctPer10k": 349
+    "wordRecall": 0.9696,
+    "numericRecall": 0.7365,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 355.7
   },
   "financial-berkshire-letter.pdf": {
     "wordRecall": 0.9919,
@@ -54,10 +54,10 @@
     "spaceBeforePunctPer10k": 28.8
   },
   "government-nist-cybersecurity.pdf": {
-    "wordRecall": 0.9239,
+    "wordRecall": 0.9234,
     "numericRecall": 0.8799,
-    "linkPrecision": 0.0795,
-    "spaceBeforePunctPer10k": 28.3
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 32.7
   },
   "infographic-cdc-diseases.pdf": {
     "wordRecall": 0.9825,
@@ -74,19 +74,19 @@
   "legal-contract-clauses.pdf": {
     "wordRecall": 0.9767,
     "numericRecall": 0.8651,
-    "linkPrecision": 0.25,
+    "linkPrecision": 1,
     "spaceBeforePunctPer10k": 9.2
   },
   "legal-us-copyright-circular.pdf": {
-    "wordRecall": 0.9913,
+    "wordRecall": 0.9908,
     "numericRecall": 0.9271,
-    "linkPrecision": 0.2955,
+    "linkPrecision": 1,
     "spaceBeforePunctPer10k": 19.8
   },
   "manual-arduino-guide.pdf": {
     "wordRecall": 0.8062,
-    "numericRecall": 0.7877,
-    "linkPrecision": 0.0787,
+    "numericRecall": 0.7854,
+    "linkPrecision": 1,
     "spaceBeforePunctPer10k": 3.9
   },
   "multicolumn-gan-paper.pdf": {
@@ -96,10 +96,10 @@
     "spaceBeforePunctPer10k": 220.9
   },
   "multicolumn-ieee-paper.pdf": {
-    "wordRecall": 0.9877,
-    "numericRecall": 0.8974,
-    "linkPrecision": 0.0491,
-    "spaceBeforePunctPer10k": 32
+    "wordRecall": 0.9857,
+    "numericRecall": 0.8822,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 35.8
   },
   "multilingual-udhr-chinese.pdf": {
     "wordRecall": 0.7574,
@@ -111,7 +111,7 @@
     "wordRecall": 0.9688,
     "numericRecall": 0.9027,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 19
+    "spaceBeforePunctPer10k": 19.0
   },
   "resume-sample.pdf": {
     "wordRecall": 1,
@@ -126,16 +126,16 @@
     "spaceBeforePunctPer10k": 0
   },
   "scientific-bert-paper.pdf": {
-    "wordRecall": 0.9558,
+    "wordRecall": 0.9473,
     "numericRecall": 0.9954,
-    "linkPrecision": 0.1026,
-    "spaceBeforePunctPer10k": 44.2
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 43.5
   },
   "scientific-resnet.pdf": {
-    "wordRecall": 0.9419,
+    "wordRecall": 0.9396,
     "numericRecall": 0.8515,
-    "linkPrecision": 0.1429,
-    "spaceBeforePunctPer10k": 70
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 73.1
   },
   "scientific-rl-survey.pdf": {
     "wordRecall": 0.9657,
@@ -150,16 +150,16 @@
     "spaceBeforePunctPer10k": 383.7
   },
   "tables-cdc-report.pdf": {
-    "wordRecall": 0.9527,
+    "wordRecall": 0.9496,
     "numericRecall": 0.8708,
-    "linkPrecision": 0.4804,
-    "spaceBeforePunctPer10k": 3.1
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 6.1
   },
   "tables-census-poverty.pdf": {
-    "wordRecall": 0.8893,
-    "numericRecall": 0.7582,
-    "linkPrecision": 0.0614,
-    "spaceBeforePunctPer10k": 17.1
+    "wordRecall": 0.8886,
+    "numericRecall": 0.7581,
+    "linkPrecision": 1,
+    "spaceBeforePunctPer10k": 42.1
   },
   "whitepaper-bitcoin.pdf": {
     "wordRecall": 0.9843,

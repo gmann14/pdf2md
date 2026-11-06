@@ -5,15 +5,16 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { ratchetShard } from "../../../test-corpus/fidelity";
 
-// Text-fidelity ratchet over tracked real-pdfs, shard 3 of 4 (see test-corpus/fidelity.ts).
+// Text-fidelity ratchet over tracked real-pdfs, shard 1 of 4 (see test-corpus/fidelity.ts).
+// Runs with `pnpm test:fidelity`, not `pnpm test`.
 // Refresh the baseline after an intended improvement with
 //   npx tsx --require ./test-corpus/node-polyfills.cjs test-corpus/fidelity.ts test-corpus/real-pdfs --update-baseline
 const corpusDir = resolve(dirname(fileURLToPath(import.meta.url)), "../../../test-corpus/real-pdfs");
 
-describe("text fidelity on the tracked corpus (shard 3/4)", () => {
+describe("text fidelity on the tracked corpus (shard 1/4)", () => {
   it("never falls below the committed baseline", async () => {
-    const { checked, problems } = await ratchetShard(corpusDir, 2, 4);
+    const { checked, problems } = await ratchetShard(corpusDir, 0, 4);
     expect(checked).toBeGreaterThan(0);
     expect(problems).toEqual([]);
-  }, 180_000);
+  });
 });

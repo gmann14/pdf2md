@@ -42,3 +42,6 @@ jobs:
 
       - name: Corpus smoke test
         run: pnpm test:corpus-smoke
+
+      - name: Text-fidelity ratchet
+        run: pnpm test:fidelity

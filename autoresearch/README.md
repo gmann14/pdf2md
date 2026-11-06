@@ -45,8 +45,9 @@ Run the fidelity checks on their own (all sets, or the dirs given):
 npx tsx --require ./test-corpus/node-polyfills.cjs test-corpus/fidelity.ts [dir ...] [--json out.json] [--save-md outDir]
 ```
 
-`pnpm test` runs a ratchet over `test-corpus/real-pdfs/` against
-`test-corpus/fidelity-baseline.json`. After an intended improvement, refresh it with
+`pnpm test:fidelity` (also a CI step) runs a ratchet over `test-corpus/real-pdfs/`
+against `test-corpus/fidelity-baseline.json`. It is kept out of `pnpm test` because it
+converts the whole tracked corpus (about a minute). After an intended improvement, refresh it with
 `... test-corpus/fidelity.ts test-corpus/real-pdfs --update-baseline`.
 
 The four datasets are weighted equally:

@@ -39,6 +39,7 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:fidelity": "vitest run --config vitest.corpus.config.ts",
     "test:watch": "vitest"
   },
   "dependencies": {

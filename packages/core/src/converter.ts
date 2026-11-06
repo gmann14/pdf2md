@@ -51,7 +51,9 @@ interface ExtractedItem {
 
 interface AnnotationLink {
   url: string;
-  rect: [number, number, number, number]; // [x1, y1, x2, y2]
+  rect: [number, number, number, number]; // [x1, y1, x2, y2], top-down
+  /** 1-based page the annotation belongs to. Links only match text on this page. */
+  page: number;
 }
 
 interface Block {
@@ -233,7 +235,7 @@ async function extractPageItems(
       const [x1, y1raw, x2, y2raw] = ann.rect;
       const y1 = viewport.height - y2raw;
       const y2 = viewport.height - y1raw;
-      links.push({ url: ann.url, rect: [x1, y1, x2, y2] });
+      links.push({ url: ann.url, rect: [x1, y1, x2, y2], page: pageNum });
     }
   }
 
@@ -884,6 +886,20 @@ function detectTablesAndCode(blocks: Block[], codeFonts: Set<string>): Block[] {
 // Link matching
 // ---------------------------------------------------------------------------
 
+/** True when the text has no letters or digits (punctuation, math symbols). */
+function isSymbolOnly(text: string): boolean {
+  return !/[\p{L}\p{N}]/u.test(text);
+}
+
+/**
+ * Match link annotations to the text items they cover, on the same page only.
+ *
+ * `item.y` is the baseline in top-down coordinates, so the glyph box runs from
+ * `y - height` to `y`. An item matches a link when its centre lies in the link
+ * rectangle or when it overlaps the rectangle by more than 50% in both
+ * dimensions. Items that are only punctuation or symbols match only when they
+ * fill most of the rectangle, so a link never wraps a stray `(` or `=`.
+ */
 function matchLinksToText(
   items: ExtractedItem[],
   links: AnnotationLink[],
@@ -891,36 +907,42 @@ function matchLinksToText(
   const linkMap = new Map<ExtractedItem, string>();
   if (links.length === 0) return linkMap;
 
+  const linksByPage = new Map<number, AnnotationLink[]>();
+  for (const link of links) {
+    const pageLinks = linksByPage.get(link.page);
+    if (pageLinks) pageLinks.push(link);
+    else linksByPage.set(link.page, [link]);
+  }
+
   for (const item of items) {
-    for (const link of links) {
+    const pageLinks = linksByPage.get(item.page);
+    if (!pageLinks) continue;
+
+    const top = item.y - item.height;
+    const bottom = item.y;
+    const centerX = item.x + item.width / 2;
+    const centerY = item.y - item.height / 2;
+    const symbolOnly = isSymbolOnly(item.str);
+
+    for (const link of pageLinks) {
       const [lx1, ly1, lx2, ly2] = link.rect;
 
-      // Method 1: Center-point containment — item center must be inside link rect
-      const itemCenterX = item.x + item.width / 2;
-      const itemCenterY = item.y + item.height / 2;
+      if (symbolOnly) {
+        const linkWidth = lx2 - lx1;
+        if (linkWidth <= 0 || item.width < linkWidth * 0.8) continue;
+      }
 
-      if (
-        itemCenterX >= lx1 && itemCenterX <= lx2 &&
-        itemCenterY >= ly1 && itemCenterY <= ly2
-      ) {
+      // Method 1: centre-point containment
+      if (centerX >= lx1 && centerX <= lx2 && centerY >= ly1 && centerY <= ly2) {
         linkMap.set(item, link.url);
         break;
       }
 
-      // Method 2: High overlap (>50% in both dimensions)
+      // Method 2: high overlap (>50% in both dimensions)
       if (item.width > 0 && item.height > 0) {
-        const overlapLeft = Math.max(item.x, lx1);
-        const overlapRight = Math.min(item.x + item.width, lx2);
-        const overlapWidth = Math.max(0, overlapRight - overlapLeft);
-
-        const overlapTop = Math.max(item.y, ly1);
-        const overlapBottom = Math.min(item.y + item.height, ly2);
-        const overlapHeight = Math.max(0, overlapBottom - overlapTop);
-
-        if (
-          overlapWidth / item.width > 0.5 &&
-          overlapHeight / item.height > 0.5
-        ) {
+        const overlapWidth = Math.max(0, Math.min(item.x + item.width, lx2) - Math.max(item.x, lx1));
+        const overlapHeight = Math.max(0, Math.min(bottom, ly2) - Math.max(top, ly1));
+        if (overlapWidth / item.width > 0.5 && overlapHeight / item.height > 0.5) {
           linkMap.set(item, link.url);
           break;
         }
@@ -953,46 +975,25 @@ function assembleBlockText(
   block: Block,
   linkMap: Map<ExtractedItem, string>,
 ): string {
-  // Collect text from items, joining same-line items with space
-  const lines: string[] = [];
-  let currentLine: string[] = [];
-  let prevItem: ExtractedItem | null = null;
+  // Items are joined with a space. Consecutive items that share a link URL are
+  // merged into one `[text](url)` so a multi-word link is not split per item.
+  const pieces: Array<{ text: string; url?: string }> = [];
 
   for (const item of block.items) {
-    let text = item.str;
-
-    // Apply inline formatting
-    text = applyInlineFormatting(text, item.fontName);
-
-    // Wrap linked text
-    const linkUrl = linkMap.get(item);
-    if (linkUrl) {
-      text = `[${text}](${linkUrl})`;
-    }
-
-    // Detect line break: large Y gap or hasEOL on previous
-    if (prevItem) {
-      const yGap = Math.abs(item.y - prevItem.y);
-      const isNewLine = yGap > prevItem.height * 0.5 || prevItem.hasEOL;
-
-      if (isNewLine) {
-        lines.push(currentLine.join(" "));
-        currentLine = [text];
-      } else {
-        currentLine.push(text);
-      }
+    const text = applyInlineFormatting(item.str, item.fontName);
+    const url = linkMap.get(item);
+    const last = pieces[pieces.length - 1];
+    if (url && last?.url === url) {
+      last.text = `${last.text} ${text}`;
     } else {
-      currentLine.push(text);
+      pieces.push({ text, url });
     }
-
-    prevItem = item;
   }
 
-  if (currentLine.length > 0) {
-    lines.push(currentLine.join(" "));
-  }
-
-  return lines.join(" ").trim();
+  return pieces
+    .map((piece) => (piece.url ? `[${piece.text.trim()}](${piece.url})` : piece.text))
+    .join(" ")
+    .trim();
 }
 
 function codeBlockToMarkdown(
@@ -1397,12 +1398,19 @@ function autoLinkUrls(markdown: string): string {
       }
       if (inCodeBlock) return line;
 
-      // Match URLs not already inside markdown links
-      // Negative lookbehind: not preceded by ]( or by [
-      return line.replace(
-        /(?<!\]\()(?<!\[)(https?:\/\/[^\s\])<>]+)/g,
-        (match) => `[${match}](${match})`,
-      );
+      // Link bare URLs only outside existing Markdown links, so a URL inside
+      // link text (`[see https://x](https://x)`) is not wrapped a second time.
+      return line
+        .split(/(\[[^\]]*\]\([^)\s]*\))/)
+        .map((segment, index) =>
+          index % 2 === 1
+            ? segment
+            : segment.replace(
+                /(?<!\]\()(?<!\[)(https?:\/\/[^\s\])<>]+)/g,
+                (match) => `[${match}](${match})`,
+              ),
+        )
+        .join("");
     })
     .join("\n");
 }
