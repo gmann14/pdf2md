@@ -15,7 +15,7 @@
     "test:corpus-smoke": "pnpm --filter @pdf2md/core exec vitest run src/corpus-smoke.test.ts",
     "test:fidelity": "pnpm --filter @pdf2md/core test:fidelity",
     "lint": "pnpm --filter @pdf2md/web lint",
-    "typecheck": "pnpm --filter @pdf2md/core typecheck && pnpm --filter @pdf2md/web typecheck"
+    "typecheck": "pnpm --filter @pdf2md/core typecheck && pnpm --filter @pdf2md/mcp typecheck && pnpm --filter @pdf2md/web typecheck"
   },
   "version": "",
   "devDependencies": {

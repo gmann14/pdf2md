@@ -78,4 +78,71 @@ describe("published entry points", () => {
     expect(result.status).toBe("success");
     expect(result.unchanged).toBe(true);
   });
+
+  it("require() and import of @pdf2md/core/compat return opendocsg's function", () => {
+    const cjs = runNode([
+      "-e",
+      `
+      const pdf2md = require("@pdf2md/core/compat");
+      const fs = require("node:fs");
+      pdf2md(fs.readFileSync(${JSON.stringify(samplePdf)})).then((text) => console.log(JSON.stringify({
+        type: typeof pdf2md,
+        defaultIsSame: pdf2md.default === pdf2md,
+        breaks: text.split("<!-- PAGE_BREAK -->\\n").length - 1,
+      })));
+    `,
+    ]);
+    expect(cjs).toEqual({ type: "function", defaultIsSame: true, breaks: 8 });
+
+    const esm = runNode([
+      "--input-type=module",
+      "-e",
+      `
+      import pdf2md from "@pdf2md/core/compat";
+      import { readFileSync } from "node:fs";
+      const text = await pdf2md(readFileSync(${JSON.stringify(samplePdf)}));
+      console.log(JSON.stringify({
+        resolved: import.meta.resolve("@pdf2md/core/compat"),
+        breaks: text.split("<!-- PAGE_BREAK -->\\n").length - 1,
+      }));
+    `,
+    ]);
+    expect(esm.resolved).toMatch(/dist\/compat\.js$/);
+    expect(esm.breaks).toBe(8);
+  });
+
+  it("compiles code written against opendocsg's types/pdf2md.d.ts", () => {
+    // Usage of every part of opendocsg's declared API, typed only by inference
+    // from the callbacks parameter, as a consumer of its types would write it.
+    const usage = `
+      import pdf2md from "@pdf2md/core/compat";
+      import { readFileSync } from "node:fs";
+
+      const buffer: Buffer = readFileSync("file.pdf");
+      const run = async (): Promise<string[]> => {
+        const a: string = await pdf2md(buffer, {
+          metadataParsed: (metadata) => {
+            const info: Object = metadata.info;
+            console.log(info, metadata.metadata.get("dc:title"), metadata.metadata.getAll());
+          },
+          pageParsed: (pages) => pages.map((p) => p.index + p.items.map((i) => i.str).join("")),
+          fontParsed: (font) => font.ids.size + font.map.size,
+          documentParsed: (document, pages) => document.numPages + pages.length,
+        });
+        const b: string = await pdf2md(new Uint8Array(buffer));
+        const c: string = await pdf2md(buffer.buffer as ArrayBuffer);
+        const d: string = await pdf2md({ data: buffer });
+        return [a, b, c, d].map((text) => text.split("<!-- PAGE_BREAK -->")[0]);
+      };
+      void run();
+    `;
+    const tsc = join(pkgDir, "node_modules/typescript/bin/tsc");
+    const compilerOptions = ["--noEmit", "--strict", "--skipLibCheck", "--esModuleInterop", "--types", "node"];
+    writeFileSync(join(dir, "usage.mts"), usage);
+    writeFileSync(join(dir, "usage.cts"), usage);
+    execFileSync(process.execPath, [tsc, ...compilerOptions, "--module", "nodenext", "--moduleResolution", "nodenext", join(dir, "usage.mts"), join(dir, "usage.cts")], {
+      cwd: dir,
+      encoding: "utf8",
+    });
+  });
 });

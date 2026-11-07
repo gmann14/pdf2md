@@ -1,0 +1,15 @@
+{
+  // Type-check against @pdf2md/core's sources, so no core build is needed.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": "..",
+    "lib": ["ES2020", "DOM"],
+    "types": ["node"],
+    "paths": {
+      "@pdf2md/core": ["../core/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

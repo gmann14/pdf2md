@@ -44,7 +44,7 @@ research/          — Competitor analysis, tech research, stress test
 
 - **Next.js over Vite** — SSR/SSG is critical for SEO. The conversion runs client-side regardless.
 - **No backend for MVP** — Everything runs in the browser. Files never leave the client.
-- **15MB file limit** — PDF.js uses 5-10x file size in RAM. 15MB keeps peak memory under ~150MB.
+- **15MB file limit in the browser** — PDF.js uses 5-10x file size in RAM. 15MB keeps peak memory under ~150MB. The web app passes it as `maxFileSizeBytes`; `@pdf2md/core` has no limit by default in Node (CLI, MCP) and defaults to 15MB in browsers (decided 6 Nov 2026, `docs/improvement-spec-2026-11.md`).
 - **MIT license** — Maximum adoption for open-source credibility and backlinks.
 - **Dynamic import for converter** — pdfjs-dist uses DOMMatrix, so converter.ts must be dynamically imported in client components to avoid SSG errors.
 

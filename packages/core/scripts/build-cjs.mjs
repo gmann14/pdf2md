@@ -41,7 +41,10 @@ try {
   const stagedSrc = join(stage, "src");
   cpSync(join(pkgDir, "src"), stagedSrc, {
     recursive: true,
-    filter: (src) => !src.endsWith(".test.ts") && !src.includes(`${join("src", "bin")}`),
+    filter: (src) =>
+      !src.endsWith(".test.ts") &&
+      !src.includes(`${join("src", "bin")}`) &&
+      !src.includes(`${join("src", "testing")}`),
   });
 
   for (const file of readdirSync(stagedSrc)) {
@@ -85,6 +88,16 @@ try {
   const tsc = join(pkgDir, "node_modules/typescript/bin/tsc");
   execFileSync(process.execPath, [tsc, "-p", join(stage, "tsconfig.json")], { stdio: "inherit" });
   writeFileSync(join(outDir, "package.json"), JSON.stringify({ type: "commonjs" }, null, 2) + "\n");
+
+  // opendocsg's CommonJS export is the function itself, so make
+  // require("@pdf2md/core/compat") return pdf2md (with its named exports and
+  // `.default` still attached for `import pdf2md from` under esModuleInterop).
+  const compatPath = join(outDir, "compat.js");
+  writeFileSync(
+    compatPath,
+    readFileSync(compatPath, "utf8") +
+      "\nmodule.exports = Object.assign(exports.default, exports);\n",
+  );
 } finally {
   rmSync(stage, { recursive: true, force: true });
 }

@@ -35,11 +35,16 @@ const { convert } = require("@pdf2md/core");
 ```ts
 const result = await convert(buffer, {
   maxPages: 10,           // Limit number of pages to convert
+  pages: [1, 2, 5],       // Or "1-5,9", "-3" (last 3 pages), { offset: 10, length: 5 }
+  perPage: true,          // Add result.pages: [{ pageNumber, markdown }]
+  pageMarkers: "comment", // Put <!-- page N --> before each page ("none" by default)
   includeMetadata: true,  // Extract title, author, etc.
   outputFormat: "json",   // Include structured sections
   chunkBy: "heading",     // Optional: "page", "heading", or "token"
   maxTokensPerChunk: 800, // Used with chunkBy: "token"
   emphasis: false,        // Skip inline **bold**/*italic* (on by default; off is faster)
+  maxFileSizeBytes: 15 * 1024 * 1024, // Reject bigger files ("oversized"); no limit in Node by default
+  timeoutMs: 30_000,      // Give up after 30 s ("timeout")
   signal: controller.signal, // AbortSignal for cancellation
   onProgress: (progress) => {
     console.log(`${progress.stage}: page ${progress.currentPage}/${progress.totalPages}`);
@@ -55,23 +60,62 @@ interface ConversionResult {
   markdown: string;
   messages: ConversionMessage[];  // Errors and warnings
   stats: { pageCount: number; wordCount: number; processingMs: number };
-  metadata?: { title?: string; author?: string; subject?: string; keywords?: string[]; creationDate?: string };
+  metadata?: ConversionMetadata;  // With includeMetadata: title, author, producer, pdfVersion, isTagged, …
   structured?: { sections: StructuredSection[] };
   chunks?: ConversionChunk[];
+  pages?: { pageNumber: number; markdown: string }[]; // With perPage
 }
 ```
+
+### Page selection
+
+`pages` takes 1-based page numbers, a range string (`"1-5,9"`, or `"-3"` for the
+last 3 pages), or a 0-based `offset` (negative counts from the end) with an
+optional `length`. A malformed range string returns a `failed` result. Pages out of range are skipped and duplicates
+dropped; a selection with no page in range returns an empty `success` result.
+Up to 10 neighbouring pages are read (not output) so running headers and
+heading sizes are still detected on a one-page read. With `perPage`, joining the
+non-empty `result.pages[].markdown` with a blank line gives `result.markdown`.
+
+### Switching from @opendocsg/pdf2md
+
+`@pdf2md/core/compat` has opendocsg's signature, so the switch is one line:
+
+```js
+const pdf2md = require("@pdf2md/core/compat"); // was require("@opendocsg/pdf2md")
+const markdown = await pdf2md(fs.readFileSync("file.pdf")); // pages joined by <!-- PAGE_BREAK -->
+```
+
+See [docs/migrating-from-opendocsg.md](../../docs/migrating-from-opendocsg.md)
+for the differences.
 
 ## CLI Usage
 
 ```sh
 npx @pdf2md/core document.pdf > output.md
+npx @pdf2md/core --pages 1-5,9 document.pdf          # or --pages -3 for the last 3 pages
+npx @pdf2md/core -o output.md document.pdf
+cat document.pdf | npx @pdf2md/core - > output.md    # read from stdin
+npx @pdf2md/core --out converted/ reports/*.pdf      # several files or a directory
 npx @pdf2md/core --output json --chunk-by heading document.pdf > output.json
 npx @pdf2md/core --output json --chunk-by token --max-tokens 800 document.pdf > chunks.json
 ```
 
-Prints Markdown to stdout by default. JSON mode prints the full conversion
-result, including `markdown`, `structured.sections`, and optional `chunks`.
-Warnings and errors go to stderr.
+| Option | Meaning |
+| --- | --- |
+| `--pages <range>` | Pages to convert: `1-5,9`, or `-3` for the last 3 |
+| `-o, --out <file\|dir>` | Write to a file, or into a directory (required for several inputs) |
+| `--output markdown\|json` | Markdown (default) or the full JSON conversion result |
+| `--chunk-by page\|heading\|token` | Split JSON output into chunks |
+| `--max-tokens <count>` | Token budget for `--chunk-by token` |
+| `--yaml` | Prepend PDF metadata as YAML front matter |
+| `--no-metadata` | Leave metadata out of the JSON result |
+| `--max-size <size>` | Fail on larger files (`15MB`, `500KB` or bytes); no limit by default |
+| `-q, --quiet` | No warnings on stderr (errors still print) |
+| `-v, --version` | Print the version |
+
+Prints to stdout unless `--out` is given. Warnings and errors go to stderr.
+Exit codes: `0` success, `2` partial (converted with warnings), `1` failure.
 
 ## Conversion Pipeline
 
@@ -92,7 +136,11 @@ Warnings and errors go to stderr.
 
 ## Limits
 
-- 15 MB maximum file size
+- No file size limit in Node.js by default; browsers default to 15 MB
+  (`MAX_FILE_SIZE`), because PDF.js uses 5-10x the file size in memory. Set
+  `maxFileSizeBytes` to change either (`Infinity` for no limit).
+- `convert()` does not reject: errors come back as a `failed` result with a
+  `ConversionCode` (`oversized`, `timeout`, `cancelled`, `parse_failed`, …).
 - No OCR support (scanned/image-based PDFs return an error)
 - Password-protected PDFs are not supported
 
