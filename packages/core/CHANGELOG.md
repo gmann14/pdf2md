@@ -21,6 +21,36 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
   `Uint8Array`, including a Node `Buffer` from `fs.readFile`. The bytes are
   copied first, so the caller's buffer is never detached.
 - **CommonJS.** `require("@pdf2md/core")` works alongside `import`.
+- **Page selection.** `pages` (an array or a range string such as `"1-5,9"`)
+  converts only those pages, reading the nearby pages it needs for header and
+  footer detection. `perPage` returns one Markdown string per page, and
+  `pageMarkers: "comment"` adds a page comment before each page. Metadata gains creator, producer,
+  pdfVersion, modificationDate, isEncrypted, isTagged and hasTextLayer.
+- **`maxFileSizeBytes` and `timeoutMs` options.** Both return a failed result
+  instead of throwing.
+- **`getPdfInfo()`, `resolvePageSelection()` and `validatePageRange()`.**
+- **`@pdf2md/core/compat`.** A drop-in for `@opendocsg/pdf2md`'s default export.
+  See `docs/migrating-from-opendocsg.md`.
+- **CLI.** `--pages`, `-o/--out`, stdin (`-`), directory batch mode, `--yaml`,
+  `--no-metadata`, `--max-size`, `--quiet`, `--version`, and exit codes 0
+  (success), 2 (usage) and 1 (conversion failed). `--max-size` is checked
+  before a file is read and while stdin is read.
+
+### Changed
+
+- **No file-size limit in Node.** It was 15 MB everywhere. Browsers still
+  default to 15 MB, and the web app passes it explicitly.
+- **`convert()` no longer rejects** on errors after the PDF is loaded; it
+  returns a failed result.
+- **Table-of-contents lines** become `- title — page` list items without dot
+  leaders. Long leaders elsewhere collapse to `…`, and headings broken at a
+  hyphen are joined back together.
+- **Code blocks come from real monospace fonts.** URLs, date-format labels and
+  captions or formulas in ordinary fonts are no longer fenced.
+- **Table cells.** A lone `$ € £ ¥` joins the number after it and a lone `%`
+  the number before it. Rows with fewer cells are kept, tables split by a gap
+  are joined, empty columns are dropped, and `|` inside a cell is escaped.
+- `--help` prints to stdout.
 
 ### Fixed
 
@@ -39,6 +69,8 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
 - **Linear-time text handling.** Long runs of punctuation or `[` in the text
   no longer make conversion take quadratic time.
 - PDF.js logs errors only, so its warnings no longer reach the CLI's stdout.
+- **Faster emphasis detection.** Bold and italic fonts are found in one pass
+  over the text items instead of one pass per font; output is unchanged.
 
 ### Development
 
@@ -46,3 +78,8 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
   PDF.js text layer of each corpus PDF (word and number recall, link precision,
   spacing before punctuation, malformed or unrendered emphasis) and fails if
   any PDF falls below the committed baseline.
+- **Head-to-head harness.** `pnpm compare:opendocsg` scores pdf2md and
+  `@opendocsg/pdf2md` on the same PDFs.
+- **Benchmark.** `pnpm bench` reports per-file median time and peak memory.
+- **Reference tests.** `pnpm test:reference` runs hand-written checks on pages
+  of public-domain PDFs.

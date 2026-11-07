@@ -235,7 +235,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
 - **Complexity:** low
 - **Depends on:** none. "Text-fidelity checks" should land first so the improvement
   is measured.
-- **Status:** proposed
+- **Status:** done (688fc20), local main, not released
 
 ### Proposed — Restrict header/footer stripping to the header and footer bands
 
@@ -261,7 +261,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
   - Local check: the Amazon output contains `2022` at least 180 times (opendocsg: 196).
 - **Complexity:** low
 - **Depends on:** "Text-fidelity checks" for the recall metric
-- **Status:** proposed
+- **Status:** done (08695df), local main, not released
 
 ### Proposed — Inline bold and italic from real font names
 
@@ -300,7 +300,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
 - **Complexity:** med
 - **Depends on:** none. It interacts with "PDF.js version policy" because of
   `fontExtraProperties`.
-- **Status:** proposed
+- **Status:** done (c0d05ae, 1d2c07a), local main, not released
 
 ### Proposed — Gap-aware joining of text runs
 
@@ -325,7 +325,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
   - Local check: the blind-corpus count of `[a-z] [.,;:)]` is ≤ 400, down from 3,874.
 - **Complexity:** low
 - **Depends on:** "Text-fidelity checks"
-- **Status:** proposed
+- **Status:** done (c6655e2), local main, not released
 
 ### Proposed — Table cell cleanup: currency symbols, split tables, lost rows
 
@@ -362,7 +362,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
 - **Complexity:** med
 - **Depends on:** "Restrict header/footer stripping" (for the lost headers);
   "Hand-checked reference set" for the table checks
-- **Status:** proposed
+- **Status:** done (fd683ea), local main, not released
 
 ### Proposed — Fewer false-positive code blocks, using real monospace fonts
 
@@ -391,7 +391,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
     Transit outputs, and RFC 9293 keeps ≥ 7.
 - **Complexity:** med
 - **Depends on:** "Inline bold and italic from real font names"
-- **Status:** proposed
+- **Status:** done (7bbc98e), local main, not released
 
 ### Proposed — Table-of-contents and dot-leader lines
 
@@ -410,7 +410,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
   - No heading in the tracked-corpus outputs ends with `-`.
 - **Complexity:** low
 - **Depends on:** "Restrict header/footer stripping" (or the numbers are still lost)
-- **Status:** proposed
+- **Status:** done (7e660cd, 863cfc6), local main, not released
 
 ### Proposed — Performance budget and benchmark
 
@@ -431,7 +431,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
     measured after the bold/italic item lands.
 - **Complexity:** low
 - **Depends on:** "Page-scoped link matching"
-- **Status:** proposed
+- **Status:** mostly done (b2d2951): `pnpm bench` and the emphasis-font hotspot fix landed; the "total time ≤ opendocsg" check is not yet automated
 
 ### Proposed — Optional OCR add-on for scanned pages (no upload)
 
@@ -463,7 +463,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
   - Pages that already have text are never OCR'd (test with a mixed PDF fixture).
 - **Complexity:** high
 - **Depends on:** "Install footprint" (canvas handling); a spec decision from Graham
-- **Status:** proposed
+- **Status:** proposed, waiting on Graham's decision
 
 ### (b) Evaluation
 
@@ -496,7 +496,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
     the first report.
 - **Complexity:** low
 - **Depends on:** none
-- **Status:** proposed
+- **Status:** done (c87961e), local main
 
 ### Proposed — Hand-checked reference set with unit tests
 
@@ -526,7 +526,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
     comparable number.
 - **Complexity:** med
 - **Depends on:** "Commit the head-to-head harness" (for the comparison only)
-- **Status:** proposed
+- **Status:** partial (77945d5): 106 of 150 tests on 7 pages of 3 public-domain PDFs, not yet reviewed by Graham; pdf2md passes 61/106
 
 ### Proposed — olmOCR-bench born-digital subsets runner
 
@@ -566,7 +566,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
     skipped subsets.
 - **Complexity:** med
 - **Depends on:** "Commit the head-to-head harness"
-- **Status:** proposed
+- **Status:** proposed, skipped for now (large download)
 
 ### Proposed — Commit the head-to-head harness
 
@@ -585,7 +585,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
     section 1 of this spec.
 - **Complexity:** low
 - **Depends on:** none
-- **Status:** proposed
+- **Status:** done (17212c3), `pnpm compare:opendocsg`
 
 ### (c) Adoption and integration for agent tools
 
@@ -616,7 +616,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
   - `attw` reports no problems.
 - **Complexity:** low
 - **Depends on:** none
-- **Status:** proposed
+- **Status:** done (bc1e781), local main, not released
 
 ### Proposed — Page selection and per-page output
 
@@ -647,7 +647,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
     on `getPage`).
 - **Complexity:** med
 - **Depends on:** none
-- **Status:** proposed
+- **Status:** done (b74ab60, d74100a), local main, not released
 
 ### Proposed — opendocsg-compatible entry point
 
@@ -671,7 +671,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
 - **Complexity:** low
 - **Depends on:** "Accept Node Buffers and load with require()"; "Page selection and
   per-page output"
-- **Status:** proposed
+- **Status:** done (abf0da2), `@pdf2md/core/compat`, local main, not released
 
 ### Proposed — PDF.js version policy and upgrade canary
 
@@ -790,7 +790,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
     document is destroyed in every path (spy).
 - **Complexity:** low
 - **Depends on:** none
-- **Status:** proposed
+- **Status:** done (bf51458), local main, not released
 
 ### Proposed — Output stability contract
 
@@ -836,7 +836,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
 - **Complexity:** low
 - **Depends on:** "Accept Node Buffers and load with require()"; "Page selection and
   per-page output"; "opendocsg-compatible entry point"; "Hand-checked reference set"
-- **Status:** proposed
+- **Status:** partial: `docs/migrating-from-opendocsg.md` written; adopter PRs not drafted
 
 ### (d) MCP and CLI
 
@@ -871,7 +871,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
 - **Complexity:** med
 - **Depends on:** "Page selection and per-page output"; "File-size limit and
   timeout as options"
-- **Status:** proposed
+- **Status:** done (955361b), version still 0.1.0, not published
 
 ### Proposed — CLI parity
 
@@ -899,7 +899,7 @@ gate can check, complexity and dependencies. "Gate" means `pnpm typecheck`,
   - The exit codes are asserted.
 - **Complexity:** low
 - **Depends on:** "Page selection and per-page output"
-- **Status:** proposed
+- **Status:** done (4fcb9d4, b5e8afb), local main, not released
 
 ---
 
