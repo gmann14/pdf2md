@@ -54,6 +54,18 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
 
 ### Fixed
 
+- **Tables keep their rows.** A row with one cell more or fewer than the rest
+  of a detected table, or with a stray `. .` leader fragment, is kept instead
+  of dropped.
+- **Bulleted lists are not read as tables.** Symbol and Wingdings bullets map
+  to Unicode bullets, and a table whose first column is only bullet markers is
+  rejected.
+- **Two-column pages read column by column.** Narrow column gaps, sidebars and
+  footnotes are handled, and a full-width table under two text columns stays
+  one table.
+- **Running headers are stripped only where they repeat at the same height**
+  across pages, so a one-page read keeps a line that merely opens several
+  nearby pages, and body text near the page edge is kept.
 - **Links only on their own page.** A link annotation now links text on the
   page that carries it, not text at the same position on other pages.
   Consecutive runs with the same URL form one link.
