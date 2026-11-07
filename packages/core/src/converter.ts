@@ -566,6 +566,37 @@ function applyColumnReordering(items: ExtractedItem[]): ExtractedItem[] {
 // Paragraph grouping by vertical proximity
 // ---------------------------------------------------------------------------
 
+/** A footnote or note label: one to three digits, set small and raised. */
+const LINE_LABEL_PATTERN = /^\d{1,3}$/;
+
+/**
+ * True when `block` so far is only a small raised label ("12" before a
+ * footnote) that opens its line, and `next` is the text it labels, starting
+ * right after it on the same line. The font-size change would otherwise
+ * split the label into a paragraph of its own. `before` holds the few items
+ * sorted just before the label: one on the same line to its left makes the
+ * label an exponent or a reference mark inside the line, not a line label.
+ */
+function opensLabelledLine(block: ExtractedItem[], next: ExtractedItem, before: ExtractedItem[]): boolean {
+  if (block.length !== 1) return false;
+  const label = block[0];
+  if (!isLineLabel(label, next)) return false;
+  return !before.some(
+    (item) =>
+      item.page === label.page && item.x < label.x && Math.abs(item.y - next.y) <= next.fontSize * 0.5,
+  );
+}
+
+/** `label` is a small raised number set right before `next` on its line. */
+function isLineLabel(label: ExtractedItem, next: ExtractedItem): boolean {
+  if (!LINE_LABEL_PATTERN.test(label.str.trim()) || label.page !== next.page) return false;
+  // Smaller than 0.85× the text, but not an invisible tagging mark.
+  if (label.fontSize > next.fontSize * 0.85 || label.fontSize < next.fontSize * 0.4) return false;
+  const rise = next.y - label.y;
+  const gap = next.x - (label.x + label.width);
+  return rise >= 0 && rise <= next.fontSize * 0.5 && gap >= -1 && gap <= next.fontSize * 0.5;
+}
+
 function groupIntoBlocks(
   items: ExtractedItem[],
   profile: FontProfile,
@@ -601,7 +632,10 @@ function groupIntoBlocks(
       Math.abs(curr.fontSize - prev.fontSize) > prev.fontSize * 0.15;
     const pageDiff = curr.page !== prev.page;
 
-    if (pageDiff || verticalGap > lineHeight || (sizeChange && verticalGap > prev.height * 0.3)) {
+    if (
+      (pageDiff || verticalGap > lineHeight || (sizeChange && verticalGap > prev.height * 0.3)) &&
+      !opensLabelledLine(currentItems, curr, sorted.slice(Math.max(0, i - 4), i - 1))
+    ) {
       blocks.push(classifyBlock(currentItems, profile, emphasisFonts));
       currentItems = [curr];
     } else {
@@ -781,6 +815,9 @@ function classifyBlock(
   emphasisFonts?: Set<string>,
 ): Block {
   const firstItem = items[0];
+  // A footnote that opens with its raised label is body text, not a
+  // numbered heading.
+  if (items.length > 1 && isLineLabel(items[0], items[1])) return { items, type: "paragraph" };
   const allText = items.map((i) => i.str).join(" ").trim();
   const isShortLine = allText.length < 120;
   const hasNoTrailingPunctuation = !/[.,:;]$/.test(allText);
@@ -889,10 +926,25 @@ function classifyBlock(
 // Header/footer stripping (repeated text detection)
 // ---------------------------------------------------------------------------
 
-/** Where a repeated header/footer string was seen: x positions per band. */
+/** One copy of a repeated string in a band: its page and position. */
+interface RepeatedPoint {
+  page: number;
+  x: number;
+  y: number;
+}
+
+/**
+ * Where a repeated header/footer string was seen: x positions per band, and
+ * every copy's position (used for strings with no letters, see
+ * `filterHeadersFooters`).
+ */
 interface RepeatedPlacement {
   top: number[];
   bottom: number[];
+  topPoints: RepeatedPoint[];
+  bottomPoints: RepeatedPoint[];
+  /** Pages that must share a copy's position before a letterless copy is stripped. */
+  minPagesAtPosition: number;
 }
 
 /** Share of a page's text extent treated as its header band and its footer band. */
@@ -917,6 +969,32 @@ const HEADER_FOOTER_MIN_SAME_HEIGHT = 3;
  * plus the chapter title on the first page).
  */
 const HEADER_FOOTER_SAME_HEIGHT_SHARE = 0.75;
+/**
+ * A string with no letters (a page number folds to "#") also matches the
+ * footnote labels and table-of-contents page numbers that sit in the bands.
+ * A copy of it is stripped where at least this share of the pages (and at
+ * least HEADER_FOOTER_MIN_SAME_HEIGHT pages) have a copy at the same
+ * position: a running page number recurs at one or two spots on most pages,
+ * a TOC entry at a given spot on only a few. A copy on the page's first or
+ * last line, or with no text beside it but running headers, is stripped
+ * wherever it is: a running header whose title changes by chapter, a page
+ * number set off its usual spot.
+ */
+const HEADER_FOOTER_LETTERLESS_PAGE_SHARE = 0.1;
+/**
+ * A letterless copy within this many font sizes of text on its line is a
+ * label of that text (a footnote label, a contents entry's chapter number)
+ * and is kept even where such labels recur: footnotes sit on a fixed grid.
+ */
+const HEADER_FOOTER_LABEL_GAP = 2;
+/** Text items whose baselines are this close (pt) form one line when looking for a label's text. */
+const ANCHOR_LINE_Y_TOLERANCE = 1;
+/** Lines checked on each side of a letterless copy's height when looking for its text. */
+const ANCHOR_LINES_PER_SIDE = 4;
+/** Text items read around a letterless copy before falling back to the line index. */
+const ANCHOR_SCAN_BUDGET = 512;
+/** Copies read around a letterless copy before falling back to per-cell page counts. */
+const POSITION_SCAN_BUDGET = 512;
 
 /**
  * How many of `ys` (one per page) have at least `minPages - 1` others within
@@ -980,37 +1058,42 @@ function detectRepeatedText(
   const repeated = new Map<string, RepeatedPlacement>();
   if (totalPages < 3) return repeated;
 
-  // Per text: the x positions seen and one y per page it was seen on.
-  const topSeen = new Map<string, { ys: number[]; xs: number[] }>();
-  const bottomSeen = new Map<string, { ys: number[]; xs: number[] }>();
+  // Per text: the x positions seen, one y per page it was seen on, and every copy.
+  type Seen = { ys: number[]; xs: number[]; points: RepeatedPoint[] };
+  const topSeen = new Map<string, Seen>();
+  const bottomSeen = new Map<string, Seen>();
 
-  for (const [, pageItems] of groupByPage(items)) {
+  for (const [page, pageItems] of groupByPage(items)) {
     const bands = pageBands(pageItems);
     if (!bands) continue;
 
-    // Per text on this page: x positions and the y of the first occurrence.
-    const topOnPage = new Map<string, { y: number; xs: number[] }>();
-    const bottomOnPage = new Map<string, { y: number; xs: number[] }>();
+    // Per text on this page: x positions, the y of the first occurrence, and every copy.
+    type OnPage = { y: number; xs: number[]; points: RepeatedPoint[] };
+    const topOnPage = new Map<string, OnPage>();
+    const bottomOnPage = new Map<string, OnPage>();
     for (const item of pageItems) {
       const normalized = normalizeRepeatedText(item.str);
       if (normalized.length === 0) continue;
-      if (item.y <= bands.top) {
-        const found = topOnPage.get(normalized) ?? { y: item.y, xs: [] };
+      for (const [inBand, onPage] of [
+        [item.y <= bands.top, topOnPage],
+        [item.y >= bands.bottom, bottomOnPage],
+      ] as const) {
+        if (!inBand) continue;
+        const found = onPage.get(normalized) ?? { y: item.y, xs: [], points: [] };
         found.xs.push(item.x);
-        topOnPage.set(normalized, found);
-      }
-      if (item.y >= bands.bottom) {
-        const found = bottomOnPage.get(normalized) ?? { y: item.y, xs: [] };
-        found.xs.push(item.x);
-        bottomOnPage.set(normalized, found);
+        found.points.push({ page, x: item.x, y: item.y });
+        onPage.set(normalized, found);
       }
     }
 
     for (const [onPage, seen] of [[topOnPage, topSeen], [bottomOnPage, bottomSeen]] as const) {
       for (const [text, found] of onPage) {
-        const entry = seen.get(text) ?? { ys: [], xs: [] };
+        const entry = seen.get(text) ?? { ys: [], xs: [], points: [] };
         entry.ys.push(found.y);
-        entry.xs.push(...found.xs);
+        // Loops, not push(...spread): a page can hold more copies than the
+        // engine accepts as call arguments.
+        for (const x of found.xs) entry.xs.push(x);
+        for (const point of found.points) entry.points.push(point);
         seen.set(text, entry);
       }
     }
@@ -1021,13 +1104,24 @@ function detectRepeatedText(
   // nearly every page where it appears.
   const threshold = totalPages * 0.5;
   const minSameHeight = Math.min(HEADER_FOOTER_MIN_SAME_HEIGHT, Math.ceil(threshold));
+  const minPagesAtPosition = Math.max(
+    minSameHeight,
+    Math.ceil(totalPages * HEADER_FOOTER_LETTERLESS_PAGE_SHARE),
+  );
   for (const [band, seen] of [["top", topSeen], ["bottom", bottomSeen]] as const) {
     for (const [text, entry] of seen) {
       if (entry.ys.length < threshold) continue;
       const sameHeight = pagesAtRecurringHeight(entry.ys, HEADER_FOOTER_Y_TOLERANCE, minSameHeight);
       if (sameHeight < threshold && sameHeight < entry.ys.length * HEADER_FOOTER_SAME_HEIGHT_SHARE) continue;
-      const placement = repeated.get(text) ?? { top: [], bottom: [] };
+      const placement = repeated.get(text) ?? {
+        top: [],
+        bottom: [],
+        topPoints: [],
+        bottomPoints: [],
+        minPagesAtPosition,
+      };
       placement[band] = [...new Set(entry.xs.map((x) => Math.round(x)))];
+      placement[band === "top" ? "topPoints" : "bottomPoints"] = entry.points;
       repeated.set(text, placement);
     }
   }
@@ -1049,20 +1143,233 @@ function filterHeadersFooters(
   if (repeated.size === 0) return items;
 
   const bandsByPage = new Map<number, { top: number; bottom: number } | null>();
-  for (const [page, pageItems] of groupByPage(items)) {
+  const extentByPage = new Map<number, { minY: number; maxY: number }>();
+  const itemsByPage = groupByPage(items);
+  for (const [page, pageItems] of itemsByPage) {
     bandsByPage.set(page, pageBands(pageItems));
+    let minY = Infinity;
+    let maxY = -Infinity;
+    for (const it of pageItems) {
+      minY = Math.min(minY, it.y);
+      maxY = Math.max(maxY, it.y);
+    }
+    extentByPage.set(page, { minY, maxY });
   }
 
-  const near = (xs: number[], x: number) =>
-    xs.some((x0) => Math.abs(x0 - x) <= HEADER_FOOTER_X_TOLERANCE);
+  /** First index in sorted `values` whose value is >= `target`. */
+  const lowerBound = (values: number[], target: number) => {
+    let lo = 0;
+    let hi = values.length;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (values[mid] < target) lo = mid + 1;
+      else hi = mid;
+    }
+    return lo;
+  };
+  // Recorded x positions per string and band, sorted once: a binary search
+  // finds the nearest one.
+  const sortedXs = new Map<number[], number[]>();
+  const near = (xs: number[], x: number) => {
+    let sorted = sortedXs.get(xs);
+    if (!sorted) {
+      sorted = [...xs].sort((a, b) => a - b);
+      sortedXs.set(xs, sorted);
+    }
+    const i = lowerBound(sorted, x - HEADER_FOOTER_X_TOLERANCE);
+    return i < sorted.length && sorted[i] <= x + HEADER_FOOTER_X_TOLERANCE;
+  };
+
+  // Pages with a copy within the x and y tolerances of this item's position
+  // (its own page included). Copies are indexed once per string and band in
+  // a grid of tolerance-sized cells, so only the 3 x 3 cells around the item
+  // are read, and the scan stops once the answer is known (minPages pages).
+  // A neighbourhood packed with more copies than POSITION_SCAN_BUDGET (only a
+  // crafted PDF) is answered from per-cell page counts instead, so the cost
+  // per item stays bounded.
+  interface PositionIndex {
+    cells: Map<string, RepeatedPoint[]>;
+    cellPages: Map<string, Set<number>>;
+  }
+  const positionIndex = new Map<RepeatedPoint[], PositionIndex>();
+  const cellKey = (cx: number, cy: number) => `${cx},${cy}`;
+  const cellOf = (x: number, y: number) =>
+    [Math.floor(x / HEADER_FOOTER_X_TOLERANCE), Math.floor(y / HEADER_FOOTER_Y_TOLERANCE)] as const;
+  const pagesAtPosition = (points: RepeatedPoint[], item: ExtractedItem, minPages: number) => {
+    let index = positionIndex.get(points);
+    if (!index) {
+      index = { cells: new Map(), cellPages: new Map() };
+      for (const p of points) {
+        const key = cellKey(...cellOf(p.x, p.y));
+        const list = index.cells.get(key);
+        if (list) list.push(p);
+        else index.cells.set(key, [p]);
+        const pages = index.cellPages.get(key) ?? new Set<number>();
+        pages.add(p.page);
+        index.cellPages.set(key, pages);
+      }
+      positionIndex.set(points, index);
+    }
+    const [cx, cy] = cellOf(item.x, item.y);
+    const pages = new Set<number>();
+    let scanned = 0;
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 1; dy++) {
+        for (const p of index.cells.get(cellKey(cx + dx, cy + dy)) ?? []) {
+          if (++scanned > POSITION_SCAN_BUDGET) {
+            const approx = new Set<number>();
+            for (let ax = -1; ax <= 1; ax++) {
+              for (let ay = -1; ay <= 1; ay++) {
+                for (const page of index.cellPages.get(cellKey(cx + ax, cy + ay)) ?? []) {
+                  approx.add(page);
+                  if (approx.size >= minPages) return approx.size;
+                }
+              }
+            }
+            return approx.size;
+          }
+          if (
+            Math.abs(p.x - item.x) <= HEADER_FOOTER_X_TOLERANCE &&
+            Math.abs(p.y - item.y) <= HEADER_FOOTER_Y_TOLERANCE
+          ) {
+            pages.add(p.page);
+            if (pages.size >= minPages) return pages.size;
+          }
+        }
+      }
+    }
+    return pages.size;
+  };
+
+  // Per page, the text with letters that is not itself a running header (the
+  // title of a contents entry, the text of a footnote), normalised once and
+  // sorted by y, plus the same items grouped into lines with their left and
+  // right edges sorted.
+  interface AnchorLine {
+    minY: number;
+    maxY: number;
+    maxFontSize: number;
+    lefts: number[];
+    rights: number[];
+  }
+  interface PageAnchors {
+    byY: ExtractedItem[];
+    ys: number[];
+    lines: AnchorLine[];
+    maxFontSize: number;
+  }
+  const anchorsByPage = new Map<number, PageAnchors>();
+  for (const [page, pageItems] of itemsByPage) {
+    const byY = pageItems
+      .filter((it) => /\p{L}/u.test(it.str) && !repeated.has(normalizeRepeatedText(it.str)))
+      .sort((a, b) => a.y - b.y);
+    const lines: AnchorLine[] = [];
+    let maxFontSize = 0;
+    for (const a of byY) {
+      maxFontSize = Math.max(maxFontSize, a.fontSize);
+      const last = lines[lines.length - 1];
+      if (last && a.y - last.maxY <= ANCHOR_LINE_Y_TOLERANCE) {
+        last.maxY = a.y;
+        last.maxFontSize = Math.max(last.maxFontSize, a.fontSize);
+        last.lefts.push(a.x);
+        last.rights.push(a.x + a.width);
+      } else {
+        lines.push({ minY: a.y, maxY: a.y, maxFontSize: a.fontSize, lefts: [a.x], rights: [a.x + a.width] });
+      }
+    }
+    for (const line of lines) {
+      line.lefts.sort((a, b) => a - b);
+      line.rights.sort((a, b) => a - b);
+    }
+    anchorsByPage.set(page, { byY, ys: byY.map((a) => a.y), lines, maxFontSize });
+  }
+  // Line-based answer for a crowded neighbourhood: the nearest edge on each
+  // side by binary search in the few lines within reach of the item.
+  const gapFromLines = (item: ExtractedItem, entry: PageAnchors, reach: number): number | undefined => {
+    const right = item.x + item.width;
+    let best: number | undefined;
+    const consider = (line: AnchorLine) => {
+      const dy = item.y < line.minY ? line.minY - item.y : item.y > line.maxY ? item.y - line.maxY : 0;
+      if (dy > Math.max(line.maxFontSize, item.fontSize) * 0.6) return;
+      const after = lowerBound(line.lefts, right);
+      if (after < line.lefts.length) {
+        const gap = line.lefts[after] - right;
+        if (best === undefined || gap < best) best = gap;
+      }
+      const before = lowerBound(line.rights, item.x);
+      const edge = before < line.rights.length && line.rights[before] === item.x ? item.x : line.rights[before - 1];
+      if (edge !== undefined) {
+        const gap = item.x - edge;
+        if (best === undefined || gap < best) best = gap;
+      }
+    };
+    const { lines } = entry;
+    let lo = 0;
+    let hi = lines.length;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (lines[mid].maxY < item.y) lo = mid + 1;
+      else hi = mid;
+    }
+    for (let i = lo, n = 0; i < lines.length && n < ANCHOR_LINES_PER_SIDE && lines[i].minY - item.y <= reach; i++, n++) {
+      consider(lines[i]);
+    }
+    for (let i = lo - 1, n = 0; i >= 0 && n < ANCHOR_LINES_PER_SIDE && item.y - lines[i].maxY <= reach; i--, n++) {
+      consider(lines[i]);
+    }
+    return best;
+  };
+  // The smallest horizontal gap from the item to anchor text on its line
+  // (beside it, not across it: a page number printed over a line does not
+  // count), or undefined when there is none. A running page number has none
+  // beside it, or only the running title. Reads only the anchors within
+  // reach of the item's height; past ANCHOR_SCAN_BUDGET of them (a crafted
+  // page) it answers from the lines instead.
+  const gapToLineText = (item: ExtractedItem): number | undefined => {
+    const entry = anchorsByPage.get(item.page);
+    if (!entry || entry.byY.length === 0) return undefined;
+    const reach = Math.max(entry.maxFontSize, item.fontSize) * 0.6;
+    let best: number | undefined;
+    let scanned = 0;
+    for (let i = lowerBound(entry.ys, item.y - reach); i < entry.byY.length && entry.ys[i] <= item.y + reach; i++) {
+      if (++scanned > ANCHOR_SCAN_BUDGET) return gapFromLines(item, entry, reach);
+      const other = entry.byY[i];
+      if (Math.abs(other.y - item.y) > Math.max(other.fontSize, item.fontSize) * 0.6) continue;
+      const gap = Math.max(other.x - (item.x + item.width), item.x - (other.x + other.width));
+      if (gap < 0) continue;
+      if (best === undefined || gap < best) best = gap;
+    }
+    return best;
+  };
+  // On the page's first line (top band) or last line (bottom band).
+  const onOutermostLine = (item: ExtractedItem, band: "top" | "bottom") => {
+    const extent = extentByPage.get(item.page);
+    if (!extent) return false;
+    const edge = band === "top" ? extent.minY : extent.maxY;
+    return Math.abs(item.y - edge) <= item.fontSize * 0.6;
+  };
+  const strip = (placement: RepeatedPlacement, letterless: boolean, band: "top" | "bottom", item: ExtractedItem) => {
+    if (!near(placement[band], item.x)) return false;
+    if (!letterless || onOutermostLine(item, band)) return true;
+    const gap = gapToLineText(item);
+    // Set right against its text: a footnote label, a chapter number.
+    if (gap !== undefined && gap <= item.fontSize * HEADER_FOOTER_LABEL_GAP) return false;
+    const points = band === "top" ? placement.topPoints : placement.bottomPoints;
+    return (
+      pagesAtPosition(points, item, placement.minPagesAtPosition) >= placement.minPagesAtPosition ||
+      gap === undefined
+    );
+  };
 
   return items.filter((item) => {
-    const placement = repeated.get(normalizeRepeatedText(item.str));
+    const normalized = normalizeRepeatedText(item.str);
+    const placement = repeated.get(normalized);
     if (!placement) return true;
     const bands = bandsByPage.get(item.page);
     if (!bands) return true;
-    if (item.y <= bands.top && near(placement.top, item.x)) return false;
-    if (item.y >= bands.bottom && near(placement.bottom, item.x)) return false;
+    const letterless = !/\p{L}/u.test(normalized);
+    if (item.y <= bands.top && strip(placement, letterless, "top", item)) return false;
+    if (item.y >= bands.bottom && strip(placement, letterless, "bottom", item)) return false;
     return true;
   });
 }
@@ -1832,11 +2139,12 @@ function blockToMarkdown(
 /** A list item's Markdown; a TOC block becomes one item per entry. */
 function listItemToMarkdown(block: Block, text: string): string {
   if (block.toc) return tocToMarkdown(text);
+  // A bracketed label ("[12] Author…") stays in the text: in-text citations
+  // point at it, and a Markdown list cannot carry it as a marker.
   const cleaned = collapseLeaders(text)
     .replace(BULLET_PATTERN, "")
     .replace(NUMBERED_PATTERN, "")
     .replace(LETTER_LIST_PATTERN, "")
-    .replace(BRACKET_NUM_PATTERN, "")
     .trim();
   return `${block.listMarker} ${cleaned}`;
 }

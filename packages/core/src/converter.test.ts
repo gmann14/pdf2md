@@ -1006,6 +1006,14 @@ describe("isCodeBlock (enhanced)", () => {
     expect(isCodeBlock(mono("x = foo(bar) && baz;"))).toBe(true);
     expect(isCodeBlock(mono("Source: https://www.reddit.com/r/hmmm/comments/ubab5v/hmmm/"))).toBe(false);
     expect(isCodeBlock(mono("http://host.robots.ox.ac.uk:8080/leaderboard/"))).toBe(false);
+    // A footnote number before its URL, on the same line or raised above it.
+    for (const rise of [1, 4]) {
+      const footnote = [
+        makeItem({ str: "2", x: 100, y: 100 - rise, fontName: "Times-Roman", fontSize: 6 }),
+        makeItem({ str: "https://huggingface.co/org/model_sft", x: 104, y: 100, fontName: "Courier" }),
+      ];
+      expect(isCodeBlock(footnote)).toBe(false);
+    }
     const urlList = ["https://github.com/princeton-nlp/SimCSE", "https://github.com/facebookresearch/SentEval"].map(
       (str, k) => makeItem({ str, x: 100, y: 100 + k * 14, fontName: "Courier" }),
     );

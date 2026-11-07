@@ -37,4 +37,94 @@ describe("running headers", () => {
       expect(result.markdown).toContain(ref);
     }
   });
+
+  it("keeps table-of-contents page numbers that sit in the header band", async () => {
+    // Page numbers run at the top corners. The first contents line on each of
+    // the two contents pages is in the same band, with its chapter number and
+    // page number at the corners' x positions, but lower down.
+    const pages = Array.from({ length: 12 }, (_, i): TestPdfLine[] => {
+      const n = i + 1;
+      return [
+        { text: String(n), x: n % 2 === 0 ? 72 : 530, y: 750, size: 10 },
+        { text: `Body text of page ${n} explains one more widget in plain words.`, x: 72, y: 600, size: 10 },
+        { text: `A second line on page ${n} keeps this a real paragraph of text.`, x: 72, y: 586, size: 10 },
+        { text: "End of the page text.", x: 72, y: 60, size: 10 },
+      ];
+    });
+    pages[1].splice(1, 0, { text: "3", x: 72, y: 725, size: 10 }, { text: "Functions", x: 90, y: 725, size: 10 }, { text: "17", x: 530, y: 725, size: 10 });
+    pages[2].splice(1, 0, { text: "9", x: 72, y: 725, size: 10 }, { text: "Case study", x: 90, y: 725, size: 10 }, { text: "83", x: 530, y: 725, size: 10 });
+    const result = await convert(makePdf({ pages }));
+    for (const entry of ["3", "Functions", "17", "9", "Case study", "83"]) {
+      expect(result.markdown).toMatch(new RegExp(`(^|\\s)${entry}(\\s|$)`));
+    }
+    // The running page numbers are still stripped.
+    expect(result.markdown).not.toMatch(/^(5|6|7|8)$/m);
+  });
+
+  it("keeps footnote labels that sit in the footer band", async () => {
+    // A page number at the foot of every page, and on most pages a footnote
+    // just above it whose raised label is at the left margin. Footnotes sit
+    // on a grid, so the labels recur at one position on most pages too.
+    const topics = ["gears", "levers", "pulleys", "springs", "valves", "pistons", "bearings", "cams", "chains", "belts"];
+    const sources = ["Smith", "Jones", "Brown", "Taylor", "Wilson", "Davies", "Evans", "Thomas"];
+    const pages = Array.from({ length: 10 }, (_, i): TestPdfLine[] => {
+      const n = i + 1;
+      const lines: TestPdfLine[] = [
+        { text: `This page is about ${topics[i]} and how they fit together.`, x: 72, y: 700, size: 12 },
+        { text: `Most ${topics[i]} wear out slowly when they are looked after.`, x: 72, y: 684, size: 12 },
+        { text: String(n), x: 302, y: 40, size: 10 },
+      ];
+      if (n <= 8) {
+        lines.push(
+          { text: String(n + 40), x: 72, y: 62, size: 6 },
+          { text: `See ${sources[i]} on ${topics[i]} for the full proof.`, x: 82, y: 60, size: 9 },
+        );
+      }
+      return lines;
+    });
+    const result = await convert(makePdf({ pages }));
+    for (let n = 1; n <= 8; n++) {
+      // The label opens its footnote's paragraph rather than standing alone.
+      expect(result.markdown).toMatch(
+        new RegExp(`(^|\\n)${n + 40} See ${sources[n - 1]} on ${topics[n - 1]} for the full proof\\.`),
+      );
+    }
+    expect(result.markdown).not.toMatch(/^(3|4|5)$/m);
+  });
+
+  // Stripping looks at each band copy's neighbours (copies of the same string
+  // at its position on other pages, text on its line). A crafted PDF with
+  // thousands of copies and words on one line made that quadratic, which
+  // timeoutMs cannot interrupt. It must stay close to linear.
+  it("handles thousands of repeated numbers and words in the bands in near-linear time", async () => {
+    const word = (n: number) => {
+      let out = "";
+      do {
+        out += String.fromCharCode(97 + (n % 26));
+        n = Math.floor(n / 26);
+      } while (n > 0);
+      return `w${out}`;
+    };
+    const perLine = 2000;
+    const pages = Array.from({ length: 10 }, (_, p): TestPdfLine[] => {
+      const lines: TestPdfLine[] = [
+        { text: `Body text of page ${word(p)} explains one more widget in plain words.`, x: 72, y: 700, size: 10 },
+        { text: String(p + 1), x: 302, y: 30, size: 9 },
+      ];
+      for (let j = 0; j < perLine; j++) {
+        const x = 72 + j * 0.225;
+        // A line of numbers alone, then a line of numbers among words, both in the footer band.
+        lines.push({ text: "12", x, y: 50, size: 4 });
+        lines.push({ text: j % 2 === 0 ? "34" : word(p * perLine + j), x, y: 40, size: 4 });
+      }
+      return lines;
+    });
+    const pdf = makePdf({ pages });
+    const start = performance.now();
+    const result = await convert(pdf);
+    const elapsed = performance.now() - start;
+    expect(result.status).not.toBe("failed");
+    expect(elapsed).toBeLessThan(5000);
+  }, 30_000);
 });
+
