@@ -24,7 +24,13 @@ npx tsx autoresearch/compare-results.ts autoresearch/baseline.json autoresearch/
 ```
 
 The runner records git SHA, branch, worktree diff summary, dataset averages,
-per-document scores, per-dimension averages, and the acceptance PASS/FAIL result.
+per-document scores, per-dimension averages, total conversion milliseconds per dataset
+(from the reports' Time column), and the acceptance PASS/FAIL result.
+
+Timing: `pnpm bench` converts the tracked corpus 3 times per file in fresh processes and
+writes per-file median ms and peak RSS to `bench/latest.json` (git-ignored, machine-specific).
+When that file exists the runner copies its totals into the snapshot and the summary;
+`--bench` runs `pnpm bench` first. Timings never affect PASS/FAIL.
 
 ## Acceptance Rule
 

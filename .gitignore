@@ -18,3 +18,7 @@ docs/marketing-ideas.md
 !.forge/guidance/
 
 .playwright-mcp/
+
+# Head-to-head and bench scratch output (test-corpus/converters.ts)
+test-corpus/.h2h/
+bench/latest.json

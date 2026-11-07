@@ -1,0 +1,17 @@
+{
+  "tables-cdc-report.pdf": {
+    "publisher": "Centers for Disease Control and Prevention (MMWR, Vol. 73 No. 1, January 2024)",
+    "licence": "US federal government work, public domain",
+    "basis": "17 U.S.C. 105; MMWR states its content is in the public domain"
+  },
+  "legal-us-copyright-circular.pdf": {
+    "publisher": "U.S. Copyright Office (Circular 1, Copyright Basics)",
+    "licence": "US federal government work, public domain",
+    "basis": "17 U.S.C. 105"
+  },
+  "government-nist-cybersecurity.pdf": {
+    "publisher": "National Institute of Standards and Technology (Cybersecurity Framework 1.1, April 2018)",
+    "licence": "US federal government work, public domain",
+    "basis": "17 U.S.C. 105; the PDF says it is available free of charge from doi.org/10.6028/NIST.CSWP.04162018"
+  }
+}

@@ -1,0 +1,28 @@
+{"id":"circ1-p1-title","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"heading","text":"Copyright Basics","level":1}
+{"id":"circ1-p1-h-what-works","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"heading","text":"What Works Are Protected?","level":2}
+{"id":"circ1-p1-opening","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"present","text":"Copyright is a form of protection provided by the laws of the United States to the authors of \"original works of authorship\" that are fixed in a tangible form of expression."}
+{"id":"circ1-p1-fixed","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"present","text":"A work is \"fixed\" when it is captured (either by or under the authority of an author) in a sufficiently permanent medium"}
+{"id":"circ1-p1-sidebar","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"present","text":"This circular provides an overview of basic facts about copyright and copyright registration with the U.S. Copyright Office.","note":"left sidebar summary"}
+{"id":"circ1-p1-sidebar-not-interleaved","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"present","text":"Copyright protection in the United States exists automatically from the moment the original work of authorship is fixed.","note":"main column sentence must not be split by sidebar lines"}
+{"id":"circ1-p1-list-literary","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"list","text":"Literary works","ordered":false}
+{"id":"circ1-p1-list-musical","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"list","text":"Musical works, including any accompanying words","ordered":false}
+{"id":"circ1-p1-list-sound","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"list","text":"Sound recordings, which are works that result from the fixation of a series of musical, spoken, or other sounds","ordered":false,"note":"item wraps onto a second line"}
+{"id":"circ1-p1-list-architectural","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"list","text":"Architectural works","ordered":false}
+{"id":"circ1-p1-list-sidebar","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"list","text":"Duration of copyright","ordered":false}
+{"id":"circ1-p1-order-list","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"order","before":"Pantomimes and choreographic works","after":"Pictorial, graphic, and sculptural works"}
+{"id":"circ1-p1-order-after-list","pdf":"legal-us-copyright-circular.pdf","page":1,"type":"order","before":"Architectural works","after":"These categories should be viewed broadly for the purpose of registering your work."}
+{"id":"circ1-p2-running-footer","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"absent","text":"Copyright Basics","maxCount":1,"note":"title on p1 once; running footer on pp. 2-9 should go"}
+{"id":"circ1-p2-h-rights","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"heading","text":"What Are the Rights of a Copyright Owner?","level":2}
+{"id":"circ1-p2-h-not-protected","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"heading","text":"What Is Not Protected by Copyright?","level":2}
+{"id":"circ1-p2-h-who","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"heading","text":"Who Can Claim Copyright?","level":2}
+{"id":"circ1-p2-list-reproduce","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"list","text":"Reproduce the work in copies or phonorecords","ordered":false}
+{"id":"circ1-p2-list-distribute","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"list","text":"Distribute copies or phonorecords of the work to the public by sale or other transfer of ownership or by rental, lease, or lending","ordered":false,"note":"owner-/ship hyphenated at a line end"}
+{"id":"circ1-p2-list-display","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"list","text":"This right also applies to the individual images of a motion picture or other audiovisual work.","ordered":false}
+{"id":"circ1-p2-list-ideas","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"list","text":"Ideas, procedures, methods, systems, processes, concepts, principles, or discoveries","ordered":false}
+{"id":"circ1-p2-list-titles","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"list","text":"Titles, names, short phrases, and slogans","ordered":false}
+{"id":"circ1-p2-not-list","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"present","text":"Copyright also provides the owner of copyright the right to authorize others to exercise these exclusive rights, subject to certain statutory limitations."}
+{"id":"circ1-p2-note","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"present","text":"that were in the public domain on January 1, 1978, when the 1976 Copyright Act took effect, remain in the public domain under the 1976 Act.","note":"starts after the superscript 2 that follows U.S. works"}
+{"id":"circ1-p2-bold-note","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"emphasis","text":"note:","style":"bold","note":"ExtraBold label at the start of the note box"}
+{"id":"circ1-p2-italic-title","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"emphasis","text":"Works Not Protected by Copyright","style":"italic"}
+{"id":"circ1-p2-link-circ33","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"link","text":"Circular 33","url":"https://www.copyright.gov/circs/circ33.pdf"}
+{"id":"circ1-p2-joint-authors","pdf":"legal-us-copyright-circular.pdf","page":2,"type":"present","text":"the authors are considered joint authors and have an indivisible interest in the work as a whole."}
