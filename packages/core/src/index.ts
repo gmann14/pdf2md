@@ -2,7 +2,7 @@ export { convert } from "./converter.js";
 export { initPdfWorker } from "./pdf-worker.js";
 export { getPdfjs } from "./pdf-compat.js";
 export { MAX_FILE_SIZE } from "./types.js";
-export { parsePageRange, resolvePageSelection } from "./pages.js";
+export { resolvePageSelection, validatePageRange } from "./pages.js";
 export {
   isMonospace,
   detectTable,

@@ -2196,8 +2196,23 @@ async function convertDocument(
   // Pages to output, and pages to read: a `pages` selection also reads up to
   // 10 neighbouring pages so headers/footers and the font profile come from
   // more than the selected page(s). Without `pages`, nothing extra is read.
-  let selected = resolvePageSelection(options?.pages, totalPages);
-  if (options?.maxPages) selected = selected.slice(0, Math.max(0, options.maxPages));
+  let selected: number[];
+  try {
+    selected = resolvePageSelection(options?.pages, totalPages, options?.maxPages);
+  } catch (err) {
+    return {
+      status: "failed",
+      markdown: "",
+      messages: [
+        {
+          code: "parse_failed",
+          severity: "error",
+          message: err instanceof Error ? err.message : "Invalid page selection.",
+        },
+      ],
+      stats: { pageCount: totalPages, wordCount: 0, processingMs: performance.now() - startTime },
+    };
+  }
   const selectedSet = new Set(selected);
   const parsePages = options?.pages ? withContextPages(selected, totalPages) : selected;
   const wantsPages = options?.perPage === true || options?.pageMarkers === "comment";

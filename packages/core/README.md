@@ -35,7 +35,7 @@ const { convert } = require("@pdf2md/core");
 ```ts
 const result = await convert(buffer, {
   maxPages: 10,           // Limit number of pages to convert
-  pages: [1, 2, 5],       // Or { offset: -3 } for the last 3 pages, { offset: 10, length: 5 }
+  pages: [1, 2, 5],       // Or "1-5,9", "-3" (last 3 pages), { offset: 10, length: 5 }
   perPage: true,          // Add result.pages: [{ pageNumber, markdown }]
   pageMarkers: "comment", // Put <!-- page N --> before each page ("none" by default)
   includeMetadata: true,  // Extract title, author, etc.
@@ -67,8 +67,9 @@ interface ConversionResult {
 
 ### Page selection
 
-`pages` takes 1-based page numbers, or a 0-based `offset` (negative counts from
-the end) with an optional `length`. Pages out of range are skipped and duplicates
+`pages` takes 1-based page numbers, a range string (`"1-5,9"`, or `"-3"` for the
+last 3 pages), or a 0-based `offset` (negative counts from the end) with an
+optional `length`. A malformed range string returns a `failed` result. Pages out of range are skipped and duplicates
 dropped; a selection with no page in range returns an empty `success` result.
 Up to 10 neighbouring pages are read (not output) so running headers and
 heading sizes are still detected on a one-page read. With `perPage`, joining the

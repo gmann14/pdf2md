@@ -53,11 +53,12 @@ export interface PageMarkdown {
 }
 
 /**
- * Pages to convert: a list of 1-based page numbers, or a 0-based `offset`
+ * Pages to convert: a list of 1-based page numbers; a 0-based `offset`
  * (negative counts from the end: `-3` is the last 3 pages) with an optional
- * `length` (default: to the end).
+ * `length` (default: to the end); or a range string such as `"1-5,9"` or
+ * `"-3"` (the last 3 pages).
  */
-export type PageSelection = number[] | { offset: number; length?: number };
+export type PageSelection = number[] | { offset: number; length?: number } | string;
 
 export interface ConversionResult {
   status: ConversionStatus;

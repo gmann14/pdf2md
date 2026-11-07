@@ -5,7 +5,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { convert } from "./converter.js";
-import { parsePageRange, resolvePageSelection, withContextPages } from "./pages.js";
+import { resolvePageSelection, validatePageRange, withContextPages } from "./pages.js";
 import { getPdfjs } from "./pdf-compat.js";
 import { makePdf, reportPages } from "./testing/make-pdf.js";
 
@@ -50,17 +50,62 @@ describe("withContextPages", () => {
   });
 });
 
-describe("parsePageRange", () => {
-  it("parses lists, ranges and last-N", () => {
-    expect(parsePageRange("1-3,9")).toEqual([1, 2, 3, 9]);
-    expect(parsePageRange(" 4 ")).toEqual([4]);
-    expect(parsePageRange("-3")).toEqual({ offset: -3 });
+describe("page-range strings", () => {
+  it("resolves lists, ranges and last-N", () => {
+    expect(resolvePageSelection("1-3,9", 20)).toEqual([1, 2, 3, 9]);
+    expect(resolvePageSelection(" 4 ", 20)).toEqual([4]);
+    expect(resolvePageSelection("-3", 20)).toEqual([18, 19, 20]);
+    expect(resolvePageSelection("5-7,6-8,2", 20)).toEqual([2, 5, 6, 7, 8]);
+    expect(resolvePageSelection("15-30", 20)).toEqual([15, 16, 17, 18, 19, 20]);
+    expect(resolvePageSelection("30-40", 20)).toEqual([]);
   });
 
   it("rejects malformed ranges", () => {
-    for (const bad of ["", "a", "3-1", "0", "1,,2", "-0", "1-"]) {
-      expect(() => parsePageRange(bad), bad).toThrow(/Invalid page range/);
+    for (const bad of ["", "a", "3-1", "0", "1,,2", "-0", "1-", "99999999999999999999"]) {
+      expect(() => validatePageRange(bad), bad).toThrow(/Invalid page range/);
+      expect(() => resolvePageSelection(bad, 10), bad).toThrow(/Invalid page range/);
     }
+  });
+
+  it("returns a failed result, not a rejection, for a malformed range in convert", async () => {
+    const result = await convert(makePdf({ pages: reportPages(2) }), { pages: "3-1" });
+    expect(result.status).toBe("failed");
+    expect(result.messages[0]?.code).toBe("parse_failed");
+    expect(result.messages[0]?.message).toMatch(/Invalid page range/);
+  });
+});
+
+describe("selection size is bounded", () => {
+  const HUGE = 10_000_000;
+
+  it("clamps huge range strings to the page count and maxPages before expanding", () => {
+    const started = performance.now();
+    expect(resolvePageSelection("1-999999999", 300)).toHaveLength(300);
+    expect(resolvePageSelection("1-999999999", HUGE, 5)).toEqual([1, 2, 3, 4, 5]);
+    expect(resolvePageSelection("1-999999999,5-999999999", HUGE, 3)).toEqual([1, 2, 3]);
+    expect(resolvePageSelection({ offset: 0 }, HUGE, 3)).toEqual([1, 2, 3]);
+    expect(resolvePageSelection({ offset: -5 }, HUGE, 2)).toEqual([HUGE - 4, HUGE - 3]);
+    expect(resolvePageSelection(undefined, HUGE, 4)).toEqual([1, 2, 3, 4]);
+    expect(resolvePageSelection([HUGE, 1, 2], HUGE, 2)).toEqual([1, 2]);
+    expect(performance.now() - started).toBeLessThan(500);
+  });
+
+  it("expands context in time independent of the page count", () => {
+    const started = performance.now();
+    expect(withContextPages([HUGE / 2], HUGE)).toHaveLength(11);
+    expect(withContextPages([1], HUGE)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+    expect(withContextPages([HUGE], HUGE)).toHaveLength(11);
+    // A fragmented selection: 100k isolated pages.
+    const spaced = Array.from({ length: 100_000 }, (_, i) => 1 + i * 50);
+    const withSpaced = withContextPages(spaced, HUGE);
+    expect(withSpaced).toHaveLength(spaced.length + 10);
+    expect(performance.now() - started).toBeLessThan(2000);
+  });
+
+  it("returns every page when the selection plus context covers the document", () => {
+    expect(withContextPages([1, 2, 3], 12)).toEqual(Array.from({ length: 12 }, (_, i) => i + 1));
+    const allButThree = Array.from({ length: 997 }, (_, i) => i + 1);
+    expect(withContextPages(allButThree, 1000)).toHaveLength(1000);
   });
 });
 
@@ -105,6 +150,11 @@ describe("convert with a page selection", () => {
     const result = await convert(twelvePages, { pages: [3, 3, 3], perPage: true });
     expect(pageNumbers(result.pages)).toEqual([3]);
     expect(result.markdown.match(/Body text for page 3 /g)).toHaveLength(1);
+  });
+
+  it("accepts a range string", async () => {
+    const result = await convert(twelvePages, { pages: "2-3,11", perPage: true });
+    expect(pageNumbers(result.pages)).toEqual([2, 3, 11]);
   });
 
   it("applies maxPages to the selection", async () => {
