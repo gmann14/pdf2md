@@ -899,6 +899,42 @@ interface RepeatedPlacement {
 const HEADER_FOOTER_BAND = 0.08;
 /** Max x distance (pt) between a candidate and a recorded header/footer position. */
 const HEADER_FOOTER_X_TOLERANCE = 36;
+/**
+ * Max y distance (pt) between two pages' copies of a repeat for them to sit
+ * at the same height.
+ */
+const HEADER_FOOTER_Y_TOLERANCE = 2;
+/**
+ * A running header sits at one of a few fixed heights (odd and even pages,
+ * landscape pages), each shared by several pages. A clause reference or
+ * table cell that happens to open several pages sits at a different height
+ * on most of them.
+ */
+const HEADER_FOOTER_MIN_SAME_HEIGHT = 3;
+/**
+ * A repeat whose copies nearly all sit at shared heights is a running header
+ * even when it is on just under half the pages (a header on odd pages only,
+ * plus the chapter title on the first page).
+ */
+const HEADER_FOOTER_SAME_HEIGHT_SHARE = 0.75;
+
+/**
+ * How many of `ys` (one per page) have at least `minPages - 1` others within
+ * `tolerance` of them.
+ */
+function pagesAtRecurringHeight(ys: number[], tolerance: number, minPages: number): number {
+  const sorted = [...ys].sort((a, b) => a - b);
+  let count = 0;
+  let lo = 0;
+  let hi = 0;
+  for (let i = 0; i < sorted.length; i++) {
+    while (sorted[i] - sorted[lo] > tolerance) lo++;
+    if (hi < i) hi = i;
+    while (hi + 1 < sorted.length && sorted[hi + 1] - sorted[i] <= tolerance) hi++;
+    if (hi - lo + 1 >= minPages) count++;
+  }
+  return count;
+}
 
 function normalizeRepeatedText(text: string): string {
   // Page numbers and dates vary per page, so compare with digits folded.
@@ -933,8 +969,8 @@ function pageBands(pageItems: ExtractedItem[]): { top: number; bottom: number } 
 }
 
 /**
- * Find text that repeats in the header band or footer band on at least half
- * the pages. Returns, per digit-normalised string, the x positions where it
+ * Find text that repeats in the header band or footer band, at about the same
+ * height, on at least half the pages. Returns, per digit-normalised string, the x positions where it
  * was seen in each band where it repeats, so stripping can stay inside that band.
  */
 function detectRepeatedText(
@@ -944,45 +980,52 @@ function detectRepeatedText(
   const repeated = new Map<string, RepeatedPlacement>();
   if (totalPages < 3) return repeated;
 
-  const topSeen = new Map<string, { pages: number; xs: number[] }>();
-  const bottomSeen = new Map<string, { pages: number; xs: number[] }>();
+  // Per text: the x positions seen and one y per page it was seen on.
+  const topSeen = new Map<string, { ys: number[]; xs: number[] }>();
+  const bottomSeen = new Map<string, { ys: number[]; xs: number[] }>();
 
   for (const [, pageItems] of groupByPage(items)) {
     const bands = pageBands(pageItems);
     if (!bands) continue;
 
-    const topOnPage = new Map<string, number[]>();
-    const bottomOnPage = new Map<string, number[]>();
+    // Per text on this page: x positions and the y of the first occurrence.
+    const topOnPage = new Map<string, { y: number; xs: number[] }>();
+    const bottomOnPage = new Map<string, { y: number; xs: number[] }>();
     for (const item of pageItems) {
       const normalized = normalizeRepeatedText(item.str);
       if (normalized.length === 0) continue;
       if (item.y <= bands.top) {
-        const xs = topOnPage.get(normalized) ?? [];
-        xs.push(item.x);
-        topOnPage.set(normalized, xs);
+        const found = topOnPage.get(normalized) ?? { y: item.y, xs: [] };
+        found.xs.push(item.x);
+        topOnPage.set(normalized, found);
       }
       if (item.y >= bands.bottom) {
-        const xs = bottomOnPage.get(normalized) ?? [];
-        xs.push(item.x);
-        bottomOnPage.set(normalized, xs);
+        const found = bottomOnPage.get(normalized) ?? { y: item.y, xs: [] };
+        found.xs.push(item.x);
+        bottomOnPage.set(normalized, found);
       }
     }
 
     for (const [onPage, seen] of [[topOnPage, topSeen], [bottomOnPage, bottomSeen]] as const) {
-      for (const [text, xs] of onPage) {
-        const entry = seen.get(text) ?? { pages: 0, xs: [] };
-        entry.pages++;
-        entry.xs.push(...xs);
+      for (const [text, found] of onPage) {
+        const entry = seen.get(text) ?? { ys: [], xs: [] };
+        entry.ys.push(found.y);
+        entry.xs.push(...found.xs);
         seen.set(text, entry);
       }
     }
   }
 
-  // Text in the same band on >= 50% of pages is a running header/footer.
+  // Text in the same band on >= 50% of pages is a running header/footer when
+  // it sits at a height it shares with other pages on >= 50% of pages, or on
+  // nearly every page where it appears.
   const threshold = totalPages * 0.5;
+  const minSameHeight = Math.min(HEADER_FOOTER_MIN_SAME_HEIGHT, Math.ceil(threshold));
   for (const [band, seen] of [["top", topSeen], ["bottom", bottomSeen]] as const) {
     for (const [text, entry] of seen) {
-      if (entry.pages < threshold) continue;
+      if (entry.ys.length < threshold) continue;
+      const sameHeight = pagesAtRecurringHeight(entry.ys, HEADER_FOOTER_Y_TOLERANCE, minSameHeight);
+      if (sameHeight < threshold && sameHeight < entry.ys.length * HEADER_FOOTER_SAME_HEIGHT_SHARE) continue;
       const placement = repeated.get(text) ?? { top: [], bottom: [] };
       placement[band] = [...new Set(entry.xs.map((x) => Math.round(x)))];
       repeated.set(text, placement);
