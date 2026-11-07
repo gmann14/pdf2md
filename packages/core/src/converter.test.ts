@@ -650,6 +650,88 @@ describe("reorderColumnarItems", () => {
 });
 
 // ---------------------------------------------------------------------------
+// Two-column reading order: split point, column footnotes, sidebars
+// ---------------------------------------------------------------------------
+describe("two-column reading order", () => {
+  const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+
+  it("starts the columns at the first line with text in both columns when the gap is narrow", () => {
+    // CDC MMWR p3: a 25pt gutter, and a table below whose wider gaps pull the
+    // gap centre right, close to where the right column starts (318.6).
+    const items = [
+      makeItem({ str: "Morbidity and Mortality Weekly Report", x: 233, y: 43, width: 145 }),
+      ...Array.from({ length: 10 }, (_, i) => [
+        makeItem({ str: `left ${i}`, x: 36, y: 80 + i * 13, width: 257 }),
+        makeItem({ str: `right ${i}`, x: 318.6, y: 80 + i * 13, width: 257 }),
+      ]).flat(),
+      ...Array.from({ length: 6 }, (_, i) => [
+        makeItem({ str: `drug ${i}`, x: 36, y: 300 + i * 10, width: 45 }),
+        makeItem({ str: "1,000 (1.0)", x: 230, y: 300 + i * 10, width: 52 }),
+        makeItem({ str: "4.5", x: 357, y: 300 + i * 10, width: 14 }),
+        makeItem({ str: "100.00", x: 435, y: 300 + i * 10, width: 46 }),
+        makeItem({ str: "2.25", x: 530, y: 300 + i * 10, width: 18 }),
+      ]).flat(),
+    ];
+    const result = detectColumnLayout(items);
+    expect(result.type).toBe("two-column");
+    expect(result.splitY).toBe(80);
+  });
+
+  it("puts footnotes at the foot of a column after both columns", () => {
+    // CDC MMWR p4: a sentence runs from the bottom of the left column to the
+    // top of the right one, with a smaller-type footnote under the left column.
+    const body = (str: string, x: number, y: number) =>
+      makeItem({ str, x, y, width: 257, fontSize: 11 });
+    const items = [
+      body("left one", 36, 100),
+      body("left two might see patients", 36, 113),
+      makeItem({ str: "*** https://www.cdc.gov/fungal", x: 37, y: 135, width: 250, fontSize: 8.5, height: 8.5 }),
+      body("with superficial fungal infections", 319, 100),
+      body("right two", 319, 113),
+    ];
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual([
+      "left one",
+      "left two might see patients",
+      "with superficial fungal infections",
+      "right two",
+      "*** https://www.cdc.gov/fungal",
+    ]);
+  });
+
+  it("keeps a raised footnote marker at the end of its line", () => {
+    // Copyright Office Circular 1: a superscript `1` sits 4pt above its line.
+    const items = [
+      makeItem({ str: "automatically", x: 340, y: 364, width: 100, fontSize: 10.5 }),
+      makeItem({ str: "from the moment it is fixed.", x: 340, y: 377, width: 170, fontSize: 10.5 }),
+      makeItem({ str: "1", x: 514, y: 373, width: 3, fontSize: 7.5 }),
+      makeItem({ str: "sidebar", x: 60, y: 364, width: 150, fontSize: 11 }),
+    ];
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual(["sidebar", "automatically", "from the moment it is fixed.", "1"]);
+  });
+
+  it("finds a narrow sidebar beside a wide main column", () => {
+    // Circular 1 p1: an 11pt summary box (x 57-246) beside the 10.5pt main
+    // text (x 267-532), under a 36pt title that runs across both.
+    const items = [
+      makeItem({ str: "Copyright Basics", x: 61, y: 192, width: 275, fontSize: 36, height: 36 }),
+      ...Array.from({ length: 12 }, (_, i) =>
+        makeItem({ str: `sidebar line ${i}`, x: 60, y: 245 + i * 18, width: 160 + (i % 3) * 20, fontSize: 11 }),
+      ),
+      ...Array.from({ length: 30 }, (_, i) =>
+        makeItem({ str: `main column line ${i}`, x: 270, y: 245 + i * 13, width: 262, fontSize: 10.5 }),
+      ),
+    ];
+    const result = detectColumnLayout(items);
+    expect(result.type).toBe("two-column");
+    expect(result.sidebar).toBe(true);
+    expect(result.gapCenter).toBeGreaterThan(240);
+    expect(result.gapCenter).toBeLessThan(270);
+  });
+});
+
+// ---------------------------------------------------------------------------
 // P0: Column detection hardening tests
 // ---------------------------------------------------------------------------
 describe("detectColumnLayout (hardened)", () => {

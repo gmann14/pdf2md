@@ -531,8 +531,9 @@ function applyColumnReordering(items: ExtractedItem[]): ExtractedItem[] {
       if (layout.type === "two-column") twoColPages++;
     }
     if (twoColPages / totalPages < 0.3) {
-      for (const pageNum of pageLayouts.keys()) {
-        pageLayouts.set(pageNum, { type: "single" });
+      for (const [pageNum, layout] of pageLayouts) {
+        // A sidebar page (a summary box beside the main text) is kept.
+        if (!layout.sidebar) pageLayouts.set(pageNum, { type: "single" });
       }
     }
   }
