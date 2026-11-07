@@ -2074,6 +2074,21 @@ export async function convert(
   pdfBuffer: ArrayBuffer | Uint8Array,
   options?: ConvertOptions,
 ): Promise<ConversionResult> {
+  return convertWithHooks(pdfBuffer, options);
+}
+
+/** Internal hooks for the compat entry point; not part of the public API. */
+export interface ConvertHooks {
+  /** Called once the document has loaded, before pages are read. Errors fail the conversion. */
+  onDocument?: (doc: PDFDocumentProxy) => void | Promise<void>;
+}
+
+/** `convert` with internal hooks (used by `compat.ts`). */
+export async function convertWithHooks(
+  pdfBuffer: ArrayBuffer | Uint8Array,
+  options?: ConvertOptions,
+  hooks?: ConvertHooks,
+): Promise<ConversionResult> {
   const startTime = performance.now();
 
   // Check file size
@@ -2092,7 +2107,7 @@ export async function convert(
       ? options.timeoutMs
       : undefined;
   if (timeoutMs === undefined && !options?.signal) {
-    return convertWithSignal(pdfBuffer, options, startTime, () => false);
+    return convertWithSignal(pdfBuffer, options, startTime, () => false, hooks);
   }
   const controller = new AbortController();
   let timedOut = false;
@@ -2116,6 +2131,7 @@ export async function convert(
       { ...options, signal: controller.signal, onProgress },
       startTime,
       () => timedOut,
+      hooks,
     );
     if (timedOut && result.messages[0]?.code === "cancelled") return cancelledResult(startTime, timeoutMs);
     return result;
@@ -2149,6 +2165,7 @@ async function convertWithSignal(
   options: ConvertOptions | undefined,
   startTime: number,
   isTimedOut: () => boolean,
+  hooks?: ConvertHooks,
 ): Promise<ConversionResult> {
   const messages: ConversionMessage[] = [];
   const emphasis = options?.emphasis !== false;
@@ -2230,6 +2247,7 @@ async function convertWithSignal(
   // is read) becomes the cancelled result, an unexpected error becomes a
   // failed result, and the document is always destroyed.
   try {
+    if (hooks?.onDocument) await abortable(Promise.resolve(hooks.onDocument(doc)), options?.signal);
     return await convertDocument(doc, startTime, messages, emphasis, options);
   } catch (err: unknown) {
     if (err instanceof ConversionCancelled || options?.signal?.aborted || isTimedOut()) {

@@ -77,6 +77,18 @@ Up to 10 neighbouring pages are read (not output) so running headers and
 heading sizes are still detected on a one-page read. With `perPage`, joining the
 non-empty `result.pages[].markdown` with a blank line gives `result.markdown`.
 
+### Switching from @opendocsg/pdf2md
+
+`@pdf2md/core/compat` has opendocsg's signature, so the switch is one line:
+
+```js
+const pdf2md = require("@pdf2md/core/compat"); // was require("@opendocsg/pdf2md")
+const markdown = await pdf2md(fs.readFileSync("file.pdf")); // pages joined by <!-- PAGE_BREAK -->
+```
+
+See [docs/migrating-from-opendocsg.md](../../docs/migrating-from-opendocsg.md)
+for the differences.
+
 ## CLI Usage
 
 ```sh
