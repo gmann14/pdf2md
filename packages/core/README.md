@@ -43,6 +43,8 @@ const result = await convert(buffer, {
   chunkBy: "heading",     // Optional: "page", "heading", or "token"
   maxTokensPerChunk: 800, // Used with chunkBy: "token"
   emphasis: false,        // Skip inline **bold**/*italic* (on by default; off is faster)
+  maxFileSizeBytes: 15 * 1024 * 1024, // Reject bigger files ("oversized"); no limit in Node by default
+  timeoutMs: 30_000,      // Give up after 30 s ("timeout")
   signal: controller.signal, // AbortSignal for cancellation
   onProgress: (progress) => {
     console.log(`${progress.stage}: page ${progress.currentPage}/${progress.totalPages}`);
@@ -106,7 +108,11 @@ Warnings and errors go to stderr.
 
 ## Limits
 
-- 15 MB maximum file size
+- No file size limit in Node.js by default; browsers default to 15 MB
+  (`MAX_FILE_SIZE`), because PDF.js uses 5-10x the file size in memory. Set
+  `maxFileSizeBytes` to change either (`Infinity` for no limit).
+- `convert()` does not reject: errors come back as a `failed` result with a
+  `ConversionCode` (`oversized`, `timeout`, `cancelled`, `parse_failed`, …).
 - No OCR support (scanned/image-based PDFs return an error)
 - Password-protected PDFs are not supported
 

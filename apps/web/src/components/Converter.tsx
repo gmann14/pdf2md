@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ConversionProgress, ConversionResult } from "@pdf2md/core/types";
+import { MAX_FILE_SIZE } from "@pdf2md/core/types";
 import { DropZone } from "./DropZone";
 import { ProgressBar } from "./ProgressBar";
 import { OutputPane } from "./OutputPane";
@@ -76,6 +77,8 @@ export function Converter() {
         const buffer = await files[i].arrayBuffer();
 
         const result = await convert(buffer, {
+          // Browser memory is the limit here: PDF.js uses 5-10x the file size.
+          maxFileSizeBytes: MAX_FILE_SIZE,
           signal: controller.signal,
           onProgress: (progress) => {
             setState((prev) => {

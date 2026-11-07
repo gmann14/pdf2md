@@ -5,9 +5,10 @@ import { convert, MAX_FILE_SIZE } from "@pdf2md/core";
 // but we can test the error handling paths and the API contract.
 
 describe("convert", () => {
-  it("rejects oversized buffers", async () => {
+  it("rejects buffers over the web app's 15 MB limit", async () => {
     const oversized = new ArrayBuffer(MAX_FILE_SIZE + 1);
-    const result = await convert(oversized);
+    // The same option Converter.tsx passes.
+    const result = await convert(oversized, { maxFileSizeBytes: MAX_FILE_SIZE });
 
     expect(result.status).toBe("failed");
     expect(result.messages).toHaveLength(1);

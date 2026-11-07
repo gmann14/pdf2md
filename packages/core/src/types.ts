@@ -116,6 +116,18 @@ export interface ConvertOptions {
    * true. Turning it off skips reading each page's operator list, which is faster.
    */
   emphasis?: boolean;
+  /**
+   * Reject files larger than this many bytes with the `oversized` code.
+   * Defaults to no limit in Node.js and to `MAX_FILE_SIZE` (15 MB) in
+   * browsers, where PDF.js memory use (5-10x the file size) is the constraint.
+   * Pass `Infinity` to turn the browser limit off.
+   */
+  maxFileSizeBytes?: number;
+  /**
+   * Give up after this many milliseconds and return the `timeout` code. The
+   * conversion is aborted through the same path as `signal`.
+   */
+  timeoutMs?: number;
   signal?: AbortSignal;
   onProgress?: (progress: ConversionProgress) => void;
 }
@@ -144,5 +156,5 @@ export interface ConversionChunk {
   tokenEstimate: number;
 }
 
-/** Maximum file size in bytes (15MB) */
+/** The web app's file size limit in bytes (15 MB), and the browser default for `maxFileSizeBytes`. */
 export const MAX_FILE_SIZE = 15 * 1024 * 1024;

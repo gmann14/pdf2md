@@ -5,6 +5,7 @@ import type {
   TextItem,
   TextMarkedContent,
 } from "pdfjs-dist/types/src/display/api";
+import { isNode } from "./env.js";
 import { getPdfjs } from "./pdf-compat.js";
 import { initPdfWorker } from "./pdf-worker.js";
 import type {
@@ -2041,16 +2042,14 @@ function abortable<T>(promise: Promise<T>, signal: AbortSignal | undefined): Pro
   });
 }
 
-function cancelledResult(startTime: number): ConversionResult {
+function cancelledResult(startTime: number, timeoutMs?: number): ConversionResult {
   return {
     status: "failed",
     markdown: "",
     messages: [
-      {
-        code: "cancelled",
-        severity: "error",
-        message: "Conversion was cancelled.",
-      },
+      timeoutMs === undefined
+        ? { code: "cancelled", severity: "error", message: "Conversion was cancelled." }
+        : { code: "timeout", severity: "error", message: `Conversion timed out after ${timeoutMs} ms.` },
     ],
     stats: {
       pageCount: 0,
@@ -2076,30 +2075,99 @@ export async function convert(
   options?: ConvertOptions,
 ): Promise<ConversionResult> {
   const startTime = performance.now();
+
+  // Check file size
+  const maxFileSize = options?.maxFileSizeBytes ?? (isNode ? Infinity : MAX_FILE_SIZE);
+  if (pdfBuffer.byteLength > maxFileSize) {
+    return failedResult(
+      "oversized",
+      `File size (${formatMegabytes(pdfBuffer.byteLength)}) exceeds the ${formatMegabytes(maxFileSize)} limit.`,
+      startTime,
+    );
+  }
+
+  // One signal for both the caller's cancel and the timeout.
+  const timeoutMs =
+    options?.timeoutMs !== undefined && Number.isFinite(options.timeoutMs) && options.timeoutMs >= 0
+      ? options.timeoutMs
+      : undefined;
+  if (timeoutMs === undefined && !options?.signal) {
+    return convertWithSignal(pdfBuffer, options, startTime, () => false);
+  }
+  const controller = new AbortController();
+  let timedOut = false;
+  const onCallerAbort = () => controller.abort();
+  if (options?.signal?.aborted) controller.abort();
+  else options?.signal?.addEventListener("abort", onCallerAbort, { once: true });
+  const expire = () => {
+    timedOut = true;
+    controller.abort();
+  };
+  const timer = timeoutMs === undefined ? undefined : setTimeout(expire, timeoutMs);
+  // PDF.js may not yield to the timer queue on small files, so the deadline
+  // is also checked at every progress step (each stage and each page).
+  const onProgress: ConvertOptions["onProgress"] = (progress) => {
+    if (timeoutMs !== undefined && !timedOut && performance.now() - startTime >= timeoutMs) expire();
+    options?.onProgress?.(progress);
+  };
+  try {
+    const result = await convertWithSignal(
+      pdfBuffer,
+      { ...options, signal: controller.signal, onProgress },
+      startTime,
+      () => timedOut,
+    );
+    if (timedOut && result.messages[0]?.code === "cancelled") return cancelledResult(startTime, timeoutMs);
+    return result;
+  } finally {
+    clearTimeout(timer);
+    options?.signal?.removeEventListener("abort", onCallerAbort);
+  }
+}
+
+function formatMegabytes(bytes: number): string {
+  const mb = bytes / 1024 / 1024;
+  return `${mb >= 10 || Number.isInteger(mb) ? Math.round(mb) : mb.toFixed(1)}MB`;
+}
+
+function failedResult(
+  code: ConversionMessage["code"],
+  message: string,
+  startTime: number,
+  pageCount = 0,
+): ConversionResult {
+  return {
+    status: "failed",
+    markdown: "",
+    messages: [{ code, severity: "error", message }],
+    stats: { pageCount, wordCount: 0, processingMs: performance.now() - startTime },
+  };
+}
+
+async function convertWithSignal(
+  pdfBuffer: ArrayBuffer | Uint8Array,
+  options: ConvertOptions | undefined,
+  startTime: number,
+  isTimedOut: () => boolean,
+): Promise<ConversionResult> {
   const messages: ConversionMessage[] = [];
   const emphasis = options?.emphasis !== false;
 
-  // Check file size
-  if (pdfBuffer.byteLength > MAX_FILE_SIZE) {
-    return {
-      status: "failed",
-      markdown: "",
-      messages: [
-        {
-          code: "oversized",
-          severity: "error",
-          message: `File size (${Math.round(pdfBuffer.byteLength / 1024 / 1024)}MB) exceeds the ${MAX_FILE_SIZE / 1024 / 1024}MB limit.`,
-        },
-      ],
-      stats: { pageCount: 0, wordCount: 0, processingMs: 0 },
-    };
+  // Initialize PDF.js (and its worker in browsers)
+  let pdfjs: Awaited<ReturnType<typeof getPdfjs>>;
+  try {
+    await initPdfWorker();
+    pdfjs = await getPdfjs();
+  } catch (err: unknown) {
+    return failedResult(
+      "worker_failed",
+      `Failed to load PDF.js: ${err instanceof Error ? err.message : "Unknown error"}`,
+      startTime,
+    );
   }
 
-  // Initialize PDF.js worker
-  await initPdfWorker();
-
   // Load document
-  const { getDocument, VerbosityLevel } = await getPdfjs();
+  const { getDocument, VerbosityLevel } = pdfjs;
   let doc: PDFDocumentProxy;
   try {
     // PDF.js rejects Node Buffers and may transfer (detach) the buffer it is
@@ -2121,10 +2189,10 @@ export async function convert(
       verbosity: VerbosityLevel.ERRORS,
     });
 
-    if (options?.signal) {
-      options.signal.addEventListener("abort", () => {
-        loadingTask.destroy();
-      });
+    const signal = options?.signal;
+    if (signal) {
+      if (signal.aborted) void loadingTask.destroy();
+      else signal.addEventListener("abort", () => void loadingTask.destroy(), { once: true });
     }
 
     doc = await loadingTask.promise;
@@ -2151,35 +2219,34 @@ export async function convert(
       };
     }
 
-    return {
-      status: "failed",
-      markdown: "",
-      messages: [
-        {
-          code: "parse_failed",
-          severity: "error",
-          message: `Failed to parse PDF: ${err instanceof Error ? err.message : "Unknown error"}`,
-        },
-      ],
-      stats: {
-        pageCount: 0,
-        wordCount: 0,
-        processingMs: performance.now() - startTime,
-      },
-    };
+    return failedResult(
+      "parse_failed",
+      `Failed to parse PDF: ${err instanceof Error ? err.message : "Unknown error"}`,
+      startTime,
+    );
   }
 
   // Every path below settles: a cancel at any stage (even after the last page
-  // is read) becomes the cancelled result, and the document is always freed.
+  // is read) becomes the cancelled result, an unexpected error becomes a
+  // failed result, and the document is always destroyed.
   try {
     return await convertDocument(doc, startTime, messages, emphasis, options);
   } catch (err: unknown) {
-    if (err instanceof ConversionCancelled || options?.signal?.aborted) {
+    if (err instanceof ConversionCancelled || options?.signal?.aborted || isTimedOut()) {
       return cancelledResult(startTime);
     }
-    throw err;
+    return failedResult(
+      "parse_failed",
+      `Failed to convert PDF: ${err instanceof Error ? err.message : "Unknown error"}`,
+      startTime,
+      doc.numPages,
+    );
   } finally {
-    void doc.destroy();
+    try {
+      await doc.destroy();
+    } catch {
+      // The document may already be torn down by an abort; nothing to free.
+    }
   }
 }
 

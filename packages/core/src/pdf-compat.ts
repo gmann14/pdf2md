@@ -3,10 +3,7 @@
  * and the standard build in browser environments.
  */
 
-const isNode =
-  typeof process !== "undefined" &&
-  process.versions != null &&
-  process.versions.node != null;
+import { isNode } from "./env.js";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let _pdfjs: any;
