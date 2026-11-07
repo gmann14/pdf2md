@@ -19,6 +19,11 @@ export interface DetectionItem {
   fontName: string;
   hasEOL: boolean;
   page: number;
+  /**
+   * Monospace from the real font (name or fixed-pitch flag): true or false
+   * once the font is resolved, undefined when it is not known.
+   */
+  monospace?: boolean;
 }
 
 // ---------------------------------------------------------------------------
@@ -27,9 +32,14 @@ export interface DetectionItem {
 
 export function isMonospace(fontName: string): boolean {
   const lower = fontName.toLowerCase();
-  return /courier|consolas|mono|menlo|monaco|inconsolata|fira.?code|source.?code|liberation.?mono|deja.?vu.?mono|roboto.?mono|noto.?mono|hack|iosevka|jetbrains.?mono|sf.?mono|andale|lucida.?console|fixed|terminal|nimbusmon|\.cc\b/.test(
+  return /courier|consolas|mono|menlo|monaco|inconsolata|fira.?code|source.?code|liberation.?mono|deja.?vu.?mono|roboto.?mono|noto.?mono|hack|iosevka|jetbrains.?mono|sf.?mono|andale|lucida.?console|fixed|terminal|nimbusmon|typewriter|\.cc\b|^(?:cm|sf|lm|ec|tc)tt|^(?:tx|px|ner|ber)tt|^(?:[a-z]{6}\+)?(?:cm|sf|lm)tt/.test(
     lower,
   );
+}
+
+/** Monospace by the resolved real font, else by the font name (test fixtures, legacy ids). */
+function itemIsMonospace(item: DetectionItem): boolean {
+  return item.monospace ?? isMonospace(item.fontName);
 }
 
 // ---------------------------------------------------------------------------
@@ -57,15 +67,13 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     const prev = sorted[i - 1];
     const curr = sorted[i];
     if (Math.abs(curr.y - prev.y) > curr.height * 0.5) {
-      currentRow.sort((a, b) => a.x - b.x);
-      rows.push(currentRow);
+      rows.push(foldSymbolItems(currentRow.sort((a, b) => a.x - b.x)));
       currentRow = [curr];
     } else {
       currentRow.push(curr);
     }
   }
-  currentRow.sort((a, b) => a.x - b.x);
-  rows.push(currentRow);
+  rows.push(foldSymbolItems(currentRow.sort((a, b) => a.x - b.x)));
 
   if (rows.length < 2) return null;
 
@@ -116,7 +124,283 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     if (avgCellLen > 40) return null; // prose, not tabular data
   }
 
-  return consistentRows.map((row) => row.map((item) => item.str.trim()));
+  // Rows with fewer cells (a value row without `$`, a subtotal with one number)
+  // are placed by x position instead of being dropped.
+  const anchors = columnAnchors(consistentRows, bestCount);
+  const cells: string[][] = [];
+  for (const row of rows) {
+    const placed = row.length === bestCount ? row : row.length >= 2 ? placeByX(row, anchors) : null;
+    if (placed) {
+      cells.push(placed.map((item) => (item ? stripCellLeaders(item.str.trim()).replace(CURRENCY_SPACE, "$1") : "")));
+    }
+  }
+
+  // Drop columns that are empty in every row (leader-only or symbol columns).
+  const keep = anchors.map((_, col) => cells.some((row) => row[col] !== ""));
+  if (keep.every(Boolean)) return cells;
+  if (keep.filter(Boolean).length < 2) return null;
+  return cells.map((row) => row.filter((_, col) => keep[col]));
+}
+
+const CURRENCY_ONLY = /^[$€£¥]$/;
+const STARTS_NUMERIC = /^[(\-−–]?\d|^[(\-−–]?[.,]\d/;
+const ENDS_NUMERIC = /\d\)?$/;
+/** An item that is only a dot leader (`. . . . .`); `...` (not available) is kept. */
+const LEADER_ONLY_ITEM = /^(?:[.·…][ \t]?){4,}$/;
+/** `$ 5,428` → `$5,428`, matching the joined `$` `46,752` → `$46,752`. */
+const CURRENCY_SPACE = /^([$€£¥])\s+(?=[(\-−–]?\d)/;
+
+/**
+ * Join a lone currency symbol to the number after it (`$` `46,752` → `$46,752`)
+ * and a lone `%` to the number before it, so symbols do not become columns.
+ * The joined item keeps the number's position so it still aligns with
+ * rows that have no symbol. Items that are only a dot leader are dropped:
+ * they would add a cell to some rows and not others.
+ */
+function foldSymbolItems(row: DetectionItem[]): DetectionItem[] {
+  const out: DetectionItem[] = [];
+  for (let i = 0; i < row.length; i++) {
+    const item = row[i];
+    const str = item.str.trim();
+    if (LEADER_ONLY_ITEM.test(str)) continue;
+    const next = row[i + 1];
+    if (CURRENCY_ONLY.test(str) && next && STARTS_NUMERIC.test(next.str.trim())) {
+      out.push({ ...next, str: str + next.str.trim() });
+      i++;
+      continue;
+    }
+    const prev = out[out.length - 1];
+    if (str === "%" && prev && ENDS_NUMERIC.test(prev.str.trim())) {
+      out[out.length - 1] = {
+        ...prev,
+        str: `${prev.str.trim()}%`,
+        width: Math.max(prev.width, item.x + item.width - prev.x),
+      };
+      continue;
+    }
+    out.push(item);
+  }
+  return out;
+}
+
+interface ColumnAnchor {
+  left: number;
+  right: number;
+}
+
+function median(values: number[]): number {
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+}
+
+function columnAnchors(rows: DetectionItem[][], count: number): ColumnAnchor[] {
+  return Array.from({ length: count }, (_, col) => ({
+    left: median(rows.map((r) => r[col].x)),
+    right: median(rows.map((r) => r[col].x + r[col].width)),
+  }));
+}
+
+/** Max distance (PDF points) from a column's left or right edge for x placement. */
+const PLACE_TOLERANCE = 30;
+
+/**
+ * Put each item of a short row into the column whose left or right edge
+ * (text or numbers) it lines up with. Null when an item fits no column or
+ * two items would share one.
+ */
+function placeByX(row: DetectionItem[], anchors: ColumnAnchor[]): (DetectionItem | null)[] | null {
+  const placed: (DetectionItem | null)[] = anchors.map(() => null);
+  let lastCol = -1;
+  for (const item of row) {
+    let best = -1;
+    let bestDist = Infinity;
+    for (let col = lastCol + 1; col < anchors.length; col++) {
+      const a = anchors[col];
+      const dist = Math.min(Math.abs(item.x - a.left), Math.abs(item.x + item.width - a.right));
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = col;
+      }
+    }
+    if (best < 0 || bestDist > PLACE_TOLERANCE) return null;
+    placed[best] = item;
+    lastCol = best;
+  }
+  return placed;
+}
+
+// ---------------------------------------------------------------------------
+// Table-of-contents and dot-leader lines
+// ---------------------------------------------------------------------------
+
+/** A dot leader: 4 or more dots (or middle dots / ellipses), optionally spaced. */
+const LEADER_RE = /(?:[.·…][ \t]?){4,}/g;
+/** A long dot leader, too long to be an ellipsis in prose. */
+const LONG_LEADER_RE = /(?:[.·…][ \t]?){8,}/g;
+/** The page reference right after a leader: `17`, `A-3`, `B12` or a roman numeral `xiv`. */
+const TOC_PAGE_RE = /^[ \t]*((?:[A-Z]-?)?\d{1,4}|[ivxlcdm]{1,7})(?=\s|$)/;
+/** A TOC entry without a leader: a title, a space, and a page number at the end. */
+const TOC_TRAILING_PAGE_RE = /^(\S.*\S)\s+(\d{1,3}|[ivxlc]{1,6})$/;
+
+export interface TocEntry {
+  title: string;
+  /** Page reference, or "" for a long leader that ends without one. */
+  page: string;
+}
+
+export interface TocParse {
+  entries: TocEntry[];
+  /** Text after the last entry. */
+  tail: string;
+}
+
+function countLeaderUnits(leader: string): number {
+  return (leader.match(/[.·…]/g) ?? []).length;
+}
+
+/**
+ * Split text into table-of-contents entries: a title, a dot leader, and a page
+ * reference (`1.1 Dense Retrieval . . . . 17`). One block of text may hold
+ * several entries (TOC lines grouped into one paragraph, or two TOC columns
+ * read across). A long leader with no page after it also ends an entry.
+ * Returns null unless at least one entry has a page and the entries cover
+ * nearly all of the text, so prose with an ellipsis is never split.
+ */
+export function parseTocEntries(text: string): TocParse | null {
+  if (!/(?:[.·…][ \t]?){4}/.test(text)) return null;
+  // alnumBefore[i]: letters and digits in text[0, i), so "does this title
+  // have a word" is O(1) however many leaders are skipped.
+  const alnumBefore = new Uint32Array(text.length + 1);
+  for (let i = 0; i < text.length; i++) {
+    alnumBefore[i + 1] = alnumBefore[i] + (/[\p{L}\p{N}]/u.test(text[i]) ? 1 : 0);
+  }
+  const entries: TocEntry[] = [];
+  let start = 0;
+  let paged = 0;
+  for (const m of text.matchAll(LEADER_RE)) {
+    const index = m.index ?? 0;
+    if (index < start) continue;
+    const leaderEnd = index + m[0].length;
+    if (alnumBefore[index] === alnumBefore[start]) continue;
+    const title = text.slice(start, index).trim();
+    // Bounded lookahead so a long text never makes this quadratic.
+    const page = text.slice(leaderEnd, leaderEnd + 16).match(TOC_PAGE_RE);
+    if (page) {
+      entries.push({ title, page: page[1] });
+      paged++;
+      start = leaderEnd + page[0].length;
+    } else if (countLeaderUnits(m[0]) >= 8) {
+      entries.push({ title, page: "" });
+      start = leaderEnd;
+    }
+  }
+  if (paged === 0) return null;
+  const tail = text.slice(start).trim();
+  if (tail.length > Math.max(30, text.length * 0.25)) return null;
+  const avgTitle = entries.reduce((sum, e) => sum + e.title.length, 0) / entries.length;
+  if (avgTitle > 150) return null;
+  return { entries: entries.flatMap(splitLeaderlessEntry), tail };
+}
+
+/**
+ * A chapter line drawn without a leader runs into the next entry's title:
+ * `1 Linear regression 8 1.1 LMS algorithm`. Split it before a dotted section
+ * number that follows a page number.
+ */
+const LEADERLESS_SPLIT = /^(.*\p{L}.*?)\s+(\d{1,4})\s+((?:\d+\.)+\d+\.?\s+\p{L}.*)$/u;
+
+function splitLeaderlessEntry(entry: TocEntry): TocEntry[] {
+  const m = entry.title.length <= 300 ? entry.title.match(LEADERLESS_SPLIT) : null;
+  if (!m) return [entry];
+  return [{ title: m[1], page: m[2] }, { title: m[3], page: entry.page }];
+}
+
+/**
+ * A short line that ends in a page number (`1 Introduction 17`): a TOC entry
+ * drawn without a leader. Only meaningful next to leader entries.
+ */
+export function parseTrailingPageEntry(text: string): TocEntry | null {
+  const trimmed = text.trim();
+  if (trimmed.length > 160) return null;
+  const m = trimmed.match(TOC_TRAILING_PAGE_RE);
+  if (!m || !/\s/.test(m[1]) || !/\p{L}/u.test(m[1])) return null;
+  return { title: m[1], page: m[2] };
+}
+
+/** Markdown list item for a TOC entry: `- 1.1 Dense Retrieval — 17`. */
+function tocEntryToMarkdown(entry: TocEntry): string {
+  // "1. Introduction" after "- " would start a nested ordered list.
+  const title = entry.title
+    .replace(/^[•●▪◦‣•·▪–—-]\s*/, "")
+    .replace(/^(\d{1,9})([.)])(\s)/, "$1\\$2$3");
+  return entry.page ? `- ${title} — ${entry.page}` : `- ${title}`;
+}
+
+/**
+ * Render a TOC block's text as Markdown list items with the leaders removed.
+ * Falls back to one list item when the text cannot be split into entries.
+ */
+export function tocToMarkdown(text: string): string {
+  const parsed = parseTocEntries(text);
+  if (parsed) {
+    const lines = parsed.entries.map(tocEntryToMarkdown);
+    const tail = collapseLeaders(parsed.tail).trim();
+    if (tail) lines.push(tocEntryToMarkdown({ title: tail, page: "" }));
+    return lines.join("\n");
+  }
+  const entry = parseTrailingPageEntry(text);
+  if (entry) return tocEntryToMarkdown(entry);
+  return tocEntryToMarkdown({ title: collapseLeaders(text).trim(), page: "" });
+}
+
+/**
+ * Replace long dot leaders that are not part of a TOC entry (form lines such
+ * as `Enter the total rent paid . . . . . . 6a.`) with a single ellipsis.
+ * Short runs are left alone: they are usually a real ellipsis.
+ */
+export function collapseLeaders(text: string): string {
+  if (!/(?:[.·…][ \t]?){8}/.test(text)) return text;
+  // No whitespace in the leader pattern itself: a leading `[ \t]*` would
+  // rescan every long whitespace run that is not followed by a leader
+  // (quadratic). Whitespace around the ellipsis is collapsed afterwards.
+  return text
+    .replace(LONG_LEADER_RE, " … ")
+    .replace(/[ \t]{2,}/g, " ")
+    .replace(/ … $/, " …");
+}
+
+/** Remove dot leaders at the start or end of a table cell; a cell of only a leader becomes empty. */
+export function stripCellLeaders(cell: string): string {
+  if (!/(?:[.·…][ \t]?){4}/.test(cell)) return cell;
+  let out = cell.replace(/^(?:[.·…][ \t]?){4,}\s*/, "");
+  const end = trailingLeaderStart(out);
+  if (end >= 0) out = out.slice(0, end);
+  return collapseLeaders(out).trim();
+}
+
+/**
+ * Index where a trailing dot leader (4+ dots, single spaces allowed) starts,
+ * or -1. A backward scan: an end-anchored regex would be quadratic on a long
+ * run of dots followed by other text.
+ */
+function trailingLeaderStart(text: string): number {
+  const isDot = (ch: string | undefined) => ch === "." || ch === "·" || ch === "…";
+  let i = text.length;
+  while (i > 0 && /\s/.test(text[i - 1])) i--;
+  let dots = 0;
+  let begin = -1;
+  while (i > 0) {
+    const ch = text[i - 1];
+    if (isDot(ch)) {
+      dots++;
+      begin = i - 1;
+    } else if (!((ch === " " || ch === "\t") && isDot(text[i]))) {
+      break;
+    }
+    i--;
+  }
+  return dots >= 4 ? begin : -1;
 }
 
 // ---------------------------------------------------------------------------
@@ -335,12 +619,16 @@ export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): bo
   if (items.length === 0) return false;
 
   let monoChars = 0;
+  let monoTotal = 0;
   let totalChars = 0;
   let codeFontChars = 0;
   for (const item of items) {
     const len = item.str.length;
     totalChars += len;
-    if (isMonospace(item.fontName)) {
+    // Punctuation in a font that was not resolved (quotes drawn from a
+    // symbol font inside monospace code) does not count either way.
+    if (item.monospace !== undefined || /[\p{L}\p{N}]/u.test(item.str)) monoTotal += len;
+    if (itemIsMonospace(item)) {
       monoChars += len;
     }
     if (codeFonts?.has(item.fontName)) {
@@ -351,25 +639,68 @@ export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): bo
   // Minimum content: reject very short blocks (isolated math symbols, single words)
   if (totalChars < 8) return false;
 
+  // URL lists, a date-format line or a line of math are not code, whatever the font.
+  const lines = textLines(items);
+  const lineCount = lines.length;
+  if (looksLikeNonCode(items, lines)) return false;
+
   // Signal 1: Known monospace font names
   // Require positive evidence of code — monospace fonts are also used for
   // legislative text, timetables, indices, and math notation.
-  if (totalChars > 0 && monoChars / totalChars >= 0.8) {
+  if (monoTotal > 0 && monoChars / monoTotal >= 0.8) {
     if (looksLikeProse(items)) return false;
     if (!looksLikeCode(items)) return false;
     return true;
   }
 
-  // Signal 2: Detected code font (subset fonts like g_d0_f3)
-  // Require POSITIVE evidence of code, not just absence of prose.
-  // Subset fonts are used for captions, labels, table fragments — not just code.
-  if (totalChars > 0 && codeFonts && codeFontChars / totalChars >= 0.8) {
+  // Signal 2: Detected code font (subset fonts like g_d0_f3). The caller
+  // leaves out code fonts known to be proportional unless the document has
+  // real monospace code. Require POSITIVE evidence of code, not just absence
+  // of prose, and at least 2 lines: subset fonts are used for captions,
+  // labels, URLs and table fragments, not just code.
+  // One line passes only if part of it is set in a real monospace font
+  // (keywords in typewriter type between italic variables) or it has syntax
+  // prose and captions do not (braces, `->`, `::`, `[]`).
+  const someMonospace = monoTotal > 0 && monoChars / monoTotal >= 0.15;
+  const oneLineCode = someMonospace || STRONG_CODE_SYNTAX.test(items.map((i) => i.str).join(" "));
+  if (totalChars > 0 && codeFonts && codeFontChars / totalChars >= 0.8 && (lineCount >= 2 || oneLineCode)) {
     if (looksLikeProse(items)) return false;
     if (!looksLikeCode(items)) return false;
     return true;
   }
 
   return false;
+}
+
+/** Syntax that prose, captions and labels almost never contain. */
+const STRONG_CODE_SYNTAX = /[{}]|=>|->|::|<-|:=|&&|\|\||==|!=|\[\]|\(\)/;
+
+function textLines(items: DetectionItem[]): string[] {
+  const sorted = [...items].sort((a, b) => a.page - b.page || a.y - b.y || a.x - b.x);
+  const lines: string[][] = [];
+  let prev: DetectionItem | undefined;
+  for (const item of sorted) {
+    if (!prev || item.page !== prev.page || Math.abs(item.y - prev.y) > Math.max(prev.height, 1) * 0.5) {
+      lines.push([]);
+    }
+    lines[lines.length - 1].push(item.str);
+    prev = item;
+  }
+  return lines.map((parts) => parts.join(" ").trim());
+}
+
+/** A URL on its own, optionally after a short label (`Source: https://…`). */
+const URL_LINE =
+  /^(?:[\p{L} ]{1,20}:\s*)?(?:https?:\/\/\S+|www\.\S+|[\w-]+(?:\.[\w-]+)+\/\S*)$/iu;
+const DATE_FORMAT = /\b(?:DD|MM|YY|YYYY|HH)(?:[\s/.-]+(?:DD|MM|YY|YYYY|HH|SS))+\b/;
+
+/**
+ * Text that is not code whatever its font: lines that are all URLs (a list
+ * of footnote links), or one line with a date-format placeholder or math.
+ */
+function looksLikeNonCode(items: DetectionItem[], lines: string[]): boolean {
+  if (lines.every((line) => URL_LINE.test(line))) return true;
+  return lines.length === 1 && (DATE_FORMAT.test(lines[0]) || looksLikeMath(items));
 }
 
 // ---------------------------------------------------------------------------
@@ -813,6 +1144,8 @@ export function reorderColumnarItems<T extends DetectionItem>(
 export function tableToMarkdown(rows: string[][]): string {
   if (rows.length === 0) return "";
 
+  // A `|` inside a cell would end the cell: escape it (GFM).
+  rows = rows.map((row) => row.map((cell) => cell.replace(/\|/g, "\\|")));
   const colCount = rows[0].length;
   const colWidths = new Array(colCount).fill(3);
   for (const row of rows) {

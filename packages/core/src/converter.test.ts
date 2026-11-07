@@ -10,6 +10,10 @@ import {
   tableToMarkdown,
   detectColumnLayout,
   reorderColumnarItems,
+  parseTocEntries,
+  tocToMarkdown,
+  collapseLeaders,
+  stripCellLeaders,
 } from "./detection.js";
 import { rejoinHyphenatedWords } from "./detection.js";
 
@@ -382,6 +386,12 @@ describe("parsePdfDate", () => {
 // tableToMarkdown
 // ---------------------------------------------------------------------------
 describe("tableToMarkdown", () => {
+  it("escapes a pipe inside a cell", () => {
+    expect(tableToMarkdown([["a | b", "|"], ["c", "d"]])).toBe(
+      "| a \\| b | \\|  |\n| ------ | --- |\n| c      | d   |",
+    );
+  });
+
   it("formats a simple 2x2 table", () => {
     const result = tableToMarkdown([
       ["Name", "Age"],
@@ -768,11 +778,58 @@ describe("isCodeBlock (enhanced)", () => {
     ];
     expect(isCodeBlock(items2, codeFonts)).toBe(false);
 
-    // Short text WITH code syntax should still be detected
+    // Code syntax over 2+ lines is still detected.
     const items3 = [
       makeItem({ str: "if (x > 0) {", x: 100, y: 100, fontName: "g_d0_f3" }),
+      makeItem({ str: "  return x;", x: 100, y: 114, fontName: "g_d0_f3" }),
     ];
     expect(isCodeBlock(items3, codeFonts)).toBe(true);
+    // One line needs syntax prose never has (braces, ->, ::) or some monospace.
+    expect(isCodeBlock([makeItem({ str: "x = foo(bar) + 1", x: 100, y: 100, fontName: "g_d0_f3" })], codeFonts)).toBe(false);
+    expect(isCodeBlock(items3.slice(0, 1), codeFonts)).toBe(true);
+  });
+
+  it("ignores unresolved punctuation items when measuring monospace share", () => {
+    const line = [
+      makeItem({ str: ">>> t = [", x: 100, y: 100, fontName: "g_d0_f5" }),
+      ...["'", "a", "'", ",", "'", "b", "'", "]"].map((str, k) =>
+        makeItem({ str, x: 160 + k * 6, y: 100, fontName: str === "'" ? "g_d0_f6" : "g_d0_f5" }),
+      ),
+    ].map((item) => (item.fontName === "g_d0_f5" ? { ...item, monospace: true } : item));
+    expect(isCodeBlock(line)).toBe(true);
+  });
+
+  it("uses a resolved monospace font as the code signal", () => {
+    const lines = [
+      makeItem({ str: "def greet(name):", x: 100, y: 100, fontName: "g_d0_f7" }),
+      makeItem({ str: "    return name", x: 100, y: 114, fontName: "g_d0_f7" }),
+    ];
+    expect(isCodeBlock(lines)).toBe(false);
+    expect(isCodeBlock(lines.map((i) => ({ ...i, monospace: true })))).toBe(true);
+  });
+
+  it("rejects URL lines, a date-format line and a line of math", () => {
+    const mono = (str: string) => [makeItem({ str, x: 100, y: 100, fontName: "Courier" })];
+    expect(isCodeBlock(mono("nps.gov/grca/learn/nature"))).toBe(false);
+    expect(isCodeBlock(mono("https://example.com/a/b?c=d&e=f"))).toBe(false);
+    expect(isCodeBlock(mono("and face prosecution if I give false information. DD MM YYYY"))).toBe(false);
+    expect(isCodeBlock(mono("∀x ∈ S: f(x) ≤ g(x)"))).toBe(false);
+    expect(isCodeBlock(mono("x = foo(bar) && baz;"))).toBe(true);
+    expect(isCodeBlock(mono("Source: https://www.reddit.com/r/hmmm/comments/ubab5v/hmmm/"))).toBe(false);
+    expect(isCodeBlock(mono("http://host.robots.ox.ac.uk:8080/leaderboard/"))).toBe(false);
+    const urlList = ["https://github.com/princeton-nlp/SimCSE", "https://github.com/facebookresearch/SentEval"].map(
+      (str, k) => makeItem({ str, x: 100, y: 100 + k * 14, fontName: "Courier" }),
+    );
+    expect(isCodeBlock(urlList)).toBe(false);
+  });
+
+  it("recognises TeX and other typewriter font names as monospace", () => {
+    for (const name of ["CMTT10", "SFTT1000", "LMMono10-Regular", "txtt", "NimbusMonL-Regu", "ABCDEF+CMTT9"]) {
+      expect(isMonospace(name)).toBe(true);
+    }
+    for (const name of ["CMR10", "Helvetica", "TimesNewRomanPSMT", "CMMI10"]) {
+      expect(isMonospace(name)).toBe(false);
+    }
   });
 
   it("rejects cookbook/brochure captions in code font (no code syntax)", () => {
@@ -885,6 +942,129 @@ describe("rejoinHyphenatedWords", () => {
 // ---------------------------------------------------------------------------
 // Table detection guards (prose vs. real tables)
 // ---------------------------------------------------------------------------
+describe("detectTable cell cleanup", () => {
+  // Right-aligned numbers ending at x=400 and x=500, `$` drawn on its own.
+  const num = (str: string, end: number, y: number) =>
+    makeItem({ str, x: end - str.length * 6, y });
+
+  it("joins a lone currency symbol to the number after it", () => {
+    const items = [
+      makeItem({ str: "Operating", x: 50, y: 100 }),
+      makeItem({ str: "$", x: 330, y: 100 }),
+      num("46,752", 400, 100),
+      makeItem({ str: "$", x: 430, y: 100 }),
+      num("84,946", 500, 100),
+      makeItem({ str: "Free cash flow", x: 50, y: 120 }),
+      makeItem({ str: "$", x: 330, y: 120 }),
+      num("(11,569)", 400, 120),
+      makeItem({ str: "€", x: 430, y: 120 }),
+      num("36,813", 500, 120),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Operating", "$46,752", "$84,946"],
+      ["Free cash flow", "$(11,569)", "€36,813"],
+    ]);
+  });
+
+  it("leaves a lone $ before text alone", () => {
+    const items = [
+      makeItem({ str: "Operator", x: 50, y: 100 }),
+      makeItem({ str: "$", x: 200, y: 100 }),
+      makeItem({ str: "application", x: 300, y: 100 }),
+      makeItem({ str: "Operator", x: 50, y: 120 }),
+      makeItem({ str: "<$>", x: 200, y: 120 }),
+      makeItem({ str: "fmap", x: 300, y: 120 }),
+    ];
+    expect(detectTable(items)?.[0]).toEqual(["Operator", "$", "application"]);
+  });
+
+  it("joins a lone % to the number before it", () => {
+    const items = [
+      makeItem({ str: "Growth", x: 50, y: 100 }),
+      num("13", 400, 100),
+      makeItem({ str: "%", x: 402, y: 100, width: 6 }),
+      makeItem({ str: "Margin", x: 50, y: 120 }),
+      num("12", 400, 120),
+      makeItem({ str: "%", x: 402, y: 120, width: 6 }),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Growth", "13%"],
+      ["Margin", "12%"],
+    ]);
+  });
+
+  it("places a row with fewer cells by x instead of dropping it", () => {
+    const items = [
+      makeItem({ str: "Operating", x: 50, y: 100 }),
+      num("46,752", 400, 100),
+      num("84,946", 500, 100),
+      makeItem({ str: "Acquisitions", x: 50, y: 120 }),
+      num("(5,839)", 500, 120),
+      makeItem({ str: "Investing", x: 50, y: 140 }),
+      num("(37,601)", 400, 140),
+      num("(49,833)", 500, 140),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Operating", "46,752", "84,946"],
+      ["Acquisitions", "", "(5,839)"],
+      ["Investing", "(37,601)", "(49,833)"],
+    ]);
+  });
+
+  it("drops a short row that lines up with no column", () => {
+    const items = [
+      makeItem({ str: "A", x: 50, y: 100 }),
+      makeItem({ str: "1", x: 200, y: 100 }),
+      makeItem({ str: "2", x: 350, y: 100 }),
+      makeItem({ str: "B", x: 50, y: 120 }),
+      makeItem({ str: "3", x: 200, y: 120 }),
+      makeItem({ str: "4", x: 350, y: 120 }),
+      makeItem({ str: "C", x: 50, y: 140 }),
+      makeItem({ str: "stray", x: 270, y: 140, width: 10 }),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["A", "1", "2"],
+      ["B", "3", "4"],
+    ]);
+  });
+
+  it("keeps a row whose dot leader is a separate item", () => {
+    const items = [
+      makeItem({ str: "Underwriting . . . . . . . .", x: 75, y: 100 }),
+      makeItem({ str: "$ 5,428", x: 341, y: 100, width: 39 }),
+      makeItem({ str: "$", x: 404, y: 100, width: 6 }),
+      makeItem({ str: "(30)", x: 427, y: 100, width: 20 }),
+      makeItem({ str: "Investment income", x: 75, y: 114 }),
+      makeItem({ str: ". . . . . . . .", x: 224, y: 114 }),
+      makeItem({ str: "9,567", x: 353, y: 114, width: 27 }),
+      makeItem({ str: "6,484", x: 416, y: 114, width: 27 }),
+      makeItem({ str: "Railroad . . . . . . . . . .", x: 75, y: 128 }),
+      makeItem({ str: "5,087", x: 353, y: 128, width: 27 }),
+      makeItem({ str: "5,946", x: 416, y: 128, width: 27 }),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Underwriting", "$5,428", "$(30)"],
+      ["Investment income", "9,567", "6,484"],
+      ["Railroad", "5,087", "5,946"],
+    ]);
+  });
+
+  it("drops a column that is empty in every row", () => {
+    const items = [
+      makeItem({ str: "A", x: 50, y: 100 }),
+      makeItem({ str: " ", x: 200, y: 100 }),
+      makeItem({ str: "1", x: 350, y: 100 }),
+      makeItem({ str: "B", x: 50, y: 120 }),
+      makeItem({ str: " ", x: 200, y: 120 }),
+      makeItem({ str: "2", x: 350, y: 120 }),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["A", "1"],
+      ["B", "2"],
+    ]);
+  });
+});
+
 describe("detectTable guards for short vs prose cells", () => {
   it("rejects 2-column table with long prose cells", () => {
     // Simulate two-column layout text that looks like a 2-col table
@@ -972,5 +1152,82 @@ describe("heading classification edge cases", () => {
     // Should not match 4+ digit numbers or missing space
     expect(bracketPattern.test("[1234] Too many digits")).toBe(false);
     expect(bracketPattern.test("[1]NoSpace")).toBe(false);
+  });
+});
+
+describe("table-of-contents leaders", () => {
+  it("splits a block of several TOC entries", () => {
+    expect(parseTocEntries("Contents Introduction . . . . . 1 Highlights . . . . . . 1 Background .......... ix")).toEqual({
+      entries: [
+        { title: "Contents Introduction", page: "1" },
+        { title: "Highlights", page: "1" },
+        { title: "Background", page: "ix" },
+      ],
+      tail: "",
+    });
+  });
+
+  it("splits a chapter line without a leader from the entry it runs into", () => {
+    expect(tocToMarkdown("1 Linear regression 8 1.1 LMS algorithm . . . . . . 9 1.2 The normal equations . . . . 13")).toBe(
+      "- 1 Linear regression — 8\n- 1.1 LMS algorithm — 9\n- 1.2 The normal equations — 13",
+    );
+  });
+
+  it("does not treat prose with an ellipsis as a TOC", () => {
+    expect(parseTocEntries("The statements . . . . present fairly the position of the Company in 2023 and 2022.")).toBeNull();
+    expect(parseTocEntries("We waited . . . . 3 days passed before anyone noticed that the server was down again.")).toBeNull();
+    expect(parseTocEntries("Insurance-underwriting . . . . . . . . $ 5,428 $ (30)")).toBeNull();
+  });
+
+  it("renders entries as list items and escapes a leading ordered-list number", () => {
+    expect(tocToMarkdown("1. Advice to Authors ........ 1 2. General Instructions ........ 7")).toBe(
+      "- 1\\. Advice to Authors — 1\n- 2\\. General Instructions — 7",
+    );
+    expect(tocToMarkdown("1 Introduction 17")).toBe("- 1 Introduction — 17");
+  });
+
+  it("collapses only long leaders outside a TOC", () => {
+    expect(collapseLeaders("Enter the total rent paid . . . . . . . . . . . 6a.")).toBe("Enter the total rent paid … 6a.");
+    expect(collapseLeaders("and so . . . . on")).toBe("and so . . . . on");
+    expect(collapseLeaders("Line 1   . . . . . . . . . .   2.")).toBe("Line 1 … 2.");
+    expect(collapseLeaders("Replace . . . . . . . . ")).toBe("Replace …");
+  });
+
+  it("drops a table column that held only dot leaders", () => {
+    const row = (y: number, label: string, page: string) => [
+      makeItem({ str: label, x: 72, y }),
+      makeItem({ str: ". . . . . . . . . .", x: 200, y }),
+      makeItem({ str: page, x: 500, y }),
+    ];
+    const items = [...row(100, "Introduction", "1"), ...row(115, "Highlights", "2"), ...row(130, "Background", "4")];
+    expect(detectTable(items)).toEqual([
+      ["Introduction", "1"],
+      ["Highlights", "2"],
+      ["Background", "4"],
+    ]);
+  });
+
+  it("strips leaders from table cells", () => {
+    expect(stripCellLeaders("1965 . . . . . . . . . . .")).toBe("1965");
+    expect(stripCellLeaders(". . . . . . . .")).toBe("");
+    expect(stripCellLeaders("3.5")).toBe("3.5");
+  });
+
+  it("parses a long leader run in linear time", () => {
+    const text = "Title " + ". ".repeat(100_000) + "zzz";
+    const start = performance.now();
+    expect(parseTocEntries(text)).toBeNull();
+    collapseLeaders(text);
+    stripCellLeaders(text);
+    // Long whitespace runs with no leader after them, and leaders between them.
+    for (const line of [" ".repeat(100_000) + "text", (" ".repeat(20_000) + ". . . . . . . . . x").repeat(5)]) {
+      collapseLeaders(line + " . . . . . . . . . end");
+      stripCellLeaders(line);
+      parseTocEntries(line);
+      tocToMarkdown(line);
+    }
+    // Many short leaders with no page numbers.
+    expect(parseTocEntries("word . . . . ".repeat(50_000) + "end")).toBeNull();
+    expect(performance.now() - start).toBeLessThan(1000);
   });
 });

@@ -58,17 +58,19 @@ describe("cancellation settles at every stage", () => {
     }
   }
 
-  // The abort can also land while the bold/italic step is waiting on PDF.js
-  // (between its getPage/getOperatorList calls and their replies), not only
-  // before it starts; that in-flight call must not keep convert() pending.
-  it("returns the cancelled result when aborted while the bold/italic step is in flight", async () => {
+  // The abort can also land while the font step (real font names for
+  // bold/italic and monospace code) is waiting on PDF.js (between its
+  // getPage/getOperatorList calls and their replies), not only before it
+  // starts; that in-flight call must not keep convert() pending. The font
+  // step runs during "structuring", before code detection.
+  it("returns the cancelled result when aborted while the font step is in flight", async () => {
     const bytes = await readFile(resolve(fixturesDir, "inline-emphasis.pdf"));
     const controller = new AbortController();
     const result = await settleWithin(
       convert(new Uint8Array(bytes), {
         signal: controller.signal,
         onProgress: (p) => {
-          if (p.stage === "assembling") setTimeout(() => controller.abort(), 0);
+          if (p.stage === "structuring") setTimeout(() => controller.abort(), 0);
         },
       }),
     );
