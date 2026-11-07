@@ -769,9 +769,13 @@ function textLines(items: DetectionItem[]): string[] {
   return lines.map((parts) => parts.join(" ").trim());
 }
 
-/** A URL on its own, optionally after a short label (`Source: https://…`). */
+/**
+ * A URL on its own, optionally after a short label (`Source: https://…`) or
+ * a footnote number (`2 https://…`).
+ */
 const URL_LINE =
-  /^(?:[\p{L} ]{1,20}:\s*)?(?:https?:\/\/\S+|www\.\S+|[\w-]+(?:\.[\w-]+)+\/\S*)$/iu;
+  /^(?:\d{1,3}\s+)?(?:[\p{L} ]{1,20}:\s*)?(?:https?:\/\/\S+|www\.\S+|[\w-]+(?:\.[\w-]+)+\/\S*)$/iu;
+const FOOTNOTE_NUMBER = /^\d{1,3}$/;
 const DATE_FORMAT = /\b(?:DD|MM|YY|YYYY|HH)(?:[\s/.-]+(?:DD|MM|YY|YYYY|HH|SS))+\b/;
 
 /**
@@ -779,7 +783,9 @@ const DATE_FORMAT = /\b(?:DD|MM|YY|YYYY|HH)(?:[\s/.-]+(?:DD|MM|YY|YYYY|HH|SS))+\
  * of footnote links), or one line with a date-format placeholder or math.
  */
 function looksLikeNonCode(items: DetectionItem[], lines: string[]): boolean {
-  if (lines.every((line) => URL_LINE.test(line))) return true;
+  // A raised footnote number can sit on a line of its own above its URL.
+  const content = lines.filter((line) => !FOOTNOTE_NUMBER.test(line));
+  if (content.length > 0 && content.every((line) => URL_LINE.test(line))) return true;
   return lines.length === 1 && (DATE_FORMAT.test(lines[0]) || looksLikeMath(items));
 }
 
