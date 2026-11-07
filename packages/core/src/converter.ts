@@ -1832,11 +1832,12 @@ function blockToMarkdown(
 /** A list item's Markdown; a TOC block becomes one item per entry. */
 function listItemToMarkdown(block: Block, text: string): string {
   if (block.toc) return tocToMarkdown(text);
+  // A bracketed label ("[12] Author…") stays in the text: in-text citations
+  // point at it, and a Markdown list cannot carry it as a marker.
   const cleaned = collapseLeaders(text)
     .replace(BULLET_PATTERN, "")
     .replace(NUMBERED_PATTERN, "")
     .replace(LETTER_LIST_PATTERN, "")
-    .replace(BRACKET_NUM_PATTERN, "")
     .trim();
   return `${block.listMarker} ${cleaned}`;
 }
