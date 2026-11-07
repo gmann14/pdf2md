@@ -324,6 +324,68 @@ async function codeFalsePositives() {
   return doc.save({ useObjectStreams: false });
 }
 
+/**
+ * A financial table like Amazon's free-cash-flow reconciliation: `$` is drawn
+ * as its own run left of right-aligned numbers, one row has no `$`, one row
+ * has a value in one column only, and a larger gap splits the rows into two
+ * blocks.
+ */
+async function financialTable() {
+  const doc = await PDFDocument.create();
+  fixDates(doc);
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const page = doc.addPage([612, 792]);
+  const size = 9;
+  const text = (s, x, y, fontSize = size) => page.drawText(s, { x, y, size: fontSize, font });
+  const right = (s, endX, y) => text(s, endX - font.widthOfTextAtSize(s, size), y);
+
+  // Full-width prose above and below, so the gap between labels and numbers
+  // is not taken for a two-column page gutter.
+  const prose = [
+    "Our financial focus is on long-term, sustainable growth in free cash flows. Free cash flows are driven",
+    "primarily by increasing operating income and efficiently managing accounts receivable, inventory,",
+    "accounts payable, and cash capital expenditures, including our decision to purchase or lease property.",
+    "",
+    "Free cash flow is cash flow from operations reduced by purchases of property and equipment, net of",
+    "proceeds from sales and incentives. The following is a reconciliation of free cash flow to the most",
+    "comparable GAAP cash flow measure, net cash provided by operating activities (in millions):",
+  ];
+  prose.forEach((line, i) => line && text(line, 72, 740 - i * 12));
+  const rows = [
+    ["Net cash provided by (used in) operating activities", "$", "46,752", "$", "84,946"],
+    ["Purchases of property and equipment", "", "(58,321)", "", "(48,133)"],
+    ["Acquisitions, net of cash acquired", "", "", "", "(5,839)"],
+    ["Free cash flow", "$", "(11,569)", "$", "36,813"],
+    null,
+    ["Net cash provided by (used in) investing activities", "$", "(37,601)", "$", "(49,833)"],
+    ["Net cash provided by (used in) financing activities", "$", "9,718", "$", "(15,879)"],
+  ];
+  let y = 640;
+  for (const row of rows) {
+    if (!row) {
+      y -= 16; // the gap that splits the table into two blocks
+      continue;
+    }
+    const [label, cur1, v1, cur2, v2] = row;
+    text(label, 72, y);
+    if (cur1) text(cur1, 340, y);
+    if (v1) right(v1, 400, y);
+    if (cur2) text(cur2, 440, y);
+    if (v2) right(v2, 500, y);
+    y -= 12;
+  }
+  const after = [
+    "Free cash flow improved because operating cash flow grew faster than purchases of property and",
+    "equipment, which were lower than in the prior year as spending on fulfillment capacity slowed.",
+    "",
+    "Our principal sources of liquidity are cash flows generated from operations and our cash, cash",
+    "equivalents, and marketable securities balances, which were higher at the end of the year than at",
+    "its start. Amounts held in foreign currencies were also higher than in the prior year.",
+  ];
+  after.forEach((line, i) => line && text(line, 72, y - 12 - i * 12));
+  return doc.save({ useObjectStreams: false });
+}
+
 mkdirSync(OUT_DIR, { recursive: true });
 const fixtures = {
   "links-same-position.pdf": linksSamePosition,
@@ -332,6 +394,7 @@ const fixtures = {
   "inline-emphasis.pdf": inlineEmphasis,
   "toc-leaders.pdf": tocLeaders,
   "code-false-positives.pdf": codeFalsePositives,
+  "financial-table.pdf": financialTable,
 };
 for (const [name, build] of Object.entries(fixtures)) {
   writeFileSync(new URL(name, OUT_DIR), await build());

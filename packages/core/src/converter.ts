@@ -1215,7 +1215,7 @@ function markTocBlocks(blocks: Block[]): Block[] {
  * Post-process blocks: detect tables and code blocks in paragraph blocks.
  */
 function detectTablesAndCode(blocks: Block[], codeFonts: Set<string>): Block[] {
-  return blocks.map((block) => {
+  const detected = blocks.map((block) => {
     if (block.type !== "paragraph") return block;
 
     // Check for table first (tables take priority over code blocks)
@@ -1231,6 +1231,37 @@ function detectTablesAndCode(blocks: Block[], codeFonts: Set<string>): Block[] {
 
     return block;
   });
+  return joinSplitTables(detected);
+}
+
+/**
+ * Join back-to-back tables on one page that the block grouper split at a
+ * larger vertical gap. They are joined only when their columns line up: the
+ * combined items must form one table that keeps every row of both.
+ */
+function joinSplitTables(blocks: Block[]): Block[] {
+  const out: Block[] = [];
+  for (const block of blocks) {
+    const prev = out[out.length - 1];
+    const prevRows = prev?.tableRows;
+    const rows = block.tableRows;
+    if (
+      prev?.type === "table" &&
+      block.type === "table" &&
+      prevRows && rows &&
+      prevRows[0]?.length === rows[0]?.length &&
+      prev.items[0]?.page === block.items[0]?.page
+    ) {
+      const items = [...prev.items, ...block.items];
+      const joined = detectTable(items);
+      if (joined && joined.length === prevRows.length + rows.length && joined[0]?.length === rows[0]?.length) {
+        out[out.length - 1] = { ...prev, items, tableRows: joined };
+        continue;
+      }
+    }
+    out.push(block);
+  }
+  return out;
 }
 
 // ---------------------------------------------------------------------------

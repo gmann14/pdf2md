@@ -67,15 +67,13 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     const prev = sorted[i - 1];
     const curr = sorted[i];
     if (Math.abs(curr.y - prev.y) > curr.height * 0.5) {
-      currentRow.sort((a, b) => a.x - b.x);
-      rows.push(currentRow);
+      rows.push(foldSymbolItems(currentRow.sort((a, b) => a.x - b.x)));
       currentRow = [curr];
     } else {
       currentRow.push(curr);
     }
   }
-  currentRow.sort((a, b) => a.x - b.x);
-  rows.push(currentRow);
+  rows.push(foldSymbolItems(currentRow.sort((a, b) => a.x - b.x)));
 
   if (rows.length < 2) return null;
 
@@ -126,13 +124,110 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     if (avgCellLen > 40) return null; // prose, not tabular data
   }
 
-  const cells = consistentRows.map((row) => row.map((item) => stripCellLeaders(item.str.trim())));
-  // A column that held only dot leaders (`Highlights | . . . . | 1`) is now empty: drop it.
-  const leaderOnly = (col: number) =>
-    cells.every((row) => row[col] === "") &&
-    consistentRows.some((row) => /[.·…]{2}|\. \./.test(row[col].str));
-  const keep = cells[0].map((_, col) => !leaderOnly(col));
-  return keep.every(Boolean) ? cells : cells.map((row) => row.filter((_, col) => keep[col]));
+  // Rows with fewer cells (a value row without `$`, a subtotal with one number)
+  // are placed by x position instead of being dropped.
+  const anchors = columnAnchors(consistentRows, bestCount);
+  const cells: string[][] = [];
+  for (const row of rows) {
+    const placed = row.length === bestCount ? row : row.length >= 2 ? placeByX(row, anchors) : null;
+    if (placed) {
+      cells.push(placed.map((item) => (item ? stripCellLeaders(item.str.trim()).replace(CURRENCY_SPACE, "$1") : "")));
+    }
+  }
+
+  // Drop columns that are empty in every row (leader-only or symbol columns).
+  const keep = anchors.map((_, col) => cells.some((row) => row[col] !== ""));
+  if (keep.every(Boolean)) return cells;
+  if (keep.filter(Boolean).length < 2) return null;
+  return cells.map((row) => row.filter((_, col) => keep[col]));
+}
+
+const CURRENCY_ONLY = /^[$€£¥]$/;
+const STARTS_NUMERIC = /^[(\-−–]?\d|^[(\-−–]?[.,]\d/;
+const ENDS_NUMERIC = /\d\)?$/;
+/** An item that is only a dot leader (`. . . . .`); `...` (not available) is kept. */
+const LEADER_ONLY_ITEM = /^(?:[.·…][ \t]?){4,}$/;
+/** `$ 5,428` → `$5,428`, matching the joined `$` `46,752` → `$46,752`. */
+const CURRENCY_SPACE = /^([$€£¥])\s+(?=[(\-−–]?\d)/;
+
+/**
+ * Join a lone currency symbol to the number after it (`$` `46,752` → `$46,752`)
+ * and a lone `%` to the number before it, so symbols do not become columns.
+ * The joined item keeps the number's position so it still aligns with
+ * rows that have no symbol. Items that are only a dot leader are dropped:
+ * they would add a cell to some rows and not others.
+ */
+function foldSymbolItems(row: DetectionItem[]): DetectionItem[] {
+  const out: DetectionItem[] = [];
+  for (let i = 0; i < row.length; i++) {
+    const item = row[i];
+    const str = item.str.trim();
+    if (LEADER_ONLY_ITEM.test(str)) continue;
+    const next = row[i + 1];
+    if (CURRENCY_ONLY.test(str) && next && STARTS_NUMERIC.test(next.str.trim())) {
+      out.push({ ...next, str: str + next.str.trim() });
+      i++;
+      continue;
+    }
+    const prev = out[out.length - 1];
+    if (str === "%" && prev && ENDS_NUMERIC.test(prev.str.trim())) {
+      out[out.length - 1] = {
+        ...prev,
+        str: `${prev.str.trim()}%`,
+        width: Math.max(prev.width, item.x + item.width - prev.x),
+      };
+      continue;
+    }
+    out.push(item);
+  }
+  return out;
+}
+
+interface ColumnAnchor {
+  left: number;
+  right: number;
+}
+
+function median(values: number[]): number {
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+}
+
+function columnAnchors(rows: DetectionItem[][], count: number): ColumnAnchor[] {
+  return Array.from({ length: count }, (_, col) => ({
+    left: median(rows.map((r) => r[col].x)),
+    right: median(rows.map((r) => r[col].x + r[col].width)),
+  }));
+}
+
+/** Max distance (PDF points) from a column's left or right edge for x placement. */
+const PLACE_TOLERANCE = 30;
+
+/**
+ * Put each item of a short row into the column whose left or right edge
+ * (text or numbers) it lines up with. Null when an item fits no column or
+ * two items would share one.
+ */
+function placeByX(row: DetectionItem[], anchors: ColumnAnchor[]): (DetectionItem | null)[] | null {
+  const placed: (DetectionItem | null)[] = anchors.map(() => null);
+  let lastCol = -1;
+  for (const item of row) {
+    let best = -1;
+    let bestDist = Infinity;
+    for (let col = lastCol + 1; col < anchors.length; col++) {
+      const a = anchors[col];
+      const dist = Math.min(Math.abs(item.x - a.left), Math.abs(item.x + item.width - a.right));
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = col;
+      }
+    }
+    if (best < 0 || bestDist > PLACE_TOLERANCE) return null;
+    placed[best] = item;
+    lastCol = best;
+  }
+  return placed;
 }
 
 // ---------------------------------------------------------------------------
@@ -1049,6 +1144,8 @@ export function reorderColumnarItems<T extends DetectionItem>(
 export function tableToMarkdown(rows: string[][]): string {
   if (rows.length === 0) return "";
 
+  // A `|` inside a cell would end the cell: escape it (GFM).
+  rows = rows.map((row) => row.map((cell) => cell.replace(/\|/g, "\\|")));
   const colCount = rows[0].length;
   const colWidths = new Array(colCount).fill(3);
   for (const row of rows) {

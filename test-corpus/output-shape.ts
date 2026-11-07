@@ -7,6 +7,7 @@
  * - no heading ends with a hyphen (a heading broken at a line-end hyphen,
  *   or a wrapped body line or table row taken for a heading)
  * - the code documents keep at least their known number of code blocks
+ * - no table has a column that is empty in every row
  *
  * Run from vitest with `pnpm test:fidelity` (src/output-shape-shard-*.corpus.test.ts).
  */
@@ -39,6 +40,44 @@ export function countCodeBlocks(markdown: string): number {
   return Math.floor(markdown.split("\n").filter((line) => line.startsWith("```")).length / 2);
 }
 
+const TABLE_DIVIDER = /^\|[\s\-:|]+\|$/;
+
+/** Cells of a table row; `\|` is a pipe inside a cell. */
+function tableCells(line: string): string[] {
+  return line.trim().replace(/^\|/, "").replace(/(?<!\\)\|$/, "").split(/(?<!\\)\|/).map((cell) => cell.trim());
+}
+
+/** Cells of each Markdown table (outside code), divider rows left out. */
+export function markdownTables(markdown: string): string[][][] {
+  const tables: string[][][] = [];
+  let current: string[] = [];
+  const flush = () => {
+    // A table is a run of `|` lines whose second line is the divider.
+    if (current.length >= 2 && TABLE_DIVIDER.test(current[1])) {
+      tables.push(current.filter((line) => !TABLE_DIVIDER.test(line)).map(tableCells));
+    }
+    current = [];
+  };
+  for (const line of proseLines(markdown)) {
+    if (line.startsWith("|")) current.push(line);
+    else flush();
+  }
+  flush();
+  return tables;
+}
+
+/** Count of table columns that are empty in every row. */
+export function emptyTableColumns(markdown: string): number {
+  let empty = 0;
+  for (const rows of markdownTables(markdown)) {
+    const width = Math.max(...rows.map((row) => row.length));
+    for (let col = 0; col < width; col++) {
+      if (rows.every((row) => (row[col] ?? "") === "")) empty++;
+    }
+  }
+  return empty;
+}
+
 /**
  * Code blocks the tracked code documents must keep (counts when code
  * detection moved to real monospace fonts). think-python had 131 before; the
@@ -55,6 +94,8 @@ export function outputShapeProblems(file: string, markdown: string): string[] {
   const problems = headingsEndingInHyphen(markdown).map(
     (line) => `heading ends with a hyphen: ${line.slice(0, 80)}`,
   );
+  const emptyColumns = emptyTableColumns(markdown);
+  if (emptyColumns > 0) problems.push(`${emptyColumns} table columns empty in every row`);
   const minCode = MIN_CODE_BLOCKS[file];
   if (minCode !== undefined && countCodeBlocks(markdown) < minCode) {
     problems.push(`${countCodeBlocks(markdown)} code blocks, expected at least ${minCode}`);

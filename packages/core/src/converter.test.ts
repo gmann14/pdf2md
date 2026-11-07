@@ -386,6 +386,12 @@ describe("parsePdfDate", () => {
 // tableToMarkdown
 // ---------------------------------------------------------------------------
 describe("tableToMarkdown", () => {
+  it("escapes a pipe inside a cell", () => {
+    expect(tableToMarkdown([["a | b", "|"], ["c", "d"]])).toBe(
+      "| a \\| b | \\|  |\n| ------ | --- |\n| c      | d   |",
+    );
+  });
+
   it("formats a simple 2x2 table", () => {
     const result = tableToMarkdown([
       ["Name", "Age"],
@@ -936,6 +942,129 @@ describe("rejoinHyphenatedWords", () => {
 // ---------------------------------------------------------------------------
 // Table detection guards (prose vs. real tables)
 // ---------------------------------------------------------------------------
+describe("detectTable cell cleanup", () => {
+  // Right-aligned numbers ending at x=400 and x=500, `$` drawn on its own.
+  const num = (str: string, end: number, y: number) =>
+    makeItem({ str, x: end - str.length * 6, y });
+
+  it("joins a lone currency symbol to the number after it", () => {
+    const items = [
+      makeItem({ str: "Operating", x: 50, y: 100 }),
+      makeItem({ str: "$", x: 330, y: 100 }),
+      num("46,752", 400, 100),
+      makeItem({ str: "$", x: 430, y: 100 }),
+      num("84,946", 500, 100),
+      makeItem({ str: "Free cash flow", x: 50, y: 120 }),
+      makeItem({ str: "$", x: 330, y: 120 }),
+      num("(11,569)", 400, 120),
+      makeItem({ str: "€", x: 430, y: 120 }),
+      num("36,813", 500, 120),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Operating", "$46,752", "$84,946"],
+      ["Free cash flow", "$(11,569)", "€36,813"],
+    ]);
+  });
+
+  it("leaves a lone $ before text alone", () => {
+    const items = [
+      makeItem({ str: "Operator", x: 50, y: 100 }),
+      makeItem({ str: "$", x: 200, y: 100 }),
+      makeItem({ str: "application", x: 300, y: 100 }),
+      makeItem({ str: "Operator", x: 50, y: 120 }),
+      makeItem({ str: "<$>", x: 200, y: 120 }),
+      makeItem({ str: "fmap", x: 300, y: 120 }),
+    ];
+    expect(detectTable(items)?.[0]).toEqual(["Operator", "$", "application"]);
+  });
+
+  it("joins a lone % to the number before it", () => {
+    const items = [
+      makeItem({ str: "Growth", x: 50, y: 100 }),
+      num("13", 400, 100),
+      makeItem({ str: "%", x: 402, y: 100, width: 6 }),
+      makeItem({ str: "Margin", x: 50, y: 120 }),
+      num("12", 400, 120),
+      makeItem({ str: "%", x: 402, y: 120, width: 6 }),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Growth", "13%"],
+      ["Margin", "12%"],
+    ]);
+  });
+
+  it("places a row with fewer cells by x instead of dropping it", () => {
+    const items = [
+      makeItem({ str: "Operating", x: 50, y: 100 }),
+      num("46,752", 400, 100),
+      num("84,946", 500, 100),
+      makeItem({ str: "Acquisitions", x: 50, y: 120 }),
+      num("(5,839)", 500, 120),
+      makeItem({ str: "Investing", x: 50, y: 140 }),
+      num("(37,601)", 400, 140),
+      num("(49,833)", 500, 140),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Operating", "46,752", "84,946"],
+      ["Acquisitions", "", "(5,839)"],
+      ["Investing", "(37,601)", "(49,833)"],
+    ]);
+  });
+
+  it("drops a short row that lines up with no column", () => {
+    const items = [
+      makeItem({ str: "A", x: 50, y: 100 }),
+      makeItem({ str: "1", x: 200, y: 100 }),
+      makeItem({ str: "2", x: 350, y: 100 }),
+      makeItem({ str: "B", x: 50, y: 120 }),
+      makeItem({ str: "3", x: 200, y: 120 }),
+      makeItem({ str: "4", x: 350, y: 120 }),
+      makeItem({ str: "C", x: 50, y: 140 }),
+      makeItem({ str: "stray", x: 270, y: 140, width: 10 }),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["A", "1", "2"],
+      ["B", "3", "4"],
+    ]);
+  });
+
+  it("keeps a row whose dot leader is a separate item", () => {
+    const items = [
+      makeItem({ str: "Underwriting . . . . . . . .", x: 75, y: 100 }),
+      makeItem({ str: "$ 5,428", x: 341, y: 100, width: 39 }),
+      makeItem({ str: "$", x: 404, y: 100, width: 6 }),
+      makeItem({ str: "(30)", x: 427, y: 100, width: 20 }),
+      makeItem({ str: "Investment income", x: 75, y: 114 }),
+      makeItem({ str: ". . . . . . . .", x: 224, y: 114 }),
+      makeItem({ str: "9,567", x: 353, y: 114, width: 27 }),
+      makeItem({ str: "6,484", x: 416, y: 114, width: 27 }),
+      makeItem({ str: "Railroad . . . . . . . . . .", x: 75, y: 128 }),
+      makeItem({ str: "5,087", x: 353, y: 128, width: 27 }),
+      makeItem({ str: "5,946", x: 416, y: 128, width: 27 }),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Underwriting", "$5,428", "$(30)"],
+      ["Investment income", "9,567", "6,484"],
+      ["Railroad", "5,087", "5,946"],
+    ]);
+  });
+
+  it("drops a column that is empty in every row", () => {
+    const items = [
+      makeItem({ str: "A", x: 50, y: 100 }),
+      makeItem({ str: " ", x: 200, y: 100 }),
+      makeItem({ str: "1", x: 350, y: 100 }),
+      makeItem({ str: "B", x: 50, y: 120 }),
+      makeItem({ str: " ", x: 200, y: 120 }),
+      makeItem({ str: "2", x: 350, y: 120 }),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["A", "1"],
+      ["B", "2"],
+    ]);
+  });
+});
+
 describe("detectTable guards for short vs prose cells", () => {
   it("rejects 2-column table with long prose cells", () => {
     // Simulate two-column layout text that looks like a 2-col table

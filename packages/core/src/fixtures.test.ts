@@ -311,3 +311,45 @@ describe("code blocks from real monospace fonts", () => {
     expect(markdown).toMatch(/```\ndef greet\(name\):\n.*return 'Hello, ' \+ name\n```/);
   });
 });
+
+describe("financial table cells", () => {
+  const labels = [
+    "Net cash provided by (used in) operating activities",
+    "Purchases of property and equipment",
+    "Acquisitions, net of cash acquired",
+    "Free cash flow",
+    "Net cash provided by (used in) investing activities",
+    "Net cash provided by (used in) financing activities",
+  ];
+  const tableBlocks = (markdown: string) =>
+    markdown.split(/\n{2,}/).filter((part) => part.startsWith("|"));
+
+  it("joins a lone $ to the number after it", async () => {
+    const markdown = await convertFixture("financial-table.pdf");
+    expect(markdown).toMatch(/\| Net cash provided by \(used in\) operating activities \| \$46,752 +\| \$84,946 +\|/);
+    expect(markdown).toMatch(/\| Free cash flow +\| \$\(11,569\) +\| \$36,813 +\|/);
+    expect(markdown).not.toMatch(/\|\s*\$\s*\|/);
+  });
+
+  it("keeps every row once, placing short rows by x", async () => {
+    const markdown = await convertFixture("financial-table.pdf");
+    // Prose mentions "Free cash flow" too, so count the label as a row start.
+    for (const label of labels) {
+      expect(markdown.split(`| ${label} `).length - 1, label).toBe(1);
+    }
+    expect(markdown).toMatch(/\| Purchases of property and equipment +\| \(58,321\) +\| \(48,133\) +\|/);
+    expect(markdown).toMatch(/\| Acquisitions, net of cash acquired +\| +\| \(5,839\) +\|/);
+  });
+
+  it("comes out as one table with no empty column", async () => {
+    const markdown = await convertFixture("financial-table.pdf");
+    const tables = tableBlocks(markdown);
+    expect(tables).toHaveLength(1);
+    const rows = tables[0].split("\n").filter((row) => !/^\|[\s\-:|]+\|$/.test(row));
+    expect(rows).toHaveLength(labels.length);
+    const cells = rows.map((row) => row.slice(1, -1).split("|").map((cell) => cell.trim()));
+    for (let col = 0; col < cells[0].length; col++) {
+      expect(cells.some((row) => row[col] !== ""), `column ${col}`).toBe(true);
+    }
+  });
+});
