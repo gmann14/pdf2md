@@ -93,13 +93,29 @@ for the differences.
 
 ```sh
 npx @pdf2md/core document.pdf > output.md
+npx @pdf2md/core --pages 1-5,9 document.pdf          # or --pages -3 for the last 3 pages
+npx @pdf2md/core -o output.md document.pdf
+cat document.pdf | npx @pdf2md/core - > output.md    # read from stdin
+npx @pdf2md/core --out converted/ reports/*.pdf      # several files or a directory
 npx @pdf2md/core --output json --chunk-by heading document.pdf > output.json
 npx @pdf2md/core --output json --chunk-by token --max-tokens 800 document.pdf > chunks.json
 ```
 
-Prints Markdown to stdout by default. JSON mode prints the full conversion
-result, including `markdown`, `structured.sections`, and optional `chunks`.
-Warnings and errors go to stderr.
+| Option | Meaning |
+| --- | --- |
+| `--pages <range>` | Pages to convert: `1-5,9`, or `-3` for the last 3 |
+| `-o, --out <file\|dir>` | Write to a file, or into a directory (required for several inputs) |
+| `--output markdown\|json` | Markdown (default) or the full JSON conversion result |
+| `--chunk-by page\|heading\|token` | Split JSON output into chunks |
+| `--max-tokens <count>` | Token budget for `--chunk-by token` |
+| `--yaml` | Prepend PDF metadata as YAML front matter |
+| `--no-metadata` | Leave metadata out of the JSON result |
+| `--max-size <size>` | Fail on larger files (`15MB`, `500KB` or bytes); no limit by default |
+| `-q, --quiet` | No warnings on stderr (errors still print) |
+| `-v, --version` | Print the version |
+
+Prints to stdout unless `--out` is given. Warnings and errors go to stderr.
+Exit codes: `0` success, `2` partial (converted with warnings), `1` failure.
 
 ## Conversion Pipeline
 

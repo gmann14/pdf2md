@@ -17,6 +17,8 @@ export interface TestPdfOptions {
   pages: TestPdfLine[][];
   /** Extra unreferenced stream bytes, to make a large file. */
   paddingBytes?: number;
+  /** 1-based pages whose page object is not a dictionary: PDF.js fails to read them (a "partial" result). */
+  brokenPages?: number[];
 }
 
 function escapePdfText(text: string): string {
@@ -37,7 +39,7 @@ export function reportPages(pageCount: number): TestPdfLine[][] {
   });
 }
 
-export function makePdf({ pages, paddingBytes = 0 }: TestPdfOptions): Uint8Array {
+export function makePdf({ pages, paddingBytes = 0, brokenPages = [] }: TestPdfOptions): Uint8Array {
   const chunks: Buffer[] = [];
   const offsets: number[] = [];
   let length = 0;
@@ -66,7 +68,9 @@ export function makePdf({ pages, paddingBytes = 0 }: TestPdfOptions): Uint8Array
       .join("\n");
     object(
       pageId,
-      `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents ${pageId + 1} 0 R >>`,
+      brokenPages.includes(i + 1)
+        ? "42"
+        : `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents ${pageId + 1} 0 R >>`,
     );
     object(pageId + 1, `<< /Length ${Buffer.byteLength(content, "latin1")} >>\nstream\n${content}\nendstream`);
   });
