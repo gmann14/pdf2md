@@ -1224,7 +1224,7 @@ describe("detectTable cell cleanup", () => {
     ]);
   });
 
-  it("drops a short row that lines up with no column", () => {
+  it("puts a short row item that lines up with no column in the nearest one", () => {
     const items = [
       makeItem({ str: "A", x: 50, y: 100 }),
       makeItem({ str: "1", x: 200, y: 100 }),
@@ -1238,6 +1238,7 @@ describe("detectTable cell cleanup", () => {
     expect(detectTable(items)).toEqual([
       ["A", "1", "2"],
       ["B", "3", "4"],
+      ["C", "stray", ""],
     ]);
   });
 
@@ -1260,6 +1261,125 @@ describe("detectTable cell cleanup", () => {
       ["Investment income", "9,567", "6,484"],
       ["Railroad", "5,087", "5,946"],
     ]);
+  });
+
+  it("keeps a one-item row: a label in the first column, a heading over the numbers", () => {
+    const items = [
+      makeItem({ str: "Revenue", x: 50, y: 100 }),
+      num("120", 400, 100),
+      num("130", 500, 100),
+      makeItem({ str: "Annual Percentage Change", x: 380, y: 115, width: 100 }),
+      makeItem({ str: "Costs", x: 50, y: 130 }),
+      num("80", 400, 130),
+      num("90", 500, 130),
+      makeItem({ str: "Other items", x: 50, y: 145 }),
+      makeItem({ str: "Net", x: 50, y: 160 }),
+      num("40", 400, 160),
+      num("40", 500, 160),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Revenue", "120", "130"],
+      ["", "Annual Percentage Change", ""],
+      ["Costs", "80", "90"],
+      ["Other items", "", ""],
+      ["Net", "40", "40"],
+    ]);
+  });
+
+  it("joins two items that fall in the same column instead of dropping the row", () => {
+    const items = [
+      makeItem({ str: "Alpha", x: 50, y: 100 }),
+      makeItem({ str: "1", x: 200, y: 100 }),
+      makeItem({ str: "2", x: 350, y: 100 }),
+      makeItem({ str: "Beta", x: 50, y: 120 }),
+      makeItem({ str: "(est.)", x: 80, y: 120 }),
+      makeItem({ str: "3", x: 200, y: 120 }),
+      makeItem({ str: "4", x: 350, y: 120 }),
+      makeItem({ str: "Gamma", x: 50, y: 140 }),
+      makeItem({ str: "5", x: 200, y: 140 }),
+      makeItem({ str: "6", x: 350, y: 140 }),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Alpha", "1", "2"],
+      ["Beta (est.)", "3", "4"],
+      ["Gamma", "5", "6"],
+    ]);
+  });
+
+  it("joins touching runs in a merged cell without a space", () => {
+    const items = [
+      makeItem({ str: "Alpha", x: 50, y: 100 }),
+      makeItem({ str: "1", x: 200, y: 100 }),
+      makeItem({ str: "2", x: 350, y: 100 }),
+      makeItem({ str: "Beta", x: 50, y: 120, width: 24 }),
+      makeItem({ str: ",", x: 74, y: 120, width: 3 }),
+      makeItem({ str: "net", x: 80, y: 120, width: 18 }),
+      makeItem({ str: "3", x: 200, y: 120 }),
+      makeItem({ str: "4", x: 350, y: 120 }),
+      makeItem({ str: "Gamma", x: 50, y: 140 }),
+      makeItem({ str: "5", x: 200, y: 140 }),
+      makeItem({ str: "6", x: 350, y: 140 }),
+    ];
+    expect(detectTable(items)?.[1]).toEqual(["Beta, net", "3", "4"]);
+  });
+
+  it("is not a table when a row has text far outside the columns", () => {
+    // NJ Transit timetable: `12/31 12/31 12/31 Only Only Only` lines up with the
+    // columns, but `Delanco 50` on the same baseline sits far to the right.
+    const row = (y: number, a: string, b: string) => [
+      makeItem({ str: a, x: 383, y, width: 15 }),
+      makeItem({ str: a, x: 458, y, width: 15 }),
+      makeItem({ str: b, x: 810, y, width: 12 }),
+      makeItem({ str: b, x: 842, y, width: 12 }),
+    ];
+    const items = [
+      ...row(100, "6:10", "6:40"),
+      ...row(112, "7:10", "7:40"),
+      ...row(124, "12/31", "Only"),
+      makeItem({ str: "Delanco", x: 1860, y: 124, width: 20 }),
+      makeItem({ str: "50", x: 1891, y: 124, width: 5 }),
+      ...row(136, "8:10", "8:40"),
+    ];
+    expect(detectTable(items)).toBeNull();
+  });
+
+  it("is not a table when a row holds stacked lines over the same x span", () => {
+    // IRS Pub 17: lines of two prose columns grouped into one row.
+    const items = [
+      makeItem({ str: "A", x: 50, y: 100 }),
+      makeItem({ str: "1", x: 200, y: 100 }),
+      makeItem({ str: "B", x: 50, y: 120 }),
+      makeItem({ str: "2", x: 200, y: 120 }),
+      makeItem({ str: "card without the legend", x: 50, y: 140, width: 120 }),
+      makeItem({ str: "on your child's card", x: 50, y: 141, width: 110 }),
+      makeItem({ str: "ATIN issued", x: 200, y: 140, width: 60 }),
+      makeItem({ str: "C", x: 50, y: 160 }),
+      makeItem({ str: "3", x: 200, y: 160 }),
+    ];
+    expect(detectTable(items)).toBeNull();
+  });
+
+  it("never drops text from a table it returns", () => {
+    const items = [
+      makeItem({ str: "A", x: 50, y: 100 }),
+      makeItem({ str: "1", x: 200, y: 100 }),
+      makeItem({ str: "2", x: 350, y: 100 }),
+      makeItem({ str: "lonely", x: 120, y: 110 }),
+      makeItem({ str: "B", x: 50, y: 120 }),
+      makeItem({ str: "3", x: 200, y: 120 }),
+      makeItem({ str: "4", x: 350, y: 120 }),
+      makeItem({ str: "x", x: 50, y: 140 }),
+      makeItem({ str: "y", x: 60, y: 140 }),
+      makeItem({ str: "z", x: 200, y: 140 }),
+      makeItem({ str: "w", x: 210, y: 140 }),
+      makeItem({ str: "C", x: 50, y: 160 }),
+      makeItem({ str: "5", x: 200, y: 160 }),
+      makeItem({ str: "6", x: 350, y: 160 }),
+    ];
+    const cells = detectTable(items);
+    const words = (s: string[]) => s.join(" ").split(/\s+/).filter(Boolean).sort();
+    expect(cells).not.toBeNull();
+    expect(words((cells ?? []).flat())).toEqual(words(items.map((i) => i.str)));
   });
 
   it("drops a column that is empty in every row", () => {

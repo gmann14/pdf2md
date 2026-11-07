@@ -128,15 +128,31 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
   // happen to line up, not a table.
   if (consistentRows.every((r) => BULLET_MARKER.test(r[0].str.trim()))) return null;
 
-  // Rows with fewer cells (a value row without `$`, a subtotal with one number)
-  // are placed by x position instead of being dropped.
+  // Every row keeps its text. A row with fewer or more cells (a value row
+  // without `$`, a subtotal, a label or heading on its own line, a cell drawn
+  // as two items) is placed by x; when its items do not line up with the
+  // columns, each goes into the nearest one. A row with an item that starts
+  // outside the table's columns, or runs past them by half the table's
+  // width (prose, text from elsewhere on the page), or with two items over
+  // the same x span (lines of prose columns grouped as one row), means the
+  // block is not one table, so it stays text.
   const anchors = columnAnchors(consistentRows, bestCount);
+  const tableLeft = Math.min(...consistentRows.map((r) => r[0].x));
+  const tableRight = Math.max(...consistentRows.map((r) => r[bestCount - 1].x + r[bestCount - 1].width));
   const cells: string[][] = [];
   for (const row of rows) {
-    const placed = row.length === bestCount ? row : row.length >= 2 ? placeByX(row, anchors) : null;
-    if (placed) {
-      cells.push(placed.map((item) => (item ? stripCellLeaders(item.str.trim()).replace(CURRENCY_SPACE, "$1") : "")));
+    let placed: (DetectionItem | null)[] = row;
+    if (row.length !== bestCount) {
+      const outside = row.some(
+        (item) =>
+          item.x < tableLeft - PLACE_TOLERANCE ||
+          item.x > tableRight + PLACE_TOLERANCE ||
+          item.x + item.width > tableRight + Math.max(PLACE_TOLERANCE, (tableRight - tableLeft) / 2),
+      );
+      if (outside || hasStackedItems(row)) return null;
+      placed = placeByX(row, anchors) ?? placeNearest(row, anchors);
     }
+    cells.push(placed.map((item) => (item ? stripCellLeaders(item.str.trim()).replace(CURRENCY_SPACE, "$1") : "")));
   }
 
   // Drop columns that are empty in every row (leader-only or symbol columns).
@@ -238,6 +254,60 @@ function placeByX(row: DetectionItem[], anchors: ColumnAnchor[]): (DetectionItem
     lastCol = best;
   }
   return placed;
+}
+
+/**
+ * True when two items of an x-sorted row overlap by more than half the
+ * narrower one: stacked lines, not cells side by side.
+ */
+function hasStackedItems(row: DetectionItem[]): boolean {
+  for (let i = 1; i < row.length; i++) {
+    const prev = row[i - 1];
+    const item = row[i];
+    const overlap = Math.min(prev.x + prev.width, item.x + item.width) - Math.max(prev.x, item.x);
+    if (overlap > Math.min(prev.width, item.width) * 0.5) return true;
+  }
+  return false;
+}
+
+/**
+ * Put each item of a row into the column whose left or right edge is
+ * nearest, with no tolerance. Items that land in the same column are joined
+ * in x order, so no text is lost.
+ */
+function placeNearest(row: DetectionItem[], anchors: ColumnAnchor[]): (DetectionItem | null)[] {
+  const placed: (DetectionItem | null)[] = anchors.map(() => null);
+  for (const item of row) {
+    let best = 0;
+    let bestDist = Infinity;
+    anchors.forEach((a, col) => {
+      const dist = Math.min(Math.abs(item.x - a.left), Math.abs(item.x + item.width - a.right));
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = col;
+      }
+    });
+    const prev = placed[best];
+    placed[best] = prev
+      ? {
+          ...prev,
+          str: prev.str.trim() + (itemsTouch(prev, item) ? "" : " ") + item.str.trim(),
+          width: item.x + item.width - prev.x,
+        }
+      : item;
+  }
+  return placed;
+}
+
+/**
+ * Two runs on a line touch (a word and its `,` drawn separately, a subscript)
+ * when the gap between them is under 0.15 of the font size, or they overlap
+ * by less than 0.25 of it: the same rule the converter uses to join items.
+ */
+function itemsTouch(prev: DetectionItem, next: DetectionItem): boolean {
+  const size = Math.max(Math.min(prev.fontSize, next.fontSize), 1);
+  const gap = next.x - (prev.x + prev.width);
+  return gap > -size * 0.25 && gap < size * 0.15;
 }
 
 // ---------------------------------------------------------------------------
