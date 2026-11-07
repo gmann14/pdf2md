@@ -84,7 +84,10 @@ describe("running headers", () => {
     });
     const result = await convert(makePdf({ pages }));
     for (let n = 1; n <= 8; n++) {
-      expect(result.markdown).toMatch(new RegExp(`${n + 40}\\s+See ${sources[n - 1]} on ${topics[n - 1]} for the full proof\\.`));
+      // The label opens its footnote's paragraph rather than standing alone.
+      expect(result.markdown).toMatch(
+        new RegExp(`(^|\\n)${n + 40} See ${sources[n - 1]} on ${topics[n - 1]} for the full proof\\.`),
+      );
     }
     expect(result.markdown).not.toMatch(/^(3|4|5)$/m);
   });

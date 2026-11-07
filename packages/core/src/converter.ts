@@ -566,6 +566,37 @@ function applyColumnReordering(items: ExtractedItem[]): ExtractedItem[] {
 // Paragraph grouping by vertical proximity
 // ---------------------------------------------------------------------------
 
+/** A footnote or note label: one to three digits, set small and raised. */
+const LINE_LABEL_PATTERN = /^\d{1,3}$/;
+
+/**
+ * True when `block` so far is only a small raised label ("12" before a
+ * footnote) that opens its line, and `next` is the text it labels, starting
+ * right after it on the same line. The font-size change would otherwise
+ * split the label into a paragraph of its own. `before` holds the few items
+ * sorted just before the label: one on the same line to its left makes the
+ * label an exponent or a reference mark inside the line, not a line label.
+ */
+function opensLabelledLine(block: ExtractedItem[], next: ExtractedItem, before: ExtractedItem[]): boolean {
+  if (block.length !== 1) return false;
+  const label = block[0];
+  if (!isLineLabel(label, next)) return false;
+  return !before.some(
+    (item) =>
+      item.page === label.page && item.x < label.x && Math.abs(item.y - next.y) <= next.fontSize * 0.5,
+  );
+}
+
+/** `label` is a small raised number set right before `next` on its line. */
+function isLineLabel(label: ExtractedItem, next: ExtractedItem): boolean {
+  if (!LINE_LABEL_PATTERN.test(label.str.trim()) || label.page !== next.page) return false;
+  // Smaller than 0.85× the text, but not an invisible tagging mark.
+  if (label.fontSize > next.fontSize * 0.85 || label.fontSize < next.fontSize * 0.4) return false;
+  const rise = next.y - label.y;
+  const gap = next.x - (label.x + label.width);
+  return rise >= 0 && rise <= next.fontSize * 0.5 && gap >= -1 && gap <= next.fontSize * 0.5;
+}
+
 function groupIntoBlocks(
   items: ExtractedItem[],
   profile: FontProfile,
@@ -601,7 +632,10 @@ function groupIntoBlocks(
       Math.abs(curr.fontSize - prev.fontSize) > prev.fontSize * 0.15;
     const pageDiff = curr.page !== prev.page;
 
-    if (pageDiff || verticalGap > lineHeight || (sizeChange && verticalGap > prev.height * 0.3)) {
+    if (
+      (pageDiff || verticalGap > lineHeight || (sizeChange && verticalGap > prev.height * 0.3)) &&
+      !opensLabelledLine(currentItems, curr, sorted.slice(Math.max(0, i - 4), i - 1))
+    ) {
       blocks.push(classifyBlock(currentItems, profile, emphasisFonts));
       currentItems = [curr];
     } else {
@@ -781,6 +815,9 @@ function classifyBlock(
   emphasisFonts?: Set<string>,
 ): Block {
   const firstItem = items[0];
+  // A footnote that opens with its raised label is body text, not a
+  // numbered heading.
+  if (items.length > 1 && isLineLabel(items[0], items[1])) return { items, type: "paragraph" };
   const allText = items.map((i) => i.str).join(" ").trim();
   const isShortLine = allText.length < 120;
   const hasNoTrailingPunctuation = !/[.,:;]$/.test(allText);
