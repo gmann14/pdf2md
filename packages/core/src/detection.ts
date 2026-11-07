@@ -124,6 +124,10 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     if (avgCellLen > 40) return null; // prose, not tabular data
   }
 
+  // A first column of bullet markers is a bulleted list whose label and text
+  // happen to line up, not a table.
+  if (consistentRows.every((r) => BULLET_MARKER.test(r[0].str.trim()))) return null;
+
   // Rows with fewer cells (a value row without `$`, a subtotal with one number)
   // are placed by x position instead of being dropped.
   const anchors = columnAnchors(consistentRows, bestCount);
@@ -142,11 +146,17 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
   return cells.map((row) => row.filter((_, col) => keep[col]));
 }
 
+/** A cell that is only a list bullet. */
+const BULLET_MARKER = /^[•‣⁃∙▪▫●○◦■□▶▸►◆◇–—-]$/;
 const CURRENCY_ONLY = /^[$€£¥]$/;
 const STARTS_NUMERIC = /^[(\-−–]?\d|^[(\-−–]?[.,]\d/;
 const ENDS_NUMERIC = /\d\)?$/;
-/** An item that is only a dot leader (`. . . . .`); `...` (not available) is kept. */
-const LEADER_ONLY_ITEM = /^(?:[.·…][ \t]?){4,}$/;
+/**
+ * An item that is only a dot leader: four or more dots (`. . . . .`), or a
+ * short spaced fragment (`. .`) left between a row label and its first
+ * number. `...` (not available) is kept.
+ */
+const LEADER_ONLY_ITEM = /^(?:(?:[.·…][ \t]?){4,}|[.·](?:[ \t]+[.·])+)$/;
 /** `$ 5,428` → `$5,428`, matching the joined `$` `46,752` → `$46,752`. */
 const CURRENCY_SPACE = /^([$€£¥])\s+(?=[(\-−–]?\d)/;
 
@@ -728,6 +738,10 @@ export function cleanText(s: string): string {
     .replace(/\u0096/g, "\u2013") // en dash
     .replace(/\u0097/g, "\u2014") // em dash
     .replace(/\u0085/g, "\u2026") // ellipsis
+    // Bullet glyphs from Symbol and Wingdings fonts come through in the
+    // private-use area; map them so list detection sees a bullet.
+    .replace(/\uf0b7/g, "\u2022") // Symbol bullet
+    .replace(/\uf0a7/g, "\u25aa") // Wingdings small square
     // Strip remaining C0 control chars (except tab, newline, carriage return)
     .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "")
     // Strip remaining C1 control chars (U+0080-U+009F) that weren't mapped above
@@ -794,6 +808,12 @@ export interface ColumnLayout {
   gapStart?: number; // X where the gap begins
   gapEnd?: number; // X where the gap ends
   splitY?: number; // Y where two-column layout begins (undefined = from top)
+  /**
+   * A narrow column of prose beside a wider column of prose (a summary box
+   * beside the main text). Such a page is often the only two-column page of
+   * a document, so the cross-page check keeps it.
+   */
+  sidebar?: boolean;
 }
 
 const COL_BIN_WIDTH = 8; // histogram bin width in PDF points
@@ -915,35 +935,48 @@ export function detectColumnLayout(items: DetectionItem[]): ColumnLayout {
   // (clear left and right clusters with an empty gap), still detect two-column.
   // This catches layouts where each line has items in only one column.
   if (lineCenters.length < lines.length * 0.4) {
-    // Collect item left-edge X positions, sorted
-    const leftEdges = filteredItems
+    // Collect items with width, sorted by left edge
+    const byX = filteredItems
       .filter((it) => it.width > 0)
-      .map((it) => it.x)
-      .sort((a, b) => a - b);
+      .sort((a, b) => a.x - b.x);
+    const leftEdges = byX.map((it) => it.x);
+    // Furthest right edge of body-size text up to each index: the empty strip
+    // between two clusters runs from it to the next left edge. A large title
+    // or logo above the columns may run across the strip, so it is left out.
+    const reachRight: number[] = [];
+    byX.forEach((it, i) => {
+      const prev = i > 0 ? reachRight[i - 1] : -Infinity;
+      const edge = it.fontSize <= bodySize * 1.3 ? it.x + it.width : -Infinity;
+      reachRight.push(Math.max(prev, edge));
+    });
 
     // Find the largest gap between consecutive left-edge positions
-    // in the search window — a large gap indicates two clusters of items
+    // in the search window — a large gap indicates two clusters of items.
+    // A narrow sidebar beside a wide main column (Copyright Office circulars)
+    // has its left-edge midpoint left of the window, so the centre of the
+    // empty strip between the clusters may be in the window instead.
     let bestBimodalGapStart = 0;
     let bestBimodalGapEnd = 0;
     let bestBimodalGapWidth = 0;
+    let bestBimodalCenter = 0;
     for (let i = 0; i + 1 < leftEdges.length; i++) {
       const gW = leftEdges[i + 1] - leftEdges[i];
       const gC = (leftEdges[i] + leftEdges[i + 1]) / 2;
-      if (
-        gW > bestBimodalGapWidth &&
-        gC >= searchMin &&
-        gC <= searchMax
-      ) {
+      const stripCenter =
+        reachRight[i] < leftEdges[i + 1] ? (reachRight[i] + leftEdges[i + 1]) / 2 : NaN;
+      const inWindow = (c: number) => c >= searchMin && c <= searchMax;
+      if (gW > bestBimodalGapWidth && (inWindow(gC) || inWindow(stripCenter))) {
         bestBimodalGapWidth = gW;
         bestBimodalGapStart = leftEdges[i];
         bestBimodalGapEnd = leftEdges[i + 1];
+        bestBimodalCenter = inWindow(gC) ? gC : stripCenter;
       }
     }
 
     // Require a substantial gap between clusters (≥60pt)
     const MIN_BIMODAL_GAP = 60;
     if (bestBimodalGapWidth >= MIN_BIMODAL_GAP) {
-      const bimodalCenter = (bestBimodalGapStart + bestBimodalGapEnd) / 2;
+      const bimodalCenter = bestBimodalCenter;
       let leftN = 0;
       let rightN = 0;
       for (const item of filteredItems) {
@@ -988,6 +1021,7 @@ export function detectColumnLayout(items: DetectionItem[]): ColumnLayout {
             gapEnd: bestBimodalGapEnd,
             gapCenter: bimodalCenter,
             splitY,
+            ...(isSidebarLayout(lines, bimodalCenter, bodySize) ? { sidebar: true } : {}),
           };
         }
       }
@@ -1068,7 +1102,55 @@ export function detectColumnLayout(items: DetectionItem[]): ColumnLayout {
   if (ratio < 0.15 || ratio > 0.85) return { type: "single" };
 
   const splitY = findColumnSplitY(lines, gapCenter);
-  return { type: "two-column", gapStart, gapEnd, gapCenter, splitY };
+  return {
+    type: "two-column",
+    gapStart,
+    gapEnd,
+    gapCenter,
+    splitY,
+    ...(isSidebarLayout(lines, gapCenter, bodySize) ? { sidebar: true } : {}),
+  };
+}
+
+/** A sidebar column is at most this share of the main column's width. */
+const SIDEBAR_WIDTH_SHARE = 0.75;
+/** Share of each column's lines that must be prose for a sidebar layout. */
+const SIDEBAR_PROSE_LINES = 0.6;
+/** A line of a column is prose when its text fills this share of the column. */
+const SIDEBAR_PROSE_FILL = 0.6;
+
+/**
+ * True when the page is a narrow column of prose beside a wider column of
+ * prose. Tables, forms and lists that look two-column have short pieces of
+ * text, so most of their lines do not fill the column.
+ */
+function isSidebarLayout(lines: DetectionItem[][], gapCenter: number, bodySize: number): boolean {
+  const sides = [[], []] as [number, number][][][];
+  for (const line of lines) {
+    const body = line.filter((it) => it.width > 0 && it.fontSize <= bodySize * 1.3);
+    const cells = mergeIntervals(
+      body.map((it): [number, number] => [it.x, it.x + it.width]).sort((a, b) => a[0] - b[0]),
+      TABLE_CELL_GAP,
+    );
+    const left = cells.filter(([, end]) => end <= gapCenter);
+    const right = cells.filter(([start]) => start >= gapCenter);
+    if (left.length > 0) sides[0].push(left);
+    if (right.length > 0) sides[1].push(right);
+  }
+  const spans = sides.map((side) => {
+    const flat = side.flat();
+    if (flat.length === 0) return { min: 0, width: 0 };
+    const min = Math.min(...flat.map(([start]) => start));
+    return { min, width: Math.max(...flat.map(([, end]) => end)) - min };
+  });
+  const [left, right] = spans;
+  if (left.width <= 0 || right.width <= 0 || left.width > right.width * SIDEBAR_WIDTH_SHARE) return false;
+  return sides.every((side, i) => {
+    const prose = side.filter((cells) =>
+      cells.some(([start, end]) => end - start >= spans[i].width * SIDEBAR_PROSE_FILL),
+    ).length;
+    return side.length >= 5 && prose >= side.length * SIDEBAR_PROSE_LINES;
+  });
 }
 
 /**
@@ -1081,8 +1163,10 @@ function findColumnSplitY(
   gapCenter: number,
 ): number | undefined {
   for (const line of lines) {
+    // A right-column line starts right of the gap centre; the gap is often
+    // narrow (MMWR: 25pt), so a fixed margin past the centre misses it.
     const hasLeft = line.some((it) => it.x < gapCenter - 10);
-    const hasRight = line.some((it) => it.x > gapCenter + 10);
+    const hasRight = line.some((it) => it.x >= gapCenter);
     if (hasLeft && hasRight) {
       return Math.min(...line.map((it) => it.y));
     }
@@ -1090,13 +1174,209 @@ function findColumnSplitY(
   return undefined;
 }
 
+/** Min gap (pt) between two pieces of a line for them to count as separate cells. */
+const TABLE_CELL_GAP = 10;
+/** Min consecutive table-like lines that make a full-width table region. */
+const MIN_TABLE_REGION_LINES = 3;
+/** Min lines of column prose on a page before a full-width table is looked for. */
+const MIN_PROSE_LINES = 3;
+/**
+ * A cell at least this share of its column's width is prose: a region with
+ * one is column text beside a table, not a table across both columns.
+ */
+const PROSE_CELL_SHARE = 0.7;
+
+/**
+ * Upright text only. Rotated text (an arXiv stamp in the margin) has a zero
+ * vertical scale, so its font size is 0 and its width runs down the page.
+ */
+function isUpright(item: DetectionItem): boolean {
+  return item.fontSize > 0;
+}
+
+/** How far (share of a column's width) a full-width line reaches into each column. */
+const FULL_WIDTH_REACH = 0.5;
+
+/**
+ * True when an item is a full-width line (a table caption, a page-wide
+ * footnote): it reaches well into both columns. A short label that only
+ * overlaps the gap does not count.
+ */
+function spansColumns(item: DetectionItem, gapCenter: number, columnWidth: number): boolean {
+  const reach = columnWidth * FULL_WIDTH_REACH;
+  return isUpright(item) && item.x <= gapCenter - reach && item.x + item.width >= gapCenter + reach;
+}
+
+/** A line's upright items as cells: runs of items closer than TABLE_CELL_GAP. */
+function lineCells(line: DetectionItem[]): [number, number][] {
+  return mergeIntervals(
+    line
+      .filter(isUpright)
+      .map((it): [number, number] => [it.x, it.x + Math.max(it.width, 1)])
+      .sort((a, b) => a[0] - b[0]),
+    TABLE_CELL_GAP,
+  );
+}
+
+/** A cell as wide as prose in one column (a text line split into several items). */
+function isProseCell([start, end]: [number, number], columnWidth: number): boolean {
+  return end - start >= columnWidth * PROSE_CELL_SHARE;
+}
+
+/**
+ * A table row across both columns: at least four separate cells, with cells
+ * on both sides of the gap and none as wide as prose. Two-column prose has
+ * one wide cell per column.
+ */
+function isTableLikeLine(line: DetectionItem[], gapCenter: number, columnWidth: number): boolean {
+  const cells = lineCells(line);
+  if (cells.length < 4) return false;
+  if (cells.some((cell) => isProseCell(cell, columnWidth))) return false;
+  return cells.some(([, end]) => end <= gapCenter) && cells.some(([start]) => start >= gapCenter);
+}
+
+/**
+ * Mark the lines (by index) of tables that run across both columns: runs of
+ * at least three table-like lines, plus the lines between them (a section
+ * label row such as `U.S. Census Bureau region`). A run with a prose-width
+ * cell is a table in one column beside text, and is not marked.
+ */
+function fullWidthTableLines(
+  lines: DetectionItem[][],
+  gapCenter: number,
+  columnWidth: number,
+): Set<number> {
+  const marked = new Set<number>();
+  // Only a page with column prose has a table that interrupts its columns;
+  // on a page of short entries (a multi-column word list) every line looks
+  // like a table row.
+  const proseLines = lines.filter((line) =>
+    lineCells(line).some((cell) => isProseCell(cell, columnWidth)),
+  ).length;
+  if (proseLines < MIN_PROSE_LINES) return marked;
+  const tableLike = lines.map((line) => isTableLikeLine(line, gapCenter, columnWidth));
+  let i = 0;
+  while (i < lines.length) {
+    if (!tableLike[i]) {
+      i++;
+      continue;
+    }
+    // Extend the run while the next table-like line is close below.
+    let end = i;
+    let count = 1;
+    for (let j = i + 1; j < lines.length; j++) {
+      if (tableLike[j]) {
+        end = j;
+        count++;
+      } else if (j - end > 2) {
+        break;
+      }
+    }
+    const hasProse = lines
+      .slice(i, end + 1)
+      .some((line) => lineCells(line).some((cell) => isProseCell(cell, columnWidth)));
+    if (count >= MIN_TABLE_REGION_LINES && !hasProse) {
+      for (let k = i; k <= end; k++) marked.add(k);
+    }
+    i = end + 1;
+  }
+  return marked;
+}
+
+/** Footnote text is at most this share of the body font size. */
+const FOOTNOTE_SIZE_SHARE = 0.85;
+/** A column's footnotes start at least this many body font sizes below its text. */
+const FOOTNOTE_GAP = 1.5;
+
+/** The font size with the most characters (0 when there are no upright items). */
+function dominantFontSize(items: DetectionItem[]): number {
+  const chars = new Map<number, number>();
+  for (const item of items) {
+    if (!isUpright(item)) continue;
+    const size = Math.round(item.fontSize * 10) / 10;
+    chars.set(size, (chars.get(size) ?? 0) + item.str.length);
+  }
+  let best = 0;
+  let bestChars = 0;
+  for (const [size, count] of chars) {
+    if (count > bestChars) {
+      best = size;
+      bestChars = count;
+    }
+  }
+  return best;
+}
+
+/**
+ * Split a column (sorted top to bottom) into its body and the footnotes at
+ * its foot: the trailing lines set smaller than the body text, below a gap
+ * wider than the body's line spacing.
+ */
+function splitColumnFootnotes<T extends DetectionItem>(
+  column: T[],
+  bodySize: number,
+): { body: T[]; notes: T[] } {
+  if (bodySize <= 0 || column.length === 0) return { body: column, notes: [] };
+  const lines = groupIntoLines(column) as T[][];
+  const small = (line: T[]) =>
+    line.every((it) => !isUpright(it) || it.fontSize <= bodySize * FOOTNOTE_SIZE_SHARE);
+  let start = lines.length;
+  while (start > 0 && small(lines[start - 1])) start--;
+  if (start === 0 || start === lines.length) return { body: column, notes: [] };
+  const lastBody = Math.max(...lines[start - 1].map((it) => it.y));
+  const firstNote = Math.min(...lines[start].map((it) => it.y));
+  if (firstNote - lastBody < bodySize * FOOTNOTE_GAP) return { body: column, notes: [] };
+  const notes = new Set(lines.slice(start).flat());
+  return {
+    body: column.filter((it) => !notes.has(it)),
+    notes: column.filter((it) => notes.has(it)),
+  };
+}
+
+/** A footnote marker: up to three digits, letters or note symbols. */
+const FOOTNOTE_MARKER = /^[0-9a-z*\u2020\u2021\u00A7\u00B6,]{1,3}$/i;
+
+/**
+ * Move each raised footnote marker (a smaller item a few points above the
+ * baseline of the line it ends) from before that line to the end of it. A
+ * sort by y puts the marker first because its baseline is higher.
+ */
+function placeRaisedMarkers<T extends DetectionItem>(column: T[]): T[] {
+  const out = [...column];
+  for (let i = 0; i + 1 < out.length; i++) {
+    const marker = out[i];
+    const next = out[i + 1];
+    const rise = next.y - marker.y;
+    if (
+      !FOOTNOTE_MARKER.test(marker.str.trim()) ||
+      !isUpright(marker) ||
+      marker.fontSize > next.fontSize * FOOTNOTE_SIZE_SHARE ||
+      rise <= 0 ||
+      rise > next.fontSize * 0.5 ||
+      next.x >= marker.x
+    ) {
+      continue;
+    }
+    // The rest of the marker's line: items on the next item's baseline to its left.
+    let end = i + 1;
+    while (end + 1 < out.length && Math.abs(out[end + 1].y - next.y) <= 3 && out[end + 1].x < marker.x) {
+      end++;
+    }
+    out.splice(i, 1);
+    out.splice(end, 0, marker);
+  }
+  return out;
+}
+
 /**
  * Reorder items to fix multi-column reading order.
  *
  * Output order:
  *   [pre-column items, sorted by Y]   ← full-width title/abstract at top
- *   [left column items, sorted by Y]  ← left column top to bottom
- *   [right column items, sorted by Y] ← right column top to bottom
+ *   then, top to bottom, each band below the split point:
+ *   - a column band: left column items, then right column items
+ *   - a full-width band (a line across the gap, such as a table caption, or a
+ *     table whose columns span both text columns): its items by Y
  *
  * Uses a generic parameter so it works with both DetectionItem and
  * any superset (e.g. ExtractedItem in converter.ts).
@@ -1109,32 +1389,53 @@ export function reorderColumnarItems<T extends DetectionItem>(
 
   const { gapCenter, splitY } = layout;
 
-  const preColumn: T[] = [];
-  const leftCol: T[] = [];
-  const rightCol: T[] = [];
-
-  for (const item of items) {
-    // Items above the split point belong to the full-width header section
-    if (splitY !== undefined && item.y < splitY - 2) {
-      preColumn.push(item);
-    } else if (item.x < gapCenter) {
-      leftCol.push(item);
-    } else {
-      rightCol.push(item);
-    }
-  }
-
   const sortByY = (a: T, b: T): number => {
     const dy = a.y - b.y;
     if (Math.abs(dy) > 3) return dy;
     return a.x - b.x;
   };
 
+  const preColumn: T[] = [];
+  const body: T[] = [];
+  for (const item of items) {
+    // Items above the split point belong to the full-width header section
+    if (splitY !== undefined && item.y < splitY - 2) preColumn.push(item);
+    else body.push(item);
+  }
   preColumn.sort(sortByY);
-  leftCol.sort(sortByY);
-  rightCol.sort(sortByY);
 
-  return [...preColumn, ...leftCol, ...rightCol];
+  const lines = groupIntoLines(body) as T[][];
+  let leftMin = Infinity;
+  for (const item of body) if (isUpright(item)) leftMin = Math.min(leftMin, item.x);
+  const columnWidth = Math.max(gapCenter - leftMin, 1);
+  const tableLines = fullWidthTableLines(lines, gapCenter, columnWidth);
+
+  const out: T[] = [...preColumn];
+  let leftCol: T[] = [];
+  let rightCol: T[] = [];
+  const flushColumns = () => {
+    // Footnotes at the foot of a column come after both columns, so a
+    // sentence that runs from the left column into the right one stays whole.
+    const bodySize = dominantFontSize([...leftCol, ...rightCol]);
+    const left = splitColumnFootnotes(placeRaisedMarkers(leftCol.sort(sortByY)), bodySize);
+    const right = splitColumnFootnotes(placeRaisedMarkers(rightCol.sort(sortByY)), bodySize);
+    out.push(...left.body, ...right.body, ...left.notes, ...right.notes);
+    leftCol = [];
+    rightCol = [];
+  };
+  lines.forEach((line, index) => {
+    if (tableLines.has(index) || line.some((it) => spansColumns(it, gapCenter, columnWidth))) {
+      flushColumns();
+      out.push(...[...line].sort(sortByY));
+      return;
+    }
+    for (const item of line) {
+      if (item.x < gapCenter) leftCol.push(item);
+      else rightCol.push(item);
+    }
+  });
+  flushColumns();
+  return out;
 }
 
 // ---------------------------------------------------------------------------

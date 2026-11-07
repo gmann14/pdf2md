@@ -129,6 +129,11 @@ describe("cleanText", () => {
   it("collapses multiple spaces", () => {
     expect(cleanText("too   many    spaces")).toBe("too many spaces");
   });
+
+  it("maps Symbol and Wingdings private-use bullet glyphs to Unicode bullets", () => {
+    expect(cleanText("")).toBe("•");
+    expect(cleanText("")).toBe("▪");
+  });
 });
 
 // ---------------------------------------------------------------------------
@@ -212,6 +217,25 @@ describe("detectTable", () => {
       makeItem({ str: "is not the end goal of DRL. One of the driving forces behind DRL is the", x: 310, y: 120 }),
       makeItem({ str: "such as object detection, speech recognition, and language translation.", x: 50, y: 140 }),
       makeItem({ str: "vision of creating systems that are capable of learning how to adapt.", x: 310, y: 140 }),
+    ];
+    expect(detectTable(items)).toBeNull();
+  });
+
+  it("rejects a bulleted list whose bullets, labels and text line up like columns", () => {
+    // NIST CSF 1.1 p12: a bullet glyph, a short label and the rest of the line,
+    // with wrapped lines and an intro line that a table would drop.
+    const items = [
+      makeItem({ str: "The remainder of this document contains the following sections:", x: 72, y: 155 }),
+      makeItem({ str: "•", x: 90, y: 170, width: 5.5 }),
+      makeItem({ str: "Section 2", x: 108, y: 170, width: 45 }),
+      makeItem({ str: "describes the Framework components: the Framework Core, the", x: 156, y: 170 }),
+      makeItem({ str: "Profiles.", x: 108, y: 184 }),
+      makeItem({ str: "•", x: 90, y: 198, width: 5.5 }),
+      makeItem({ str: "Section 3", x: 108, y: 198, width: 45 }),
+      makeItem({ str: "presents examples of how the Framework can be used.", x: 156, y: 198 }),
+      makeItem({ str: "•", x: 90, y: 212, width: 5.5 }),
+      makeItem({ str: "Appendix B", x: 108, y: 212, width: 58 }),
+      makeItem({ str: "contains a glossary of selected terms.", x: 169, y: 212 }),
     ];
     expect(detectTable(items)).toBeNull();
   });
@@ -539,6 +563,171 @@ describe("reorderColumnarItems", () => {
     const result = reorderColumnarItems(items, layout);
     // Pre-column item (y=50) should be first
     expect(result[0].y).toBe(50);
+  });
+
+  it("keeps a table that spans both columns below the column text together", () => {
+    // CDC MMWR p3: two text columns, then a full-width caption and a
+    // five-column table whose columns straddle the column gap.
+    const prose = (x: number, y: number, str: string) => makeItem({ str, x, y, width: 257 });
+    const cell = (x: number, y: number, str: string) => makeItem({ str, x, y, width: 46 });
+    const items = [
+      prose(36, 80, "left column line one"),
+      prose(318, 80, "right column line one"),
+      prose(36, 93, "left column line two"),
+      prose(318, 93, "right column line two"),
+      prose(36, 106, "left column line three"),
+      makeItem({ str: "TABLE 1. Number of prescriptions", x: 36, y: 440, width: 540 }),
+      ...[497, 506, 516].flatMap((y, row) => [
+        cell(36, y, `Drug ${row}`),
+        cell(230, y, `${row},000 (1.0)`),
+        cell(357, y, `${row}.5`),
+        cell(435, y, `${row}00.00`),
+        cell(530, y, `${row}.25`),
+      ]),
+    ];
+    const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order.slice(0, 5)).toEqual([
+      "left column line one",
+      "left column line two",
+      "left column line three",
+      "right column line one",
+      "right column line two",
+    ]);
+    expect(order.slice(5)).toEqual([
+      "TABLE 1. Number of prescriptions",
+      "Drug 0", "0,000 (1.0)", "0.5", "000.00", "0.25",
+      "Drug 1", "1,000 (1.0)", "1.5", "100.00", "1.25",
+      "Drug 2", "2,000 (1.0)", "2.5", "200.00", "2.25",
+    ]);
+  });
+
+  it("reads a multi-column word list column by column", () => {
+    // GPO Style Manual compound-word lists: short entries in four columns and
+    // no prose, so no line is taken as a row of a full-width table.
+    const items = [36, 46, 56].flatMap((y, row) => [
+      makeItem({ str: `a${row}`, x: 36, y, width: 40 }),
+      makeItem({ str: `b${row}`, x: 170, y, width: 40 }),
+      makeItem({ str: `c${row}`, x: 330, y, width: 40 }),
+      makeItem({ str: `d${row}`, x: 460, y, width: 40 }),
+    ]);
+    const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual(["a0", "b0", "a1", "b1", "a2", "b2", "c0", "d0", "c1", "d1", "c2", "d2"]);
+  });
+
+  it("ignores rotated margin text when looking for full-width lines", () => {
+    // An arXiv stamp runs up the margin: font size 0 (zero vertical scale)
+    // and a width that would otherwise reach across both columns.
+    const items = [
+      makeItem({ str: "left one", x: 50, y: 100, width: 240 }),
+      makeItem({ str: "right one", x: 318, y: 100, width: 240 }),
+      makeItem({ str: "arXiv:1512.03385v1", x: 20, y: 110, width: 350, fontSize: 0 }),
+      makeItem({ str: "left two", x: 50, y: 112, width: 240 }),
+      makeItem({ str: "right two", x: 318, y: 112, width: 240 }),
+    ];
+    const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual(["left one", "arXiv:1512.03385v1", "left two", "right one", "right two"]);
+  });
+
+  it("keeps a table inside one column beside prose in that column's order", () => {
+    // Four cells per line with the right column's prose beside them: the
+    // prose-width item marks it as column text, not a full-width table.
+    const items = [36, 50, 64].flatMap((y, row) => [
+      makeItem({ str: `a${row}`, x: 36, y, width: 30 }),
+      makeItem({ str: `b${row}`, x: 120, y, width: 30 }),
+      makeItem({ str: `c${row}`, x: 220, y, width: 30 }),
+      makeItem({ str: `right prose ${row}`, x: 318, y, width: 257 }),
+    ]);
+    const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual([
+      "a0", "b0", "c0", "a1", "b1", "c1", "a2", "b2", "c2",
+      "right prose 0", "right prose 1", "right prose 2",
+    ]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Two-column reading order: split point, column footnotes, sidebars
+// ---------------------------------------------------------------------------
+describe("two-column reading order", () => {
+  const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+
+  it("starts the columns at the first line with text in both columns when the gap is narrow", () => {
+    // CDC MMWR p3: a 25pt gutter, and a table below whose wider gaps pull the
+    // gap centre right, close to where the right column starts (318.6).
+    const items = [
+      makeItem({ str: "Morbidity and Mortality Weekly Report", x: 233, y: 43, width: 145 }),
+      ...Array.from({ length: 10 }, (_, i) => [
+        makeItem({ str: `left ${i}`, x: 36, y: 80 + i * 13, width: 257 }),
+        makeItem({ str: `right ${i}`, x: 318.6, y: 80 + i * 13, width: 257 }),
+      ]).flat(),
+      ...Array.from({ length: 6 }, (_, i) => [
+        makeItem({ str: `drug ${i}`, x: 36, y: 300 + i * 10, width: 45 }),
+        makeItem({ str: "1,000 (1.0)", x: 230, y: 300 + i * 10, width: 52 }),
+        makeItem({ str: "4.5", x: 357, y: 300 + i * 10, width: 14 }),
+        makeItem({ str: "100.00", x: 435, y: 300 + i * 10, width: 46 }),
+        makeItem({ str: "2.25", x: 530, y: 300 + i * 10, width: 18 }),
+      ]).flat(),
+    ];
+    const result = detectColumnLayout(items);
+    expect(result.type).toBe("two-column");
+    expect(result.splitY).toBe(80);
+  });
+
+  it("puts footnotes at the foot of a column after both columns", () => {
+    // CDC MMWR p4: a sentence runs from the bottom of the left column to the
+    // top of the right one, with a smaller-type footnote under the left column.
+    const body = (str: string, x: number, y: number) =>
+      makeItem({ str, x, y, width: 257, fontSize: 11 });
+    const items = [
+      body("left one", 36, 100),
+      body("left two might see patients", 36, 113),
+      makeItem({ str: "*** https://www.cdc.gov/fungal", x: 37, y: 135, width: 250, fontSize: 8.5, height: 8.5 }),
+      body("with superficial fungal infections", 319, 100),
+      body("right two", 319, 113),
+    ];
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual([
+      "left one",
+      "left two might see patients",
+      "with superficial fungal infections",
+      "right two",
+      "*** https://www.cdc.gov/fungal",
+    ]);
+  });
+
+  it("keeps a raised footnote marker at the end of its line", () => {
+    // Copyright Office Circular 1: a superscript `1` sits 4pt above its line.
+    const items = [
+      makeItem({ str: "automatically", x: 340, y: 364, width: 100, fontSize: 10.5 }),
+      makeItem({ str: "from the moment it is fixed.", x: 340, y: 377, width: 170, fontSize: 10.5 }),
+      makeItem({ str: "1", x: 514, y: 373, width: 3, fontSize: 7.5 }),
+      makeItem({ str: "sidebar", x: 60, y: 364, width: 150, fontSize: 11 }),
+    ];
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual(["sidebar", "automatically", "from the moment it is fixed.", "1"]);
+  });
+
+  it("finds a narrow sidebar beside a wide main column", () => {
+    // Circular 1 p1: an 11pt summary box (x 57-246) beside the 10.5pt main
+    // text (x 267-532), under a 36pt title that runs across both.
+    const items = [
+      makeItem({ str: "Copyright Basics", x: 61, y: 192, width: 275, fontSize: 36, height: 36 }),
+      ...Array.from({ length: 12 }, (_, i) =>
+        makeItem({ str: `sidebar line ${i}`, x: 60, y: 245 + i * 18, width: 160 + (i % 3) * 20, fontSize: 11 }),
+      ),
+      ...Array.from({ length: 30 }, (_, i) =>
+        makeItem({ str: `main column line ${i}`, x: 270, y: 245 + i * 13, width: 262, fontSize: 10.5 }),
+      ),
+    ];
+    const result = detectColumnLayout(items);
+    expect(result.type).toBe("two-column");
+    expect(result.sidebar).toBe(true);
+    expect(result.gapCenter).toBeGreaterThan(240);
+    expect(result.gapCenter).toBeLessThan(270);
   });
 });
 
@@ -963,6 +1152,30 @@ describe("detectTable cell cleanup", () => {
     expect(detectTable(items)).toEqual([
       ["Operating", "$46,752", "$84,946"],
       ["Free cash flow", "$(11,569)", "€36,813"],
+    ]);
+  });
+
+  it("keeps a row whose label is followed by a short spaced leader fragment", () => {
+    // Census P60 Table B-5: `White, not Hispanic` `. .` `3.7` `0.2` ...
+    const items = [
+      makeItem({ str: "White", x: 53, y: 100, width: 22 }),
+      num("4.5", 180, 100),
+      num("0.2", 220, 100),
+      num("5.3", 260, 100),
+      makeItem({ str: "White, not Hispanic", x: 61, y: 110, width: 77 }),
+      makeItem({ str: ". .", x: 140, y: 110, width: 6 }),
+      num("3.7", 180, 110),
+      num("0.2", 220, 110),
+      num("4.1", 260, 110),
+      makeItem({ str: "Black", x: 53, y: 120, width: 22 }),
+      num("8.8", 180, 120),
+      num("0.7", 220, 120),
+      num("9.1", 260, 120),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["White", "4.5", "0.2", "5.3"],
+      ["White, not Hispanic", "3.7", "0.2", "4.1"],
+      ["Black", "8.8", "0.7", "9.1"],
     ]);
   });
 

@@ -183,6 +183,16 @@ describe("convert with a page selection", () => {
     expect(tracked.markdown).not.toContain("Example Annual Report");
   });
 
+  it("keeps body text that repeats near the top of nearby pages at different heights", async () => {
+    // Clause references such as "GSAR 552.270-30" read the same once digits
+    // are folded and often open a page, but at a different height each time.
+    const bytes = await realPdf("legal-contract-clauses.pdf");
+    for (const [page, ref] of [[2, "GSAR 552.270-30"], [3, "GSAR 552.204-9"], [6, "GSAR 552.270-10"]] as const) {
+      const one = await convert(bytes, { pages: [page] });
+      expect(one.markdown).toContain(ref);
+    }
+  });
+
   it("single-page output matches that page of a full conversion", async () => {
     const bytes = await realPdf("whitepaper-bitcoin.pdf");
     const full = await convert(bytes, { perPage: true });
