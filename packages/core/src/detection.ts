@@ -132,7 +132,7 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
 /** A dot leader: 4 or more dots (or middle dots / ellipses), optionally spaced. */
 const LEADER_RE = /(?:[.·…][ \t]?){4,}/g;
 /** A long dot leader, too long to be an ellipsis in prose. */
-const LONG_LEADER_RE = /[ \t]*(?:[.·…][ \t]?){8,}/g;
+const LONG_LEADER_RE = /(?:[.·…][ \t]?){8,}/g;
 /** The page reference right after a leader: `17`, `A-3`, `B12` or a roman numeral `xiv`. */
 const TOC_PAGE_RE = /^[ \t]*((?:[A-Z]-?)?\d{1,4}|[ivxlcdm]{1,7})(?=\s|$)/;
 /** A TOC entry without a leader: a title, a space, and a page number at the end. */
@@ -256,10 +256,13 @@ export function tocToMarkdown(text: string): string {
  */
 export function collapseLeaders(text: string): string {
   if (!/(?:[.·…][ \t]?){8}/.test(text)) return text;
-  return text.replace(LONG_LEADER_RE, (run, offset: number, whole: string) => {
-    const atEnd = offset + run.length >= whole.length;
-    return atEnd ? " …" : " … ";
-  }).replace(/ {2,}/g, " ");
+  // No whitespace in the leader pattern itself: a leading `[ \t]*` would
+  // rescan every long whitespace run that is not followed by a leader
+  // (quadratic). Whitespace around the ellipsis is collapsed afterwards.
+  return text
+    .replace(LONG_LEADER_RE, " … ")
+    .replace(/[ \t]{2,}/g, " ")
+    .replace(/ … $/, " …");
 }
 
 /** Remove dot leaders at the start or end of a table cell; a cell of only a leader becomes empty. */

@@ -1013,6 +1013,8 @@ describe("table-of-contents leaders", () => {
   it("collapses only long leaders outside a TOC", () => {
     expect(collapseLeaders("Enter the total rent paid . . . . . . . . . . . 6a.")).toBe("Enter the total rent paid … 6a.");
     expect(collapseLeaders("and so . . . . on")).toBe("and so . . . . on");
+    expect(collapseLeaders("Line 1   . . . . . . . . . .   2.")).toBe("Line 1 … 2.");
+    expect(collapseLeaders("Replace . . . . . . . . ")).toBe("Replace …");
   });
 
   it("drops a table column that held only dot leaders", () => {
@@ -1041,6 +1043,13 @@ describe("table-of-contents leaders", () => {
     expect(parseTocEntries(text)).toBeNull();
     collapseLeaders(text);
     stripCellLeaders(text);
+    // Long whitespace runs with no leader after them, and leaders between them.
+    for (const line of [" ".repeat(100_000) + "text", (" ".repeat(20_000) + ". . . . . . . . . x").repeat(5)]) {
+      collapseLeaders(line + " . . . . . . . . . end");
+      stripCellLeaders(line);
+      parseTocEntries(line);
+      tocToMarkdown(line);
+    }
     // Many short leaders with no page numbers.
     expect(parseTocEntries("word . . . . ".repeat(50_000) + "end")).toBeNull();
     expect(performance.now() - start).toBeLessThan(1000);
