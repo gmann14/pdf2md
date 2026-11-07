@@ -225,12 +225,74 @@ async function inlineEmphasis() {
   return doc.save({ useObjectStreams: false });
 }
 
+/**
+ * A table of contents: a group of tightly spaced entries (one text block), a
+ * group of widely spaced entries (one block each) with a chapter line that has
+ * no leader, an entry wrapped over two lines, an unspaced leader with a roman
+ * page number, and a prose ellipsis that must stay. Page 2 has a large bold
+ * heading broken over two lines at a hyphen.
+ */
+async function tocLeaders() {
+  const doc = await PDFDocument.create();
+  fixDates(doc);
+  const regular = await doc.embedFont(StandardFonts.Helvetica);
+  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+  const size = 11;
+  const page = doc.addPage([612, 792]);
+
+  const entry = (y, title, pageRef, { x = 72, unspaced = false } = {}) => {
+    page.drawText(title, { x, y, size, font: regular });
+    let lx = x + regular.widthOfTextAtSize(title, size) + 6;
+    const dot = unspaced ? "." : ". ";
+    const dotW = regular.widthOfTextAtSize(dot, size);
+    let leader = "";
+    while (lx + dotW < 490) {
+      leader += dot;
+      lx += dotW;
+    }
+    page.drawText(leader.trimEnd(), { x: x + regular.widthOfTextAtSize(title, size) + 6, y, size, font: regular });
+    page.drawText(pageRef, { x: 500, y, size, font: regular });
+  };
+
+  page.drawText("Contents", { x: 72, y: 740, size: 18, font: bold });
+  entry(712, "Preface", "v", { unspaced: true });
+  entry(698, "1 Introduction", "1");
+  entry(684, "1.1 Background", "3");
+  entry(670, "1.2 Scope of this report", "4");
+
+  page.drawText("2 Methods", { x: 72, y: 640, size, font: regular });
+  page.drawText("7", { x: 500, y: 640, size, font: regular });
+  entry(618, "2.1 Data collection", "8");
+  page.drawText("2.2 Measuring the effect of seasonal adjustment on", { x: 72, y: 596, size, font: regular });
+  entry(582, "regional price indexes", "9", { x: 90 });
+  entry(560, "2.3 Limitations", "12");
+
+  page.drawText("The survey ran for three months . . . . and then it stopped for the winter.", {
+    x: 72, y: 520, size, font: regular,
+  });
+  page.drawText("A closing paragraph in the regular body font finishes the page.", {
+    x: 72, y: 506, size, font: regular,
+  });
+
+  const page2 = doc.addPage([612, 792]);
+  page2.drawText("Results for Contrastive Sen-", { x: 72, y: 700, size: 18, font: bold });
+  page2.drawText("tence Embeddings", { x: 72, y: 670, size: 18, font: bold });
+  page2.drawText("The body text of the results section starts here and runs on for a while.", {
+    x: 72, y: 640, size, font: regular,
+  });
+  page2.drawText("A second body line keeps the paragraph long enough to be a paragraph.", {
+    x: 72, y: 626, size, font: regular,
+  });
+  return doc.save({ useObjectStreams: false });
+}
+
 mkdirSync(OUT_DIR, { recursive: true });
 const fixtures = {
   "links-same-position.pdf": linksSamePosition,
   "header-footer-numbers.pdf": headerFooterNumbers,
   "touching-runs.pdf": touchingRuns,
   "inline-emphasis.pdf": inlineEmphasis,
+  "toc-leaders.pdf": tocLeaders,
 };
 for (const [name, build] of Object.entries(fixtures)) {
   writeFileSync(new URL(name, OUT_DIR), await build());

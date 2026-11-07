@@ -261,3 +261,37 @@ describe("autoLinkUrls", () => {
     expect(performance.now() - start).toBeLessThan(1000);
   });
 });
+
+describe("table-of-contents and dot-leader lines", () => {
+  it("turns TOC lines into list items with page numbers and no leaders", async () => {
+    const markdown = await convertFixture("toc-leaders.pdf");
+    const lines = markdown.split("\n");
+
+    for (const item of [
+      "- Preface — v",
+      "- 1 Introduction — 1",
+      "- 1.1 Background — 3",
+      "- 1.2 Scope of this report — 4",
+      "- 2 Methods — 7",
+      "- 2.1 Data collection — 8",
+      "- 2.2 Measuring the effect of seasonal adjustment on regional price indexes — 9",
+      "- 2.3 Limitations — 12",
+    ]) {
+      expect(lines).toContain(item);
+    }
+    expect(lines.filter((line) => /(\. ){5,}/.test(line) || /\.{5,}/.test(line))).toEqual([]);
+    // No TOC line is promoted to a heading.
+    expect(lines.filter((line) => /^#+ .*\d$/.test(line))).toEqual([]);
+  });
+
+  it("keeps a prose ellipsis", async () => {
+    const markdown = await convertFixture("toc-leaders.pdf");
+    expect(markdown).toContain("three months . . . . and then it stopped");
+  });
+
+  it("joins a heading broken at a line-end hyphen", async () => {
+    const markdown = await convertFixture("toc-leaders.pdf");
+    expect(markdown).toMatch(/^#+ Results for Contrastive Sentence Embeddings$/m);
+    expect(markdown).not.toMatch(/^#+ .*-$/m);
+  });
+});

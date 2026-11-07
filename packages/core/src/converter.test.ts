@@ -10,6 +10,10 @@ import {
   tableToMarkdown,
   detectColumnLayout,
   reorderColumnarItems,
+  parseTocEntries,
+  tocToMarkdown,
+  collapseLeaders,
+  stripCellLeaders,
 } from "./detection.js";
 import { rejoinHyphenatedWords } from "./detection.js";
 
@@ -972,5 +976,73 @@ describe("heading classification edge cases", () => {
     // Should not match 4+ digit numbers or missing space
     expect(bracketPattern.test("[1234] Too many digits")).toBe(false);
     expect(bracketPattern.test("[1]NoSpace")).toBe(false);
+  });
+});
+
+describe("table-of-contents leaders", () => {
+  it("splits a block of several TOC entries", () => {
+    expect(parseTocEntries("Contents Introduction . . . . . 1 Highlights . . . . . . 1 Background .......... ix")).toEqual({
+      entries: [
+        { title: "Contents Introduction", page: "1" },
+        { title: "Highlights", page: "1" },
+        { title: "Background", page: "ix" },
+      ],
+      tail: "",
+    });
+  });
+
+  it("splits a chapter line without a leader from the entry it runs into", () => {
+    expect(tocToMarkdown("1 Linear regression 8 1.1 LMS algorithm . . . . . . 9 1.2 The normal equations . . . . 13")).toBe(
+      "- 1 Linear regression — 8\n- 1.1 LMS algorithm — 9\n- 1.2 The normal equations — 13",
+    );
+  });
+
+  it("does not treat prose with an ellipsis as a TOC", () => {
+    expect(parseTocEntries("The statements . . . . present fairly the position of the Company in 2023 and 2022.")).toBeNull();
+    expect(parseTocEntries("We waited . . . . 3 days passed before anyone noticed that the server was down again.")).toBeNull();
+    expect(parseTocEntries("Insurance-underwriting . . . . . . . . $ 5,428 $ (30)")).toBeNull();
+  });
+
+  it("renders entries as list items and escapes a leading ordered-list number", () => {
+    expect(tocToMarkdown("1. Advice to Authors ........ 1 2. General Instructions ........ 7")).toBe(
+      "- 1\\. Advice to Authors — 1\n- 2\\. General Instructions — 7",
+    );
+    expect(tocToMarkdown("1 Introduction 17")).toBe("- 1 Introduction — 17");
+  });
+
+  it("collapses only long leaders outside a TOC", () => {
+    expect(collapseLeaders("Enter the total rent paid . . . . . . . . . . . 6a.")).toBe("Enter the total rent paid … 6a.");
+    expect(collapseLeaders("and so . . . . on")).toBe("and so . . . . on");
+  });
+
+  it("drops a table column that held only dot leaders", () => {
+    const row = (y: number, label: string, page: string) => [
+      makeItem({ str: label, x: 72, y }),
+      makeItem({ str: ". . . . . . . . . .", x: 200, y }),
+      makeItem({ str: page, x: 500, y }),
+    ];
+    const items = [...row(100, "Introduction", "1"), ...row(115, "Highlights", "2"), ...row(130, "Background", "4")];
+    expect(detectTable(items)).toEqual([
+      ["Introduction", "1"],
+      ["Highlights", "2"],
+      ["Background", "4"],
+    ]);
+  });
+
+  it("strips leaders from table cells", () => {
+    expect(stripCellLeaders("1965 . . . . . . . . . . .")).toBe("1965");
+    expect(stripCellLeaders(". . . . . . . .")).toBe("");
+    expect(stripCellLeaders("3.5")).toBe("3.5");
+  });
+
+  it("parses a long leader run in linear time", () => {
+    const text = "Title " + ". ".repeat(100_000) + "zzz";
+    const start = performance.now();
+    expect(parseTocEntries(text)).toBeNull();
+    collapseLeaders(text);
+    stripCellLeaders(text);
+    // Many short leaders with no page numbers.
+    expect(parseTocEntries("word . . . . ".repeat(50_000) + "end")).toBeNull();
+    expect(performance.now() - start).toBeLessThan(1000);
   });
 });

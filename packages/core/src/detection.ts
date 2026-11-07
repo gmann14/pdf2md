@@ -116,7 +116,183 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     if (avgCellLen > 40) return null; // prose, not tabular data
   }
 
-  return consistentRows.map((row) => row.map((item) => item.str.trim()));
+  const cells = consistentRows.map((row) => row.map((item) => stripCellLeaders(item.str.trim())));
+  // A column that held only dot leaders (`Highlights | . . . . | 1`) is now empty: drop it.
+  const leaderOnly = (col: number) =>
+    cells.every((row) => row[col] === "") &&
+    consistentRows.some((row) => /[.·…]{2}|\. \./.test(row[col].str));
+  const keep = cells[0].map((_, col) => !leaderOnly(col));
+  return keep.every(Boolean) ? cells : cells.map((row) => row.filter((_, col) => keep[col]));
+}
+
+// ---------------------------------------------------------------------------
+// Table-of-contents and dot-leader lines
+// ---------------------------------------------------------------------------
+
+/** A dot leader: 4 or more dots (or middle dots / ellipses), optionally spaced. */
+const LEADER_RE = /(?:[.·…][ \t]?){4,}/g;
+/** A long dot leader, too long to be an ellipsis in prose. */
+const LONG_LEADER_RE = /[ \t]*(?:[.·…][ \t]?){8,}/g;
+/** The page reference right after a leader: `17`, `A-3`, `B12` or a roman numeral `xiv`. */
+const TOC_PAGE_RE = /^[ \t]*((?:[A-Z]-?)?\d{1,4}|[ivxlcdm]{1,7})(?=\s|$)/;
+/** A TOC entry without a leader: a title, a space, and a page number at the end. */
+const TOC_TRAILING_PAGE_RE = /^(\S.*\S)\s+(\d{1,3}|[ivxlc]{1,6})$/;
+
+export interface TocEntry {
+  title: string;
+  /** Page reference, or "" for a long leader that ends without one. */
+  page: string;
+}
+
+export interface TocParse {
+  entries: TocEntry[];
+  /** Text after the last entry. */
+  tail: string;
+}
+
+function countLeaderUnits(leader: string): number {
+  return (leader.match(/[.·…]/g) ?? []).length;
+}
+
+/**
+ * Split text into table-of-contents entries: a title, a dot leader, and a page
+ * reference (`1.1 Dense Retrieval . . . . 17`). One block of text may hold
+ * several entries (TOC lines grouped into one paragraph, or two TOC columns
+ * read across). A long leader with no page after it also ends an entry.
+ * Returns null unless at least one entry has a page and the entries cover
+ * nearly all of the text, so prose with an ellipsis is never split.
+ */
+export function parseTocEntries(text: string): TocParse | null {
+  if (!/(?:[.·…][ \t]?){4}/.test(text)) return null;
+  // alnumBefore[i]: letters and digits in text[0, i), so "does this title
+  // have a word" is O(1) however many leaders are skipped.
+  const alnumBefore = new Uint32Array(text.length + 1);
+  for (let i = 0; i < text.length; i++) {
+    alnumBefore[i + 1] = alnumBefore[i] + (/[\p{L}\p{N}]/u.test(text[i]) ? 1 : 0);
+  }
+  const entries: TocEntry[] = [];
+  let start = 0;
+  let paged = 0;
+  for (const m of text.matchAll(LEADER_RE)) {
+    const index = m.index ?? 0;
+    if (index < start) continue;
+    const leaderEnd = index + m[0].length;
+    if (alnumBefore[index] === alnumBefore[start]) continue;
+    const title = text.slice(start, index).trim();
+    // Bounded lookahead so a long text never makes this quadratic.
+    const page = text.slice(leaderEnd, leaderEnd + 16).match(TOC_PAGE_RE);
+    if (page) {
+      entries.push({ title, page: page[1] });
+      paged++;
+      start = leaderEnd + page[0].length;
+    } else if (countLeaderUnits(m[0]) >= 8) {
+      entries.push({ title, page: "" });
+      start = leaderEnd;
+    }
+  }
+  if (paged === 0) return null;
+  const tail = text.slice(start).trim();
+  if (tail.length > Math.max(30, text.length * 0.25)) return null;
+  const avgTitle = entries.reduce((sum, e) => sum + e.title.length, 0) / entries.length;
+  if (avgTitle > 150) return null;
+  return { entries: entries.flatMap(splitLeaderlessEntry), tail };
+}
+
+/**
+ * A chapter line drawn without a leader runs into the next entry's title:
+ * `1 Linear regression 8 1.1 LMS algorithm`. Split it before a dotted section
+ * number that follows a page number.
+ */
+const LEADERLESS_SPLIT = /^(.*\p{L}.*?)\s+(\d{1,4})\s+((?:\d+\.)+\d+\.?\s+\p{L}.*)$/u;
+
+function splitLeaderlessEntry(entry: TocEntry): TocEntry[] {
+  const m = entry.title.length <= 300 ? entry.title.match(LEADERLESS_SPLIT) : null;
+  if (!m) return [entry];
+  return [{ title: m[1], page: m[2] }, { title: m[3], page: entry.page }];
+}
+
+/**
+ * A short line that ends in a page number (`1 Introduction 17`): a TOC entry
+ * drawn without a leader. Only meaningful next to leader entries.
+ */
+export function parseTrailingPageEntry(text: string): TocEntry | null {
+  const trimmed = text.trim();
+  if (trimmed.length > 160) return null;
+  const m = trimmed.match(TOC_TRAILING_PAGE_RE);
+  if (!m || !/\s/.test(m[1]) || !/\p{L}/u.test(m[1])) return null;
+  return { title: m[1], page: m[2] };
+}
+
+/** Markdown list item for a TOC entry: `- 1.1 Dense Retrieval — 17`. */
+function tocEntryToMarkdown(entry: TocEntry): string {
+  // "1. Introduction" after "- " would start a nested ordered list.
+  const title = entry.title
+    .replace(/^[•●▪◦‣•·▪–—-]\s*/, "")
+    .replace(/^(\d{1,9})([.)])(\s)/, "$1\\$2$3");
+  return entry.page ? `- ${title} — ${entry.page}` : `- ${title}`;
+}
+
+/**
+ * Render a TOC block's text as Markdown list items with the leaders removed.
+ * Falls back to one list item when the text cannot be split into entries.
+ */
+export function tocToMarkdown(text: string): string {
+  const parsed = parseTocEntries(text);
+  if (parsed) {
+    const lines = parsed.entries.map(tocEntryToMarkdown);
+    const tail = collapseLeaders(parsed.tail).trim();
+    if (tail) lines.push(tocEntryToMarkdown({ title: tail, page: "" }));
+    return lines.join("\n");
+  }
+  const entry = parseTrailingPageEntry(text);
+  if (entry) return tocEntryToMarkdown(entry);
+  return tocEntryToMarkdown({ title: collapseLeaders(text).trim(), page: "" });
+}
+
+/**
+ * Replace long dot leaders that are not part of a TOC entry (form lines such
+ * as `Enter the total rent paid . . . . . . 6a.`) with a single ellipsis.
+ * Short runs are left alone: they are usually a real ellipsis.
+ */
+export function collapseLeaders(text: string): string {
+  if (!/(?:[.·…][ \t]?){8}/.test(text)) return text;
+  return text.replace(LONG_LEADER_RE, (run, offset: number, whole: string) => {
+    const atEnd = offset + run.length >= whole.length;
+    return atEnd ? " …" : " … ";
+  }).replace(/ {2,}/g, " ");
+}
+
+/** Remove dot leaders at the start or end of a table cell; a cell of only a leader becomes empty. */
+export function stripCellLeaders(cell: string): string {
+  if (!/(?:[.·…][ \t]?){4}/.test(cell)) return cell;
+  let out = cell.replace(/^(?:[.·…][ \t]?){4,}\s*/, "");
+  const end = trailingLeaderStart(out);
+  if (end >= 0) out = out.slice(0, end);
+  return collapseLeaders(out).trim();
+}
+
+/**
+ * Index where a trailing dot leader (4+ dots, single spaces allowed) starts,
+ * or -1. A backward scan: an end-anchored regex would be quadratic on a long
+ * run of dots followed by other text.
+ */
+function trailingLeaderStart(text: string): number {
+  const isDot = (ch: string | undefined) => ch === "." || ch === "·" || ch === "…";
+  let i = text.length;
+  while (i > 0 && /\s/.test(text[i - 1])) i--;
+  let dots = 0;
+  let begin = -1;
+  while (i > 0) {
+    const ch = text[i - 1];
+    if (isDot(ch)) {
+      dots++;
+      begin = i - 1;
+    } else if (!((ch === " " || ch === "\t") && isDot(text[i]))) {
+      break;
+    }
+    i--;
+  }
+  return dots >= 4 ? begin : -1;
 }
 
 // ---------------------------------------------------------------------------

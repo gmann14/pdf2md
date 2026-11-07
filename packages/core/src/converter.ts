@@ -27,6 +27,10 @@ import {
   detectColumnLayout,
   reorderColumnarItems,
   rejoinHyphenatedWords,
+  parseTocEntries,
+  parseTrailingPageEntry,
+  tocToMarkdown,
+  collapseLeaders,
 } from "./detection.js";
 
 // ---------------------------------------------------------------------------
@@ -73,6 +77,8 @@ interface Block {
   headingLevel?: number;
   listMarker?: string;
   tableRows?: string[][];
+  /** A table-of-contents block: rendered as list items, leaders removed. */
+  toc?: boolean;
 }
 
 interface ExtractedPage {
@@ -1040,6 +1046,109 @@ function mergeShortBlocks(blocks: Block[]): Block[] {
 }
 
 // ---------------------------------------------------------------------------
+// Broken headings and table-of-contents blocks
+// ---------------------------------------------------------------------------
+
+function blockRawText(block: Block): string {
+  return block.items.map((item) => item.str).join(" ").replace(/\s+/g, " ").trim();
+}
+
+/**
+ * Join a heading that ends in a hyphenated line break (`… Sentence Em-`) with
+ * the block that continues it (`beddings and Dense Retrieval`). Two heading
+ * fragments stay one heading; a heading fragment joined to body text was a
+ * wrapped body line, so the result is a paragraph. A heading that still ends
+ * in a hyphen afterwards is not a heading (a wrapped line or a table row).
+ */
+function joinBrokenHeadings(blocks: Block[]): Block[] {
+  const out: Block[] = [];
+  for (const block of blocks) {
+    const prev = out[out.length - 1];
+    if (
+      prev &&
+      (prev.type === "heading" || block.type === "heading") &&
+      prev.items[0]?.page === block.items[0]?.page &&
+      /\p{L}-$/u.test(blockRawText(prev)) &&
+      /^\p{Ll}/u.test(blockRawText(block))
+    ) {
+      const items = [...prev.items, ...block.items];
+      if (prev.type === "heading" && block.type === "heading") {
+        out[out.length - 1] = { ...prev, items };
+      } else if (prev.type === "heading") {
+        out[out.length - 1] = { items, type: "paragraph" };
+      } else {
+        out[out.length - 1] = { ...prev, items };
+      }
+      continue;
+    }
+    out.push(block);
+  }
+  for (const block of out) {
+    if (block.type === "heading" && /-$/.test(blockRawText(block))) {
+      block.type = "paragraph";
+      delete block.headingLevel;
+    }
+  }
+  return out;
+}
+
+/** Section-number start of a TOC title: `3 `, `2.5.4 `, `A.1 `, `IV. `. */
+const TOC_NUMBERED_TITLE = /^(?:\d+|[A-Z]|[IVX]+)(?:\.\d+)*\.?\s/;
+
+/**
+ * Mark table-of-contents blocks: text made of `title . . . . page` entries.
+ * They become list items (`- 1.1 Dense Retrieval — 17`) instead of headings
+ * or paragraphs full of dots.
+ *
+ * Next to a leader entry on the same page, a short `title page` line with no
+ * leader (a chapter entry such as `1 Introduction 17`) counts too. A short
+ * block between two TOC blocks is the first line of a wrapped entry, or an
+ * entry whose page number is missing; it is joined to the entry after it
+ * when it plainly starts that entry, and otherwise kept as its own item.
+ */
+function markTocBlocks(blocks: Block[]): Block[] {
+  const textual = (b: Block) =>
+    b.type === "paragraph" || b.type === "heading" || b.type === "list-item";
+  const samePage = (a: Block | undefined, b: Block | undefined) =>
+    a !== undefined && b !== undefined && a.items[0]?.page === b.items[0]?.page;
+  const isToc = blocks.map((b) => textual(b) && parseTocEntries(blockRawText(b)) !== null);
+  const leaderToc = [...isToc];
+  blocks.forEach((block, i) => {
+    if (isToc[i] || !textual(block) || !parseTrailingPageEntry(blockRawText(block))) return;
+    isToc[i] = [i - 1, i + 1].some((j) => leaderToc[j] === true && samePage(blocks[j], block));
+  });
+
+  const out: Block[] = [];
+  for (let i = 0; i < blocks.length; i++) {
+    const block = blocks[i];
+    const next = blocks[i + 1];
+    const between =
+      !isToc[i] && textual(block) && isToc[i - 1] === true && isToc[i + 1] === true &&
+      samePage(blocks[i - 1], block) && samePage(block, next) &&
+      blockRawText(block).length <= 200;
+    if (between && next) {
+      const text = blockRawText(block);
+      const startsEntry =
+        /(?:[.\u00B7\u2026][ \t]?){8,}$/.test(text) ||
+        (TOC_NUMBERED_TITLE.test(text) && !TOC_NUMBERED_TITLE.test(blockRawText(next)));
+      if (startsEntry) {
+        blocks[i + 1] = { ...next, items: [...block.items, ...next.items] };
+        continue;
+      }
+      isToc[i] = true;
+    }
+    if (isToc[i]) {
+      block.type = "list-item";
+      block.listMarker = "-";
+      block.toc = true;
+      delete block.headingLevel;
+    }
+    out.push(block);
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------------------
 // Table & code block post-processing
 // ---------------------------------------------------------------------------
 
@@ -1391,7 +1500,7 @@ function assembleBlockText(
   // output is `**primitive services**`, never `**primitive** **services**`.
   // Headings get no emphasis, and a block that is bold throughout (a bold
   // line that is not a heading) gets no bold.
-  const allowEmphasis = block.type !== "heading";
+  const allowEmphasis = block.type !== "heading" && !block.toc;
   const lettered = block.items.filter(hasLetter);
   const allowBold = allowEmphasis && !lettered.every((item) => item.bold === true);
 
@@ -1499,22 +1608,13 @@ function blocksToMarkdown(
             break;
           }
           case "list-item": {
-            let cleaned = text;
-            cleaned = cleaned.replace(BULLET_PATTERN, "");
-            cleaned = cleaned.replace(NUMBERED_PATTERN, "");
-            cleaned = cleaned.replace(LETTER_LIST_PATTERN, "");
-            cleaned = cleaned.replace(BRACKET_NUM_PATTERN, "");
-            parts.push(`${block.listMarker} ${cleaned.trim()}`);
+            parts.push(listItemToMarkdown(block, text));
             break;
           }
           case "paragraph": {
             // Split paragraphs with inline bullet characters into list items
-            const inlineBulletItems = splitInlineBullets(text);
-            if (inlineBulletItems) {
-              parts.push(inlineBulletItems);
-            } else {
-              parts.push(text);
-            }
+            const plain = collapseLeaders(text);
+            parts.push(splitInlineBullets(plain) ?? plain);
             break;
           }
         }
@@ -1550,16 +1650,23 @@ function blockToMarkdown(
   }
 
   if (block.type === "list-item") {
-    const cleaned = text
-      .replace(BULLET_PATTERN, "")
-      .replace(NUMBERED_PATTERN, "")
-      .replace(LETTER_LIST_PATTERN, "")
-      .replace(BRACKET_NUM_PATTERN, "")
-      .trim();
-    return normalizeMarkdownFragment(`${block.listMarker} ${cleaned}`);
+    return normalizeMarkdownFragment(listItemToMarkdown(block, text));
   }
 
-  return normalizeMarkdownFragment(splitInlineBullets(text) ?? text);
+  const plain = collapseLeaders(text);
+  return normalizeMarkdownFragment(splitInlineBullets(plain) ?? plain);
+}
+
+/** A list item's Markdown; a TOC block becomes one item per entry. */
+function listItemToMarkdown(block: Block, text: string): string {
+  if (block.toc) return tocToMarkdown(text);
+  const cleaned = collapseLeaders(text)
+    .replace(BULLET_PATTERN, "")
+    .replace(NUMBERED_PATTERN, "")
+    .replace(LETTER_LIST_PATTERN, "")
+    .replace(BRACKET_NUM_PATTERN, "")
+    .trim();
+  return `${block.listMarker} ${cleaned}`;
 }
 
 function pageRangeForBlocks(blocks: Block[]): { pageStart: number; pageEnd: number } {
@@ -2234,7 +2341,9 @@ async function convertDocument(
   const rawBlocks = taggedBlocks ?? groupIntoBlocks(reordered, profile, emphasisFonts);
 
   // Merge consecutive very short blocks (diagram labels, formula fragments)
-  const blocks = mergeShortBlocks(rawBlocks);
+  // Join headings broken at a hyphen; table-of-contents lines become list
+  // items, not headings full of dots
+  const blocks = markTocBlocks(joinBrokenHeadings(mergeShortBlocks(rawBlocks)));
 
   // Promote first heading to H1 if no H1 exists (common for document titles
   // that get ranked deep by font-size analysis)
