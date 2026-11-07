@@ -13,10 +13,12 @@ import type {
   ConversionMetadata,
   ConversionChunk,
   ConvertOptions,
+  PageMarkdown,
   StructuredOutput,
   StructuredSection,
 } from "./types.js";
 import { MAX_FILE_SIZE } from "./types.js";
+import { resolvePageSelection, withContextPages } from "./pages.js";
 import {
   cleanText,
   detectTable,
@@ -1527,6 +1529,36 @@ function blocksToMarkdown(
   return parts.join("\n\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
+/** Markdown for each selected page; a block belongs to the page of its first item. */
+function pagesToMarkdown(
+  blocks: Block[],
+  linkMap: Map<ExtractedItem, string>,
+  pageNumbers: number[],
+): PageMarkdown[] {
+  const byPage = new Map<number, Block[]>();
+  for (const block of blocks) {
+    const page = block.items[0]?.page;
+    if (page === undefined) continue;
+    const pageBlocks = byPage.get(page) ?? [];
+    pageBlocks.push(block);
+    byPage.set(page, pageBlocks);
+  }
+  return pageNumbers.map((pageNumber) => ({
+    pageNumber,
+    markdown: normalizeMarkdownFragment(blocksToMarkdown(byPage.get(pageNumber) ?? [], linkMap)),
+  }));
+}
+
+/** Join page Markdown with a blank line; `"comment"` adds a `<!-- page N -->` marker per page. */
+function joinPages(pages: PageMarkdown[], markers: "none" | "comment"): string {
+  if (markers === "none") {
+    return pages.map((p) => p.markdown).filter(Boolean).join("\n\n");
+  }
+  return pages
+    .map((p) => (p.markdown ? `<!-- page ${p.pageNumber} -->\n\n${p.markdown}` : `<!-- page ${p.pageNumber} -->`))
+    .join("\n\n");
+}
+
 function blockToMarkdown(
   block: Block,
   linkMap: Map<ExtractedItem, string>,
@@ -1916,31 +1948,53 @@ function normalizeMarkdownFragment(markdown: string): string {
 // Metadata extraction
 // ---------------------------------------------------------------------------
 
+function infoString(info: Record<string, unknown>, key: string): string | undefined {
+  const value = info[key];
+  return typeof value === "string" && value.length > 0 ? value : undefined;
+}
+
 async function extractMetadata(
   doc: PDFDocumentProxy,
-  signal?: AbortSignal,
+  signal: AbortSignal | undefined,
+  hasTextLayer: boolean | undefined,
 ): Promise<ConversionMetadata | undefined> {
+  let info: Record<string, unknown> | undefined;
   try {
     const meta = await abortable(doc.getMetadata(), signal);
-    const info = meta?.info as Record<string, unknown> | undefined;
-    if (!info) return undefined;
-
-    return {
-      title: typeof info["Title"] === "string" ? info["Title"] : undefined,
-      author: typeof info["Author"] === "string" ? info["Author"] : undefined,
-      subject: typeof info["Subject"] === "string" ? info["Subject"] : undefined,
-      keywords:
-        typeof info["Keywords"] === "string"
-          ? info["Keywords"].split(/[,;]\s*/).filter(Boolean)
-          : undefined,
-      creationDate:
-        typeof info["CreationDate"] === "string"
-          ? info["CreationDate"]
-          : undefined,
-    };
+    info = meta?.info as Record<string, unknown> | undefined;
   } catch {
-    return undefined;
+    throwIfCancelled(signal);
+    info = undefined;
   }
+
+  let isTagged = false;
+  try {
+    const markInfo = await abortable(doc.getMarkInfo(), signal);
+    isTagged = markInfo?.Marked === true;
+  } catch {
+    throwIfCancelled(signal);
+  }
+
+  if (!info) return { isTagged, hasTextLayer };
+
+  const keywords = infoString(info, "Keywords");
+  return {
+    title: typeof info["Title"] === "string" ? info["Title"] : undefined,
+    author: typeof info["Author"] === "string" ? info["Author"] : undefined,
+    subject: typeof info["Subject"] === "string" ? info["Subject"] : undefined,
+    keywords: keywords ? keywords.split(/[,;]\s*/).filter(Boolean) : undefined,
+    creationDate:
+      typeof info["CreationDate"] === "string"
+        ? info["CreationDate"]
+        : undefined,
+    creator: infoString(info, "Creator"),
+    producer: infoString(info, "Producer"),
+    pdfVersion: infoString(info, "PDFFormatVersion"),
+    modificationDate: infoString(info, "ModDate"),
+    isEncrypted: info["EncryptFilterName"] !== null && info["EncryptFilterName"] !== undefined,
+    isTagged,
+    hasTextLayer,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -2139,14 +2193,36 @@ async function convertDocument(
 ): Promise<ConversionResult> {
   const signal = options?.signal;
   const totalPages = doc.numPages;
-  const maxPages = options?.maxPages
-    ? Math.min(options.maxPages, totalPages)
-    : totalPages;
+  // Pages to output, and pages to read: a `pages` selection also reads up to
+  // 10 neighbouring pages so headers/footers and the font profile come from
+  // more than the selected page(s). Without `pages`, nothing extra is read.
+  let selected = resolvePageSelection(options?.pages, totalPages);
+  if (options?.maxPages) selected = selected.slice(0, Math.max(0, options.maxPages));
+  const selectedSet = new Set(selected);
+  const parsePages = options?.pages ? withContextPages(selected, totalPages) : selected;
+  const wantsPages = options?.perPage === true || options?.pageMarkers === "comment";
+
+  if (selected.length === 0) {
+    // Nothing in range: an empty result, not an error.
+    const metadata =
+      options?.includeMetadata || options?.yamlFrontMatter
+        ? await extractMetadata(doc, signal, undefined)
+        : undefined;
+    throwIfCancelled(signal);
+    return {
+      status: "success",
+      markdown: "",
+      messages,
+      stats: { pageCount: totalPages, wordCount: 0, processingMs: performance.now() - startTime },
+      metadata,
+      pages: options?.perPage ? [] : undefined,
+    };
+  }
 
   options?.onProgress?.({
     stage: "loading",
     currentPage: 0,
-    totalPages: maxPages,
+    totalPages: parsePages.length,
   });
 
   // Extract text and links from all pages
@@ -2154,24 +2230,29 @@ async function convertDocument(
   const allLinks: AnnotationLink[] = [];
   const structTrees: Array<StructTreeNode | null | undefined> = [];
 
-  for (let i = 1; i <= maxPages; i++) {
+  for (const [index, i] of parsePages.entries()) {
     throwIfCancelled(signal);
 
     options?.onProgress?.({
       stage: "parsing",
-      currentPage: i,
-      totalPages: maxPages,
+      currentPage: index + 1,
+      totalPages: parsePages.length,
     });
 
     try {
       const page = await abortable(doc.getPage(i), signal);
       const { items, links, structTree } = await abortable(extractPageItems(page, i), signal);
       allItems.push(...items);
-      allLinks.push(...links);
-      structTrees.push(structTree);
+      // Context pages only feed document statistics; their links and
+      // structure are never output.
+      if (selectedSet.has(i)) {
+        allLinks.push(...links);
+        structTrees.push(structTree);
+      }
     } catch (err) {
       // A page that failed because of a cancel is not a parse warning.
       throwIfCancelled(signal);
+      if (!selectedSet.has(i)) continue;
       messages.push({
         code: "parse_failed",
         severity: "warning",
@@ -2182,8 +2263,8 @@ async function convertDocument(
 
   throwIfCancelled(signal);
 
-  // Check if there's any extractable text
-  if (allItems.length === 0) {
+  // Check if there's any extractable text on the selected pages
+  if (!allItems.some((item) => selectedSet.has(item.page))) {
     return {
       status: "failed",
       markdown: "",
@@ -2205,26 +2286,32 @@ async function convertDocument(
 
   options?.onProgress?.({
     stage: "structuring",
-    currentPage: maxPages,
-    totalPages: maxPages,
+    currentPage: parsePages.length,
+    totalPages: parsePages.length,
   });
 
   // Detect and strip headers/footers
-  const repeated = detectRepeatedText(allItems, maxPages);
+  const repeated = detectRepeatedText(allItems, parsePages.length);
   const filtered = filterHeadersFooters(allItems, repeated);
 
   // Fix multi-column reading order (academic papers, IEEE, etc.)
   // Must happen BEFORE groupIntoBlocks so items are pre-sorted in reading order.
-  const reordered = applyColumnReordering(filtered);
+  const contextItems = applyColumnReordering(filtered);
 
   // Build font profile for heading detection
-  const profile = buildFontProfile(reordered);
+  const profile = buildFontProfile(contextItems);
 
   // Detect code fonts (subset fonts used in indented blocks)
-  const codeFonts = detectCodeFont(reordered, profile.bodySize);
+  const codeFonts = detectCodeFont(contextItems, profile.bodySize);
 
   // Detect emphasis fonts (subset fonts used for bold/emphasis on short lines)
-  const emphasisFonts = detectEmphasisFonts(reordered, profile.bodySize);
+  const emphasisFonts = detectEmphasisFonts(contextItems, profile.bodySize);
+
+  // Document statistics above use the context pages; output only the selected ones.
+  const reordered =
+    parsePages.length === selected.length
+      ? contextItems
+      : contextItems.filter((item) => selectedSet.has(item.page));
 
   // Prefer tagged PDF semantics when a usable structure tree maps to text.
   // Empty/malformed trees fall back to the established visual heuristics.
@@ -2248,8 +2335,8 @@ async function convertDocument(
 
   options?.onProgress?.({
     stage: "assembling",
-    currentPage: maxPages,
-    totalPages: maxPages,
+    currentPage: parsePages.length,
+    totalPages: parsePages.length,
   });
 
   // Inline bold/italic from real font names
@@ -2260,17 +2347,22 @@ async function convertDocument(
     }
   }
 
-  // Assemble markdown
-  let markdown = blocksToMarkdown(enrichedBlocks, linkMap);
-
-  // Apply final Markdown cleanup, including URL links, ligature repair, and
-  // hyphenated line-break repair.
-  markdown = normalizeMarkdownFragment(markdown);
+  // Assemble markdown, then apply final Markdown cleanup, including URL
+  // links, ligature repair, and hyphenated line-break repair.
+  let markdown: string;
+  let pages: PageMarkdown[] | undefined;
+  if (wantsPages) {
+    // Render page by page, so the pages join to exactly `markdown`.
+    pages = pagesToMarkdown(enrichedBlocks, linkMap, selected);
+    markdown = joinPages(pages, "none");
+  } else {
+    markdown = normalizeMarkdownFragment(blocksToMarkdown(enrichedBlocks, linkMap));
+  }
 
   // Extract metadata if requested (yamlFrontMatter implies includeMetadata)
   let metadata: ConversionMetadata | undefined;
   if (options?.includeMetadata || options?.yamlFrontMatter) {
-    metadata = await extractMetadata(doc, signal);
+    metadata = await extractMetadata(doc, signal, true);
     throwIfCancelled(signal);
 
     // Fallback: infer title from first heading if PDF metadata is empty
@@ -2290,11 +2382,15 @@ async function convertDocument(
   }
 
   // Prepend YAML front matter if requested and metadata exists
+  let frontMatter = "";
   if (options?.yamlFrontMatter && metadata) {
     const yaml = metadataToYaml(metadata);
-    if (yaml) {
-      markdown = yaml + "\n\n" + markdown;
-    }
+    if (yaml) frontMatter = yaml + "\n\n";
+  }
+  markdown = frontMatter + markdown;
+  const wordCount = markdown.split(/\s+/).filter(Boolean).length;
+  if (pages && options?.pageMarkers === "comment") {
+    markdown = frontMatter + joinPages(pages, "comment");
   }
 
   const wantsStructured =
@@ -2309,7 +2405,6 @@ async function convertDocument(
   // A cancel that lands after the last PDF.js call still wins over the result.
   throwIfCancelled(signal);
 
-  const wordCount = markdown.split(/\s+/).filter(Boolean).length;
   const processingMs = performance.now() - startTime;
 
   return {
@@ -2320,5 +2415,6 @@ async function convertDocument(
     metadata,
     structured,
     chunks,
+    pages: options?.perPage ? pages : undefined,
   };
 }

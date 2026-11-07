@@ -35,6 +35,9 @@ const { convert } = require("@pdf2md/core");
 ```ts
 const result = await convert(buffer, {
   maxPages: 10,           // Limit number of pages to convert
+  pages: [1, 2, 5],       // Or { offset: -3 } for the last 3 pages, { offset: 10, length: 5 }
+  perPage: true,          // Add result.pages: [{ pageNumber, markdown }]
+  pageMarkers: "comment", // Put <!-- page N --> before each page ("none" by default)
   includeMetadata: true,  // Extract title, author, etc.
   outputFormat: "json",   // Include structured sections
   chunkBy: "heading",     // Optional: "page", "heading", or "token"
@@ -55,11 +58,21 @@ interface ConversionResult {
   markdown: string;
   messages: ConversionMessage[];  // Errors and warnings
   stats: { pageCount: number; wordCount: number; processingMs: number };
-  metadata?: { title?: string; author?: string; subject?: string; keywords?: string[]; creationDate?: string };
+  metadata?: ConversionMetadata;  // With includeMetadata: title, author, producer, pdfVersion, isTagged, …
   structured?: { sections: StructuredSection[] };
   chunks?: ConversionChunk[];
+  pages?: { pageNumber: number; markdown: string }[]; // With perPage
 }
 ```
+
+### Page selection
+
+`pages` takes 1-based page numbers, or a 0-based `offset` (negative counts from
+the end) with an optional `length`. Pages out of range are skipped and duplicates
+dropped; a selection with no page in range returns an empty `success` result.
+Up to 10 neighbouring pages are read (not output) so running headers and
+heading sizes are still detected on a one-page read. With `perPage`, joining the
+non-empty `result.pages[].markdown` with a blank line gives `result.markdown`.
 
 ## CLI Usage
 

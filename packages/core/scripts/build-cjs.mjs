@@ -41,7 +41,10 @@ try {
   const stagedSrc = join(stage, "src");
   cpSync(join(pkgDir, "src"), stagedSrc, {
     recursive: true,
-    filter: (src) => !src.endsWith(".test.ts") && !src.includes(`${join("src", "bin")}`),
+    filter: (src) =>
+      !src.endsWith(".test.ts") &&
+      !src.includes(`${join("src", "bin")}`) &&
+      !src.includes(`${join("src", "testing")}`),
   });
 
   for (const file of readdirSync(stagedSrc)) {

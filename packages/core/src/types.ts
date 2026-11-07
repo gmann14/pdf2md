@@ -29,7 +29,35 @@ export interface ConversionMetadata {
   subject?: string;
   keywords?: string[];
   creationDate?: string;
+  /** The application that created the original document (PDF `Creator`). */
+  creator?: string;
+  /** The application that wrote the PDF (PDF `Producer`). */
+  producer?: string;
+  /** PDF version from the file header, e.g. "1.7". */
+  pdfVersion?: string;
+  /** Raw PDF date string, e.g. "D:20240101120000Z". */
+  modificationDate?: string;
+  /** The file is encrypted (it opened without a password, e.g. owner-password only). */
+  isEncrypted?: boolean;
+  /** The PDF is tagged (MarkInfo /Marked true). */
+  isTagged?: boolean;
+  /** At least one converted page has extractable text. */
+  hasTextLayer?: boolean;
 }
+
+/** Markdown for one page, from `ConvertOptions.perPage`. */
+export interface PageMarkdown {
+  /** 1-based page number in the document. */
+  pageNumber: number;
+  markdown: string;
+}
+
+/**
+ * Pages to convert: a list of 1-based page numbers, or a 0-based `offset`
+ * (negative counts from the end: `-3` is the last 3 pages) with an optional
+ * `length` (default: to the end).
+ */
+export type PageSelection = number[] | { offset: number; length?: number };
 
 export interface ConversionResult {
   status: ConversionStatus;
@@ -39,6 +67,12 @@ export interface ConversionResult {
   metadata?: ConversionMetadata;
   structured?: StructuredOutput;
   chunks?: ConversionChunk[];
+  /**
+   * One entry per selected page, in page order, when `perPage` is set. Joining
+   * the non-empty `markdown` values with a blank line gives `result.markdown`
+   * (without YAML front matter or page markers).
+   */
+  pages?: PageMarkdown[];
 }
 
 export type ConversionStage =
@@ -54,7 +88,19 @@ export interface ConversionProgress {
 }
 
 export interface ConvertOptions {
+  /** Convert at most this many pages (the first N pages, or the first N of `pages`). */
   maxPages?: number;
+  /**
+   * Convert only these pages. Out-of-range pages are skipped and duplicates
+   * dropped; a selection with no page in range gives an empty `success`
+   * result. Up to 10 neighbouring pages are also read (not output) so
+   * running headers and the font profile are detected on short selections.
+   */
+  pages?: PageSelection;
+  /** Add `result.pages`, the Markdown of each selected page. */
+  perPage?: boolean;
+  /** `"comment"` puts `<!-- page N -->` before each page's Markdown. Default `"none"`. */
+  pageMarkers?: "none" | "comment";
   includeMetadata?: boolean;
   /** Request structured JSON-friendly output alongside the markdown contract */
   outputFormat?: "markdown" | "json";
