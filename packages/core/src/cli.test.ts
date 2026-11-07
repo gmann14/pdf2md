@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { execFileSync, spawnSync } from "node:child_process";
+import { execFileSync, spawn, spawnSync } from "node:child_process";
 import {
   copyFileSync,
   existsSync,
@@ -10,6 +10,7 @@ import {
   readdirSync,
   rmSync,
   symlinkSync,
+  truncateSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -212,5 +213,62 @@ describe("pdf2md CLI (built binary)", () => {
     const batch = cli(["-q", "--out", outDir, notPdf, simple]);
     expect(batch.code).toBe(1);
     expect(readdirSync(outDir)).toEqual(["simple-report.md"]);
+  });
+
+  it("refuses an oversized file from its size, before reading it", () => {
+    // A sparse 5 GB file: reading it would fail (or take minutes); a size check refuses it at once.
+    const huge = join(dir, "huge.pdf");
+    writeFileSync(huge, "");
+    truncateSync(huge, 5 * 1024 ** 3);
+    const started = performance.now();
+    const { code, stderr } = cli(["--max-size", "1MB", huge]);
+    expect(code).toBe(1);
+    expect(stderr).toContain("[error] File size (5120MB) exceeds the 1MB limit.");
+    expect(stderr).not.toContain("Error reading");
+    expect(performance.now() - started).toBeLessThan(5_000);
+
+    const batch = cli(["-q", "--max-size", "1MB", "--out", join(dir, "batch-huge"), huge, simple]);
+    expect(batch.code).toBe(1);
+    expect(batch.stderr).toContain("exceeds the 1MB limit");
+    expect(readdirSync(join(dir, "batch-huge"))).toEqual(["simple-report.md"]);
+  });
+
+  it("stops reading oversized stdin early", async () => {
+    const limit = 1024 * 1024;
+    const offered = 512 * 1024 * 1024; // far more than the limit
+    const chunk = Buffer.alloc(64 * 1024, 0x20);
+    const child = spawn(process.execPath, [bin, "--max-size", String(limit), "-"], { cwd: dir });
+    let stderr = "";
+    child.stderr.on("data", (d: Buffer) => (stderr += d.toString()));
+    child.stdin.on("error", () => {}); // EPIPE once the CLI stops reading
+    const exited = new Promise<number | null>((res) => child.on("close", (code) => res(code)));
+
+    let written = 0;
+    let open = true;
+    child.on("close", () => (open = false));
+    while (open && written < offered) {
+      const ok = child.stdin.write(chunk);
+      written += chunk.length;
+      if (!ok) {
+        await new Promise<void>((res) => {
+          const done = () => res();
+          child.stdin.once("drain", done);
+          child.once("close", done);
+        });
+      }
+    }
+    child.stdin.destroy();
+
+    expect(await exited).toBe(1);
+    expect(stderr).toContain("exceeds the 1MB limit");
+    // Pipe buffers hold a little more than the limit; nowhere near all of it.
+    expect(written).toBeLessThan(64 * 1024 * 1024);
+  });
+
+  it("still converts a file and stdin within --max-size", () => {
+    expect(cli(["--max-size", "15MB", simple]).code).toBe(0);
+    const fromStdin = cli(["--max-size", "15MB", "-"], readFileSync(simple));
+    expect(fromStdin.code).toBe(0);
+    expect(fromStdin.stdout).toBe(cli([simple]).stdout);
   });
 });

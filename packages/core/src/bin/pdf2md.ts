@@ -2,7 +2,7 @@
 
 import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import { basename, dirname, extname, join, resolve, sep } from "node:path";
-import { convert } from "../converter.js";
+import { convert, oversizedResult } from "../converter.js";
 import { validatePageRange } from "../pages.js";
 import type { ConversionResult, ConvertOptions } from "../types.js";
 
@@ -145,12 +145,23 @@ async function readVersion(): Promise<string> {
   return typeof version === "string" ? version : "unknown";
 }
 
-async function readStdin(): Promise<Uint8Array> {
+/**
+ * Read all of stdin, or stop as soon as more than `limit` bytes have arrived
+ * (returns the count so far, without keeping the excess).
+ */
+async function readStdin(limit: number): Promise<{ bytes: Uint8Array } | { tooLarge: number }> {
   const chunks: Buffer[] = [];
+  let total = 0;
   for await (const chunk of process.stdin) {
-    chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : (chunk as Buffer));
+    const buf = typeof chunk === "string" ? Buffer.from(chunk) : (chunk as Buffer);
+    total += buf.length;
+    if (total > limit) {
+      process.stdin.destroy();
+      return { tooLarge: total };
+    }
+    chunks.push(buf);
   }
-  return new Uint8Array(Buffer.concat(chunks));
+  return { bytes: new Uint8Array(Buffer.concat(chunks)) };
 }
 
 async function isDirectory(path: string): Promise<boolean> {
@@ -216,9 +227,20 @@ async function convertOne(
   file: string,
   config: CliConfig,
 ): Promise<{ result: ConversionResult } | { error: string }> {
+  // The CLI runs in Node, where core has no size limit unless --max-size is given.
+  const limit = config.options.maxFileSizeBytes ?? Infinity;
   let bytes: Uint8Array;
   try {
-    bytes = file === "-" ? await readStdin() : new Uint8Array(await readFile(resolve(file)));
+    if (file === "-") {
+      const read = await readStdin(limit);
+      if ("tooLarge" in read) return { result: oversizedResult(read.tooLarge, limit, undefined, true) };
+      bytes = read.bytes;
+    } else {
+      // Refuse an oversized file from its size, before reading it into memory.
+      const { size } = await stat(resolve(file));
+      if (size > limit) return { result: oversizedResult(size, limit) };
+      bytes = new Uint8Array(await readFile(resolve(file)));
+    }
   } catch (err) {
     return { error: `Error reading ${file === "-" ? "stdin" : file}: ${err instanceof Error ? err.message : "Unknown error"}` };
   }

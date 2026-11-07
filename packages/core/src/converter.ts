@@ -2094,11 +2094,7 @@ export async function convertWithHooks(
   // Check file size
   const maxFileSize = options?.maxFileSizeBytes ?? (isNode ? Infinity : MAX_FILE_SIZE);
   if (pdfBuffer.byteLength > maxFileSize) {
-    return failedResult(
-      "oversized",
-      `File size (${formatMegabytes(pdfBuffer.byteLength)}) exceeds the ${formatMegabytes(maxFileSize)} limit.`,
-      startTime,
-    );
+    return oversizedResult(pdfBuffer.byteLength, maxFileSize, startTime);
   }
 
   // One signal for both the caller's cancel and the timeout.
@@ -2139,6 +2135,24 @@ export async function convertWithHooks(
     clearTimeout(timer);
     options?.signal?.removeEventListener("abort", onCallerAbort);
   }
+}
+
+/**
+ * The `oversized` result for a file of `byteLength` bytes over `maxFileSize`.
+ * Exported (not from the package index) so the CLI can refuse a file or
+ * stdin stream before reading it all, with the same message.
+ */
+export function oversizedResult(
+  byteLength: number,
+  maxFileSize: number,
+  startTime = performance.now(),
+  atLeast = false,
+): ConversionResult {
+  return failedResult(
+    "oversized",
+    `File size (${atLeast ? "more than " : ""}${formatMegabytes(byteLength)}) exceeds the ${formatMegabytes(maxFileSize)} limit.`,
+    startTime,
+  );
 }
 
 function formatMegabytes(bytes: number): string {
