@@ -54,6 +54,13 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
 
 ### Fixed
 
+- **Footnotes and references keep their numbers.** Bibliography entries keep
+  their `[n]` label, footnote labels and contents-page numbers inside the
+  header/footer bands are no longer removed as page numbers, raised footnote
+  numbers stay on the line they label, and a numbered URL footnote is no longer
+  put in a code fence.
+- **Header/footer label checks stay near-linear** on crafted PDFs with many
+  repeated strings.
 - **Tables keep their rows.** A row with one cell more or fewer than the rest
   of a detected table, or with a stray `. .` leader fragment, is kept instead
   of dropped.
