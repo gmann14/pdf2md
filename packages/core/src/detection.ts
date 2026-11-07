@@ -151,8 +151,12 @@ const BULLET_MARKER = /^[•‣⁃∙▪▫●○◦■□▶▸►◆◇–—-
 const CURRENCY_ONLY = /^[$€£¥]$/;
 const STARTS_NUMERIC = /^[(\-−–]?\d|^[(\-−–]?[.,]\d/;
 const ENDS_NUMERIC = /\d\)?$/;
-/** An item that is only a dot leader (`. . . . .`); `...` (not available) is kept. */
-const LEADER_ONLY_ITEM = /^(?:[.·…][ \t]?){4,}$/;
+/**
+ * An item that is only a dot leader: four or more dots (`. . . . .`), or a
+ * short spaced fragment (`. .`) left between a row label and its first
+ * number. `...` (not available) is kept.
+ */
+const LEADER_ONLY_ITEM = /^(?:(?:[.·…][ \t]?){4,}|[.·](?:[ \t]+[.·])+)$/;
 /** `$ 5,428` → `$5,428`, matching the joined `$` `46,752` → `$46,752`. */
 const CURRENCY_SPACE = /^([$€£¥])\s+(?=[(\-−–]?\d)/;
 

@@ -990,6 +990,30 @@ describe("detectTable cell cleanup", () => {
     ]);
   });
 
+  it("keeps a row whose label is followed by a short spaced leader fragment", () => {
+    // Census P60 Table B-5: `White, not Hispanic` `. .` `3.7` `0.2` ...
+    const items = [
+      makeItem({ str: "White", x: 53, y: 100, width: 22 }),
+      num("4.5", 180, 100),
+      num("0.2", 220, 100),
+      num("5.3", 260, 100),
+      makeItem({ str: "White, not Hispanic", x: 61, y: 110, width: 77 }),
+      makeItem({ str: ". .", x: 140, y: 110, width: 6 }),
+      num("3.7", 180, 110),
+      num("0.2", 220, 110),
+      num("4.1", 260, 110),
+      makeItem({ str: "Black", x: 53, y: 120, width: 22 }),
+      num("8.8", 180, 120),
+      num("0.7", 220, 120),
+      num("9.1", 260, 120),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["White", "4.5", "0.2", "5.3"],
+      ["White, not Hispanic", "3.7", "0.2", "4.1"],
+      ["Black", "8.8", "0.7", "9.1"],
+    ]);
+  });
+
   it("leaves a lone $ before text alone", () => {
     const items = [
       makeItem({ str: "Operator", x: 50, y: 100 }),
