@@ -1104,13 +1104,124 @@ function findColumnSplitY(
   return undefined;
 }
 
+/** Min gap (pt) between two pieces of a line for them to count as separate cells. */
+const TABLE_CELL_GAP = 10;
+/** Min consecutive table-like lines that make a full-width table region. */
+const MIN_TABLE_REGION_LINES = 3;
+/** Min lines of column prose on a page before a full-width table is looked for. */
+const MIN_PROSE_LINES = 3;
+/**
+ * A cell at least this share of its column's width is prose: a region with
+ * one is column text beside a table, not a table across both columns.
+ */
+const PROSE_CELL_SHARE = 0.7;
+
+/**
+ * Upright text only. Rotated text (an arXiv stamp in the margin) has a zero
+ * vertical scale, so its font size is 0 and its width runs down the page.
+ */
+function isUpright(item: DetectionItem): boolean {
+  return item.fontSize > 0;
+}
+
+/** How far (share of a column's width) a full-width line reaches into each column. */
+const FULL_WIDTH_REACH = 0.5;
+
+/**
+ * True when an item is a full-width line (a table caption, a page-wide
+ * footnote): it reaches well into both columns. A short label that only
+ * overlaps the gap does not count.
+ */
+function spansColumns(item: DetectionItem, gapCenter: number, columnWidth: number): boolean {
+  const reach = columnWidth * FULL_WIDTH_REACH;
+  return isUpright(item) && item.x <= gapCenter - reach && item.x + item.width >= gapCenter + reach;
+}
+
+/** A line's upright items as cells: runs of items closer than TABLE_CELL_GAP. */
+function lineCells(line: DetectionItem[]): [number, number][] {
+  return mergeIntervals(
+    line
+      .filter(isUpright)
+      .map((it): [number, number] => [it.x, it.x + Math.max(it.width, 1)])
+      .sort((a, b) => a[0] - b[0]),
+    TABLE_CELL_GAP,
+  );
+}
+
+/** A cell as wide as prose in one column (a text line split into several items). */
+function isProseCell([start, end]: [number, number], columnWidth: number): boolean {
+  return end - start >= columnWidth * PROSE_CELL_SHARE;
+}
+
+/**
+ * A table row across both columns: at least four separate cells, with cells
+ * on both sides of the gap and none as wide as prose. Two-column prose has
+ * one wide cell per column.
+ */
+function isTableLikeLine(line: DetectionItem[], gapCenter: number, columnWidth: number): boolean {
+  const cells = lineCells(line);
+  if (cells.length < 4) return false;
+  if (cells.some((cell) => isProseCell(cell, columnWidth))) return false;
+  return cells.some(([, end]) => end <= gapCenter) && cells.some(([start]) => start >= gapCenter);
+}
+
+/**
+ * Mark the lines (by index) of tables that run across both columns: runs of
+ * at least three table-like lines, plus the lines between them (a section
+ * label row such as `U.S. Census Bureau region`). A run with a prose-width
+ * cell is a table in one column beside text, and is not marked.
+ */
+function fullWidthTableLines(
+  lines: DetectionItem[][],
+  gapCenter: number,
+  columnWidth: number,
+): Set<number> {
+  const marked = new Set<number>();
+  // Only a page with column prose has a table that interrupts its columns;
+  // on a page of short entries (a multi-column word list) every line looks
+  // like a table row.
+  const proseLines = lines.filter((line) =>
+    lineCells(line).some((cell) => isProseCell(cell, columnWidth)),
+  ).length;
+  if (proseLines < MIN_PROSE_LINES) return marked;
+  const tableLike = lines.map((line) => isTableLikeLine(line, gapCenter, columnWidth));
+  let i = 0;
+  while (i < lines.length) {
+    if (!tableLike[i]) {
+      i++;
+      continue;
+    }
+    // Extend the run while the next table-like line is close below.
+    let end = i;
+    let count = 1;
+    for (let j = i + 1; j < lines.length; j++) {
+      if (tableLike[j]) {
+        end = j;
+        count++;
+      } else if (j - end > 2) {
+        break;
+      }
+    }
+    const hasProse = lines
+      .slice(i, end + 1)
+      .some((line) => lineCells(line).some((cell) => isProseCell(cell, columnWidth)));
+    if (count >= MIN_TABLE_REGION_LINES && !hasProse) {
+      for (let k = i; k <= end; k++) marked.add(k);
+    }
+    i = end + 1;
+  }
+  return marked;
+}
+
 /**
  * Reorder items to fix multi-column reading order.
  *
  * Output order:
  *   [pre-column items, sorted by Y]   ← full-width title/abstract at top
- *   [left column items, sorted by Y]  ← left column top to bottom
- *   [right column items, sorted by Y] ← right column top to bottom
+ *   then, top to bottom, each band below the split point:
+ *   - a column band: left column items, then right column items
+ *   - a full-width band (a line across the gap, such as a table caption, or a
+ *     table whose columns span both text columns): its items by Y
  *
  * Uses a generic parameter so it works with both DetectionItem and
  * any superset (e.g. ExtractedItem in converter.ts).
@@ -1123,32 +1234,48 @@ export function reorderColumnarItems<T extends DetectionItem>(
 
   const { gapCenter, splitY } = layout;
 
-  const preColumn: T[] = [];
-  const leftCol: T[] = [];
-  const rightCol: T[] = [];
-
-  for (const item of items) {
-    // Items above the split point belong to the full-width header section
-    if (splitY !== undefined && item.y < splitY - 2) {
-      preColumn.push(item);
-    } else if (item.x < gapCenter) {
-      leftCol.push(item);
-    } else {
-      rightCol.push(item);
-    }
-  }
-
   const sortByY = (a: T, b: T): number => {
     const dy = a.y - b.y;
     if (Math.abs(dy) > 3) return dy;
     return a.x - b.x;
   };
 
+  const preColumn: T[] = [];
+  const body: T[] = [];
+  for (const item of items) {
+    // Items above the split point belong to the full-width header section
+    if (splitY !== undefined && item.y < splitY - 2) preColumn.push(item);
+    else body.push(item);
+  }
   preColumn.sort(sortByY);
-  leftCol.sort(sortByY);
-  rightCol.sort(sortByY);
 
-  return [...preColumn, ...leftCol, ...rightCol];
+  const lines = groupIntoLines(body) as T[][];
+  let leftMin = Infinity;
+  for (const item of body) if (isUpright(item)) leftMin = Math.min(leftMin, item.x);
+  const columnWidth = Math.max(gapCenter - leftMin, 1);
+  const tableLines = fullWidthTableLines(lines, gapCenter, columnWidth);
+
+  const out: T[] = [...preColumn];
+  let leftCol: T[] = [];
+  let rightCol: T[] = [];
+  const flushColumns = () => {
+    out.push(...leftCol.sort(sortByY), ...rightCol.sort(sortByY));
+    leftCol = [];
+    rightCol = [];
+  };
+  lines.forEach((line, index) => {
+    if (tableLines.has(index) || line.some((it) => spansColumns(it, gapCenter, columnWidth))) {
+      flushColumns();
+      out.push(...[...line].sort(sortByY));
+      return;
+    }
+    for (const item of line) {
+      if (item.x < gapCenter) leftCol.push(item);
+      else rightCol.push(item);
+    }
+  });
+  flushColumns();
+  return out;
 }
 
 // ---------------------------------------------------------------------------

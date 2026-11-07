@@ -564,6 +564,89 @@ describe("reorderColumnarItems", () => {
     // Pre-column item (y=50) should be first
     expect(result[0].y).toBe(50);
   });
+
+  it("keeps a table that spans both columns below the column text together", () => {
+    // CDC MMWR p3: two text columns, then a full-width caption and a
+    // five-column table whose columns straddle the column gap.
+    const prose = (x: number, y: number, str: string) => makeItem({ str, x, y, width: 257 });
+    const cell = (x: number, y: number, str: string) => makeItem({ str, x, y, width: 46 });
+    const items = [
+      prose(36, 80, "left column line one"),
+      prose(318, 80, "right column line one"),
+      prose(36, 93, "left column line two"),
+      prose(318, 93, "right column line two"),
+      prose(36, 106, "left column line three"),
+      makeItem({ str: "TABLE 1. Number of prescriptions", x: 36, y: 440, width: 540 }),
+      ...[497, 506, 516].flatMap((y, row) => [
+        cell(36, y, `Drug ${row}`),
+        cell(230, y, `${row},000 (1.0)`),
+        cell(357, y, `${row}.5`),
+        cell(435, y, `${row}00.00`),
+        cell(530, y, `${row}.25`),
+      ]),
+    ];
+    const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order.slice(0, 5)).toEqual([
+      "left column line one",
+      "left column line two",
+      "left column line three",
+      "right column line one",
+      "right column line two",
+    ]);
+    expect(order.slice(5)).toEqual([
+      "TABLE 1. Number of prescriptions",
+      "Drug 0", "0,000 (1.0)", "0.5", "000.00", "0.25",
+      "Drug 1", "1,000 (1.0)", "1.5", "100.00", "1.25",
+      "Drug 2", "2,000 (1.0)", "2.5", "200.00", "2.25",
+    ]);
+  });
+
+  it("reads a multi-column word list column by column", () => {
+    // GPO Style Manual compound-word lists: short entries in four columns and
+    // no prose, so no line is taken as a row of a full-width table.
+    const items = [36, 46, 56].flatMap((y, row) => [
+      makeItem({ str: `a${row}`, x: 36, y, width: 40 }),
+      makeItem({ str: `b${row}`, x: 170, y, width: 40 }),
+      makeItem({ str: `c${row}`, x: 330, y, width: 40 }),
+      makeItem({ str: `d${row}`, x: 460, y, width: 40 }),
+    ]);
+    const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual(["a0", "b0", "a1", "b1", "a2", "b2", "c0", "d0", "c1", "d1", "c2", "d2"]);
+  });
+
+  it("ignores rotated margin text when looking for full-width lines", () => {
+    // An arXiv stamp runs up the margin: font size 0 (zero vertical scale)
+    // and a width that would otherwise reach across both columns.
+    const items = [
+      makeItem({ str: "left one", x: 50, y: 100, width: 240 }),
+      makeItem({ str: "right one", x: 318, y: 100, width: 240 }),
+      makeItem({ str: "arXiv:1512.03385v1", x: 20, y: 110, width: 350, fontSize: 0 }),
+      makeItem({ str: "left two", x: 50, y: 112, width: 240 }),
+      makeItem({ str: "right two", x: 318, y: 112, width: 240 }),
+    ];
+    const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual(["left one", "arXiv:1512.03385v1", "left two", "right one", "right two"]);
+  });
+
+  it("keeps a table inside one column beside prose in that column's order", () => {
+    // Four cells per line with the right column's prose beside them: the
+    // prose-width item marks it as column text, not a full-width table.
+    const items = [36, 50, 64].flatMap((y, row) => [
+      makeItem({ str: `a${row}`, x: 36, y, width: 30 }),
+      makeItem({ str: `b${row}`, x: 120, y, width: 30 }),
+      makeItem({ str: `c${row}`, x: 220, y, width: 30 }),
+      makeItem({ str: `right prose ${row}`, x: 318, y, width: 257 }),
+    ]);
+    const layout = { type: "two-column" as const, gapCenter: 306, gapStart: 294, gapEnd: 318 };
+    const order = reorderColumnarItems(items, layout).map((it) => it.str);
+    expect(order).toEqual([
+      "a0", "b0", "c0", "a1", "b1", "c1", "a2", "b2", "c2",
+      "right prose 0", "right prose 1", "right prose 2",
+    ]);
+  });
 });
 
 // ---------------------------------------------------------------------------
