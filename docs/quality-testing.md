@@ -84,6 +84,49 @@ npx tsx --require ./test-corpus/node-polyfills.cjs test-corpus/evaluate-blind-3.
 
 Test PDFs are not included in the repository (too large). The evaluation scripts, scoring logic, and generated markdown results are all committed for transparency.
 
+## Head-to-head comparison with @opendocsg/pdf2md
+
+```bash
+pnpm compare:opendocsg                     # all sets whose PDFs are present
+pnpm compare:opendocsg --sets training     # tracked real-pdfs only
+pnpm compare:opendocsg --pdfs-root ~/Coding/pdf2md/test-corpus   # blind sets from another checkout
+pnpm compare:opendocsg --skip-run          # re-read the last reports
+```
+
+`test-corpus/converters.ts` is the converter adapter. Every evaluate script takes
+`CONV=pdf2md|opendocsg` (default `pdf2md`). With `CONV=opendocsg`, or with
+`EVAL_OUT=<dir>`, results and reports go to the git-ignored `test-corpus/.h2h/<converter>/`
+instead of the committed `results/` and `*-REPORT.md` files. `EVAL_PDFS_ROOT=<dir>` reads
+the PDFs from another checkout's `test-corpus/` (the blind sets are local-only).
+
+`@opendocsg/pdf2md` is a root devDependency pinned to an exact version (0.3.6, about
+3 MB with its bundled PDF.js). If it is missing, `pnpm compare:opendocsg` says so and
+exits without failing, and the adapter tests skip the opendocsg conversion.
+
+The comparison script runs each set once per converter on the same machine and writes
+`test-corpus/.h2h/COMPARISON.md` and `comparison.json`: the 9-dimension score per PDF
+and per dimension (with and without metadata), total conversion time, and the text-fidelity
+metrics (word recall, numeric recall, link precision) for both converters.
+
+**Read the heuristic score with care.** It counts whether things are present, not whether
+they are correct:
+
+- **Tables:** any output with 3 or more `|` lines scores 9. opendocsg never outputs a
+  Markdown table, so its lower table score measures that it never tries; pdf2md's higher
+  score does not show its tables are right.
+- **Code blocks:** in most categories, no code fences scores 9. opendocsg outputs none, so
+  it is never penalised for false positives and scores low only where code is expected.
+- **Links:** 10 or more links score 9, whatever they point at. Use the link-precision
+  column instead.
+- **Metadata:** opendocsg does not return metadata, so compare the "metadata excluded" row.
+- **Scanned PDFs:** both converters produce no text; pdf2md reports `failed`, opendocsg
+  returns page-break comments, and the scorer can rank either one higher.
+- The scorer was written while pdf2md was being built, and its categories reward what
+  pdf2md does. Do not use it for public "better than" claims; use the fidelity metrics and
+  the hand-checked reference tests.
+
+Timings are single runs on one machine: indicative, not a benchmark (see `pnpm bench`).
+
 ## Dimension Averages Across All Sets
 
 | Dimension | Training | Blind 1 | Blind 2 | Blind 3 |

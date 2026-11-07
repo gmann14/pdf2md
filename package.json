@@ -15,11 +15,14 @@
     "test:corpus-smoke": "pnpm --filter @pdf2md/core exec vitest run src/corpus-smoke.test.ts",
     "test:fidelity": "pnpm --filter @pdf2md/core test:fidelity",
     "lint": "pnpm --filter @pdf2md/web lint",
-    "typecheck": "pnpm --filter @pdf2md/core typecheck && pnpm --filter @pdf2md/web typecheck"
+    "typecheck": "pnpm --filter @pdf2md/core typecheck && pnpm --filter @pdf2md/web typecheck",
+    "compare:opendocsg": "tsx --require ./test-corpus/node-polyfills.cjs test-corpus/compare-converters.ts"
   },
   "version": "",
   "devDependencies": {
+    "@opendocsg/pdf2md": "0.3.6",
     "@types/markdown-it": "^14.2.0",
-    "markdown-it": "^14.3.3"
+    "markdown-it": "^14.3.3",
+    "tsx": "4.21.0"
   }
 }

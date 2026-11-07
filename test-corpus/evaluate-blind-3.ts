@@ -7,9 +7,10 @@
  */
 
 import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
-import { resolve, basename, join } from "node:path";
-import { convert } from "../packages/core/src/converter";
+import { join } from "node:path";
 import { initPdfWorker } from "../packages/core/src/pdf-worker";
+import type { ConversionResult } from "../packages/core/src/types";
+import { convertWith, evalInputDir, evalOutputPath, evalTargetFromEnv } from "./converters";
 import { computeFidelity, extractTextLayer, fidelityReportSection, type FidelityRow } from "./fidelity";
 
 // ---------------------------------------------------------------------------
@@ -279,7 +280,7 @@ function scoreOverallReadability(md: string, wordCount: number): number {
 function evaluatePdf(
   filename: string,
   md: string,
-  result: Awaited<ReturnType<typeof convert>>,
+  result: ConversionResult,
 ): PdfEvaluation {
   const category = getCategory(filename);
   const warnings: string[] = [];
@@ -363,8 +364,10 @@ function evaluatePdf(
 
 async function main(): Promise<void> {
   const scriptDir = new URL(".", import.meta.url).pathname;
-  const corpusDir = resolve(scriptDir, "blind-pdfs-3");
-  const resultsDir = resolve(scriptDir, "blind-results-3");
+  // CONV=pdf2md|opendocsg picks the converter; EVAL_OUT redirects output (see converters.ts).
+  const target = evalTargetFromEnv();
+  const corpusDir = evalInputDir(scriptDir, "blind-pdfs-3");
+  const resultsDir = evalOutputPath(target, scriptDir, "blind-results-3");
 
   await mkdir(resultsDir, { recursive: true });
 
@@ -397,7 +400,7 @@ async function main(): Promise<void> {
     try {
       // Read the raw text layer first, from a copy: PDF.js may detach the buffer it gets.
       const textLayer = await extractTextLayer(new Uint8Array(buffer.slice(0)));
-      const result = await convert(buffer, {
+      const result = await convertWith(target.converter, buffer, {
         includeMetadata: true,
         yamlFrontMatter: true,
       });
@@ -446,7 +449,7 @@ async function main(): Promise<void> {
   }
 
   // Save report
-  const reportPath = resolve(scriptDir, "BLIND-TEST-3-REPORT.md");
+  const reportPath = evalOutputPath(target, scriptDir, "BLIND-TEST-3-REPORT.md");
 
   const reportLines: string[] = [];
   reportLines.push("# Blind Quality Test Report — Set 3 (Stress Tests)");
