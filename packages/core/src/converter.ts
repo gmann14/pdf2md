@@ -21,6 +21,7 @@ import {
   cleanText,
   detectTable,
   isCodeBlock,
+  isMonospace,
   detectCodeFont,
   metadataToYaml,
   tableToMarkdown,
@@ -56,12 +57,19 @@ interface ExtractedItem {
   /** Bold or italic, from the real font name. Unset when emphasis is off. */
   bold?: boolean;
   italic?: boolean;
+  /** Monospace, from the real font name or its fixed-pitch flag. Unset when the font was not resolved. */
+  monospace?: boolean;
 }
 
 /** Bold/italic style of a PDF font. */
 export interface FontStyle {
   bold: boolean;
   italic: boolean;
+}
+
+/** Style of a resolved PDF font, monospace included. */
+interface ResolvedFont extends FontStyle {
+  monospace: boolean;
 }
 
 interface AnnotationLink {
@@ -204,15 +212,22 @@ export function fontStyleFromName(name: string): FontStyle {
  * Resolve a PDF.js font id (e.g. "g_d0_f3") to its style. The font object is
  * only on `commonObjs` once the page's operator list has been built.
  */
-function resolveFontStyle(page: PDFPageProxy, fontId: string): FontStyle {
-  if (!page.commonObjs.has(fontId)) return { bold: false, italic: false };
+function resolveFontStyle(page: PDFPageProxy, fontId: string): ResolvedFont | undefined {
+  if (!page.commonObjs.has(fontId)) return undefined;
   const font: unknown = page.commonObjs.get(fontId);
-  if (typeof font !== "object" || font === null) return { bold: false, italic: false };
-  const { name, bold, italic } = font as { name?: unknown; bold?: unknown; italic?: unknown };
-  const fromName = typeof name === "string" ? fontStyleFromName(name) : { bold: false, italic: false };
+  if (typeof font !== "object" || font === null) return undefined;
+  const { name, bold, italic, isMonospace: fixedPitch } = font as {
+    name?: unknown;
+    bold?: unknown;
+    italic?: unknown;
+    isMonospace?: unknown;
+  };
+  const realName = typeof name === "string" ? name.replace(/^[A-Z]{6}\+/, "") : "";
+  const fromName = realName ? fontStyleFromName(realName) : { bold: false, italic: false };
   return {
     bold: fromName.bold || bold === true,
     italic: fromName.italic || italic === true,
+    monospace: (realName !== "" && isMonospace(realName)) || fixedPitch === true,
   };
 }
 
@@ -296,20 +311,23 @@ async function extractPageItems(
 }
 
 /**
- * Set `bold`/`italic` on items from their real font names.
+ * Resolve real font styles (bold, italic, monospace) and set `monospace` on
+ * the items of resolved fonts; code detection uses it. Bold and italic are
+ * applied later by `applyEmphasis`.
  *
  * Font names are only on `commonObjs` after a page's operator list is built,
  * which costs about as much as the text extraction itself. So only the fonts
- * that can produce inline emphasis are resolved (fonts of lettered items in
- * paragraph and list blocks, except the dominant body font, which is taken as
- * regular), using as few pages as possible (greedy cover). Returns one
- * message per page whose operator list failed.
+ * that can produce inline emphasis or a code block are resolved (fonts of
+ * lettered items in paragraph and list blocks, except the dominant body font,
+ * which is taken as regular), using as few pages as possible (greedy cover).
+ * Returns one message per page whose operator list failed.
  */
-async function applyFontStyles(
+async function resolveFonts(
   doc: PDFDocumentProxy,
   blocks: Block[],
   signal?: AbortSignal,
-): Promise<string[]> {
+): Promise<{ styles: Map<string, ResolvedFont>; errors: string[] }> {
+  const styles = new Map<string, ResolvedFont>();
   const candidates = blocks
     .filter((b) => b.type === "paragraph" || b.type === "list-item")
     .flatMap((b) => b.items)
@@ -320,7 +338,7 @@ async function applyFontStyles(
   }
   const bodyFont = [...chars].sort((a, b) => b[1] - a[1])[0]?.[0];
   const needed = new Set([...chars.keys()].filter((id) => id !== bodyFont));
-  if (needed.size === 0) return [];
+  if (needed.size === 0) return { styles, errors: [] };
 
   const fontsByPage = new Map<number, Set<string>>();
   for (const item of blocks.flatMap((b) => b.items)) {
@@ -330,7 +348,6 @@ async function applyFontStyles(
     fontsByPage.set(item.page, fonts);
   }
 
-  const styles = new Map<string, FontStyle>();
   const errors: string[] = [];
   while (needed.size > 0) {
     // The page that uses the most still-unresolved fonts (earliest on a tie).
@@ -352,11 +369,14 @@ async function applyFontStyles(
     try {
       const page = await abortable(doc.getPage(bestPage), signal);
       await abortable(page.getOperatorList(), signal);
-      for (const id of fonts) styles.set(id, resolveFontStyle(page, id));
+      for (const id of fonts) {
+        const style = resolveFontStyle(page, id);
+        if (style) styles.set(id, style);
+      }
     } catch (err) {
       throwIfCancelled(signal);
       errors.push(
-        `Could not read fonts on page ${bestPage}; some bold and italic omitted: ${err instanceof Error ? err.message : "Unknown error"}`,
+        `Could not read fonts on page ${bestPage}; some bold, italic and code formatting omitted: ${err instanceof Error ? err.message : "Unknown error"}`,
       );
     }
     for (const id of fonts) needed.delete(id);
@@ -365,11 +385,50 @@ async function applyFontStyles(
   for (const block of blocks) {
     for (const item of block.items) {
       const style = styles.get(item.fontName);
+      if (style) item.monospace = style.monospace;
+    }
+  }
+  return { styles, errors };
+}
+
+/**
+ * Share of a document's text, in characters, set in resolved monospace fonts
+ * above which it is taken to contain real code.
+ */
+const MONOSPACE_CODE_SHARE = 0.1;
+
+/**
+ * The detected code fonts (by layout) that code detection may trust. A code
+ * font that resolves to a proportional font (a math or caption font) is
+ * dropped, unless the document has real monospace code, where proportional
+ * fonts also set code (grammar productions in italics, for example).
+ */
+function trustedCodeFonts(
+  codeFonts: Set<string>,
+  blocks: Block[],
+  styles: Map<string, ResolvedFont>,
+): Set<string> {
+  let mono = 0;
+  let total = 0;
+  for (const block of blocks) {
+    for (const item of block.items) {
+      total += item.str.length;
+      if (item.monospace === true) mono += item.str.length;
+    }
+  }
+  if (total > 0 && mono / total >= MONOSPACE_CODE_SHARE) return codeFonts;
+  return new Set([...codeFonts].filter((id) => styles.get(id)?.monospace !== false));
+}
+
+/** Set `bold`/`italic` on items from the resolved font styles. */
+function applyEmphasis(blocks: Block[], styles: Map<string, ResolvedFont>): void {
+  for (const block of blocks) {
+    for (const item of block.items) {
+      const style = styles.get(item.fontName);
       item.bold = style?.bold ?? false;
       item.italic = style?.italic ?? false;
     }
   }
-  return errors;
 }
 
 // ---------------------------------------------------------------------------
@@ -2164,8 +2223,9 @@ export async function convert(
     const loadingTask = getDocument({
       data,
       useSystemFonts: true,
-      // Keeps font names on the font objects in PDF.js >= 6.4 (needed for emphasis).
-      fontExtraProperties: emphasis,
+      // Keeps font names on the font objects in PDF.js >= 6.4 (needed for
+      // emphasis and monospace code detection).
+      fontExtraProperties: true,
       // pdf2md never renders, so building an operator list (for font names)
       // must not decode images: skip every image larger than one pixel.
       maxImageSize: 1,
@@ -2349,8 +2409,15 @@ async function convertDocument(
   // that get ranked deep by font-size analysis)
   promoteFirstHeading(blocks);
 
+  // Real font styles: monospace for code detection, bold/italic for emphasis
+  throwIfCancelled(signal);
+  const fonts = await resolveFonts(doc, blocks, signal);
+  for (const message of fonts.errors) {
+    messages.push({ code: "parse_failed", severity: "warning", message });
+  }
+
   // Post-process: detect tables and code blocks
-  const enrichedBlocks = detectTablesAndCode(blocks, codeFonts);
+  const enrichedBlocks = detectTablesAndCode(blocks, trustedCodeFonts(codeFonts, blocks, fonts.styles));
 
   // Match links to text items
   const linkMap = matchLinksToText(reordered, allLinks);
@@ -2362,12 +2429,7 @@ async function convertDocument(
   });
 
   // Inline bold/italic from real font names
-  throwIfCancelled(signal);
-  if (emphasis) {
-    for (const message of await applyFontStyles(doc, enrichedBlocks, signal)) {
-      messages.push({ code: "parse_failed", severity: "warning", message });
-    }
-  }
+  if (emphasis) applyEmphasis(enrichedBlocks, fonts.styles);
 
   // Assemble markdown
   let markdown = blocksToMarkdown(enrichedBlocks, linkMap);

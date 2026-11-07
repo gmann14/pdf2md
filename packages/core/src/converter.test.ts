@@ -772,11 +772,58 @@ describe("isCodeBlock (enhanced)", () => {
     ];
     expect(isCodeBlock(items2, codeFonts)).toBe(false);
 
-    // Short text WITH code syntax should still be detected
+    // Code syntax over 2+ lines is still detected.
     const items3 = [
       makeItem({ str: "if (x > 0) {", x: 100, y: 100, fontName: "g_d0_f3" }),
+      makeItem({ str: "  return x;", x: 100, y: 114, fontName: "g_d0_f3" }),
     ];
     expect(isCodeBlock(items3, codeFonts)).toBe(true);
+    // One line needs syntax prose never has (braces, ->, ::) or some monospace.
+    expect(isCodeBlock([makeItem({ str: "x = foo(bar) + 1", x: 100, y: 100, fontName: "g_d0_f3" })], codeFonts)).toBe(false);
+    expect(isCodeBlock(items3.slice(0, 1), codeFonts)).toBe(true);
+  });
+
+  it("ignores unresolved punctuation items when measuring monospace share", () => {
+    const line = [
+      makeItem({ str: ">>> t = [", x: 100, y: 100, fontName: "g_d0_f5" }),
+      ...["'", "a", "'", ",", "'", "b", "'", "]"].map((str, k) =>
+        makeItem({ str, x: 160 + k * 6, y: 100, fontName: str === "'" ? "g_d0_f6" : "g_d0_f5" }),
+      ),
+    ].map((item) => (item.fontName === "g_d0_f5" ? { ...item, monospace: true } : item));
+    expect(isCodeBlock(line)).toBe(true);
+  });
+
+  it("uses a resolved monospace font as the code signal", () => {
+    const lines = [
+      makeItem({ str: "def greet(name):", x: 100, y: 100, fontName: "g_d0_f7" }),
+      makeItem({ str: "    return name", x: 100, y: 114, fontName: "g_d0_f7" }),
+    ];
+    expect(isCodeBlock(lines)).toBe(false);
+    expect(isCodeBlock(lines.map((i) => ({ ...i, monospace: true })))).toBe(true);
+  });
+
+  it("rejects URL lines, a date-format line and a line of math", () => {
+    const mono = (str: string) => [makeItem({ str, x: 100, y: 100, fontName: "Courier" })];
+    expect(isCodeBlock(mono("nps.gov/grca/learn/nature"))).toBe(false);
+    expect(isCodeBlock(mono("https://example.com/a/b?c=d&e=f"))).toBe(false);
+    expect(isCodeBlock(mono("and face prosecution if I give false information. DD MM YYYY"))).toBe(false);
+    expect(isCodeBlock(mono("∀x ∈ S: f(x) ≤ g(x)"))).toBe(false);
+    expect(isCodeBlock(mono("x = foo(bar) && baz;"))).toBe(true);
+    expect(isCodeBlock(mono("Source: https://www.reddit.com/r/hmmm/comments/ubab5v/hmmm/"))).toBe(false);
+    expect(isCodeBlock(mono("http://host.robots.ox.ac.uk:8080/leaderboard/"))).toBe(false);
+    const urlList = ["https://github.com/princeton-nlp/SimCSE", "https://github.com/facebookresearch/SentEval"].map(
+      (str, k) => makeItem({ str, x: 100, y: 100 + k * 14, fontName: "Courier" }),
+    );
+    expect(isCodeBlock(urlList)).toBe(false);
+  });
+
+  it("recognises TeX and other typewriter font names as monospace", () => {
+    for (const name of ["CMTT10", "SFTT1000", "LMMono10-Regular", "txtt", "NimbusMonL-Regu", "ABCDEF+CMTT9"]) {
+      expect(isMonospace(name)).toBe(true);
+    }
+    for (const name of ["CMR10", "Helvetica", "TimesNewRomanPSMT", "CMMI10"]) {
+      expect(isMonospace(name)).toBe(false);
+    }
   });
 
   it("rejects cookbook/brochure captions in code font (no code syntax)", () => {

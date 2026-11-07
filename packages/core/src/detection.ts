@@ -19,6 +19,11 @@ export interface DetectionItem {
   fontName: string;
   hasEOL: boolean;
   page: number;
+  /**
+   * Monospace from the real font (name or fixed-pitch flag): true or false
+   * once the font is resolved, undefined when it is not known.
+   */
+  monospace?: boolean;
 }
 
 // ---------------------------------------------------------------------------
@@ -27,9 +32,14 @@ export interface DetectionItem {
 
 export function isMonospace(fontName: string): boolean {
   const lower = fontName.toLowerCase();
-  return /courier|consolas|mono|menlo|monaco|inconsolata|fira.?code|source.?code|liberation.?mono|deja.?vu.?mono|roboto.?mono|noto.?mono|hack|iosevka|jetbrains.?mono|sf.?mono|andale|lucida.?console|fixed|terminal|nimbusmon|\.cc\b/.test(
+  return /courier|consolas|mono|menlo|monaco|inconsolata|fira.?code|source.?code|liberation.?mono|deja.?vu.?mono|roboto.?mono|noto.?mono|hack|iosevka|jetbrains.?mono|sf.?mono|andale|lucida.?console|fixed|terminal|nimbusmon|typewriter|\.cc\b|^(?:cm|sf|lm|ec|tc)tt|^(?:tx|px|ner|ber)tt|^(?:[a-z]{6}\+)?(?:cm|sf|lm)tt/.test(
     lower,
   );
+}
+
+/** Monospace by the resolved real font, else by the font name (test fixtures, legacy ids). */
+function itemIsMonospace(item: DetectionItem): boolean {
+  return item.monospace ?? isMonospace(item.fontName);
 }
 
 // ---------------------------------------------------------------------------
@@ -514,12 +524,16 @@ export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): bo
   if (items.length === 0) return false;
 
   let monoChars = 0;
+  let monoTotal = 0;
   let totalChars = 0;
   let codeFontChars = 0;
   for (const item of items) {
     const len = item.str.length;
     totalChars += len;
-    if (isMonospace(item.fontName)) {
+    // Punctuation in a font that was not resolved (quotes drawn from a
+    // symbol font inside monospace code) does not count either way.
+    if (item.monospace !== undefined || /[\p{L}\p{N}]/u.test(item.str)) monoTotal += len;
+    if (itemIsMonospace(item)) {
       monoChars += len;
     }
     if (codeFonts?.has(item.fontName)) {
@@ -530,25 +544,68 @@ export function isCodeBlock(items: DetectionItem[], codeFonts?: Set<string>): bo
   // Minimum content: reject very short blocks (isolated math symbols, single words)
   if (totalChars < 8) return false;
 
+  // URL lists, a date-format line or a line of math are not code, whatever the font.
+  const lines = textLines(items);
+  const lineCount = lines.length;
+  if (looksLikeNonCode(items, lines)) return false;
+
   // Signal 1: Known monospace font names
   // Require positive evidence of code — monospace fonts are also used for
   // legislative text, timetables, indices, and math notation.
-  if (totalChars > 0 && monoChars / totalChars >= 0.8) {
+  if (monoTotal > 0 && monoChars / monoTotal >= 0.8) {
     if (looksLikeProse(items)) return false;
     if (!looksLikeCode(items)) return false;
     return true;
   }
 
-  // Signal 2: Detected code font (subset fonts like g_d0_f3)
-  // Require POSITIVE evidence of code, not just absence of prose.
-  // Subset fonts are used for captions, labels, table fragments — not just code.
-  if (totalChars > 0 && codeFonts && codeFontChars / totalChars >= 0.8) {
+  // Signal 2: Detected code font (subset fonts like g_d0_f3). The caller
+  // leaves out code fonts known to be proportional unless the document has
+  // real monospace code. Require POSITIVE evidence of code, not just absence
+  // of prose, and at least 2 lines: subset fonts are used for captions,
+  // labels, URLs and table fragments, not just code.
+  // One line passes only if part of it is set in a real monospace font
+  // (keywords in typewriter type between italic variables) or it has syntax
+  // prose and captions do not (braces, `->`, `::`, `[]`).
+  const someMonospace = monoTotal > 0 && monoChars / monoTotal >= 0.15;
+  const oneLineCode = someMonospace || STRONG_CODE_SYNTAX.test(items.map((i) => i.str).join(" "));
+  if (totalChars > 0 && codeFonts && codeFontChars / totalChars >= 0.8 && (lineCount >= 2 || oneLineCode)) {
     if (looksLikeProse(items)) return false;
     if (!looksLikeCode(items)) return false;
     return true;
   }
 
   return false;
+}
+
+/** Syntax that prose, captions and labels almost never contain. */
+const STRONG_CODE_SYNTAX = /[{}]|=>|->|::|<-|:=|&&|\|\||==|!=|\[\]|\(\)/;
+
+function textLines(items: DetectionItem[]): string[] {
+  const sorted = [...items].sort((a, b) => a.page - b.page || a.y - b.y || a.x - b.x);
+  const lines: string[][] = [];
+  let prev: DetectionItem | undefined;
+  for (const item of sorted) {
+    if (!prev || item.page !== prev.page || Math.abs(item.y - prev.y) > Math.max(prev.height, 1) * 0.5) {
+      lines.push([]);
+    }
+    lines[lines.length - 1].push(item.str);
+    prev = item;
+  }
+  return lines.map((parts) => parts.join(" ").trim());
+}
+
+/** A URL on its own, optionally after a short label (`Source: https://…`). */
+const URL_LINE =
+  /^(?:[\p{L} ]{1,20}:\s*)?(?:https?:\/\/\S+|www\.\S+|[\w-]+(?:\.[\w-]+)+\/\S*)$/iu;
+const DATE_FORMAT = /\b(?:DD|MM|YY|YYYY|HH)(?:[\s/.-]+(?:DD|MM|YY|YYYY|HH|SS))+\b/;
+
+/**
+ * Text that is not code whatever its font: lines that are all URLs (a list
+ * of footnote links), or one line with a date-format placeholder or math.
+ */
+function looksLikeNonCode(items: DetectionItem[], lines: string[]): boolean {
+  if (lines.every((line) => URL_LINE.test(line))) return true;
+  return lines.length === 1 && (DATE_FORMAT.test(lines[0]) || looksLikeMath(items));
 }
 
 // ---------------------------------------------------------------------------

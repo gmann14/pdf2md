@@ -6,6 +6,7 @@
  *
  * - no heading ends with a hyphen (a heading broken at a line-end hyphen,
  *   or a wrapped body line or table row taken for a heading)
+ * - the code documents keep at least their known number of code blocks
  *
  * Run from vitest with `pnpm test:fidelity` (src/output-shape-shard-*.corpus.test.ts).
  */
@@ -33,9 +34,32 @@ export function headingsEndingInHyphen(markdown: string): string[] {
   return proseLines(markdown).filter((line) => /^#{1,6} .*-\s*$/.test(line));
 }
 
+/** Fenced code blocks in the output. */
+export function countCodeBlocks(markdown: string): number {
+  return Math.floor(markdown.split("\n").filter((line) => line.startsWith("```")).length / 2);
+}
+
+/**
+ * Code blocks the tracked code documents must keep (counts when code
+ * detection moved to real monospace fonts). think-python had 131 before; the
+ * 5 dropped were its running header "Chapter 4. Case study: interface design".
+ */
+export const MIN_CODE_BLOCKS: Record<string, number> = {
+  "code-haskell-report.pdf": 302,
+  "code-book-think-python.pdf": 126,
+  "code-git-cheatsheet.pdf": 0,
+};
+
 /** All problems found in one file's output. */
-export function outputShapeProblems(markdown: string): string[] {
-  return headingsEndingInHyphen(markdown).map((line) => `heading ends with a hyphen: ${line.slice(0, 80)}`);
+export function outputShapeProblems(file: string, markdown: string): string[] {
+  const problems = headingsEndingInHyphen(markdown).map(
+    (line) => `heading ends with a hyphen: ${line.slice(0, 80)}`,
+  );
+  const minCode = MIN_CODE_BLOCKS[file];
+  if (minCode !== undefined && countCodeBlocks(markdown) < minCode) {
+    problems.push(`${countCodeBlocks(markdown)} code blocks, expected at least ${minCode}`);
+  }
+  return problems;
 }
 
 async function listPdfs(dir: string): Promise<string[]> {
@@ -57,7 +81,7 @@ export async function outputShapeShard(
     const bytes = await readFile(file);
     const result = await convert(new Uint8Array(bytes).buffer);
     if (result.status === "failed") continue;
-    for (const problem of outputShapeProblems(result.markdown)) {
+    for (const problem of outputShapeProblems(basename(file), result.markdown)) {
       problems.push(`${basename(file)}: ${problem}`);
     }
   }

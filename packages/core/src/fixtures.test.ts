@@ -295,3 +295,19 @@ describe("table-of-contents and dot-leader lines", () => {
     expect(markdown).not.toMatch(/^#+ .*-$/m);
   });
 });
+
+describe("code blocks from real monospace fonts", () => {
+  it("fences no one-line URL, date-format label or proportional-font formula", async () => {
+    const markdown = await convertFixture("code-false-positives.pdf");
+    const fences = [...markdown.matchAll(/```\n([\s\S]*?)\n```/g)].map((m) => m[1]);
+    expect(fences).toHaveLength(1);
+    expect(markdown).toContain("nps.gov/grca/learn/nature");
+    expect(markdown).toContain("DD MM YYYY");
+    expect(fences.join("\n")).not.toMatch(/nps\.gov|DD MM YYYY|yw, yl/);
+  });
+
+  it("fences a block set in a real monospace font", async () => {
+    const markdown = await convertFixture("code-false-positives.pdf");
+    expect(markdown).toMatch(/```\ndef greet\(name\):\n.*return 'Hello, ' \+ name\n```/);
+  });
+});

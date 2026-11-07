@@ -286,6 +286,44 @@ async function tocLeaders() {
   return doc.save({ useObjectStreams: false });
 }
 
+/**
+ * Body text in Helvetica with a second, proportional font (Times) used for
+ * indented two-line captions, so the code-font heuristic picks Times up. In
+ * Times: a one-line URL, a one-line `DD MM YYYY` form label and a two-line
+ * formula with code-like symbols; none of them is code. A two-line Courier
+ * block is code.
+ */
+async function codeFalsePositives() {
+  const doc = await PDFDocument.create();
+  fixDates(doc);
+  const body = await doc.embedFont(StandardFonts.Helvetica);
+  const caption = await doc.embedFont(StandardFonts.TimesRoman);
+  const mono = await doc.embedFont(StandardFonts.Courier);
+  const page = doc.addPage([612, 792]);
+  const size = 11;
+  // Captions are smaller than body text, so they are not taken for bold headings.
+  const text = (s, x, y, font) => page.drawText(s, { x, y, size: font === caption ? 9 : size, font });
+
+  let y = 750;
+  for (let i = 1; i <= 5; i++) {
+    text(`Section ${i} has ordinary body text that runs across most of the page width here.`, 72, y, body);
+    text(`Figure ${i}. Visitors at the north rim viewpoint`, 108, y - 26, caption);
+    text(`photographed in the early morning light`, 108, y - 37, caption);
+    y -= 70;
+  }
+  text("Learn more about the park online at", 72, y, body);
+  text("nps.gov/grca/learn/nature", 108, y - 26, caption);
+  text("I declare that the information I have given is correct and complete,", 72, y - 52, body);
+  text("and face prosecution if I give false information. DD MM YYYY", 108, y - 78, caption);
+  text("The preference model is defined as follows for each pair.", 72, y - 104, body);
+  text("p (y1 | x) = sum(k) exp(r) / Z", 108, y - 130, caption);
+  text("D = {x, yw, yl} for i = 1 to N", 108, y - 141, caption);
+  text("The function below prints a greeting for the given name.", 72, y - 169, body);
+  text("def greet(name):", 108, y - 195, mono);
+  text("    return 'Hello, ' + name", 108, y - 208, mono);
+  return doc.save({ useObjectStreams: false });
+}
+
 mkdirSync(OUT_DIR, { recursive: true });
 const fixtures = {
   "links-same-position.pdf": linksSamePosition,
@@ -293,6 +331,7 @@ const fixtures = {
   "touching-runs.pdf": touchingRuns,
   "inline-emphasis.pdf": inlineEmphasis,
   "toc-leaders.pdf": tocLeaders,
+  "code-false-positives.pdf": codeFalsePositives,
 };
 for (const [name, build] of Object.entries(fixtures)) {
   writeFileSync(new URL(name, OUT_DIR), await build());
