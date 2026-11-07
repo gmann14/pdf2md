@@ -127,6 +127,18 @@ they are correct:
 
 Timings are single runs on one machine: indicative, not a benchmark (see `pnpm bench`).
 
+## Hand-checked reference tests
+
+`test-corpus/reference/` holds 106 known-answer tests (present, absent, order, table,
+heading, link, emphasis, list) on 7 pages of three public-domain US government PDFs.
+`pnpm test:reference` runs them; `pnpm test:fidelity` ratchets the pass count against
+`test-corpus/reference/baseline.json`. Claude wrote and checked them against the PDF.js
+text layer; no person has reviewed them yet. See `test-corpus/reference/README.md`.
+
+On 7 Nov 2026: pdf2md 61/106, @opendocsg/pdf2md 0.3.6 54/106. pdf2md leads on tables
+(9/25 vs 0) and links (6/6 vs 0); opendocsg leads on headings, plain text, reading order
+and emphasis.
+
 ## Performance benchmark
 
 ```bash

@@ -8,6 +8,7 @@
  * - the heuristic 9-dimension score, per PDF and per dimension (with and without metadata)
  * - total conversion time
  * - the text-fidelity metrics (word recall, numeric recall, link precision)
+ * - the hand-checked reference tests (test-corpus/reference/), pass count per type
  *
  * The heuristic scorer rewards presence, not correctness (see docs/quality-testing.md,
  * "Head-to-head comparison"). Do not quote these numbers publicly as "better than".
@@ -27,6 +28,7 @@ import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseFidelitySection, type DocumentFidelity } from "../autoresearch/compare-results";
 import { CONVERTER_NAMES, H2H_DIR, converterAvailable, type ConverterName } from "./converters";
+import { referenceComparisonSection } from "./reference/run";
 
 const TEST_CORPUS_DIR = fileURLToPath(new URL(".", import.meta.url));
 const ROOT_DIR = resolve(TEST_CORPUS_DIR, "..");
@@ -346,7 +348,7 @@ export async function runComparison(argv: string[], providers: SectionProvider[]
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  runComparison(process.argv.slice(2)).catch((err) => {
+  runComparison(process.argv.slice(2), [referenceComparisonSection]).catch((err) => {
     console.error(err instanceof Error ? err.message : String(err));
     process.exit(1);
   });

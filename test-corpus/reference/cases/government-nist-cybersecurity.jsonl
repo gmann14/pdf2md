@@ -1,0 +1,21 @@
+{"id":"nist-p12-h-overview","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"heading","text":"1.3 Document Overview"}
+{"id":"nist-p12-intro","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"present","text":"The remainder of this document contains the following sections and appendices:"}
+{"id":"nist-p12-list-s2","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"list","text":"Section 2 describes the Framework components: the Framework Core, the Tiers, and the Profiles.","ordered":false,"note":"item wraps; bullet is a symbol-font glyph"}
+{"id":"nist-p12-list-s3","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"list","text":"Section 3 presents examples of how the Framework can be used.","ordered":false}
+{"id":"nist-p12-list-appa","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"list","text":"Appendix A presents the Framework Core in a tabular format: the Functions, Categories, Subcategories, and Informative References.","ordered":false}
+{"id":"nist-p12-list-appc","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"list","text":"Appendix C lists acronyms used in this document.","ordered":false}
+{"id":"nist-p12-order-list","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"order","before":"Appendix B contains a glossary of selected terms.","after":"Appendix C lists acronyms used in this document."}
+{"id":"nist-p12-order-footnotes","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"order","before":"Appendix C lists acronyms used in this document.","after":"Joint Task Force Transformation Initiative, Managing Information Security Risk","note":"footnotes come after the page body"}
+{"id":"nist-p12-footnote-iso","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"present","text":"International Organization for Standardization, Risk management - Principles and guidelines"}
+{"id":"nist-p12-running-footer","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"absent","text":"This publication is available free of charge from: https://doi.org/10.6028/NIST.CSWP.04162018","maxCount":1,"note":"footer on every page; at most one copy should survive"}
+{"id":"nist-p12-running-header","pdf":"government-nist-cybersecurity.pdf","page":12,"type":"absent","text":"April 16, 2018 Cybersecurity Framework Version 1.1","note":"running header on every page after the cover"}
+{"id":"nist-p30-caption","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"present","text":"Table 1: Function and Category Unique Identifiers"}
+{"id":"nist-p30-t1-id","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"table","cell":"ID","right":"Identify"}
+{"id":"nist-p30-t1-am","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"table","cell":"ID.AM","right":"Asset Management","below":"ID.BE"}
+{"id":"nist-p30-t1-sc","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"table","cell":"ID.SC","right":"Supply Chain Risk Management"}
+{"id":"nist-p30-t1-ds","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"table","cell":"PR.DS","right":"Data Security"}
+{"id":"nist-p30-t1-ip","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"table","cell":"PR.IP","right":"Information Protection Processes and Procedures"}
+{"id":"nist-p30-t1-cm","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"table","cell":"DE.CM","right":"Security Continuous Monitoring","above":"DE.AE"}
+{"id":"nist-p30-t1-mi","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"table","cell":"RS.MI","right":"Mitigation"}
+{"id":"nist-p30-t1-rc","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"table","cell":"RC","right":"Recover"}
+{"id":"nist-p30-t1-rcrp","pdf":"government-nist-cybersecurity.pdf","page":30,"type":"table","cell":"RC.RP","right":"Recovery Planning"}
