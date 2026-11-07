@@ -88,4 +88,40 @@ describe("running headers", () => {
     }
     expect(result.markdown).not.toMatch(/^(3|4|5)$/m);
   });
+
+  // Stripping looks at each band copy's neighbours (copies of the same string
+  // at its position on other pages, text on its line). A crafted PDF with
+  // thousands of copies and words on one line made that quadratic, which
+  // timeoutMs cannot interrupt. It must stay close to linear.
+  it("handles thousands of repeated numbers and words in the bands in near-linear time", async () => {
+    const word = (n: number) => {
+      let out = "";
+      do {
+        out += String.fromCharCode(97 + (n % 26));
+        n = Math.floor(n / 26);
+      } while (n > 0);
+      return `w${out}`;
+    };
+    const perLine = 2000;
+    const pages = Array.from({ length: 10 }, (_, p): TestPdfLine[] => {
+      const lines: TestPdfLine[] = [
+        { text: `Body text of page ${word(p)} explains one more widget in plain words.`, x: 72, y: 700, size: 10 },
+        { text: String(p + 1), x: 302, y: 30, size: 9 },
+      ];
+      for (let j = 0; j < perLine; j++) {
+        const x = 72 + j * 0.225;
+        // A line of numbers alone, then a line of numbers among words, both in the footer band.
+        lines.push({ text: "12", x, y: 50, size: 4 });
+        lines.push({ text: j % 2 === 0 ? "34" : word(p * perLine + j), x, y: 40, size: 4 });
+      }
+      return lines;
+    });
+    const pdf = makePdf({ pages });
+    const start = performance.now();
+    const result = await convert(pdf);
+    const elapsed = performance.now() - start;
+    expect(result.status).not.toBe("failed");
+    expect(elapsed).toBeLessThan(5000);
+  }, 30_000);
 });
+
