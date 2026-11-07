@@ -129,6 +129,11 @@ describe("cleanText", () => {
   it("collapses multiple spaces", () => {
     expect(cleanText("too   many    spaces")).toBe("too many spaces");
   });
+
+  it("maps Symbol and Wingdings private-use bullet glyphs to Unicode bullets", () => {
+    expect(cleanText("")).toBe("•");
+    expect(cleanText("")).toBe("▪");
+  });
 });
 
 // ---------------------------------------------------------------------------
@@ -212,6 +217,25 @@ describe("detectTable", () => {
       makeItem({ str: "is not the end goal of DRL. One of the driving forces behind DRL is the", x: 310, y: 120 }),
       makeItem({ str: "such as object detection, speech recognition, and language translation.", x: 50, y: 140 }),
       makeItem({ str: "vision of creating systems that are capable of learning how to adapt.", x: 310, y: 140 }),
+    ];
+    expect(detectTable(items)).toBeNull();
+  });
+
+  it("rejects a bulleted list whose bullets, labels and text line up like columns", () => {
+    // NIST CSF 1.1 p12: a bullet glyph, a short label and the rest of the line,
+    // with wrapped lines and an intro line that a table would drop.
+    const items = [
+      makeItem({ str: "The remainder of this document contains the following sections:", x: 72, y: 155 }),
+      makeItem({ str: "•", x: 90, y: 170, width: 5.5 }),
+      makeItem({ str: "Section 2", x: 108, y: 170, width: 45 }),
+      makeItem({ str: "describes the Framework components: the Framework Core, the", x: 156, y: 170 }),
+      makeItem({ str: "Profiles.", x: 108, y: 184 }),
+      makeItem({ str: "•", x: 90, y: 198, width: 5.5 }),
+      makeItem({ str: "Section 3", x: 108, y: 198, width: 45 }),
+      makeItem({ str: "presents examples of how the Framework can be used.", x: 156, y: 198 }),
+      makeItem({ str: "•", x: 90, y: 212, width: 5.5 }),
+      makeItem({ str: "Appendix B", x: 108, y: 212, width: 58 }),
+      makeItem({ str: "contains a glossary of selected terms.", x: 169, y: 212 }),
     ];
     expect(detectTable(items)).toBeNull();
   });

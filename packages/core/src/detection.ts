@@ -124,6 +124,10 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     if (avgCellLen > 40) return null; // prose, not tabular data
   }
 
+  // A first column of bullet markers is a bulleted list whose label and text
+  // happen to line up, not a table.
+  if (consistentRows.every((r) => BULLET_MARKER.test(r[0].str.trim()))) return null;
+
   // Rows with fewer cells (a value row without `$`, a subtotal with one number)
   // are placed by x position instead of being dropped.
   const anchors = columnAnchors(consistentRows, bestCount);
@@ -142,6 +146,8 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
   return cells.map((row) => row.filter((_, col) => keep[col]));
 }
 
+/** A cell that is only a list bullet. */
+const BULLET_MARKER = /^[•‣⁃∙▪▫●○◦■□▶▸►◆◇–—-]$/;
 const CURRENCY_ONLY = /^[$€£¥]$/;
 const STARTS_NUMERIC = /^[(\-−–]?\d|^[(\-−–]?[.,]\d/;
 const ENDS_NUMERIC = /\d\)?$/;
@@ -728,6 +734,10 @@ export function cleanText(s: string): string {
     .replace(/\u0096/g, "\u2013") // en dash
     .replace(/\u0097/g, "\u2014") // em dash
     .replace(/\u0085/g, "\u2026") // ellipsis
+    // Bullet glyphs from Symbol and Wingdings fonts come through in the
+    // private-use area; map them so list detection sees a bullet.
+    .replace(/\uf0b7/g, "\u2022") // Symbol bullet
+    .replace(/\uf0a7/g, "\u25aa") // Wingdings small square
     // Strip remaining C0 control chars (except tab, newline, carriage return)
     .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "")
     // Strip remaining C1 control chars (U+0080-U+009F) that weren't mapped above
