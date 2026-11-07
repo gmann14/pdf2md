@@ -1954,7 +1954,7 @@ function infoString(info: Record<string, unknown>, key: string): string | undefi
   return typeof value === "string" && value.length > 0 ? value : undefined;
 }
 
-async function extractMetadata(
+export async function extractMetadata(
   doc: PDFDocumentProxy,
   signal: AbortSignal | undefined,
   hasTextLayer: boolean | undefined,
@@ -2174,14 +2174,15 @@ function failedResult(
   };
 }
 
-async function convertWithSignal(
+/**
+ * Load PDF.js and open the document, or return the failed result (worker,
+ * password, parse or cancel). Exported for `info.ts`; not part of the public API.
+ */
+export async function openDocument(
   pdfBuffer: ArrayBuffer | Uint8Array,
-  options: ConvertOptions | undefined,
+  options: Pick<ConvertOptions, "emphasis" | "signal"> | undefined,
   startTime: number,
-  isTimedOut: () => boolean,
-  hooks?: ConvertHooks,
-): Promise<ConversionResult> {
-  const messages: ConversionMessage[] = [];
+): Promise<{ doc: PDFDocumentProxy } | { failed: ConversionResult }> {
   const emphasis = options?.emphasis !== false;
 
   // Initialize PDF.js (and its worker in browsers)
@@ -2190,16 +2191,16 @@ async function convertWithSignal(
     await initPdfWorker();
     pdfjs = await getPdfjs();
   } catch (err: unknown) {
-    return failedResult(
-      "worker_failed",
-      `Failed to load PDF.js: ${err instanceof Error ? err.message : "Unknown error"}`,
-      startTime,
-    );
+    return {
+      failed: failedResult(
+        "worker_failed",
+        `Failed to load PDF.js: ${err instanceof Error ? err.message : "Unknown error"}`,
+        startTime,
+      ),
+    };
   }
 
-  // Load document
   const { getDocument, VerbosityLevel } = pdfjs;
-  let doc: PDFDocumentProxy;
   try {
     // PDF.js rejects Node Buffers and may transfer (detach) the buffer it is
     // given, so always hand it a fresh plain Uint8Array copy.
@@ -2226,9 +2227,9 @@ async function convertWithSignal(
       else signal.addEventListener("abort", () => void loadingTask.destroy(), { once: true });
     }
 
-    doc = await loadingTask.promise;
+    return { doc: await loadingTask.promise };
   } catch (err: unknown) {
-    if (options?.signal?.aborted) return cancelledResult(startTime);
+    if (options?.signal?.aborted) return { failed: cancelledResult(startTime) };
 
     // Check for password-protected PDFs
     if (
@@ -2237,25 +2238,44 @@ async function convertWithSignal(
         err.message.includes("encrypted"))
     ) {
       return {
-        status: "failed",
-        markdown: "",
-        messages: [
-          {
-            code: "password_protected",
-            severity: "error",
-            message: "This PDF is password-protected. Please unlock it first.",
-          },
-        ],
-        stats: { pageCount: 0, wordCount: 0, processingMs: 0 },
+        failed: {
+          status: "failed",
+          markdown: "",
+          messages: [
+            {
+              code: "password_protected",
+              severity: "error",
+              message: "This PDF is password-protected. Please unlock it first.",
+            },
+          ],
+          stats: { pageCount: 0, wordCount: 0, processingMs: 0 },
+        },
       };
     }
 
-    return failedResult(
-      "parse_failed",
-      `Failed to parse PDF: ${err instanceof Error ? err.message : "Unknown error"}`,
-      startTime,
-    );
+    return {
+      failed: failedResult(
+        "parse_failed",
+        `Failed to parse PDF: ${err instanceof Error ? err.message : "Unknown error"}`,
+        startTime,
+      ),
+    };
   }
+}
+
+async function convertWithSignal(
+  pdfBuffer: ArrayBuffer | Uint8Array,
+  options: ConvertOptions | undefined,
+  startTime: number,
+  isTimedOut: () => boolean,
+  hooks?: ConvertHooks,
+): Promise<ConversionResult> {
+  const messages: ConversionMessage[] = [];
+  const emphasis = options?.emphasis !== false;
+
+  const opened = await openDocument(pdfBuffer, options, startTime);
+  if ("failed" in opened) return opened.failed;
+  const { doc } = opened;
 
   // Every path below settles: a cancel at any stage (even after the last page
   // is read) becomes the cancelled result, an unexpected error becomes a

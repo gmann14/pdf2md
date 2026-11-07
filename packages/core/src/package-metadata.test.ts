@@ -65,10 +65,12 @@ describe("npm package metadata", () => {
     expect(pkg.name).toBe("@pdf2md/mcp");
     expect(pkg.keywords).toEqual(expect.arrayContaining(launchKeywords));
     expect(pkg.keywords).toEqual(expect.arrayContaining(["mcp", "claude", "ai-agent"]));
-    expect(pkg.types).toBe("./dist/index.d.ts");
+    // 0.2: the package entry exports createServer() (dist/server.js); only
+    // the bin (dist/index.js) starts the stdio server.
+    expect(pkg.types).toBe("./dist/server.d.ts");
     expect(pkg.exports?.["."]).toEqual(
       expect.objectContaining({
-        types: "./dist/index.d.ts",
+        types: "./dist/server.d.ts",
       }),
     );
   });

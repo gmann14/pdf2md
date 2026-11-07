@@ -25,22 +25,39 @@ Add to your MCP config (`.mcp.json`, `~/.claude.json`, or equivalent):
 }
 ```
 
-## Tool
+## Tools
+
+Both tools are read-only. Each takes the PDF as `file_path` or `data_base64`
+(exactly one).
 
 ### convert_pdf
 
-Convert a PDF file to Markdown.
+Convert a PDF to Markdown.
 
-**Parameters:**
+| Name | Type | Description |
+|------|------|-------------|
+| `file_path` | string | Path to the PDF file |
+| `data_base64` | string | The PDF bytes as base64, instead of `file_path` |
+| `pages` | string or number[] | `"1-5,9"`, `"-3"` (the last 3 pages) or `[1, 4]`; default all |
+| `format` | `markdown` \| `json` \| `chunks` | Markdown text (default), or structured content: per-page Markdown with metadata and stats, or RAG chunks |
+| `chunk_by` | `page` \| `heading` \| `token` | How to split for `format: "chunks"` (default `heading`) |
+| `max_chars` | number | Most Markdown characters to return (default 100,000) |
+| `max_pages` | number | Convert at most this many of the selected pages |
+| `include_metadata` | boolean | Metadata in `json`/`chunks` output (default true) |
+| `yaml_front_matter` | boolean | Prepend YAML front matter (`markdown` format) |
 
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| `file_path` | string | Yes | Path to the PDF file |
-| `max_pages` | number | No | Maximum pages to convert |
-| `include_metadata` | boolean | No | Include PDF metadata (default: true) |
-| `yaml_front_matter` | boolean | No | Prepend YAML front matter |
+When the output would pass `max_chars`, it is cut at a page boundary and the
+result says which pages to ask for next: `next_pages` in `json`/`chunks`
+structured content, or a closing comment in Markdown
+(`Call again with pages: "6-12" for the rest.`).
 
-**Returns:** Markdown string with headings, tables, code blocks, links, and lists preserved.
+### pdf_info
+
+Page count, metadata (title, author, producer, PDF version, tagged,
+encrypted) and which pages have a text layer (`pagesWithText`,
+`pagesWithoutText` as page ranges), without converting. Use it to plan reads.
+
+There is no file size limit; large PDFs are best read in page slices.
 
 ## Features
 
