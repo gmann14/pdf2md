@@ -19,6 +19,8 @@ export interface DatasetMetrics {
   dimensions: Record<string, number>;
   /** Per-document text-fidelity metrics, when the report has a "Text Fidelity" section. */
   fidelity?: Record<string, DocumentFidelity>;
+  /** Sum of the per-document conversion times in the report's Time column (ms). */
+  totalMs?: number;
 }
 
 export interface QualitySnapshot {
@@ -28,6 +30,18 @@ export interface QualitySnapshot {
   diffSummary: string;
   datasets: Record<DatasetKey, DatasetMetrics>;
   combined: number;
+  /** From bench/latest.json (`pnpm bench`), when present. Informational; never gates. */
+  bench?: BenchSummary;
+}
+
+export interface BenchSummary {
+  generatedAt: string;
+  gitSha: string;
+  runs: number;
+  files: number;
+  /** Sum of per-file median conversion times (ms). */
+  totalMedianMs: number;
+  maxPeakRssMb: number;
 }
 
 export interface AcceptanceResult {
@@ -85,6 +99,12 @@ export function parseQualityReport(content: string, dataset: DatasetKey): Datase
     documentScores[match[1].trim()] = Number(match[2]);
   }
 
+  let totalMs = 0;
+  const timeRowPattern = /^\|\s*[^|\s][^|]*?\.pdf\s*\|(?:[^|]*\|){3}\s*(\d+)ms\s*\|\s*\*\*[\d.]+\*\*\s*\|/gm;
+  for (const match of content.matchAll(timeRowPattern)) {
+    totalMs += Number(match[1]);
+  }
+
   const dimensions: Record<string, number> = {};
   const dimensionRowPattern = /^\|\s*([a-zA-Z][A-Za-z]+)\s*\|\s*([\d.]+)\/10\s*\|/gm;
   for (const match of content.matchAll(dimensionRowPattern)) {
@@ -100,7 +120,7 @@ export function parseQualityReport(content: string, dataset: DatasetKey): Datase
     throw new Error(`Could not parse ${dataset} dimension averages`);
   }
 
-  return fidelity ? { average, documentScores, dimensions, fidelity } : { average, documentScores, dimensions };
+  return { average, documentScores, dimensions, ...(fidelity ? { fidelity } : {}), totalMs };
 }
 
 /** Parse the "## Text Fidelity" table written by test-corpus/fidelity.ts. */

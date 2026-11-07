@@ -16,7 +16,8 @@
     "test:fidelity": "pnpm --filter @pdf2md/core test:fidelity",
     "lint": "pnpm --filter @pdf2md/web lint",
     "typecheck": "pnpm --filter @pdf2md/core typecheck && pnpm --filter @pdf2md/web typecheck",
-    "compare:opendocsg": "tsx --require ./test-corpus/node-polyfills.cjs test-corpus/compare-converters.ts"
+    "compare:opendocsg": "tsx --require ./test-corpus/node-polyfills.cjs test-corpus/compare-converters.ts",
+    "bench": "pnpm --filter @pdf2md/core build && tsx bench/run.ts"
   },
   "version": "",
   "devDependencies": {

@@ -8,6 +8,7 @@ import {
   compareSnapshots,
   formatAcceptance,
   loadSnapshotFromReports,
+  type BenchSummary,
   type QualitySnapshot,
 } from "./compare-results";
 
@@ -24,6 +25,7 @@ interface CliOptions {
   rootDir: string;
   skipRun: boolean;
   updateBaseline: boolean;
+  bench: boolean;
 }
 
 function parseArgs(argv: string[]): CliOptions {
@@ -31,6 +33,7 @@ function parseArgs(argv: string[]): CliOptions {
     rootDir: process.cwd(),
     skipRun: false,
     updateBaseline: false,
+    bench: false,
   };
 
   for (let i = 0; i < argv.length; i++) {
@@ -41,6 +44,8 @@ function parseArgs(argv: string[]): CliOptions {
       options.skipRun = true;
     } else if (arg === "--update-baseline") {
       options.updateBaseline = true;
+    } else if (arg === "--bench") {
+      options.bench = true;
     } else {
       throw new Error(`Unknown argument: ${arg}`);
     }
@@ -81,7 +86,44 @@ async function diffSummary(rootDir: string): Promise<string> {
   return summary.length > 0 ? summary : "clean worktree";
 }
 
-function renderSummary(snapshot: QualitySnapshot, acceptance: string): string {
+/** Read the totals of bench/latest.json, or undefined when it is missing or malformed. */
+export async function readBenchSummary(rootDir: string): Promise<BenchSummary | undefined> {
+  let raw: string;
+  try {
+    raw = await readFile(`${rootDir}/bench/latest.json`, "utf-8");
+  } catch {
+    return undefined;
+  }
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (typeof parsed !== "object" || parsed === null) return undefined;
+    const report = parsed as Record<string, unknown>;
+    const totals = report.totals as Record<string, unknown> | undefined;
+    if (
+      typeof report.generatedAt !== "string" ||
+      typeof report.gitSha !== "string" ||
+      typeof report.runs !== "number" ||
+      typeof totals?.files !== "number" ||
+      typeof totals?.medianMs !== "number" ||
+      typeof totals?.maxPeakRssMb !== "number"
+    ) {
+      return undefined;
+    }
+    return {
+      generatedAt: report.generatedAt,
+      gitSha: report.gitSha,
+      runs: report.runs,
+      files: totals.files,
+      totalMedianMs: totals.medianMs,
+      maxPeakRssMb: totals.maxPeakRssMb,
+    };
+  } catch (error) {
+    console.warn(`Ignoring bench/latest.json: ${error instanceof Error ? error.message : String(error)}`);
+    return undefined;
+  }
+}
+
+export function renderSummary(snapshot: QualitySnapshot, acceptance: string): string {
   const lines = [
     "# Autoresearch Latest Summary",
     "",
@@ -91,13 +133,24 @@ function renderSummary(snapshot: QualitySnapshot, acceptance: string): string {
     "",
     "## Dataset Scores",
     "",
-    "| Dataset | Average | Documents |",
-    "| ------- | ------: | --------: |",
+    "| Dataset | Average | Documents | Total ms |",
+    "| ------- | ------: | --------: | -------: |",
   ];
 
+  let totalMs = 0;
   for (const key of DATASET_KEYS) {
     const metrics = snapshot.datasets[key];
-    lines.push(`| ${key} | ${metrics.average.toFixed(1)}/10 | ${Object.keys(metrics.documentScores).length} |`);
+    totalMs += metrics.totalMs ?? 0;
+    const ms = metrics.totalMs === undefined ? "–" : String(metrics.totalMs);
+    lines.push(`| ${key} | ${metrics.average.toFixed(1)}/10 | ${Object.keys(metrics.documentScores).length} | ${ms} |`);
+  }
+  lines.push("", `Total conversion time (evaluate runs, single run per PDF): ${totalMs} ms`);
+  if (snapshot.bench) {
+    const b = snapshot.bench;
+    lines.push(
+      `Bench (\`pnpm bench\`, ${b.gitSha}, ${b.generatedAt}): ${b.totalMedianMs} ms total of per-file medians over ${b.files} files ` +
+        `(${b.runs} runs each), max peak RSS ${b.maxPeakRssMb} MB`,
+    );
   }
 
   lines.push("", "## Acceptance", "", "```text", acceptance, "```", "", "## Source Reports", "");
@@ -117,6 +170,10 @@ async function main(): Promise<void> {
       await runCommand(command, options.rootDir);
     }
   }
+  if (options.bench) {
+    await runCommand(["pnpm", "bench"], options.rootDir);
+  }
+  const bench = await readBenchSummary(options.rootDir);
 
   const snapshot = await loadSnapshotFromReports(options.rootDir, {
     timestamp: new Date().toISOString(),
@@ -124,6 +181,7 @@ async function main(): Promise<void> {
     branch: await gitValue(options.rootDir, ["branch", "--show-current"], "unknown"),
     diffSummary: await diffSummary(options.rootDir),
   });
+  if (bench) snapshot.bench = bench;
 
   await mkdir(`${options.rootDir}/autoresearch`, { recursive: true });
   await writeFile(`${options.rootDir}/autoresearch/latest-summary.json`, `${JSON.stringify(snapshot, null, 2)}\n`);
@@ -140,7 +198,9 @@ async function main(): Promise<void> {
   console.log(acceptance);
 }
 
-void main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
-});
+if (import.meta.url === `file://${process.argv[1]}`) {
+  void main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+}

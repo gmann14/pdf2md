@@ -127,6 +127,25 @@ they are correct:
 
 Timings are single runs on one machine: indicative, not a benchmark (see `pnpm bench`).
 
+## Performance benchmark
+
+```bash
+pnpm bench                                   # builds packages/core, 3 runs per tracked PDF
+pnpm bench --runs 5 --only slides-stanford-ml.pdf
+```
+
+`bench/run.ts` runs each PDF in its own plain-Node child (`bench/child.mjs`, against the
+built `packages/core/dist`) and writes `bench/latest.json`: per-file median, cold (first)
+and min/max milliseconds, page count and peak RSS, plus totals. Plain Node matters: under
+`tsx`, PDF.js is compiled on load, which adds about a second and 500 MB to the first
+conversion in a process. Timings are noisy and nothing gates on them.
+
+Profiling the slowest files (`node --cpu-prof --require ./test-corpus/node-polyfills.cjs
+bench/child.mjs <pdf> 3`) on 7 Nov 2026 showed PDF.js text extraction (`getTextContent`
+in the worker, plus `structuredClone` of its messages) taking most of the time, and
+pdf2md's own pipeline about 10–15%. The largest pdf2md hotspot was `detectEmphasisFonts`
+filtering all items once per font; it now groups items by font in one pass.
+
 ## Dimension Averages Across All Sets
 
 | Dimension | Training | Blind 1 | Blind 2 | Blind 3 |

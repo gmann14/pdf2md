@@ -106,10 +106,15 @@ function detectEmphasisFonts(
 ): Set<string> {
   const emphasisFonts = new Set<string>();
 
-  // Find dominant font by character count
+  // Find dominant font by character count. Items are grouped by font in one
+  // pass (document order kept): filtering per font was O(fonts × items).
   const fontCharCount = new Map<string, number>();
+  const itemsByFont = new Map<string, ExtractedItem[]>();
   for (const item of items) {
     fontCharCount.set(item.fontName, (fontCharCount.get(item.fontName) ?? 0) + item.str.length);
+    const group = itemsByFont.get(item.fontName);
+    if (group) group.push(item);
+    else itemsByFont.set(item.fontName, [item]);
   }
 
   let dominantFont = "";
@@ -131,7 +136,7 @@ function detectEmphasisFonts(
     if (isBold(fontName) || isItalic(fontName)) continue;
 
     // Collect items for this font
-    const fontItems = items.filter((i) => i.fontName === fontName);
+    const fontItems = itemsByFont.get(fontName) ?? [];
 
     // Check: is this font used at approximately body size?
     const avgSize = fontItems.reduce((s, i) => s + i.fontSize, 0) / fontItems.length;
