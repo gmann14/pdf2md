@@ -1012,9 +1012,12 @@ function classifyBlock(
 
   // Check 3a: one line in a real bold font (resolved from the PDF's font
   // name) at about body size. Smaller bold text is table headers and labels;
-  // a wide gap between words is a table row, not a heading.
+  // a wide gap between words is a table row, not a heading. Bold monospace
+  // with code punctuation is code (a function signature), not a heading; a
+  // bare command name ("git status") in a cheat sheet still is.
+  const inCodeFont = items.some((i) => i.monospace === true) && /::|->|=>|<-|[=()]/.test(allText);
   if (
-    boldFonts.size > 0 && items.every((i) => boldFonts.has(i.fontName)) &&
+    boldFonts.size > 0 && !inCodeFont && items.every((i) => boldFonts.has(i.fontName)) &&
     isBoldHeadingLine(items, profile.bodySize) &&
     isShortLine && hasNoTrailingPunctuation && !looksLikeListItem && hasRealWord
   ) {
@@ -1025,7 +1028,7 @@ function classifyBlock(
   // Check 3b: Emphasis font (font-pair detection) on a short standalone line → heading
   // Catches bold headings in PDFs where font name doesn't contain "Bold" (subset fonts)
   if (
-    emphasisFonts && emphasisFonts.size > 0 &&
+    emphasisFonts && emphasisFonts.size > 0 && !inCodeFont &&
     items.every((i) => emphasisFonts.has(i.fontName)) &&
     isBoldHeadingLine(items, profile.bodySize) &&
     isShortLine && hasNoTrailingPunctuation &&
