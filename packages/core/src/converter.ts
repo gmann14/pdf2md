@@ -86,6 +86,12 @@ interface Block {
   items: ExtractedItem[];
   type: "paragraph" | "heading" | "list-item" | "table" | "code-block";
   headingLevel?: number;
+  /**
+   * What made a heading: section numbering (its level is absolute), a font
+   * size above body text, or a body-size style (bold, emphasis font, capitals).
+   * `rankHeadingLevels` re-ranks the last two by the styles in use.
+   */
+  headingSource?: "number" | "size" | "style";
   listMarker?: string;
   tableRows?: string[][];
   /** A table-of-contents block: rendered as list items, leaders removed. */
@@ -325,21 +331,18 @@ async function extractPageItems(
  *
  * Font names are only on `commonObjs` after a page's operator list is built,
  * which costs about as much as the text extraction itself. So only the fonts
- * that can produce inline emphasis or a code block are resolved (fonts of
- * lettered items in paragraph and list blocks, except the dominant body font,
- * which is taken as regular), using as few pages as possible (greedy cover).
+ * of lettered items are resolved, except the dominant body font, which is
+ * taken as regular, using as few pages as possible (greedy cover). It runs
+ * before blocks are formed, because heading detection needs real bold.
  * Returns one message per page whose operator list failed.
  */
 async function resolveFonts(
   doc: PDFDocumentProxy,
-  blocks: Block[],
+  items: ExtractedItem[],
   signal?: AbortSignal,
 ): Promise<{ styles: Map<string, ResolvedFont>; errors: string[] }> {
   const styles = new Map<string, ResolvedFont>();
-  const candidates = blocks
-    .filter((b) => b.type === "paragraph" || b.type === "list-item")
-    .flatMap((b) => b.items)
-    .filter(hasLetter);
+  const candidates = items.filter(hasLetter);
   const chars = new Map<string, number>();
   for (const item of candidates) {
     chars.set(item.fontName, (chars.get(item.fontName) ?? 0) + item.str.length);
@@ -349,7 +352,7 @@ async function resolveFonts(
   if (needed.size === 0) return { styles, errors: [] };
 
   const fontsByPage = new Map<number, Set<string>>();
-  for (const item of blocks.flatMap((b) => b.items)) {
+  for (const item of items) {
     if (!needed.has(item.fontName)) continue;
     const fonts = fontsByPage.get(item.page) ?? new Set<string>();
     fonts.add(item.fontName);
@@ -390,11 +393,9 @@ async function resolveFonts(
     for (const id of fonts) needed.delete(id);
   }
 
-  for (const block of blocks) {
-    for (const item of block.items) {
-      const style = styles.get(item.fontName);
-      if (style) item.monospace = style.monospace;
-    }
+  for (const item of items) {
+    const style = styles.get(item.fontName);
+    if (style) item.monospace = style.monospace;
   }
   return { styles, errors };
 }
@@ -597,12 +598,50 @@ function isLineLabel(label: ExtractedItem, next: ExtractedItem): boolean {
   return rise >= 0 && rise <= next.fontSize * 0.5 && gap >= -1 && gap <= next.fontSize * 0.5;
 }
 
+/** The font with the most characters: the body text font. */
+function dominantFont(items: ExtractedItem[]): string | undefined {
+  const chars = new Map<string, number>();
+  for (const item of items) chars.set(item.fontName, (chars.get(item.fontName) ?? 0) + item.str.length);
+  let best: string | undefined;
+  let bestCount = 0;
+  for (const [font, count] of chars) {
+    if (count > bestCount) {
+      best = font;
+      bestCount = count;
+    }
+  }
+  return best;
+}
+
+/**
+ * True when `block` is one or two lines set in a single font other than the
+ * body font, and `next` opens the following line in the body font: a heading
+ * on a line of its own (`Data Source` in a semibold sans over serif body
+ * text). Size alone does not separate them when the heading is about body
+ * size, and the line gap is a normal one.
+ */
+function endsStyledLine(block: ExtractedItem[], next: ExtractedItem, bodyFont: string | undefined): boolean {
+  if (bodyFont === undefined || next.fontName !== bodyFont) return false;
+  const first = block[0];
+  const last = block[block.length - 1];
+  if (!first || first.fontName === bodyFont || first.page !== next.page) return false;
+  if (!block.every((item) => item.fontName === first.fontName && item.page === first.page)) return false;
+  // At most two lines: every item on the first line or on the last one.
+  const onLine = (item: ExtractedItem, line: ExtractedItem) => Math.abs(item.y - line.y) <= line.fontSize * 0.5;
+  if (!block.every((item) => onLine(item, first) || onLine(item, last))) return false;
+  if (next.y - last.y <= Math.max(last.fontSize, next.fontSize) * 0.5) return false;
+  const text = block.map((item) => item.str).join(" ").trim();
+  return text.length < 120 && /\p{L}{2}/u.test(text) && !/[.,;:]$/.test(text);
+}
+
 function groupIntoBlocks(
   items: ExtractedItem[],
   profile: FontProfile,
   emphasisFonts?: Set<string>,
+  boldFonts: Set<string> = new Set(),
 ): Block[] {
   if (items.length === 0) return [];
+  const bodyFont = dominantFont(items);
 
   // Sort by page first; within a page use columnOrder (set for multi-column
   // pages by applyColumnReordering) or fall back to Y then X.
@@ -633,10 +672,13 @@ function groupIntoBlocks(
     const pageDiff = curr.page !== prev.page;
 
     if (
-      (pageDiff || verticalGap > lineHeight || (sizeChange && verticalGap > prev.height * 0.3)) &&
+      (pageDiff ||
+        verticalGap > lineHeight ||
+        (sizeChange && verticalGap > prev.height * 0.3) ||
+        endsStyledLine(currentItems, curr, bodyFont)) &&
       !opensLabelledLine(currentItems, curr, sorted.slice(Math.max(0, i - 4), i - 1))
     ) {
-      blocks.push(classifyBlock(currentItems, profile, emphasisFonts));
+      blocks.push(classifyBlock(currentItems, profile, emphasisFonts, boldFonts));
       currentItems = [curr];
     } else {
       currentItems.push(curr);
@@ -644,7 +686,7 @@ function groupIntoBlocks(
   }
 
   if (currentItems.length > 0) {
-    blocks.push(classifyBlock(currentItems, profile, emphasisFonts));
+    blocks.push(classifyBlock(currentItems, profile, emphasisFonts, boldFonts));
   }
 
   return blocks;
@@ -809,10 +851,57 @@ const NUMBERED_PATTERN = /^(\d{1,3})[.)]\s+/;
 const LETTER_LIST_PATTERN = /^[a-zA-Z][.)]\s+/;
 const BRACKET_NUM_PATTERN = /^\[(\d{1,3})\]\s+/;
 
+/**
+ * The font size of most of a block's characters (the first item's on a tie),
+ * so a large initial or logo glyph does not make a footer a heading.
+ */
+function dominantSize(items: ExtractedItem[]): number {
+  const chars = new Map<number, number>();
+  for (const item of items) {
+    const size = Math.round(item.fontSize * 10) / 10;
+    chars.set(size, (chars.get(size) ?? 0) + item.str.trim().length);
+  }
+  let best = Math.round((items[0]?.fontSize ?? 0) * 10) / 10;
+  let bestCount = chars.get(best) ?? 0;
+  for (const [size, count] of chars) {
+    if (count > bestCount) {
+      best = size;
+      bestCount = count;
+    }
+  }
+  return best;
+}
+
+/**
+ * One or two lines of text whose characters are mostly at least 0.85× the
+ * body size, with no gap between words wider than two font sizes (so not a
+ * row of table cells, a small label or a footer).
+ */
+function isBoldHeadingLine(items: ExtractedItem[], bodySize: number): boolean {
+  const first = items[0];
+  if (!first || dominantSize(items) < bodySize * 0.85) return false;
+  const lines: ExtractedItem[][] = [];
+  for (const item of items) {
+    if (item.page !== first.page) return false;
+    const line = lines.find((l) => Math.abs(l[0].y - item.y) <= item.fontSize * 0.5);
+    if (line) line.push(item);
+    else lines.push([item]);
+  }
+  if (lines.length > 2) return false;
+  for (const line of lines) {
+    const byX = [...line].sort((a, b) => a.x - b.x);
+    for (let i = 1; i < byX.length; i++) {
+      if (byX[i].x - (byX[i - 1].x + byX[i - 1].width) > byX[i].fontSize * 2) return false;
+    }
+  }
+  return true;
+}
+
 function classifyBlock(
   items: ExtractedItem[],
   profile: FontProfile,
   emphasisFonts?: Set<string>,
+  boldFonts: Set<string> = new Set(),
 ): Block {
   const firstItem = items[0];
   // A footnote that opens with its raised label is body text, not a
@@ -821,40 +910,43 @@ function classifyBlock(
   const allText = items.map((i) => i.str).join(" ").trim();
   const isShortLine = allText.length < 120;
   const hasNoTrailingPunctuation = !/[.,:;]$/.test(allText);
+  // A numbered line ending in a connecting word ("1. When the work is created
+  // … regular duties, or") is a list item, not a section heading.
+  const endsInConnector = /\s(?:and|or|nor|of|the|a|an|to|in|for|by|with|as|that|which)$/.test(allText);
 
   // Check 1: Section numbering pattern (e.g., "1.1 Background", "II. REWARD-DRIVEN") → heading
   // Takes priority over font-size heading because numbering reliably indicates level.
   // Must come before list detection so "1. Introduction" isn't classified as a list item.
   const romanMatch = allText.match(/^(I{1,3}|IV|VI{0,3}|IX|X{0,3})\.\s+[A-Z]/);
-  if (romanMatch && isShortLine && hasNoTrailingPunctuation) {
-    return { items, type: "heading", headingLevel: 2 };
+  if (romanMatch && isShortLine && hasNoTrailingPunctuation && !endsInConnector) {
+    return { items, type: "heading", headingLevel: 2, headingSource: "number" };
   }
 
   const sectionDotMatch = allText.match(/^(\d+\.(?:\d+\.?)*)\s+[A-Z]/);
-  if (sectionDotMatch && isShortLine && hasNoTrailingPunctuation) {
+  if (sectionDotMatch && isShortLine && hasNoTrailingPunctuation && !endsInConnector) {
     const dots = (sectionDotMatch[1].match(/\./g) ?? []).length;
     const level = Math.min(dots + 1, 6); // "1." → H2, "1.1" → H3, etc.
-    return { items, type: "heading", headingLevel: level };
+    return { items, type: "heading", headingLevel: level, headingSource: "number" };
   }
   // Also match bare "1 Introduction" style (no dot) — require bold or very short
   const sectionBareMatch = allText.match(/^(\d+)\s+[A-Z]/);
-  if (sectionBareMatch && isShortLine && hasNoTrailingPunctuation && allText.length < 60) {
-    return { items, type: "heading", headingLevel: 2 };
+  if (sectionBareMatch && isShortLine && hasNoTrailingPunctuation && !endsInConnector && allText.length < 60) {
+    return { items, type: "heading", headingLevel: 2, headingSource: "number" };
   }
 
   // Letter-dot pattern: "A. Value Functions", "B. Sampling" — common subsection style
   const letterDotMatch = allText.match(/^[A-Z]\.\s+[A-Z]/);
-  if (letterDotMatch && isShortLine && hasNoTrailingPunctuation) {
-    return { items, type: "heading", headingLevel: 3 };
+  if (letterDotMatch && isShortLine && hasNoTrailingPunctuation && !endsInConnector) {
+    return { items, type: "heading", headingLevel: 3, headingSource: "number" };
   }
 
   // Check 2: Font size heading (largest font sizes are headings)
   // Guard: don't classify long blocks as headings — real headings are short
   // Guard: require at least one real word (3+ letters) or CJK char to filter diagram labels
-  const headingLevel = getHeadingLevel(firstItem.fontSize, profile);
+  const headingLevel = getHeadingLevel(dominantSize(items), profile);
   const hasRealWord = /[a-zA-Z]{3,}/.test(allText) || /[\u3000-\u9FFF\uF900-\uFAFF]/.test(allText);
   if (headingLevel !== undefined && allText.length <= 150 && hasRealWord) {
-    return { items, type: "heading", headingLevel };
+    return { items, type: "heading", headingLevel, headingSource: "size" };
   }
 
   // Check 3: Bold text on a short standalone line → heading
@@ -867,19 +959,35 @@ function classifyBlock(
     !looksLikeListItem && allText.length >= 2 && items.length <= 5
   ) {
     const isAllCaps = allText === allText.toUpperCase() && allText !== allText.toLowerCase();
-    return { items, type: "heading", headingLevel: isAllCaps ? 2 : 3 };
+    return { items, type: "heading", headingLevel: isAllCaps ? 2 : 3, headingSource: "style" };
+  }
+
+  // Check 3a: one line in a real bold font (resolved from the PDF's font
+  // name) at about body size. Smaller bold text is table headers and labels;
+  // a wide gap between words is a table row, not a heading. Bold monospace
+  // with code punctuation is code (a function signature), not a heading; a
+  // bare command name ("git status") in a cheat sheet still is.
+  const inCodeFont = items.some((i) => i.monospace === true) && /::|->|=>|<-|[=()]/.test(allText);
+  if (
+    boldFonts.size > 0 && !inCodeFont && items.every((i) => boldFonts.has(i.fontName)) &&
+    isBoldHeadingLine(items, profile.bodySize) &&
+    isShortLine && hasNoTrailingPunctuation && !looksLikeListItem && hasRealWord
+  ) {
+    const isAllCaps = allText === allText.toUpperCase() && allText !== allText.toLowerCase();
+    return { items, type: "heading", headingLevel: isAllCaps ? 2 : 3, headingSource: "style" };
   }
 
   // Check 3b: Emphasis font (font-pair detection) on a short standalone line → heading
   // Catches bold headings in PDFs where font name doesn't contain "Bold" (subset fonts)
   if (
-    emphasisFonts && emphasisFonts.size > 0 &&
+    emphasisFonts && emphasisFonts.size > 0 && !inCodeFont &&
     items.every((i) => emphasisFonts.has(i.fontName)) &&
+    isBoldHeadingLine(items, profile.bodySize) &&
     isShortLine && hasNoTrailingPunctuation &&
     !looksLikeListItem && allText.length >= 2 && items.length <= 8
   ) {
     const isAllCapsEmph = allText === allText.toUpperCase() && allText !== allText.toLowerCase();
-    return { items, type: "heading", headingLevel: isAllCapsEmph ? 2 : 3 };
+    return { items, type: "heading", headingLevel: isAllCapsEmph ? 2 : 3, headingSource: "style" };
   }
 
   // Check 4: ALL_CAPS short line → heading (independent of bold detection)
@@ -891,7 +999,7 @@ function classifyBlock(
     hasNoTrailingPunctuation && !looksLikeListItem && items.length <= 8 &&
     hasRealWord
   ) {
-    return { items, type: "heading", headingLevel: 2 };
+    return { items, type: "heading", headingLevel: 2, headingSource: "style" };
   }
 
   // Check for list item
@@ -1377,6 +1485,144 @@ function filterHeadersFooters(
 // ---------------------------------------------------------------------------
 // Heading level normalization
 // ---------------------------------------------------------------------------
+
+/**
+ * Join headings stacked on consecutive lines in the same font and size: a
+ * heading wrapped onto a second line, or the lines of a loosely spaced
+ * paragraph that were each taken for a heading (a sidebar set at 18 pt
+ * leading). Three or more lines, or text that is long or ends a clause, is a
+ * paragraph; otherwise it stays one heading.
+ */
+function joinStackedHeadings(blocks: Block[]): Block[] {
+  const out: Block[] = [];
+  const lines = new Map<Block, number>();
+  for (const block of blocks) {
+    const prev = out[out.length - 1];
+    const last = prev?.items[prev.items.length - 1];
+    const first = block.items[0];
+    if (
+      prev && last && first &&
+      prev.type === "heading" && block.type === "heading" &&
+      prev.headingSource !== "number" && block.headingSource === prev.headingSource &&
+      first.page === last.page && first.fontName === last.fontName &&
+      Math.abs(first.fontSize - last.fontSize) < 0.1 &&
+      first.y - last.y > first.fontSize * 0.5 && first.y - last.y <= first.fontSize * 2 &&
+      (Math.abs(first.x - prev.items[0].x) <= first.fontSize ||
+        Math.abs(first.x + blockWidth(block) / 2 - (prev.items[0].x + blockWidth(prev) / 2)) <= first.fontSize)
+    ) {
+      const merged: Block = { ...prev, items: [...prev.items, ...block.items] };
+      lines.set(merged, (lines.get(prev) ?? 1) + 1);
+      out[out.length - 1] = merged;
+      continue;
+    }
+    out.push(block);
+  }
+  for (const [block, count] of lines) {
+    const text = blockRawText(block);
+    if (count >= 3 || text.length > 120 || /[.,;:]$/.test(text)) {
+      block.type = "paragraph";
+      delete block.headingLevel;
+      delete block.headingSource;
+    }
+  }
+  return out;
+}
+
+/** Width of a block's first line, from its first item to the last item on that line. */
+function blockWidth(block: Block): number {
+  const first = block.items[0];
+  if (!first) return 0;
+  let right = first.x + first.width;
+  for (const item of block.items) {
+    if (Math.abs(item.y - first.y) <= first.fontSize * 0.5) right = Math.max(right, item.x + item.width);
+  }
+  return right - first.x;
+}
+
+/**
+ * Re-rank the levels of headings found by font size or body-size style, after
+ * the title is known:
+ *
+ * - Headings above the title on its page (a masthead such as "Weekly / Vol.
+ *   73", a "CIRCULAR" label) become paragraphs: they are not part of the
+ *   outline, and their size must not push the real sections a level down.
+ * - Font-size headings take levels from the sizes actually used by headings
+ *   (largest = H1, at most 4 levels), so a size used only by a masthead or by
+ *   text that is not a heading takes no level. A size used by one heading
+ *   only (other than the title) shares the level of the next smaller size.
+ * - Body-size bold, emphasis-font and capitals headings go one level below
+ *   the last font-size or numbered heading before them (the title at first),
+ *   and one more under a heading of a larger style since then (larger size
+ *   first, capitals over mixed case at one size) that at least two headings
+ *   use: two tiers at most.
+ *
+ * Numbered headings ("1.2 Scope") keep their levels, and so does the title.
+ */
+function rankHeadingLevels(blocks: Block[]): void {
+  const headings = blocks.filter((b) => b.type === "heading");
+  const title = headings.find((b) => b.headingLevel === 1);
+  const titlePage = title?.items[0]?.page;
+  if (title && titlePage !== undefined && headings[0]?.items[0]?.page === titlePage) {
+    for (const block of headings) {
+      if (block === title) break;
+      if (block.headingSource === "size" || block.headingSource === "style") {
+        block.type = "paragraph";
+        delete block.headingLevel;
+        delete block.headingSource;
+      }
+    }
+  }
+
+  const ranked = blocks.filter((b) => b.type === "heading" && b !== title);
+  const sizeOf = (b: Block) => Math.round((b.items[0]?.fontSize ?? 0) * 10) / 10;
+  // A size takes a level of its own when two or more headings use it (or the
+  // title does); a size used once shares the level of the next smaller one.
+  const sizeCounts = new Map<number, number>();
+  for (const b of ranked) {
+    if (b.headingSource === "size") sizeCounts.set(sizeOf(b), (sizeCounts.get(sizeOf(b)) ?? 0) + 1);
+  }
+  const sizes = [...sizeCounts]
+    .filter(([size, n]) => n >= 2 || (title?.headingSource === "size" && size === sizeOf(title)))
+    .map(([size]) => size);
+  if (title?.headingSource === "size" && !sizes.includes(sizeOf(title))) sizes.push(sizeOf(title));
+  sizes.sort((a, b) => b - a);
+  const sizeLevel = (size: number) => Math.min(4, sizes.filter((s) => s > size).length + 1);
+  const isCaps = (b: Block) => {
+    const text = blockRawText(b);
+    return text === text.toUpperCase() && text !== text.toLowerCase();
+  };
+  // Body-size headings rank by size (to the half point), then capitals over
+  // mixed case. A style used by one heading only is not a tier of its own.
+  const styleKey = (b: Block) => Math.round((b.items[0]?.fontSize ?? 0) * 2) * 2 + (isCaps(b) ? 1 : 0);
+  const keyCounts = new Map<number, number>();
+  for (const b of ranked) {
+    if (b.headingSource === "style") keyCounts.set(styleKey(b), (keyCounts.get(styleKey(b)) ?? 0) + 1);
+  }
+  const tiers = [...keyCounts].filter(([, n]) => n >= 2).map(([key]) => key);
+  // The level of the last font-size or numbered heading (the title's at first).
+  // Style tiers seen since that heading: a smaller style goes one level below
+  // a larger one only when the larger one is there to nest under.
+  let parent = 1;
+  let seen: number[] = [];
+  for (const block of blocks) {
+    if (block.type !== "heading") continue;
+    if (block === title) {
+      parent = 1;
+      seen = [];
+    } else if (block.headingSource === "size") {
+      block.headingLevel = sizeLevel(sizeOf(block));
+      parent = block.headingLevel;
+      seen = [];
+    } else if (block.headingSource === "style") {
+      const key = styleKey(block);
+      block.headingLevel = Math.min(6, parent + 1 + (seen.some((t) => t > key) ? 1 : 0));
+      if (tiers.includes(key)) seen.push(key);
+    } else {
+      parent = block.headingLevel ?? parent;
+      seen = [];
+    }
+  }
+}
 
 /**
  * If no H1 heading exists, promote the first heading (on page 1) to H1.
@@ -3002,28 +3248,31 @@ async function convertDocument(
       ? contextItems
       : contextItems.filter((item) => selectedSet.has(item.page));
 
+  // Real font styles: bold for heading detection, monospace for code
+  // detection, bold/italic for inline emphasis
+  throwIfCancelled(signal);
+  const fonts = await resolveFonts(doc, reordered, signal);
+  for (const message of fonts.errors) {
+    messages.push({ code: "parse_failed", severity: "warning", message });
+  }
+  const boldFonts = new Set([...fonts.styles].filter(([, style]) => style.bold).map(([id]) => id));
+
   // Prefer tagged PDF semantics when a usable structure tree maps to text.
   // Empty/malformed trees fall back to the established visual heuristics.
   const taggedBlocks = buildTaggedBlocks(reordered, structTrees, profile);
 
   // Group into blocks (paragraphs, headings, list items)
-  const rawBlocks = taggedBlocks ?? groupIntoBlocks(reordered, profile, emphasisFonts);
+  const rawBlocks = taggedBlocks ?? groupIntoBlocks(reordered, profile, emphasisFonts, boldFonts);
 
   // Merge consecutive very short blocks (diagram labels, formula fragments)
   // Join headings broken at a hyphen; table-of-contents lines become list
   // items, not headings full of dots
-  const blocks = markTocBlocks(joinBrokenHeadings(mergeShortBlocks(rawBlocks)));
+  const blocks = markTocBlocks(joinStackedHeadings(joinBrokenHeadings(mergeShortBlocks(rawBlocks))));
 
   // Promote first heading to H1 if no H1 exists (common for document titles
   // that get ranked deep by font-size analysis)
   promoteFirstHeading(blocks);
-
-  // Real font styles: monospace for code detection, bold/italic for emphasis
-  throwIfCancelled(signal);
-  const fonts = await resolveFonts(doc, blocks, signal);
-  for (const message of fonts.errors) {
-    messages.push({ code: "parse_failed", severity: "warning", message });
-  }
+  if (!taggedBlocks) rankHeadingLevels(blocks);
 
   // Post-process: detect tables and code blocks
   const enrichedBlocks = detectTablesAndCode(blocks, trustedCodeFonts(codeFonts, blocks, fonts.styles));

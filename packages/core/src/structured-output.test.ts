@@ -51,6 +51,8 @@ function makePage(items: MockTextItem[]) {
     getAnnotations: vi.fn().mockResolvedValue([]),
     getStructTree: vi.fn().mockResolvedValue(null),
     getTextContent: vi.fn().mockResolvedValue({ items }),
+    getOperatorList: vi.fn().mockResolvedValue({ fnArray: [], argsArray: [] }),
+    commonObjs: { has: () => false, get: () => undefined },
   };
 }
 

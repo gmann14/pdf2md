@@ -137,7 +137,27 @@ text layer; no person has reviewed them yet. See `test-corpus/reference/README.m
 
 On 7 Nov 2026: pdf2md 61/106, @opendocsg/pdf2md 0.3.6 54/106. pdf2md leads on tables
 (9/25 vs 0) and links (6/6 vs 0); opendocsg leads on headings, plain text, reading order
-and emphasis.
+and emphasis. On 8 Nov 2026, after the heading fixes: pdf2md 94/106, with every heading,
+list, link, order, present and absent check passing; tables 15/25 and emphasis 2/4 remain.
+
+## Corpus-wide heading check
+
+The reference tests check 18 headings. `pnpm check:headings` looks at every heading
+pdf2md writes for the whole corpus (real-pdfs plus the blind sets found under
+`--pdfs-root`), so a heading change can be measured everywhere before it lands:
+
+```bash
+pnpm check:headings --pdfs-root <dir> --save /tmp/headings-before.json   # on main
+pnpm check:headings --pdfs-root <dir> --diff /tmp/headings-before.json   # on a branch
+```
+
+Per PDF it prints headings by level and counts of headings that are probably wrong:
+`level-skip` (H2 straight to H4), `long` (over 15 words: body text glued on),
+`sentence` (ends in `.`/`,`/`;` or opens in lower case), `no-letters` and `repeated`
+(the same heading three or more times: a running header). `--diff` lists headings added,
+removed or moved to another level; blind-set heading text is printed only with
+`--show-private`. Snapshots that include the blind sets are private: write them outside
+the repo. Nothing gates on it; read the diff.
 
 ## Performance benchmark
 
