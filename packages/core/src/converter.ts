@@ -257,6 +257,45 @@ function isTextItem(item: TextItem | TextMarkedContent): item is TextItem {
   return "str" in item;
 }
 
+/**
+ * How far most of a page's text is turned, in quarter turns counterclockwise
+ * (0 upright, 1 reading upward as on a landscape table printed sideways, 2
+ * upside down, 3 reading downward), by character count. A page counts as
+ * turned only when more than half its characters are; rotated margin text on
+ * an upright page (an arXiv stamp) leaves it at 0.
+ */
+export function pageTextTurn(items: { str: string; transform: number[] }[]): 0 | 1 | 2 | 3 {
+  const chars = [0, 0, 0, 0];
+  let total = 0;
+  for (const item of items) {
+    const n = item.str.trim().length;
+    if (n === 0) continue;
+    total += n;
+    const [a, b] = item.transform;
+    if (Math.abs(a) >= Math.abs(b)) chars[a >= 0 ? 0 : 2] += n;
+    else chars[b > 0 ? 1 : 3] += n;
+  }
+  for (const turn of [1, 2, 3] as const) if (chars[turn] * 2 > total) return turn;
+  return 0;
+}
+
+/**
+ * Maps a top-down page point to the reading frame of a page whose text is
+ * turned `turn` quarter turns: x along the lines, y down the lines.
+ */
+function readingFrame(turn: 0 | 1 | 2 | 3, width: number, height: number): (x: number, y: number) => [number, number] {
+  switch (turn) {
+    case 1:
+      return (x, y) => [height - y, x];
+    case 2:
+      return (x, y) => [width - x, height - y];
+    case 3:
+      return (x, y) => [y, width - x];
+    default:
+      return (x, y) => [x, y];
+  }
+}
+
 async function extractPageItems(
   page: PDFPageProxy,
   pageNum: number,
@@ -268,6 +307,8 @@ async function extractPageItems(
   ]);
 
   const viewport = page.getViewport({ scale: 1 });
+  const turn = pageTextTurn(textContent.items.filter(isTextItem));
+  const frame = readingFrame(turn, viewport.width, viewport.height);
 
   const items: ExtractedItem[] = [];
   const markedContentStack: string[] = [];
@@ -291,17 +332,20 @@ async function extractPageItems(
     }
 
     // transform: [scaleX, skewX, skewY, scaleY, translateX, translateY]
-    const fontSize = Math.abs(item.transform[3]);
-    const x = item.transform[4];
-    // PDF coordinates are bottom-up; invert to top-down
-    const y = viewport.height - item.transform[5];
+    // On a page turned a quarter or half turn (a landscape table), the size is
+    // the length of the vertical axis whichever way it points.
+    const fontSize =
+      turn === 0 ? Math.abs(item.transform[3]) : Math.hypot(item.transform[2], item.transform[3]);
+    // PDF coordinates are bottom-up; invert to top-down, then into the
+    // page's reading frame.
+    const [x, y] = frame(item.transform[4], viewport.height - item.transform[5]);
 
     items.push({
       str: cleanText(item.str),
       x,
       y,
       width: item.width,
-      height: item.height || fontSize,
+      height: turn === 0 ? item.height || fontSize : fontSize,
       fontSize,
       fontName: item.fontName,
       hasEOL: item.hasEOL,
@@ -315,9 +359,13 @@ async function extractPageItems(
     if (ann.subtype === "Link" && ann.url && ann.rect) {
       // Convert annotation rect to same coordinate system
       const [x1, y1raw, x2, y2raw] = ann.rect;
-      const y1 = viewport.height - y2raw;
-      const y2 = viewport.height - y1raw;
-      links.push({ url: ann.url, rect: [x1, y1, x2, y2], page: pageNum });
+      const [ax, ay] = frame(x1, viewport.height - y1raw);
+      const [bx, by] = frame(x2, viewport.height - y2raw);
+      links.push({
+        url: ann.url,
+        rect: [Math.min(ax, bx), Math.min(ay, by), Math.max(ax, bx), Math.max(ay, by)],
+        page: pageNum,
+      });
     }
   }
 
@@ -1244,6 +1292,9 @@ function detectRepeatedText(
  * the body (a year in a table, a TOC page number) therefore survives even
  * though page numbers normalise to the same "#".
  */
+/** Number items on one line from which the line is a table row, not a page number. */
+const TABLE_ROW_NUMBERS = 4;
+
 function filterHeadersFooters(
   items: ExtractedItem[],
   repeated: Map<string, RepeatedPlacement>,
@@ -1456,8 +1507,24 @@ function filterHeadersFooters(
     const edge = band === "top" ? extent.minY : extent.maxY;
     return Math.abs(item.y - edge) <= item.fontSize * 0.6;
   };
+  // Per page, the y of every number item, sorted: a line with several of them
+  // is a table row (the last row of a table printed sideways lands in the
+  // footer band), not a page number.
+  const numberYsByPage = new Map<number, number[]>();
+  for (const [page, pageItems] of itemsByPage) {
+    numberYsByPage.set(
+      page,
+      pageItems.filter((it) => /\d/.test(it.str) && !/\p{L}/u.test(it.str)).map((it) => it.y).sort((a, b) => a - b),
+    );
+  }
+  const numbersOnLine = (item: ExtractedItem) => {
+    const ys = numberYsByPage.get(item.page) ?? [];
+    const reach = item.fontSize * 0.5;
+    return lowerBound(ys, item.y + reach + 1e-9) - lowerBound(ys, item.y - reach);
+  };
   const strip = (placement: RepeatedPlacement, letterless: boolean, band: "top" | "bottom", item: ExtractedItem) => {
     if (!near(placement[band], item.x)) return false;
+    if (letterless && numbersOnLine(item) >= TABLE_ROW_NUMBERS) return false;
     if (!letterless || onOutermostLine(item, band)) return true;
     const gap = gapToLineText(item);
     // Set right against its text: a footnote label, a chapter number.

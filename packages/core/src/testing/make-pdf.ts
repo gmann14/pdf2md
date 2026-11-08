@@ -12,7 +12,12 @@ export interface TestPdfLine {
   size?: number;
   /** A standard-14 base font, default Helvetica (e.g. "Helvetica-Bold", "Times-Roman"). */
   font?: string;
+  /** Quarter turns counterclockwise (1: the line reads upward, as on a table printed sideways). */
+  turn?: 0 | 1 | 2 | 3;
 }
+
+/** Text matrix rows [a b c d] for a line turned `turn` quarter turns counterclockwise. */
+const TURNS: Record<number, string> = { 0: "1 0 0 1", 1: "0 1 -1 0", 2: "-1 0 0 -1", 3: "0 -1 1 0" };
 
 export interface TestPdfOptions {
   /** Lines per page; one array entry per page. */
@@ -73,7 +78,7 @@ export function makePdf({ pages, paddingBytes = 0, brokenPages = [] }: TestPdfOp
     const content = lines
       .map(
         (l) =>
-          `BT /F${fonts.indexOf(l.font ?? "Helvetica") + 1} ${l.size ?? 11} Tf ${l.x} ${l.y} Td (${escapePdfText(l.text)}) Tj ET`,
+          `BT /F${fonts.indexOf(l.font ?? "Helvetica") + 1} ${l.size ?? 11} Tf ${TURNS[l.turn ?? 0]} ${l.x} ${l.y} Tm (${escapePdfText(l.text)}) Tj ET`,
       )
       .join("\n");
     object(

@@ -159,7 +159,7 @@
     "wordRecall": 0.9767,
     "numericRecall": 0.9733,
     "linkPrecision": 1,
-    "spaceBeforePunctPer10k": 2.1
+    "spaceBeforePunctPer10k": 2.6
   },
   "whitepaper-bitcoin.pdf": {
     "wordRecall": 0.9973,
