@@ -10,6 +10,8 @@ export interface TestPdfLine {
   /** PDF y (bottom-up), on a 612 x 792 page. */
   y: number;
   size?: number;
+  /** A standard-14 base font, default Helvetica (e.g. "Helvetica-Bold", "Times-Roman"). */
+  font?: string;
 }
 
 export interface TestPdfOptions {
@@ -60,21 +62,30 @@ export function makePdf({ pages, paddingBytes = 0, brokenPages = [] }: TestPdfOp
   const pageIds = pages.map((_, i) => 4 + i * 2);
   object(1, "<< /Type /Catalog /Pages 2 0 R >>");
   object(2, `<< /Type /Pages /Kids [${pageIds.map((id) => `${id} 0 R`).join(" ")}] /Count ${pages.length} >>`);
-  object(3, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>");
+  // Helvetica is object 3 (F1); other base fonts follow the pages (F2, F3, ...).
+  const fonts = ["Helvetica", ...new Set(pages.flat().map((l) => l.font ?? "Helvetica").filter((f) => f !== "Helvetica"))];
+  const fontId = (i: number) => (i === 0 ? 3 : 3 + pages.length * 2 + i);
+  const fontResources = fonts.map((_, i) => `/F${i + 1} ${fontId(i)} 0 R`).join(" ");
+  const fontObject = (name: string) => `<< /Type /Font /Subtype /Type1 /BaseFont /${name} /Encoding /WinAnsiEncoding >>`;
+  object(3, fontObject("Helvetica"));
   pages.forEach((lines, i) => {
     const pageId = pageIds[i];
     const content = lines
-      .map((l) => `BT /F1 ${l.size ?? 11} Tf ${l.x} ${l.y} Td (${escapePdfText(l.text)}) Tj ET`)
+      .map(
+        (l) =>
+          `BT /F${fonts.indexOf(l.font ?? "Helvetica") + 1} ${l.size ?? 11} Tf ${l.x} ${l.y} Td (${escapePdfText(l.text)}) Tj ET`,
+      )
       .join("\n");
     object(
       pageId,
       brokenPages.includes(i + 1)
         ? "42"
-        : `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents ${pageId + 1} 0 R >>`,
+        : `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << ${fontResources} >> >> /Contents ${pageId + 1} 0 R >>`,
     );
     object(pageId + 1, `<< /Length ${Buffer.byteLength(content, "latin1")} >>\nstream\n${content}\nendstream`);
   });
-  let lastId = 3 + pages.length * 2;
+  for (let i = 1; i < fonts.length; i++) object(fontId(i), fontObject(fonts[i]));
+  let lastId = 3 + pages.length * 2 + fonts.length - 1;
   if (paddingBytes > 0) {
     lastId++;
     object(lastId, [

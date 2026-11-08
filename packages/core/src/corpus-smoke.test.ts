@@ -24,12 +24,12 @@ describe("launch corpus smoke conversion", () => {
     // and heading detection without making every PR run the full quality suite.
     expect(result.status).toBe("success");
     expect(result.markdown).toContain("# GIT CHEAT SHEET");
-    expect(result.markdown).toContain("#### SETUP");
+    expect(result.markdown).toContain("\n## SETUP\n");
 
     // List-like command sections have historically regressed into flat
     // paragraphs, so the smoke gate requires multiple Markdown headings.
-    expect(result.markdown).toContain("### git status");
-    expect(result.markdown).toContain("### git commit");
+    expect(result.markdown).toContain("\n### git status\n");
+    expect(result.markdown).toContain("\n### git commit");
 
     // Link extraction must stay wired in PR CI because it depends on PDF
     // annotations as well as text extraction order.
