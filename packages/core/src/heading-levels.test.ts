@@ -102,6 +102,19 @@ describe("heading detection and levels", () => {
     expect(headings(md)).toEqual(["# Who Can Claim Copyright"]);
   });
 
+  it("does not take a bold monospace function signature for a heading, but keeps a bold command name", async () => {
+    const md = await markdownOf([
+      { text: "Basic Monad Functions", x: 72, y: 760, size: 18, font: "Helvetica-Bold" },
+      ...body(730),
+      { text: "zipWithM :: Monad m => (a -> b -> m c) -> [a] -> [b] -> m [c]", x: 72, y: 650, size: 10, font: "Courier-Bold" },
+      ...body(630),
+      { text: "git status", x: 72, y: 550, size: 10, font: "Courier-Bold" },
+      ...body(530),
+    ]);
+    expect(headings(md)).toEqual(["# Basic Monad Functions", "## git status"]);
+    expect(md).toContain("zipWithM :: Monad m");
+  });
+
   it("does not take a bold table row, small bold labels or a footer led by a large glyph for headings", async () => {
     const md = await markdownOf([
       { text: "Annual Summary", x: 72, y: 760, size: 18, font: "Helvetica-Bold" },
