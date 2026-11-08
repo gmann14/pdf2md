@@ -64,6 +64,11 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
   document uses for headings and, under them, from the bold styles in use, so a
   report's sections are H2 and subsections H3 instead of one level too deep. A
   masthead above the title takes no level.
+- **Pages printed sideways.** A page whose text mostly runs up or down the
+  page (a wide table turned to fit a portrait page) is read in its own reading
+  frame, so its rows and columns come out as a table and the years down its
+  side are kept. A line of four or more numbers in the bottom band is a table
+  row, not a page number, and is no longer stripped.
 - **Footnotes and references keep their numbers.** Bibliography entries keep
   their `[n]` label, footnote labels and contents-page numbers inside the
   header/footer bands are no longer removed as page numbers, raised footnote
