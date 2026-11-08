@@ -137,7 +137,8 @@ text layer; no person has reviewed them yet. See `test-corpus/reference/README.m
 
 On 7 Nov 2026: pdf2md 61/106, @opendocsg/pdf2md 0.3.6 54/106. pdf2md leads on tables
 (9/25 vs 0) and links (6/6 vs 0); opendocsg leads on headings, plain text, reading order
-and emphasis.
+and emphasis. On 8 Nov 2026, after the heading fixes: pdf2md 94/106, with every heading,
+list, link, order, present and absent check passing; tables 15/25 and emphasis 2/4 remain.
 
 ## Corpus-wide heading check
 

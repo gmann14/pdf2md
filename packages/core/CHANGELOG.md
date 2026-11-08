@@ -54,6 +54,16 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
 
 ### Fixed
 
+- **Body-size bold headings.** A line set in a real bold font at about the body
+  size (read from the PDF's font names) is a heading, split from the paragraph
+  under it, as in CDC and government reports. Bold table rows, small bold
+  labels, bold monospace code, numbered list items ending in "or"/"and", and
+  loosely spaced bold paragraphs are not. A heading wrapped onto two lines is
+  kept as one.
+- **Heading levels follow the document.** Levels come from the font sizes a
+  document uses for headings and, under them, from the bold styles in use, so a
+  report's sections are H2 and subsections H3 instead of one level too deep. A
+  masthead above the title takes no level.
 - **Footnotes and references keep their numbers.** Bibliography entries keep
   their `[n]` label, footnote labels and contents-page numbers inside the
   header/footer bands are no longer removed as page numbers, raised footnote
@@ -102,3 +112,6 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
 - **Benchmark.** `pnpm bench` reports per-file median time and peak memory.
 - **Reference tests.** `pnpm test:reference` runs hand-written checks on pages
   of public-domain PDFs.
+- **Heading check.** `pnpm check:headings` lists every heading for the whole
+  corpus with counts of likely-wrong ones (level skips, long, sentence-like,
+  repeated), and `--diff` compares two snapshots.
