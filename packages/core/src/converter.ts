@@ -1920,11 +1920,116 @@ function markTocBlocks(blocks: Block[]): Block[] {
 // Table & code block post-processing
 // ---------------------------------------------------------------------------
 
+/** Smallest gap between two runs of a line, as a share of the font size, that separates table cells. */
+const ROW_CELL_GAP = 1.5;
+/** Largest baseline distance between table rows set apart, as a share of the font size. */
+const ROW_MAX_PITCH = 3;
+/** Fewest rows set apart that are tried as one table. */
+const ROW_RUN_MIN = 3;
+
+/** A cell ending in a word broken at the line end (`secre-`): prose, not a table cell. */
+const BROKEN_WORD_END = /\p{Ll}-$/u;
+
+/** A line of a text column is at least this share of the column's longest line. */
+const PROSE_LINE_SHARE = 0.7;
+/** Share of a text column's lines (the last aside) that run near its full width. */
+const PROSE_FULL_LINES = 0.75;
+/** Fewest characters in the longest line of a text column. */
+const PROSE_LINE_MIN = 25;
+
+/**
+ * True when a column's cells read as the lines of a text column: 3 or more
+ * lines, the longest of them long, and most lines but the last close to it
+ * in length (ragged right, so not all).
+ */
+function isTextColumn(cells: string[]): boolean {
+  const filled = cells.filter((cell) => cell !== "");
+  if (filled.length < 3) return false;
+  const longest = Math.max(...filled.map((cell) => cell.length));
+  if (longest < PROSE_LINE_MIN) return false;
+  const lines = filled.slice(0, -1);
+  const full = lines.filter((cell) => cell.length >= longest * PROSE_LINE_SHARE).length;
+  return full >= lines.length * PROSE_FULL_LINES;
+}
+
+/** The number of cells (runs set apart by a wide gap) when `block` is one line, else 0. */
+function lineCellCount(block: Block): number {
+  if (block.type !== "paragraph" || block.toc) return 0;
+  const items = block.items.filter((item) => item.str.trim() !== "");
+  const first = items[0];
+  if (!first) return 0;
+  if (items.some((item) => Math.abs(item.y - first.y) > first.fontSize * 0.5)) return 0;
+  const byX = [...items].sort((a, b) => a.x - b.x);
+  let cells = 1;
+  for (let i = 1; i < byX.length; i++) {
+    const prev = byX[i - 1] as ExtractedItem;
+    if ((byX[i] as ExtractedItem).x - (prev.x + prev.width) > first.fontSize * ROW_CELL_GAP) cells++;
+  }
+  return cells;
+}
+
+/**
+ * Join table rows that arrive one block each. Rows set further apart than
+ * lines of text (NIST's Table 1, with padded cells) are grouped as separate
+ * one-line paragraphs, and a table needs at least two rows. A run of 3+
+ * one-line blocks on a page, each with 2+ cells, close together, becomes one
+ * block when its items form a table that keeps every row. Lines with a link
+ * stay apart: table cells are plain text and would drop it.
+ */
+export function joinTableRowBlocks(blocks: Block[], linkMap: ReadonlyMap<ExtractedItem, string> = new Map()): Block[] {
+  const out: Block[] = [];
+  let i = 0;
+  while (i < blocks.length) {
+    const start = blocks[i] as Block;
+    let end = i + 1;
+    const rowLine = (block: Block): boolean =>
+      lineCellCount(block) >= 2 && !block.items.some((item) => linkMap.has(item));
+    if (rowLine(start)) {
+      while (end < blocks.length) {
+        const prev = blocks[end - 1]?.items[0];
+        const next = blocks[end] as Block;
+        const first = next.items[0];
+        if (!prev || !first || first.page !== prev.page || !rowLine(next)) break;
+        const pitch = first.y - prev.y;
+        if (pitch <= 0 || pitch > prev.fontSize * ROW_MAX_PITCH) break;
+        end++;
+      }
+    }
+    const run = blocks.slice(i, end);
+    if (run.length >= ROW_RUN_MIN) {
+      const items = run.flatMap((b) => b.items);
+      const rows = detectTable(items, { joinScripts: true });
+      // Each row must fill one cell per part of its line, and each column
+      // must show as a wide gap on some line: otherwise the table split words
+      // (subscripts, spaced letters, code) or ran lines of prose together.
+      const widest = Math.max(...run.map(lineCellCount));
+      const rowsFit = rows?.every((cells, r) => cells.filter((c) => c !== "").length === lineCellCount(run[r] as Block));
+      const prose =
+        rows?.some((cells) => cells.some((cell) => BROKEN_WORD_END.test(cell))) ||
+        // Columns of text (every column long lines of even length) are prose;
+        // a table has a column of short cells: ids, numbers, names.
+        rows?.[0]?.every((_, col) => isTextColumn(rows.map((cells) => cells[col] ?? "")));
+      if (rows && rows.length === run.length && rowsFit && !prose && (rows[0]?.length ?? 0) <= widest) {
+        out.push({ items, type: "table", tableRows: rows });
+        i = end;
+        continue;
+      }
+    }
+    out.push(start);
+    i++;
+  }
+  return out;
+}
+
 /**
  * Post-process blocks: detect tables and code blocks in paragraph blocks.
  */
-function detectTablesAndCode(blocks: Block[], codeFonts: Set<string>): Block[] {
-  const detected = blocks.map((block) => {
+function detectTablesAndCode(
+  blocks: Block[],
+  codeFonts: Set<string>,
+  linkMap: ReadonlyMap<ExtractedItem, string> = new Map(),
+): Block[] {
+  const detected = joinTableRowBlocks(blocks, linkMap).map((block) => {
     if (block.type !== "paragraph") return block;
 
     // Check for table first (tables take priority over code blocks)
@@ -3378,11 +3483,11 @@ async function convertDocument(
   promoteFirstHeading(blocks);
   if (!taggedBlocks) rankHeadingLevels(blocks);
 
-  // Post-process: detect tables and code blocks
-  const enrichedBlocks = detectTablesAndCode(blocks, trustedCodeFonts(codeFonts, blocks, fonts.styles));
-
-  // Match links to text items
+  // Match links to text items (before tables: rows with links stay apart)
   const linkMap = matchLinksToText(reordered, allLinks);
+
+  // Post-process: detect tables and code blocks
+  const enrichedBlocks = detectTablesAndCode(blocks, trustedCodeFonts(codeFonts, blocks, fonts.styles), linkMap);
 
   options?.onProgress?.({
     stage: "assembling",
