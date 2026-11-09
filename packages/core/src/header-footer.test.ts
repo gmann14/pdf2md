@@ -61,6 +61,38 @@ describe("running headers", () => {
     expect(result.markdown).not.toMatch(/^(5|6|7|8)$/m);
   });
 
+  it("keeps the page number of a contents entry on a contents page's last line", async () => {
+    // Page numbers at the foot of the body pages. The two contents pages run
+    // right down to the foot, so their last entry is the page's last line,
+    // with its page number at the running page numbers' x and height.
+    const pages = Array.from({ length: 12 }, (_, i): TestPdfLine[] => {
+      const n = i + 1;
+      return [
+        { text: `Body text of page ${n} explains one more widget in plain words.`, x: 72, y: 600, size: 10 },
+        { text: `A second line on page ${n} keeps this a real paragraph of text.`, x: 72, y: 586, size: 10 },
+        { text: String(n), x: 530, y: 40, size: 10 },
+      ];
+    });
+    for (const [page, first] of [[1, 1], [2, 30]] as const) {
+      const entries: TestPdfLine[] = [{ text: "Contents", x: 72, y: 720, size: 16 }];
+      for (let e = 0; e < 13; e++) {
+        const y = 220 - e * 15;
+        entries.push(
+          { text: `${first + e}`, x: 72, y, size: 10 },
+          { text: `Widget chapter ${first + e}`, x: 90, y, size: 10 },
+          { text: String(10 * (first + e) + 7), x: 530, y, size: 10 },
+        );
+      }
+      pages[page] = entries;
+    }
+    const result = await convert(makePdf({ pages }));
+    // The last entry on each contents page (y = 40) keeps its page number.
+    expect(result.markdown).toMatch(/Widget chapter 13\D+137\b/);
+    expect(result.markdown).toMatch(/Widget chapter 42\D+427\b/);
+    // The running page numbers are still stripped.
+    expect(result.markdown).not.toMatch(/^(5|6|7|8)$/m);
+  });
+
   it("keeps footnote labels that sit in the footer band", async () => {
     // A page number at the foot of every page, and on most pages a footnote
     // just above it whose raised label is at the left margin. Footnotes sit
