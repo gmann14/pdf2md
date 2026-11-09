@@ -1,6 +1,6 @@
 {
   "converter": "pdf2md",
-  "passed": 94,
+  "passed": 104,
   "total": 106,
   "passingIds": [
     "cdc-p1-abstract-numbers",
@@ -56,6 +56,7 @@
     "cdc-p4-t2-derm",
     "cdc-p4-t2-derm-volume",
     "cdc-p4-t2-np",
+    "cdc-p4-t2-pcp",
     "cdc-p4-t2-pod",
     "cdc-p4-t2-total",
     "circ1-p1-fixed",
@@ -96,6 +97,15 @@
     "nist-p12-order-list",
     "nist-p12-running-footer",
     "nist-p12-running-header",
-    "nist-p30-caption"
+    "nist-p30-caption",
+    "nist-p30-t1-am",
+    "nist-p30-t1-cm",
+    "nist-p30-t1-ds",
+    "nist-p30-t1-id",
+    "nist-p30-t1-ip",
+    "nist-p30-t1-mi",
+    "nist-p30-t1-rc",
+    "nist-p30-t1-rcrp",
+    "nist-p30-t1-sc"
   ]
 }
