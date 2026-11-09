@@ -69,6 +69,9 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
   frame, so its rows and columns come out as a table and the years down its
   side are kept. A line of four or more numbers in the bottom band is a table
   row, not a page number, and is no longer stripped.
+- **Contents entries at a page's edge keep their page number.** A number on
+  a page's last (or first) line that sits beside text and lines up with the
+  page numbers above it is a contents entry, not a running page number.
 - **Footnotes and references keep their numbers.** Bibliography entries keep
   their `[n]` label, footnote labels and contents-page numbers inside the
   header/footer bands are no longer removed as page numbers, raised footnote
