@@ -1143,6 +1143,13 @@ const HEADER_FOOTER_LETTERLESS_PAGE_SHARE = 0.1;
  * and is kept even where such labels recur: footnotes sit on a fixed grid.
  */
 const HEADER_FOOTER_LABEL_GAP = 2;
+/**
+ * A letterless copy on a page's outermost line is kept as a contents entry's
+ * page number when at least CONTENTS_COLUMN_MIN numbers within
+ * CONTENTS_COLUMN_REACH font sizes inside the band end at its right edge.
+ */
+const CONTENTS_COLUMN_MIN = 2;
+const CONTENTS_COLUMN_REACH = 5;
 /** Text items whose baselines are this close (pt) form one line when looking for a label's text. */
 const ANCHOR_LINE_Y_TOLERANCE = 1;
 /** Lines checked on each side of a letterless copy's height when looking for its text. */
@@ -1511,21 +1518,51 @@ function filterHeadersFooters(
   // is a table row (the last row of a table printed sideways lands in the
   // footer band), not a page number.
   const numberYsByPage = new Map<number, number[]>();
+  // Per page, the items that end in a number (a page number, or a contents
+  // entry with its page number in the same run), sorted by y.
+  const numberEndsByPage = new Map<number, { ys: number[]; items: ExtractedItem[] }>();
   for (const [page, pageItems] of itemsByPage) {
     numberYsByPage.set(
       page,
       pageItems.filter((it) => /\d/.test(it.str) && !/\p{L}/u.test(it.str)).map((it) => it.y).sort((a, b) => a - b),
     );
+    const ends = pageItems.filter((it) => /\d\s*$/.test(it.str)).sort((a, b) => a.y - b.y);
+    numberEndsByPage.set(page, { ys: ends.map((it) => it.y), items: ends });
   }
   const numbersOnLine = (item: ExtractedItem) => {
     const ys = numberYsByPage.get(item.page) ?? [];
     const reach = item.fontSize * 0.5;
     return lowerBound(ys, item.y + reach + 1e-9) - lowerBound(ys, item.y - reach);
   };
+  // Text ending in a number on the lines just inside the band (above a
+  // footer, below a header) whose right edge lines up with this one: the
+  // page-number column of a contents page that runs to the page's edge.
+  const alignedNumbersInward = (item: ExtractedItem, band: "top" | "bottom") => {
+    const entry = numberEndsByPage.get(item.page);
+    if (!entry) return 0;
+    const reach = item.fontSize * CONTENTS_COLUMN_REACH;
+    const [from, to] = band === "bottom"
+      ? [item.y - reach, item.y - item.fontSize * 0.5]
+      : [item.y + item.fontSize * 0.5, item.y + reach];
+    const right = item.x + item.width;
+    const tolerance = Math.max(1.5, item.fontSize * 0.2);
+    let aligned = 0;
+    const end = Math.min(entry.items.length, lowerBound(entry.ys, from) + POSITION_SCAN_BUDGET);
+    for (let i = lowerBound(entry.ys, from); i < end && entry.ys[i] <= to; i++) {
+      const other = entry.items[i];
+      if (Math.abs(other.x + other.width - right) <= tolerance) aligned++;
+    }
+    return aligned;
+  };
   const strip = (placement: RepeatedPlacement, letterless: boolean, band: "top" | "bottom", item: ExtractedItem) => {
     if (!near(placement[band], item.x)) return false;
     if (letterless && numbersOnLine(item) >= TABLE_ROW_NUMBERS) return false;
-    if (!letterless || onOutermostLine(item, band)) return true;
+    if (!letterless) return true;
+    if (onOutermostLine(item, band)) {
+      // A contents entry on the page's last (or first) line: text beside it
+      // and page numbers right-aligned with it on the lines inside.
+      return !(gapToLineText(item) !== undefined && alignedNumbersInward(item, band) >= CONTENTS_COLUMN_MIN);
+    }
     const gap = gapToLineText(item);
     // Set right against its text: a footnote label, a chapter number.
     if (gap !== undefined && gap <= item.fontSize * HEADER_FOOTER_LABEL_GAP) return false;
