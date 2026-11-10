@@ -16,7 +16,12 @@ The question, with enough context to answer from a phone.
 - status: open | answered | defaulted
 ```
 
-(no open questions)
+## q-2026-11-09-001  [blocking]  item: pdf2md reference tests (emphasis)
+Should a trailing colon sit inside bold when the PDF sets the colon bold? Two reference checks (`cdc-p2-bold-citation`, `circ1-p2-bold-note`) expect `**Suggested citation:**`; the improvement spec (`docs/improvement-spec-2026-11.md`, "Put trailing punctuation outside the markers") gives `**Suggested citation**:`, which is what pdf2md writes. These are the last 2 of 106 reference failures.
+1. Follow the PDF: a colon set in the bold font goes inside the markers; change the spec line.
+2. Keep the spec: punctuation outside the markers; change the two reference expectations.
+- type: blocking
+- status: open
 
 ## q-2026-06-30-001  [blocking]  item: pdf2md#8
 Launch readiness requires an actual production domain and Google Search Console verification method before the repo can be updated correctly. Which domain should be canonical, and how should verification be handled?

@@ -82,6 +82,17 @@ Pin `0.3.x` if you diff or snapshot pdf2md output.
 - **Tables keep their rows.** A row with one cell more or fewer than the rest
   of a detected table, or with a stray `. .` leader fragment, is kept instead
   of dropped.
+- **Tables whose rows are set apart.** Rows padded further apart than lines of
+  text, which used to come out as one paragraph per row, are joined into one
+  table when their cells line up in columns. A label cell that covers several
+  rows and a row label that wraps above and below its values stay in one row.
+  Two columns of prose, code, subscripts and lines that carry links stay text.
+- **Chapter running heads are not headings.** A body-size line at the top or
+  bottom of 3 or more pages that shares its line with the page number
+  ("Chapter 3. Functions 25") is text, not a heading on every page. Titles
+  that only start alike ("Article 4", "Article 12") stay headings.
+- **Table-row joining stays linear** on crafted pages with thousands of
+  row-like lines.
 - **Bulleted lists are not read as tables.** Symbol and Wingdings bullets map
   to Unicode bullets, and a table whose first column is only bullet markers is
   rejected.
