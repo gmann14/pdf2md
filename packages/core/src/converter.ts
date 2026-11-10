@@ -2063,6 +2063,12 @@ const ROW_CELL_GAP = 1.5;
 const ROW_MAX_PITCH = 3;
 /** Fewest rows set apart that are tried as one table. */
 const ROW_RUN_MIN = 3;
+/**
+ * Most lines in a run tried as one table. A failed run is tried again from
+ * its next line, so a longer run (more lines than any real page holds) would
+ * cost a table detection per line over the whole run: it stays as text.
+ */
+const ROW_RUN_MAX = 150;
 
 /** A cell ending in a word broken at the line end (`secre-`): prose, not a table cell. */
 const BROKEN_WORD_END = /\p{Ll}-$/u;
@@ -2131,6 +2137,11 @@ export function joinTableRowBlocks(blocks: Block[], linkMap: ReadonlyMap<Extract
         if (pitch <= 0 || pitch > prev.fontSize * ROW_MAX_PITCH) break;
         end++;
       }
+    }
+    if (end - i > ROW_RUN_MAX) {
+      out.push(...blocks.slice(i, end));
+      i = end;
+      continue;
     }
     const run = blocks.slice(i, end);
     if (run.length >= ROW_RUN_MIN) {
