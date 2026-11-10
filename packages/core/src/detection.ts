@@ -50,7 +50,7 @@ function itemIsMonospace(item: DetectionItem): boolean {
  * Detect if items form a table (aligned columns across rows).
  * Returns an array of rows (each row is an array of cell strings), or null.
  */
-export function detectTable(items: DetectionItem[]): string[][] | null {
+export function detectTable(items: DetectionItem[], options: { joinScripts?: boolean } = {}): string[][] | null {
   if (items.length < 4) return null; // Need at least 2x2
 
   // Sort items by Y (top-to-bottom), then X (left-to-right)
@@ -67,13 +67,13 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     const prev = sorted[i - 1];
     const curr = sorted[i];
     if (Math.abs(curr.y - prev.y) > curr.height * 0.5) {
-      rows.push(foldSymbolItems(currentRow.sort((a, b) => a.x - b.x)));
+      rows.push(rowItems(currentRow, options.joinScripts === true));
       currentRow = [curr];
     } else {
       currentRow.push(curr);
     }
   }
-  rows.push(foldSymbolItems(currentRow.sort((a, b) => a.x - b.x)));
+  rows.push(rowItems(currentRow, options.joinScripts === true));
 
   if (rows.length < 2) return null;
 
@@ -95,6 +95,19 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
 
   if (bestCount < 2 || bestFreq < 2) return null;
 
+  // A wider row shape wins when every row of the common shape fills a run of
+  // its columns: a cell that spans several rows (NIST's "ID | Identify" on
+  // the first row of each group) leaves the other rows short on one side.
+  const commonCount = bestCount;
+  for (const [count, freq] of [...countFreq].sort((a, b) => b[0] - a[0])) {
+    if (count <= bestCount || freq < 2) continue;
+    if (fillsColumnRun(rows, count, bestCount)) {
+      bestFreq += freq;
+      bestCount = count;
+      break;
+    }
+  }
+
   // At least 60% of rows should have the expected column count
   if (bestFreq / rows.length < 0.6) return null;
 
@@ -111,10 +124,12 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
 
   // Guard: reject 2-column "tables" where cells are long prose text.
   // Real table cells are typically short; two-column layouts produce long cells.
-  if (bestCount === 2) {
+  // The common rows are checked even when a wider shape won: two columns of
+  // prose with one line split into more runs are still prose.
+  if (commonCount === 2) {
     let totalCellLen = 0;
     let cellCount = 0;
-    for (const row of consistentRows) {
+    for (const row of rows.filter((r) => r.length === commonCount)) {
       for (const item of row) {
         totalCellLen += item.str.trim().length;
         cellCount++;
@@ -155,11 +170,46 @@ export function detectTable(items: DetectionItem[]): string[][] | null {
     cells.push(placed.map((item) => (item ? stripCellLeaders(item.str.trim()).replace(CURRENCY_SPACE, "$1") : "")));
   }
 
+  const merged = mergeWrappedRowLabels(cells);
+
   // Drop columns that are empty in every row (leader-only or symbol columns).
-  const keep = anchors.map((_, col) => cells.some((row) => row[col] !== ""));
-  if (keep.every(Boolean)) return cells;
+  const keep = anchors.map((_, col) => merged.some((row) => row[col] !== ""));
+  if (keep.every(Boolean)) return merged;
   if (keep.filter(Boolean).length < 2) return null;
-  return cells.map((row) => row.filter((_, col) => keep[col]));
+  return merged.map((row) => row.filter((_, col) => keep[col]));
+}
+
+/** Text that continues a row label from the line above: `(209,169)`, `and older`. */
+const LABEL_CONTINUATION = /^[(\p{Ll}]/u;
+
+/**
+ * Put back together a row whose label wraps around its values: the label's
+ * first line on its own, the values (with no label) on the next row, and the
+ * rest of the label below them, as in CDC's "Primary care physician" /
+ * "12.3 61,735 …" / "(209,169)". The last line must read as a continuation
+ * (an opening bracket or a lower-case word), so a group label above a data
+ * row is left alone.
+ */
+function mergeWrappedRowLabels(cells: string[][]): string[][] {
+  const labelOnly = (row: string[] | undefined): boolean =>
+    !!row && row[0] !== "" && row.slice(1).every((cell) => cell === "");
+  const valuesOnly = (row: string[] | undefined): boolean =>
+    !!row && row[0] === "" && row.slice(1).some((cell) => cell !== "");
+  const out: string[][] = [];
+  for (let i = 0; i < cells.length; i++) {
+    const [head, values, tail] = [cells[i], cells[i + 1], cells[i + 2]];
+    if (
+      head && values && tail &&
+      labelOnly(head) && valuesOnly(values) && labelOnly(tail) &&
+      LABEL_CONTINUATION.test(tail[0] ?? "")
+    ) {
+      out.push([`${head[0]} ${tail[0]}`, ...values.slice(1)]);
+      i += 2;
+      continue;
+    }
+    if (head) out.push(head);
+  }
+  return out;
 }
 
 /** A cell that is only a list bullet. */
@@ -209,6 +259,45 @@ function foldSymbolItems(row: DetectionItem[]): DetectionItem[] {
   return out;
 }
 
+/** A row's items in x order, with symbols folded (and scripts joined when asked). */
+function rowItems(row: DetectionItem[], joinScripts: boolean): DetectionItem[] {
+  const folded = foldSymbolItems(row.sort((a, b) => a.x - b.x));
+  return joinScripts ? joinTouchingItems(folded) : folded;
+}
+
+/**
+ * Join a sub- or superscript to the run it touches (`f` + `DCO(0,0)`, `e` +
+ * `1`): they are one word, and as two items they would become two columns.
+ * Only a smaller run with no space at the join counts. Used for rows joined
+ * from one-line blocks; inside a block it would make lines of prose with
+ * math in them look like rows of a table.
+ */
+function joinTouchingItems(row: DetectionItem[]): DetectionItem[] {
+  const out: DetectionItem[] = [];
+  for (const item of row) {
+    const prev = out[out.length - 1];
+    if (prev && isScriptJoin(prev, item)) {
+      out[out.length - 1] = {
+        ...prev,
+        str: prev.str.trim() + item.str.trim(),
+        width: Math.max(prev.width, item.x + item.width - prev.x),
+      };
+    } else {
+      out.push(item);
+    }
+  }
+  return out;
+}
+
+/** A sub- or superscript is set at most this fraction of the text size. */
+const SCRIPT_SIZE_RATIO = 0.9;
+
+function isScriptJoin(prev: DetectionItem, next: DetectionItem): boolean {
+  if (/\s$/.test(prev.str) || /^\s/.test(next.str) || !itemsTouch(prev, next)) return false;
+  const smaller = Math.min(prev.fontSize, next.fontSize);
+  return smaller < Math.max(prev.fontSize, next.fontSize) * SCRIPT_SIZE_RATIO;
+}
+
 interface ColumnAnchor {
   left: number;
   right: number;
@@ -229,6 +318,35 @@ function columnAnchors(rows: DetectionItem[][], count: number): ColumnAnchor[] {
 
 /** Max distance (PDF points) from a column's left or right edge for x placement. */
 const PLACE_TOLERANCE = 30;
+
+/**
+ * True when every row with `narrow` cells lines up with a run of adjacent
+ * columns of the rows with `wide` cells that ends at the last column
+ * (`ID.BE | Business Environment` under the last two of `ID | Identify |
+ * ID.AM | Asset Management`): the cells they lack are labels on the left
+ * that span the rows below them. A narrow row whose cells land on columns
+ * with a gap between them (a cell split in two in the wide rows), or stop
+ * short of the last column (columns of prose with one line split), does
+ * not fit.
+ */
+function fillsColumnRun(rows: DetectionItem[][], wide: number, narrow: number): boolean {
+  const wideRows = rows.filter((r) => r.length === wide);
+  const anchors = columnAnchors(wideRows, wide);
+  for (let col = 0; col < wide; col++) {
+    const xs = wideRows.map((r) => r[col].x);
+    if (Math.max(...xs) - Math.min(...xs) > PLACE_TOLERANCE) return false;
+  }
+  for (const row of rows) {
+    if (row.length !== narrow) continue;
+    const placed = placeByX(row, anchors);
+    if (!placed) return false;
+    const used = placed.flatMap((item, col) => (item ? [col] : []));
+    const first = used[0] ?? 0;
+    if (used.some((col, i) => col !== first + i)) return false;
+    if (used[used.length - 1] !== wide - 1) return false;
+  }
+  return true;
+}
 
 /**
  * Put each item of a short row into the column whose left or right edge

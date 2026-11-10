@@ -1572,3 +1572,180 @@ describe("table-of-contents leaders", () => {
     expect(performance.now() - start).toBeLessThan(1000);
   });
 });
+
+describe("detectTable with cells that span rows", () => {
+  /** NIST Table 1 shape: the function cell spans its group's rows. */
+  function groupedRows() {
+    const rows: [string, string, string, string][] = [
+      ["ID", "Identify", "ID.AM", "Asset Management"],
+      ["", "", "ID.BE", "Business Environment"],
+      ["", "", "ID.GV", "Governance"],
+      ["PR", "Protect", "PR.AC", "Access Control"],
+      ["", "", "PR.AT", "Awareness and Training"],
+      ["", "", "PR.DS", "Data Security"],
+    ];
+    return rows.flatMap((cells, r) =>
+      cells.flatMap((str, c) => (str ? [makeItem({ str, x: [50, 110, 180, 240][c] ?? 0, y: 100 + r * 18 })] : [])),
+    );
+  }
+
+  it("keeps the spanning columns when most rows fill only the last ones", () => {
+    expect(detectTable(groupedRows())).toEqual([
+      ["ID", "Identify", "ID.AM", "Asset Management"],
+      ["", "", "ID.BE", "Business Environment"],
+      ["", "", "ID.GV", "Governance"],
+      ["PR", "Protect", "PR.AC", "Access Control"],
+      ["", "", "PR.AT", "Awareness and Training"],
+      ["", "", "PR.DS", "Data Security"],
+    ]);
+  });
+
+  it("does not widen a table when short rows skip a column of the wide rows", () => {
+    // Wide rows split a cell in two; the short rows land on columns 1 and 3.
+    const items = [
+      ...["Alpha", "one", "Beta", "two"].map((str, c) => makeItem({ str, x: [50, 90, 200, 240][c] ?? 0, y: 100 })),
+      ...["Gamma", "one", "Delta", "two"].map((str, c) => makeItem({ str, x: [50, 90, 200, 240][c] ?? 0, y: 118 })),
+      ...[0, 1, 2].flatMap((r) => [
+        makeItem({ str: `Row ${r}`, x: 50, y: 136 + r * 18 }),
+        makeItem({ str: `Value ${r}`, x: 200, y: 136 + r * 18 }),
+      ]),
+    ];
+    const rows = detectTable(items);
+    expect(rows?.every((row) => row.length === 2) ?? true).toBe(true);
+  });
+
+  it("does not widen a table when short rows stop before the last column", () => {
+    // Census footnotes: two columns of notes, with two lines whose URL ends
+    // in a third run. The short rows fill the first two columns.
+    const items = [
+      ...["with a female householder", "in the CPS ASEC is at <", "www."].map((str, c) =>
+        makeItem({ str, x: [50, 200, 330][c] ?? 0, y: 100 }),
+      ),
+      ...["present are be referred", "Information on the", "census.gov"].map((str, c) =>
+        makeItem({ str, x: [50, 200, 330][c] ?? 0, y: 114 }),
+      ),
+      ...[0, 1, 2].flatMap((r) => [
+        makeItem({ str: `householder families ${r}`, x: 50, y: 128 + r * 14 }),
+        makeItem({ str: `in the some college ${r}`, x: 200, y: 128 + r * 14 }),
+      ]),
+    ];
+    const rows = detectTable(items);
+    expect(rows?.every((row) => row.length === 2) ?? true).toBe(true);
+  });
+});
+
+describe("detectTable with a row label that wraps around its values", () => {
+  /** Four complete rows from `y` down. */
+  function fullRows(y: number) {
+    return [
+      ["Dermatologist", "87.1", "10,735"],
+      ["Podiatrist", "67.2", "8,401"],
+      ["Other", "0.9", "15,290"],
+      ["Total", "6.3", "130,637"],
+    ].flatMap((cells, r) => cells.map((str, c) => makeItem({ str, x: [50, 250, 350][c] ?? 0, y: y + r * 18 })));
+  }
+
+  it("joins the label lines above and below the values into one row", () => {
+    const items = [
+      makeItem({ str: "Prescriber", x: 50, y: 100 }),
+      makeItem({ str: "Share", x: 250, y: 100 }),
+      makeItem({ str: "Count", x: 350, y: 100 }),
+      makeItem({ str: "Primary care physician", x: 50, y: 118 }),
+      makeItem({ str: "12.3", x: 250, y: 126 }),
+      makeItem({ str: "61,735", x: 350, y: 126 }),
+      makeItem({ str: "(209,169)", x: 50, y: 134 }),
+      ...fullRows(152),
+    ];
+    expect(detectTable(items)).toEqual([
+      ["Prescriber", "Share", "Count"],
+      ["Primary care physician (209,169)", "12.3", "61,735"],
+      ["Dermatologist", "87.1", "10,735"],
+      ["Podiatrist", "67.2", "8,401"],
+      ["Other", "0.9", "15,290"],
+      ["Total", "6.3", "130,637"],
+    ]);
+  });
+
+  it("leaves a group label above a data row as its own row", () => {
+    const items = [
+      makeItem({ str: "Drug", x: 50, y: 100 }),
+      makeItem({ str: "Share", x: 250, y: 100 }),
+      makeItem({ str: "Count", x: 350, y: 100 }),
+      // A group label, its subtotal (no label), then the next group's label.
+      makeItem({ str: "Antifungal drug", x: 50, y: 118 }),
+      makeItem({ str: "12.3", x: 250, y: 136 }),
+      makeItem({ str: "61,735", x: 350, y: 136 }),
+      makeItem({ str: "Corticosteroid", x: 50, y: 154 }),
+      ...fullRows(172),
+    ];
+    const rows = detectTable(items);
+    expect(rows?.[1]).toEqual(["Antifungal drug", "", ""]);
+    expect(rows?.[3]).toEqual(["Corticosteroid", "", ""]);
+  });
+});
+
+describe("detectTable with a subscript drawn as its own run", () => {
+  it("keeps a symbol and its touching subscript in one cell", () => {
+    // TI datasheet: `f` then a smaller, lower `DCO(0,0)` right after it.
+    const items = [0, 1, 2].flatMap((r) => {
+      const y = 100 + r * 14;
+      return [
+        makeItem({ str: "f", x: 50, y, width: 4 }),
+        makeItem({ str: `DCO(${r},3)`, x: 54.5, y: y + 2, fontSize: 8, height: 8, width: 36 }),
+        makeItem({ str: `DCO frequency (${r}, 3)`, x: 150, y }),
+        makeItem({ str: `RSELx = ${r}`, x: 320, y }),
+      ];
+    });
+    expect(detectTable(items, { joinScripts: true })).toEqual([
+      ["fDCO(0,3)", "DCO frequency (0, 3)", "RSELx = 0"],
+      ["fDCO(1,3)", "DCO frequency (1, 3)", "RSELx = 1"],
+      ["fDCO(2,3)", "DCO frequency (2, 3)", "RSELx = 2"],
+    ]);
+  });
+
+  it("leaves scripts as their own runs unless asked", () => {
+    // Within one block, joining scripts would let lines of prose with math
+    // in them line up as rows, so the default keeps the runs apart.
+    const items = [0, 1].flatMap((r) => [
+      makeItem({ str: "x", x: 50, y: 100 + r * 14, width: 6 }),
+      makeItem({ str: `${r}`, x: 56.5, y: 102 + r * 14, fontSize: 8, height: 8, width: 4 }),
+      makeItem({ str: "value", x: 150, y: 100 + r * 14 }),
+    ]);
+    expect(detectTable(items)?.[0]).toEqual(["x", "0", "value"]);
+  });
+});
+
+describe("detectTable with two columns of prose", () => {
+  it("stays text when one line splits into more runs than the rest", () => {
+    // BERT: two columns of prose; one right-column line is drawn as three
+    // runs, which made a 4-column shape the rows could fit under.
+    const left = [
+      "The NSP task is closely related to representation-",
+      "learning objectives used in Jernite et al. (2017) and",
+      "Logeswaran and Lee (2018). However, in prior",
+      "work, only sentence embeddings are transferred to",
+      "down-stream tasks, where BERT transfers all pa-",
+    ];
+    const right = [
+      ["(4) a degenerate text-", "∅", "pair in text classification"],
+      ["or sequence tagging. At the output, the token rep-"],
+      ["resentations are fed into an output layer for token-"],
+      ["level tasks, such as sequence tagging or question"],
+      ["answering, and the [CLS] representation is fed into"],
+    ];
+    const items = left.flatMap((str, r) => [
+      makeItem({ str, x: 50, y: 100 + r * 14, width: 240 }),
+      ...(right[r] ?? []).map((part, p) =>
+        makeItem({ str: part, x: [310, 420, 440][p] ?? 310, y: 100 + r * 14, width: p === 0 && r > 0 ? 240 : part.length * 5 }),
+      ),
+    ]);
+    // A second split line, so the wide shape occurs twice.
+    items.push(
+      makeItem({ str: "into an output layer for", x: 50, y: 170, width: 240 }),
+      makeItem({ str: "(5) the", x: 310, y: 170, width: 35 }),
+      makeItem({ str: "∅", x: 420, y: 170, width: 6 }),
+      makeItem({ str: "label", x: 440, y: 170, width: 25 }),
+    );
+    expect(detectTable(items)).toBeNull();
+  });
+});
