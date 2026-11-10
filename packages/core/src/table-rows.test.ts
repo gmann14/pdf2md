@@ -83,6 +83,20 @@ describe("joinTableRowBlocks", () => {
     }));
   }
 
+  it("checks a long run of row-like lines that is not a table in linear time", () => {
+    // A crafted page of thousands of two-part lines, each ending in a broken
+    // word, fails the table checks. Trying the run again from every line
+    // would cost a table detection per line over the whole run.
+    const lines: [number, string][][] = Array.from({ length: 3000 }, (_, r) => [
+      [72, `line ${r} of the left col-`],
+      [320, `line ${r} of the right col-`],
+    ]);
+    const blocks = lineBlocks(lines, 14);
+    const start = performance.now();
+    expect(joinTableRowBlocks(blocks)).toEqual(blocks);
+    expect(performance.now() - start).toBeLessThan(1000);
+  });
+
   it("leaves two columns of prose lines as paragraphs", () => {
     // GPO style manual: a two-column letter whose lines arrive one block each.
     const blocks = lineBlocks(
